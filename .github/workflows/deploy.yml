@@ -51,6 +51,13 @@ jobs:
       - name: Build with Next.js
         run: pnpm run build
         
+      - name: Verify build output
+        run: |
+          echo "Checking build output..."
+          ls -la out/
+          test -f out/index.html && echo "✅ index.html found" || echo "❌ index.html missing"
+          test -d out/_next && echo "✅ _next directory found" || echo "❌ _next directory missing"
+        
       - name: Setup Pages
         uses: actions/configure-pages@v4
         

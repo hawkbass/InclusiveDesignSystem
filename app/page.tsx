@@ -572,23 +572,14 @@ function PerformanceDashboard() {
 }
 
 export default function HomePage() {
-  const [mounted, setMounted] = useState(false)
   const [animationSpeed, setAnimationSpeed] = useState([1])
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
 
   // Apply animation speed to document
   useEffect(() => {
-    if (mounted && animationSpeed?.[0]) {
+    if (animationSpeed?.[0]) {
       document.documentElement.style.setProperty('--animation-speed', `${1 / animationSpeed[0]}s`)
     }
-  }, [animationSpeed, mounted])
-
-  if (!mounted) {
-    return null
-  }
+  }, [animationSpeed])
 
   return (
     <div className="flex bg-slate-950 min-h-screen">

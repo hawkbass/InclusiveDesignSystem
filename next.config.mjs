@@ -7,20 +7,9 @@ const nextConfig = {
     unoptimized: true,
   },
   
-  // Base path for GitHub Pages (if using custom domain, remove this)
-  // basePath: process.env.NODE_ENV === 'production' ? '/your-repo-name' : '',
-  
-  // Performance optimizations
+  // Disable server-side features for static export
   experimental: {
-    optimizeServerReact: true,
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
+    // Remove any server-side optimizations
   },
   
   // Compiler optimizations
@@ -40,9 +29,6 @@ const nextConfig = {
     
     return config
   },
-  
-  // Compression
-  compress: true,
   
   eslint: {
     ignoreDuringBuilds: true,
