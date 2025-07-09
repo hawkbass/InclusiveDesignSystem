@@ -1,0 +1,18 @@
+image: node:20
+
+cache:
+  paths:
+    - node_modules/
+
+pages:
+  stage: deploy
+  script:
+    - npm install -g pnpm
+    - pnpm install --frozen-lockfile
+    - pnpm run build
+    - cp -r out/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main 
