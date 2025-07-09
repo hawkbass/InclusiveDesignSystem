@@ -31,14 +31,12 @@ npm start
 - Copy `.env.example` to `.env.local` and fill in any required secrets.
 - **Never commit real secrets to the repo!**
 
-## ⚙️ CI/CD with GitLab
-This project includes a `.gitlab-ci.yml` for automated builds:
-- Installs dependencies
-- Runs `npm run build`
-- Caches `node_modules` for faster builds
-- Artifacts: `.next`, `out`, `node_modules`
-
-You can add a deploy stage as needed for your environment.
+## ⚙️ CI/CD with GitHub Pages
+This project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) for automated deployment:
+- Installs dependencies with pnpm
+- Runs `npm run build` to generate static files
+- Deploys to GitHub Pages automatically on push to main branch
+- Caches dependencies for faster builds
 
 ## 📚 Documentation
 - [Next.js Documentation](https://nextjs.org/docs)

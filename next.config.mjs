@@ -1,15 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Static export for GitLab Pages
+  // Static export for GitHub Pages
   output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
   
+  // Base path for GitHub Pages (if using custom domain, remove this)
+  // basePath: process.env.NODE_ENV === 'production' ? '/your-repo-name' : '',
+  
   // Performance optimizations
   experimental: {
-    // optimizeCss: true,
     optimizeServerReact: true,
     turbo: {
       rules: {

@@ -10,7 +10,15 @@ pages:
     - npm install -g pnpm
     - pnpm install --frozen-lockfile
     - pnpm run build
+    - rm -rf public
+    - mkdir public
     - cp -r out/* public/
+    - echo "=== Checking public directory contents ==="
+    - ls -la public/
+    - echo "=== Checking if index.html exists ==="
+    - test -f public/index.html && echo "index.html found" || echo "index.html NOT found"
+    - echo "=== Checking if index.html is readable ==="
+    - head -5 public/index.html || echo "Cannot read index.html"
   artifacts:
     paths:
       - public
