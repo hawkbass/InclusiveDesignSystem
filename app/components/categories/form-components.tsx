@@ -14,6 +14,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Progress } from "@/components/ui/progress"
 import { ComponentCard } from "./component-card"
 import {
+  AlertTriangle,
   Calendar,
   Check,
   ChevronDown,
