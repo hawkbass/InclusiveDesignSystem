@@ -17,6 +17,7 @@ import {
   AlertTriangle,
   Calendar,
   Check,
+  CheckCircle2,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
