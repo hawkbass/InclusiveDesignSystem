@@ -18,6 +18,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           submodules: false
+          clean: true
+
+      - name: Remove problematic submodule
+        run: |
+          git submodule deinit -f repo || true
+          git rm -f repo || true
+          rm -rf .git/modules/repo || true
 
       - name: Get commit info
         id: commit
