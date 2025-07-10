@@ -410,38 +410,36 @@ const components = [
   </DialogContent>
 </Dialog>`,
     component: (
-      <Dialog open={true}>
-        <DialogContent className="max-w-md bg-slate-900/95 border-slate-700/50">
-          <div className="flex justify-between items-center mb-4">
-            <h4 className="text-lg font-medium text-slate-100">Add New Candidate</h4>
-            <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-slate-400 hover:text-slate-300">
-              <X className="h-4 w-4" />
+      <div className="max-w-md bg-slate-900/95 border border-slate-700/50 rounded-lg p-6">
+        <div className="flex justify-between items-center mb-4">
+          <h4 className="text-lg font-medium text-slate-100">Add New Candidate</h4>
+          <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-slate-400 hover:text-slate-300">
+            <X className="h-4 w-4" />
+          </Button>
+        </div>
+        <form className="space-y-4">
+          <div>
+            <label className="block text-xs text-slate-400 mb-1">Full Name</label>
+            <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter candidate name" />
+          </div>
+          <div>
+            <label className="block text-xs text-slate-400 mb-1">Position</label>
+            <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter position" />
+          </div>
+          <div>
+            <label className="block text-xs text-slate-400 mb-1">Email</label>
+            <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter email address" />
+          </div>
+          <div className="flex gap-2 pt-2">
+            <Button variant="outline" size="sm" className="flex-1 text-slate-300 border-slate-700/50 bg-slate-800/50 hover:bg-slate-700/50 h-8 text-xs">
+              Cancel
+            </Button>
+            <Button size="sm" className="flex-1 bg-fuchsia-500 hover:bg-fuchsia-600 h-8 text-xs">
+              Add Candidate
             </Button>
           </div>
-          <form className="space-y-4">
-            <div>
-              <label className="block text-xs text-slate-400 mb-1">Full Name</label>
-              <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter candidate name" />
-            </div>
-            <div>
-              <label className="block text-xs text-slate-400 mb-1">Position</label>
-              <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter position" />
-            </div>
-            <div>
-              <label className="block text-xs text-slate-400 mb-1">Email</label>
-              <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter email address" />
-            </div>
-            <div className="flex gap-2 pt-2">
-              <Button variant="outline" size="sm" className="flex-1 text-slate-300 border-slate-700/50 bg-slate-800/50 hover:bg-slate-700/50 h-8 text-xs">
-                Cancel
-              </Button>
-              <Button size="sm" className="flex-1 bg-fuchsia-500 hover:bg-fuchsia-600 h-8 text-xs">
-                Add Candidate
-              </Button>
-            </div>
-          </form>
-        </DialogContent>
-      </Dialog>
+        </form>
+      </div>
     )
   },
   {
