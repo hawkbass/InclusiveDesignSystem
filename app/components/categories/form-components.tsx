@@ -14,13 +14,36 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Progress } from "@/components/ui/progress"
 import { ComponentCard } from "./component-card"
 import {
-  Eye,
-  Search,
-  X,
-  Upload,
-  AlertTriangle,
-  CheckCircle2,
+  Calendar,
   Check,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  CreditCard,
+  DollarSign,
+  Download,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  Heart,
+  Home,
+  Building2,
+  Mail,
+  MapPin,
+  Minus,
+  MoreHorizontal,
+  Phone,
+  Plus,
+  Search,
+  Settings,
+  Shield,
+  Star,
+  Upload,
+  User,
+  X,
+  Zap
 } from "lucide-react"
 
 interface FormComponentsProps {
@@ -170,9 +193,9 @@ const components = [
         <Label className="text-slate-300">Work Preference</Label>
         <RadioGroup defaultValue="remote">
           {[
-            { value: "remote", label: "Remote", icon: "🏠" },
-            { value: "hybrid", label: "Hybrid", icon: "🏢" },
-            { value: "onsite", label: "On-site", icon: "🏢" }
+            { value: "remote", label: "Remote", icon: <Home className="h-4 w-4" /> },
+            { value: "hybrid", label: "Hybrid", icon: <Building2 className="h-4 w-4" /> },
+            { value: "onsite", label: "On-site", icon: <Building2 className="h-4 w-4" /> }
           ].map((option) => (
             <div key={option.value} className="flex items-center space-x-2">
               <RadioGroupItem value={option.value} id={option.value} />

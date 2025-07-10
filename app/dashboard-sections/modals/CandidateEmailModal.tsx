@@ -73,7 +73,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
                 onClick={() => {
                   onClose()
                   setNotifications(prev => [
-                    { id: Date.now(), type: "application", message: `📧 Email sent to ${candidate.name}`, time: "Just now", urgent: false },
+                    { id: Date.now(), type: "application", message: `Email sent to ${candidate.name}`, time: "Just now", urgent: false },
                     ...prev.slice(0, 4)
                   ])
                 }}

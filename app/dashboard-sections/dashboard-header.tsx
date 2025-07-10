@@ -170,7 +170,7 @@ export function DashboardHeader({
                     onClick={() => {
                       setShowNotifications(false)
                       setNotifications((prev: Notification[]) => [
-                        { id: Date.now(), type: "application", message: "📱 Viewing all notifications in dashboard", time: "Just now", urgent: false },
+                        { id: Date.now(), type: "application", message: "Viewing all notifications in dashboard", time: "Just now", urgent: false },
                         ...prev.slice(0, 4)
                       ])
                     }}
