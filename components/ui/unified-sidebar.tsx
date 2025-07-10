@@ -185,6 +185,7 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
         )}
         style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
         aria-current={active ? "page" : undefined}
+        onClick={() => setMobileOpen(false)}
       >
         <Icon className={cn(
           "h-4 w-4 shrink-0 transition-transform",
@@ -206,13 +207,9 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
             )}
           </div>
           {description && (
-            <div className="text-xs text-slate-500 mt-1 truncate">{description}</div>
+            <p className="text-xs text-slate-500 mt-1 line-clamp-2">{description}</p>
           )}
         </div>
-        
-        {active && (
-          <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-transparent pointer-events-none" />
-        )}
       </Link>
     )
   }
@@ -221,22 +218,23 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
     const isExpanded = expandedCategories.includes(category)
     
     return (
-      <div className="space-y-1">
+      <div className="space-y-2">
         <button
           onClick={() => toggleCategory(category)}
-          className="flex items-center gap-2 px-4 py-2 text-xs font-semibold text-slate-400 hover:text-slate-300 transition-colors w-full text-left"
+          className="flex items-center justify-between w-full px-4 py-2 text-sm font-medium text-slate-400 hover:text-slate-300 transition-colors"
           style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
+          aria-expanded={isExpanded}
+          aria-label={`Toggle ${category} section`}
         >
-          <ChevronRight className={cn(
-            "h-3 w-3 transition-transform",
-            isExpanded && "rotate-90"
-          )} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
           <span>{category}</span>
-          <div className="flex-1 h-px bg-slate-700/50 ml-2" />
+          {isExpanded ? (
+            <ChevronDown className="h-4 w-4 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
+          ) : (
+            <ChevronRight className="h-4 w-4 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
+          )}
         </button>
-        
         {isExpanded && (
-          <div className="space-y-1 animate-in slide-in-from-top-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
+          <div className="space-y-1 pl-4">
             {sections.map((section) => (
               <NavLink key={section.href} {...section} />
             ))}
@@ -249,100 +247,58 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Header */}
-      <Link 
-        href="/" 
-        className="flex items-center gap-3 px-4 py-6 font-bold text-fuchsia-400 text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 rounded group hover:scale-105 transition-transform"
-        style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
-      >
-        <Hexagon className="h-8 w-8 group-hover:rotate-180 transition-transform duration-500" />
-        <div className="flex flex-col leading-tight">
-          <span>Inclusive</span>
-          <span className="text-sm text-slate-300 font-medium">Design System</span>
+      <div className="p-4 border-b border-slate-800/50">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-lg flex items-center justify-center">
+            <Hexagon className="h-4 w-4 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h2 className="text-sm font-semibold text-slate-100 truncate">Inclusive</h2>
+            <p className="text-xs text-slate-400 truncate">Design System</p>
+          </div>
         </div>
-      </Link>
-
-      {/* Search */}
-      <div className="px-4 mb-4">
+        
+        {/* Search */}
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
           <Input
-            placeholder="Search documentation..."
+            placeholder="Search..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-slate-800/50 border-slate-700/50 text-slate-300 placeholder:text-slate-500 focus:border-fuchsia-500/50"
+            className="pl-9 h-8 text-sm bg-slate-800/50 border-slate-700/50 focus:border-fuchsia-500/50"
+            aria-label="Search design system sections"
           />
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <div className="px-4 mb-4">
-        <div className="space-y-1">
-          {mainNavigation.map((item) => (
-            <NavLink key={item.href} {...item} isMainNav />
+      {/* Navigation */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-6">
+        {/* Main Navigation */}
+        <div className="space-y-2">
+          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4">Main</h3>
+          <div className="space-y-1">
+            {mainNavigation.map((item) => (
+              <NavLink key={item.href} {...item} isMainNav />
+            ))}
+          </div>
+        </div>
+
+        {/* Design System Sections */}
+        <div className="space-y-4">
+          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider px-4">Design System</h3>
+          {Object.entries(categorizedSections).map(([category, sections]) => (
+            <CategorySection key={category} category={category} sections={sections} />
           ))}
         </div>
       </div>
 
-      {/* Divider */}
-      <div className="px-4 mb-4">
-        <div className="h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
-      </div>
-
-      {/* Documentation Sections */}
-      <div className="flex-1 px-4 space-y-2 overflow-y-auto">
-        {Object.entries(categorizedSections).map(([category, sections]) => (
-          <CategorySection key={category} category={category} sections={sections} />
-        ))}
-      </div>
-
       {/* Footer */}
-      <div className="px-4 py-4 mt-auto">
-        <div className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/50">
-          <div className="flex items-center gap-2 mb-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-            <span className="text-sm font-medium text-slate-300">System Status</span>
-          </div>
-          <div className="text-xs text-slate-400 space-y-1">
-            <div className="flex justify-between">
-              <span>Components:</span>
-              <span className="text-slate-300">57+</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Version:</span>
-              <span className="text-slate-300">2.1.0</span>
-            </div>
-            <div className="flex justify-between">
-              <span>Updated:</span>
-              <span className="text-slate-300">Today</span>
-            </div>
-          </div>
-          <div className="flex gap-2 mt-3">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-7 px-2 text-xs"
-              asChild
-            >
-              <Link href="/design-system/getting-started">
-                <div className="flex items-center">
-                  <HelpCircle className="h-3 w-3 mr-1" />
-                  Help
-                </div>
-              </Link>
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              className="h-7 px-2 text-xs"
-              asChild
-            >
-              <Link href="https://github.com/inclusive-design/system" target="_blank">
-                <div className="flex items-center">
-                  <ExternalLink className="h-3 w-3 mr-1" />
-                  GitHub
-                </div>
-              </Link>
-            </Button>
+      <div className="p-4 border-t border-slate-800/50">
+        <div className="flex items-center justify-between text-xs text-slate-500">
+          <span>v1.0.0</span>
+          <div className="flex items-center gap-1">
+            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+            <span>Live</span>
           </div>
         </div>
       </div>
@@ -351,37 +307,37 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
 
   return (
     <>
-      {/* Desktop Sidebar */}
-      <aside className={cn(
-        "hidden lg:flex flex-col w-80 min-h-screen sticky top-0 bg-slate-900/95 backdrop-blur-xl border-r border-slate-800/60 z-40",
-        className
-      )}>
+      {/* Mobile Hamburger */}
+      <button
+        className="md:hidden fixed top-4 left-4 z-50 bg-slate-800/80 p-2 rounded-lg border border-slate-700/50"
+        aria-label="Open navigation menu"
+        onClick={() => setMobileOpen(true)}
+      >
+        <MenuIcon className="h-6 w-6 text-slate-200" />
+      </button>
+
+      {/* Mobile Overlay */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 bg-black/40 z-40 md:hidden"
+          onClick={() => setMobileOpen(false)}
+          aria-label="Close navigation overlay"
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={cn(
+          "fixed md:static z-50 top-0 left-0 h-full w-80 bg-slate-900/95 border-r border-slate-800/50 backdrop-blur-xl shadow-2xl",
+          "transition-transform duration-300",
+          mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
+          className
+        )}
+        role="navigation"
+        aria-label="Main navigation"
+      >
         <SidebarContent />
       </aside>
-      
-      {/* Mobile Sidebar */}
-      <div className="lg:hidden">
-        <button
-          className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-slate-900/90 border border-slate-800/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 backdrop-blur-sm"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? (
-            <CloseIcon className="h-6 w-6 text-fuchsia-400" />
-          ) : (
-            <MenuIcon className="h-6 w-6 text-fuchsia-400" />
-          )}
-        </button>
-        
-        {mobileOpen && (
-          <div className="fixed inset-0 bg-slate-950/80 z-40 flex backdrop-blur-sm">
-            <aside className="w-80 bg-slate-900/95 border-r border-slate-800/60 h-full overflow-y-auto">
-              <SidebarContent />
-            </aside>
-            <div className="flex-1" onClick={() => setMobileOpen(false)} />
-          </div>
-        )}
-      </div>
     </>
   )
 }

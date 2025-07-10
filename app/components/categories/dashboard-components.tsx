@@ -748,28 +748,46 @@ export function DashboardComponents({
   )
 
   return (
-    <div className={`grid gap-6 ${
-      viewMode === "grid" 
-        ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
-        : "grid-cols-1"
-    }`}>
-      {filteredComponents.map((component) => (
-        <ComponentCard
-          key={component.id}
-          id={component.id}
-          title={component.title}
-          description={component.description}
-          code={component.code}
-          onCopyCode={onCopyCode}
-          copiedCode={copiedCode}
-          viewMode={viewMode}
-          isFavourite={favorites.has(component.id)}
-          onToggleFavourite={() => onToggleFavourite(component.id)}
-          searchQuery={searchQuery}
-        >
-          {component.component}
-        </ComponentCard>
-      ))}
+    <div className="space-y-12">
+      <section>
+        <div className="flex items-center justify-between mb-8">
+          <div>
+            <h2 className="text-3xl font-bold mb-2 text-slate-100">Dashboard Components</h2>
+            <p className="text-slate-400">Complete dashboard interface components and layouts</p>
+          </div>
+          <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-3 py-1">
+            {filteredComponents.length} Components
+          </Badge>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredComponents.map((component) => (
+            <ComponentCard
+              key={component.id}
+              id={component.id}
+              title={component.title}
+              description={component.description}
+              code={component.code}
+              onCopyCode={onCopyCode}
+              copiedCode={copiedCode}
+              viewMode={viewMode}
+              isFavourite={favorites.has(component.id)}
+              onToggleFavourite={() => onToggleFavourite(component.id)}
+              searchQuery={searchQuery}
+            >
+              {component.component}
+            </ComponentCard>
+          ))}
+        </div>
+
+        {filteredComponents.length === 0 && searchQuery && (
+          <div className="text-center py-12 text-slate-400">
+            <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
+            <p className="text-lg font-medium mb-2">No components found</p>
+            <p className="text-sm">Try adjusting your search query</p>
+          </div>
+        )}
+      </section>
     </div>
   )
 } 

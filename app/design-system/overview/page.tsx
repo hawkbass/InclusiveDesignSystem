@@ -801,6 +801,7 @@ export interface Notification {
                   onClick={() => setSettingsOpen(!settingsOpen)}
                   className={`transition-all ${settingsOpen ? 'bg-fuchsia-500/20 border-fuchsia-500/50' : 'hover:bg-slate-800'}`}
                   style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
+                  aria-label="Toggle settings panel"
                 >
                   <Settings className="h-4 w-4 mr-2" />
                   Settings
@@ -813,7 +814,7 @@ export interface Notification {
                   </Button>
                   <Button size="sm" className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <ExternalLink className="h-4 w-4 mr-2" />
-                    View Live
+                    Documentation
                   </Button>
                 </div>
               </div>
@@ -829,6 +830,7 @@ export interface Notification {
                     size="sm"
                     onClick={() => setSettingsOpen(false)}
                     className="h-6 w-6 p-0"
+                    aria-label="Close settings panel"
                   >
                     <X className="h-4 w-4" />
                   </Button>

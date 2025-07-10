@@ -309,7 +309,7 @@ export function MainDashboard() {
       />
 
       {/* Main Content */}
-      <div className="flex">
+      <div className="flex flex-col md:flex-row min-w-0">
         {/* Sidebar Navigation */}
         <SidebarNavigation
           activeTab={activeTab}
@@ -319,7 +319,7 @@ export function MainDashboard() {
         />
 
         {/* Main Content Area */}
-        <div className="flex-1 p-6 overflow-y-auto">
+        <div className="flex-1 p-6 overflow-y-auto min-w-0">
           <AnimatedElement animation="fade-in" delay={200}>
             {renderActiveTab()}
           </AnimatedElement>

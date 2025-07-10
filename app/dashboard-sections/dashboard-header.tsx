@@ -47,7 +47,7 @@ export function DashboardHeader({
                       setNotifications([])
                       setShowNotifications(false)
                     }}
-                    title="Mark all as read"
+                    aria-label="Mark all as read"
                   >
                     <CheckCircle2 className="h-3.5 w-3.5" />
                   </Button>
@@ -56,6 +56,7 @@ export function DashboardHeader({
                     size="sm"
                     className="h-7 w-7 p-0 text-slate-400 hover:text-slate-300 hover:bg-slate-700/50"
                     onClick={() => setShowNotifications(false)}
+                    aria-label="Close notifications"
                   >
                     <X className="h-3.5 w-3.5" />
                   </Button>
