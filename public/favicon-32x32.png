@@ -1,0 +1,12 @@
+# Favicon PNG Generation Instructions
+
+This file should be replaced with a 32x32 PNG favicon generated from the SVG.
+
+To generate the PNG file:
+
+1. Use the SVG favicon.svg file in this directory
+2. Convert it to PNG format at 32x32 pixels
+3. Ensure it maintains the fuchsia to purple gradient
+4. Replace this file with the generated PNG
+
+The SVG favicon is already properly configured and will work in modern browsers. 
