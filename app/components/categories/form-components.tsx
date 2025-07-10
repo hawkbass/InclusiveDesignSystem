@@ -104,7 +104,7 @@ const components = [
           <Switch defaultChecked />
         </div>
         <div className="space-y-2">
-          <Label className="text-slate-300">Salary Range: £80k - £120k</Label>
+          <Label className="text-slate-300">Salary Range: $80k - $120k</Label>
           <Slider defaultValue={[80, 120]} max={200} min={40} step={5} className="mt-2" />
         </div>
         <div className="space-y-2">
@@ -410,19 +410,19 @@ const components = [
     title: "Range Slider",
     description: "Dual-handle range slider for min/max values",
     code: `<div className="space-y-4">
-          <Label>Salary Range: £80k - £120k</Label>
+          <Label>Salary Range: $80k - $120k</Label>
   <Slider defaultValue={[80, 120]} max={200} min={40} step={5} />
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="flex justify-between">
           <Label className="text-slate-300">Salary Expectation</Label>
-          <span className="text-slate-400 text-sm">£80k - £120k</span>
+          <span className="text-slate-400 text-sm">$80k - $120k</span>
         </div>
         <Slider defaultValue={[80, 120]} max={200} min={40} step={5} />
         <div className="flex justify-between text-xs text-slate-500">
-          <span>£40k</span>
-          <span>£200k+</span>
+          <span>$40k</span>
+          <span>$200k+</span>
         </div>
       </div>
     )
