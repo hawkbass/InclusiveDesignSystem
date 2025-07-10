@@ -70,5 +70,11 @@
     "author": "Craig Hawkes",
     "message": "Merge branch 'main' of https://github.com/hawkbass/InclusiveDesignSystem",
     "files": []
+  },
+  {
+    "timestamp": "2025-07-10T03:09:21Z",
+    "author": "Craig Hawkes",
+    "message": "feat: refactor salary range components to use state for dynamic updates in form and recruitment components",
+    "files": []
   }
 ]
