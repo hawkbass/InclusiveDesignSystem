@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const repoName = 'designsmain';
+const repoName = 'InclusiveDesignSystem';
 
 const nextConfig = {
   output: 'export',
