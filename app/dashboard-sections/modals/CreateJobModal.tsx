@@ -88,7 +88,7 @@ export function CreateJobModal({ open, onClose }: CreateJobModalProps) {
               <h4 className="text-sm font-medium text-slate-300 mb-3">Compensation & Priority</h4>
               <div>
                 <label className="block text-xs text-slate-400 mb-2">Salary Range</label>
-                <Input className="bg-slate-800/50 border-slate-700/50 text-slate-300" placeholder="e.g. $80,000 - $120,000" />
+                <Input className="bg-slate-800/50 border-slate-700/50 text-slate-300" placeholder="e.g. £80,000 - £120,000" />
               </div>
               <div>
                 <label className="block text-xs text-slate-400 mb-2">Priority Level</label>

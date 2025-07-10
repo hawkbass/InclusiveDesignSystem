@@ -607,7 +607,7 @@ const components = [
     <div className="flex items-center gap-6 text-sm mb-4">
       <div className="flex items-center gap-2">
         <DollarSign className="h-4 w-4 text-green-400" />
-        <span className="text-slate-300">$120k - $150k</span>
+                    <span className="text-slate-300">£120k - £150k</span>
       </div>
       <div className="flex items-center gap-2">
         <Users className="h-4 w-4 text-blue-400" />
@@ -635,7 +635,7 @@ const components = [
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <DollarSign className="h-4 w-4 text-green-400" />
-              <span className="text-slate-300">$120k - $150k</span>
+              <span className="text-slate-300">£120k - £150k</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-blue-400" />

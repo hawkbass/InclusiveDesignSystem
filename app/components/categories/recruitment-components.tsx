@@ -111,7 +111,7 @@ const components = [
             </div>
             <div className="flex items-center gap-2">
               <DollarSign className="h-4 w-4 text-slate-400" />
-              <span className="text-slate-300">$120k - $150k</span>
+              <span className="text-slate-300">£120k - £150k</span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 text-yellow-400" />
@@ -148,7 +148,7 @@ const components = [
     code: `<Card>
   <CardHeader>
     <CardTitle>Senior Frontend Developer</CardTitle>
-    <CardDescription>Remote • Full-time • $120k-$150k</CardDescription>
+                  <CardDescription>Remote • Full-time • £120k-£150k</CardDescription>
   </CardHeader>
   <CardContent>
     <div className="flex justify-between items-center">
@@ -172,7 +172,7 @@ const components = [
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <DollarSign className="h-4 w-4 text-green-400" />
-              <span className="text-slate-300">$120k - $150k</span>
+              <span className="text-slate-300">£120k - £150k</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-blue-400" />
@@ -327,19 +327,19 @@ const components = [
     title: "Salary Range Slider",
     description: "Interactive salary range selector",
     code: `<div className="space-y-4">
-  <Label>Salary Range: $80k - $120k</Label>
+            <Label>Salary Range: £80k - £120k</Label>
   <Slider defaultValue={[80, 120]} max={200} min={40} step={5} />
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="flex justify-between text-sm">
           <Label className="text-slate-300">Salary Range</Label>
-          <span className="text-slate-400">$80k - $120k</span>
+          <span className="text-slate-400">£80k - £120k</span>
         </div>
         <Slider defaultValue={[80, 120]} max={200} min={40} step={5} className="mt-2" />
         <div className="flex justify-between text-xs text-slate-500">
-          <span>$40k</span>
-          <span>$200k</span>
+          <span>£40k</span>
+          <span>£200k</span>
         </div>
       </div>
     )
@@ -786,7 +786,7 @@ const components = [
         <h4 className="font-medium">Referred by John Doe</h4>
         <p className="text-sm text-muted-foreground">Engineering Team</p>
       </div>
-      <Badge className="bg-green-500/20 text-green-300">$500 Bonus</Badge>
+      <Badge className="bg-green-500/20 text-green-300">£500 Bonus</Badge>
     </div>
   </CardContent>
 </Card>`,
@@ -803,7 +803,7 @@ const components = [
                 <p className="text-sm text-slate-400">Engineering Team</p>
               </div>
             </div>
-            <Badge className="bg-green-500/20 text-green-300">$500 Bonus</Badge>
+            <Badge className="bg-green-500/20 text-green-300">£500 Bonus</Badge>
           </div>
           <div className="mt-3 pt-3 border-t border-slate-700">
             <div className="text-xs text-slate-500">Referral Status: Qualified</div>

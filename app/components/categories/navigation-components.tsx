@@ -69,7 +69,7 @@ const components = [
 </Tabs>`,
     component: (
       <Tabs defaultValue="overview" className="w-full max-w-md">
-        <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
+        <TabsList className="flex w-full gap-2 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
           <TabsTrigger value="overview" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <User className="h-4 w-4 mr-2" />
             Profile
