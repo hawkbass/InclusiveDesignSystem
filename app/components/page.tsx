@@ -22,6 +22,7 @@ import {
   Search,
   X,
   Eye,
+  LayoutDashboard,
 } from "lucide-react"
 import { ComponentCard } from "./categories/component-card"
 
@@ -34,6 +35,7 @@ import { DataDisplayComponents } from "./categories/data-display-components"
 import { LayoutComponents } from "./categories/layout-components"
 import { MediaComponents } from "./categories/media-components"
 import { UtilityComponents } from "./categories/utility-components"
+import { DashboardComponents } from "./categories/dashboard-components"
 
 // Helper to collect all components from all categories
 import { components as recruitmentComponents } from "./categories/recruitment-components"
@@ -44,6 +46,7 @@ import { components as dataDisplayComponents } from "./categories/data-display-c
 import { components as layoutComponents } from "./categories/layout-components"
 import { components as mediaComponents } from "./categories/media-components"
 import { components as utilityComponents } from "./categories/utility-components"
+import { components as dashboardComponents } from "./categories/dashboard-components"
 
 const getAllComponents = () => {
   return [
@@ -55,6 +58,7 @@ const getAllComponents = () => {
     ...layoutComponents,
     ...mediaComponents,
     ...utilityComponents,
+    ...dashboardComponents,
   ]
 }
 
@@ -120,6 +124,7 @@ export default function ComponentsPage() {
     { id: "layout", label: "Layout", icon: Layout, count: 10 },
     { id: "media", label: "Media", icon: ImageIcon, count: 6 },
     { id: "utility", label: "Utility", icon: Settings, count: 9 },
+    { id: "dashboard", label: "Dashboard", icon: LayoutDashboard, count: 8 },
     { id: "favourites", label: "Favourites", icon: Heart, count: favorites.size }
   ], [favorites.size])
 
@@ -228,7 +233,7 @@ export default function ComponentsPage() {
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <div className="mb-8">
-                <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
+                <TabsList className="grid w-full grid-cols-3 lg:grid-cols-10 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
                   {filteredTabs.map((tab) => (
                     <TabsTrigger
                       key={tab.id}
@@ -373,6 +378,17 @@ export default function ComponentsPage() {
 
             <TabsContent value="utility" className="mt-0">
   <UtilityComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
+    favorites={favorites}
+    onToggleFavourite={toggleFavourite}
+  />
+</TabsContent>
+
+            <TabsContent value="dashboard" className="mt-0">
+  <DashboardComponents 
     searchQuery={searchQuery} 
     onCopyCode={handleCopyCode} 
     copiedCode={copiedCode}

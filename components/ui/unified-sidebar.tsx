@@ -305,7 +305,7 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
           <div className="text-xs text-slate-400 space-y-1">
             <div className="flex justify-between">
               <span>Components:</span>
-              <span className="text-slate-300">49+</span>
+              <span className="text-slate-300">57+</span>
             </div>
             <div className="flex justify-between">
               <span>Version:</span>

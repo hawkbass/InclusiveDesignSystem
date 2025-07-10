@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { CalendarEvent, Filter, Plus, ChevronLeft, ChevronRight } from "lucide-react"
+import { Calendar, Filter, Plus, ChevronLeft, ChevronRight } from "lucide-react"
 import { initialCalendarEvents } from "./data"
 import { CalendarEvent as CalendarEventType } from "./types"
 
