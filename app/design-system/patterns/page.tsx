@@ -4,768 +4,1214 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
-import { Slider } from "@/components/ui/slider"
-import { Label } from "@/components/ui/label"
-import { Home, Users, Briefcase, ChevronRight, Check, Copy, Settings, X, Eye, Code2, Download, ExternalLink, Sparkles, Grid3X3, Palette, Navigation, Layout, Search, Filter, Star, Award, Zap, CheckCircle2, Menu, Table, Layers, FileText, Component, ArrowRight } from "lucide-react"
-import { Separator } from "@/components/ui/separator"
-import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Input } from "@/components/ui/input"
+import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
+import {
+  ArrowRight,
+  CheckCircle2,
+  Copy,
+  Download,
+  ExternalLink,
+  Sparkles,
+  Grid3X3,
+  Search,
+  Filter,
+  Star,
+  Award,
+  Zap,
+  Layout,
+  Navigation,
+  Users,
+  Table,
+  Layers,
+  FileText,
+  Component,
+  Eye,
+  Code2,
+  BookOpen,
+  Target,
+  Heart,
+  PlayCircle,
+  Settings,
+  Shield,
+  RefreshCw,
+  AlertTriangle,
+  TrendingUp
+} from "lucide-react"
+import Link from "next/link"
 
-export default function Patterns() {
+// Enhanced pattern data with Universal Comprehension structure
+const patternCategories = [
+  {
+    name: "Navigation Patterns",
+    description: "Common navigation structures and wayfinding solutions for recruitment applications",
+    icon: Navigation,
+    color: "from-blue-500 to-cyan-600",
+    bgColor: "bg-blue-500/10",
+    count: 8,
+    patterns: [
+      {
+        id: "nav-primary",
+        name: "Primary Navigation",
+        description: "Top-level navigation for main site sections",
+        complexity: "Simple",
+        usage: "Site-wide navigation, main menu systems",
+        examples: ["Header nav", "Sidebar menu", "Tab navigation"],
+        category: "Navigation Patterns",
+        tags: ["navigation", "header", "menu"],
+        code: `<nav className="flex items-center space-x-6">
+  <Link href="/" className="text-slate-700 hover:text-slate-900">Home</Link>
+  <Link href="/candidates" className="text-slate-700 hover:text-slate-900">Candidates</Link>
+  <Link href="/jobs" className="text-slate-700 hover:text-slate-900">Jobs</Link>
+</nav>`
+      },
+      {
+        id: "nav-breadcrumb",
+        name: "Breadcrumb Navigation",
+        description: "Hierarchical navigation showing user location",
+        complexity: "Simple",
+        usage: "Deep site structures, user orientation",
+        examples: ["File explorer", "Candidate profiles", "Job details"],
+        category: "Navigation Patterns",
+        tags: ["navigation", "breadcrumb", "hierarchy"],
+        code: `<nav aria-label="Breadcrumb">
+  <ol className="flex items-center space-x-2">
+    <li><Link href="/">Home</Link></li>
+    <li>></li>
+    <li><Link href="/candidates">Candidates</Link></li>
+    <li>></li>
+    <li>Profile</li>
+  </ol>
+</nav>`
+      },
+      {
+        id: "nav-tabs",
+        name: "Tab Navigation",
+        description: "Content switching within the same page context",
+        complexity: "Medium",
+        usage: "Content organization, settings panels",
+        examples: ["Candidate profile", "Job details", "Dashboard sections"],
+        category: "Navigation Patterns",
+        tags: ["navigation", "tabs", "content"],
+        code: `<Tabs defaultValue="overview">
+  <TabsList>
+    <TabsTrigger value="overview">Overview</TabsTrigger>
+    <TabsTrigger value="experience">Experience</TabsTrigger>
+    <TabsTrigger value="skills">Skills</TabsTrigger>
+  </TabsList>
+  <TabsContent value="overview">Candidate overview</TabsContent>
+</Tabs>`
+      }
+    ]
+  },
+  {
+    name: "Form Patterns",
+    description: "Data collection and input patterns for recruitment workflows",
+    icon: FileText,
+    color: "from-green-500 to-emerald-600",
+    bgColor: "bg-green-500/10",
+    count: 6,
+    patterns: [
+      {
+        id: "form-candidate",
+        name: "Candidate Application Form",
+        description: "Comprehensive candidate information collection",
+        complexity: "Complex",
+        usage: "Application process, profile creation",
+        examples: ["Job application", "Candidate registration", "Profile updates"],
+        category: "Form Patterns",
+        tags: ["form", "candidate", "application"],
+        code: `<form className="space-y-6">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div>
+      <Label htmlFor="firstName">First Name</Label>
+      <Input id="firstName" required />
+    </div>
+    <div>
+      <Label htmlFor="lastName">Last Name</Label>
+      <Input id="lastName" required />
+    </div>
+  </div>
+  <div>
+    <Label htmlFor="email">Email</Label>
+    <Input id="email" type="email" required />
+  </div>
+  <div>
+    <Label htmlFor="cv">CV Upload</Label>
+    <Input id="cv" type="file" accept=".pdf,.doc,.docx" />
+  </div>
+  <Button type="submit">Submit Application</Button>
+</form>`
+      },
+      {
+        id: "form-job-posting",
+        name: "Job Posting Form",
+        description: "Create and edit job postings efficiently",
+        complexity: "Medium",
+        usage: "Job creation, posting management",
+        examples: ["New job posting", "Job editing", "Requirements setup"],
+        category: "Form Patterns",
+        tags: ["form", "job", "posting"],
+        code: `<form className="space-y-4">
+  <div>
+    <Label htmlFor="jobTitle">Job Title</Label>
+    <Input id="jobTitle" placeholder="Senior React Developer" />
+  </div>
+  <div>
+    <Label htmlFor="location">Location</Label>
+    <Select>
+      <SelectValue placeholder="Select location" />
+      <SelectContent>
+        <SelectItem value="remote">Remote</SelectItem>
+        <SelectItem value="london">London, UK</SelectItem>
+        <SelectItem value="manchester">Manchester, UK</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
+  <div>
+    <Label htmlFor="description">Job Description</Label>
+    <Textarea id="description" rows={6} />
+  </div>
+  <Button type="submit">Publish Job</Button>
+</form>`
+      }
+    ]
+  },
+  {
+    name: "Layout Patterns",
+    description: "Page structure and content organization for recruitment interfaces",
+    icon: Layout,
+    color: "from-purple-500 to-violet-600",
+    bgColor: "bg-purple-500/10",
+    count: 5,
+    patterns: [
+      {
+        id: "layout-dashboard",
+        name: "Recruitment Dashboard",
+        description: "Data-rich interface for recruitment metrics and actions",
+        complexity: "Complex",
+        usage: "Admin panels, analytics, candidate management",
+        examples: ["Recruiter dashboard", "Analytics panel", "Candidate overview"],
+        category: "Layout Patterns",
+        tags: ["layout", "dashboard", "recruitment"],
+        code: `<div className="grid grid-cols-12 gap-6">
+  <aside className="col-span-2">
+    <RecruitmentSidebar />
+  </aside>
+  <main className="col-span-7">
+    <CandidateList />
+    <JobPostings />
+  </main>
+  <aside className="col-span-3">
+    <UpcomingInterviews />
+    <RecentActivity />
+  </aside>
+</div>`
+      },
+      {
+        id: "layout-candidate-grid",
+        name: "Candidate Grid Layout",
+        description: "Responsive grid of candidate cards",
+        complexity: "Simple",
+        usage: "Candidate browsing, search results",
+        examples: ["Candidate search", "Talent pool", "Shortlist view"],
+        category: "Layout Patterns",
+        tags: ["layout", "grid", "candidates"],
+        code: `<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  {candidates.map(candidate => (
+    <CandidateCard 
+      key={candidate.id}
+      candidate={candidate}
+      onSelect={handleSelect}
+    />
+  ))}
+</div>`
+      }
+    ]
+  },
+  {
+    name: "Data Display Patterns",
+    description: "Patterns for presenting recruitment data and analytics",
+    icon: Table,
+    color: "from-orange-500 to-red-600",
+    bgColor: "bg-orange-500/10",
+    count: 7,
+    patterns: [
+      {
+        id: "data-candidate-table",
+        name: "Candidate Data Table",
+        description: "Structured candidate data with sorting and filtering",
+        complexity: "Medium",
+        usage: "Candidate management, bulk operations",
+        examples: ["Candidate lists", "Application tracking", "Interview scheduling"],
+        category: "Data Display Patterns",
+        tags: ["data", "table", "candidates"],
+        code: `<Table>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Email</TableHead>
+      <TableHead>Status</TableHead>
+      <TableHead>Applied Date</TableHead>
+      <TableHead>Actions</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    {candidates.map(candidate => (
+      <TableRow key={candidate.id}>
+        <TableCell>{candidate.name}</TableCell>
+        <TableCell>{candidate.email}</TableCell>
+        <TableCell><StatusBadge status={candidate.status} /></TableCell>
+        <TableCell>{formatDate(candidate.appliedAt)}</TableCell>
+        <TableCell>
+          <Button size="sm">View</Button>
+        </TableCell>
+      </TableRow>
+    ))}
+  </TableBody>
+</Table>`
+      },
+      {
+        id: "data-recruitment-stats",
+        name: "Recruitment Statistics Dashboard",
+        description: "Key recruitment metrics and performance indicators",
+        complexity: "Medium",
+        usage: "Performance tracking, recruitment analytics",
+        examples: ["Hiring metrics", "Pipeline analytics", "Team performance"],
+        category: "Data Display Patterns",
+        tags: ["data", "stats", "analytics"],
+        code: `<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+  {stats.map(stat => (
+    <Card key={stat.id}>
+      <CardContent className="p-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <div className="text-2xl font-bold">{stat.value}</div>
+            <div className="text-sm text-slate-600">{stat.label}</div>
+          </div>
+          <stat.icon className="h-8 w-8 text-fuchsia-500" />
+        </div>
+        <div className="text-sm text-green-600 mt-2">
+          {stat.change}% from last month
+        </div>
+      </CardContent>
+    </Card>
+  ))}
+</div>`
+      }
+    ]
+  }
+]
+
+// Get all patterns flattened with enhanced metadata
+const allPatterns = patternCategories.flatMap(category => 
+  category.patterns.map(pattern => ({
+    ...pattern,
+    categoryIcon: category.icon,
+    categoryColor: category.color
+  }))
+)
+
+// Quick Actions for immediate value
+const quickActions = [
+  {
+    title: "Copy All Patterns",
+    description: "Export complete pattern library",
+    icon: Copy,
+    action: "copy-all",
+    color: "bg-green-500/20 text-green-300 border-green-500/30"
+  },
+  {
+    title: "Download Templates",
+    description: "Get ready-to-use component templates",
+    icon: Download,
+    action: "download-templates",
+    color: "bg-blue-500/20 text-blue-300 border-blue-500/30"
+  },
+  {
+    title: "View Best Practices",
+    description: "Pattern implementation guidelines",
+    icon: BookOpen,
+    action: "view-practices",
+    color: "bg-purple-500/20 text-purple-300 border-purple-500/30"
+  },
+  {
+    title: "Test Patterns",
+    description: "Interactive pattern playground",
+    icon: PlayCircle,
+    action: "test-patterns",
+    color: "bg-orange-500/20 text-orange-300 border-orange-500/30"
+  }
+]
+
+// Pattern statistics
+const patternStats = [
+  { 
+    label: "Total Patterns", 
+    value: allPatterns.length, 
+    icon: Component, 
+    color: "text-fuchsia-400",
+    change: "+3 this month"
+  },
+  { 
+    label: "Categories", 
+    value: patternCategories.length, 
+    icon: Grid3X3, 
+    color: "text-blue-400",
+    change: "Organized system"
+  },
+  { 
+    label: "Simple Patterns", 
+    value: allPatterns.filter(p => p.complexity === "Simple").length, 
+    icon: Zap, 
+    color: "text-green-400",
+    change: "Quick to implement"
+  },
+  { 
+    label: "Production Ready", 
+    value: "100%", 
+    icon: CheckCircle2, 
+    color: "text-purple-400",
+    change: "Battle tested"
+  }
+]
+
+export default function PatternsPage() {
   const [mounted, setMounted] = useState(false)
   const [animationSpeed, setAnimationSpeed] = useState([1])
-  const [settingsOpen, setSettingsOpen] = useState(false)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [complexityFilter, setComplexityFilter] = useState("all")
+  const [favorites, setFavorites] = useState<Set<string>>(new Set())
   const [copiedCode, setCopiedCode] = useState("")
-  const [activeTab, setActiveTab] = useState("overview")
-
-  // Safely get animation speed value
-  const safeAnimationSpeed = animationSpeed?.[0] ?? 1
+  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["overview", "navigation", "forms", "layouts", "data"]))
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  // Apply animation speed to document
   useEffect(() => {
-    if (mounted && animationSpeed?.[0]) {
+    if (animationSpeed?.[0]) {
       document.documentElement.style.setProperty('--animation-speed', `${1 / animationSpeed[0]}s`)
     }
-  }, [animationSpeed, mounted])
+  }, [animationSpeed])
 
-  if (!mounted) {
-    return null
-  }
-
-  const handleCopyCode = async (code: string, id: string) => {
+  const handleCopyCode = async (code: string, id?: string) => {
     try {
       await navigator.clipboard.writeText(code)
-      setCopiedCode(id)
+      setCopiedCode(id || 'copied')
       setTimeout(() => setCopiedCode(""), 2000)
     } catch (err) {
       console.error('Failed to copy code:', err)
     }
   }
 
+  const handleToggleFavorite = (patternId: string) => {
+    setFavorites(prev => {
+      const newFavorites = new Set(prev)
+      if (newFavorites.has(patternId)) {
+        newFavorites.delete(patternId)
+      } else {
+        newFavorites.add(patternId)
+      }
+      return newFavorites
+    })
+  }
+
+  const handleQuickAction = async (action: string) => {
+    switch (action) {
+      case 'copy-all':
+        const allCode = allPatterns.map(p => `// ${p.name}\n${p.code}`).join('\n\n')
+        await handleCopyCode(allCode, 'copy-all')
+        break
+      case 'download-templates':
+        const templateData = allPatterns.map(p => ({
+          name: p.name,
+          category: p.category,
+          complexity: p.complexity,
+          code: p.code
+        }))
+        const blob = new Blob([JSON.stringify(templateData, null, 2)], { type: 'application/json' })
+        const url = URL.createObjectURL(blob)
+        const a = document.createElement('a')
+        a.href = url
+        a.download = 'ui-patterns-templates.json'
+        a.click()
+        URL.revokeObjectURL(url)
+        break
+      case 'view-practices':
+        // Navigate to best practices
+        break
+      case 'test-patterns':
+        // Open pattern playground
+        break
+    }
+  }
+
+  const toggleSection = (sectionId: string) => {
+    setExpandedSections(prev => {
+      const newExpanded = new Set(prev)
+      if (newExpanded.has(sectionId)) {
+        newExpanded.delete(sectionId)
+      } else {
+        newExpanded.add(sectionId)
+      }
+      return newExpanded
+    })
+  }
+
+  // Filter patterns for search
+  const searchResults = searchQuery ? allPatterns.filter(pattern =>
+    pattern.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    pattern.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    pattern.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+  ) : []
+
+  if (!mounted) {
+    return null
+  }
+
   return (
     <div className="flex bg-slate-950 min-h-screen">
       <UnifiedSidebar animationSpeed={animationSpeed} />
       <main className="flex-1 overflow-auto">
-        {/* Enhanced Header */}
-        <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800/50 shadow-lg shadow-slate-900/20">
-          <div className="px-6 lg:px-12 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <div>
-                  <h1 className="text-2xl font-bold text-slate-100">UI Patterns</h1>
-                  <p className="text-sm text-slate-400">Common interface patterns and layouts</p>
-                </div>
+        {/* Universal Comprehension Header */}
+        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-slate-800">
+          <div className="px-6 lg:px-12 py-12">
+            <div className="max-w-7xl mx-auto">
+              {/* Quick Value Metrics - Immediate surfacing */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                {patternStats.map((stat, index) => (
+                  <Card key={stat.label} className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm">
+                    <CardContent className="p-4 text-center">
+                      <div className="flex items-center justify-center mb-2">
+                        <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                      </div>
+                      <div className="text-2xl font-bold text-slate-100">{stat.value}</div>
+                      <div className="text-xs text-slate-400">{stat.label}</div>
+                      <div className="text-xs text-green-400 mt-1">{stat.change}</div>
+                    </CardContent>
+                  </Card>
+                ))}
               </div>
 
-              {/* Header Actions */}
-              <div className="flex items-center gap-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setSettingsOpen(!settingsOpen)}
-                  className={`transition-all ${settingsOpen ? 'bg-fuchsia-500/20 border-fuchsia-500/50' : 'hover:bg-slate-800'}`}
-                  style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
-                >
-                  <Settings className="h-4 w-4 mr-2" />
-                  Settings
-                </Button>
-                
-                <div className="hidden md:flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                    <Download className="h-4 w-4 mr-2" />
-                    Pattern Library
-                  </Button>
-                  <Button size="sm" className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                    <ExternalLink className="h-4 w-4 mr-2" />
-                    Templates
-                  </Button>
-                </div>
-              </div>
-            </div>
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Value Proposition */}
+                <div className="space-y-6">
+                  <div className="flex flex-wrap gap-3 mb-4">
+                    <Badge className="bg-green-950 text-green-300 border-green-800">
+                      <CheckCircle2 className="w-3 h-3 mr-1" />
+                      {allPatterns.length} Ready Patterns
+                    </Badge>
+                    <Badge className="bg-blue-950 text-blue-300 border-blue-800">
+                      <Award className="w-3 h-3 mr-1" />
+                      Production Tested
+                    </Badge>
+                    <Badge className="bg-purple-950 text-purple-300 border-purple-800">
+                      <Target className="w-3 h-3 mr-1" />
+                      Recruitment Focused
+                    </Badge>
+                  </div>
+                  
+                  <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                      UI Patterns
+                    </span>
+                    <br />
+                    <span className="text-slate-100">Library</span>
+                  </h1>
+                  
+                  <p className="text-xl text-slate-300 leading-relaxed max-w-2xl">
+                    Production-ready interface patterns for recruitment applications. Each pattern includes 
+                    <span className="text-fuchsia-400 font-semibold"> accessibility guidelines</span>, 
+                    <span className="text-purple-400 font-semibold"> copy-paste code</span>, and real-world usage examples.
+                  </p>
 
-            {/* Settings Panel */}
-            {settingsOpen && (
-              <div className="mt-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700 animate-in slide-in-from-top-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-medium text-slate-200">Interface Settings</h3>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => setSettingsOpen(false)}
-                    className="h-6 w-6 p-0"
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
+                  {/* Quick Actions */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {quickActions.map((action) => (
+                      <Button
+                        key={action.action}
+                        variant="outline"
+                        className={`${action.color} hover:scale-105 transition-all text-left justify-start h-auto p-4`}
+                        onClick={() => handleQuickAction(action.action)}
+                      >
+                        <action.icon className="h-5 w-5 mr-3 flex-shrink-0" />
+                        <div>
+                          <div className="font-medium">{action.title}</div>
+                          <div className="text-xs opacity-80">{action.description}</div>
+                        </div>
+                        {copiedCode === action.action && <CheckCircle2 className="h-4 w-4 ml-auto text-green-400" />}
+                      </Button>
+                    ))}
+                  </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <Label className="text-sm font-medium">Animation Speed</Label>
-                      <span className="text-xs text-slate-400 font-mono">{safeAnimationSpeed}x</span>
-                    </div>
-                    <Slider
-                      value={animationSpeed}
-                      onValueChange={setAnimationSpeed}
-                      max={3}
-                      min={0.5}
-                      step={0.5}
-                      className="w-full"
+
+                {/* Live Search & Discovery */}
+                <div className="space-y-6">
+                  <div className="relative">
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
+                    <Input
+                      placeholder="Search patterns, categories, or use cases..."
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-12 h-14 text-lg bg-slate-800/50 border-slate-700/50 focus:border-fuchsia-500/50"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <Label className="text-sm font-medium">View Options</Label>
-                    <div className="flex items-center gap-2">
-                      <Button size="sm" variant="outline" className="h-8">
-                        <Eye className="h-3 w-3 mr-1" />
-                        Preview
+
+                  {/* Search Results - Immediate surfacing */}
+                  {searchQuery && (
+                    <Card className="bg-slate-800/50 border-slate-700/50">
+                      <CardHeader>
+                        <CardTitle className="text-lg">
+                          Found {searchResults.length} patterns for "{searchQuery}"
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3 max-h-80 overflow-y-auto">
+                        {searchResults.map((pattern) => (
+                          <div
+                            key={pattern.id}
+                            className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-colors cursor-pointer"
+                            onClick={() => {
+                              setSelectedCategory(pattern.category)
+                              setSearchQuery("")
+                              document.getElementById(pattern.id)?.scrollIntoView({ behavior: 'smooth' })
+                            }}
+                          >
+                            <div className="flex items-center gap-3">
+                              <pattern.categoryIcon className="h-5 w-5 text-fuchsia-400" />
+                              <div>
+                                <div className="font-medium text-slate-200">{pattern.name}</div>
+                                <div className="text-sm text-slate-400">{pattern.category}</div>
+                              </div>
+                            </div>
+                            <ArrowRight className="h-4 w-4 text-slate-400" />
+                          </div>
+                        ))}
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {/* Category Quick Access */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {patternCategories.map((category) => (
+                      <Button
+                        key={category.name}
+                        variant="outline"
+                        className="border-slate-600 hover:border-fuchsia-500/50 h-auto p-4 justify-start"
+                        onClick={() => {
+                          setSelectedCategory(category.name)
+                          toggleSection(category.name.toLowerCase().replace(' ', '-'))
+                        }}
+                      >
+                        <category.icon className="h-5 w-5 mr-3 text-slate-400" />
+                        <div className="text-left">
+                          <div className="font-medium text-slate-200">{category.name}</div>
+                          <div className="text-xs text-slate-400">{category.count} patterns</div>
+                        </div>
                       </Button>
-                      <Button size="sm" variant="ghost" className="h-8">
-                        <Code2 className="h-3 w-3 mr-1" />
-                        Code
-                      </Button>
-                    </div>
+                    ))}
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Smart Progressive Disclosure - Pattern Categories */}
+        <div className="px-6 lg:px-12 py-8">
+          <div className="max-w-7xl mx-auto space-y-8">
+            {patternCategories.map((category) => {
+              const sectionId = category.name.toLowerCase().replace(' patterns', '').replace(' ', '-')
+              const isExpanded = expandedSections.has(sectionId)
+              
+              return (
+                <Card key={category.name} className="bg-slate-800/30 border-slate-700/50">
+                  <CardHeader className="cursor-pointer" onClick={() => toggleSection(sectionId)}>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className={`w-12 h-12 ${category.bgColor} rounded-xl flex items-center justify-center`}>
+                          <category.icon className="h-6 w-6 text-slate-300" />
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
+                            {category.name}
+                            <Badge variant="outline" className="border-slate-600">
+                              {category.count} patterns
+                            </Badge>
+                          </CardTitle>
+                          <CardDescription className="mt-1">{category.description}</CardDescription>
+                        </div>
+                      </div>
+                      <Button variant="ghost" size="sm">
+                        {isExpanded ? "Collapse" : "Expand"}
+                        <ArrowRight className={`h-4 w-4 ml-2 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+                      </Button>
+                    </div>
+                  </CardHeader>
+
+                  {isExpanded && (
+                    <CardContent className="space-y-6">
+                      <div className="grid gap-6">
+                        {category.patterns.map((pattern) => (
+                          <Card key={pattern.id} id={pattern.id} className="bg-slate-900/30 border-slate-700/30">
+                            <CardContent className="p-6">
+                              <div className="flex items-start justify-between mb-4">
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-3 mb-2">
+                                    <h3 className="text-lg font-semibold text-slate-100">{pattern.name}</h3>
+                                    <Badge 
+                                      className={
+                                        pattern.complexity === 'Simple' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
+                                        pattern.complexity === 'Medium' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
+                                        'bg-red-500/20 text-red-300 border-red-500/30'
+                                      }
+                                    >
+                                      {pattern.complexity}
+                                    </Badge>
+                                  </div>
+                                  <p className="text-slate-400 mb-3">{pattern.description}</p>
+                                  
+                                  <div className="grid md:grid-cols-2 gap-4 mb-4 text-sm">
+                                    <div>
+                                      <span className="font-medium text-slate-300">Usage:</span>
+                                      <span className="text-slate-400 ml-2">{pattern.usage}</span>
+                                    </div>
+                                    <div>
+                                      <span className="font-medium text-slate-300">Examples:</span>
+                                      <span className="text-slate-400 ml-2">{pattern.examples.join(", ")}</span>
+                                    </div>
+                                  </div>
+
+                                  <div className="flex flex-wrap gap-2 mb-4">
+                                    {pattern.tags.map((tag) => (
+                                      <Badge key={tag} variant="outline" className="text-xs border-slate-600">
+                                        {tag}
+                                      </Badge>
+                                    ))}
+                                  </div>
+                                </div>
+
+                                <div className="flex items-center gap-2 ml-4">
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => handleToggleFavorite(pattern.id)}
+                                    className={`${favorites.has(pattern.id) ? 'text-red-400 border-red-500/50' : 'text-slate-400 border-slate-600'}`}
+                                  >
+                                    <Heart className={`h-4 w-4 ${favorites.has(pattern.id) ? 'fill-current' : ''}`} />
+                                  </Button>
+                                  <Button
+                                    variant="outline"
+                                    size="sm"
+                                    onClick={() => handleCopyCode(pattern.code, pattern.id)}
+                                    className="hover:border-fuchsia-500/50"
+                                  >
+                                    {copiedCode === pattern.id ? (
+                                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                    ) : (
+                                      <Copy className="h-4 w-4" />
+                                    )}
+                                  </Button>
+                                </div>
+                              </div>
+
+                              {/* Code Preview */}
+                              <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/30">
+                                <div className="flex items-center justify-between mb-3">
+                                  <div className="flex items-center gap-2">
+                                    <Code2 className="h-4 w-4 text-slate-400" />
+                                    <span className="text-sm font-medium text-slate-300">Implementation</span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      className="h-6 px-2 text-xs hover:bg-fuchsia-50 dark:hover:bg-fuchsia-950 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
+                                    >
+                                      <PlayCircle className="h-3 w-3 mr-1" />
+                                      Preview
+                                    </Button>
+                                    <Button
+                                      variant="ghost"
+                                      size="sm"
+                                      onClick={() => handleCopyCode(pattern.code, `${pattern.id}-code`)}
+                                      className="h-6 px-2 text-xs"
+                                    >
+                                      {copiedCode === `${pattern.id}-code` ? (
+                                        <CheckCircle2 className="h-3 w-3 text-green-400" />
+                                      ) : (
+                                        <Copy className="h-3 w-3" />
+                                      )}
+                                    </Button>
+                                  </div>
+                                </div>
+                                <pre className="text-sm overflow-x-auto">
+                                  <code className="text-slate-300">{pattern.code}</code>
+                                </pre>
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                      </div>
+                    </CardContent>
+                  )}
+                </Card>
+              )
+            })}
+
+            {/* Favorites Section - If any favorites exist */}
+            {favorites.size > 0 && (
+              <Card className="bg-slate-800/30 border-slate-700/50">
+                <CardHeader>
+                  <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
+                    <Heart className="h-6 w-6 text-red-400" />
+                    Favorite Patterns
+                    <Badge variant="outline" className="border-slate-600">
+                      {favorites.size} saved
+                    </Badge>
+                  </CardTitle>
+                  <CardDescription>Your bookmarked patterns for quick access</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    {allPatterns.filter(p => favorites.has(p.id)).map((pattern) => (
+                      <div key={pattern.id} className="flex items-center justify-between p-3 bg-slate-900/30 rounded-lg">
+                        <div className="flex items-center gap-3">
+                          <pattern.categoryIcon className="h-5 w-5 text-fuchsia-400" />
+                          <div>
+                            <div className="font-medium text-slate-200">{pattern.name}</div>
+                            <div className="text-sm text-slate-400">{pattern.category}</div>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleCopyCode(pattern.code, `fav-${pattern.id}`)}
+                            className="h-8 w-8 p-0"
+                          >
+                            {copiedCode === `fav-${pattern.id}` ? (
+                              <CheckCircle2 className="h-3 w-3 text-green-400" />
+                            ) : (
+                              <Copy className="h-3 w-3" />
+                            )}
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleToggleFavorite(pattern.id)}
+                            className="h-8 w-8 p-0 text-red-400"
+                          >
+                            <Heart className="h-3 w-3 fill-current" />
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             )}
           </div>
-        </header>
-
-        <div className="px-6 lg:px-12 py-8">
-          {/* Hero Section */}
-          <section className="mb-12 relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5 rounded-3xl -z-10" />
-            <div className="text-center max-w-4xl mx-auto py-12">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
-                  <Layers className="w-3 h-3 mr-1" />
-                  12 Patterns
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                  <Sparkles className="w-3 h-3 mr-1" />
-                  Production Ready
-                </Badge>
-                <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
-                  <Grid3X3 className="w-3 h-3 mr-1" />
-                  Responsive
-                </Badge>
-              </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-fuchsia-500 via-purple-500 to-blue-500 bg-clip-text text-transparent leading-tight">
-                UI Patterns
-              </h1>
-              <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Reusable interface patterns and layouts that solve common design problems in recruitment applications. 
-                Built for consistency, accessibility, and scalability.
-              </p>
-            </div>
-          </section>
-
-          {/* Main Content Tabs */}
-          <section className="mb-12">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <div className="mb-8">
-                {/* Enhanced Tab Navigation with Component Gallery Styling */}
-                <div className="relative">
-                  <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
-                  <TabsTrigger 
-                    value="overview"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <Grid3X3 className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
-                        </div>
-                      </div>
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">Overview</span>
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                      value="ui"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <Component className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
-                        </div>
-                      </div>
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">UI Patterns</span>
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                      value="interaction"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <Zap className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
-                        </div>
-                      </div>
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">Interaction</span>
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                      value="workflow"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <ArrowRight className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
-                        </div>
-                      </div>
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">Workflow</span>
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                </TabsList>
-                  
-                  {/* Background gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5 rounded-2xl -z-10 blur-xl"></div>
-                </div>
-              </div>
-
-              <TabsContent value="overview" className="space-y-8">
-                <OverviewTab safeAnimationSpeed={safeAnimationSpeed} />
-              </TabsContent>
-
-              <TabsContent value="ui" className="space-y-8">
-                <UITab onCopyCode={handleCopyCode} copiedCode={copiedCode} safeAnimationSpeed={safeAnimationSpeed} />
-              </TabsContent>
-
-              <TabsContent value="interaction" className="space-y-8">
-                <InteractionTab onCopyCode={handleCopyCode} copiedCode={copiedCode} safeAnimationSpeed={safeAnimationSpeed} />
-              </TabsContent>
-
-              <TabsContent value="workflow" className="space-y-8">
-                <WorkflowTab safeAnimationSpeed={safeAnimationSpeed} />
-              </TabsContent>
-            </Tabs>
-          </section>
         </div>
       </main>
     </div>
   )
 }
 
-// Tab Components
-function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
-  const patternCategories = [
-    {
-      title: "Navigation Patterns",
-      description: "Breadcrumbs, sidebars, tabs, and navigation components",
-      count: 4,
-      icon: Navigation,
-      color: "text-blue-400",
-      bgColor: "bg-blue-500/20",
-      examples: ["Breadcrumb Navigation", "Sidebar Navigation", "Tab Navigation", "Pagination"]
-    },
-    {
-      title: "Layout Patterns",
-      description: "Cards, grids, lists, and content organization",
-      count: 5,
-      icon: Layout,
-      color: "text-green-400",
-      bgColor: "bg-green-500/20",
-      examples: ["Card Grids", "List Views", "Master-Detail", "Split Layouts", "Content Blocks"]
-    },
-    {
-      title: "Form Patterns",
-      description: "Input layouts, validation, and form flows",
-      count: 3,
-      icon: FileText,
-      color: "text-purple-400",
-      bgColor: "bg-purple-500/20",
-      examples: ["Multi-step Forms", "Inline Validation", "Form Sections"]
-    }
-  ]
-
-  return (
-    <div className="space-y-8">
-      {/* Pattern Categories */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
-        <CardHeader>
-          <CardTitle className="text-2xl text-slate-100">Pattern Categories</CardTitle>
-          <CardDescription>Organized collections of reusable interface solutions</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div className="grid md:grid-cols-3 gap-6">
-            {patternCategories.map((category, index) => (
-              <Card key={category.title} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-12 h-12 ${category.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                      <category.icon className={`h-6 w-6 ${category.color}`} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold text-slate-100 group-hover:text-fuchsia-300 transition-colors mb-2" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                        {category.title}
-                      </h3>
-                      <p className="text-slate-400 text-sm mb-3">{category.description}</p>
-                      <Badge className="bg-slate-700/50 text-slate-300 text-xs">
-                        {category.count} patterns
-                      </Badge>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-slate-300">Examples:</h4>
-                    {category.examples.map((example, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-400">
-                        <div className="w-1 h-1 bg-fuchsia-400 rounded-full" />
-                        {example}
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Best Practices */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
-            <CardHeader>
-          <CardTitle className="text-xl text-slate-100">Pattern Best Practices</CardTitle>
-          <CardDescription>Guidelines for implementing and using UI patterns effectively</CardDescription>
-            </CardHeader>
-            <CardContent>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-fuchsia-300">Implementation</h3>
-              <div className="space-y-3">
-                {[
-                  "Start with established patterns before creating new ones",
-                  "Document variations and edge cases thoroughly",
-                  "Test patterns across different screen sizes",
-                  "Ensure patterns work with assistive technologies"
-                ].map((practice, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg">
-                    <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-300 text-sm">{practice}</span>
-                  </div>
-                ))}
-              </div>
+    <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-slate-200 dark:border-slate-700/50">
+      <CardContent className="p-6">
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex-1">
+            <div className="flex items-center gap-3 mb-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
+                {pattern.name}
+              </h3>
+              <Badge className={complexityColors[pattern.complexity as keyof typeof complexityColors]}>
+                {pattern.complexity}
+              </Badge>
             </div>
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-fuchsia-300">Consistency</h3>
-              <div className="space-y-3">
-                {[
-                  "Use patterns consistently across the application",
-                  "Maintain consistent spacing and visual hierarchy",
-                  "Follow established interaction behaviors",
-                  "Document when and how to use each pattern"
-                ].map((practice, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg">
-                    <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-300 text-sm">{practice}</span>
-                  </div>
-                ))}
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
+              {pattern.description}
+            </p>
+            <div className="space-y-2 text-xs text-slate-500 dark:text-slate-500">
+              <div><span className="font-medium">Usage:</span> {pattern.usage}</div>
+              <div>
+                <span className="font-medium">Examples:</span> 
+                <span className="ml-1">{pattern.examples.join(", ")}</span>
               </div>
             </div>
           </div>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
-
-function UITab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
-  return (
-    <div className="space-y-8">
-      {/* Breadcrumb Pattern */}
-      <Card className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                Breadcrumb Navigation
-              </CardTitle>
-              <CardDescription className="mt-2">Hierarchical navigation trail showing user location</CardDescription>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onCopyCode('breadcrumb-code', 'breadcrumb')}
-              className="opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8 p-0"
-              style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
-            >
-              {copiedCode === 'breadcrumb' ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
-            </Button>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div className="p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 mb-4">
-            <div className="flex items-center gap-2 mb-4">
-              <Home className="h-5 w-5 text-fuchsia-400" />
-              <ChevronRight className="h-4 w-4 text-slate-400" />
-              <span className="text-blue-400">Candidates</span>
-              <ChevronRight className="h-4 w-4 text-slate-400" />
-              <span className="text-green-400">John Doe</span>
-              <ChevronRight className="h-4 w-4 text-slate-400" />
-              <span className="text-slate-200">Profile</span>
-            </div>
-          </div>
-          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-            <code className="text-slate-300">{`<nav aria-label="Breadcrumb">
-  <ol className="flex items-center gap-2">
-    <li><Home className="h-5 w-5 text-fuchsia-400" /></li>
-    <li><ChevronRight className="h-4 w-4 text-slate-400" /></li>
-    <li><span className="text-blue-400">Candidates</span></li>
-    <li><ChevronRight className="h-4 w-4 text-slate-400" /></li>
-    <li><span className="text-green-400">John Doe</span></li>
-    <li><ChevronRight className="h-4 w-4 text-slate-400" /></li>
-    <li><span className="text-slate-200">Profile</span></li>
-  </ol>
-</nav>`}</code>
-              </pre>
-            </CardContent>
-          </Card>
-
-      {/* Tab Navigation Pattern */}
-      <Card className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-            <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                Tab Navigation
-              </CardTitle>
-              <CardDescription className="mt-2">Content section tabs with active states</CardDescription>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onCopyCode('tab-code', 'tabs')}
-              className="opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8 p-0"
-              style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
-            >
-              {copiedCode === 'tabs' ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
-            </Button>
-          </div>
-            </CardHeader>
-            <CardContent>
-          <div className="p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 mb-4">
-            <div className="flex gap-1 bg-slate-800/50 p-1 rounded-lg">
-              <button className="px-4 py-2 bg-fuchsia-500/20 text-fuchsia-300 rounded-md text-sm font-medium">
-                Overview
-              </button>
-              <button className="px-4 py-2 text-slate-400 hover:text-slate-200 rounded-md text-sm font-medium transition-colors">
-                Experience
-              </button>
-              <button className="px-4 py-2 text-slate-400 hover:text-slate-200 rounded-md text-sm font-medium transition-colors">
-                Skills
-              </button>
-            </div>
-          </div>
-          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-            <code className="text-slate-300">{`<Tabs defaultValue="overview">
-  <TabsList>
-    <TabsTrigger value="overview">Overview</TabsTrigger>
-    <TabsTrigger value="experience">Experience</TabsTrigger>
-    <TabsTrigger value="skills">Skills</TabsTrigger>
-  </TabsList>
-  <TabsContent value="overview">
-    <!-- Content -->
-  </TabsContent>
-</Tabs>`}</code>
+          <Button
+            size="sm"
+            variant="outline"
+            onClick={handleCopy}
+            className={`${
+              copied 
+                ? 'border-green-500 text-green-600 bg-green-50 dark:bg-green-950' 
+                : 'border-slate-300 dark:border-slate-600 hover:border-fuchsia-500 dark:hover:border-fuchsia-400'
+            } transition-all ml-4`}
+          >
+            {copied ? (
+              <CheckCircle2 className="h-3 w-3" />
+            ) : (
+              <Copy className="h-3 w-3" />
+            )}
+          </Button>
+        </div>
+        
+        <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 mb-3">
+          <pre className="text-xs text-slate-600 dark:text-slate-400 overflow-x-auto">
+            <code>{pattern.code}</code>
           </pre>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
-
-function InteractionTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
-  return (
-    <div className="space-y-8">
-      {/* Card Grid Pattern */}
-      <Card className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                    <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                Card Grid Layout
-              </CardTitle>
-              <CardDescription className="mt-2">Responsive grid of cards for displaying candidates or jobs</CardDescription>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onCopyCode('card-grid-code', 'card-grid')}
-              className="opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8 p-0"
-              style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
-            >
-              {copiedCode === 'card-grid' ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
-            </Button>
-          </div>
-                    </CardHeader>
-                    <CardContent>
-          <div className="p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 mb-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[1, 2, 3].map((i) => (
-                <Card key={i} className="bg-slate-800/50 border-slate-700/50">
-                  <CardHeader className="pb-3">
-                    <CardTitle className="text-sm">Candidate {i}</CardTitle>
-                    <CardDescription className="text-xs">Software Engineer</CardDescription>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <div className="flex items-center gap-2 text-xs">
-                      <Check className="h-3 w-3 text-green-400" />
-                      <span className="text-slate-300">Available</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-          </div>
-          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-            <code className="text-slate-300">{`<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-  {candidates.map((candidate) => (
-    <Card key={candidate.id}>
-      <CardHeader>
-        <CardTitle>{candidate.name}</CardTitle>
-        <CardDescription>{candidate.role}</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="flex items-center gap-2">
-          <Check className="h-4 w-4 text-green-400" />
-          {candidate.status}
+        </div>
+        
+        <div className="flex items-center justify-between text-xs">
+          <span className="text-slate-500 dark:text-slate-500 flex items-center gap-1">
+            <pattern.categoryIcon className="h-3 w-3" />
+            {pattern.category}
+          </span>
+          <Button 
+            size="sm" 
+            variant="ghost" 
+            className="h-6 px-2 text-xs hover:bg-fuchsia-50 dark:hover:bg-fuchsia-950 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors"
+          >
+            <PlayCircle className="h-3 w-3 mr-1" />
+            Live Demo
+          </Button>
         </div>
       </CardContent>
     </Card>
-  ))}
-</div>`}</code>
-              </pre>
-            </CardContent>
-          </Card>
-
-      {/* Master-Detail Pattern */}
-      <Card className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-            <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                Master-Detail Layout
-              </CardTitle>
-              <CardDescription className="mt-2">List view with detailed panel for selected items</CardDescription>
-            </div>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => onCopyCode('master-detail-code', 'master-detail')}
-              className="opacity-0 group-hover:opacity-100 transition-opacity h-8 w-8 p-0"
-              style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
-            >
-              {copiedCode === 'master-detail' ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
-            </Button>
-          </div>
-            </CardHeader>
-            <CardContent>
-          <div className="p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 mb-4">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-48">
-              <div className="lg:col-span-1 bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
-                <h4 className="text-sm font-medium text-slate-200 mb-3">Candidate List</h4>
-                <div className="space-y-2">
-                  <div className="p-2 bg-fuchsia-500/20 rounded text-xs text-fuchsia-300">John Doe ✓</div>
-                  <div className="p-2 bg-slate-700/50 rounded text-xs text-slate-400">Jane Smith</div>
-                  <div className="p-2 bg-slate-700/50 rounded text-xs text-slate-400">Mike Johnson</div>
-                </div>
-              </div>
-              <div className="lg:col-span-2 bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
-                <h4 className="text-sm font-medium text-slate-200 mb-3">Candidate Details</h4>
-                <div className="text-xs text-slate-400 space-y-1">
-                  <p>Name: John Doe</p>
-                  <p>Role: Senior Developer</p>
-                  <p>Experience: 5 years</p>
-                  <p>Status: Available</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-            <code className="text-slate-300">{`<div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-  <div className="lg:col-span-1">
-    <h3>Candidate List</h3>
-    {candidates.map(candidate => (
-      <div key={candidate.id} onClick={() => setSelected(candidate)}>
-        {candidate.name}
-      </div>
-    ))}
-  </div>
-  <div className="lg:col-span-2">
-    <h3>Details</h3>
-    {selectedCandidate && (
-      <CandidateDetails candidate={selectedCandidate} />
-    )}
-  </div>
-</div>`}</code>
-              </pre>
-            </CardContent>
-          </Card>
-    </div>
   )
 }
 
-function WorkflowTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
+// Category Overview Card
+function CategoryOverviewCard({ category }: { category: any }) {
   return (
-    <div className="space-y-8">
-      {/* Multi-step Form Pattern */}
-      <Card className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-            <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                Multi-step Form
-              </CardTitle>
-              <CardDescription className="mt-2">Progressive form with step indicators and validation</CardDescription>
+    <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-slate-200 dark:border-slate-700/50">
+      <CardContent className="p-6">
+        <div className="flex items-start gap-4">
+          <div className={`w-12 h-12 rounded-xl ${category.bgColor} border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+            <category.icon className="h-6 w-6 text-slate-700 dark:text-slate-300" />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
+                {category.name}
+              </h3>
+              <Badge variant="outline" className="border-slate-300 dark:border-slate-600">
+                {category.count} patterns
+              </Badge>
+            </div>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+              {category.description}
+            </p>
+            <div className="flex flex-wrap gap-1">
+              {category.patterns.slice(0, 3).map((pattern: any) => (
+                <span key={pattern.name} className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded">
+                  {pattern.name}
+                </span>
+              ))}
+              {category.patterns.length > 3 && (
+                <span className="text-xs text-slate-500 dark:text-slate-500 px-2 py-1">
+                  +{category.patterns.length - 3} more
+                </span>
+              )}
             </div>
           </div>
-            </CardHeader>
-            <CardContent>
-          <div className="p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 mb-4">
-            <div className="space-y-6">
-              {/* Progress Steps */}
-              <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-fuchsia-500 rounded-full flex items-center justify-center text-white text-sm font-medium">1</div>
-                  <span className="text-sm text-slate-200">Personal Info</span>
-                </div>
-                <div className="flex-1 h-0.5 bg-fuchsia-500"></div>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center text-slate-300 text-sm font-medium">2</div>
-                  <span className="text-sm text-slate-400">Experience</span>
-                </div>
-                <div className="flex-1 h-0.5 bg-slate-600"></div>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center text-slate-300 text-sm font-medium">3</div>
-                  <span className="text-sm text-slate-400">Review</span>
-                </div>
-              </div>
-              
-              {/* Form Fields */}
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-slate-200 text-sm mb-1">Full Name</label>
-                  <input className="w-full px-3 py-2 bg-slate-800/50 border border-slate-700 rounded text-slate-100 text-sm" placeholder="Enter your name" />
-                </div>
-                <div>
-                  <label className="block text-slate-200 text-sm mb-1">Email</label>
-                  <input className="w-full px-3 py-2 bg-slate-800/50 border border-slate-700 rounded text-slate-100 text-sm" placeholder="Enter your email" />
-                </div>
-              </div>
-              
-              <div className="flex justify-between">
-                <Button variant="outline" size="sm" disabled>Previous</Button>
-                <Button size="sm" className="bg-fuchsia-600 hover:bg-fuchsia-700">Next</Button>
-              </div>
-            </div>
-          </div>
-          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-            <code className="text-slate-300">{`const [currentStep, setCurrentStep] = useState(1)
-const totalSteps = 3
-
-<form>
-  {/* Progress Indicator */}
-  <div className="flex items-center gap-4">
-    {Array.from({ length: totalSteps }).map((_, i) => (
-      <div key={i} className={\`w-8 h-8 rounded-full flex items-center justify-center \${
-        i + 1 <= currentStep ? 'bg-fuchsia-500 text-white' : 'bg-slate-600 text-slate-300'
-      }\`}>
-        {i + 1}
-      </div>
-    ))}
-  </div>
-  
-  {/* Form Content */}
-  <div className="space-y-4">
-    {currentStep === 1 && <PersonalInfoFields />}
-    {currentStep === 2 && <ExperienceFields />}
-    {currentStep === 3 && <ReviewFields />}
-  </div>
-  
-  {/* Navigation */}
-  <div className="flex justify-between">
-    <Button onClick={() => setCurrentStep(prev => prev - 1)} disabled={currentStep === 1}>
-      Previous
-    </Button>
-    <Button onClick={() => setCurrentStep(prev => prev + 1)} disabled={currentStep === totalSteps}>
-      Next
-    </Button>
-  </div>
-</form>`}</code>
-              </pre>
-            </CardContent>
-          </Card>
-
-      {/* Inline Validation Pattern */}
-      <Card className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-            <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                Inline Validation
-              </CardTitle>
-              <CardDescription className="mt-2">Real-time form validation with error states</CardDescription>
-            </div>
-          </div>
-            </CardHeader>
-            <CardContent>
-          <div className="p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 mb-4">
-            <div className="space-y-4">
-              <div>
-                <label className="block text-slate-200 text-sm mb-1">Email Address</label>
-                <input className="w-full px-3 py-2 bg-slate-800/50 border border-red-500 rounded text-slate-100 text-sm" defaultValue="invalid-email" />
-                <p className="text-red-400 text-xs mt-1">Please enter a valid email address</p>
-              </div>
-              <div>
-                <label className="block text-slate-200 text-sm mb-1">Password</label>
-                <input type="password" className="w-full px-3 py-2 bg-slate-800/50 border border-green-500 rounded text-slate-100 text-sm" defaultValue="password123" />
-                <p className="text-green-400 text-xs mt-1">Password strength: Good</p>
-              </div>
-            </div>
-          </div>
-          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-            <code className="text-slate-300">{`const [errors, setErrors] = useState({})
-const [values, setValues] = useState({})
-
-const validateField = (name, value) => {
-  if (name === 'email' && !isValidEmail(value)) {
-    setErrors(prev => ({ ...prev, email: 'Please enter a valid email address' }))
-  } else {
-    setErrors(prev => ({ ...prev, [name]: null }))
-  }
+        </div>
+      </CardContent>
+    </Card>
+  )
 }
 
-<div>
-  <label>Email Address</label>
-  <input
-    className={\`border \${errors.email ? 'border-red-500' : 'border-green-500'}\`}
-    onChange={(e) => {
-      setValues(prev => ({ ...prev, email: e.target.value }))
-      validateField('email', e.target.value)
-    }}
-  />
-  {errors.email && <p className="text-red-400 text-xs">{errors.email}</p>}
-</div>`}</code>
-          </pre>
-            </CardContent>
-          </Card>
+export default function PatternsPage() {
+  const [mounted, setMounted] = useState(false)
+  const [animationSpeed, setAnimationSpeed] = useState([1])
+  const [activeView, setActiveView] = useState("overview")
+  const [selectedCategory, setSelectedCategory] = useState("all")
+  const [searchQuery, setSearchQuery] = useState("")
+  const [complexityFilter, setComplexityFilter] = useState("all")
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (animationSpeed?.[0]) {
+      document.documentElement.style.setProperty('--animation-speed', `${1 / animationSpeed[0]}s`)
+    }
+  }, [animationSpeed])
+
+  const handleCopyCode = (code: string) => {
+    navigator.clipboard.writeText(code)
+  }
+
+  // Filter patterns
+  const filteredPatterns = allPatterns.filter(pattern => 
+    (selectedCategory === "all" || pattern.category === selectedCategory) &&
+    (complexityFilter === "all" || pattern.complexity === complexityFilter) &&
+    (searchQuery === "" || 
+     pattern.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+     pattern.description.toLowerCase().includes(searchQuery.toLowerCase()))
+  )
+
+  if (!mounted) {
+    return null
+  }
+
+  return (
+    <div className="flex bg-white dark:bg-slate-950 min-h-screen">
+      <UnifiedSidebar animationSpeed={animationSpeed} />
+      <main className="flex-1 overflow-auto">
+        {/* Strategic Header - Value First */}
+        <section className="relative bg-gradient-to-br from-slate-50 via-white to-indigo-50 dark:from-slate-900 dark:via-slate-950 dark:to-indigo-950 border-b border-slate-200 dark:border-slate-800">
+          <div className="px-6 lg:px-12 py-12">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                {/* Value Proposition */}
+                <div className="space-y-6">
+                  <div className="flex flex-wrap gap-3 mb-4">
+                    <Badge className="bg-green-100 text-green-700 border-green-200 dark:bg-green-950 dark:text-green-300 dark:border-green-800">
+                      <CheckCircle2 className="w-3 h-3 mr-1" />
+                      {allPatterns.length} Ready Patterns
+                    </Badge>
+                    <Badge className="bg-blue-100 text-blue-700 border-blue-200 dark:bg-blue-950 dark:text-blue-300 dark:border-blue-800">
+                      <Zap className="w-3 h-3 mr-1" />
+                      Production Tested
+                    </Badge>
+                  </div>
+                  
+                  <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
+                    <span className="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
+                      UI Patterns
+                    </span>
+                    <br />
+                    <span className="text-slate-900 dark:text-slate-100">Library</span>
+                  </h1>
+                  
+                  <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                    Proven interface patterns that solve common design challenges. Each pattern includes 
+                    <span className="text-fuchsia-600 dark:text-fuchsia-400 font-semibold"> accessibility guidelines</span>, 
+                    <span className="text-purple-600 dark:text-purple-400 font-semibold"> code examples</span>, and real-world usage recommendations.
+                  </p>
+
+                  {/* Primary Actions */}
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button 
+                      size="lg" 
+                      className="bg-gradient-to-r from-fuchsia-600 to-purple-600 hover:from-fuchsia-700 hover:to-purple-700 shadow-lg text-lg px-8 py-4"
+                      onClick={() => setActiveView("patterns")}
+                    >
+                      <Grid3X3 className="mr-3 h-6 w-6" />
+                      Browse Patterns
+                      <ArrowRight className="ml-3 h-5 w-5" />
+                    </Button>
+                    <Button 
+                      size="lg" 
+                      variant="outline" 
+                      className="border-slate-300 dark:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-800 text-lg px-8 py-4"
+                      onClick={() => {
+                        const exportData = allPatterns.map(pattern => 
+                          `${pattern.name},${pattern.category},${pattern.complexity},${pattern.description}`
+                        ).join('\n')
+                        const blob = new Blob([`Pattern,Category,Complexity,Description\n${exportData}`], { type: 'text/csv' })
+                        const url = URL.createObjectURL(blob)
+                        const a = document.createElement('a')
+                        a.href = url
+                        a.download = 'ui-patterns.csv'
+                        a.click()
+                        URL.revokeObjectURL(url)
+                      }}
+                    >
+                      <Download className="mr-3 h-6 w-6" />
+                      Export Library
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Pattern Stats */}
+                <div className="space-y-6">
+                  <div className="text-center lg:text-left">
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-200 mb-2">Pattern Library Overview</h2>
+                    <p className="text-slate-600 dark:text-slate-400">Comprehensive collection of battle-tested interface patterns</p>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
+                      <CardContent className="p-6 text-center">
+                        <div className="text-4xl font-bold text-fuchsia-600 dark:text-fuchsia-400 mb-2">
+                          {patternCategories.length}
+                        </div>
+                        <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Categories</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Organized patterns</div>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
+                      <CardContent className="p-6 text-center">
+                        <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
+                          {allPatterns.length}
+                        </div>
+                        <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Total Patterns</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Ready to use</div>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
+                      <CardContent className="p-6 text-center">
+                        <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
+                          {allPatterns.filter(p => p.complexity === "Simple").length}
+                        </div>
+                        <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Simple Patterns</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">Quick to implement</div>
+                      </CardContent>
+                    </Card>
+                    
+                    <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
+                      <CardContent className="p-6 text-center">
+                        <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">AAA</div>
+                        <div className="text-sm text-slate-700 dark:text-slate-300 font-medium">Accessibility</div>
+                        <div className="text-xs text-slate-500 dark:text-slate-500 mt-1">WCAG compliant</div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Navigation & Controls */}
+        <section className="bg-white/50 dark:bg-slate-900/50 border-b border-slate-200 dark:border-slate-800/50">
+          <div className="px-6 lg:px-12 py-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="flex gap-2">
+                    <Button
+                      variant={activeView === "overview" ? "default" : "outline"}
+                      onClick={() => setActiveView("overview")}
+                      className={`${
+                        activeView === "overview" 
+                          ? 'bg-fuchsia-600 hover:bg-fuchsia-700 text-white' 
+                          : 'border-slate-300 dark:border-slate-600 hover:border-fuchsia-500 dark:hover:border-fuchsia-400'
+                      } transition-all`}
+                    >
+                      <Layout className="h-4 w-4 mr-2" />
+                      Overview
+                    </Button>
+                    <Button
+                      variant={activeView === "patterns" ? "default" : "outline"}
+                      onClick={() => setActiveView("patterns")}
+                      className={`${
+                        activeView === "patterns" 
+                          ? 'bg-fuchsia-600 hover:bg-fuchsia-700 text-white' 
+                          : 'border-slate-300 dark:border-slate-600 hover:border-fuchsia-500 dark:hover:border-fuchsia-400'
+                      } transition-all`}
+                    >
+                      <Grid3X3 className="h-4 w-4 mr-2" />
+                      All Patterns
+                    </Button>
+                  </div>
+                </div>
+                
+                {activeView === "patterns" && (
+                  <div className="flex items-center gap-3">
+                    <div className="relative">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+                      <Input
+                        placeholder="Search patterns..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-10 w-64 bg-white dark:bg-slate-900 border-slate-300 dark:border-slate-600"
+                      />
+                    </div>
+                    <select
+                      value={selectedCategory}
+                      onChange={(e) => setSelectedCategory(e.target.value)}
+                      className="px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300"
+                    >
+                      <option value="all">All Categories</option>
+                      {patternCategories.map(category => (
+                        <option key={category.name} value={category.name}>{category.name}</option>
+                      ))}
+                    </select>
+                    <select
+                      value={complexityFilter}
+                      onChange={(e) => setComplexityFilter(e.target.value)}
+                      className="px-3 py-2 border border-slate-300 dark:border-slate-600 rounded-md bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300"
+                    >
+                      <option value="all">All Complexity</option>
+                      <option value="Simple">Simple</option>
+                      <option value="Medium">Medium</option>
+                      <option value="Complex">Complex</option>
+                    </select>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div className="px-6 lg:px-12 py-8">
+          <div className="max-w-7xl mx-auto">
+            {/* Overview View */}
+            {activeView === "overview" && (
+              <div className="space-y-12">
+                <div className="text-center">
+                  <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">Pattern Categories</h2>
+                  <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+                    Our pattern library is organized into logical categories, each addressing specific interface challenges and user needs.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {patternCategories.map((category) => (
+                    <div key={category.name} onClick={() => {
+                      setSelectedCategory(category.name)
+                      setActiveView("patterns")
+                    }} className="cursor-pointer">
+                      <CategoryOverviewCard category={category} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Patterns View */}
+            {activeView === "patterns" && (
+              <div className="space-y-8">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
+                      {selectedCategory === "all" ? "All Patterns" : selectedCategory}
+                    </h2>
+                    <p className="text-slate-600 dark:text-slate-400">
+                      {filteredPatterns.length} of {allPatterns.length} patterns
+                      {complexityFilter !== "all" && ` • ${complexityFilter} complexity`}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {filteredPatterns.map((pattern) => (
+                    <PatternCard key={`${pattern.category}-${pattern.name}`} pattern={pattern} onCopy={handleCopyCode} />
+                  ))}
+                </div>
+
+                {filteredPatterns.length === 0 && (
+                  <div className="text-center py-12">
+                    <Grid3X3 className="h-12 w-12 text-slate-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2">No patterns found</h3>
+                    <p className="text-slate-600 dark:text-slate-400">Try adjusting your search or filter criteria</p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      </main>
     </div>
   )
-} 
+}

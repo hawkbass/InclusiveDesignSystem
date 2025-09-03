@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { ComponentCard } from "./component-card"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -14,9 +14,21 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
+  Users,
+  Briefcase,
   Calendar,
+  Settings,
+  ChevronDown,
+  User,
+  Shield,
+  Bell,
+  BellDot,
+  X,
+  CheckCircle2,
+  ArrowRight,
+  Target,
   Clock,
-  DollarSign,
+  PoundSterling,
   Eye,
   Filter,
   Mail,
@@ -26,12 +38,16 @@ import {
   Search,
   Star,
   Upload,
-  Users,
   Video,
   Check,
-  CheckCircle2,
-  X,
-  ArrowRight
+  Plus,
+  Edit,
+  Trash2,
+  Download,
+  Share2,
+  EyeOff,
+  Eye as EyeIcon,
+  FileText
 } from "lucide-react"
 
 interface RecruitmentComponentsProps {
@@ -41,6 +57,33 @@ interface RecruitmentComponentsProps {
   viewMode: "grid" | "list"
   favorites: Set<string>
   onToggleFavourite: (id: string) => void
+}
+
+// Salary Range Slider Component
+function SalaryRangeSlider() {
+  const [salaryRange, setSalaryRange] = useState([65, 95])
+  
+  return (
+    <div className="w-full max-w-md space-y-4">
+      <div className="flex justify-between text-sm">
+        <Label className="text-slate-300">Salary Range</Label>
+        <span className="text-slate-400">£{salaryRange[0]}k - £{salaryRange[1]}k</span>
+      </div>
+      <Slider 
+        value={salaryRange} 
+        onValueChange={setSalaryRange}
+        max={160} 
+        min={30} 
+        step={5} 
+        className="mt-2"
+        minStepsBetweenThumbs={1}
+      />
+      <div className="flex justify-between text-xs text-slate-500">
+        <span>£30k</span>
+        <span>£160k</span>
+      </div>
+    </div>
+  )
 }
 
 // Move components array to module level
@@ -91,11 +134,11 @@ const components = [
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-slate-400" />
-              <span className="text-slate-300">San Francisco</span>
+              <span className="text-slate-300">London, UK</span>
             </div>
             <div className="flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-slate-400" />
-              <span className="text-slate-300">$120k - $150k</span>
+              <PoundSterling className="h-4 w-4 text-slate-400" />
+              <span className="text-slate-300">£95k - £120k</span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 text-yellow-400" />
@@ -132,7 +175,7 @@ const components = [
     code: `<Card>
   <CardHeader>
     <CardTitle>Senior Frontend Developer</CardTitle>
-    <CardDescription>Remote • Full-time • $120k-$150k</CardDescription>
+                  <CardDescription>Remote • Full-time • $120k-$150k</CardDescription>
   </CardHeader>
   <CardContent>
     <div className="flex justify-between items-center">
@@ -147,7 +190,7 @@ const components = [
           <div className="flex items-start justify-between">
             <div>
               <CardTitle className="text-lg text-slate-100">Senior Frontend Developer</CardTitle>
-              <CardDescription className="text-slate-400 mt-1">Remote • Full-time</CardDescription>
+                                <CardDescription className="text-slate-400 mt-1">Remote / London • Full-time</CardDescription>
             </div>
             <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">Active</Badge>
           </div>
@@ -155,8 +198,8 @@ const components = [
         <CardContent className="space-y-4">
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <DollarSign className="h-4 w-4 text-green-400" />
-              <span className="text-slate-300">$120k - $150k</span>
+              <PoundSterling className="h-4 w-4 text-green-400" />
+              <span className="text-slate-300">£95k - £120k</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-blue-400" />
@@ -311,22 +354,17 @@ const components = [
     title: "Salary Range Slider",
     description: "Interactive salary range selector",
     code: `<div className="space-y-4">
-  <Label>Salary Range: $80k - $120k</Label>
-  <Slider defaultValue={[80, 120]} max={200} min={40} step={5} />
+  <div className="flex justify-between">
+    <Label>Salary Range</Label>
+    <span>£65k - £95k</span>
+  </div>
+  <Slider value={[65, 95]} onValueChange={setSalaryRange} max={160} min={30} step={5} />
+  <div className="flex justify-between text-xs">
+    <span>£30k</span>
+    <span>£160k</span>
+  </div>
 </div>`,
-    component: (
-      <div className="w-full max-w-md space-y-4">
-        <div className="flex justify-between text-sm">
-          <Label className="text-slate-300">Salary Range</Label>
-          <span className="text-slate-400">$80k - $120k</span>
-        </div>
-        <Slider defaultValue={[80, 120]} max={200} min={40} step={5} className="mt-2" />
-        <div className="flex justify-between text-xs text-slate-500">
-          <span>$40k</span>
-          <span>$200k</span>
-        </div>
-      </div>
-    )
+    component: <SalaryRangeSlider />
   },
   {
     id: "team-member-card",
@@ -493,11 +531,11 @@ const components = [
             <SelectValue placeholder="Select location" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="remote">🌍 Remote</SelectItem>
-            <SelectItem value="sf">🏙️ San Francisco</SelectItem>
-            <SelectItem value="ny">🗽 New York</SelectItem>
-            <SelectItem value="la">🌴 Los Angeles</SelectItem>
-            <SelectItem value="austin">🤠 Austin</SelectItem>
+            <SelectItem value="remote">Remote</SelectItem>
+            <SelectItem value="sf">San Francisco</SelectItem>
+            <SelectItem value="ny">New York</SelectItem>
+            <SelectItem value="la">Los Angeles</SelectItem>
+            <SelectItem value="austin">Austin</SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -514,14 +552,14 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-3">
         {[
-          { level: "Entry", years: "0-2 years", color: "bg-blue-500/20 text-blue-300", icon: "🌱" },
-          { level: "Mid", years: "3-5 years", color: "bg-yellow-500/20 text-yellow-300", icon: "🌿" },
-          { level: "Senior", years: "5+ years", color: "bg-green-500/20 text-green-300", icon: "🌳" },
-          { level: "Lead", years: "8+ years", color: "bg-purple-500/20 text-purple-300", icon: "🏆" }
+          { level: "Entry", years: "0-2 years", color: "bg-blue-500/20 text-blue-300", icon: <User className="h-4 w-4" /> },
+          { level: "Mid", years: "3-5 years", color: "bg-yellow-500/20 text-yellow-300", icon: <Users className="h-4 w-4" /> },
+          { level: "Senior", years: "5+ years", color: "bg-green-500/20 text-green-300", icon: <Shield className="h-4 w-4" /> },
+          { level: "Lead", years: "8+ years", color: "bg-purple-500/20 text-purple-300", icon: <Star className="h-4 w-4" /> }
         ].map((item, index) => (
           <div key={index} className="flex items-center justify-between p-2 bg-slate-800/30 rounded-lg">
             <div className="flex items-center gap-3">
-              <span className="text-lg">{item.icon}</span>
+              <div className="text-slate-400">{item.icon}</div>
               <div>
                 <Badge className={item.color}>{item.level}</Badge>
               </div>
@@ -730,13 +768,30 @@ const components = [
             <SelectValue placeholder="Select pipeline stage" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="applied">📝 Applied</SelectItem>
-            <SelectItem value="screening">🔍 Initial Screening</SelectItem>
-            <SelectItem value="technical">💻 Technical Interview</SelectItem>
-            <SelectItem value="cultural">🤝 Cultural Fit</SelectItem>
-            <SelectItem value="final">🎯 Final Interview</SelectItem>
-            <SelectItem value="offer">💰 Offer Extended</SelectItem>
-            <SelectItem value="hired">✅ Hired</SelectItem>
+            <SelectItem value="applied">
+              <FileText className="h-4 w-4 mr-2" />
+              Applied
+            </SelectItem>
+            <SelectItem value="screening">
+              <Search className="h-4 w-4 mr-2" />
+              Initial Screening
+            </SelectItem>
+            <SelectItem value="interview">
+              <Users className="h-4 w-4 mr-2" />
+              Interview
+            </SelectItem>
+            <SelectItem value="final">
+              <Target className="h-4 w-4 mr-2" />
+              Final Interview
+            </SelectItem>
+            <SelectItem value="offer">
+              <PoundSterling className="h-4 w-4 mr-2" />
+              Offer Extended
+            </SelectItem>
+            <SelectItem value="hired">
+              <CheckCircle2 className="h-4 w-4 mr-2" />
+              Hired
+            </SelectItem>
           </SelectContent>
         </Select>
       </div>
@@ -770,7 +825,7 @@ const components = [
                 <p className="text-sm text-slate-400">Engineering Team</p>
               </div>
             </div>
-            <Badge className="bg-green-500/20 text-green-300">$500 Bonus</Badge>
+            <Badge className="bg-green-500/20 text-green-300">£400 Bonus</Badge>
           </div>
           <div className="mt-3 pt-3 border-t border-slate-700">
             <div className="text-xs text-slate-500">Referral Status: Qualified</div>

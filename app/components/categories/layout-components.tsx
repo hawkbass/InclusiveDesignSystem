@@ -83,7 +83,7 @@ const components = [
     description: "Flexible box layout patterns",
     code: `<div className="flex flex-col md:flex-row gap-6">
   <div className="flex-1 bg-slate-800/50 p-4 rounded-lg">Main Content</div>
-  <div className="w-full md:w-64 lg:w-80 bg-slate-800/50 p-4 rounded-lg">Sidebar</div>
+  <div className="w-full md:w-64 lg:max-w-80 bg-slate-800/50 p-4 rounded-lg">Sidebar</div>
 </div>`,
     component: (
       <div className="w-full">
@@ -135,7 +135,7 @@ const components = [
     title: "Sidebar Layout",
     description: "Classic sidebar with main content area",
     code: `<div className="flex min-h-screen">
-  <aside className="w-64 lg:w-80 bg-slate-900 border-r border-slate-700">
+  <aside className="w-full max-w-64 lg:max-w-80 bg-slate-900 border-r border-slate-700">
     <nav className="p-4">Sidebar Navigation</nav>
   </aside>
   <main className="flex-1 p-6">Main Content</main>

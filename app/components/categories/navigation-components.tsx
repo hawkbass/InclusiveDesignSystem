@@ -69,7 +69,7 @@ const components = [
 </Tabs>`,
     component: (
       <Tabs defaultValue="overview" className="w-full max-w-md">
-        <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
+        <TabsList className="grid w-full grid-cols-3 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
           <TabsTrigger value="overview" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <User className="h-4 w-4 mr-2" />
             Profile
@@ -99,7 +99,7 @@ const components = [
     id: "sidebar-nav",
     title: "Sidebar Navigation",
     description: "Collapsible sidebar with menu items",
-    code: `<nav className="w-64 lg:w-80 space-y-2">
+    code: `<nav className="w-full max-w-64 lg:max-w-80 space-y-2">
   <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-300 rounded-lg">
     <Home className="h-5 w-5" />
     Dashboard

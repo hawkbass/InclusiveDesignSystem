@@ -1,0 +1,11 @@
+export { MainDashboard } from "./main-dashboard"
+export { DashboardHeader } from "./dashboard-header"
+export { SidebarNavigation } from "./sidebar-navigation"
+export { DashboardOverview } from "./dashboard-overview"
+export { CandidatesManagement } from "./candidates-management"
+export { JobsManagement } from "./jobs-management"
+export { CalendarIntegration } from "./calendar-integration"
+export { SettingsPanel } from "./settings-panel"
+
+export * from "./types"
+export * from "./data" 

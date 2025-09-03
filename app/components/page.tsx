@@ -34,6 +34,7 @@ import { DataDisplayComponents } from "./categories/data-display-components"
 import { LayoutComponents } from "./categories/layout-components"
 import { MediaComponents } from "./categories/media-components"
 import { UtilityComponents } from "./categories/utility-components"
+import { DashboardComponents } from "./categories/dashboard-components"
 
 // Helper to collect all components from all categories
 import { components as recruitmentComponents } from "./categories/recruitment-components"
@@ -44,6 +45,7 @@ import { components as dataDisplayComponents } from "./categories/data-display-c
 import { components as layoutComponents } from "./categories/layout-components"
 import { components as mediaComponents } from "./categories/media-components"
 import { components as utilityComponents } from "./categories/utility-components"
+import { components as dashboardComponents } from "./categories/dashboard-components"
 
 const getAllComponents = () => {
   return [
@@ -55,6 +57,7 @@ const getAllComponents = () => {
     ...layoutComponents,
     ...mediaComponents,
     ...utilityComponents,
+    ...dashboardComponents,
   ]
 }
 
@@ -120,6 +123,7 @@ export default function ComponentsPage() {
     { id: "layout", label: "Layout", icon: Layout, count: 10 },
     { id: "media", label: "Media", icon: ImageIcon, count: 6 },
     { id: "utility", label: "Utility", icon: Settings, count: 9 },
+    { id: "dashboard", label: "Dashboard", icon: Component, count: 12 },
     { id: "favourites", label: "Favourites", icon: Heart, count: favorites.size }
   ], [favorites.size])
 
@@ -163,6 +167,26 @@ export default function ComponentsPage() {
       
       <div className="flex-1 relative">
       <header className="border-b border-slate-700/50 bg-slate-900/90 backdrop-blur-xl sticky top-0 z-50 shadow-2xl shadow-slate-900/25 relative overflow-hidden" role="banner">
+  {/* Quick Stats Bar */}
+  <div className="bg-slate-800/50 border-b border-slate-700/30">
+    <div className="container mx-auto px-6 py-2">
+      <div className="flex items-center justify-between text-xs">
+        <div className="flex items-center gap-6">
+          <span className="text-slate-400">
+            <span className="text-fuchsia-400 font-semibold">102</span> Components Available
+          </span>
+          <span className="text-slate-400">
+            <span className="text-green-400 font-semibold">8</span> Categories
+          </span>
+          <span className="text-slate-400">
+            <span className="text-blue-400 font-semibold">{favorites.size}</span> Favourited
+          </span>
+        </div>
+        <div className="text-slate-500">Last updated: Today</div>
+      </div>
+    </div>
+  </div>
+  
   <div className="container mx-auto px-6 py-5">
     <div className="flex items-center justify-between gap-8">
       <div className="flex items-center gap-3">
@@ -228,45 +252,29 @@ export default function ComponentsPage() {
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <div className="mb-8">
-                <TabsList className="grid w-full grid-cols-3 lg:grid-cols-9 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
+                <TabsList className="flex w-full h-auto p-1 bg-slate-800/50 border border-slate-700/50 rounded-lg backdrop-blur-sm overflow-x-auto">
                   {filteredTabs.map((tab) => (
                     <TabsTrigger
                       key={tab.id}
                       value={tab.id}
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                      style={{ transitionDuration: 'var(--animation-speed)' }}
+                      className="flex flex-col items-center gap-2 py-3 px-3 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent flex-shrink-0 min-w-0"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
+                      <tab.icon className="h-5 w-5 flex-shrink-0 text-slate-400 group-hover:text-slate-200 data-[state=active]:text-fuchsia-300 transition-colors" />
                       
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <tab.icon className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
-                        </div>
-                      </div>
-                      
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium text-center text-slate-400 data-[state=active]:text-fuchsia-300 transition-colors text-xs truncate max-w-20">
                         {tab.label}
                       </span>
                       
                       <Badge 
                         variant="secondary" 
-                        className="text-xs px-2 py-0.5 h-5 bg-slate-700/80 text-slate-300 border border-slate-600/50 group-hover:bg-fuchsia-500/20 group-hover:border-fuchsia-500/50 group-hover:text-fuchsia-300 group-data-[state=active]:bg-fuchsia-500/30 group-data-[state=active]:border-fuchsia-500/70 group-data-[state=active]:text-fuchsia-200 transition-all font-medium"
-                        style={{ transitionDuration: 'var(--animation-speed)' }}
+                        className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0 data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-colors"
                       >
                         {tab.count}
                       </Badge>
-                      
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}></div>
                     </TabsTrigger>
                   ))}
                 </TabsList>
-                
-                <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5 rounded-2xl -z-10 blur-xl"></div>
-              </div>
+            </div>
               
               <div className="mt-4 flex items-center justify-between text-sm text-slate-400">
                 <div className="flex items-center gap-2">
@@ -373,6 +381,17 @@ export default function ComponentsPage() {
 
             <TabsContent value="utility" className="mt-0">
   <UtilityComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
+    favorites={favorites}
+    onToggleFavourite={toggleFavourite}
+  />
+</TabsContent>
+
+            <TabsContent value="dashboard" className="mt-0">
+  <DashboardComponents 
     searchQuery={searchQuery} 
     onCopyCode={handleCopyCode} 
     copiedCode={copiedCode}

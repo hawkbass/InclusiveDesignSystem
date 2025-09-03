@@ -1,5 +1,7 @@
 "use client"
 
+import React, { useState } from "react"
+import { ComponentCard } from "./component-card"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -12,15 +14,39 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Progress } from "@/components/ui/progress"
-import { ComponentCard } from "./component-card"
 import {
-  Eye,
-  Search,
-  X,
-  Upload,
   AlertTriangle,
-  CheckCircle2,
+  Calendar,
   Check,
+  CheckCircle2,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  CreditCard,
+  PoundSterling,
+  Download,
+  Eye,
+  EyeOff,
+  FileText,
+  Filter,
+  Heart,
+  Home,
+  Building2,
+  Mail,
+  MapPin,
+  Minus,
+  MoreHorizontal,
+  Phone,
+  Plus,
+  Search,
+  Settings,
+  Shield,
+  Star,
+  Upload,
+  User,
+  X,
+  Zap
 } from "lucide-react"
 
 interface FormComponentsProps {
@@ -30,6 +56,54 @@ interface FormComponentsProps {
   viewMode: "grid" | "list"
   favorites: Set<string>
   onToggleFavourite: (id: string) => void
+}
+
+// Salary Range Components
+function SalaryRangeControl() {
+  const [salaryRange, setSalaryRange] = useState([65, 95])
+  
+  return (
+    <div className="space-y-2">
+      <div className="flex justify-between">
+        <Label className="text-slate-300">Salary Range</Label>
+        <span className="text-slate-400">£{salaryRange[0]}k - £{salaryRange[1]}k</span>
+      </div>
+      <Slider 
+        value={salaryRange} 
+        onValueChange={setSalaryRange}
+        max={160} 
+        min={30} 
+        step={5} 
+        className="mt-2"
+        minStepsBetweenThumbs={1}
+      />
+    </div>
+  )
+}
+
+function SalaryExpectationSlider() {
+  const [salaryRange, setSalaryRange] = useState([65, 95])
+  
+  return (
+    <div className="w-full max-w-md space-y-4">
+      <div className="flex justify-between">
+        <Label className="text-slate-300">Salary Expectation</Label>
+        <span className="text-slate-400 text-sm">£{salaryRange[0]}k - £{salaryRange[1]}k</span>
+      </div>
+      <Slider 
+        value={salaryRange} 
+        onValueChange={setSalaryRange}
+        max={160} 
+        min={30} 
+        step={5}
+        minStepsBetweenThumbs={1}
+      />
+      <div className="flex justify-between text-xs text-slate-500">
+        <span>£30k</span>
+        <span>£160k+</span>
+      </div>
+    </div>
+  )
 }
 
 // Move components array to module level
@@ -78,10 +152,7 @@ const components = [
           <Label className="text-slate-300">Email Notifications</Label>
           <Switch defaultChecked />
         </div>
-        <div className="space-y-2">
-          <Label className="text-slate-300">Salary Range: $80k - $120k</Label>
-          <Slider defaultValue={[80, 120]} max={200} min={40} step={5} className="mt-2" />
-        </div>
+        <SalaryRangeControl />
         <div className="space-y-2">
           <Label className="text-slate-300">Experience Level</Label>
           <Select>
@@ -170,9 +241,9 @@ const components = [
         <Label className="text-slate-300">Work Preference</Label>
         <RadioGroup defaultValue="remote">
           {[
-            { value: "remote", label: "Remote", icon: "🏠" },
-            { value: "hybrid", label: "Hybrid", icon: "🏢" },
-            { value: "onsite", label: "On-site", icon: "🏢" }
+            { value: "remote", label: "Remote", icon: <Home className="h-4 w-4" /> },
+            { value: "hybrid", label: "Hybrid", icon: <Building2 className="h-4 w-4" /> },
+            { value: "onsite", label: "On-site", icon: <Building2 className="h-4 w-4" /> }
           ].map((option) => (
             <div key={option.value} className="flex items-center space-x-2">
               <RadioGroupItem value={option.value} id={option.value} />
@@ -385,22 +456,17 @@ const components = [
     title: "Range Slider",
     description: "Dual-handle range slider for min/max values",
     code: `<div className="space-y-4">
-  <Label>Salary Range: $80k - $120k</Label>
-  <Slider defaultValue={[80, 120]} max={200} min={40} step={5} />
+  <div className="flex justify-between">
+    <Label>Salary Expectation</Label>
+    <span>£65k - £95k</span>
+  </div>
+  <Slider value={salaryRange} onValueChange={setSalaryRange} max={160} min={30} step={5} />
+  <div className="flex justify-between text-xs">
+    <span>£30k</span>
+    <span>£160k+</span>
+  </div>
 </div>`,
-    component: (
-      <div className="w-full max-w-md space-y-4">
-        <div className="flex justify-between">
-          <Label className="text-slate-300">Salary Expectation</Label>
-          <span className="text-slate-400 text-sm">$80k - $120k</span>
-        </div>
-        <Slider defaultValue={[80, 120]} max={200} min={40} step={5} />
-        <div className="flex justify-between text-xs text-slate-500">
-          <span>$40k</span>
-          <span>$200k+</span>
-        </div>
-      </div>
-    )
+    component: <SalaryExpectationSlider />
   },
   {
     id: "toggle-switch",

@@ -17,7 +17,7 @@ import {
   Pause,
   X,
   Briefcase,
-  DollarSign,
+  PoundSterling,
   Calendar
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -270,7 +270,7 @@ export function JobsManagement({
 
                 <div className="flex items-center gap-4 text-sm">
                   <div className="flex items-center gap-1 text-slate-400">
-                    <DollarSign className="h-4 w-4" />
+                    <PoundSterling className="h-4 w-4" />
                     {job.salary}
                   </div>
                   <div className="flex items-center gap-1 text-slate-400">

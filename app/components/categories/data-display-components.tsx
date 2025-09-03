@@ -49,7 +49,7 @@ const components = [
   </tbody>
 </table>`,
     component: (
-      <div className="w-full max-w-2xl">
+      <div className="w-full max-w-full">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>

@@ -20,7 +20,8 @@ jobs:
           echo "author=$(git log -1 --pretty=format:'%an')" >> $GITHUB_OUTPUT
           echo "message=$(git log -1 --pretty=format:'%s')" >> $GITHUB_OUTPUT
           echo "timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")" >> $GITHUB_OUTPUT
-          echo "files=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | jq -R -s -c 'split(\"\n\")[:-1]')" >> $GITHUB_OUTPUT
+          files=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | jq -R -s -c 'split("\n")[:-1]')
+          echo "files=$files" >> $GITHUB_OUTPUT
 
       - name: Read existing activity log
         id: readlog
@@ -37,7 +38,7 @@ jobs:
           jq --arg author "${{ steps.commit.outputs.author }}" \
              --arg message "${{ steps.commit.outputs.message }}" \
              --arg timestamp "${{ steps.commit.outputs.timestamp }}" \
-             --argjson files "${{ steps.commit.outputs.files }}" \
+             --argjson files '${{ steps.commit.outputs.files }}' \
              '. += [{"timestamp": $timestamp, "author": $author, "message": $message, "files": $files}]' \
              activity-log.json > activity-log-updated.json
           mv activity-log-updated.json public/activity-log.json
