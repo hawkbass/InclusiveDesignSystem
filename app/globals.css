@@ -17,6 +17,27 @@ body {
   :root {
     --font-sans: "Inter", system-ui, sans-serif;
     --radius: 0.5rem;
+    
+    /* Theme colors for components */
+    --background: 15 23 42; /* slate-900 */
+    --foreground: 248 250 252; /* slate-50 */
+    --card: 30 41 59; /* slate-800 */
+    --card-foreground: 248 250 252; /* slate-50 */
+    --popover: 30 41 59; /* slate-800 */
+    --popover-foreground: 248 250 252; /* slate-50 */
+    --primary: 217 70 239; /* fuchsia-500 */
+    --primary-foreground: 253 244 255; /* fuchsia-50 */
+    --secondary: 51 65 85; /* slate-700 */
+    --secondary-foreground: 248 250 252; /* slate-50 */
+    --muted: 51 65 85; /* slate-700 */
+    --muted-foreground: 148 163 184; /* slate-400 */
+    --accent: 51 65 85; /* slate-700 */
+    --accent-foreground: 248 250 252; /* slate-50 */
+    --destructive: 239 68 68; /* red-500 */
+    --destructive-foreground: 254 242 242; /* red-50 */
+    --border: 71 85 105; /* slate-600 */
+    --input: 71 85 105; /* slate-600 */
+    --ring: 217 70 239; /* fuchsia-500 */
   }
 }
 

@@ -519,8 +519,8 @@ const components = [
   </SelectTrigger>
   <SelectContent>
     <SelectItem value="remote">Remote</SelectItem>
-    <SelectItem value="sf">San Francisco</SelectItem>
-    <SelectItem value="ny">New York</SelectItem>
+    <SelectItem value="london">London</SelectItem>
+    <SelectItem value="manchester">Manchester</SelectItem>
   </SelectContent>
 </Select>`,
     component: (
@@ -532,10 +532,13 @@ const components = [
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="remote">Remote</SelectItem>
-            <SelectItem value="sf">San Francisco</SelectItem>
-            <SelectItem value="ny">New York</SelectItem>
-            <SelectItem value="la">Los Angeles</SelectItem>
-            <SelectItem value="austin">Austin</SelectItem>
+            <SelectItem value="london">London</SelectItem>
+            <SelectItem value="manchester">Manchester</SelectItem>
+            <SelectItem value="birmingham">Birmingham</SelectItem>
+            <SelectItem value="bristol">Bristol</SelectItem>
+            <SelectItem value="leeds">Leeds</SelectItem>
+            <SelectItem value="glasgow">Glasgow</SelectItem>
+            <SelectItem value="edinburgh">Edinburgh</SelectItem>
           </SelectContent>
         </Select>
       </div>

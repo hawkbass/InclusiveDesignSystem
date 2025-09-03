@@ -306,7 +306,7 @@ export function CandidatesManagement({
                     <div>
                       <label className="text-sm font-medium text-slate-300 mb-2 block">Location</label>
                       <div className="space-y-2">
-                        {["Remote", "San Francisco", "New York", "Austin", "Seattle"].map((location) => (
+                        {["Remote", "London", "Manchester", "Birmingham", "Bristol", "Leeds", "Glasgow", "Edinburgh"].map((location) => (
                           <label key={location} className="flex items-center">
                             <input type="checkbox" className="mr-2" />
                             <span className="text-sm text-slate-400">{location}</span>
