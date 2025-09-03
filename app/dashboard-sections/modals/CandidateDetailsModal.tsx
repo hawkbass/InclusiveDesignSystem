@@ -18,9 +18,9 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
       <DialogContent className="max-w-2xl p-0 overflow-hidden">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-t-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white text-lg font-bold">
+          <div className="flex items-centre justify-between">
+            <div className="flex items-centre gap-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white text-lg font-bold">
                 {candidate.avatar}
               </div>
               <div>
@@ -28,7 +28,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
                 <p className="text-slate-400">{candidate.position}</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-centre gap-2">
               <div className="text-right">
                 <div className="text-sm font-medium text-fuchsia-400">{candidate.match} Match</div>
                 {/* If you have a stage/status, add here */}
@@ -51,11 +51,11 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
               <div>
                 <h4 className="text-sm font-medium text-slate-300 mb-2">Contact Information</h4>
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-centre gap-2 text-sm">
                     <Mail className="h-4 w-4 text-slate-500" />
                     <span className="text-slate-400">{candidate.email}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-centre gap-2 text-sm">
                     <Phone className="h-4 w-4 text-slate-500" />
                     <span className="text-slate-400">{candidate.phone}</span>
                   </div>
@@ -93,8 +93,8 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
         </div>
         {/* Footer */}
         <div className="p-6 border-t border-slate-700/50 bg-slate-800/30 rounded-b-xl">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2">
+          <div className="flex justify-between items-centre">
+            <div className="flex items-centre gap-2">
               <Button
                 size="sm"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
@@ -133,3 +133,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
     </Dialog>
   )
 } 
+
+
+
+

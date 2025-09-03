@@ -52,7 +52,7 @@ interface DashboardComponentsProps {
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
   viewMode: "grid" | "list"
-  favorites: Set<string>
+  favourites: Set<string>
   onToggleFavourite: (id: string) => void
 }
 
@@ -62,18 +62,18 @@ const components = [
     id: "dashboard-header",
     title: "Dashboard Header",
     description: "Main dashboard header with notifications and status",
-    code: `<div className="bg-slate-800/50 p-3 border-b border-slate-700/50 flex items-center justify-between backdrop-blur-sm">
-  <div className="flex items-center gap-3">
+    code: `<div className="bg-slate-800/50 p-3 border-b border-slate-700/50 flex items-centre justify-between backdrop-blur-sm">
+  <div className="flex items-centre gap-3">
     <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
     <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
     <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
   </div>
-  <div className="flex items-center gap-2 bg-slate-900/50 rounded-md px-2 py-1 text-xs text-slate-400 border border-slate-700/50">
+  <div className="flex items-centre gap-2 bg-slate-900/50 rounded-md px-2 py-1 text-xs text-slate-400 border border-slate-700/50">
     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
     <span>inclusive.io/dashboard</span>
     <span className="text-green-400">LIVE</span>
   </div>
-  <div className="flex items-center gap-2">
+  <div className="flex items-centre gap-2">
     <Button variant="ghost" size="sm" className="relative">
       <Bell className="h-4 w-4" />
       <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-400 rounded-full"></div>
@@ -85,18 +85,18 @@ const components = [
 </div>`,
     component: (
       <div className="w-full bg-slate-800/50 p-3 border border-slate-700/50 rounded-lg backdrop-blur-sm">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="flex items-centre justify-between">
+          <div className="flex items-centre gap-3">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
             <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
             <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
           </div>
-          <div className="flex items-center gap-2 bg-slate-900/50 rounded-md px-2 py-1 text-xs text-slate-400 border border-slate-700/50">
+          <div className="flex items-centre gap-2 bg-slate-900/50 rounded-md px-2 py-1 text-xs text-slate-400 border border-slate-700/50">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             <span>inclusive.io/dashboard</span>
             <span className="text-green-400">LIVE</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-centre gap-2">
             <Button variant="ghost" size="sm" className="relative text-slate-400 hover:text-slate-300">
               <Bell className="h-4 w-4" />
               <div className="absolute -top-1 -right-1 w-2 h-2 bg-red-400 rounded-full"></div>
@@ -115,8 +115,8 @@ const components = [
     description: "Dashboard sidebar with navigation and user profile",
     code: `<div className="w-full max-w-64 bg-slate-800/50 border-r border-slate-700/50 backdrop-blur-sm">
   <div className="p-4 border-b border-slate-700/50">
-    <div className="flex items-center gap-3 mb-3">
-      <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white font-medium">
+    <div className="flex items-centre gap-3 mb-3">
+      <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white font-medium">
         SW
       </div>
       <div className="flex-1 min-w-0">
@@ -142,8 +142,8 @@ const components = [
     component: (
       <div className="w-full max-w-64 bg-slate-800/50 border border-slate-700/50 rounded-lg backdrop-blur-sm">
         <div className="p-4 border-b border-slate-700/50">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white font-medium">
+          <div className="flex items-centre gap-3 mb-3">
+            <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white font-medium">
               SW
             </div>
             <div className="flex-1 min-w-0">
@@ -154,8 +154,8 @@ const components = [
               <ChevronDown className="h-3 w-3" />
             </Button>
           </div>
-          <div className="flex items-center justify-between text-xs">
-            <div className="flex items-center gap-1 text-slate-400">
+          <div className="flex items-centre justify-between text-xs">
+            <div className="flex items-centre gap-1 text-slate-400">
               <div className="w-2 h-2 bg-green-400 rounded-full"></div>
               <span>Online</span>
             </div>
@@ -190,11 +190,11 @@ const components = [
         <div className="p-4 border-t border-slate-700/50 mt-auto">
           <div className="text-xs font-medium text-slate-400 mb-3">Quick Stats</div>
           <div className="space-y-2">
-            <div className="flex items-center justify-between text-xs">
+            <div className="flex items-centre justify-between text-xs">
               <span className="text-slate-400">Active Jobs</span>
               <span className="text-slate-200 font-medium">24</span>
             </div>
-            <div className="flex items-center justify-between text-xs">
+            <div className="flex items-centre justify-between text-xs">
               <span className="text-slate-400">Candidates</span>
               <span className="text-slate-200 font-medium">156</span>
             </div>
@@ -209,9 +209,9 @@ const components = [
     description: "Dropdown notification panel with different notification types",
     code: `<div className="absolute right-4 top-16 w-full max-w-96 bg-slate-900/95 border border-slate-700/50 rounded-xl shadow-2xl backdrop-blur-xl">
   <div className="p-4 border-b border-slate-700/50 bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-t-xl">
-    <div className="flex items-center justify-between">
-      <div className="flex items-center gap-3">
-        <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center">
+    <div className="flex items-centre justify-between">
+      <div className="flex items-centre gap-3">
+        <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre">
           <Bell className="h-4 w-4 text-white" />
         </div>
         <div>
@@ -225,7 +225,7 @@ const components = [
     <div className="divide-y divide-slate-700/30">
       <div className="p-4 hover:bg-slate-800/30 transition-all duration-200">
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-centre justify-centre">
             <Calendar className="h-4 w-4 text-blue-400" />
           </div>
           <div className="flex-1 min-w-0">
@@ -240,9 +240,9 @@ const components = [
     component: (
       <div className="w-full max-w-96 bg-slate-900/95 border border-slate-700/50 rounded-xl shadow-2xl backdrop-blur-xl">
         <div className="p-4 border-b border-slate-700/50 bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-t-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center">
+          <div className="flex items-centre justify-between">
+            <div className="flex items-centre gap-3">
+              <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre">
                 <Bell className="h-4 w-4 text-white" />
               </div>
               <div>
@@ -250,7 +250,7 @@ const components = [
                 <p className="text-xs text-slate-400">3 new updates</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-centre gap-2">
               <Button variant="ghost" size="sm" className="h-7 w-7 p-0 text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
                 <CheckCircle2 className="h-3.5 w-3.5" />
               </Button>
@@ -264,19 +264,19 @@ const components = [
           <div className="divide-y divide-slate-700/30">
             <div className="p-4 hover:bg-slate-800/30 transition-all duration-200 group relative">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-blue-500/20 border border-blue-500/30 rounded-full flex items-centre justify-centre">
                   <Calendar className="h-4 w-4 text-blue-400" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between gap-2">
-                    <p className="text-sm text-slate-200 leading-relaxed group-hover:text-slate-100 transition-colors">
+                    <p className="text-sm text-slate-200 leading-relaxed group-hover:text-slate-100 transition-colours">
                       Interview scheduled with Sarah Johnson for Technical Lead position
                     </p>
                     <div className="w-2 h-2 bg-red-400 rounded-full animate-pulse flex-shrink-0 mt-2"></div>
                   </div>
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="flex items-centre justify-between mt-2">
                     <span className="text-xs text-slate-500">2 minutes ago</span>
-                    <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-centre gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
                       <Button variant="ghost" size="sm" className="h-6 px-2 text-xs text-fuchsia-400 hover:bg-fuchsia-500/10">
                         Dismiss
                       </Button>
@@ -288,14 +288,14 @@ const components = [
             </div>
             <div className="p-4 hover:bg-slate-800/30 transition-all duration-200 group relative">
               <div className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-emerald-500/20 border border-emerald-500/30 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 bg-emerald-500/20 border border-emerald-500/30 rounded-full flex items-centre justify-centre">
                   <Users className="h-4 w-4 text-emerald-400" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-slate-200 leading-relaxed group-hover:text-slate-100 transition-colors">
+                  <p className="text-sm text-slate-200 leading-relaxed group-hover:text-slate-100 transition-colours">
                       New application received for Senior Developer role
                     </p>
-                  <div className="flex items-center justify-between mt-2">
+                  <div className="flex items-centre justify-between mt-2">
                     <span className="text-xs text-slate-500">15 minutes ago</span>
                   </div>
                 </div>
@@ -304,7 +304,7 @@ const components = [
           </div>
         </div>
         <div className="p-4 border-t border-slate-700/50 bg-slate-800/30 rounded-b-xl">
-          <div className="flex items-center justify-between">
+          <div className="flex items-centre justify-between">
             <Button variant="ghost" size="sm" className="text-xs text-slate-400 hover:text-slate-300 hover:bg-slate-700/50 h-8">
               <CheckCircle2 className="h-3 w-3 mr-1" />
               Mark all as read
@@ -329,11 +329,11 @@ const components = [
   </CardHeader>
   <CardContent>
     <div className="grid grid-cols-2 gap-4">
-      <div className="text-center">
+      <div className="text-centre">
         <div className="text-2xl font-bold text-slate-100">24</div>
         <div className="text-xs text-slate-400">Active Jobs</div>
       </div>
-      <div className="text-center">
+      <div className="text-centre">
         <div className="text-2xl font-bold text-slate-100">156</div>
         <div className="text-xs text-slate-400">Candidates</div>
       </div>
@@ -348,22 +348,22 @@ const components = [
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-6">
-            <div className="text-center p-4 bg-slate-700/30 rounded-lg">
+            <div className="text-centre p-4 bg-slate-700/30 rounded-lg">
               <div className="text-3xl font-bold text-slate-100 mb-1">24</div>
               <div className="text-xs text-slate-400">Active Jobs</div>
               <div className="text-xs text-emerald-400 mt-1">+12% from last month</div>
             </div>
-            <div className="text-center p-4 bg-slate-700/30 rounded-lg">
+            <div className="text-centre p-4 bg-slate-700/30 rounded-lg">
               <div className="text-3xl font-bold text-slate-100 mb-1">156</div>
               <div className="text-xs text-slate-400">Candidates</div>
               <div className="text-xs text-emerald-400 mt-1">+8% from last month</div>
             </div>
-            <div className="text-center p-4 bg-slate-700/30 rounded-lg">
+            <div className="text-centre p-4 bg-slate-700/30 rounded-lg">
               <div className="text-3xl font-bold text-slate-100 mb-1">32</div>
               <div className="text-xs text-slate-400">Interviews</div>
               <div className="text-xs text-blue-400 mt-1">This week</div>
             </div>
-            <div className="text-center p-4 bg-slate-700/30 rounded-lg">
+            <div className="text-centre p-4 bg-slate-700/30 rounded-lg">
               <div className="text-3xl font-bold text-slate-100 mb-1">48h</div>
               <div className="text-xs text-slate-400">Time Saved</div>
               <div className="text-xs text-fuchsia-400 mt-1">vs manual process</div>
@@ -379,7 +379,7 @@ const components = [
     description: "Modal for adding new candidates to the system",
     code: `<Dialog open={open} onOpenChange={onClose}>
   <DialogContent className="max-w-md">
-    <div className="flex justify-between items-center mb-4">
+    <div className="flex justify-between items-centre mb-4">
       <h4 className="text-lg font-medium text-slate-100">Add New Candidate</h4>
       <Button variant="ghost" size="sm" className="h-6 w-6 p-0" onClick={onClose}>
         <X className="h-4 w-4" />
@@ -411,7 +411,7 @@ const components = [
 </Dialog>`,
     component: (
       <div className="max-w-md bg-slate-900/95 border border-slate-700/50 rounded-lg p-6">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-centre mb-4">
           <h4 className="text-lg font-medium text-slate-100">Add New Candidate</h4>
           <Button variant="ghost" size="sm" className="h-6 w-6 p-0 text-slate-400 hover:text-slate-300">
             <X className="h-4 w-4" />
@@ -448,7 +448,7 @@ const components = [
     description: "Table for managing candidate data with actions",
     code: `<div className="bg-slate-800/60 border border-slate-700/50 rounded-lg overflow-hidden">
   <div className="p-4 border-b border-slate-700/50">
-    <div className="flex items-center justify-between">
+    <div className="flex items-centre justify-between">
       <h3 className="text-lg font-medium text-slate-100">Candidates</h3>
       <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">
         <Plus className="h-4 w-4 mr-2" />
@@ -469,7 +469,7 @@ const components = [
       <tbody className="divide-y divide-slate-700/30">
         <tr className="hover:bg-slate-700/20">
           <td className="px-4 py-3">
-            <div className="flex items-center gap-3">
+            <div className="flex items-centre gap-3">
               <Avatar className="h-8 w-8">
                 <AvatarImage src="/placeholder.svg" />
                 <AvatarFallback>SJ</AvatarFallback>
@@ -485,7 +485,7 @@ const components = [
             <Badge className="bg-green-500/20 text-green-300">Active</Badge>
           </td>
           <td className="px-4 py-3">
-            <div className="flex items-center gap-2">
+            <div className="flex items-centre gap-2">
               <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                 <Eye className="h-4 w-4" />
               </Button>
@@ -502,7 +502,7 @@ const components = [
     component: (
       <div className="w-full bg-slate-800/60 border border-slate-700/50 rounded-lg overflow-hidden">
         <div className="p-4 border-b border-slate-700/50">
-          <div className="flex items-center justify-between">
+          <div className="flex items-centre justify-between">
             <h3 className="text-lg font-medium text-slate-100">Candidates</h3>
             <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">
               <Plus className="h-4 w-4 mr-2" />
@@ -523,7 +523,7 @@ const components = [
             <tbody className="divide-y divide-slate-700/30">
               <tr className="hover:bg-slate-700/20">
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-centre gap-3">
                     <Avatar className="h-8 w-8">
                       <AvatarImage src="/placeholder.svg" />
                       <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300">SJ</AvatarFallback>
@@ -539,7 +539,7 @@ const components = [
                   <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Active</Badge>
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300">
                       <Eye className="h-4 w-4" />
                     </Button>
@@ -554,7 +554,7 @@ const components = [
               </tr>
               <tr className="hover:bg-slate-700/20">
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-centre gap-3">
                     <Avatar className="h-8 w-8">
                       <AvatarImage src="/placeholder.svg" />
                       <AvatarFallback className="bg-blue-500/20 text-blue-300">MJ</AvatarFallback>
@@ -570,7 +570,7 @@ const components = [
                   <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">Interview</Badge>
                 </td>
                 <td className="px-4 py-3">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <Button variant="ghost" size="sm" className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300">
                       <Eye className="h-4 w-4" />
                     </Button>
@@ -604,12 +604,12 @@ const components = [
     </div>
   </CardHeader>
   <CardContent>
-    <div className="flex items-center gap-6 text-sm mb-4">
-      <div className="flex items-center gap-2">
+    <div className="flex items-centre gap-6 text-sm mb-4">
+      <div className="flex items-centre gap-2">
         <PoundSterling className="h-4 w-4 text-green-400" />
                     <span className="text-slate-300">£95k - £120k</span>
       </div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-centre gap-2">
         <Users className="h-4 w-4 text-blue-400" />
         <span className="text-slate-300">25 applicants</span>
       </div>
@@ -632,12 +632,12 @@ const components = [
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
+          <div className="flex items-centre gap-6 text-sm">
+            <div className="flex items-centre gap-2">
               <PoundSterling className="h-4 w-4 text-green-400" />
               <span className="text-slate-300">£95k - £120k</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-centre gap-2">
               <Users className="h-4 w-4 text-blue-400" />
               <span className="text-slate-300">25 applicants</span>
             </div>
@@ -668,7 +668,7 @@ const components = [
   </CardHeader>
   <CardContent>
     <div className="space-y-3">
-      <div className="flex items-center gap-3 p-3 bg-slate-700/30 rounded-lg">
+      <div className="flex items-centre gap-3 p-3 bg-slate-700/30 rounded-lg">
         <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
         <div className="flex-1">
           <div className="text-sm font-medium text-slate-100">Interview with Sarah Johnson</div>
@@ -676,7 +676,7 @@ const components = [
         </div>
         <div className="text-xs text-slate-400">2:00 PM</div>
       </div>
-      <div className="flex items-center gap-3 p-3 bg-slate-700/30 rounded-lg">
+      <div className="flex items-centre gap-3 p-3 bg-slate-700/30 rounded-lg">
         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         <div className="flex-1">
           <div className="text-sm font-medium text-slate-100">Team Standup</div>
@@ -695,7 +695,7 @@ const components = [
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
-            <div className="flex items-center gap-3 p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all">
+            <div className="flex items-centre gap-3 p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all">
               <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
               <div className="flex-1">
                 <div className="text-sm font-medium text-slate-100">Interview with Sarah Johnson</div>
@@ -703,7 +703,7 @@ const components = [
               </div>
               <div className="text-xs text-slate-400">2:00 PM</div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all">
+            <div className="flex items-centre gap-3 p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all">
               <div className="w-3 h-3 bg-green-500 rounded-full"></div>
               <div className="flex-1">
                 <div className="text-sm font-medium text-slate-100">Team Standup</div>
@@ -711,7 +711,7 @@ const components = [
               </div>
               <div className="text-xs text-slate-400">9:00 AM</div>
             </div>
-            <div className="flex items-center gap-3 p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all">
+            <div className="flex items-centre gap-3 p-3 bg-slate-700/30 rounded-lg hover:bg-slate-700/50 transition-all">
               <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
               <div className="flex-1">
                 <div className="text-sm font-medium text-slate-100">Candidate Review</div>
@@ -739,7 +739,7 @@ export function DashboardComponents({
   onCopyCode, 
   copiedCode, 
   viewMode, 
-  favorites, 
+  favourites, 
   onToggleFavourite 
 }: DashboardComponentsProps) {
   const filteredComponents = components.filter(component =>
@@ -750,7 +750,7 @@ export function DashboardComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-centre justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Dashboard Components</h2>
             <p className="text-slate-400">Complete dashboard interface components and layouts</p>
@@ -771,7 +771,7 @@ export function DashboardComponents({
               onCopyCode={onCopyCode}
               copiedCode={copiedCode}
               viewMode={viewMode}
-              isFavourite={favorites.has(component.id)}
+              isFavourite={favourites.has(component.id)}
               onToggleFavourite={() => onToggleFavourite(component.id)}
               searchQuery={searchQuery}
             >
@@ -781,7 +781,7 @@ export function DashboardComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-centre py-12 text-slate-400">
             <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -791,3 +791,7 @@ export function DashboardComponents({
     </div>
   )
 } 
+
+
+
+

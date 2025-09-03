@@ -57,13 +57,13 @@ export default function Tokens() {
         <div className="flex flex-col min-h-screen">
           {/* Header */}
           <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50">
-            <div className="flex items-center justify-between p-6">
+            <div className="flex items-centre justify-between p-6">
               <div>
                 <h1 className="text-3xl font-bold text-slate-100 mb-2">Design Tokens</h1>
                 <p className="text-slate-400">Foundational design values that ensure consistency across our design system</p>
               </div>
               
-              <div className="flex items-center gap-4">
+              <div className="flex items-centre gap-4">
                 <Button
                   variant="outline"
                   size="sm"
@@ -74,7 +74,7 @@ export default function Tokens() {
                   Settings
                 </Button>
                 
-                <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colors">
+                <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours">
                   <Download className="h-4 w-4 mr-2" />
                   Export Tokens
                 </Button>
@@ -89,7 +89,7 @@ export default function Tokens() {
             {/* Settings Panel */}
             {settingsOpen && (
               <div className="mx-6 mb-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-centre justify-between mb-4">
                   <h3 className="font-medium text-slate-200">Interface Settings</h3>
                   <Button
                     variant="ghost"
@@ -118,7 +118,7 @@ export default function Tokens() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-centre justify-between">
                     <Label className="text-sm font-medium text-slate-300">Reduced Motion</Label>
                     <Switch />
                   </div>
@@ -136,9 +136,9 @@ export default function Tokens() {
                     <FileText className="h-4 w-4 mr-2" />
                     Overview
                   </TabsTrigger>
-                  <TabsTrigger value="colors" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all">
+                  <TabsTrigger value="colours" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all">
                     <Palette className="h-4 w-4 mr-2" />
-                    Colors
+                    colours
                   </TabsTrigger>
                   <TabsTrigger value="typography" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all">
                     <Type className="h-4 w-4 mr-2" />
@@ -158,7 +158,7 @@ export default function Tokens() {
                   <OverviewTab onCopyCode={handleCopyCode} copiedCode={copiedCode} safeAnimationSpeed={safeAnimationSpeed} />
                 </TabsContent>
                 
-                <TabsContent value="colors">
+                <TabsContent value="colours">
                   <ColorsTab onCopyCode={handleCopyCode} copiedCode={copiedCode} safeAnimationSpeed={safeAnimationSpeed} />
                 </TabsContent>
                 
@@ -186,7 +186,7 @@ export default function Tokens() {
 function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-center">
+      <div className="text-centre">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Design Tokens Overview</h2>
         <p className="text-slate-400">Foundational design values for consistent UI development</p>
       </div>
@@ -194,21 +194,21 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-centre gap-2">
               <Palette className="h-5 w-5 text-fuchsia-400" />
-              Colors
+              colours
             </CardTitle>
-            <CardDescription>Brand and semantic color palette</CardDescription>
+            <CardDescription>Brand and semantic colour palette</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-slate-100">23</div>
-            <div className="text-sm text-slate-400">Color tokens</div>
+            <div className="text-sm text-slate-400">colour tokens</div>
           </CardContent>
         </Card>
         
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-centre gap-2">
               <Type className="h-5 w-5 text-blue-400" />
               Typography
             </CardTitle>
@@ -222,7 +222,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
         
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-centre gap-2">
               <Grid3X3 className="h-5 w-5 text-green-400" />
               Spacing
             </CardTitle>
@@ -236,7 +236,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
         
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-centre gap-2">
               <Code className="h-5 w-5 text-purple-400" />
               Usage
             </CardTitle>
@@ -255,17 +255,17 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
 function ColorsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   const colorPalettes = [
     {
-      name: "Primary Colors",
-      description: "Main brand identity colors",
-      colors: [
+      name: "Primary colours",
+      description: "Main brand identity colours",
+      colours: [
         { name: "Fuchsia 500", value: "#ec4899", class: "bg-fuchsia-500" },
         { name: "Purple 500", value: "#a855f7", class: "bg-purple-500" }
       ]
     },
     {
-      name: "Neutral Colors", 
-      description: "Background and text colors",
-      colors: [
+      name: "Neutral colours", 
+      description: "Background and text colours",
+      colours: [
         { name: "Slate 950", value: "#020617", class: "bg-slate-950" },
         { name: "Slate 100", value: "#f1f5f9", class: "bg-slate-100" }
       ]
@@ -274,9 +274,9 @@ function ColorsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode:
   
   return (
     <div className="space-y-8">
-      <div className="text-center">
-        <h2 className="text-2xl font-bold text-slate-100 mb-2">Color Tokens</h2>
-        <p className="text-slate-400">Brand and semantic color palette</p>
+      <div className="text-centre">
+        <h2 className="text-2xl font-bold text-slate-100 mb-2">colour Tokens</h2>
+        <p className="text-slate-400">Brand and semantic colour palette</p>
       </div>
       
       {colorPalettes.map((palette) => (
@@ -287,21 +287,21 @@ function ColorsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode:
           </CardHeader>
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2">
-              {palette.colors.map((color) => (
-                <div key={color.name} className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-md ${color.class} border border-slate-700`} />
+              {palette.colours.map((colour) => (
+                <div key={colour.name} className="flex items-centre justify-between p-3 bg-slate-900/50 rounded-lg">
+                  <div className="flex items-centre gap-3">
+                    <div className={`w-8 h-8 rounded-md ${colour.class} border border-slate-700`} />
                     <div>
-                      <div className="text-sm font-medium text-slate-300">{color.name}</div>
-                      <div className="text-xs text-slate-500">{color.value}</div>
+                      <div className="text-sm font-medium text-slate-300">{colour.name}</div>
+                      <div className="text-xs text-slate-500">{colour.value}</div>
                     </div>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
-                    onClick={() => onCopyCode(color.class, color.name)}
+                    onClick={() => onCopyCode(colour.class, colour.name)}
                   >
-                    {copiedCode === color.name ? (
+                    {copiedCode === colour.name ? (
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                     ) : (
                       <Copy className="h-4 w-4" />
@@ -320,7 +320,7 @@ function ColorsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode:
 function TypographyTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-center">
+      <div className="text-centre">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Typography Tokens</h2>
         <p className="text-slate-400">Font scales and text styles</p>
       </div>
@@ -331,7 +331,7 @@ function TypographyTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyC
 function SpacingTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-center">
+      <div className="text-centre">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Spacing Tokens</h2>
         <p className="text-slate-400">Consistent spacing scale</p>
       </div>
@@ -342,10 +342,14 @@ function SpacingTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode
 function UsageTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-center">
+      <div className="text-centre">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Usage Examples</h2>
         <p className="text-slate-400">How to implement design tokens in your code</p>
       </div>
     </div>
   )
 }
+
+
+
+

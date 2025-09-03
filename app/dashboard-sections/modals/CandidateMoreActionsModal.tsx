@@ -11,12 +11,12 @@ interface CandidateMoreActionsModalProps {
 }
 
 const actions = [
-  { icon: <Users className="h-4 w-4" />, label: "Send Message", color: "text-blue-400" },
-  { icon: <Target className="h-4 w-4" />, label: "Add to Favorites", color: "text-yellow-400" },
-  { icon: <Download className="h-4 w-4" />, label: "Download Resume", color: "text-green-400" },
-  { icon: <Activity className="h-4 w-4" />, label: "Add Notes", color: "text-purple-400" },
-  { icon: <ArrowRight className="h-4 w-4" />, label: "Move to Different Stage", color: "text-orange-400" },
-  { icon: <Mail className="h-4 w-4" />, label: "Share Profile", color: "text-cyan-400" }
+  { icon: <Users className="h-4 w-4" />, label: "Send Message", colour: "text-blue-400" },
+  { icon: <Target className="h-4 w-4" />, label: "Add to favourites", colour: "text-yellow-400" },
+  { icon: <Download className="h-4 w-4" />, label: "Download Resume", colour: "text-green-400" },
+  { icon: <Activity className="h-4 w-4" />, label: "Add Notes", colour: "text-purple-400" },
+  { icon: <ArrowRight className="h-4 w-4" />, label: "Move to Different Stage", colour: "text-orange-400" },
+  { icon: <Mail className="h-4 w-4" />, label: "Share Profile", colour: "text-cyan-400" }
 ]
 
 export function CandidateMoreActionsModal({ open, candidate, onClose, setNotifications }: CandidateMoreActionsModalProps) {
@@ -26,9 +26,9 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
       <DialogContent className="max-w-md p-0 overflow-hidden">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-purple-800/20 to-purple-800/10 rounded-t-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
+          <div className="flex items-centre justify-between">
+            <div className="flex items-centre gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-centre justify-centre">
                 <MoreVertical className="h-5 w-5 text-white" />
               </div>
               <div>
@@ -52,7 +52,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
             {actions.map((action, i) => (
               <button
                 key={i}
-                className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800/50 transition-colors text-left"
+                className="w-full flex items-centre gap-3 p-3 rounded-lg hover:bg-slate-800/50 transition-colours text-left"
                 onClick={() => {
                   onClose()
                   setNotifications(prev => [
@@ -61,7 +61,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
                   ])
                 }}
               >
-                <div className={`${action.color}`}>{action.icon}</div>
+                <div className={`${action.colour}`}>{action.icon}</div>
                 <span className="text-slate-300">{action.label}</span>
                 <ArrowRight className="h-3 w-3 text-slate-500 ml-auto" />
               </button>
@@ -72,3 +72,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
     </Dialog>
   )
 } 
+
+
+
+

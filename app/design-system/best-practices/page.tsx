@@ -53,8 +53,8 @@ export default function BestPractices() {
         {/* Enhanced Header */}
         <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800/50 shadow-lg shadow-slate-900/20">
           <div className="px-6 lg:px-12 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+            <div className="flex items-centre justify-between">
+              <div className="flex items-centre gap-4">
                 <div>
                   <h1 className="text-2xl font-bold text-slate-100">Best Practices</h1>
                   <p className="text-sm text-slate-400">Guidelines for building accessible, performant applications</p>
@@ -62,7 +62,7 @@ export default function BestPractices() {
               </div>
 
               {/* Header Actions */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-centre gap-4">
                 <Button
                   variant="outline"
                   size="sm"
@@ -74,8 +74,8 @@ export default function BestPractices() {
                   Settings
                 </Button>
                 
-                <div className="hidden md:flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className="hidden md:flex items-centre gap-2">
+                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <Download className="h-4 w-4 mr-2" />
                     Checklist
                   </Button>
@@ -90,7 +90,7 @@ export default function BestPractices() {
             {/* Settings Panel */}
             {settingsOpen && (
               <div className="mt-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700 animate-in slide-in-from-top-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-centre justify-between mb-4">
                   <h3 className="font-medium text-slate-200">Interface Settings</h3>
                   <Button
                     variant="ghost"
@@ -103,7 +103,7 @@ export default function BestPractices() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-centre justify-between">
                       <Label className="text-sm font-medium">Animation Speed</Label>
                       <span className="text-xs text-slate-400 font-mono">{safeAnimationSpeed}x</span>
                     </div>
@@ -118,7 +118,7 @@ export default function BestPractices() {
                   </div>
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">View Options</Label>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-centre gap-2">
                       <Button size="sm" variant="outline" className="h-8">
                         <Eye className="h-3 w-3 mr-1" />
                         Preview
@@ -138,32 +138,32 @@ export default function BestPractices() {
         <div className="px-6 lg:px-12 py-8">
           {/* Quick Value Surface - Universal Comprehension */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colors cursor-pointer">
-              <CardContent className="p-4 text-center">
+            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
+              <CardContent className="p-4 text-centre">
                 <Shield className="h-6 w-6 text-green-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">AAA</div>
                 <div className="text-xs text-slate-400">Accessibility</div>
                 <div className="text-xs text-green-400 mt-1">WCAG 2.1</div>
               </CardContent>
             </Card>
-            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colors cursor-pointer">
-              <CardContent className="p-4 text-center">
+            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
+              <CardContent className="p-4 text-centre">
                 <Zap className="h-6 w-6 text-yellow-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">90+</div>
                 <div className="text-xs text-slate-400">Performance</div>
                 <div className="text-xs text-yellow-400 mt-1">Lighthouse</div>
               </CardContent>
             </Card>
-            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colors cursor-pointer">
-              <CardContent className="p-4 text-center">
+            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
+              <CardContent className="p-4 text-centre">
                 <Target className="h-6 w-6 text-blue-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">80%</div>
                 <div className="text-xs text-slate-400">Test Coverage</div>
                 <div className="text-xs text-blue-400 mt-1">Quality assured</div>
               </CardContent>
             </Card>
-            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colors cursor-pointer">
-              <CardContent className="p-4 text-center">
+            <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
+              <CardContent className="p-4 text-centre">
                 <Award className="h-6 w-6 text-purple-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">5★</div>
                 <div className="text-xs text-slate-400">Best Practices</div>
@@ -175,8 +175,8 @@ export default function BestPractices() {
           {/* Hero Section */}
           <section className="mb-12 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5 rounded-3xl -z-10" />
-            <div className="text-center max-w-4xl mx-auto py-12">
-              <div className="flex items-center justify-center gap-3 mb-6">
+            <div className="text-centre max-w-4xl mx-auto py-12">
+              <div className="flex items-centre justify-centre gap-3 mb-6">
                 <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                   <Award className="w-3 h-3 mr-1" />
                   Industry Standard
@@ -209,7 +209,7 @@ export default function BestPractices() {
                   <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
                   <TabsTrigger 
                     value="overview"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       {/* Background glow effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
@@ -228,7 +228,7 @@ export default function BestPractices() {
                       </div>
                       
                       {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Overview
                       </span>
                       
@@ -237,7 +237,7 @@ export default function BestPractices() {
                   </TabsTrigger>
                   <TabsTrigger 
                     value="development"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       {/* Background glow effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
@@ -256,7 +256,7 @@ export default function BestPractices() {
                       </div>
                       
                       {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Development
                       </span>
                       
@@ -265,7 +265,7 @@ export default function BestPractices() {
                   </TabsTrigger>
                   <TabsTrigger 
                     value="accessibility"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       {/* Background glow effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
@@ -284,7 +284,7 @@ export default function BestPractices() {
                       </div>
                       
                       {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Accessibility
                       </span>
                       
@@ -293,7 +293,7 @@ export default function BestPractices() {
                   </TabsTrigger>
                   <TabsTrigger 
                     value="performance"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       {/* Background glow effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
@@ -312,7 +312,7 @@ export default function BestPractices() {
                       </div>
                       
                       {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Performance
                       </span>
                       
@@ -356,23 +356,23 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       title: "Accessibility First",
       description: "Design and build for all users from the start",
       icon: Globe,
-      color: "text-green-400",
+      colour: "text-green-400",
       bgColor: "bg-green-500/20",
       principles: ["WCAG 2.1 AA compliance", "Semantic HTML structure", "Keyboard navigation", "Screen reader support"]
     },
     {
       title: "Performance Focused",
-      description: "Optimize for speed and efficiency",
+      description: "optimise for speed and efficiency",
       icon: Zap,
-      color: "text-yellow-400",
+      colour: "text-yellow-400",
       bgColor: "bg-yellow-500/20",
-      principles: ["Core Web Vitals", "Bundle optimization", "Lazy loading", "Caching strategies"]
+      principles: ["Core Web Vitals", "Bundle optimisation", "Lazy loading", "Caching strategies"]
     },
     {
       title: "User Experience",
       description: "Create intuitive and delightful interactions",
       icon: Users,
-      color: "text-blue-400",
+      colour: "text-blue-400",
       bgColor: "bg-blue-500/20",
       principles: ["User research driven", "Consistent patterns", "Clear feedback", "Error prevention"]
     },
@@ -380,7 +380,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       title: "Code Quality",
       description: "Maintainable, scalable, and robust code",
       icon: Code2,
-      color: "text-purple-400",
+      colour: "text-purple-400",
       bgColor: "bg-purple-500/20",
       principles: ["Type safety", "Testing coverage", "Code reviews", "Documentation"]
     }
@@ -400,11 +400,11 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
               <Card key={category.title} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className={`w-12 h-12 ${category.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                      <category.icon className={`h-6 w-6 ${category.color}`} />
+                    <div className={`w-12 h-12 ${category.bgColor} rounded-xl flex items-centre justify-centre group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <category.icon className={`h-6 w-6 ${category.colour}`} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-slate-100 group-hover:text-fuchsia-300 transition-colors mb-2" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <h3 className="font-semibold text-slate-100 group-hover:text-fuchsia-300 transition-colours mb-2" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                         {category.title}
                       </h3>
                       <p className="text-slate-400 text-sm mb-3">{category.description}</p>
@@ -413,7 +413,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                   
                   <div className="space-y-2">
                     {category.principles.map((principle, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-400">
+                      <div key={idx} className="flex items-centre gap-2 text-xs text-slate-400">
                         <CheckCircle2 className="h-3 w-3 text-green-400 flex-shrink-0" />
                         {principle}
                       </div>
@@ -430,7 +430,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       <div className="grid md:grid-cols-2 gap-8">
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="text-xl text-slate-100 flex items-center gap-2">
+            <CardTitle className="text-xl text-slate-100 flex items-centre gap-2">
               <CheckCircle2 className="h-5 w-5 text-green-400" />
               Best Practices
             </CardTitle>
@@ -443,12 +443,12 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 "Implement proper error handling and validation",
                 "Write comprehensive tests for critical paths",
                 "Follow consistent naming conventions",
-                "Optimize images and assets for web",
+                "optimise images and assets for web",
                 "Use progressive enhancement strategies",
                 "Implement proper loading states",
                 "Ensure keyboard accessibility throughout"
               ].map((practice, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                   <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-300 text-sm">{practice}</span>
                 </div>
@@ -459,7 +459,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
 
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="text-xl text-slate-100 flex items-center gap-2">
+            <CardTitle className="text-xl text-slate-100 flex items-centre gap-2">
               <X className="h-5 w-5 text-red-400" />
               Common Pitfalls
             </CardTitle>
@@ -468,16 +468,16 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
           <CardContent>
             <div className="space-y-3">
               {[
-                "Relying solely on color to convey information",
+                "Relying solely on colour to convey information",
                 "Using non-descriptive link text like 'click here'",
                 "Ignoring mobile-first design principles",
                 "Overusing animations that don't add value",
-                "Neglecting performance optimization",
+                "Neglecting performance optimisation",
                 "Skipping accessibility testing and audits",
                 "Using overly complex component hierarchies",
                 "Forgetting to handle error states properly"
               ].map((pitfall, idx) => (
-                <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                   <X className="h-4 w-4 text-red-400 flex-shrink-0 mt-0.5" />
                   <span className="text-slate-300 text-sm">{pitfall}</span>
                 </div>
@@ -496,13 +496,13 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
         <CardContent>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { metric: "Performance Score", target: "90+", description: "Lighthouse score", icon: Zap, color: "text-yellow-400" },
-              { metric: "Accessibility Score", target: "100", description: "WCAG compliance", icon: Globe, color: "text-green-400" },
-              { metric: "Test Coverage", target: "80%+", description: "Code coverage", icon: Shield, color: "text-blue-400" },
-              { metric: "Bundle Size", target: "<200KB", description: "Initial load", icon: Target, color: "text-purple-400" }
+              { metric: "Performance Score", target: "90+", description: "Lighthouse score", icon: Zap, colour: "text-yellow-400" },
+              { metric: "Accessibility Score", target: "100", description: "WCAG compliance", icon: Globe, colour: "text-green-400" },
+              { metric: "Test Coverage", target: "80%+", description: "Code coverage", icon: Shield, colour: "text-blue-400" },
+              { metric: "Bundle Size", target: "<200KB", description: "Initial load", icon: Target, colour: "text-purple-400" }
             ].map((metric, index) => (
-              <div key={metric.metric} className="text-center p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colors group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <metric.icon className={`h-8 w-8 ${metric.color} mx-auto mb-3 group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
+              <div key={metric.metric} className="text-centre p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <metric.icon className={`h-8 w-8 ${metric.colour} mx-auto mb-3 group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
                 <div className="text-2xl font-bold text-slate-100 mb-1">{metric.target}</div>
                 <div className="text-sm text-slate-400 mb-2">{metric.metric}</div>
                 <div className="text-xs text-slate-500">{metric.description}</div>
@@ -521,7 +521,7 @@ function DevelopmentTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
       {/* Code Quality */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex items-centre justify-between">
             <div>
               <CardTitle className="text-xl text-slate-100">Code Quality Standards</CardTitle>
               <CardDescription className="mt-2">Writing maintainable and scalable code</CardDescription>
@@ -579,7 +579,7 @@ export function CandidateCard({
 }: CandidateCardProps) {
   return (
     <Card className={cn(
-      "transition-colors",
+      "transition-colours",
       isSelected && "border-fuchsia-500"
     )}>
       {/* Component content */}
@@ -724,7 +724,7 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
       title: "Visual Design",
       description: "Ensure visual accessibility for all users",
       icon: Eye,
-      examples: ["4.5:1 contrast ratio", "No color-only meaning", "Scalable text", "Focus indicators"]
+      examples: ["4.5:1 contrast ratio", "No colour-only meaning", "Scalable text", "Focus indicators"]
     }
   ]
 
@@ -742,11 +742,11 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
               <Card key={area.title} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                    <div className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-centre justify-centre group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                       <area.icon className="h-5 w-5 text-green-400" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-slate-100 group-hover:text-fuchsia-300 transition-colors mb-2" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <h3 className="font-semibold text-slate-100 group-hover:text-fuchsia-300 transition-colours mb-2" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                         {area.title}
                       </h3>
                       <p className="text-slate-400 text-sm mb-3">{area.description}</p>
@@ -755,7 +755,7 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
                   
                   <div className="space-y-2">
                     {area.examples.map((example, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs text-slate-400">
+                      <div key={idx} className="flex items-centre gap-2 text-xs text-slate-400">
                         <CheckCircle2 className="h-3 w-3 text-green-400 flex-shrink-0" />
                         {example}
                       </div>
@@ -835,7 +835,7 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
             <div className="space-y-4">
               <h4 className="font-medium text-green-400">Manual Testing</h4>
               <div className="space-y-2">
-                {["Keyboard navigation", "Screen reader testing", "Color contrast", "Zoom testing"].map((test, idx) => (
+                {["Keyboard navigation", "Screen reader testing", "colour contrast", "Zoom testing"].map((test, idx) => (
                   <div key={idx} className="p-2 bg-slate-900/30 rounded text-sm text-slate-300">
                     {test}
                   </div>
@@ -876,25 +876,25 @@ function PerformanceTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
                 name: "Largest Contentful Paint", 
                 target: "< 2.5s", 
                 description: "Loading performance",
-                color: "text-green-400"
+                colour: "text-green-400"
               },
               { 
                 metric: "FID", 
                 name: "First Input Delay", 
                 target: "< 100ms", 
                 description: "Interactivity",
-                color: "text-blue-400"
+                colour: "text-blue-400"
               },
               { 
                 metric: "CLS", 
                 name: "Cumulative Layout Shift", 
                 target: "< 0.1", 
                 description: "Visual stability",
-                color: "text-purple-400"
+                colour: "text-purple-400"
               }
             ].map((vital, index) => (
-              <div key={vital.metric} className="text-center p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colors group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className={`text-3xl font-bold ${vital.color} mb-2`}>{vital.metric}</div>
+              <div key={vital.metric} className="text-centre p-6 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className={`text-3xl font-bold ${vital.colour} mb-2`}>{vital.metric}</div>
                 <div className="text-sm text-slate-200 mb-1">{vital.name}</div>
                 <div className="text-lg font-semibold text-slate-100 mb-2">{vital.target}</div>
                 <div className="text-xs text-slate-400">{vital.description}</div>
@@ -904,12 +904,12 @@ function PerformanceTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
             </CardContent>
           </Card>
 
-      {/* Optimization Strategies */}
+      {/* optimisation Strategies */}
       <Card className="bg-slate-800/30 border-slate-700/50">
             <CardHeader>
-          <div className="flex items-center justify-between">
+          <div className="flex items-centre justify-between">
             <div>
-              <CardTitle className="text-xl text-slate-100">Performance Optimization</CardTitle>
+              <CardTitle className="text-xl text-slate-100">Performance optimisation</CardTitle>
               <CardDescription className="mt-2">Strategies for improving application speed</CardDescription>
             </div>
             <Button
@@ -944,7 +944,7 @@ const JobsPage = lazy(() =>
               </pre>
             </div>
             <div className="space-y-4">
-              <h4 className="font-medium text-fuchsia-300">Image Optimization</h4>
+              <h4 className="font-medium text-fuchsia-300">Image optimisation</h4>
               <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
                 <code className="text-slate-300">{`// Next.js Image component
 <Image
@@ -984,7 +984,7 @@ const JobsPage = lazy(() =>
               { tool: "WebPageTest", use: "Detailed analysis", icon: Eye },
               { tool: "Real User Monitoring", use: "Production data", icon: Users }
             ].map((item, index) => (
-              <div key={item.tool} className="p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colors group text-center" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+              <div key={item.tool} className="p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group text-centre" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <item.icon className="h-8 w-8 text-fuchsia-400 mx-auto mb-3 group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
                 <div className="font-medium text-slate-200 mb-1">{item.tool}</div>
                 <div className="text-xs text-slate-400">{item.use}</div>
@@ -996,3 +996,7 @@ const JobsPage = lazy(() =>
     </div>
   )
 } 
+
+
+
+

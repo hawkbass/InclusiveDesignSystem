@@ -10,31 +10,31 @@ import {
   CheckCircle2
 } from "lucide-react"
 
-interface ColorsAtomsProps {
+interface ColoursAtomsProps {
   searchQuery: string
   viewMode: "grid" | "list"
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
-  favorites: Set<string>
-  onToggleFavorite: (id: string) => void
+  favourites: Set<string>
+  onToggleFavourite: (id: string) => void
 }
 
-export function ColorsAtoms({ 
+export function ColoursAtoms({ 
   searchQuery, 
   viewMode, 
   onCopyCode, 
   copiedCode, 
-  favorites, 
-  onToggleFavorite 
-}: ColorsAtomsProps) {
-  // Based on ACTUAL codebase analysis of all colors used
+  favourites, 
+  onToggleFavourite 
+}: ColoursAtomsProps) {
+  // Based on ACTUAL codebase analysis of all colours used
   const colorPalettes = [
     {
       id: "primary",
       name: "Primary Brand (Fuchsia)",
       description: "Main brand identity colours - CTAs, highlights, gradients throughout project",
       category: "Brand",
-      colors: [
+      colours: [
         { name: "Fuchsia 300", value: "#f8b4d9", class: "bg-fuchsia-300", usage: "Light accents, tab active states", textClass: "text-fuchsia-300" },
         { name: "Fuchsia 400", value: "#f472b6", class: "bg-fuchsia-400", usage: "Interactive elements, bullet points", textClass: "text-fuchsia-400" },
         { name: "Fuchsia 500", value: "#ec4899", class: "bg-fuchsia-500", usage: "Primary buttons, brand highlights", textClass: "text-fuchsia-500" },
@@ -46,9 +46,9 @@ export function ColorsAtoms({
     {
       id: "secondary", 
       name: "Secondary Brand (Purple)",
-      description: "Complementary brand colors - gradients, secondary actions",
+      description: "Complementary brand colours - gradients, secondary actions",
       category: "Brand",
-      colors: [
+      colours: [
         { name: "Purple 300", value: "#d8b4fe", class: "bg-purple-300", usage: "Light secondary accents", textClass: "text-purple-300" },
         { name: "Purple 400", value: "#c084fc", class: "bg-purple-400", usage: "Secondary interactive elements", textClass: "text-purple-400" },
         { name: "Purple 500", value: "#a855f7", class: "bg-purple-500", usage: "Secondary buttons, gradients", textClass: "text-purple-500" },
@@ -60,9 +60,9 @@ export function ColorsAtoms({
     {
       id: "neutral",
       name: "Neutral Slate System",
-      description: "Core neutral colors - backgrounds, text, borders throughout interface", 
+      description: "Core neutral colours - backgrounds, text, borders throughout interface", 
       category: "System",
-      colors: [
+      colours: [
         { name: "Slate 950", value: "#020617", class: "bg-slate-950", usage: "Page background, darkest areas", textClass: "text-slate-950" },
         { name: "Slate 900", value: "#0f172a", class: "bg-slate-900", usage: "Card backgrounds, main sections", textClass: "text-slate-900" },
         { name: "Slate 800", value: "#1e293b", class: "bg-slate-800", usage: "Interactive backgrounds, code blocks", textClass: "text-slate-800" },
@@ -80,7 +80,7 @@ export function ColorsAtoms({
       name: "System Gradients", 
       description: "All gradient combinations used throughout the interface - primary, secondary, and state-specific",
       category: "Brand",
-      colors: [
+      colours: [
         // Primary Brand Gradients
         { name: "Primary Gradient", value: "linear-gradient(to right, #db2777, #9333ea)", class: "bg-gradient-to-r from-fuchsia-600 to-purple-600", usage: "Primary buttons, brand elements, icons" },
         { name: "Primary Hover", value: "linear-gradient(to right, #be185d, #7c3aed)", class: "bg-gradient-to-r from-fuchsia-700 to-purple-700", usage: "Primary button hover states" },
@@ -103,7 +103,7 @@ export function ColorsAtoms({
         // Background Gradients
         { name: "Hero Background", value: "linear-gradient(to bottom right, #0f172a, #020617, #312e81)", class: "bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950", usage: "Hero sections, page headers" },
         { name: "Purple Background", value: "linear-gradient(to bottom right, #0f172a, #020617, #581c87)", class: "bg-gradient-to-br from-slate-900 via-slate-950 to-purple-950", usage: "Component page headers" },
-        { name: "Multi-color Text", value: "linear-gradient(to right, #db2777, #9333ea, #3b82f6)", class: "bg-gradient-to-r from-fuchsia-600 via-purple-600 to-blue-600", usage: "Gradient text with bg-clip-text" },
+        { name: "Multi-colour Text", value: "linear-gradient(to right, #db2777, #9333ea, #3b82f6)", class: "bg-gradient-to-r from-fuchsia-600 via-purple-600 to-blue-600", usage: "Gradient text with bg-clip-text" },
         { name: "Principles Header", value: "linear-gradient(to right, rgba(59,130,246,0.1), rgba(168,85,247,0.1), rgba(34,197,94,0.1))", class: "bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-green-500/10", usage: "Principles page header background" },
         { name: "Principles Text", value: "linear-gradient(to right, #3b82f6, #8b5cf6, #10b981)", class: "bg-gradient-to-r from-blue-500 via-purple-500 to-green-500", usage: "Principles page title text" },
         
@@ -123,7 +123,7 @@ export function ColorsAtoms({
       name: "Glassmorphism & Opacity", 
       description: "Transparent overlays and glass-like effects with backdrop blur",
       category: "Effects",
-      colors: [
+      colours: [
         { name: "Glass Card", value: "rgba(30, 41, 59, 0.5)", class: "bg-slate-800/50", usage: "Card backgrounds with transparency" },
         { name: "Glass Light", value: "rgba(30, 41, 59, 0.3)", class: "bg-slate-800/30", usage: "Lighter glass overlays" },
         { name: "Glass Heavy", value: "rgba(15, 23, 42, 0.5)", class: "bg-slate-900/50", usage: "Stronger glass effects" },
@@ -139,7 +139,7 @@ export function ColorsAtoms({
       name: "Semantic States", 
       description: "Success, warning, error, and info states with their variations",
       category: "System",
-      colors: [
+      colours: [
         { name: "Success", value: "#10b981", class: "bg-emerald-500", usage: "Success states, confirmations", textClass: "text-emerald-500" },
         { name: "Success Dark", value: "#064e3b", class: "bg-emerald-950", usage: "Success badge backgrounds", textClass: "text-emerald-950" },
         { name: "Success Light", value: "#6ee7b7", class: "bg-emerald-300", usage: "Success text on dark", textClass: "text-emerald-300" },
@@ -157,7 +157,7 @@ export function ColorsAtoms({
       name: "Interactive States", 
       description: "Hover, active, and focus states used throughout components",
       category: "System",
-      colors: [
+      colours: [
         { name: "Hover Slate", value: "#334155", class: "hover:bg-slate-700", usage: "General hover backgrounds" },
         { name: "Hover Light", value: "#475569", class: "hover:bg-slate-600", usage: "Lighter hover states" },
         { name: "Active Fuchsia", value: "rgba(236, 72, 153, 0.2)", class: "bg-fuchsia-500/20", usage: "Active tab backgrounds" },
@@ -172,14 +172,14 @@ export function ColorsAtoms({
   const filteredPalettes = colorPalettes.filter(palette =>
     palette.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     palette.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    palette.colors.some(color => color.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    palette.colours.some(colour => colour.name.toLowerCase().includes(searchQuery.toLowerCase()))
   )
 
   return (
     <div className="space-y-12">
       {filteredPalettes.map((palette) => (
         <div key={palette.id} className="space-y-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-centre justify-between">
             <div>
               <h3 className="text-3xl font-bold text-slate-100 mb-3">{palette.name}</h3>
               <p className="text-lg text-slate-400 mb-2">{palette.description}</p>
@@ -193,57 +193,57 @@ export function ColorsAtoms({
               onClick={() => onToggleFavorite(palette.id)}
               className="text-slate-400 hover:text-pink-400"
             >
-              <Heart className={`h-5 w-5 ${favorites.has(palette.id) ? 'fill-current text-pink-400' : ''}`} />
+              <Heart className={`h-5 w-5 ${favourites.has(palette.id) ? 'fill-current text-pink-400' : ''}`} />
             </Button>
           </div>
 
           <div className={`grid ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"} gap-6`}>
-            {palette.colors.map((color) => (
-              <Card key={color.name} className="group hover:shadow-xl transition-all duration-500 hover:scale-105 border-slate-700/50 bg-slate-800/30">
+            {palette.colours.map((colour) => (
+              <Card key={colour.name} className="group hover:shadow-xl transition-all duration-500 hover:scale-105 border-slate-700/50 bg-slate-800/30">
                 <CardContent className="p-6">
                   <div className="space-y-4">
-                    {/* Color Preview */}
+                    {/* colour Preview */}
                     <div className="relative">
                       {palette.id === 'gradients' ? (
                         <div 
-                          className={`w-full h-24 rounded-xl border-2 border-slate-600 shadow-lg group-hover:scale-110 transition-transform cursor-pointer ${color.class}`}
-                          onClick={() => onCopyCode(color.class, `${palette.id}-${color.name}`)}
+                          className={`w-full h-24 rounded-xl border-2 border-slate-600 shadow-lg group-hover:scale-110 transition-transform cursor-pointer ${colour.class}`}
+                          onClick={() => onCopyCode(colour.class, `${palette.id}-${colour.name}`)}
                         />
                       ) : palette.id === 'glassmorphism' ? (
                         <div className="relative w-full h-24 rounded-xl border-2 border-slate-600 shadow-lg overflow-hidden">
                           {/* Background pattern to show transparency */}
                           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-blue-900/20" />
                           <div 
-                            className={`absolute inset-2 rounded-lg ${color.class} ${color.class.includes('backdrop-blur') ? 'backdrop-blur-sm' : ''} group-hover:scale-110 transition-transform cursor-pointer`}
-                            onClick={() => onCopyCode(color.class, `${palette.id}-${color.name}`)}
+                            className={`absolute inset-2 rounded-lg ${colour.class} ${colour.class.includes('backdrop-blur') ? 'backdrop-blur-sm' : ''} group-hover:scale-110 transition-transform cursor-pointer`}
+                            onClick={() => onCopyCode(colour.class, `${palette.id}-${colour.name}`)}
                           />
                         </div>
                       ) : (
                         <div 
                           className="w-full h-24 rounded-xl border-2 border-slate-600 shadow-lg group-hover:scale-110 transition-transform cursor-pointer"
-                          style={{ backgroundColor: color.value }}
-                          onClick={() => onCopyCode(color.value, `${palette.id}-${color.name}`)}
+                          style={{ backgroundColor: colour.value }}
+                          onClick={() => onCopyCode(colour.value, `${palette.id}-${colour.name}`)}
                         />
                       )}
                     </div>
                     
-                    {/* Color Info */}
+                    {/* colour Info */}
                     <div>
-                      <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold text-slate-100 group-hover:text-fuchsia-400 transition-colors text-sm">
-                          {color.name}
+                      <div className="flex items-centre justify-between mb-2">
+                        <h4 className="font-semibold text-slate-100 group-hover:text-fuchsia-400 transition-colours text-sm">
+                          {colour.name}
                         </h4>
                         <Button
                           size="sm"
                           variant="ghost"
-                          onClick={() => onCopyCode(color.class, `${palette.id}-${color.name}-class`)}
+                          onClick={() => onCopyCode(colour.class, `${palette.id}-${colour.name}-class`)}
                           className={`${
-                            copiedCode === `${palette.id}-${color.name}-class`
+                            copiedCode === `${palette.id}-${colour.name}-class`
                               ? 'text-green-400' 
                               : 'text-slate-400 hover:text-slate-200'
                           } transition-all`}
                         >
-                          {copiedCode === `${palette.id}-${color.name}-class` ? (
+                          {copiedCode === `${palette.id}-${colour.name}-class` ? (
                             <CheckCircle2 className="h-4 w-4" />
                           ) : (
                             <Copy className="h-4 w-4" />
@@ -254,19 +254,19 @@ export function ColorsAtoms({
                       <div className="space-y-2">
                         {palette.id !== 'gradients' && (
                           <code className="text-xs bg-slate-700 px-3 py-1 rounded text-slate-300 font-mono block">
-                            {color.value}
+                            {colour.value}
                           </code>
                         )}
                         <code className="text-xs bg-slate-800 px-3 py-1 rounded text-slate-400 font-mono block">
-                          {color.class}
+                          {colour.class}
                         </code>
-                        {(color as any).textClass && (
+                        {(colour as any).textClass && (
                           <code className="text-xs bg-slate-700 px-3 py-1 rounded text-slate-300 font-mono block">
-                            {(color as any).textClass}
+                            {(colour as any).textClass}
                           </code>
                         )}
                         <p className="text-xs text-slate-500 leading-relaxed">
-                          {color.usage}
+                          {colour.usage}
                         </p>
                       </div>
                     </div>
@@ -280,5 +280,10 @@ export function ColorsAtoms({
     </div>
   )
 }
+
+
+
+
+
 
 

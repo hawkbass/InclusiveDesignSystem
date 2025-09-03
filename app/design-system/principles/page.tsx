@@ -53,8 +53,8 @@ export default function Principles() {
         {/* Enhanced Header */}
         <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800/50 shadow-lg shadow-slate-900/20">
           <div className="px-6 lg:px-12 py-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+            <div className="flex items-centre justify-between">
+              <div className="flex items-centre gap-4">
           <div>
                   <h1 className="text-2xl font-bold text-slate-100">Design Principles</h1>
                   <p className="text-sm text-slate-400">Core philosophy and guidelines</p>
@@ -62,7 +62,7 @@ export default function Principles() {
               </div>
 
               {/* Header Actions */}
-              <div className="flex items-center gap-4">
+              <div className="flex items-centre gap-4">
                 <Button
                   variant="outline"
                   size="sm"
@@ -74,8 +74,8 @@ export default function Principles() {
                   Settings
                 </Button>
                 
-                <div className="hidden md:flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className="hidden md:flex items-centre gap-2">
+                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <Download className="h-4 w-4 mr-2" />
                     Design Guide
                   </Button>
@@ -90,7 +90,7 @@ export default function Principles() {
             {/* Settings Panel */}
             {settingsOpen && (
               <div className="mt-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700 animate-in slide-in-from-top-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-center justify-between mb-4">
+                <div className="flex items-centre justify-between mb-4">
                   <h3 className="font-medium text-slate-200">Interface Settings</h3>
                   <Button
                     variant="ghost"
@@ -103,7 +103,7 @@ export default function Principles() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-centre justify-between">
                       <Label className="text-sm font-medium">Animation Speed</Label>
                       <span className="text-xs text-slate-400 font-mono">{safeAnimationSpeed}x</span>
                     </div>
@@ -118,7 +118,7 @@ export default function Principles() {
                   </div>
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">View Options</Label>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-centre gap-2">
                       <Button size="sm" variant="outline" className="h-8">
                         <Eye className="h-3 w-3 mr-1" />
                         Preview
@@ -140,7 +140,7 @@ export default function Principles() {
         <div className="px-6 lg:px-12 py-8">
             <div className="max-w-6xl mx-auto">
               {/* Value Proposition */}
-              <div className="text-center mb-8">
+              <div className="text-centre mb-8">
                 <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 bg-clip-text text-transparent">
                   Design Principles
                 </h1>
@@ -149,20 +149,20 @@ export default function Principles() {
                 </p>
                 
                 {/* Impact Metrics */}
-                <div className="flex flex-wrap justify-center gap-6 mb-8">
-                  <div className="text-center">
+                <div className="flex flex-wrap justify-centre gap-6 mb-8">
+                  <div className="text-centre">
                     <div className="text-2xl font-bold text-red-400">98%</div>
                     <div className="text-sm text-slate-400">User Satisfaction</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-centre">
                     <div className="text-2xl font-bold text-blue-400">150+</div>
                     <div className="text-sm text-slate-400">User Studies</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-centre">
                     <div className="text-2xl font-bold text-green-400">96%</div>
                     <div className="text-sm text-slate-400">Design Consistency</div>
                   </div>
-                  <div className="text-center">
+                  <div className="text-centre">
                     <div className="text-2xl font-bold text-purple-400">94%</div>
                     <div className="text-sm text-slate-400">Task Completion</div>
                   </div>
@@ -175,7 +175,7 @@ export default function Principles() {
                   onClick={() => {
                     const principlesSummary = `Design Principles Summary for Implementation:
 
-1. Human-Centered Design (98% User Satisfaction Target)
+1. Human-centred Design (98% User Satisfaction Target)
    - Every decision starts with user needs and behaviors
    - Focus on accessibility and inclusion by default
    - Test with real users before implementation
@@ -187,20 +187,20 @@ export default function Principles() {
 
 3. Consistency & Scalability (96% Design Consistency)
    - Maintain unified patterns across all products  
-   - Design systems that grow with the organization
+   - Design systems that grow with the organisation
    - Reuse over rebuild
 
 4. Efficiency & Performance (94% Task Completion)
-   - Optimize for both user and developer experience
+   - optimise for both user and developer experience
    - Smart defaults reduce cognitive load
-   - Measure and optimize performance`
+   - Measure and optimise performance`
                     navigator.clipboard.writeText(principlesSummary)
                     setCopiedCode('principles-summary')
                     setTimeout(() => setCopiedCode(''), 2000)
                   }}
                   className="bg-blue-600 hover:bg-blue-700 h-auto py-4"
                 >
-                  <div className="text-center">
+                  <div className="text-centre">
                     {copiedCode === 'principles-summary' ? (
                       <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-300" />
                     ) : (
@@ -240,7 +240,7 @@ Post-Implementation:
                   }}
                   className="bg-green-600 hover:bg-green-700 h-auto py-4"
                 >
-                  <div className="text-center">
+                  <div className="text-centre">
                     {copiedCode === 'review-checklist' ? (
                       <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-300" />
                     ) : (
@@ -258,7 +258,7 @@ Post-Implementation:
                   className="border-slate-600 hover:bg-slate-700 h-auto py-4"
                   onClick={() => window.open('/design-system/tokens', '_blank')}
                 >
-                  <div className="text-center">
+                  <div className="text-centre">
                     <Palette className="h-5 w-5 mx-auto mb-1" />
                     <div className="font-medium">Design Tokens</div>
                     <div className="text-xs opacity-80">Implementation values</div>
@@ -272,11 +272,11 @@ Post-Implementation:
                     // Scroll to resources tab
                     const resourcesTab = document.querySelector('[data-tab="resources"]')
                     if (resourcesTab) {
-                      resourcesTab.scrollIntoView({ behavior: 'smooth' })
+                      resourcesTab.scrollIntoView({ behaviour: 'smooth' })
                     }
                   }}
                 >
-                  <div className="text-center">
+                  <div className="text-centre">
                     <BookOpen className="h-5 w-5 mx-auto mb-1" />
                     <div className="font-medium">Resources & Tools</div>
                     <div className="text-xs opacity-80">Downloads & guides</div>
@@ -292,16 +292,16 @@ Post-Implementation:
           {/* Core Principles Grid - Visual First */}
           <section className="mb-12">
             <div className="grid md:grid-cols-2 gap-6">
-              {/* Human-Centered Design */}
+              {/* Human-centred Design */}
               <Card className="group bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-transparent border-blue-500/20 hover:border-blue-400/40 transition-all duration-300 overflow-hidden">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/30 transition-colors">
+                    <div className="p-3 bg-blue-500/20 rounded-xl group-hover:bg-blue-500/30 transition-colours">
                       <Heart className="h-6 w-6 text-blue-400" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">Human-Centered Design</h3>
+                      <div className="flex items-centre gap-3 mb-2">
+                        <h3 className="text-xl font-bold text-slate-100">Human-centred Design</h3>
                         <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                           98% Satisfaction
                 </Badge>
@@ -313,15 +313,15 @@ Post-Implementation:
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>WCAG 2.1 AA compliance by default</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Test with real users before implementation</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Focus on diverse user groups</span>
                     </div>
@@ -342,11 +342,11 @@ Post-Implementation:
               <Card className="group bg-gradient-to-br from-purple-500/10 via-purple-500/5 to-transparent border-purple-500/20 hover:border-purple-400/40 transition-all duration-300 overflow-hidden">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 bg-purple-500/20 rounded-xl group-hover:bg-purple-500/30 transition-colors">
+                    <div className="p-3 bg-purple-500/20 rounded-xl group-hover:bg-purple-500/30 transition-colours">
                       <Brain className="h-6 w-6 text-purple-400" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
+                      <div className="flex items-centre gap-3 mb-2">
                         <h3 className="text-xl font-bold text-slate-100">Evidence-Based Decisions</h3>
                 <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                           150+ Studies
@@ -359,15 +359,15 @@ Post-Implementation:
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>A/B testing for major changes</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Document decision rationale</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Continuous performance monitoring</span>
                     </div>
@@ -389,32 +389,32 @@ Post-Implementation:
               <Card className="group bg-gradient-to-br from-green-500/10 via-green-500/5 to-transparent border-green-500/20 hover:border-green-400/40 transition-all duration-300 overflow-hidden">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 bg-green-500/20 rounded-xl group-hover:bg-green-500/30 transition-colors">
+                    <div className="p-3 bg-green-500/20 rounded-xl group-hover:bg-green-500/30 transition-colours">
                       <Target className="h-6 w-6 text-green-400" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
+                      <div className="flex items-centre gap-3 mb-2">
                         <h3 className="text-xl font-bold text-slate-100">Consistency & Scalability</h3>
                 <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                           96% Consistency
                 </Badge>
               </div>
                       <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                        Maintain unified patterns across all products. Design systems that grow with the organization.
+                        Maintain unified patterns across all products. Design systems that grow with the organisation.
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Shared component library</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Unified design tokens</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Cross-platform patterns</span>
                     </div>
@@ -435,32 +435,32 @@ Post-Implementation:
               <Card className="group bg-gradient-to-br from-orange-500/10 via-orange-500/5 to-transparent border-orange-500/20 hover:border-orange-400/40 transition-all duration-300 overflow-hidden">
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 bg-orange-500/20 rounded-xl group-hover:bg-orange-500/30 transition-colors">
+                    <div className="p-3 bg-orange-500/20 rounded-xl group-hover:bg-orange-500/30 transition-colours">
                       <Zap className="h-6 w-6 text-orange-400" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
+                      <div className="flex items-centre gap-3 mb-2">
                         <h3 className="text-xl font-bold text-slate-100">Efficiency & Performance</h3>
                         <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
                           94% Completion
                         </Badge>
                       </div>
                       <p className="text-slate-300 text-sm leading-relaxed mb-4">
-                        Optimize for both user and developer experience. Smart defaults reduce cognitive load.
+                        optimise for both user and developer experience. Smart defaults reduce cognitive load.
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Minimal cognitive load</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Smart defaults & automation</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-centre gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Performance optimized</span>
                     </div>
@@ -482,7 +482,7 @@ Post-Implementation:
 
           {/* Implementation Guide */}
           <section className="mb-12">
-            <div className="text-center mb-8">
+            <div className="text-centre mb-8">
               <h2 className="text-3xl font-bold mb-3 text-slate-100">
                 Implementation Guide
               </h2>
@@ -495,7 +495,7 @@ Post-Implementation:
               {/* For Designers */}
               <Card className="bg-gradient-to-br from-fuchsia-500/10 via-fuchsia-500/5 to-transparent border-fuchsia-500/20 hover:border-fuchsia-400/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
+                  <CardTitle className="flex items-centre gap-2 text-lg text-slate-100">
                     <Lightbulb className="h-5 w-5 text-fuchsia-400" />
                     For Designers
                   </CardTitle>
@@ -530,7 +530,7 @@ Post-Implementation:
               {/* For Developers */}
               <Card className="bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-transparent border-blue-500/20 hover:border-blue-400/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
+                  <CardTitle className="flex items-centre gap-2 text-lg text-slate-100">
                     <Code2 className="h-5 w-5 text-blue-400" />
                     For Developers
                   </CardTitle>
@@ -565,7 +565,7 @@ Post-Implementation:
               {/* For Product Managers */}
               <Card className="bg-gradient-to-br from-green-500/10 via-green-500/5 to-transparent border-green-500/20 hover:border-green-400/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
+                  <CardTitle className="flex items-centre gap-2 text-lg text-slate-100">
                     <Target className="h-5 w-5 text-green-400" />
                     For Product Managers
                   </CardTitle>
@@ -601,7 +601,7 @@ Post-Implementation:
 
           {/* Resources & Downloads */}
           <section className="mb-12" data-tab="resources">
-            <div className="text-center mb-8">
+            <div className="text-centre mb-8">
               <h2 className="text-3xl font-bold mb-3 text-slate-100">
                 Resources & Downloads
               </h2>
@@ -638,7 +638,7 @@ Post-Implementation:
                 }}
                 className="h-auto py-4 bg-blue-600 hover:bg-blue-700"
               >
-                <div className="text-center">
+                <div className="text-centre">
                   {copiedCode === 'review-checklist' ? (
                     <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-300" />
                   ) : (
@@ -655,7 +655,7 @@ Post-Implementation:
                 onClick={() => {
                   const principles = `Design Principles Summary:
 
-1. Human-Centered Design (98% User Satisfaction Target)
+1. Human-centred Design (98% User Satisfaction Target)
    - Every decision starts with user needs and behaviors
    - Focus on accessibility and inclusion by default
    - Test with real users before implementation
@@ -667,13 +667,13 @@ Post-Implementation:
 
 3. Consistency & Scalability (96% Design Consistency)
    - Maintain unified patterns across all products  
-   - Design systems that grow with the organization
+   - Design systems that grow with the organisation
    - Reuse over rebuild
 
 4. Efficiency & Performance (94% Task Completion)
-   - Optimize for both user and developer experience
+   - optimise for both user and developer experience
    - Smart defaults reduce cognitive load
-   - Measure and optimize performance`
+   - Measure and optimise performance`
                   navigator.clipboard.writeText(principles)
                   setCopiedCode('principles-doc')
                   setTimeout(() => setCopiedCode(''), 2000)
@@ -681,7 +681,7 @@ Post-Implementation:
                 variant="outline"
                 className="h-auto py-4 border-slate-600 hover:bg-slate-700"
               >
-                <div className="text-center">
+                <div className="text-centre">
                   {copiedCode === 'principles-doc' ? (
                     <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-400" />
                   ) : (
@@ -699,7 +699,7 @@ Post-Implementation:
                 className="h-auto py-4 border-slate-600 hover:bg-slate-700"
                 onClick={() => window.open('/design-system/accessibility', '_blank')}
               >
-                <div className="text-center">
+                <div className="text-centre">
                   <Shield className="h-5 w-5 mx-auto mb-1" />
                   <div className="font-medium">Accessibility Guidelines</div>
                   <div className="text-xs opacity-80">WCAG 2.1 AA compliance</div>
@@ -711,7 +711,7 @@ Post-Implementation:
                 className="h-auto py-4 border-slate-600 hover:bg-slate-700"
                 onClick={() => window.open('/design-system/best-practices', '_blank')}
               >
-                <div className="text-center">
+                <div className="text-centre">
                   <Award className="h-5 w-5 mx-auto mb-1" />
                   <div className="font-medium">Best Practices</div>
                   <div className="text-xs opacity-80">Implementation guide</div>
@@ -733,13 +733,13 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 description:
                   "Every component is designed with accessibility in mind, ensuring all users can effectively use recruitment applications regardless of their abilities.",
                 icon: Shield,
-                color: "text-blue-400",
+                colour: "text-blue-400",
                 bgColor: "bg-blue-500/20",
                 details: [
                   "WCAG 2.1 AA compliance",
                   "Screen reader compatibility",
                   "Keyboard navigation support",
-                  "High contrast color ratios",
+                  "High contrast colour ratios",
                   "Focus management",
                 ],
               },
@@ -748,12 +748,12 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 description:
                   "Unified visual language and interaction patterns create predictable experiences that users can learn once and apply everywhere.",
                 icon: Target,
-                color: "text-green-400",
+                colour: "text-green-400",
                 bgColor: "bg-green-500/20",
                 details: [
-                  "Standardized component behavior",
+                  "Standardized component behaviour",
                   "Consistent spacing and typography",
-                  "Unified color system",
+                  "Unified colour system",
                   "Predictable interaction patterns",
                   "Cross-platform consistency",
                 ],
@@ -763,7 +763,7 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 description:
                   "Streamlined workflows and intuitive interfaces help recruiters and candidates accomplish their goals quickly and effectively.",
                 icon: Zap,
-                color: "text-yellow-400",
+                colour: "text-yellow-400",
                 bgColor: "bg-yellow-500/20",
                 details: [
                   "Minimal cognitive load",
@@ -778,13 +778,13 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 description:
                   "Components and patterns are designed to work across different team sizes, company scales, and recruitment volumes.",
                 icon: TrendingUp,
-                color: "text-purple-400",
+                colour: "text-purple-400",
                 bgColor: "bg-purple-500/20",
                 details: [
                   "Modular component architecture",
                   "Flexible layout systems",
                   "Customizable themes",
-                  "Performance optimization",
+                  "Performance optimisation",
                   "Future-proof design tokens",
                 ],
               },
@@ -794,12 +794,12 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
     <div className="space-y-8">
       <Card className="bg-slate-800/30 border-slate-700/50">
                 <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
+          <CardTitle className="text-2xl text-slate-100 flex items-centre gap-3">
             <Target className="h-6 w-6 text-fuchsia-400" />
             Core Design Principles
           </CardTitle>
           <CardDescription className="text-slate-400 mt-2">
-            The foundational principles that guide every design decision and ensure consistent, user-centered experiences.
+            The foundational principles that guide every design decision and ensure consistent, user-centred experiences.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -808,11 +808,11 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
               <Card key={index} className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 hover:border-slate-600/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className={`w-14 h-14 ${principle.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                      <principle.icon className={`h-7 w-7 ${principle.color}`} />
+                    <div className={`w-14 h-14 ${principle.bgColor} rounded-xl flex items-centre justify-centre group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <principle.icon className={`h-7 w-7 ${principle.colour}`} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-slate-100 mb-3 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <h3 className="text-xl font-semibold text-slate-100 mb-3 group-hover:text-fuchsia-300 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                         {principle.title}
                       </h3>
                       <p className="text-slate-400 leading-relaxed mb-4">
@@ -824,7 +824,7 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                   <div className="space-y-3">
                     <h4 className="text-sm font-medium text-slate-300 mb-3">Key Features:</h4>
                     {principle.details.map((detail, idx) => (
-                      <div key={idx} className="flex items-center gap-3 p-2 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <div key={idx} className="flex items-centre gap-3 p-2 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                         <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
                         <span className="text-slate-300 text-sm">{detail}</span>
                       </div>
@@ -857,7 +857,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
       description: "Applying principles to create cohesive user journeys",
       icon: Users,
       examples: [
-        { principle: "Human-Centered", application: "Task flows match natural user mental models" },
+        { principle: "Human-centred", application: "Task flows match natural user mental models" },
         { principle: "Scalability", application: "Interfaces adapt to different user expertise levels" },
         { principle: "Accessibility", application: "Multiple ways to complete critical tasks" }
       ]
@@ -869,7 +869,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
       examples: [
         { principle: "Consistency", application: "Predictable API patterns across components" },
         { principle: "Efficiency", application: "Well-structured props with TypeScript support" },
-        { principle: "Scalability", application: "Modular architecture supports customization" }
+        { principle: "Scalability", application: "Modular architecture supports customisation" }
       ]
     }
   ]
@@ -909,7 +909,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
       {/* Application Areas */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
+          <CardTitle className="text-2xl text-slate-100 flex items-centre gap-3">
             <Zap className="h-6 w-6 text-fuchsia-400" />
             Principle Applications
           </CardTitle>
@@ -921,8 +921,8 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
           <div className="space-y-8">
             {applicationAreas.map((area, index) => (
               <div key={index} className="space-y-4">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 bg-fuchsia-500/20 rounded-lg flex items-center justify-center">
+                <div className="flex items-centre gap-3 mb-4">
+                  <div className="w-10 h-10 bg-fuchsia-500/20 rounded-lg flex items-centre justify-centre">
                     <area.icon className="h-5 w-5 text-fuchsia-400" />
     </div>
                   <div>
@@ -932,7 +932,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
                 </div>
                 <div className="grid md:grid-cols-3 gap-4">
                   {area.examples.map((example, idx) => (
-                    <div key={idx} className="p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                    <div key={idx} className="p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                       <div className="text-sm font-medium text-fuchsia-300 mb-2">{example.principle}</div>
                       <div className="text-sm text-slate-400">{example.application}</div>
                     </div>
@@ -947,7 +947,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
       {/* Implementation Guidelines */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
+          <CardTitle className="text-2xl text-slate-100 flex items-centre gap-3">
             <CheckCircle2 className="h-6 w-6 text-fuchsia-400" />
             Implementation Checklists
           </CardTitle>
@@ -959,15 +959,15 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
           <div className="grid md:grid-cols-3 gap-6">
             {implementationGuidelines.map((guideline, index) => (
               <div key={index} className="space-y-4">
-                <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
-                  <div className="w-6 h-6 bg-green-500/20 rounded flex items-center justify-center">
+                <h3 className="text-lg font-semibold text-slate-100 flex items-centre gap-2">
+                  <div className="w-6 h-6 bg-green-500/20 rounded flex items-centre justify-centre">
                     <CheckCircle2 className="h-4 w-4 text-green-400" />
                   </div>
                   {guideline.category}
                 </h3>
                 <div className="space-y-3">
                   {guideline.checklist.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                    <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                       <div className="w-4 h-4 border border-slate-600 rounded mt-0.5 flex-shrink-0"></div>
                       <span className="text-sm text-slate-300">{item}</span>
                     </div>
@@ -1016,7 +1016,7 @@ export const Button = ({
     <button
       className={cn(
         // Consistency: Unified base styles
-        "inline-flex items-center justify-center rounded-md font-medium",
+        "inline-flex items-centre justify-centre rounded-md font-medium",
         "focus:outline-none focus:ring-2 focus:ring-offset-2", // Accessibility
         "disabled:opacity-50 disabled:cursor-not-allowed",
         
@@ -1072,7 +1072,7 @@ export const Button = ({
     <button
       className={cn(
         // Consistency: Unified base styles
-        "inline-flex items-center justify-center rounded-md font-medium",
+        "inline-flex items-centre justify-centre rounded-md font-medium",
         "focus:outline-none focus:ring-2 focus:ring-offset-2", // Accessibility
         "disabled:opacity-50 disabled:cursor-not-allowed",
         
@@ -1114,11 +1114,11 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
     {
       category: "Design Guidelines",
       icon: BookOpen,
-      color: "text-blue-400",
+      colour: "text-blue-400",
       bgColor: "bg-blue-500/20",
       items: [
         { title: "Accessibility Standards", description: "WCAG 2.1 AA implementation guide", link: "#", type: "Guide" },
-        { title: "Color Usage Principles", description: "How to use our color system effectively", link: "#", type: "Documentation" },
+        { title: "colour Usage Principles", description: "How to use our colour system effectively", link: "#", type: "Documentation" },
         { title: "Typography Hierarchy", description: "Text scaling and hierarchy guidelines", link: "#", type: "Reference" },
         { title: "Spacing & Layout", description: "Grid systems and spacing principles", link: "#", type: "Guide" }
       ]
@@ -1126,7 +1126,7 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
     {
       category: "Tools & Assets",
       icon: Briefcase,
-      color: "text-green-400", 
+      colour: "text-green-400", 
       bgColor: "bg-green-500/20",
       items: [
         { title: "Figma Design Kit", description: "Complete component library for designers", link: "#", type: "Figma" },
@@ -1138,7 +1138,7 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
     {
       category: "Learning Resources",
       icon: GraduationCap,
-      color: "text-purple-400",
+      colour: "text-purple-400",
       bgColor: "bg-purple-500/20", 
       items: [
         { title: "Design System Fundamentals", description: "Introduction to design system principles", link: "#", type: "Course" },
@@ -1161,7 +1161,7 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       {/* Quick Links */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
+          <CardTitle className="text-2xl text-slate-100 flex items-centre gap-3">
             <Zap className="h-6 w-6 text-fuchsia-400" />
             Quick Links
           </CardTitle>
@@ -1173,13 +1173,13 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
           <div className="grid md:grid-cols-2 gap-4">
             {quickLinks.map((link, index) => (
               <div key={index} className="group p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 hover:bg-slate-900/50 transition-all cursor-pointer" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-fuchsia-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className="flex items-centre justify-between">
+                  <div className="flex items-centre gap-3">
+                    <div className="w-10 h-10 bg-fuchsia-500/20 rounded-lg flex items-centre justify-centre group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                       <link.icon className="h-5 w-5 text-fuchsia-400" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{link.title}</h3>
+                      <h3 className="font-medium text-slate-100 group-hover:text-fuchsia-300 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{link.title}</h3>
                       <p className="text-sm text-slate-400">{link.description}</p>
                     </div>
                   </div>
@@ -1198,9 +1198,9 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
         {resources.map((category, index) => (
           <Card key={index} className="bg-slate-800/30 border-slate-700/50">
             <CardHeader>
-              <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
-                <div className={`w-8 h-8 ${category.bgColor} rounded-lg flex items-center justify-center`}>
-                  <category.icon className={`h-5 w-5 ${category.color}`} />
+              <CardTitle className="text-xl text-slate-100 flex items-centre gap-3">
+                <div className={`w-8 h-8 ${category.bgColor} rounded-lg flex items-centre justify-centre`}>
+                  <category.icon className={`h-5 w-5 ${category.colour}`} />
                 </div>
                 {category.category}
               </CardTitle>
@@ -1210,13 +1210,13 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 {category.items.map((item, idx) => (
                   <div key={idx} className="group p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-900/50 transition-all cursor-pointer" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-medium text-slate-100 group-hover:text-fuchsia-300 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{item.title}</h3>
+                      <h3 className="font-medium text-slate-100 group-hover:text-fuchsia-300 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{item.title}</h3>
                       <Badge variant="outline" className="text-xs">
                         {item.type}
                       </Badge>
                     </div>
                     <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
-                    <div className="mt-3 flex items-center gap-2 text-xs text-slate-500 group-hover:text-slate-400 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                    <div className="mt-3 flex items-centre gap-2 text-xs text-slate-500 group-hover:text-slate-400 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                       <ExternalLink className="h-3 w-3" />
                       View Resource
                     </div>
@@ -1231,7 +1231,7 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       {/* Support */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
+          <CardTitle className="text-xl text-slate-100 flex items-centre gap-3">
             <Heart className="h-6 w-6 text-fuchsia-400" />
             Support & Community
           </CardTitle>
@@ -1241,8 +1241,8 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto">
+            <div className="text-centre space-y-3">
+              <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-centre justify-centre mx-auto">
                 <Users className="h-6 w-6 text-blue-400" />
               </div>
               <h3 className="font-medium text-slate-100">Community Forum</h3>
@@ -1251,8 +1251,8 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 Join Discussion
               </Button>
             </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto">
+            <div className="text-centre space-y-3">
+              <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-centre justify-centre mx-auto">
                 <BookOpen className="h-6 w-6 text-green-400" />
               </div>
               <h3 className="font-medium text-slate-100">Documentation</h3>
@@ -1261,8 +1261,8 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 Browse Docs
               </Button>
             </div>
-            <div className="text-center space-y-3">
-              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto">
+            <div className="text-centre space-y-3">
+              <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-centre justify-centre mx-auto">
                 <Heart className="h-6 w-6 text-purple-400" />
               </div>
               <h3 className="font-medium text-slate-100">Direct Support</h3>
@@ -1281,31 +1281,31 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
 function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
   const designPhilosophy = [
     {
-      title: "Human-Centered Design",
+      title: "Human-centred Design",
       description: "Every design decision starts with understanding user needs, behaviors, and contexts.",
       icon: Heart,
-      color: "text-red-400",
+      colour: "text-red-400",
       stats: "98% User Satisfaction"
     },
     {
       title: "Evidence-Based",
       description: "Design decisions backed by research, data, and user testing insights.",
       icon: Brain,
-      color: "text-blue-400", 
+      colour: "text-blue-400", 
       stats: "150+ User Studies"
     },
     {
       title: "Inclusive by Default",
       description: "Accessibility and inclusion are built into every component from the ground up.",
       icon: Globe,
-      color: "text-green-400",
+      colour: "text-green-400",
       stats: "WCAG 2.1 AA Compliant"
     },
     {
       title: "Continuously Evolving",
       description: "The system grows and improves based on feedback and changing user needs.",
       icon: TrendingUp,
-      color: "text-purple-400",
+      colour: "text-purple-400",
       stats: "Monthly Updates"
     }
   ]
@@ -1315,7 +1315,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       {/* Philosophy Cards */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
+          <CardTitle className="text-2xl text-slate-100 flex items-centre gap-3">
             <Lightbulb className="h-6 w-6 text-fuchsia-400" />
             Design Philosophy
           </CardTitle>
@@ -1328,8 +1328,8 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
             {designPhilosophy.map((item, index) => (
               <div key={index} className="group p-6 bg-slate-900/30 rounded-xl border border-slate-700/30 hover:border-fuchsia-500/30 hover:bg-slate-900/50 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-slate-800/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                    <item.icon className={`h-6 w-6 ${item.color}`} />
+                  <div className="w-12 h-12 bg-slate-800/50 rounded-lg flex items-centre justify-centre group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                    <item.icon className={`h-6 w-6 ${item.colour}`} />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-slate-100 mb-2">{item.title}</h3>
@@ -1348,7 +1348,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       {/* Impact Metrics */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
+          <CardTitle className="text-2xl text-slate-100 flex items-centre gap-3">
             <Award className="h-6 w-6 text-fuchsia-400" />
             Impact & Results
           </CardTitle>
@@ -1359,13 +1359,13 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: "Accessibility Score", value: "98%", change: "+12% this year", color: "text-green-400" },
-              { label: "User Satisfaction", value: "4.8/5", change: "+0.4 improvement", color: "text-blue-400" },
-              { label: "Task Completion", value: "94%", change: "+8% efficiency", color: "text-purple-400" },
-              { label: "Design Consistency", value: "96%", change: "Across all products", color: "text-orange-400" }
+              { label: "Accessibility Score", value: "98%", change: "+12% this year", colour: "text-green-400" },
+              { label: "User Satisfaction", value: "4.8/5", change: "+0.4 improvement", colour: "text-blue-400" },
+              { label: "Task Completion", value: "94%", change: "+8% efficiency", colour: "text-purple-400" },
+              { label: "Design Consistency", value: "96%", change: "Across all products", colour: "text-orange-400" }
             ].map((metric, index) => (
-              <div key={index} className="text-center p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 transition-colors" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className={`text-2xl font-bold ${metric.color} mb-1`}>{metric.value}</div>
+              <div key={index} className="text-centre p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className={`text-2xl font-bold ${metric.colour} mb-1`}>{metric.value}</div>
                 <div className="text-sm text-slate-300 mb-1">{metric.label}</div>
                 <div className="text-xs text-slate-500">{metric.change}</div>
               </div>
@@ -1376,3 +1376,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
     </div>
   )
 } 
+
+
+
+

@@ -46,7 +46,7 @@ const patternCategories = [
     name: "Navigation Patterns",
     description: "Common navigation structures and wayfinding solutions for recruitment applications",
     icon: Navigation,
-    color: "from-blue-500 to-cyan-600",
+    colour: "from-blue-500 to-cyan-600",
     bgColor: "bg-blue-500/10",
     count: 8,
     patterns: [
@@ -59,7 +59,7 @@ const patternCategories = [
         examples: ["Header nav", "Sidebar menu", "Tab navigation"],
         category: "Navigation Patterns",
         tags: ["navigation", "header", "menu"],
-        code: `<nav className="flex items-center space-x-6">
+        code: `<nav className="flex items-centre space-x-6">
   <Link href="/" className="text-slate-700 hover:text-slate-900">Home</Link>
   <Link href="/candidates" className="text-slate-700 hover:text-slate-900">Candidates</Link>
   <Link href="/jobs" className="text-slate-700 hover:text-slate-900">Jobs</Link>
@@ -75,7 +75,7 @@ const patternCategories = [
         category: "Navigation Patterns",
         tags: ["navigation", "breadcrumb", "hierarchy"],
         code: `<nav aria-label="Breadcrumb">
-  <ol className="flex items-center space-x-2">
+  <ol className="flex items-centre space-x-2">
     <li><Link href="/">Home</Link></li>
     <li>></li>
     <li><Link href="/candidates">Candidates</Link></li>
@@ -89,7 +89,7 @@ const patternCategories = [
         name: "Tab Navigation",
         description: "Content switching within the same page context",
         complexity: "Medium",
-        usage: "Content organization, settings panels",
+        usage: "Content organisation, settings panels",
         examples: ["Candidate profile", "Job details", "Dashboard sections"],
         category: "Navigation Patterns",
         tags: ["navigation", "tabs", "content"],
@@ -108,7 +108,7 @@ const patternCategories = [
     name: "Form Patterns",
     description: "Data collection and input patterns for recruitment workflows",
     icon: FileText,
-    color: "from-green-500 to-emerald-600",
+    colour: "from-green-500 to-emerald-600",
     bgColor: "bg-green-500/10",
     count: 6,
     patterns: [
@@ -179,9 +179,9 @@ const patternCategories = [
   },
   {
     name: "Layout Patterns",
-    description: "Page structure and content organization for recruitment interfaces",
+    description: "Page structure and content organisation for recruitment interfaces",
     icon: Layout,
-    color: "from-purple-500 to-violet-600",
+    colour: "from-purple-500 to-violet-600",
     bgColor: "bg-purple-500/10",
     count: 5,
     patterns: [
@@ -233,7 +233,7 @@ const patternCategories = [
     name: "Data Display Patterns",
     description: "Patterns for presenting recruitment data and analytics",
     icon: Table,
-    color: "from-orange-500 to-red-600",
+    colour: "from-orange-500 to-red-600",
     bgColor: "bg-orange-500/10",
     count: 7,
     patterns: [
@@ -284,7 +284,7 @@ const patternCategories = [
   {stats.map(stat => (
     <Card key={stat.id}>
       <CardContent className="p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-centre justify-between">
           <div>
             <div className="text-2xl font-bold">{stat.value}</div>
             <div className="text-sm text-slate-600">{stat.label}</div>
@@ -308,7 +308,7 @@ const allPatterns = patternCategories.flatMap(category =>
   category.patterns.map(pattern => ({
     ...pattern,
     categoryIcon: category.icon,
-    categoryColor: category.color
+    categoryColor: category.colour
   }))
 )
 
@@ -319,28 +319,28 @@ const quickActions = [
     description: "Export complete pattern library",
     icon: Copy,
     action: "copy-all",
-    color: "bg-green-500/20 text-green-300 border-green-500/30"
+    colour: "bg-green-500/20 text-green-300 border-green-500/30"
   },
   {
     title: "Download Templates",
     description: "Get ready-to-use component templates",
     icon: Download,
     action: "download-templates",
-    color: "bg-blue-500/20 text-blue-300 border-blue-500/30"
+    colour: "bg-blue-500/20 text-blue-300 border-blue-500/30"
   },
   {
     title: "View Best Practices",
     description: "Pattern implementation guidelines",
     icon: BookOpen,
     action: "view-practices",
-    color: "bg-purple-500/20 text-purple-300 border-purple-500/30"
+    colour: "bg-purple-500/20 text-purple-300 border-purple-500/30"
   },
   {
     title: "Test Patterns",
     description: "Interactive pattern playground",
     icon: PlayCircle,
     action: "test-patterns",
-    color: "bg-orange-500/20 text-orange-300 border-orange-500/30"
+    colour: "bg-orange-500/20 text-orange-300 border-orange-500/30"
   }
 ]
 
@@ -350,28 +350,28 @@ const patternStats = [
     label: "Total Patterns", 
     value: allPatterns.length, 
     icon: Component, 
-    color: "text-fuchsia-400",
+    colour: "text-fuchsia-400",
     change: "+3 this month"
   },
   { 
     label: "Categories", 
     value: patternCategories.length, 
     icon: Grid3X3, 
-    color: "text-blue-400",
+    colour: "text-blue-400",
     change: "Organized system"
   },
   { 
     label: "Simple Patterns", 
     value: allPatterns.filter(p => p.complexity === "Simple").length, 
     icon: Zap, 
-    color: "text-green-400",
+    colour: "text-green-400",
     change: "Quick to implement"
   },
   { 
     label: "Production Ready", 
     value: "100%", 
     icon: CheckCircle2, 
-    color: "text-purple-400",
+    colour: "text-purple-400",
     change: "Battle tested"
   }
 ]
@@ -382,7 +382,7 @@ export default function PatternsPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedCategory, setSelectedCategory] = useState("all")
   const [complexityFilter, setComplexityFilter] = useState("all")
-  const [favorites, setFavorites] = useState<Set<string>>(new Set())
+  const [favourites, setFavorites] = useState<Set<string>>(new Set())
   const [copiedCode, setCopiedCode] = useState("")
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["overview", "navigation", "forms", "layouts", "data"]))
 
@@ -483,9 +483,9 @@ export default function PatternsPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {patternStats.map((stat, index) => (
                   <Card key={stat.label} className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm">
-                    <CardContent className="p-4 text-center">
-                      <div className="flex items-center justify-center mb-2">
-                        <stat.icon className={`h-6 w-6 ${stat.color}`} />
+                    <CardContent className="p-4 text-centre">
+                      <div className="flex items-centre justify-centre mb-2">
+                        <stat.icon className={`h-6 w-6 ${stat.colour}`} />
                       </div>
                       <div className="text-2xl font-bold text-slate-100">{stat.value}</div>
                       <div className="text-xs text-slate-400">{stat.label}</div>
@@ -495,7 +495,7 @@ export default function PatternsPage() {
                 ))}
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="grid lg:grid-cols-2 gap-12 items-centre">
                 {/* Value Proposition */}
                 <div className="space-y-6">
                   <div className="flex flex-wrap gap-3 mb-4">
@@ -533,7 +533,7 @@ export default function PatternsPage() {
                       <Button
                         key={action.action}
                         variant="outline"
-                        className={`${action.color} hover:scale-105 transition-all text-left justify-start h-auto p-4`}
+                        className={`${action.colour} hover:scale-105 transition-all text-left justify-start h-auto p-4`}
                         onClick={() => handleQuickAction(action.action)}
                       >
                         <action.icon className="h-5 w-5 mr-3 flex-shrink-0" />
@@ -571,14 +571,14 @@ export default function PatternsPage() {
                         {searchResults.map((pattern) => (
                           <div
                             key={pattern.id}
-                            className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-colors cursor-pointer"
+                            className="flex items-centre justify-between p-3 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-colours cursor-pointer"
                             onClick={() => {
                               setSelectedCategory(pattern.category)
                               setSearchQuery("")
-                              document.getElementById(pattern.id)?.scrollIntoView({ behavior: 'smooth' })
+                              document.getElementById(pattern.id)?.scrollIntoView({ behaviour: 'smooth' })
                             }}
                           >
-                            <div className="flex items-center gap-3">
+                            <div className="flex items-centre gap-3">
                               <pattern.categoryIcon className="h-5 w-5 text-fuchsia-400" />
                               <div>
                                 <div className="font-medium text-slate-200">{pattern.name}</div>
@@ -628,13 +628,13 @@ export default function PatternsPage() {
               return (
                 <Card key={category.name} className="bg-slate-800/30 border-slate-700/50">
                   <CardHeader className="cursor-pointer" onClick={() => toggleSection(sectionId)}>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 ${category.bgColor} rounded-xl flex items-center justify-center`}>
+                    <div className="flex items-centre justify-between">
+                      <div className="flex items-centre gap-4">
+                        <div className={`w-12 h-12 ${category.bgColor} rounded-xl flex items-centre justify-centre`}>
                           <category.icon className="h-6 w-6 text-slate-300" />
                         </div>
                         <div>
-                          <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
+                          <CardTitle className="text-xl text-slate-100 flex items-centre gap-3">
                             {category.name}
                             <Badge variant="outline" className="border-slate-600">
                               {category.count} patterns
@@ -658,7 +658,7 @@ export default function PatternsPage() {
                             <CardContent className="p-6">
                               <div className="flex items-start justify-between mb-4">
                                 <div className="flex-1">
-                                  <div className="flex items-center gap-3 mb-2">
+                                  <div className="flex items-centre gap-3 mb-2">
                                     <h3 className="text-lg font-semibold text-slate-100">{pattern.name}</h3>
                                     <Badge 
                                       className={
@@ -692,14 +692,14 @@ export default function PatternsPage() {
                                   </div>
                                 </div>
 
-                                <div className="flex items-center gap-2 ml-4">
+                                <div className="flex items-centre gap-2 ml-4">
                                   <Button
                                     variant="outline"
                                     size="sm"
                                     onClick={() => handleToggleFavorite(pattern.id)}
-                                    className={`${favorites.has(pattern.id) ? 'text-red-400 border-red-500/50' : 'text-slate-400 border-slate-600'}`}
+                                    className={`${favourites.has(pattern.id) ? 'text-red-400 border-red-500/50' : 'text-slate-400 border-slate-600'}`}
                                   >
-                                    <Heart className={`h-4 w-4 ${favorites.has(pattern.id) ? 'fill-current' : ''}`} />
+                                    <Heart className={`h-4 w-4 ${favourites.has(pattern.id) ? 'fill-current' : ''}`} />
                                   </Button>
                                   <Button
                                     variant="outline"
@@ -718,12 +718,12 @@ export default function PatternsPage() {
 
                               {/* Code Preview */}
                               <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/30">
-                                <div className="flex items-center justify-between mb-3">
-                                  <div className="flex items-center gap-2">
+                                <div className="flex items-centre justify-between mb-3">
+                                  <div className="flex items-centre gap-2">
                                     <Code2 className="h-4 w-4 text-slate-400" />
                                     <span className="text-sm font-medium text-slate-300">Implementation</span>
                                   </div>
-                                  <div className="flex items-center gap-2">
+                                  <div className="flex items-centre gap-2">
                                     <Button
                                       variant="ghost"
                                       size="sm"
@@ -760,31 +760,31 @@ export default function PatternsPage() {
               )
             })}
 
-            {/* Favorites Section - If any favorites exist */}
-            {favorites.size > 0 && (
+            {/* favourites Section - If any favourites exist */}
+            {favourites.size > 0 && (
               <Card className="bg-slate-800/30 border-slate-700/50">
                 <CardHeader>
-                  <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
+                  <CardTitle className="text-xl text-slate-100 flex items-centre gap-3">
                     <Heart className="h-6 w-6 text-red-400" />
-                    Favorite Patterns
+                    favourite Patterns
                     <Badge variant="outline" className="border-slate-600">
-                      {favorites.size} saved
+                      {favourites.size} saved
                     </Badge>
                   </CardTitle>
                   <CardDescription>Your bookmarked patterns for quick access</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-4">
-                    {allPatterns.filter(p => favorites.has(p.id)).map((pattern) => (
-                      <div key={pattern.id} className="flex items-center justify-between p-3 bg-slate-900/30 rounded-lg">
-                        <div className="flex items-center gap-3">
+                    {allPatterns.filter(p => favourites.has(p.id)).map((pattern) => (
+                      <div key={pattern.id} className="flex items-centre justify-between p-3 bg-slate-900/30 rounded-lg">
+                        <div className="flex items-centre gap-3">
                           <pattern.categoryIcon className="h-5 w-5 text-fuchsia-400" />
                           <div>
                             <div className="font-medium text-slate-200">{pattern.name}</div>
                             <div className="text-sm text-slate-400">{pattern.category}</div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-centre gap-2">
                           <Button
                             variant="ghost"
                             size="sm"
@@ -836,8 +836,8 @@ function PatternCard({ pattern }: { pattern: any }) {
       <CardContent className="p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
+            <div className="flex items-centre gap-3 mb-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colours">
                 {pattern.name}
               </h3>
               <Badge className={complexityColors[pattern.complexity as keyof typeof complexityColors]}>
@@ -879,15 +879,15 @@ function PatternCard({ pattern }: { pattern: any }) {
           </pre>
         </div>
         
-        <div className="flex items-center justify-between text-xs">
-          <span className="text-slate-500 dark:text-slate-500 flex items-center gap-1">
+        <div className="flex items-centre justify-between text-xs">
+          <span className="text-slate-500 dark:text-slate-500 flex items-centre gap-1">
             <pattern.categoryIcon className="h-3 w-3" />
             {pattern.category}
           </span>
           <Button 
             size="sm" 
             variant="ghost" 
-            className="h-6 px-2 text-xs hover:bg-fuchsia-50 dark:hover:bg-fuchsia-950 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colors"
+            className="h-6 px-2 text-xs hover:bg-fuchsia-50 dark:hover:bg-fuchsia-950 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colours"
           >
             <PlayCircle className="h-3 w-3 mr-1" />
             Live Demo
@@ -904,12 +904,12 @@ function CategoryOverviewCard({ category }: { category: any }) {
     <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-slate-200 dark:border-slate-700/50">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
-          <div className={`w-12 h-12 rounded-xl ${category.bgColor} border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+          <div className={`w-12 h-12 rounded-xl ${category.bgColor} border border-slate-200 dark:border-slate-700 flex items-centre justify-centre group-hover:scale-110 transition-transform`}>
             <category.icon className="h-6 w-6 text-slate-700 dark:text-slate-300" />
           </div>
           <div className="flex-1">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colors">
+            <div className="flex items-centre justify-between mb-2">
+              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colours">
                 {category.name}
               </h3>
               <Badge variant="outline" className="border-slate-300 dark:border-slate-600">
@@ -937,3 +937,7 @@ function CategoryOverviewCard({ category }: { category: any }) {
     </Card>
   )
 }
+
+
+
+

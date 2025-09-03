@@ -15,7 +15,7 @@ interface ShadowsAtomsProps {
   viewMode: "grid" | "list"
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
-  favorites: Set<string>
+  favourites: Set<string>
   onToggleFavorite: (id: string) => void
 }
 
@@ -24,7 +24,7 @@ export function ShadowsAtoms({
   viewMode, 
   onCopyCode, 
   copiedCode, 
-  favorites, 
+  favourites, 
   onToggleFavorite 
 }: ShadowsAtomsProps) {
   const effectSystem = [
@@ -197,7 +197,7 @@ export function ShadowsAtoms({
     effect.category.toLowerCase().includes(searchQuery.toLowerCase())
   )
 
-  // Group by category for better organization
+  // Group by category for better organisation
   const groupedEffects = filteredEffects.reduce((acc, effect) => {
     if (!acc[effect.category]) {
       acc[effect.category] = []
@@ -215,14 +215,14 @@ export function ShadowsAtoms({
 
   return (
     <div className="space-y-12">
-      <div className="text-center">
+      <div className="text-centre">
         <h3 className="text-3xl font-bold text-slate-100 mb-4">Elevation & Effects System</h3>
         <p className="text-lg text-slate-400">Complete shadow, blur, and glassmorphism system for depth, elevation, and modern UI effects</p>
       </div>
 
       {Object.entries(groupedEffects).map(([category, effects]) => (
         <div key={category} className="space-y-6">
-          <div className="flex items-center gap-3">
+          <div className="flex items-centre gap-3">
             <h4 className="text-2xl font-bold text-slate-100">{category} Effects</h4>
             <Badge variant="outline" className={categoryColors[category as keyof typeof categoryColors]}>
               {effects.length} Effects
@@ -233,21 +233,21 @@ export function ShadowsAtoms({
             {effects.map((effect) => (
               <Card key={effect.id} className="group hover:shadow-lg transition-all duration-300 border-slate-700/50 bg-slate-800/30">
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-centre justify-between mb-4">
                     <div>
                       <h5 className="font-semibold text-slate-100 text-lg">{effect.name}</h5>
                       <Badge variant="outline" className={`text-xs mt-1 ${categoryColors[effect.category as keyof typeof categoryColors]}`}>
                         {effect.category}
                       </Badge>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-centre gap-2">
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => onToggleFavorite(effect.id)}
                         className="text-slate-400 hover:text-pink-400"
                       >
-                        <Heart className={`h-4 w-4 ${favorites.has(effect.id) ? 'fill-current text-pink-400' : ''}`} />
+                        <Heart className={`h-4 w-4 ${favourites.has(effect.id) ? 'fill-current text-pink-400' : ''}`} />
                       </Button>
                       <Button
                         size="sm"
@@ -269,13 +269,13 @@ export function ShadowsAtoms({
                   </div>
                   
                   {/* Effect Preview */}
-                  <div className="bg-slate-900 rounded-lg p-6 flex items-center justify-center mb-4 relative overflow-hidden">
+                  <div className="bg-slate-900 rounded-lg p-6 flex items-centre justify-centre mb-4 relative overflow-hidden">
                     {effect.category === 'Glassmorphism' ? (
                       <>
                         {/* Background for glassmorphism demo */}
                         <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/20 via-purple-500/20 to-blue-500/20" />
                         <div className="absolute inset-2 bg-slate-800/50 rounded-lg" />
-                        <div className={`relative w-20 h-20 bg-slate-700/30 rounded-lg ${effect.class} flex items-center justify-center text-slate-300 text-xs font-medium`}>
+                        <div className={`relative w-20 h-20 bg-slate-700/30 rounded-lg ${effect.class} flex items-centre justify-centre text-slate-300 text-xs font-medium`}>
                           Glass
                         </div>
                       </>
@@ -325,4 +325,9 @@ export function ShadowsAtoms({
     </div>
   )
 }
+
+
+
+
+
 

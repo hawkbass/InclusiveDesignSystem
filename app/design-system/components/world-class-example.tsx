@@ -157,7 +157,7 @@ const accessibilityChecklist = [
   { id: "aria-labels", label: "Proper ARIA labels and descriptions", status: "pass" },
   { id: "keyboard-nav", label: "Full keyboard navigation support", status: "pass" },
   { id: "screen-reader", label: "Screen reader announcements", status: "pass" },
-  { id: "color-contrast", label: "Sufficient colour contrast", status: "pass" },
+  { id: "colour-contrast", label: "Sufficient colour contrast", status: "pass" },
   { id: "touch-targets", label: "44px minimum touch targets", status: "pass" }
 ]
 
@@ -671,3 +671,8 @@ export default function WorldClassComponentDocs() {
     </div>
   )
 }
+
+
+
+
+

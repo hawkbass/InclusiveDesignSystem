@@ -28,7 +28,7 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex justify-between items-centre mb-4">
           <h4 className="text-lg font-medium text-slate-100">Add New Candidate</h4>
           <Button
             variant="ghost"
@@ -76,3 +76,7 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
     </Dialog>
   )
 } 
+
+
+
+

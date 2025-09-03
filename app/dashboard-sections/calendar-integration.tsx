@@ -71,12 +71,12 @@ export function CalendarIntegration({
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-centre justify-between">
         <div>
           <h2 className="text-xl font-semibold text-slate-100">Calendar</h2>
           <p className="text-sm text-slate-400">Schedule and manage interviews</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-centre gap-2">
           <Button
             variant="outline"
             size="sm"
@@ -98,9 +98,9 @@ export function CalendarIntegration({
 
       {/* Calendar Controls */}
       <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
+        <div className="flex items-centre justify-between mb-4">
+          <div className="flex items-centre gap-4">
+            <div className="flex items-centre gap-2">
               <Button
                 variant="ghost"
                 size="sm"
@@ -119,8 +119,8 @@ export function CalendarIntegration({
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 bg-slate-700/50 rounded-md p-1">
+          <div className="flex items-centre gap-2">
+            <div className="flex items-centre gap-1 bg-slate-700/50 rounded-md p-1">
               {["month", "week", "day"].map((view) => (
                 <button
                   key={view}
@@ -142,7 +142,7 @@ export function CalendarIntegration({
         <div className="grid grid-cols-7 gap-1">
           {/* Day Headers */}
           {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-            <div key={day} className="p-2 text-center">
+            <div key={day} className="p-2 text-centre">
               <div className="text-xs font-medium text-slate-400">{day}</div>
             </div>
           ))}
@@ -190,7 +190,7 @@ export function CalendarIntegration({
                   ))}
                   
                   {dayEvents.length > 2 && (
-                    <div className="text-xs text-slate-400 text-center">
+                    <div className="text-xs text-slate-400 text-centre">
                       +{dayEvents.length - 2} more
                     </div>
                   )}
@@ -203,3 +203,7 @@ export function CalendarIntegration({
     </div>
   )
 } 
+
+
+
+

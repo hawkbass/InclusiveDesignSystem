@@ -14,9 +14,9 @@ export function ScheduleInterviewModal({ open, onClose }: ScheduleInterviewModal
       <DialogContent className="max-w-2xl p-0 overflow-hidden">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-fuchsia-800/20 to-fuchsia-800/10 rounded-t-xl">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-fuchsia-600 rounded-full flex items-center justify-center">
+          <div className="flex items-centre justify-between">
+            <div className="flex items-centre gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-fuchsia-600 rounded-full flex items-centre justify-centre">
                 <Calendar className="h-5 w-5 text-white" />
               </div>
               <div>
@@ -97,3 +97,7 @@ export function ScheduleInterviewModal({ open, onClose }: ScheduleInterviewModal
     </Dialog>
   )
 } 
+
+
+
+

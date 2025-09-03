@@ -27,7 +27,7 @@ interface SpecializedMoleculesSectionProps {
   viewMode: "grid" | "list"
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
-  favorites: Set<string>
+  favourites: Set<string>
   onToggleFavorite: (id: string) => void
 }
 
@@ -36,7 +36,7 @@ export function SpecializedMoleculesSection({
   viewMode, 
   onCopyCode, 
   copiedCode, 
-  favorites, 
+  favourites, 
   onToggleFavorite 
 }: SpecializedMoleculesSectionProps) {
   // Advanced UI molecules that exist in the codebase but weren't documented
@@ -45,7 +45,7 @@ export function SpecializedMoleculesSection({
       id: "smart-content-actions",
       name: "Smart Content Actions",
       category: "Interactive",
-      description: "Context-aware action buttons that adapt based on content type and user behavior",
+      description: "Context-aware action buttons that adapt based on content type and user behaviour",
       complexity: "High",
       usageCount: "15+ pages",
       component: (
@@ -67,7 +67,7 @@ export function SpecializedMoleculesSection({
 
 <SmartContentActions
   content={componentData}
-  actions={["copy", "export", "share", "favorite"]}
+  actions={["copy", "export", "share", "favourite"]}
   context="design-system"
   onAction={(action, data) => handleAction(action, data)}
 />`,
@@ -85,7 +85,7 @@ export function SpecializedMoleculesSection({
       usageCount: "All pages",
       component: (
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-xs">
+          <div className="flex items-centre gap-2 text-xs">
             <span className="text-fuchsia-400">Design System</span>
             <span className="text-slate-600">→</span>
             <span className="text-slate-400">Style Guide</span>
@@ -118,8 +118,8 @@ export function SpecializedMoleculesSection({
       component: (
         <div className="space-y-2">
           <Progress value={65} className="h-2" />
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-fuchsia-500 rounded-full flex items-center justify-center">
+          <div className="flex items-centre gap-2">
+            <div className="w-6 h-6 bg-fuchsia-500 rounded-full flex items-centre justify-centre">
               <CheckCircle2 className="h-3 w-3 text-white" />
             </div>
             <span className="text-xs text-slate-300">Step 3 of 5: Components</span>
@@ -145,18 +145,18 @@ export function SpecializedMoleculesSection({
       id: "personal-dashboard",
       name: "Personal Dashboard",
       category: "User Experience", 
-      description: "User-specific activity tracking, favorites, and personalized content recommendations",
+      description: "User-specific activity tracking, favourites, and personalized content recommendations",
       complexity: "High",
       usageCount: "User areas",
       component: (
         <div className="space-y-2">
-          <div className="flex items-center gap-2">
+          <div className="flex items-centre gap-2">
             <User className="h-4 w-4 text-fuchsia-400" />
             <span className="text-xs text-slate-300 font-medium">James Doe</span>
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
             <div className="text-slate-400">Components: <span className="text-slate-300">23</span></div>
-            <div className="text-slate-400">Favorites: <span className="text-slate-300">8</span></div>
+            <div className="text-slate-400">favourites: <span className="text-slate-300">8</span></div>
           </div>
           <div className="text-xs text-slate-500">Last active: Design Tokens</div>
         </div>
@@ -169,7 +169,7 @@ export function SpecializedMoleculesSection({
   showRecommendations={true}
   trackUsage={true}
 />`,
-      features: ["Activity tracking", "Favorites management", "Usage analytics", "Recommendations"],
+      features: ["Activity tracking", "favourites management", "Usage analytics", "Recommendations"],
       file: "components/ui/personal-dashboard.tsx",
       relatedPages: ["User-specific areas"],
       apiMethods: ["getUserActivity", "addFavorite", "getRecommendations", "trackPageView"]
@@ -203,7 +203,7 @@ export function SpecializedMoleculesSection({
   data={[40, 65, 45, 80, 55, 75, 90]}
   height={160}
   type="area"
-  color="#d946ef"
+  colour="#d946ef"
   showTooltip={true}
   animate={true}
   onPointHover={(index, value) => setTooltip({index, value})}
@@ -217,18 +217,18 @@ export function SpecializedMoleculesSection({
       id: "stat-card", 
       name: "Stat Card",
       category: "Data Display",
-      description: "Statistical display cards with trends, favorites, and loading states",
+      description: "Statistical display cards with trends, favourites, and loading states",
       complexity: "Medium",
       usageCount: "Analytics",
       component: (
         <div className="w-48 p-3 bg-slate-800/30 rounded-lg border border-slate-700">
-          <div className="flex items-center justify-between mb-2">
+          <div className="flex items-centre justify-between mb-2">
             <span className="text-xs text-slate-400">Active Users</span>
             <Heart className="h-3 w-3 text-slate-500" />
           </div>
           <div className="flex items-end gap-2">
             <span className="text-lg font-bold text-slate-200">2,847</span>
-            <div className="flex items-center text-xs text-green-400">
+            <div className="flex items-centre text-xs text-green-400">
               <TrendingUp className="h-3 w-3 mr-1" />
               +12%
             </div>
@@ -246,7 +246,7 @@ export function SpecializedMoleculesSection({
   onFavorite={() => toggleFavorite('stat-users')}
   loading={false}
 />`,
-      features: ["Trend indicators", "Favorites system", "Loading states", "Multiple sizes"],
+      features: ["Trend indicators", "favourites system", "Loading states", "Multiple sizes"],
       file: "components/ui/stat-card.tsx",
       relatedPages: ["/dashboard", "Analytics sections"],
       apiMethods: ["updateValue", "setTrend", "toggleFavorite", "setLoading"]
@@ -294,7 +294,7 @@ export function SpecializedMoleculesSection({
     <ChartTooltip />
     <Line 
       dataKey="users" 
-      stroke="var(--color-users)"
+      stroke="var(--colour-users)"
       strokeWidth={2}
     />
   </LineChart>
@@ -326,7 +326,7 @@ export function SpecializedMoleculesSection({
               />
             ))}
           </div>
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-centre justify-centre">
             <span className="text-xs text-slate-400">Animated starfield</span>
           </div>
         </div>
@@ -339,7 +339,7 @@ export function SpecializedMoleculesSection({
 // The component handles:
 // - Canvas rendering and sizing
 // - Star generation and animation
-// - Performance optimization
+// - Performance optimisation
 // - Resize handling`,
       features: ["Canvas animation", "Particle physics", "Performance optimized", "Responsive"],
       file: "components/stars-background.tsx",
@@ -358,7 +358,7 @@ export function SpecializedMoleculesSection({
              style={{
                background: 'linear-gradient(135deg, rgba(217, 70, 239, 0.1) 0%, rgba(147, 51, 234, 0.08) 50%, rgba(59, 130, 246, 0.06) 100%)'
              }}>
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="absolute inset-0 flex items-centre justify-centre">
             <span className="text-xs text-slate-400">Token-aware gradients</span>
           </div>
         </div>
@@ -384,7 +384,7 @@ export function SpecializedMoleculesSection({
       complexity: "Low",
       usageCount: "App-wide",
       component: (
-        <div className="flex items-center gap-2 p-2 bg-slate-800/30 rounded-lg">
+        <div className="flex items-centre gap-2 p-2 bg-slate-800/30 rounded-lg">
           <div className="w-4 h-4 bg-slate-900 rounded border border-slate-600" />
           <span className="text-xs text-slate-300">Dark</span>
           <div className="w-4 h-4 bg-slate-100 rounded border border-slate-300" />
@@ -443,22 +443,22 @@ function App() {
 
   return (
     <div className="space-y-12">
-      <div className="text-center">
+      <div className="text-centre">
         <h3 className="text-3xl font-bold text-slate-100 mb-4">Specialized Molecules</h3>
         <p className="text-lg text-slate-400 max-w-4xl mx-auto">
           Advanced UI components with sophisticated logic, state management, and user experience patterns
         </p>
-        <div className="flex justify-center gap-6 mt-6">
-          <div className="text-center">
+        <div className="flex justify-centre gap-6 mt-6">
+          <div className="text-centre">
             <div className="text-2xl font-bold text-fuchsia-400">{specializedMolecules.length}</div>
             <div className="text-xs text-slate-500">Advanced Components</div>
           </div>
-          <div className="text-center">
+          <div className="text-centre">
             <div className="text-2xl font-bold text-purple-400">{Object.keys(groupedMolecules).length}</div>
             <div className="text-xs text-slate-500">Categories</div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-blue-400">{favorites.size}</div>
+          <div className="text-centre">
+            <div className="text-2xl font-bold text-blue-400">{favourites.size}</div>
             <div className="text-xs text-slate-500">Favorited</div>
           </div>
         </div>
@@ -466,7 +466,7 @@ function App() {
 
       {Object.entries(groupedMolecules).map(([category, categoryMolecules]) => (
         <div key={category} className="space-y-6">
-          <div className="flex items-center gap-3">
+          <div className="flex items-centre gap-3">
             <h4 className="text-2xl font-bold text-slate-100">{category}</h4>
             <Badge variant="outline" className={categoryColors[category as keyof typeof categoryColors]}>
               {categoryMolecules.length} Components
@@ -479,14 +479,14 @@ function App() {
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-400 transition-colors">
+                      <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-400 transition-colours">
                         {molecule.name}
                       </CardTitle>
                       <CardDescription className="text-slate-400 mt-2">
                         {molecule.description}
                       </CardDescription>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-centre gap-2">
                       <Badge className={complexityColors[molecule.complexity as keyof typeof complexityColors]}>
                         {molecule.complexity}
                       </Badge>
@@ -496,7 +496,7 @@ function App() {
                         onClick={() => onToggleFavorite(molecule.id)}
                         className="text-slate-400 hover:text-pink-400"
                       >
-                        <Heart className={`h-4 w-4 ${favorites.has(molecule.id) ? 'fill-current text-pink-400' : ''}`} />
+                        <Heart className={`h-4 w-4 ${favourites.has(molecule.id) ? 'fill-current text-pink-400' : ''}`} />
                       </Button>
                     </div>
                   </div>
@@ -589,7 +589,7 @@ function App() {
       ))}
 
       {filteredMolecules.length === 0 && searchQuery && (
-        <div className="text-center py-12 text-slate-400">
+        <div className="text-centre py-12 text-slate-400">
           <Sparkles className="h-12 w-12 mx-auto mb-4 opacity-50" />
           <p className="text-lg font-medium mb-2">No specialized molecules found</p>
           <p className="text-sm">Try adjusting your search query</p>
@@ -598,5 +598,10 @@ function App() {
     </div>
   )
 }
+
+
+
+
+
 
 

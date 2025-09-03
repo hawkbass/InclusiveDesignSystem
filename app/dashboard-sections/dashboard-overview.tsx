@@ -157,8 +157,8 @@ export function DashboardOverview({
                   </div>
                 </div>
                 
-                <div className="flex justify-between items-center">
-                  <div className="text-xs font-medium flex items-center gap-1 text-green-400">
+                <div className="flex justify-between items-centre">
+                  <div className="text-xs font-medium flex items-centre gap-1 text-green-400">
                     <TrendingUp className="h-3 w-3" />
                     {stat.change}
                   </div>
@@ -167,7 +167,7 @@ export function DashboardOverview({
               </div>
 
               {/* Hover effect */}
-              <div className="mt-2 pt-2 border-t border-slate-700/50 text-xs text-fuchsia-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="mt-2 pt-2 border-t border-slate-700/50 text-xs text-fuchsia-400 flex items-centre opacity-0 group-hover:opacity-100 transition-opacity">
                 View details
                 <ArrowRight className="ml-1 h-3 w-3" />
               </div>
@@ -180,11 +180,11 @@ export function DashboardOverview({
       <AnimatedElement animation="slide-up" delay={400}>
         <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 overflow-hidden backdrop-blur-sm">
           <div className="p-4 border-b border-slate-700/50">
-            <div className="flex justify-between items-center mb-3">
+            <div className="flex justify-between items-centre mb-3">
               <div className="font-medium text-slate-100 text-sm">Recent Candidates</div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-centre gap-2">
                 {/* Table Filter */}
-                <div className="flex items-center gap-1 bg-slate-700/50 rounded-md p-1">
+                <div className="flex items-centre gap-1 bg-slate-700/50 rounded-md p-1">
                   {[
                     { key: "all", label: "All", count: 4 },
                     { key: "interview", label: "Interview", count: 1 },
@@ -214,9 +214,9 @@ export function DashboardOverview({
             
             {/* Bulk Actions */}
             {selectedCandidates.size > 0 && (
-              <div className="flex items-center gap-2 mb-3 p-2 bg-fuchsia-500/10 border border-fuchsia-500/30 rounded-md">
+              <div className="flex items-centre gap-2 mb-3 p-2 bg-fuchsia-500/10 border border-fuchsia-500/30 rounded-md">
                 <span className="text-xs text-fuchsia-300">{selectedCandidates.size} selected</span>
-                <div className="flex items-center gap-1">
+                <div className="flex items-centre gap-1">
                   <Button 
                     variant="ghost" 
                     size="sm" 
@@ -255,9 +255,9 @@ export function DashboardOverview({
               {candidates.map((candidate) => (
                 <div 
                   key={candidate.id}
-                  className="flex items-center justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30 hover:bg-slate-700/50 transition-all duration-200 group"
+                  className="flex items-centre justify-between p-3 bg-slate-700/30 rounded-lg border border-slate-600/30 hover:bg-slate-700/50 transition-all duration-200 group"
                 >
-                  <div className="flex items-center gap-3 flex-1">
+                  <div className="flex items-centre gap-3 flex-1">
                     {/* Checkbox */}
                     <div className="flex-shrink-0">
                       <button
@@ -270,7 +270,7 @@ export function DashboardOverview({
                           }
                           setSelectedCandidates(newSelected)
                         }}
-                        className="text-slate-400 hover:text-slate-300 transition-colors"
+                        className="text-slate-400 hover:text-slate-300 transition-colours"
                       >
                         {selectedCandidates.has(candidate.id) ? (
                           <CheckSquare className="h-4 w-4 text-fuchsia-400" />
@@ -281,18 +281,18 @@ export function DashboardOverview({
                     </div>
 
                     {/* Avatar */}
-                    <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white text-sm font-medium">
+                    <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white text-sm font-medium">
                       {candidate.avatar}
                     </div>
 
                     {/* Candidate Info */}
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex items-centre gap-2 mb-1">
                         <div className="text-sm font-medium text-slate-100">{candidate.name}</div>
                         <StatusBadge status={candidate.status as "applied" | "screening" | "interview" | "offer" | "hired" | "rejected"} />
                       </div>
                       <div className="text-xs text-slate-400">{candidate.position}</div>
-                      <div className="flex items-center gap-2 mt-1">
+                      <div className="flex items-centre gap-2 mt-1">
                         <span className="text-xs text-slate-500">{candidate.location}</span>
                         <span className="text-xs text-slate-500">•</span>
                         <span className="text-xs text-slate-500">{candidate.experience}</span>
@@ -303,9 +303,9 @@ export function DashboardOverview({
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <div className="text-xs text-slate-500">{candidate.lastActivity}</div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-centre gap-1">
                       <Button
                         variant="ghost"
                         size="sm"
@@ -350,14 +350,14 @@ export function DashboardOverview({
       {/* Activity Chart */}
       <AnimatedElement animation="slide-up" delay={500}>
         <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-centre justify-between mb-4">
             <div>
               <h3 className="text-lg font-medium text-slate-100">Hiring Activity</h3>
               <p className="text-sm text-slate-400">Applications, interviews, and hires over time</p>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-centre gap-2">
               {/* Chart Type Toggle */}
-              <div className="flex items-center gap-1 bg-slate-700/50 rounded-md p-1">
+              <div className="flex items-centre gap-1 bg-slate-700/50 rounded-md p-1">
                 {[
                   { key: "area", label: "Area" },
                   { key: "line", label: "Line" },
@@ -378,7 +378,7 @@ export function DashboardOverview({
               </div>
               
               {/* Time Period Toggle */}
-              <div className="flex items-center gap-1 bg-slate-700/50 rounded-md p-1">
+              <div className="flex items-centre gap-1 bg-slate-700/50 rounded-md p-1">
                 {["7D", "30D", "90D", "12M"].map((period) => (
                   <button
                     key={period}
@@ -421,3 +421,7 @@ export function DashboardOverview({
     </div>
   )
 } 
+
+
+
+

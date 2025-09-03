@@ -18,7 +18,7 @@ interface MediaComponentsProps {
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
   viewMode: "grid" | "list"
-  favorites: Set<string>
+  favourites: Set<string>
   onToggleFavourite: (id: string) => void
 }
 
@@ -28,7 +28,7 @@ const components = [
     id: "avatar-group",
     title: "Avatar Components",
     description: "Profile pictures and avatar variations",
-    code: `<div className="flex items-center gap-6">
+    code: `<div className="flex items-centre gap-6">
   <Avatar className="h-16 w-16">
     <AvatarFallback>SJ</AvatarFallback>
   </Avatar>
@@ -39,7 +39,7 @@ const components = [
 </div>`,
     component: (
       <div className="space-y-4 w-full">
-        <div className="flex items-center gap-6">
+        <div className="flex items-centre gap-6">
           <Avatar className="h-16 w-16 ring-2 ring-slate-600 hover:ring-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <AvatarImage src="/placeholder.svg?height=64&width=64" />
             <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 text-lg font-bold">SJ</AvatarFallback>
@@ -49,7 +49,7 @@ const components = [
             <p className="text-sm text-slate-400">Senior Software Engineer</p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-centre gap-3">
           <Avatar className="h-12 w-12 hover:scale-110 transition-transform" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <AvatarFallback className="bg-blue-500/20 text-blue-300 font-semibold">MK</AvatarFallback>
           </Avatar>
@@ -58,7 +58,7 @@ const components = [
             <p className="text-sm text-slate-400">Product Designer</p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-centre gap-3">
           <Avatar className="h-10 w-10 hover:scale-110 transition-transform" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <AvatarFallback className="bg-green-500/20 text-green-300 text-sm font-semibold">AL</AvatarFallback>
           </Avatar>
@@ -74,22 +74,22 @@ const components = [
     id: "image-placeholder",
     title: "Image Placeholders",
     description: "Placeholder components for images",
-    code: `<div className="aspect-video bg-slate-900/50 border border-slate-700/50 shadow-xl rounded-lg flex items-center justify-center">
-  <div className="text-center">
+    code: `<div className="aspect-video bg-slate-900/50 border border-slate-700/50 shadow-xl rounded-lg flex items-centre justify-centre">
+  <div className="text-centre">
     <ImageIcon className="h-8 w-8 text-slate-400 mx-auto mb-2" />
     <p className="text-sm text-slate-400">16:9 Aspect Ratio</p>
   </div>
 </div>`,
     component: (
       <div className="space-y-4 w-full max-w-md">
-        <div className="aspect-video bg-slate-800/50 border border-slate-600 rounded-lg flex items-center justify-center hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-          <div className="text-center">
+        <div className="aspect-video bg-slate-800/50 border border-slate-600 rounded-lg flex items-centre justify-centre hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <div className="text-centre">
             <ImageIcon className="h-8 w-8 text-slate-400 mx-auto mb-2" />
             <p className="text-sm text-slate-400">16:9 Aspect Ratio</p>
           </div>
         </div>
-        <div className="aspect-square bg-slate-800/50 border border-slate-600 rounded-lg flex items-center justify-center hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-          <div className="text-center">
+        <div className="aspect-square bg-slate-800/50 border border-slate-600 rounded-lg flex items-centre justify-centre hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <div className="text-centre">
             <ImageIcon className="h-6 w-6 text-slate-400 mx-auto mb-2" />
             <p className="text-sm text-slate-400">1:1 Square</p>
           </div>
@@ -118,18 +118,18 @@ const components = [
           <h4 className="font-medium text-slate-200 mb-3">Hiring Team</h4>
           <div className="flex -space-x-2">
             {[
-              { initials: "SJ", name: "Sarah Johnson", color: "bg-fuchsia-500/20 text-fuchsia-300" },
-              { initials: "MK", name: "Michael Kim", color: "bg-blue-500/20 text-blue-300" },
-              { initials: "AL", name: "Alex Liu", color: "bg-green-500/20 text-green-300" },
-              { initials: "JD", name: "Jane Doe", color: "bg-purple-500/20 text-purple-300" }
+              { initials: "SJ", name: "Sarah Johnson", colour: "bg-fuchsia-500/20 text-fuchsia-300" },
+              { initials: "MK", name: "Michael Kim", colour: "bg-blue-500/20 text-blue-300" },
+              { initials: "AL", name: "Alex Liu", colour: "bg-green-500/20 text-green-300" },
+              { initials: "JD", name: "Jane Doe", colour: "bg-purple-500/20 text-purple-300" }
             ].map((person, index) => (
               <Avatar key={index} className="border-2 border-slate-800 hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
-                <AvatarFallback className={person.color} title={person.name}>
+                <AvatarFallback className={person.colour} title={person.name}>
                   {person.initials}
                 </AvatarFallback>
               </Avatar>
             ))}
-            <div className="flex items-center justify-center w-10 h-10 bg-slate-700 border-2 border-slate-800 rounded-full text-xs text-slate-300 hover:bg-slate-600 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div className="flex items-centre justify-centre w-10 h-10 bg-slate-700 border-2 border-slate-800 rounded-full text-xs text-slate-300 hover:bg-slate-600 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
               +3
             </div>
           </div>
@@ -138,12 +138,12 @@ const components = [
           <h4 className="font-medium text-slate-200 mb-3">Interview Panel</h4>
           <div className="flex -space-x-2">
             {[
-              { initials: "RW", color: "bg-orange-500/20 text-orange-300" },
-              { initials: "LB", color: "bg-cyan-500/20 text-cyan-300" },
-              { initials: "KM", color: "bg-pink-500/20 text-pink-300" }
+              { initials: "RW", colour: "bg-orange-500/20 text-orange-300" },
+              { initials: "LB", colour: "bg-cyan-500/20 text-cyan-300" },
+              { initials: "KM", colour: "bg-pink-500/20 text-pink-300" }
             ].map((person, index) => (
               <Avatar key={index} className="border-2 border-slate-800 hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
-                <AvatarFallback className={person.color}>
+                <AvatarFallback className={person.colour}>
                   {person.initials}
                 </AvatarFallback>
               </Avatar>
@@ -166,19 +166,19 @@ const components = [
       <div className="w-full max-w-md">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {[
-            { title: "Office Space", color: "bg-blue-500/20" },
-            { title: "Team Photo", color: "bg-green-500/20" },
-            { title: "Company Event", color: "bg-purple-500/20" },
-            { title: "Product Demo", color: "bg-yellow-500/20" },
-            { title: "Meeting Room", color: "bg-red-500/20" },
-            { title: "Workspace", color: "bg-cyan-500/20" }
+            { title: "Office Space", colour: "bg-blue-500/20" },
+            { title: "Team Photo", colour: "bg-green-500/20" },
+            { title: "Company Event", colour: "bg-purple-500/20" },
+            { title: "Product Demo", colour: "bg-yellow-500/20" },
+            { title: "Meeting Room", colour: "bg-red-500/20" },
+            { title: "Workspace", colour: "bg-cyan-500/20" }
           ].map((item, index) => (
             <div
               key={index}
-              className={`aspect-square ${item.color} rounded-xl border border-slate-600 flex items-center justify-center hover:scale-105 transition-transform cursor-pointer`}
+              className={`aspect-square ${item.colour} rounded-xl border border-slate-600 flex items-centre justify-centre hover:scale-105 transition-transform cursor-pointer`}
               style={{ transitionDuration: 'var(--animation-speed)' }}
             >
-              <div className="text-center">
+              <div className="text-centre">
                 <ImageIcon className="h-6 w-6 mx-auto mb-1 text-slate-400" />
                 <p className="text-xs text-slate-400">{item.title}</p>
               </div>
@@ -225,10 +225,10 @@ const components = [
     title: "Media Player",
     description: "Video/audio player interface",
     code: `<div className="bg-slate-900 rounded-lg p-4">
-  <div className="aspect-video bg-slate-800 rounded mb-4 flex items-center justify-center">
+  <div className="aspect-video bg-slate-800 rounded mb-4 flex items-centre justify-centre">
     <Video className="h-12 w-12 text-slate-400" />
   </div>
-  <div className="flex items-center gap-6">
+  <div className="flex items-centre gap-6">
     <Button size="sm"><Play className="h-4 w-4" /></Button>
     <div className="flex-1 bg-slate-700 h-1 rounded">
       <div className="bg-fuchsia-500 h-1 rounded w-1/3"></div>
@@ -239,14 +239,14 @@ const components = [
     component: (
       <div className="w-full max-w-md">
         <div className="bg-slate-800/50 border border-slate-600 rounded-lg p-4">
-          <div className="aspect-video bg-slate-800/80 rounded mb-4 flex items-center justify-center hover:bg-slate-800 hover:scale-105 transition-all duration-300 rounded-lg hover:shadow-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <div className="text-center">
+          <div className="aspect-video bg-slate-800/80 rounded mb-4 flex items-centre justify-centre hover:bg-slate-800 hover:scale-105 transition-all duration-300 rounded-lg hover:shadow-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div className="text-centre">
               <Video className="h-12 w-12 text-slate-400 mx-auto mb-2" />
               <p className="text-sm text-slate-400">Interview Recording</p>
             </div>
           </div>
           <div className="space-y-3">
-            <div className="flex items-center gap-6">
+            <div className="flex items-centre gap-6">
               <Button size="sm" className="w-8 h-8 p-0 bg-fuchsia-500 hover:bg-fuchsia-600">
                 <ArrowRight className="h-4 w-4 ml-0.5" />
               </Button>
@@ -255,8 +255,8 @@ const components = [
               </div>
               <span className="text-sm text-slate-400 font-mono">2:34 / 7:42</span>
             </div>
-            <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center gap-2">
+            <div className="flex items-centre justify-between text-sm">
+              <div className="flex items-centre gap-2">
                 <Button size="sm" variant="ghost" className="w-8 h-8 p-0 hover:bg-slate-700">
                   <RefreshCw className="h-3 w-3" />
                 </Button>
@@ -278,7 +278,7 @@ export function MediaComponents({
   onCopyCode, 
   copiedCode, 
   viewMode, 
-  favorites, 
+  favourites, 
   onToggleFavourite 
 }: MediaComponentsProps) {
   const filteredComponents = components.filter(comp =>
@@ -289,7 +289,7 @@ export function MediaComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-centre justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Media Components</h2>
             <p className="text-slate-400">Images, avatars, and media display components</p>
@@ -309,7 +309,7 @@ export function MediaComponents({
               code={comp.code}
               onCopyCode={onCopyCode}
               copiedCode={copiedCode}
-              isFavourite={favorites.has(comp.id)}
+              isFavourite={favourites.has(comp.id)}
               onToggleFavourite={onToggleFavourite}
               viewMode={viewMode}
               searchQuery={searchQuery}
@@ -320,7 +320,7 @@ export function MediaComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-centre py-12 text-slate-400">
             <ImageIcon className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -333,3 +333,7 @@ export function MediaComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
+
+
+

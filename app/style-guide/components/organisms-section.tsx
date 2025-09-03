@@ -17,7 +17,7 @@ interface OrganismssSectionProps {
   viewMode: "grid" | "list"
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
-  favorites: Set<string>
+  favourites: Set<string>
   onToggleFavorite: (id: string) => void
   onNavigateToComponent?: (componentId: string) => void
 }
@@ -27,7 +27,7 @@ export function OrganismsSection({
   viewMode, 
   onCopyCode, 
   copiedCode, 
-  favorites, 
+  favourites, 
   onToggleFavorite,
   onNavigateToComponent
 }: OrganismssSectionProps) {
@@ -46,7 +46,7 @@ export function OrganismsSection({
     {
       id: "unified-sidebar",
       name: "Unified Sidebar",
-      description: "Comprehensive navigation sidebar with collapsible sections, favorites, and state management",
+      description: "Comprehensive navigation sidebar with collapsible sections, favourites, and state management",
       category: "Navigation",
       complexity: "Medium",
       components: ["SidebarHeader", "NavigationMenu", "CategorySection", "FavoritesList", "ToggleButton"],
@@ -107,8 +107,8 @@ export function OrganismsSection({
       location: "components/file-management/"
     },
     {
-      id: "communication-center",
-      name: "Communication Center",
+      id: "communication-centre",
+      name: "Communication centre",
       description: "Integrated messaging, notifications, and communication tools for team collaboration",
       category: "Communication",
       complexity: "High",
@@ -210,19 +210,19 @@ export function OrganismsSection({
     <div className="space-y-8">
       {/* Summary Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
           <div className="text-3xl font-bold text-emerald-400">{organisms.length}</div>
           <div className="text-sm text-slate-400">Total Organisms</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
           <div className="text-3xl font-bold text-blue-400">{Object.keys(groupedOrganisms).length}</div>
           <div className="text-sm text-slate-400">Categories</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
           <div className="text-3xl font-bold text-purple-400">{organisms.reduce((acc, org) => acc + org.components.length, 0)}</div>
           <div className="text-sm text-slate-400">Total Components</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
           <div className="text-3xl font-bold text-fuchsia-400">{organisms.filter(org => org.complexity === 'High').length}</div>
           <div className="text-sm text-slate-400">Complex Systems</div>
         </div>
@@ -231,12 +231,12 @@ export function OrganismsSection({
       {/* Organisms by Category */}
       {Object.entries(groupedOrganisms).map(([category, categoryOrganisms]) => (
         <div key={category}>
-          <div className="flex items-center gap-3 mb-6">
+          <div className="flex items-centre gap-3 mb-6">
             <div className="p-2 rounded-lg bg-emerald-500/20">
               <Grid3X3 className="h-5 w-5 text-emerald-400" />
             </div>
             <div>
-              <h4 className="text-xl font-bold text-slate-200 flex items-center gap-2">
+              <h4 className="text-xl font-bold text-slate-200 flex items-centre gap-2">
                 <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
                 {category} ({categoryOrganisms.length})
               </h4>
@@ -250,7 +250,7 @@ export function OrganismsSection({
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-centre gap-2 mb-2">
                         <CardTitle className="text-lg text-slate-200">{organism.name}</CardTitle>
                         <Badge className={`text-xs ${
                           organism.complexity === 'High' ? 'bg-red-500/20 text-red-300' :
@@ -273,7 +273,7 @@ export function OrganismsSection({
                       onClick={() => onToggleFavorite(organism.id)}
                       className="opacity-0 group-hover:opacity-100 transition-opacity"
                     >
-                      <Heart className={`h-4 w-4 ${favorites.has(organism.id) ? 'fill-current text-pink-400' : 'text-slate-400'}`} />
+                      <Heart className={`h-4 w-4 ${favourites.has(organism.id) ? 'fill-current text-pink-400' : 'text-slate-400'}`} />
                     </Button>
                   </div>
                 </CardHeader>
@@ -358,7 +358,7 @@ export function OrganismsSection({
 
       {/* No Results Message */}
       {filteredOrganisms.length === 0 && searchQuery && (
-        <div className="text-center py-12">
+        <div className="text-centre py-12">
           <div className="text-slate-400 mb-4">No organisms found matching "{searchQuery}"</div>
           <p className="text-sm text-slate-500">
             Try searching for categories like "Layout", "Navigation", "Business Logic", or component names
@@ -368,5 +368,10 @@ export function OrganismsSection({
     </div>
   )
 }
+
+
+
+
+
 
 

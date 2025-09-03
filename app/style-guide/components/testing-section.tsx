@@ -35,7 +35,7 @@ interface TestingSectionProps {
   viewMode: "grid" | "list"
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
-  favorites: Set<string>
+  favourites: Set<string>
   onToggleFavorite: (id: string) => void
 }
 
@@ -44,7 +44,7 @@ export function TestingSection({
   viewMode, 
   onCopyCode, 
   copiedCode, 
-  favorites, 
+  favourites, 
   onToggleFavorite 
 }: TestingSectionProps) {
   const [showAccessibilityTest, setShowAccessibilityTest] = useState(false)
@@ -55,7 +55,7 @@ export function TestingSection({
   const [selectedViewport, setSelectedViewport] = useState("desktop")
   const [testResults, setTestResults] = useState<any>(null)
 
-  // Color Generator Function
+  // colour Generator Function
   const generateColorPalette = () => {
     const baseColors = ['#d946ef', '#8b5cf6', '#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#06b6d4', '#059669']
     const variations = ['300', '400', '500', '600', '700', '800', '900']
@@ -78,11 +78,11 @@ export function TestingSection({
   // Accessibility Test Function
   const runAccessibilityTest = () => {
     setTestResults({
-      colorContrast: { score: 'AAA', details: 'All color combinations exceed WCAG 2.1 AAA standards' },
+      colorContrast: { score: 'AAA', details: 'All colour combinations exceed WCAG 2.1 AAA standards' },
       keyboardNav: { score: 'Pass', details: 'All interactive elements are keyboard accessible' },
       screenReader: { score: 'Excellent', details: 'Proper ARIA labels and semantic markup' },
       focusManagement: { score: 'Optimized', details: 'Clear focus indicators and logical tab order' },
-      colorBlindness: { score: 'Pass', details: 'Alternative indicators provided for color-only information' },
+      colorBlindness: { score: 'Pass', details: 'Alternative indicators provided for colour-only information' },
       textSize: { score: 'Responsive', details: 'Text scales properly from 100% to 200%' }
     })
     setShowAccessibilityTest(true)
@@ -91,7 +91,7 @@ export function TestingSection({
   // Export Function
   const exportDesignSystem = () => {
     const exportData = {
-      colors: {
+      colours: {
         primary: '#d946ef',
         secondary: '#8b5cf6',
         success: '#10b981',
@@ -111,7 +111,7 @@ export function TestingSection({
         xl: '2rem',
         '2xl': '3rem'
       },
-      components: favorites.size,
+      components: favourites.size,
       exportDate: new Date().toISOString(),
       version: '1.0.0'
     }
@@ -122,11 +122,11 @@ export function TestingSection({
 
   const testingTools = [
     {
-      id: 'color-generator',
+      id: 'colour-generator',
       name: 'Colour Generator',
       description: 'Generate harmonious colour palettes',
       icon: Palette,
-      color: 'fuchsia',
+      colour: 'fuchsia',
       action: generateColorPalette
     },
     {
@@ -134,7 +134,7 @@ export function TestingSection({
       name: 'Accessibility Test',
       description: 'WCAG 2.1 compliance checker',
       icon: Target,
-      color: 'green',
+      colour: 'green',
       action: runAccessibilityTest
     },
     {
@@ -142,7 +142,7 @@ export function TestingSection({
       name: 'Responsive Test',
       description: 'Multi-device preview',
       icon: Monitor,
-      color: 'blue',
+      colour: 'blue',
       action: () => setShowResponsiveTest(true)
     },
     {
@@ -150,7 +150,7 @@ export function TestingSection({
       name: 'Export Kit',
       description: 'Download design tokens',
       icon: Download,
-      color: 'purple',
+      colour: 'purple',
       action: exportDesignSystem
     }
   ]
@@ -171,15 +171,15 @@ export function TestingSection({
             className="border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/50 transition-all group cursor-pointer"
             onClick={tool.action}
           >
-            <CardContent className="p-6 text-center">
-              <div className={`p-3 rounded-lg mb-4 mx-auto w-fit bg-${tool.color}-500/20 group-hover:bg-${tool.color}-500/30 transition-all`}>
-                <tool.icon className={`h-6 w-6 text-${tool.color}-400 group-hover:scale-110 transition-transform`} />
+            <CardContent className="p-6 text-centre">
+              <div className={`p-3 rounded-lg mb-4 mx-auto w-fit bg-${tool.colour}-500/20 group-hover:bg-${tool.colour}-500/30 transition-all`}>
+                <tool.icon className={`h-6 w-6 text-${tool.colour}-400 group-hover:scale-110 transition-transform`} />
               </div>
               <h3 className="text-lg font-medium text-slate-200 mb-2">{tool.name}</h3>
               <p className="text-sm text-slate-400 mb-4">{tool.description}</p>
               <Button 
                 size="sm" 
-                className={`w-full bg-${tool.color}-600 hover:bg-${tool.color}-700 group-hover:shadow-lg group-hover:shadow-${tool.color}-500/25 transition-all`}
+                className={`w-full bg-${tool.colour}-600 hover:bg-${tool.colour}-700 group-hover:shadow-lg group-hover:shadow-${tool.colour}-500/25 transition-all`}
               >
                 <Play className="h-3 w-3 mr-2" />
                 Run Test
@@ -192,7 +192,7 @@ export function TestingSection({
       {/* Live Component Testing Area */}
       <Card className="border-slate-700/50 bg-slate-800/30">
         <CardHeader>
-          <CardTitle className="text-xl text-slate-100 flex items-center gap-2">
+          <CardTitle className="text-xl text-slate-100 flex items-centre gap-2">
             <Zap className="h-5 w-5 text-orange-400" />
             Live Component Preview
           </CardTitle>
@@ -237,7 +237,7 @@ export function TestingSection({
                   placeholder="Error state" 
                   className="bg-slate-800 border-red-500 text-slate-200"
                 />
-                <div className="flex items-center space-x-2">
+                <div className="flex items-centre space-x-2">
                   <Switch defaultChecked />
                   <span className="text-sm text-slate-400">Toggle setting</span>
                 </div>
@@ -260,7 +260,7 @@ export function TestingSection({
                   <div className="text-xs text-slate-400 mb-1">Complete</div>
                   <Progress value={100} className="h-2" />
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-centre gap-2">
                   <Avatar className="w-8 h-8">
                     <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 text-xs">
                       JD
@@ -281,7 +281,7 @@ export function TestingSection({
       <Dialog open={showColorGenerator} onOpenChange={setShowColorGenerator}>
         <DialogContent className="max-w-2xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
+            <DialogTitle className="text-slate-100 flex items-centre gap-2">
               <Palette className="h-5 w-5 text-fuchsia-400" />
               Generated Colour Palette
             </DialogTitle>
@@ -292,14 +292,14 @@ export function TestingSection({
           
           <div className="space-y-6">
             <div className="grid grid-cols-5 gap-4">
-              {generatedColors.map((color, index) => (
+              {generatedColors.map((colour, index) => (
                 <div key={index} className="group">
                   <div 
                     className="w-full h-20 rounded-lg border border-slate-700/50 group-hover:scale-105 transition-all cursor-pointer"
-                    style={{ backgroundColor: color }}
-                    onClick={() => onCopyCode(color, `generated-${index}`)}
+                    style={{ backgroundColor: colour }}
+                    onClick={() => onCopyCode(colour, `generated-${index}`)}
                   >
-                    <div className="w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="w-full h-full flex items-centre justify-centre opacity-0 group-hover:opacity-100 transition-opacity">
                       {copiedCode === `generated-${index}` ? (
                         <CheckCircle2 className="h-4 w-4 text-white" />
                       ) : (
@@ -307,8 +307,8 @@ export function TestingSection({
                       )}
                     </div>
                   </div>
-                  <div className="text-xs text-slate-400 mt-2 text-center font-mono">
-                    {color}
+                  <div className="text-xs text-slate-400 mt-2 text-centre font-mono">
+                    {colour}
                   </div>
                 </div>
               ))}
@@ -338,7 +338,7 @@ export function TestingSection({
       <Dialog open={showAccessibilityTest} onOpenChange={setShowAccessibilityTest}>
         <DialogContent className="max-w-xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
+            <DialogTitle className="text-slate-100 flex items-centre gap-2">
               <Target className="h-5 w-5 text-green-400" />
               Accessibility Test Results
             </DialogTitle>
@@ -349,7 +349,7 @@ export function TestingSection({
           
           <div className="space-y-4">
             {testResults && Object.entries(testResults).map(([key, result]: [string, any]) => (
-              <div key={key} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+              <div key={key} className="flex items-centre justify-between p-3 bg-slate-800/50 rounded-lg">
                 <div className="flex-1">
                   <div className="text-sm font-medium text-slate-200 capitalize">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
@@ -379,7 +379,7 @@ export function TestingSection({
       <Dialog open={showResponsiveTest} onOpenChange={setShowResponsiveTest}>
         <DialogContent className="max-w-4xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
+            <DialogTitle className="text-slate-100 flex items-centre gap-2">
               <Monitor className="h-5 w-5 text-blue-400" />
               Responsive Preview
             </DialogTitle>
@@ -391,15 +391,15 @@ export function TestingSection({
           <div className="space-y-4">
             <Tabs value={selectedViewport} onValueChange={setSelectedViewport}>
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="mobile" className="flex items-center gap-2">
+                <TabsTrigger value="mobile" className="flex items-centre gap-2">
                   <Smartphone className="h-4 w-4" />
                   Mobile
                 </TabsTrigger>
-                <TabsTrigger value="tablet" className="flex items-center gap-2">
+                <TabsTrigger value="tablet" className="flex items-centre gap-2">
                   <Tablet className="h-4 w-4" />
                   Tablet
                 </TabsTrigger>
-                <TabsTrigger value="desktop" className="flex items-center gap-2">
+                <TabsTrigger value="desktop" className="flex items-centre gap-2">
                   <Monitor className="h-4 w-4" />
                   Desktop
                 </TabsTrigger>
@@ -408,7 +408,7 @@ export function TestingSection({
               {Object.entries(responsiveBreakpoints).map(([key, viewport]) => (
                 <TabsContent key={key} value={key} className="mt-4">
                   <div className="bg-slate-800 rounded-lg p-6 border border-slate-700/50">
-                    <div className="text-center mb-4">
+                    <div className="text-centre mb-4">
                       <Badge variant="outline" className="text-slate-400 border-slate-600">
                         {viewport.width} × {viewport.height}
                       </Badge>
@@ -423,7 +423,7 @@ export function TestingSection({
                     >
                       {/* Sample responsive content */}
                       <div className="space-y-3">
-                        <div className="flex items-center justify-between">
+                        <div className="flex items-centre justify-between">
                           <h3 className="text-lg font-semibold text-slate-200">Sample Content</h3>
                           <Badge className="bg-fuchsia-500/20 text-fuchsia-300">Live</Badge>
                         </div>
@@ -461,7 +461,7 @@ export function TestingSection({
       <Dialog open={showExportModal} onOpenChange={setShowExportModal}>
         <DialogContent className="max-w-xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
+            <DialogTitle className="text-slate-100 flex items-centre gap-2">
               <Download className="h-5 w-5 text-purple-400" />
               Design System Export
             </DialogTitle>
@@ -477,7 +477,7 @@ export function TestingSection({
                 <li>• Complete colour palette with hex values</li>
                 <li>• Typography scale and font family</li>
                 <li>• Spacing system tokens</li>
-                <li>• {favorites.size} favourited components</li>
+                <li>• {favourites.size} favourited components</li>
                 <li>• Export metadata and version</li>
               </ul>
             </div>
@@ -491,3 +491,8 @@ export function TestingSection({
     </div>
   )
 }
+
+
+
+
+

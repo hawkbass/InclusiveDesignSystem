@@ -26,7 +26,7 @@ interface FavoritesSectionProps {
   viewMode: "grid" | "list"
   onCopyCode: (code: string, id: string) => void
   copiedCode: string
-  favorites: Set<string>
+  favourites: Set<string>
   onToggleFavorite: (id: string) => void
   onNavigateToSection?: (sectionId: string) => void
 }
@@ -82,7 +82,7 @@ export function FavoritesSection({
   viewMode, 
   onCopyCode, 
   copiedCode, 
-  favorites, 
+  favourites, 
   onToggleFavorite,
   onNavigateToSection 
 }: FavoritesSectionProps) {
@@ -90,7 +90,7 @@ export function FavoritesSection({
   const [selectedCategory, setSelectedCategory] = useState("all")
 
   // Filter favourite items based on what's actually favourited
-  const userFavorites = favoriteItems.filter(item => favorites.has(item.id))
+  const userFavorites = favoriteItems.filter(item => favourites.has(item.id))
 
   // Apply search and category filters
   const filteredFavorites = userFavorites.filter(item => {
@@ -105,7 +105,7 @@ export function FavoritesSection({
 
   const categories = ["all", "atoms", "molecules", "organisms"]
 
-  if (favorites.size === 0) {
+  if (favourites.size === 0) {
     return (
       <div className="text-centre py-12">
         <Heart className="h-16 w-16 text-slate-600 mx-auto mb-4" />
@@ -156,7 +156,7 @@ export function FavoritesSection({
 
         <div className="flex items-centre gap-2">
           <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30">
-            {filteredFavorites.length} of {favorites.size} shown
+            {filteredFavorites.length} of {favourites.size} shown
           </Badge>
           
           <Button
@@ -289,3 +289,7 @@ export function FavoritesSection({
     </div>
   )
 }
+
+
+
+

@@ -79,7 +79,7 @@ export default function AccessibilityUniversal() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
   const [userMode, setUserMode] = useState<"guided" | "technical">("guided")
   const [copiedCode, setCopiedCode] = useState("")
-  const [favorites, setFavorites] = useState<Set<string>>(new Set())
+  const [favourites, setFavorites] = useState<Set<string>>(new Set())
   const [searchResults, setSearchResults] = useState<any[]>([])
   const [fg, setFg] = useState("#ffffff")
   const [bg, setBg] = useState("#1e293b")
@@ -124,11 +124,11 @@ export default function AccessibilityUniversal() {
     { id: "lighthouse", name: "Lighthouse", category: "Testing", type: "tool",
       description: "Browser accessibility auditor", difficulty: "beginner" },
       
-    // Color Contrast
-    { id: "contrast-ratio", name: "Contrast Ratio", category: "Color", type: "concept",
+    // colour Contrast
+    { id: "contrast-ratio", name: "Contrast Ratio", category: "colour", type: "concept",
       description: "4.5:1 minimum for normal text", difficulty: "beginner" },
-    { id: "color-blindness", name: "Color Blindness", category: "Color", type: "concept",
-      description: "Don't rely on color alone", difficulty: "beginner" },
+    { id: "colour-blindness", name: "colour Blindness", category: "colour", type: "concept",
+      description: "Don't rely on colour alone", difficulty: "beginner" },
       
     // Keyboard Navigation
     { id: "focus-management", name: "Focus Management", category: "Keyboard", type: "concept",
@@ -152,7 +152,7 @@ export default function AccessibilityUniversal() {
       title: "Accessibility Fundamentals",
       description: "Essential concepts and quick wins for inclusive design",
       icon: Shield,
-      color: "text-green-400",
+      colour: "text-green-400",
       bgColor: "bg-green-500/20",
       duration: "20 min",
       difficulty: "Beginner",
@@ -168,7 +168,7 @@ export default function AccessibilityUniversal() {
       title: "Technical Implementation", 
       description: "ARIA, semantic HTML, and testing integration",
       icon: Code2,
-      color: "text-blue-400",
+      colour: "text-blue-400",
       bgColor: "bg-blue-500/20",
       duration: "35 min",
       difficulty: "Intermediate",
@@ -184,7 +184,7 @@ export default function AccessibilityUniversal() {
       title: "Accessibility Auditing",
       description: "Comprehensive testing and compliance validation",
       icon: Target,
-      color: "text-purple-400", 
+      colour: "text-purple-400", 
       bgColor: "bg-purple-500/20",
       duration: "30 min",
       difficulty: "Advanced",
@@ -220,7 +220,7 @@ export default function AccessibilityUniversal() {
   }
 
   const toggleFavorite = (id: string) => {
-    const newFavorites = new Set(favorites)
+    const newFavorites = new Set(favourites)
     if (newFavorites.has(id)) {
       newFavorites.delete(id)
     } else {
@@ -288,7 +288,7 @@ export default function AccessibilityUniversal() {
   const quickPreviewItems = [
     { 
       name: "Live Contrast Checker", 
-      description: `Test color combinations • Current: ${contrast.toFixed(1)}:1 ${passes ? '✓' : '✗'}`,
+      description: `Test colour combinations • Current: ${contrast.toFixed(1)}:1 ${passes ? '✓' : '✗'}`,
       icon: Eye,
       action: () => toggleSection("contrast-checker"),
       status: passes ? "pass" : "fail",
@@ -349,9 +349,9 @@ export default function AccessibilityUniversal() {
           
           <div className="relative px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-centre gap-8 mb-8">
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
+                  <div className="flex items-centre gap-3 mb-4">
                     <Badge className="bg-gradient-to-r from-green-500/20 to-blue-500/20 text-green-300 border-green-500/30">
                       <Shield className="w-3 h-3 mr-1" />
                       WCAG 2.1 AA Compliant
@@ -394,7 +394,7 @@ export default function AccessibilityUniversal() {
                     </Button>
                   </div>
                   
-                  <div className="text-center">
+                  <div className="text-centre">
                     <div className="text-2xl font-bold text-slate-100">
                       {runningTest ? `${testingProgress}%` : `${complianceScore}%`}
                     </div>
@@ -439,7 +439,7 @@ export default function AccessibilityUniversal() {
                 </div>
                 
                 {/* Popular Searches */}
-                <div className="flex flex-wrap justify-center gap-2 mt-4">
+                <div className="flex flex-wrap justify-centre gap-2 mt-4">
                   <span className="text-sm text-slate-500">Popular:</span>
                   {popularSearches.map((search, index) => (
                     <Button
@@ -460,7 +460,7 @@ export default function AccessibilityUniversal() {
                     <CardContent className="p-4">
                       <div className="space-y-3">
                         {searchResults.map((result) => (
-                          <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
+                          <div key={result.id} className="flex items-centre gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
                             <div className="p-2 rounded bg-slate-700/50">
                               {result.type === "guideline" && <BookOpen className="h-4 w-4 text-green-400" />}
                               {result.type === "attribute" && <Code2 className="h-4 w-4 text-blue-400" />}
@@ -501,7 +501,7 @@ export default function AccessibilityUniversal() {
 
               {/* Quick Value Preview - Always Visible with Enhanced Status */}
               <div className="mt-12">
-                <h3 className="text-lg font-medium text-slate-300 mb-6 text-center">Essential Accessibility Tools:</h3>
+                <h3 className="text-lg font-medium text-slate-300 mb-6 text-centre">Essential Accessibility Tools:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                   {quickPreviewItems.map((item, index) => (
                     <Card key={index} className={`bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group cursor-pointer ${
@@ -509,16 +509,16 @@ export default function AccessibilityUniversal() {
                       item.status === 'fail' ? 'border-yellow-500/30 shadow-yellow-500/10' :
                       item.status === 'running' ? 'border-blue-500/30 shadow-blue-500/10' : ''
                     }`}>
-                      <CardContent className="p-6 text-center">
-                        <div className="flex items-center justify-between mb-4">
-                          <div className="flex items-center justify-center flex-1">
+                      <CardContent className="p-6 text-centre">
+                        <div className="flex items-centre justify-between mb-4">
+                          <div className="flex items-centre justify-centre flex-1">
                             <div className={`p-3 rounded-xl transition-all group-hover:scale-110 ${
                               item.status === 'pass' ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20' :
                               item.status === 'fail' ? 'bg-gradient-to-br from-yellow-500/20 to-orange-500/20' :
                               item.status === 'running' ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20' :
                               'bg-gradient-to-br from-green-500/20 to-blue-500/20'
                             }`}>
-                              <item.icon className={`h-6 w-6 transition-colors ${
+                              <item.icon className={`h-6 w-6 transition-colours ${
                                 item.status === 'pass' ? 'text-green-400' :
                                 item.status === 'fail' ? 'text-yellow-400' :
                                 item.status === 'running' ? 'text-blue-400' :
@@ -619,8 +619,8 @@ export default function AccessibilityUniversal() {
             {/* Learning Paths Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("learning-paths")}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-centre justify-between">
+                  <div className="flex items-centre gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
                       <Compass className="h-5 w-5 text-green-400" />
                     </div>
@@ -634,7 +634,7 @@ export default function AccessibilityUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <Badge className="bg-green-500/20 text-green-300">3 Paths</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("learning-paths") ? 
@@ -653,7 +653,7 @@ export default function AccessibilityUniversal() {
                         <CardContent className="p-6">
                           <div className="flex items-start justify-between mb-4">
                             <div className={`p-3 rounded-xl ${path.bgColor}`}>
-                              <path.icon className={`h-6 w-6 ${path.color}`} />
+                              <path.icon className={`h-6 w-6 ${path.colour}`} />
                             </div>
                             <Button
                               variant="ghost"
@@ -661,19 +661,19 @@ export default function AccessibilityUniversal() {
                               onClick={() => toggleFavorite(path.id)}
                               className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                             >
-                              <Heart className={`h-4 w-4 ${favorites.has(path.id) ? 'fill-current text-fuchsia-400' : 'text-slate-400'}`} />
+                              <Heart className={`h-4 w-4 ${favourites.has(path.id) ? 'fill-current text-fuchsia-400' : 'text-slate-400'}`} />
                             </Button>
                           </div>
                           
-                          <h3 className="text-lg font-semibold text-slate-100 mb-2 group-hover:text-green-300 transition-colors">
+                          <h3 className="text-lg font-semibold text-slate-100 mb-2 group-hover:text-green-300 transition-colours">
                             {path.title}
                           </h3>
                           <p className="text-slate-400 text-sm mb-4 leading-relaxed">
                             {path.description}
                           </p>
                           
-                          <div className="flex items-center gap-4 mb-4 text-xs">
-                            <Badge className="bg-slate-700/50 text-slate-300 flex items-center gap-1">
+                          <div className="flex items-centre gap-4 mb-4 text-xs">
+                            <Badge className="bg-slate-700/50 text-slate-300 flex items-centre gap-1">
                               <Clock className="h-3 w-3" />
                               {path.duration}
                             </Badge>
@@ -685,8 +685,8 @@ export default function AccessibilityUniversal() {
                           {userMode === "technical" && (
                             <div className="space-y-2 mb-4">
                               {path.steps.slice(0, 2).map((step, index) => (
-                                <div key={step.id} className="flex items-center gap-2 text-xs text-slate-400">
-                                  <div className="w-4 h-4 rounded border border-slate-600 flex items-center justify-center">
+                                <div key={step.id} className="flex items-centre gap-2 text-xs text-slate-400">
+                                  <div className="w-4 h-4 rounded border border-slate-600 flex items-centre justify-centre">
                                     <span className="text-slate-500">{index + 1}</span>
                                   </div>
                                   <span>{step.title}</span>
@@ -719,8 +719,8 @@ export default function AccessibilityUniversal() {
             {/* WCAG Guidelines Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("wcag-guidelines")}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-centre justify-between">
+                  <div className="flex items-centre gap-3">
                     <div className="p-2 rounded-lg bg-blue-500/20">
                       <BookOpen className="h-5 w-5 text-blue-400" />
                     </div>
@@ -734,7 +734,7 @@ export default function AccessibilityUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <Badge className="bg-blue-500/20 text-blue-300">POUR Principles</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("wcag-guidelines") ? 
@@ -753,16 +753,16 @@ export default function AccessibilityUniversal() {
                         title: "Perceivable",
                         description: "Information and UI must be presentable to users in ways they can perceive",
                         icon: Eye,
-                        color: "text-blue-400",
+                        colour: "text-blue-400",
                         bgColor: "bg-blue-500/20",
-                        example: "Provide text alternatives for images and ensure sufficient color contrast",
+                        example: "Provide text alternatives for images and ensure sufficient colour contrast",
                         technical: "img alt attributes, ARIA labels, min 4.5:1 contrast ratio"
                       },
                       {
                         title: "Operable", 
                         description: "UI components and navigation must be operable by all users",
                         icon: Target,
-                        color: "text-green-400",
+                        colour: "text-green-400",
                         bgColor: "bg-green-500/20",
                         example: "All functionality available via keyboard with visible focus indicators",
                         technical: "tabindex management, focus trapping, keyboard event handlers"
@@ -771,7 +771,7 @@ export default function AccessibilityUniversal() {
                         title: "Understandable",
                         description: "Information and operation of the UI must be understandable",
                         icon: Lightbulb,
-                        color: "text-yellow-400",
+                        colour: "text-yellow-400",
                         bgColor: "bg-yellow-500/20",
                         example: "Clear error messages and consistent navigation patterns",
                         technical: "aria-describedby for errors, consistent interaction patterns"
@@ -780,7 +780,7 @@ export default function AccessibilityUniversal() {
                         title: "Robust",
                         description: "Content must be robust enough for assistive technologies",
                         icon: Shield,
-                        color: "text-purple-400",
+                        colour: "text-purple-400",
                         bgColor: "bg-purple-500/20",
                         example: "Use semantic HTML and valid ARIA markup",
                         technical: "semantic elements, valid HTML, proper ARIA implementation"
@@ -789,11 +789,11 @@ export default function AccessibilityUniversal() {
                       <Card key={principle.title} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
                         <CardContent className="p-6">
                           <div className="flex items-start gap-4 mb-4">
-                            <div className={`w-12 h-12 ${principle.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                              <principle.icon className={`h-6 w-6 ${principle.color}`} />
+                            <div className={`w-12 h-12 ${principle.bgColor} rounded-xl flex items-centre justify-centre group-hover:scale-110 transition-transform`}>
+                              <principle.icon className={`h-6 w-6 ${principle.colour}`} />
                             </div>
                             <div className="flex-1">
-                              <h3 className="font-semibold text-slate-100 group-hover:text-green-300 transition-colors mb-2">
+                              <h3 className="font-semibold text-slate-100 group-hover:text-green-300 transition-colours mb-2">
                                 {principle.title}
                               </h3>
                               <p className="text-slate-400 text-sm mb-3">{principle.description}</p>
@@ -819,19 +819,19 @@ export default function AccessibilityUniversal() {
             {/* Interactive Contrast Checker */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("contrast-checker")}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-centre justify-between">
+                  <div className="flex items-centre gap-3">
                     <div className="p-2 rounded-lg bg-purple-500/20">
                       <Eye className="h-5 w-5 text-purple-400" />
                     </div>
                     <div>
                       <CardTitle className="text-xl text-slate-100">Interactive Contrast Checker</CardTitle>
                       <CardDescription>
-                        Live WCAG color contrast validation with real-time preview
+                        Live WCAG colour contrast validation with real-time preview
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <Badge className={`${passes ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
                       {contrast.toFixed(1)}:1 {passes ? "✓ Pass" : "✗ Fail"}
                     </Badge>
@@ -847,12 +847,12 @@ export default function AccessibilityUniversal() {
               {expandedSections.has("contrast-checker") && (
                 <CardContent>
                   <div className="space-y-6">
-                    <div className="grid md:grid-cols-3 gap-6 items-center">
+                    <div className="grid md:grid-cols-3 gap-6 items-centre">
                       <div>
-                        <Label className="block text-slate-200 mb-2 font-medium">Foreground Color</Label>
-                        <div className="flex items-center gap-3">
+                        <Label className="block text-slate-200 mb-2 font-medium">Foreground colour</Label>
+                        <div className="flex items-centre gap-3">
                           <input 
-                            type="color" 
+                            type="colour" 
                             value={fg} 
                             onChange={e => setFg(e.target.value)} 
                             className="w-12 h-10 border border-slate-700 rounded cursor-pointer" 
@@ -861,10 +861,10 @@ export default function AccessibilityUniversal() {
                         </div>
                       </div>
                       <div>
-                        <Label className="block text-slate-200 mb-2 font-medium">Background Color</Label>
-                        <div className="flex items-center gap-3">
+                        <Label className="block text-slate-200 mb-2 font-medium">Background colour</Label>
+                        <div className="flex items-centre gap-3">
                           <input 
-                            type="color" 
+                            type="colour" 
                             value={bg} 
                             onChange={e => setBg(e.target.value)} 
                             className="w-12 h-10 border border-slate-700 rounded cursor-pointer" 
@@ -872,9 +872,9 @@ export default function AccessibilityUniversal() {
                           <span className="text-sm text-slate-400 font-mono">{bg}</span>
                         </div>
                       </div>
-                      <div className="text-center">
+                      <div className="text-centre">
                         <div className="text-slate-200 mb-2 font-medium">Contrast Ratio</div>
-                        <div className="text-3xl font-bold mb-1" style={{ color: passes ? '#22d3ee' : '#ef4444' }}>
+                        <div className="text-3xl font-bold mb-1" style={{ colour: passes ? '#22d3ee' : '#ef4444' }}>
                           {contrast.toFixed(2)}:1
                         </div>
                         <div className={`text-sm ${passes ? "text-green-400" : "text-red-400"}`}>
@@ -883,15 +883,15 @@ export default function AccessibilityUniversal() {
                       </div>
                     </div>
 
-                    <div className="p-6 rounded-lg border border-slate-700" style={{ background: bg, color: fg }}>
+                    <div className="p-6 rounded-lg border border-slate-700" style={{ background: bg, colour: fg }}>
                       <h3 className="text-xl font-bold mb-2">Sample Heading</h3>
-                      <p className="mb-4">This is normal body text that demonstrates how readable your color combination is. WCAG 2.1 AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.</p>
+                      <p className="mb-4">This is normal body text that demonstrates how readable your colour combination is. WCAG 2.1 AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.</p>
                       <button 
                         className="px-4 py-2 rounded font-medium transition-opacity hover:opacity-80" 
-                        style={{ background: fg, color: bg }}
-                        onClick={() => handleCopyCode(`/* Colors */\ncolor: ${fg};\nbackground: ${bg};\n/* Contrast: ${contrast.toFixed(2)}:1 */`, "contrast-colors")}
+                        style={{ background: fg, colour: bg }}
+                        onClick={() => handleCopyCode(`/* colours */\ncolor: ${fg};\nbackground: ${bg};\n/* Contrast: ${contrast.toFixed(2)}:1 */`, "contrast-colours")}
                       >
-                        {copiedCode === "contrast-colors" ? "✓ Copied!" : "Copy Colors"}
+                        {copiedCode === "contrast-colours" ? "✓ Copied!" : "Copy colours"}
                       </button>
                     </div>
                   </div>
@@ -902,8 +902,8 @@ export default function AccessibilityUniversal() {
             {/* Testing Tools & Automation */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("testing-tools")}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-centre justify-between">
+                  <div className="flex items-centre gap-3">
                     <div className="p-2 rounded-lg bg-orange-500/20">
                       <TestTube className="h-5 w-5 text-orange-400" />
                     </div>
@@ -914,7 +914,7 @@ export default function AccessibilityUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <Badge className="bg-orange-500/20 text-orange-300">
                       {runningTest ? "Testing..." : "Ready"}
                     </Badge>
@@ -933,7 +933,7 @@ export default function AccessibilityUniversal() {
                     
                     {/* Manual Testing */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
                         <Users className="h-4 w-4 text-blue-400" />
                         Manual Testing
                       </h4>
@@ -956,9 +956,9 @@ export default function AccessibilityUniversal() {
                             time: "5 min"
                           },
                           { 
-                            name: "Color Vision", 
+                            name: "colour Vision", 
                             description: "Check with colorblind simulation", 
-                            action: () => runAccessibilityTest("color-vision"),
+                            action: () => runAccessibilityTest("colour-vision"),
                             icon: Eye,
                             difficulty: "Beginner",
                             time: "3 min"
@@ -976,14 +976,14 @@ export default function AccessibilityUniversal() {
                                 isRunning ? 'bg-blue-500/10 border-blue-500/30' : 'hover:bg-slate-800/50 hover:scale-105'
                               }`}
                             >
-                              <div className="flex items-center gap-3 flex-1">
+                              <div className="flex items-centre gap-3 flex-1">
                                 {isRunning ? (
                                   <RefreshCw className="h-4 w-4 text-blue-400 animate-spin" />
                                 ) : (
-                                  <test.icon className="h-4 w-4 text-slate-400 group-hover:text-blue-400 transition-colors" />
+                                  <test.icon className="h-4 w-4 text-slate-400 group-hover:text-blue-400 transition-colours" />
                                 )}
                                 <div className="text-left flex-1">
-                                  <div className="flex items-center gap-2 mb-1">
+                                  <div className="flex items-centre gap-2 mb-1">
                                     <div className="text-sm font-medium text-slate-200">{test.name}</div>
                                     <Badge className="bg-slate-700/50 text-slate-400 text-xs">{test.time}</Badge>
                                   </div>
@@ -1004,7 +1004,7 @@ export default function AccessibilityUniversal() {
 
                     {/* Automated Tools */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
                         <Zap className="h-4 w-4 text-green-400" />
                         Automated Tools
                       </h4>
@@ -1042,13 +1042,13 @@ export default function AccessibilityUniversal() {
 
                     {/* CI/CD Integration */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
                         <Settings className="h-4 w-4 text-purple-400" />
                         CI/CD Integration
                       </h4>
                       <div className="space-y-2">
                         <div className="p-3 rounded-lg border border-slate-700/30">
-                          <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-centre justify-between mb-2">
                             <span className="text-sm font-medium text-slate-200">GitHub Actions</span>
                             <Button
                               size="sm"
@@ -1075,7 +1075,7 @@ jobs:
                         </div>
                         
                         <div className="p-3 rounded-lg border border-slate-700/30">
-                          <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-centre justify-between mb-2">
                             <span className="text-sm font-medium text-slate-200">Jest Integration</span>
                             <Button
                               size="sm"
@@ -1105,7 +1105,7 @@ test('should not have accessibility violations', async () => {
                   {/* Testing Progress */}
                   {runningTest && (
                     <div className="mt-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-centre justify-between mb-2">
                         <span className="text-sm font-medium text-slate-200">
                           Running {runningTest.replace(/-/g, ' ')} test...
                         </span>
@@ -1121,8 +1121,8 @@ test('should not have accessibility violations', async () => {
             {/* Code Examples & Patterns */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("code-examples")}>
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
+                <div className="flex items-centre justify-between">
+                  <div className="flex items-centre gap-3">
                     <div className="p-2 rounded-lg bg-cyan-500/20">
                       <Code2 className="h-5 w-5 text-cyan-400" />
                     </div>
@@ -1133,7 +1133,7 @@ test('should not have accessibility violations', async () => {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-centre gap-2">
                     <Badge className="bg-cyan-500/20 text-cyan-300">Copy & Paste</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("code-examples") ? 
@@ -1186,7 +1186,7 @@ test('should not have accessibility violations', async () => {
   role="dialog" 
   aria-modal="true" 
   aria-labelledby="modal-title"
-  className="fixed inset-0 bg-black/50 flex items-center justify-center"
+  className="fixed inset-0 bg-black/50 flex items-centre justify-centre"
 >
   <div className="bg-slate-800 p-6 rounded-lg">
     <h2 id="modal-title" className="text-lg font-bold">
@@ -1238,11 +1238,11 @@ test('should not have accessibility violations', async () => {
             </Card>
 
             {/* Progress & Analytics - Only show if user has activity */}
-            {(favorites.size > 0 || testingProgress > 0) && (
+            {(favourites.size > 0 || testingProgress > 0) && (
               <Card className="border-slate-700/50 bg-slate-800/30">
                 <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
+                  <div className="flex items-centre justify-between">
+                    <div className="flex items-centre gap-3">
                       <div className="p-2 rounded-lg bg-fuchsia-500/20">
                         <TrendingUp className="h-5 w-5 text-fuchsia-400" />
                       </div>
@@ -1252,16 +1252,16 @@ test('should not have accessibility violations', async () => {
                       </div>
                     </div>
                     <Badge className="bg-fuchsia-500/20 text-fuchsia-300">
-                      {Math.round(((favorites.size + (testingProgress / 100)) / 10) * 100)}% Progress
+                      {Math.round(((favourites.size + (testingProgress / 100)) / 10) * 100)}% Progress
                     </Badge>
                   </div>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <Progress value={((favorites.size + (testingProgress / 100)) / 10) * 100} className="h-2" />
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+                    <Progress value={((favourites.size + (testingProgress / 100)) / 10) * 100} className="h-2" />
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-centre">
                       {[
-                        { label: "Saved Items", value: favorites.size },
+                        { label: "Saved Items", value: favourites.size },
                         { label: "Tests Run", value: testingProgress > 0 ? "1" : "0" },
                         { label: "Current Mode", value: userMode },
                         { label: "Last Test", value: runningTest || "None" },
@@ -1302,3 +1302,8 @@ test('should not have accessibility violations', async () => {
     </div>
   )
 }
+
+
+
+
+
