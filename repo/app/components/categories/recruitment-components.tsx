@@ -748,52 +748,104 @@ const components = [
   {
     id: "pipeline-stage",
     title: "Pipeline Stage Selector",
-    description: "Move candidates through hiring stages",
+    description: "Move candidates through hiring stages with enhanced UX",
     code: `<Select>
-  <SelectTrigger>
-    <SelectValue placeholder="Select stage" />
+  <SelectTrigger className="h-12 bg-slate-800/60 border-slate-600 hover:border-fuchsia-500/50 transition-all">
+    <SelectValue placeholder="Select pipeline stage" />
   </SelectTrigger>
-  <SelectContent>
-    <SelectItem value="applied">Applied</SelectItem>
-    <SelectItem value="screening">Screening</SelectItem>
-    <SelectItem value="interview">Interview</SelectItem>
-    <SelectItem value="offer">Offer</SelectItem>
+  <SelectContent className="bg-slate-800/95 backdrop-blur-sm border-slate-600">
+    <SelectItem value="applied" className="hover:bg-slate-700/50 hover:text-fuchsia-300">
+      <div className="flex items-center gap-3">
+        <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+        <FileText className="h-4 w-4" />
+        <div>
+          <div className="font-medium">Applied</div>
+          <div className="text-xs text-slate-400">Initial application</div>
+        </div>
+      </div>
+    </SelectItem>
   </SelectContent>
 </Select>`,
     component: (
-      <div className="w-full max-w-md space-y-3">
-        <Label className="text-slate-300">Current Stage</Label>
+      <div className="w-full max-w-md space-y-4">
+        <div className="space-y-2">
+          <Label className="text-slate-200 font-medium flex items-center gap-2">
+            <Users className="h-4 w-4 text-fuchsia-400" />
+            Pipeline Stage
+          </Label>
+          <p className="text-xs text-slate-400">Select the current stage for this candidate</p>
+        </div>
         <Select>
-          <SelectTrigger className="bg-slate-800/50 border-slate-600">
-            <SelectValue placeholder="Select pipeline stage" />
+          <SelectTrigger className="h-12 bg-slate-800/60 border-slate-600 hover:border-fuchsia-500/50 focus:border-fuchsia-500 transition-all duration-200">
+            <SelectValue placeholder="Select pipeline stage" className="text-slate-300" />
           </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="applied">
-              <FileText className="h-4 w-4 mr-2" />
-              Applied
+          <SelectContent className="bg-slate-800/95 backdrop-blur-sm border-slate-600 shadow-xl">
+            <SelectItem value="applied" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></div>
+                <FileText className="h-4 w-4 text-blue-400 flex-shrink-0" />
+                <div className="flex-1">
+                  <div className="font-medium text-slate-200">Applied</div>
+                  <div className="text-xs text-slate-400">Initial application received</div>
+                </div>
+              </div>
             </SelectItem>
-            <SelectItem value="screening">
-              <Search className="h-4 w-4 mr-2" />
-              Initial Screening
+            <SelectItem value="screening" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-yellow-400 rounded-full flex-shrink-0"></div>
+                <Search className="h-4 w-4 text-yellow-400 flex-shrink-0" />
+                <div className="flex-1">
+                  <div className="font-medium text-slate-200">Initial Screening</div>
+                  <div className="text-xs text-slate-400">Resume and qualifications review</div>
+                </div>
+              </div>
             </SelectItem>
-            <SelectItem value="interview">
-              <Users className="h-4 w-4 mr-2" />
-              Interview
+            <SelectItem value="interview" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-purple-400 rounded-full flex-shrink-0"></div>
+                <Users className="h-4 w-4 text-purple-400 flex-shrink-0" />
+                <div className="flex-1">
+                  <div className="font-medium text-slate-200">Interview</div>
+                  <div className="text-xs text-slate-400">Technical or behavioral interview</div>
+                </div>
+              </div>
             </SelectItem>
-            <SelectItem value="final">
-              <Target className="h-4 w-4 mr-2" />
-              Final Interview
+            <SelectItem value="final" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></div>
+                <Target className="h-4 w-4 text-orange-400 flex-shrink-0" />
+                <div className="flex-1">
+                  <div className="font-medium text-slate-200">Final Interview</div>
+                  <div className="text-xs text-slate-400">Final round with leadership</div>
+                </div>
+              </div>
             </SelectItem>
-            <SelectItem value="offer">
-              <PoundSterling className="h-4 w-4 mr-2" />
-              Offer Extended
+            <SelectItem value="offer" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
+                <PoundSterling className="h-4 w-4 text-green-400 flex-shrink-0" />
+                <div className="flex-1">
+                  <div className="font-medium text-slate-200">Offer Extended</div>
+                  <div className="text-xs text-slate-400">Job offer sent to candidate</div>
+                </div>
+              </div>
             </SelectItem>
-            <SelectItem value="hired">
-              <CheckCircle2 className="h-4 w-4 mr-2" />
-              Hired
+            <SelectItem value="hired" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+              <div className="flex items-center gap-3">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full flex-shrink-0"></div>
+                <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />
+                <div className="flex-1">
+                  <div className="font-medium text-slate-200">Hired</div>
+                  <div className="text-xs text-slate-400">Successfully onboarded</div>
+                </div>
+              </div>
             </SelectItem>
           </SelectContent>
         </Select>
+        <div className="text-xs text-slate-500 flex items-center gap-2">
+          <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
+          <span>Status will be updated automatically</span>
+        </div>
       </div>
     )
   },

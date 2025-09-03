@@ -216,16 +216,16 @@ export default function ComponentsPage() {
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <div className="mb-8">
-                <TabsList className="flex w-full h-auto p-1 bg-slate-800/50 border border-slate-700/50 rounded-lg backdrop-blur-sm overflow-x-auto">
+                <TabsList className="grid w-full h-auto p-1 bg-slate-800/50 border border-slate-700/50 rounded-lg backdrop-blur-sm" style={{gridTemplateColumns: `repeat(${filteredTabs.length}, 1fr)`}}>
                   {filteredTabs.map((tab) => (
                     <TabsTrigger
                       key={tab.id}
                       value={tab.id}
-                      className="flex flex-col items-center gap-2 py-3 px-3 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent flex-shrink-0 min-w-0"
+                      className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent min-h-[80px] justify-center"
                     >
-                      <tab.icon className="h-5 w-5 flex-shrink-0 text-slate-400 group-hover:text-slate-200 data-[state=active]:text-fuchsia-300 transition-colors" />
+                      <tab.icon className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-slate-400 group-hover:text-slate-200 data-[state=active]:text-fuchsia-300 transition-colors" />
                       
-                      <span className="font-medium text-center text-slate-400 data-[state=active]:text-fuchsia-300 transition-colors text-xs truncate max-w-20">
+                      <span className="font-medium text-center text-slate-400 data-[state=active]:text-fuchsia-300 transition-colors text-xs leading-tight">
                         {tab.label}
                       </span>
                       
