@@ -36,29 +36,8 @@ const MediaComponents = lazy(() => import("./categories/media-components").then(
 const UtilityComponents = lazy(() => import("./categories/utility-components").then(m => ({ default: m.UtilityComponents })))
 const DashboardComponents = lazy(() => import("./categories/dashboard-components").then(m => ({ default: m.DashboardComponents })))
 
-// Helper to collect all components from all categories
-import { components as recruitmentComponents } from "./categories/recruitment-components"
-import { components as formComponents } from "./categories/form-components"
-import { components as navigationComponents } from "./categories/navigation-components"
-import { components as feedbackComponents } from "./categories/feedback-components"
-import { components as dataDisplayComponents } from "./categories/data-display-components"
-import { components as layoutComponents } from "./categories/layout-components"
-import { components as mediaComponents } from "./categories/media-components"
-import { components as utilityComponents } from "./categories/utility-components"
-import { components as dashboardComponents } from "./categories/dashboard-components"
-
-// Pre-combine all components at module level for better performance
-const allComponents = [
-  ...recruitmentComponents,
-  ...formComponents,
-  ...navigationComponents,
-  ...feedbackComponents,
-  ...dataDisplayComponents,
-  ...layoutComponents,
-  ...mediaComponents,
-  ...utilityComponents,
-  ...dashboardComponents,
-]
+// Remove heavy component imports to improve initial load performance
+// Component counts are now estimated to avoid loading all component data upfront
 
 // Loading fallback component for lazy-loaded categories
 function ComponentLoadingFallback() {
@@ -88,12 +67,8 @@ export default function ComponentsPage() {
   const [copiedCode, setCopiedCode] = useState("")
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
   const [viewMode] = useState<"grid" | "list">("grid")
-  const [isLoading, setIsLoading] = useState(false)
-
   useEffect(() => {
     setMounted(true)
-    // Remove artificial delay - components should load immediately
-    setIsLoading(false)
   }, [])
 
   useEffect(() => {
@@ -147,37 +122,7 @@ export default function ComponentsPage() {
   ], [favorites.size])
 
   if (!mounted) {
-    return (
-      <div className="flex min-h-screen bg-background">
-        <UnifiedSidebar animationSpeed={animationSpeed} />
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-center">
-            <Loader2 className="h-8 w-8 animate-spin text-fuchsia-400 mx-auto mb-4" />
-            <p className="text-slate-400">Loading design system...</p>
-          </div>
-        </div>
-      </div>
-    )
-  }
-
-  if (isLoading) {
-    return (
-      <div className="flex min-h-screen bg-background">
-        <UnifiedSidebar animationSpeed={animationSpeed} />
-        <div className="flex-1 flex items-center justify-center">
-          <div className="text-center space-y-4">
-            <div className="relative">
-              <Hexagon className="h-16 w-16 text-fuchsia-400 animate-pulse mx-auto" />
-              <div className="absolute inset-0 bg-fuchsia-400/20 rounded-lg blur-lg scale-150 animate-pulse"></div>
-            </div>
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold text-slate-200">Component Gallery</h2>
-              <p className="text-slate-400">Preparing enterprise design system...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+    return null
   }
 
   return (
