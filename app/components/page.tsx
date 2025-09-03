@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback, useMemo } from "react"
+import { useState, useEffect, useCallback, useMemo, lazy, Suspense } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
@@ -25,16 +25,16 @@ import {
 } from "lucide-react"
 import { ComponentCard } from "./categories/component-card"
 
-// Import the separated component files
-import { RecruitmentComponents } from "./categories/recruitment-components"
-import { FormComponents } from "./categories/form-components"
-import { NavigationComponents } from "./categories/navigation-components"
-import { FeedbackComponents } from "./categories/feedback-components"
-import { DataDisplayComponents } from "./categories/data-display-components"
-import { LayoutComponents } from "./categories/layout-components"
-import { MediaComponents } from "./categories/media-components"
-import { UtilityComponents } from "./categories/utility-components"
-import { DashboardComponents } from "./categories/dashboard-components"
+// Lazy load component categories for better performance
+const RecruitmentComponents = lazy(() => import("./categories/recruitment-components").then(m => ({ default: m.RecruitmentComponents })))
+const FormComponents = lazy(() => import("./categories/form-components").then(m => ({ default: m.FormComponents })))
+const NavigationComponents = lazy(() => import("./categories/navigation-components").then(m => ({ default: m.NavigationComponents })))
+const FeedbackComponents = lazy(() => import("./categories/feedback-components").then(m => ({ default: m.FeedbackComponents })))
+const DataDisplayComponents = lazy(() => import("./categories/data-display-components").then(m => ({ default: m.DataDisplayComponents })))
+const LayoutComponents = lazy(() => import("./categories/layout-components").then(m => ({ default: m.LayoutComponents })))
+const MediaComponents = lazy(() => import("./categories/media-components").then(m => ({ default: m.MediaComponents })))
+const UtilityComponents = lazy(() => import("./categories/utility-components").then(m => ({ default: m.UtilityComponents })))
+const DashboardComponents = lazy(() => import("./categories/dashboard-components").then(m => ({ default: m.DashboardComponents })))
 
 // Helper to collect all components from all categories
 import { components as recruitmentComponents } from "./categories/recruitment-components"
@@ -47,18 +47,37 @@ import { components as mediaComponents } from "./categories/media-components"
 import { components as utilityComponents } from "./categories/utility-components"
 import { components as dashboardComponents } from "./categories/dashboard-components"
 
-const getAllComponents = () => {
-  return [
-    ...recruitmentComponents,
-    ...formComponents,
-    ...navigationComponents,
-    ...feedbackComponents,
-    ...dataDisplayComponents,
-    ...layoutComponents,
-    ...mediaComponents,
-    ...utilityComponents,
-    ...dashboardComponents,
-  ]
+// Pre-combine all components at module level for better performance
+const allComponents = [
+  ...recruitmentComponents,
+  ...formComponents,
+  ...navigationComponents,
+  ...feedbackComponents,
+  ...dataDisplayComponents,
+  ...layoutComponents,
+  ...mediaComponents,
+  ...utilityComponents,
+  ...dashboardComponents,
+]
+
+// Loading fallback component for lazy-loaded categories
+function ComponentLoadingFallback() {
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between mb-8">
+        <div className="space-y-2">
+          <div className="h-8 bg-slate-700/50 rounded w-64 animate-pulse" />
+          <div className="h-4 bg-slate-800/50 rounded w-48 animate-pulse" />
+        </div>
+        <div className="h-6 bg-slate-700/50 rounded w-24 animate-pulse" />
+      </div>
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[...Array(6)].map((_, i) => (
+          <div key={i} className="h-64 bg-slate-800/30 rounded-lg border border-slate-700/50 animate-pulse" />
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default function ComponentsPage() {
@@ -69,12 +88,12 @@ export default function ComponentsPage() {
   const [copiedCode, setCopiedCode] = useState("")
   const [favorites, setFavorites] = useState<Set<string>>(new Set())
   const [viewMode] = useState<"grid" | "list">("grid")
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setMounted(true)
-    const timer = setTimeout(() => setIsLoading(false), 800)
-    return () => clearTimeout(timer)
+    // Remove artificial delay - components should load immediately
+    setIsLoading(false)
   }, [])
 
   useEffect(() => {
@@ -303,103 +322,121 @@ export default function ComponentsPage() {
             </div>
 
             <TabsContent value="recruitment" className="mt-0">
-  <RecruitmentComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <RecruitmentComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="forms" className="mt-0">
-  <FormComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <FormComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="navigation" className="mt-0">
-  <NavigationComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <NavigationComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="feedback" className="mt-0">
-  <FeedbackComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <FeedbackComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="data" className="mt-0">
-  <DataDisplayComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <DataDisplayComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="layout" className="mt-0">
-  <LayoutComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <LayoutComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="media" className="mt-0">
-  <MediaComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <MediaComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="utility" className="mt-0">
-  <UtilityComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <UtilityComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="dashboard" className="mt-0">
-  <DashboardComponents 
-    searchQuery={searchQuery} 
-    onCopyCode={handleCopyCode} 
-    copiedCode={copiedCode}
-    viewMode={viewMode}
-    favorites={favorites}
-    onToggleFavourite={toggleFavourite}
-  />
-</TabsContent>
+              <Suspense fallback={<ComponentLoadingFallback />}>
+                <DashboardComponents 
+                  searchQuery={searchQuery} 
+                  onCopyCode={handleCopyCode} 
+                  copiedCode={copiedCode}
+                  viewMode={viewMode}
+                  favorites={favorites}
+                  onToggleFavourite={toggleFavourite}
+                />
+              </Suspense>
+            </TabsContent>
 
             <TabsContent value="favourites" className="mt-0">
     <div className="space-y-12">
