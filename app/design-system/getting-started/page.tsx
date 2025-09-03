@@ -232,6 +232,15 @@ export function Example() {
   const startPath = (pathId: string) => {
     setCurrentPath(pathId)
     setExpandedSections(new Set(["quick-setup", "learning-paths", pathId]))
+    
+    // Navigate to appropriate pages based on path
+    if (pathId === "designer") {
+      window.open('/design-system/tokens', '_blank')
+    } else if (pathId === "developer") {
+      window.open('/components', '_blank')
+    } else if (pathId === "manager") {
+      window.open('/design-system/overview', '_blank')
+    }
   }
 
   const validateEnvironment = async (packageName: string) => {
@@ -651,6 +660,76 @@ export function MyComponent() {
               </CardContent>
             </Card>
 
+            {/* Learning Paths Section */}
+            <Card className="border-slate-700/50 bg-slate-800/30">
+              <CardHeader>
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-indigo-500/20">
+                    <Navigation className="h-5 w-5 text-indigo-400" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl text-slate-100">Choose Your Learning Path</CardTitle>
+                    <CardDescription>
+                      Tailored guides based on your role and experience level
+                    </CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {learningPaths.map((path) => (
+                    <Card key={path.id} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
+                      <CardContent className="p-6">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className={`p-3 rounded-xl ${path.bgColor}`}>
+                            <path.icon className={`h-6 w-6 ${path.color}`} />
+                          </div>
+                          <div className="flex-1">
+                            <h3 className="text-lg font-semibold text-slate-100">{path.title}</h3>
+                            <div className="flex gap-2 mt-1">
+                              <Badge className="bg-slate-700/50 text-slate-300 text-xs">
+                                {path.duration}
+                              </Badge>
+                              <Badge className="bg-slate-700/50 text-slate-300 text-xs">
+                                {path.difficulty}
+                              </Badge>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <p className="text-slate-400 text-sm mb-4">{path.description}</p>
+                        
+                        <div className="space-y-2 mb-4">
+                          {path.steps.slice(0, 2).map((step, index) => (
+                            <div key={step.id} className="flex items-center gap-2 text-xs text-slate-500">
+                              <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
+                              <span>{step.title}</span>
+                              <Badge className="bg-slate-800/50 text-slate-400 text-xs">
+                                {step.duration}
+                              </Badge>
+                            </div>
+                          ))}
+                          {path.steps.length > 2 && (
+                            <div className="text-xs text-slate-500 pl-3">
+                              +{path.steps.length - 2} more steps
+                            </div>
+                          )}
+                        </div>
+                        
+                        <Button
+                          onClick={() => startPath(path.id)}
+                          className="w-full bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25"
+                        >
+                          <ArrowRight className="h-4 w-4 mr-2" />
+                          Start {path.title}
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Quick Setup Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("quick-setup")}>
@@ -879,9 +958,9 @@ function MyComponent() {
                       </h4>
                       <div className="space-y-2">
                         {[
-                          { name: "Component Generator", description: "Generate boilerplate code", icon: Code, action: () => handleCopyCode("// Generated component template", "generator") },
-                          { name: "Theme Validator", description: "Check theme compatibility", icon: Shield, action: () => handleCopyCode("// Theme validation passed ✓", "validator") },
-                          { name: "Color Picker", description: "Extract design tokens", icon: Palette, action: () => handleCopyCode("#d946ef", "color-picker") }
+                          { name: "Component Generator", description: "Generate boilerplate code", icon: Code, action: () => window.open('/components', '_blank') },
+                          { name: "Theme Validator", description: "Check theme compatibility", icon: Shield, action: () => window.open('/design-system/theming', '_blank') },
+                          { name: "Color Picker", description: "Extract design tokens", icon: Palette, action: () => window.open('/design-system/tokens', '_blank') }
                         ].map((tool, index) => (
                           <Button
                             key={index}
@@ -934,9 +1013,18 @@ function MyComponent() {
                       </h4>
                       <div className="space-y-2">
                         {[
-                          { name: "Starter Template", description: "Next.js + Design System", action: () => handleCopyCode("npx create-inclusive-app my-app", "template") },
-                          { name: "Figma Kit", description: "Complete design file", action: () => handleCopyCode("// Figma kit downloaded", "figma") },
-                          { name: "Icon Library", description: "SVG icons package", action: () => handleCopyCode("npm install @inclusive-design/icons", "icons") }
+                          { name: "Starter Template", description: "Next.js + Design System", action: () => {
+                            handleCopyCode("npx create-next-app@latest my-app --typescript --tailwind --eslint --app", "template")
+                            alert("Starter template command copied! Run this in your terminal to create a new project with the design system.")
+                          }},
+                          { name: "Figma Kit", description: "Complete design file", action: () => {
+                            window.open('https://figma.com/@inclusivedesign', '_blank')
+                            alert("Opening Figma community page - search for 'Inclusive Design System' to find our official kit!")
+                          }},
+                          { name: "Icon Library", description: "SVG icons package", action: () => {
+                            handleCopyCode("npm install lucide-react", "icons")
+                            alert("Icon library command copied! We use Lucide React for consistent, accessible icons.")
+                          }}
                         ].map((download, index) => (
                           <Button
                             key={index}
