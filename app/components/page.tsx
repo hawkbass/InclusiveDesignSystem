@@ -43,7 +43,7 @@ const DashboardComponents = lazy(() => import("./categories/dashboard-components
 function ComponentLoadingFallback() {
   return (
     <div className="space-y-6">
-      <div className="flex items-centre justify-between mb-8">
+      <div className="flex items-center justify-between mb-8">
         <div className="space-y-2">
           <div className="h-8 bg-slate-700/50 rounded w-64 animate-pulse" />
           <div className="h-4 bg-slate-800/50 rounded w-48 animate-pulse" />
@@ -134,8 +134,8 @@ export default function ComponentsPage() {
   {/* Quick Stats Bar */}
   <div className="bg-slate-800/50 border-b border-slate-700/30">
     <div className="container mx-auto px-6 py-2">
-      <div className="flex items-centre justify-between text-xs">
-        <div className="flex items-centre gap-6">
+      <div className="flex items-center justify-between text-xs">
+        <div className="flex items-center gap-6">
           <span className="text-slate-400">
             <span className="text-fuchsia-400 font-semibold">102</span> Components Available
           </span>
@@ -152,8 +152,8 @@ export default function ComponentsPage() {
   </div>
   
   <div className="container mx-auto px-6 py-5">
-    <div className="flex items-centre justify-between gap-8">
-      <div className="flex items-centre gap-3">
+    <div className="flex items-center justify-between gap-8">
+      <div className="flex items-center gap-3">
         <div className="relative">
           <Component className="h-8 w-8 text-fuchsia-400" />
           <div className="absolute inset-0 bg-fuchsia-400/20 rounded-lg blur-lg scale-150"></div>
@@ -164,7 +164,7 @@ export default function ComponentsPage() {
         </div>
       </div>
 
-      <div className="flex items-centre gap-4">
+      <div className="flex items-center gap-4">
         <div className="relative group">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400 group-focus-within:text-fuchsia-400 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }} />
           <Input
@@ -195,8 +195,8 @@ export default function ComponentsPage() {
         <main className="container mx-auto px-6 py-8 relative z-10" role="main">
           {searchQuery && (
             <div className="mb-6 p-4 bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-xl animate-in slide-in-from-top-2" style={{ animationDuration: 'var(--animation-speed)' }}>
-              <div className="flex items-centre justify-between">
-                <div className="flex items-centre gap-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
                   <Search className="h-4 w-4 text-fuchsia-400" />
                   <span className="text-sm text-slate-300">
                     Search results for <span className="font-medium text-white">&quot;{searchQuery}&quot;</span>
@@ -221,11 +221,11 @@ export default function ComponentsPage() {
                     <TabsTrigger
                       key={tab.id}
                       value={tab.id}
-                      className="flex flex-col items-centre gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent min-h-[80px] justify-centre"
+                      className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent min-h-[80px] justify-center"
                     >
                       <tab.icon className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-slate-400 group-hover:text-slate-200 data-[state=active]:text-fuchsia-300 transition-colours" />
                       
-                      <span className="font-medium text-centre text-slate-400 data-[state=active]:text-fuchsia-300 transition-colours text-xs leading-tight">
+                      <span className="font-medium text-center text-slate-400 data-[state=active]:text-fuchsia-300 transition-colours text-xs leading-tight">
                         {tab.label}
                       </span>
                       
@@ -240,8 +240,8 @@ export default function ComponentsPage() {
                 </TabsList>
             </div>
               
-              <div className="mt-4 flex items-centre justify-between text-sm text-slate-400">
-                <div className="flex items-centre gap-2">
+              <div className="mt-4 flex items-center justify-between text-sm text-slate-400">
+                <div className="flex items-center gap-2">
                   <Component className="h-4 w-4" />
                   <span>
                     Showing {filteredTabs.find(tab => tab.id === activeTab)?.count || 0} components in{' '}
@@ -251,15 +251,15 @@ export default function ComponentsPage() {
                   </span>
                 </div>
                 
-                <div className="flex items-centre gap-6">
+                <div className="flex items-center gap-6">
                   {searchQuery && (
-                    <div className="flex items-centre gap-1 text-xs">
+                    <div className="flex items-center gap-1 text-xs">
                       <Search className="h-3 w-3" />
                     <span>Filtered by: &quot;{searchQuery}&quot;</span>
                     </div>
                   )}
                   
-                  <div className="flex items-centre gap-1 text-xs">
+                  <div className="flex items-center gap-1 text-xs">
                     <Eye className="h-3 w-3" />
                     <span>{viewMode === "grid" ? "Grid View" : "List View"}</span>
                 </div>
@@ -386,7 +386,7 @@ export default function ComponentsPage() {
             <TabsContent value="favourites" className="mt-0">
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
                 <div>
                       <h2 className="text-3xl font-bold mb-2 text-slate-100">Favourite Components</h2>
                       <p className="text-slate-400">Your saved and favourite components</p>
@@ -397,7 +397,7 @@ export default function ComponentsPage() {
                 </div>
 
                   {favourites.size === 0 ? (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
                       <Heart className="h-12 w-12 mx-auto mb-4 opacity-50" />
                       <p className="text-lg font-medium mb-2">No favourites yet</p>
                       <p className="text-sm">Start favouriting components to see them here</p>
@@ -434,6 +434,7 @@ export default function ComponentsPage() {
         </div>
       )
 }
+
 
 
 

@@ -85,8 +85,8 @@ const components = [
     description: "KPI cards with trend indicators",
     code: `<Card>
   <CardContent className="p-6">
-    <div className="flex items-centre justify-between">
-      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-centre justify-centre">
+    <div className="flex items-center justify-between">
+      <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
         <Users className="h-6 w-6 text-blue-400" />
       </div>
       <Badge className="bg-green-500/20 text-green-300">+12%</Badge>
@@ -105,8 +105,8 @@ const components = [
         ].map((metric, index) => (
           <Card key={index} className="bg-slate-800/30 border-slate-700 hover:bg-slate-800/50 transition-all group" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <CardContent className="p-4">
-              <div className="flex items-centre justify-between mb-3">
-                <div className={`w-10 h-10 ${metric.bgColor} rounded-lg flex items-centre justify-centre group-hover:scale-110 transition-transform`} style={{ transitionDuration: 'var(--animation-speed)' }}>
+              <div className="flex items-center justify-between mb-3">
+                <div className={`w-10 h-10 ${metric.bgColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ transitionDuration: 'var(--animation-speed)' }}>
                   <metric.icon className={`h-5 w-5 ${metric.colour}`} />
                 </div>
                 <Badge className="bg-green-500/20 text-green-300 border-green-500/30 text-xs">
@@ -126,7 +126,7 @@ const components = [
     title: "Statistics Grid",
     description: "Grid layout for displaying key statistics",
     code: `<div className="grid grid-cols-3 gap-6">
-  <div className="text-centre">
+  <div className="text-center">
     <div className="text-2xl font-bold">156</div>
     <div className="text-sm text-muted-foreground">Total</div>
   </div>
@@ -142,7 +142,7 @@ const components = [
             { value: "10", label: "Hired", colour: "text-emerald-400" },
             { value: "67", label: "Open Positions", colour: "text-orange-400" }
           ].map((stat, index) => (
-            <div key={index} className="text-centre p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div key={index} className="text-center p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <div className={`text-2xl font-bold ${stat.colour}`}>{stat.value}</div>
               <div className="text-xs text-slate-400 mt-1">{stat.label}</div>
             </div>
@@ -155,16 +155,16 @@ const components = [
     id: "chart-placeholder",
     title: "Chart Placeholder",
     description: "Placeholder for charts and data visualizations",
-    code: `<div className="aspect-video bg-slate-900/50 border border-slate-700/50 shadow-xl rounded-lg flex items-centre justify-centre">
-  <div className="text-centre">
+    code: `<div className="aspect-video bg-slate-900/50 border border-slate-700/50 shadow-xl rounded-lg flex items-center justify-center">
+  <div className="text-center">
     <BarChart3 className="h-12 w-12 text-slate-400 mx-auto mb-2" />
     <p className="text-sm text-slate-400">Chart will render here</p>
   </div>
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="aspect-video bg-slate-800/50 border border-slate-600 rounded-lg flex items-centre justify-centre hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-          <div className="text-centre">
+        <div className="aspect-video bg-slate-800/50 border border-slate-600 rounded-lg flex items-center justify-center hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <div className="text-center">
             <BarChart3 className="h-12 w-12 text-slate-400 mx-auto mb-3" />
             <p className="text-sm text-slate-400 mb-1">Hiring Trends Chart</p>
             <p className="text-xs text-slate-500">Interactive chart will render here</p>
@@ -178,7 +178,7 @@ const components = [
     title: "List View",
     description: "Structured list display with actions",
     code: `<div className="space-y-2">
-  <div className="flex items-centre justify-between p-3 bg-slate-800/30 rounded-lg">
+  <div className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
     <div>
       <h4 className="font-medium">Item Title</h4>
       <p className="text-sm text-slate-400">Item description</p>
@@ -193,8 +193,8 @@ const components = [
           { title: "Michael Kim", subtitle: "UX/UI Designer", action: "Schedule", status: "Interviewing" },
           { title: "Alex Liu", subtitle: "Full Stack Engineer", action: "Contact", status: "Under Review" }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre justify-between p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <div className="flex items-centre gap-3">
+          <div key={index} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div className="flex items-center gap-3">
               <Avatar className="h-10 w-10">
                 <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300">{item.title.split(' ').map(n => n[0]).join('')}</AvatarFallback>
               </Avatar>
@@ -203,7 +203,7 @@ const components = [
                 <p className="text-sm text-slate-400">{item.subtitle}</p>
               </div>
             </div>
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <Badge className="bg-blue-500/20 text-blue-300 text-xs">{item.status}</Badge>
               <Button size="sm" variant="outline" className="hover:bg-slate-700">{item.action}</Button>
             </div>
@@ -284,7 +284,7 @@ const components = [
     id: "filters-panel",
     title: "Filters Panel",
     description: "Advanced filtering and search controls",
-    code: `<div className="flex items-centre gap-4 p-4 bg-slate-800/30 rounded-lg">
+    code: `<div className="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
   <div className="relative">
     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
     <Input placeholder="Search..." className="pl-10" />
@@ -296,7 +296,7 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="flex items-centre gap-4 p-4 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-4 p-4 bg-slate-800/30 rounded-lg">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
             <input 
@@ -330,7 +330,7 @@ const components = [
     id: "export-controls",
     title: "Export Controls",
     description: "Data export and download functionality",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <Button variant="outline">
     <Download className="h-4 w-4 mr-2" />
     Export CSV
@@ -342,8 +342,8 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="flex items-centre justify-between p-4 bg-slate-800/30 rounded-lg">
-          <div className="flex items-centre gap-2">
+        <div className="flex items-center justify-between p-4 bg-slate-800/30 rounded-lg">
+          <div className="flex items-center gap-2">
             <Button size="sm" variant="outline" className="hover:bg-slate-700">
               <Download className="h-4 w-4 mr-2" />
               CSV
@@ -357,7 +357,7 @@ const components = [
               Preview
             </Button>
           </div>
-          <div className="flex items-centre gap-2">
+          <div className="flex items-center gap-2">
             <span className="text-sm text-slate-400">156 results</span>
             <Button size="sm" variant="ghost" className="hover:bg-slate-700">
               <MoreHorizontal className="h-4 w-4" />
@@ -385,7 +385,7 @@ export function DataDisplayComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Data Display Components</h2>
             <p className="text-slate-400">Tables, charts, and data visualisation components</p>
@@ -416,7 +416,7 @@ export function DataDisplayComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
             <BarChart3 className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -429,6 +429,7 @@ export function DataDisplayComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
 
 
 

@@ -170,7 +170,7 @@ function ComponentCard({ component, onCopy }: { component: any, onCopy: (code: s
       <CardContent className="p-6">
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
-            <div className="flex items-centre gap-3 mb-2">
+            <div className="flex items-center gap-3 mb-2">
                           <h3 className="text-lg font-semibold text-slate-100 group-hover:text-fuchsia-400 transition-colours">
               {component.name}
             </h3>
@@ -205,7 +205,7 @@ function ComponentCard({ component, onCopy }: { component: any, onCopy: (code: s
           </Button>
         </div>
         
-        <div className="flex items-centre justify-between text-xs">
+        <div className="flex items-center justify-between text-xs">
           <span className="text-slate-500 dark:text-slate-500">{component.category}</span>
           <Button 
             size="sm" 
@@ -229,11 +229,11 @@ function CategoryCard({ category }: { category: any }) {
     <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer border-slate-200 dark:border-slate-700/50">
       <CardContent className="p-6">
         <div className="flex items-start gap-4">
-          <div className={`w-12 h-12 rounded-xl ${category.bgColor} border border-slate-200 dark:border-slate-700 flex items-centre justify-centre group-hover:scale-110 transition-transform`}>
+          <div className={`w-12 h-12 rounded-xl ${category.bgColor} border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform`}>
             <category.icon className="h-6 w-6 text-slate-700 dark:text-slate-300" />
           </div>
           <div className="flex-1">
-            <div className="flex items-centre justify-between mb-2">
+            <div className="flex items-center justify-between mb-2">
               <h3 className="text-lg font-semibold text-slate-100 group-hover:text-fuchsia-400 transition-colours">
                 {category.name}
               </h3>
@@ -309,7 +309,7 @@ export default function ComponentsPage() {
         <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-purple-950 border-b border-slate-800">
           <div className="px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 items-centre">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Value Proposition */}
                 <div className="space-y-6">
                   <div className="flex flex-wrap gap-3 mb-4">
@@ -375,14 +375,14 @@ export default function ComponentsPage() {
 
                 {/* Component Stats */}
                 <div className="space-y-6">
-                  <div className="text-centre lg:text-left">
+                  <div className="text-center lg:text-left">
                     <h2 className="text-2xl font-bold text-slate-200 mb-2">Library Overview</h2>
                     <p className="text-slate-400">Comprehensive component ecosystem for modern web applications</p>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-green-600 dark:text-green-400 mb-2">
                           {allComponents.filter(c => c.status === "Stable").length}
                         </div>
@@ -392,7 +392,7 @@ export default function ComponentsPage() {
                     </Card>
                     
                     <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
                           {allComponents.filter(c => c.status === "Beta").length}
                         </div>
@@ -402,7 +402,7 @@ export default function ComponentsPage() {
                     </Card>
                     
                     <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">
                           {componentCategories.length}
                         </div>
@@ -412,7 +412,7 @@ export default function ComponentsPage() {
                     </Card>
                     
                     <Card className="bg-white/50 dark:bg-slate-800/50 border-slate-200 dark:border-slate-700/50 backdrop-blur-sm hover:bg-white/70 dark:hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-purple-600 dark:text-purple-400 mb-2">AAA</div>
                         <div className="text-sm text-slate-300 font-medium">Accessibility</div>
                         <div className="text-xs text-slate-500 mt-1">WCAG compliant</div>
@@ -429,8 +429,8 @@ export default function ComponentsPage() {
         <section className="bg-slate-900/50 border-b border-slate-800/50">
           <div className="px-6 lg:px-12 py-6">
             <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col lg:flex-row items-centre justify-between gap-4">
-                <div className="flex items-centre gap-4">
+              <div className="flex flex-col lg:flex-row items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
                   <div className="flex gap-2">
                     <Button
                       variant={activeView === "overview" ? "default" : "outline"}
@@ -460,7 +460,7 @@ export default function ComponentsPage() {
                 </div>
                 
                 {activeView === "components" && (
-                  <div className="flex items-centre gap-3">
+                  <div className="flex items-center gap-3">
                     <div className="relative">
                       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
                       <Input
@@ -492,7 +492,7 @@ export default function ComponentsPage() {
             {/* Quick Value Surface - Universal Comprehension */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
               <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-                <CardContent className="p-4 text-centre">
+                <CardContent className="p-4 text-center">
                   <ComponentIcon className="h-6 w-6 text-fuchsia-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-slate-100">{allComponents.length}</div>
                   <div className="text-xs text-slate-400">Components</div>
@@ -500,7 +500,7 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
               <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-                <CardContent className="p-4 text-centre">
+                <CardContent className="p-4 text-center">
                   <CheckCircle2 className="h-6 w-6 text-green-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-slate-100">{allComponents.filter(c => c.status === "Stable").length}</div>
                   <div className="text-xs text-slate-400">Stable</div>
@@ -508,7 +508,7 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
               <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-                <CardContent className="p-4 text-centre">
+                <CardContent className="p-4 text-center">
                   <Grid3X3 className="h-6 w-6 text-blue-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-slate-100">{componentCategories.length}</div>
                   <div className="text-xs text-slate-400">Categories</div>
@@ -516,7 +516,7 @@ export default function ComponentsPage() {
                 </CardContent>
               </Card>
               <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-                <CardContent className="p-4 text-centre">
+                <CardContent className="p-4 text-center">
                   <Shield className="h-6 w-6 text-purple-400 mx-auto mb-2" />
                   <div className="text-2xl font-bold text-slate-100">AAA</div>
                   <div className="text-xs text-slate-400">Accessibility</div>
@@ -528,7 +528,7 @@ export default function ComponentsPage() {
             {/* Overview View */}
             {activeView === "overview" && (
               <div className="space-y-12">
-                <div className="text-centre">
+                <div className="text-center">
                   <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4">Component Categories</h2>
                   <p className="text-lg text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
                     Our component library is organized into logical categories, each designed to solve specific interface challenges.
@@ -551,7 +551,7 @@ export default function ComponentsPage() {
             {/* Components View */}
             {activeView === "components" && (
               <div className="space-y-8">
-                <div className="flex items-centre justify-between">
+                <div className="flex items-center justify-between">
                   <div>
                     <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100">
                       {selectedCategory === "all" ? "All Components" : `${selectedCategory} Components`}
@@ -579,7 +579,7 @@ export default function ComponentsPage() {
                 </div>
 
                 {filteredComponents.length === 0 && (
-                  <div className="text-centre py-12">
+                  <div className="text-center py-12">
                     <ComponentIcon className="h-12 w-12 text-slate-400 mx-auto mb-4" />
                     <h3 className="text-lg font-medium text-slate-700 dark:text-slate-300 mb-2">No components found</h3>
                     <p className="text-slate-600 dark:text-slate-400">Try adjusting your search or filter criteria</p>
@@ -593,6 +593,7 @@ export default function ComponentsPage() {
     </div>
   )
 }
+
 
 
 

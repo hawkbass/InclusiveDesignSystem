@@ -177,7 +177,7 @@ export default function WorldClassDashboardPage() {
           
           <div className="relative px-6 lg:px-12 py-16">
             <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-centre gap-12 mb-12">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 mb-12">
                 <div className="flex-1">
                   <Badge className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border-blue-500/30 mb-6">
                     Live ATS Demo Platform
@@ -194,7 +194,7 @@ export default function WorldClassDashboardPage() {
                   {/* Key Metrics - Immediate Value */}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     {atsMetrics.map((metric, index) => (
-                      <div key={index} className="text-centre">
+                      <div key={index} className="text-center">
                         <div className="text-3xl font-bold text-white mb-1">{metric.value}</div>
                         <div className="text-sm font-medium text-slate-200 mb-1">{metric.label}</div>
                         <div className="text-xs text-slate-400">{metric.description}</div>
@@ -263,8 +263,8 @@ export default function WorldClassDashboardPage() {
             {/* Live Demo Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("demo")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-blue-500/20">
                       <Monitor className="h-5 w-5 text-blue-400" />
                     </div>
@@ -278,7 +278,7 @@ export default function WorldClassDashboardPage() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-green-500/20 text-green-300">Live Demo</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("demo") ? 
@@ -322,7 +322,7 @@ export default function WorldClassDashboardPage() {
                           </div>
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                             {scenario.highlights.map((highlight, index) => (
-                              <div key={index} className="flex items-centre gap-2 text-sm text-slate-300">
+                              <div key={index} className="flex items-center gap-2 text-sm text-slate-300">
                                 <CheckCircle2 className="h-4 w-4 text-green-400" />
                                 {highlight}
                               </div>
@@ -335,8 +335,8 @@ export default function WorldClassDashboardPage() {
 
                   {/* Live Demo Interface */}
                   <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50">
-                    <div className="flex items-centre justify-between mb-4">
-                      <div className="flex items-centre gap-2">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-2">
                         <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                         <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
                         <div className="w-3 h-3 bg-green-500 rounded-full"></div>
@@ -386,8 +386,8 @@ export default function WorldClassDashboardPage() {
             {/* Key Features - Progressive Disclosure */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("features")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-purple-500/20">
                       <Zap className="h-5 w-5 text-purple-400" />
                     </div>
@@ -401,7 +401,7 @@ export default function WorldClassDashboardPage() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-purple-500/20 text-purple-300">4 Core Features</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("features") ? 
@@ -422,7 +422,7 @@ export default function WorldClassDashboardPage() {
                             {feature.icon}
                           </div>
                           <div className="flex-1">
-                            <div className="flex items-centre justify-between mb-2">
+                            <div className="flex items-center justify-between mb-2">
                               <h4 className="text-lg font-medium text-slate-200">{feature.title}</h4>
                               <Badge className="bg-green-500/20 text-green-300 text-xs">
                                 {feature.status}
@@ -435,7 +435,7 @@ export default function WorldClassDashboardPage() {
                         {/* Benefits List */}
                         <div className="space-y-2 mb-4">
                           {feature.benefits.map((benefit, bIndex) => (
-                            <div key={bIndex} className="flex items-centre gap-2 text-sm text-slate-300">
+                            <div key={bIndex} className="flex items-center gap-2 text-sm text-slate-300">
                               <CheckCircle2 className="h-3 w-3 text-green-400" />
                               {benefit}
                             </div>
@@ -465,7 +465,7 @@ export default function WorldClassDashboardPage() {
             {/* Competitive Advantages */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader>
-                <div className="flex items-centre gap-3">
+                <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-green-500/20">
                     <Award className="h-5 w-5 text-green-400" />
                   </div>
@@ -478,7 +478,7 @@ export default function WorldClassDashboardPage() {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                   {competitiveAdvantages.map((advantage, index) => (
-                    <div key={index} className="flex items-centre gap-3 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                    <div key={index} className="flex items-center gap-3 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
                       <CheckCircle2 className="h-5 w-5 text-green-400 flex-shrink-0" />
                       <span className="text-sm text-slate-300">{advantage}</span>
                     </div>
@@ -489,13 +489,13 @@ export default function WorldClassDashboardPage() {
 
             {/* Get Started CTA */}
             <Card className="border-slate-700/50 bg-gradient-to-r from-blue-900/30 to-purple-900/30">
-              <CardContent className="p-8 text-centre">
+              <CardContent className="p-8 text-center">
                 <h3 className="text-3xl font-bold text-slate-100 mb-4">Ready to Transform Your Hiring?</h3>
                 <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
                   Join leading UK companies using Inclusive ATS to build diverse, high-performing teams. 
                   Start your free trial today and see the difference in your first week.
                 </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-centre">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8">
                     <Rocket className="h-5 w-5 mr-2" />
                     Start Free Trial
@@ -517,6 +517,7 @@ export default function WorldClassDashboardPage() {
     </div>
   )
 }
+
 
 
 

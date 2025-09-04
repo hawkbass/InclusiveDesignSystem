@@ -349,9 +349,9 @@ export default function AccessibilityUniversal() {
           
           <div className="relative px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-centre gap-8 mb-8">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
                 <div>
-                  <div className="flex items-centre gap-3 mb-4">
+                  <div className="flex items-center gap-3 mb-4">
                     <Badge className="bg-gradient-to-r from-green-500/20 to-blue-500/20 text-green-300 border-green-500/30">
                       <Shield className="w-3 h-3 mr-1" />
                       WCAG 2.1 AA Compliant
@@ -394,7 +394,7 @@ export default function AccessibilityUniversal() {
                     </Button>
                   </div>
                   
-                  <div className="text-centre">
+                  <div className="text-center">
                     <div className="text-2xl font-bold text-slate-100">
                       {runningTest ? `${testingProgress}%` : `${complianceScore}%`}
                     </div>
@@ -439,7 +439,7 @@ export default function AccessibilityUniversal() {
                 </div>
                 
                 {/* Popular Searches */}
-                <div className="flex flex-wrap justify-centre gap-2 mt-4">
+                <div className="flex flex-wrap justify-center gap-2 mt-4">
                   <span className="text-sm text-slate-500">Popular:</span>
                   {popularSearches.map((search, index) => (
                     <Button
@@ -460,7 +460,7 @@ export default function AccessibilityUniversal() {
                     <CardContent className="p-4">
                       <div className="space-y-3">
                         {searchResults.map((result) => (
-                          <div key={result.id} className="flex items-centre gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
+                          <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
                             <div className="p-2 rounded bg-slate-700/50">
                               {result.type === "guideline" && <BookOpen className="h-4 w-4 text-green-400" />}
                               {result.type === "attribute" && <Code2 className="h-4 w-4 text-blue-400" />}
@@ -501,7 +501,7 @@ export default function AccessibilityUniversal() {
 
               {/* Quick Value Preview - Always Visible with Enhanced Status */}
               <div className="mt-12">
-                <h3 className="text-lg font-medium text-slate-300 mb-6 text-centre">Essential Accessibility Tools:</h3>
+                <h3 className="text-lg font-medium text-slate-300 mb-6 text-center">Essential Accessibility Tools:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                   {quickPreviewItems.map((item, index) => (
                     <Card key={index} className={`bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group cursor-pointer ${
@@ -509,9 +509,9 @@ export default function AccessibilityUniversal() {
                       item.status === 'fail' ? 'border-yellow-500/30 shadow-yellow-500/10' :
                       item.status === 'running' ? 'border-blue-500/30 shadow-blue-500/10' : ''
                     }`}>
-                      <CardContent className="p-6 text-centre">
-                        <div className="flex items-centre justify-between mb-4">
-                          <div className="flex items-centre justify-centre flex-1">
+                      <CardContent className="p-6 text-center">
+                        <div className="flex items-center justify-between mb-4">
+                          <div className="flex items-center justify-center flex-1">
                             <div className={`p-3 rounded-xl transition-all group-hover:scale-110 ${
                               item.status === 'pass' ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20' :
                               item.status === 'fail' ? 'bg-gradient-to-br from-yellow-500/20 to-orange-500/20' :
@@ -619,8 +619,8 @@ export default function AccessibilityUniversal() {
             {/* Learning Paths Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("learning-paths")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
                       <Compass className="h-5 w-5 text-green-400" />
                     </div>
@@ -634,7 +634,7 @@ export default function AccessibilityUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-green-500/20 text-green-300">3 Paths</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("learning-paths") ? 
@@ -672,8 +672,8 @@ export default function AccessibilityUniversal() {
                             {path.description}
                           </p>
                           
-                          <div className="flex items-centre gap-4 mb-4 text-xs">
-                            <Badge className="bg-slate-700/50 text-slate-300 flex items-centre gap-1">
+                          <div className="flex items-center gap-4 mb-4 text-xs">
+                            <Badge className="bg-slate-700/50 text-slate-300 flex items-center gap-1">
                               <Clock className="h-3 w-3" />
                               {path.duration}
                             </Badge>
@@ -685,8 +685,8 @@ export default function AccessibilityUniversal() {
                           {userMode === "technical" && (
                             <div className="space-y-2 mb-4">
                               {path.steps.slice(0, 2).map((step, index) => (
-                                <div key={step.id} className="flex items-centre gap-2 text-xs text-slate-400">
-                                  <div className="w-4 h-4 rounded border border-slate-600 flex items-centre justify-centre">
+                                <div key={step.id} className="flex items-center gap-2 text-xs text-slate-400">
+                                  <div className="w-4 h-4 rounded border border-slate-600 flex items-center justify-center">
                                     <span className="text-slate-500">{index + 1}</span>
                                   </div>
                                   <span>{step.title}</span>
@@ -719,8 +719,8 @@ export default function AccessibilityUniversal() {
             {/* WCAG Guidelines Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("wcag-guidelines")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-blue-500/20">
                       <BookOpen className="h-5 w-5 text-blue-400" />
                     </div>
@@ -734,7 +734,7 @@ export default function AccessibilityUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-blue-500/20 text-blue-300">POUR Principles</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("wcag-guidelines") ? 
@@ -789,7 +789,7 @@ export default function AccessibilityUniversal() {
                       <Card key={principle.title} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
                         <CardContent className="p-6">
                           <div className="flex items-start gap-4 mb-4">
-                            <div className={`w-12 h-12 ${principle.bgColor} rounded-xl flex items-centre justify-centre group-hover:scale-110 transition-transform`}>
+                            <div className={`w-12 h-12 ${principle.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
                               <principle.icon className={`h-6 w-6 ${principle.colour}`} />
                             </div>
                             <div className="flex-1">
@@ -819,8 +819,8 @@ export default function AccessibilityUniversal() {
             {/* Interactive Contrast Checker */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("contrast-checker")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-purple-500/20">
                       <Eye className="h-5 w-5 text-purple-400" />
                     </div>
@@ -831,7 +831,7 @@ export default function AccessibilityUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className={`${passes ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
                       {contrast.toFixed(1)}:1 {passes ? "✓ Pass" : "✗ Fail"}
                     </Badge>
@@ -847,10 +847,10 @@ export default function AccessibilityUniversal() {
               {expandedSections.has("contrast-checker") && (
                 <CardContent>
                   <div className="space-y-6">
-                    <div className="grid md:grid-cols-3 gap-6 items-centre">
+                    <div className="grid md:grid-cols-3 gap-6 items-center">
                       <div>
                         <Label className="block text-slate-200 mb-2 font-medium">Foreground colour</Label>
-                        <div className="flex items-centre gap-3">
+                        <div className="flex items-center gap-3">
                           <input 
                             type="colour" 
                             value={fg} 
@@ -862,7 +862,7 @@ export default function AccessibilityUniversal() {
                       </div>
                       <div>
                         <Label className="block text-slate-200 mb-2 font-medium">Background colour</Label>
-                        <div className="flex items-centre gap-3">
+                        <div className="flex items-center gap-3">
                           <input 
                             type="colour" 
                             value={bg} 
@@ -872,7 +872,7 @@ export default function AccessibilityUniversal() {
                           <span className="text-sm text-slate-400 font-mono">{bg}</span>
                         </div>
                       </div>
-                      <div className="text-centre">
+                      <div className="text-center">
                         <div className="text-slate-200 mb-2 font-medium">Contrast Ratio</div>
                         <div className="text-3xl font-bold mb-1" style={{ colour: passes ? '#22d3ee' : '#ef4444' }}>
                           {contrast.toFixed(2)}:1
@@ -902,8 +902,8 @@ export default function AccessibilityUniversal() {
             {/* Testing Tools & Automation */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("testing-tools")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-orange-500/20">
                       <TestTube className="h-5 w-5 text-orange-400" />
                     </div>
@@ -914,7 +914,7 @@ export default function AccessibilityUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-orange-500/20 text-orange-300">
                       {runningTest ? "Testing..." : "Ready"}
                     </Badge>
@@ -933,7 +933,7 @@ export default function AccessibilityUniversal() {
                     
                     {/* Manual Testing */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
                         <Users className="h-4 w-4 text-blue-400" />
                         Manual Testing
                       </h4>
@@ -976,14 +976,14 @@ export default function AccessibilityUniversal() {
                                 isRunning ? 'bg-blue-500/10 border-blue-500/30' : 'hover:bg-slate-800/50 hover:scale-105'
                               }`}
                             >
-                              <div className="flex items-centre gap-3 flex-1">
+                              <div className="flex items-center gap-3 flex-1">
                                 {isRunning ? (
                                   <RefreshCw className="h-4 w-4 text-blue-400 animate-spin" />
                                 ) : (
                                   <test.icon className="h-4 w-4 text-slate-400 group-hover:text-blue-400 transition-colours" />
                                 )}
                                 <div className="text-left flex-1">
-                                  <div className="flex items-centre gap-2 mb-1">
+                                  <div className="flex items-center gap-2 mb-1">
                                     <div className="text-sm font-medium text-slate-200">{test.name}</div>
                                     <Badge className="bg-slate-700/50 text-slate-400 text-xs">{test.time}</Badge>
                                   </div>
@@ -1004,7 +1004,7 @@ export default function AccessibilityUniversal() {
 
                     {/* Automated Tools */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
                         <Zap className="h-4 w-4 text-green-400" />
                         Automated Tools
                       </h4>
@@ -1042,13 +1042,13 @@ export default function AccessibilityUniversal() {
 
                     {/* CI/CD Integration */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
                         <Settings className="h-4 w-4 text-purple-400" />
                         CI/CD Integration
                       </h4>
                       <div className="space-y-2">
                         <div className="p-3 rounded-lg border border-slate-700/30">
-                          <div className="flex items-centre justify-between mb-2">
+                          <div className="flex items-center justify-between mb-2">
                             <span className="text-sm font-medium text-slate-200">GitHub Actions</span>
                             <Button
                               size="sm"
@@ -1075,7 +1075,7 @@ jobs:
                         </div>
                         
                         <div className="p-3 rounded-lg border border-slate-700/30">
-                          <div className="flex items-centre justify-between mb-2">
+                          <div className="flex items-center justify-between mb-2">
                             <span className="text-sm font-medium text-slate-200">Jest Integration</span>
                             <Button
                               size="sm"
@@ -1105,7 +1105,7 @@ test('should not have accessibility violations', async () => {
                   {/* Testing Progress */}
                   {runningTest && (
                     <div className="mt-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
-                      <div className="flex items-centre justify-between mb-2">
+                      <div className="flex items-center justify-between mb-2">
                         <span className="text-sm font-medium text-slate-200">
                           Running {runningTest.replace(/-/g, ' ')} test...
                         </span>
@@ -1121,8 +1121,8 @@ test('should not have accessibility violations', async () => {
             {/* Code Examples & Patterns */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("code-examples")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-cyan-500/20">
                       <Code2 className="h-5 w-5 text-cyan-400" />
                     </div>
@@ -1133,7 +1133,7 @@ test('should not have accessibility violations', async () => {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-cyan-500/20 text-cyan-300">Copy & Paste</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("code-examples") ? 
@@ -1186,7 +1186,7 @@ test('should not have accessibility violations', async () => {
   role="dialog" 
   aria-modal="true" 
   aria-labelledby="modal-title"
-  className="fixed inset-0 bg-black/50 flex items-centre justify-centre"
+  className="fixed inset-0 bg-black/50 flex items-center justify-center"
 >
   <div className="bg-slate-800 p-6 rounded-lg">
     <h2 id="modal-title" className="text-lg font-bold">
@@ -1241,8 +1241,8 @@ test('should not have accessibility violations', async () => {
             {(favourites.size > 0 || testingProgress > 0) && (
               <Card className="border-slate-700/50 bg-slate-800/30">
                 <CardHeader>
-                  <div className="flex items-centre justify-between">
-                    <div className="flex items-centre gap-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
                       <div className="p-2 rounded-lg bg-fuchsia-500/20">
                         <TrendingUp className="h-5 w-5 text-fuchsia-400" />
                       </div>
@@ -1259,7 +1259,7 @@ test('should not have accessibility violations', async () => {
                 <CardContent>
                   <div className="space-y-4">
                     <Progress value={((favourites.size + (testingProgress / 100)) / 10) * 100} className="h-2" />
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-centre">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                       {[
                         { label: "Saved Items", value: favourites.size },
                         { label: "Tests Run", value: testingProgress > 0 ? "1" : "0" },
@@ -1302,6 +1302,7 @@ test('should not have accessibility violations', async () => {
     </div>
   )
 }
+
 
 
 

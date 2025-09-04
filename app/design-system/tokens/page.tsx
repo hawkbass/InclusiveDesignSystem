@@ -57,13 +57,13 @@ export default function Tokens() {
         <div className="flex flex-col min-h-screen">
           {/* Header */}
           <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-sm border-b border-slate-700/50">
-            <div className="flex items-centre justify-between p-6">
+            <div className="flex items-center justify-between p-6">
               <div>
                 <h1 className="text-3xl font-bold text-slate-100 mb-2">Design Tokens</h1>
                 <p className="text-slate-400">Foundational design values that ensure consistency across our design system</p>
               </div>
               
-              <div className="flex items-centre gap-4">
+              <div className="flex items-center gap-4">
                 <Button
                   variant="outline"
                   size="sm"
@@ -89,7 +89,7 @@ export default function Tokens() {
             {/* Settings Panel */}
             {settingsOpen && (
               <div className="mx-6 mb-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700">
-                <div className="flex items-centre justify-between mb-4">
+                <div className="flex items-center justify-between mb-4">
                   <h3 className="font-medium text-slate-200">Interface Settings</h3>
                   <Button
                     variant="ghost"
@@ -118,7 +118,7 @@ export default function Tokens() {
                     </div>
                   </div>
                   
-                  <div className="flex items-centre justify-between">
+                  <div className="flex items-center justify-between">
                     <Label className="text-sm font-medium text-slate-300">Reduced Motion</Label>
                     <Switch />
                   </div>
@@ -186,7 +186,7 @@ export default function Tokens() {
 function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-centre">
+      <div className="text-center">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Design Tokens Overview</h2>
         <p className="text-slate-400">Foundational design values for consistent UI development</p>
       </div>
@@ -194,7 +194,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-centre gap-2">
+            <CardTitle className="flex items-center gap-2">
               <Palette className="h-5 w-5 text-fuchsia-400" />
               colours
             </CardTitle>
@@ -208,7 +208,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
         
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-centre gap-2">
+            <CardTitle className="flex items-center gap-2">
               <Type className="h-5 w-5 text-blue-400" />
               Typography
             </CardTitle>
@@ -222,7 +222,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
         
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-centre gap-2">
+            <CardTitle className="flex items-center gap-2">
               <Grid3X3 className="h-5 w-5 text-green-400" />
               Spacing
             </CardTitle>
@@ -236,7 +236,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
         
         <Card className="bg-slate-800/30 border-slate-700/50">
           <CardHeader>
-            <CardTitle className="flex items-centre gap-2">
+            <CardTitle className="flex items-center gap-2">
               <Code className="h-5 w-5 text-purple-400" />
               Usage
             </CardTitle>
@@ -274,7 +274,7 @@ function ColorsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode:
   
   return (
     <div className="space-y-8">
-      <div className="text-centre">
+      <div className="text-center">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">colour Tokens</h2>
         <p className="text-slate-400">Brand and semantic colour palette</p>
       </div>
@@ -288,8 +288,8 @@ function ColorsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode:
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2">
               {palette.colours.map((colour) => (
-                <div key={colour.name} className="flex items-centre justify-between p-3 bg-slate-900/50 rounded-lg">
-                  <div className="flex items-centre gap-3">
+                <div key={colour.name} className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg">
+                  <div className="flex items-center gap-3">
                     <div className={`w-8 h-8 rounded-md ${colour.class} border border-slate-700`} />
                     <div>
                       <div className="text-sm font-medium text-slate-300">{colour.name}</div>
@@ -320,7 +320,7 @@ function ColorsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode:
 function TypographyTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-centre">
+      <div className="text-center">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Typography Tokens</h2>
         <p className="text-slate-400">Font scales and text styles</p>
       </div>
@@ -331,7 +331,7 @@ function TypographyTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyC
 function SpacingTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-centre">
+      <div className="text-center">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Spacing Tokens</h2>
         <p className="text-slate-400">Consistent spacing scale</p>
       </div>
@@ -342,13 +342,14 @@ function SpacingTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode
 function UsageTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (code: string, id: string) => void, copiedCode: string, safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
-      <div className="text-centre">
+      <div className="text-center">
         <h2 className="text-2xl font-bold text-slate-100 mb-2">Usage Examples</h2>
         <p className="text-slate-400">How to implement design tokens in your code</p>
       </div>
     </div>
   )
 }
+
 
 
 

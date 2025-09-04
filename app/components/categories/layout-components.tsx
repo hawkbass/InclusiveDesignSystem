@@ -36,7 +36,7 @@ const components = [
       <div className="w-full">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {Array.from({ length: 4 }, (_, i) => (
-            <div key={i} className="bg-slate-800/50 border border-slate-600 rounded-lg p-4 text-centre hover:bg-slate-800/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div key={i} className="bg-slate-800/50 border border-slate-600 rounded-lg p-4 text-center hover:bg-slate-800/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <div className="text-sm text-slate-300">Grid Item {i + 1}</div>
             </div>
           ))}
@@ -215,8 +215,8 @@ const components = [
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3">
             <Card className="bg-slate-800/30 border-slate-700 h-32">
-              <CardContent className="p-4 h-full flex items-centre justify-centre">
-                <div className="text-centre">
+              <CardContent className="p-4 h-full flex items-center justify-center">
+                <div className="text-center">
                   <BarChart3 className="h-8 w-8 text-slate-400 mx-auto mb-2" />
                   <h4 className="font-medium text-slate-200">Main Dashboard</h4>
                   <p className="text-sm text-slate-400">Primary analytics and charts</p>
@@ -227,7 +227,7 @@ const components = [
           <div className="space-y-4">
             <Card className="bg-slate-800/30 border-slate-700">
               <CardContent className="p-4">
-                <div className="text-centre">
+                <div className="text-center">
                   <Users className="h-6 w-6 text-blue-400 mx-auto mb-2" />
                   <h5 className="font-medium text-slate-200 text-sm">Widget 1</h5>
                   <p className="text-xs text-slate-400">Quick stats</p>
@@ -236,7 +236,7 @@ const components = [
             </Card>
             <Card className="bg-slate-800/30 border-slate-700">
               <CardContent className="p-4">
-                <div className="text-centre">
+                <div className="text-center">
                   <Calendar className="h-6 w-6 text-green-400 mx-auto mb-2" />
                   <h5 className="font-medium text-slate-200 text-sm">Widget 2</h5>
                   <p className="text-xs text-slate-400">Recent activity</p>
@@ -252,7 +252,7 @@ const components = [
     id: "hero-layout",
     title: "Hero Section Layout",
     description: "Landing page hero section with CTA",
-    code: `<section className="py-20 text-centre">
+    code: `<section className="py-20 text-center">
   <div className="max-w-4xl mx-auto">
     <h1 className="text-5xl font-bold mb-6">Hero Title</h1>
     <p className="text-xl mb-8">Hero description text</p>
@@ -261,7 +261,7 @@ const components = [
 </section>`,
     component: (
       <div className="w-full">
-        <section className="py-12 text-centre bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-blue-500/10 rounded-xl border border-slate-700/50 shadow-xl">
+        <section className="py-12 text-center bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-blue-500/10 rounded-xl border border-slate-700/50 shadow-xl">
           <div className="max-w-2xl mx-auto px-4">
             <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-fuchsia-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
               Find Your Perfect Match
@@ -269,7 +269,7 @@ const components = [
             <p className="text-lg text-slate-300 mb-6">
               Connect talented candidates with exciting opportunities using our advanced recruitment platform.
             </p>
-            <div className="flex gap-6 justify-centre flex-wrap">
+            <div className="flex gap-6 justify-center flex-wrap">
               <Button size="lg" className="bg-fuchsia-500 hover:bg-fuchsia-600">
                 Get Started
                 <ArrowRight className="h-4 w-4 ml-2" />
@@ -336,7 +336,7 @@ export function LayoutComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Layout Components</h2>
             <p className="text-slate-400">Layout patterns and structural components for page organisation</p>
@@ -367,7 +367,7 @@ export function LayoutComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
             <Layout className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -380,6 +380,7 @@ export function LayoutComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
 
 
 

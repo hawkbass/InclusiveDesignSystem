@@ -42,13 +42,13 @@ const components = [
     id: "breadcrumbs",
     title: "Breadcrumbs",
     description: "Navigation breadcrumb with hover effects",
-    code: `<nav className="flex items-centre gap-2 text-sm">
+    code: `<nav className="flex items-center gap-2 text-sm">
   <a href="#" className="text-slate-400 hover:text-white transition-all duration-300 rounded-lg">Dashboard</a>
   <ChevronRight className="h-4 w-4 text-slate-500" />
   <span className="text-white font-medium">Candidates</span>
 </nav>`,
     component: (
-      <nav className="flex items-centre gap-2 text-sm">
+      <nav className="flex items-center gap-2 text-sm">
         <a href="#" className="text-slate-400 hover:text-fuchsia-400 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Dashboard</a>
         <ChevronRight className="h-4 w-4 text-slate-500" />
         <a href="#" className="text-slate-400 hover:text-fuchsia-400 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Candidates</a>
@@ -100,7 +100,7 @@ const components = [
     title: "Sidebar Navigation",
     description: "Collapsible sidebar with menu items",
     code: `<nav className="w-full max-w-64 lg:max-w-80 space-y-2">
-  <a href="#" className="flex items-centre gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-300 rounded-lg">
+  <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-300 rounded-lg">
     <Home className="h-5 w-5" />
     Dashboard
   </a>
@@ -118,7 +118,7 @@ const components = [
           <a
             key={index}
             href="#"
-            className={`flex items-centre gap-3 px-3 py-2 rounded-lg transition-all duration-300 rounded-lg ${
+            className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-300 rounded-lg ${
               item.active
                 ? 'bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30'
                 : 'text-slate-300 hover:bg-slate-800/50 hover:text-fuchsia-300'
@@ -136,13 +136,13 @@ const components = [
     id: "top-navigation",
     title: "Top Navigation Bar",
     description: "Horizontal navigation with dropdowns",
-    code: `<nav className="flex items-centre gap-6">
+    code: `<nav className="flex items-center gap-6">
   <a href="#" className="text-slate-300 hover:text-white transition-all duration-300 rounded-lg">Home</a>
   <a href="#" className="text-slate-300 hover:text-white transition-all duration-300 rounded-lg">About</a>
   <a href="#" className="text-slate-300 hover:text-white transition-all duration-300 rounded-lg">Contact</a>
 </nav>`,
     component: (
-      <nav className="flex items-centre gap-6 w-full max-w-md">
+      <nav className="flex items-center gap-6 w-full max-w-md">
         {[
           { label: "Dashboard", active: true },
           { label: "Candidates", active: false },
@@ -176,8 +176,8 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-sm">
-        <div className="flex items-centre justify-between p-3 bg-slate-800/30 rounded-lg">
-          <div className="flex items-centre gap-2">
+        <div className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
+          <div className="flex items-center gap-2">
             <Hexagon className="h-6 w-6 text-fuchsia-400" />
             <span className="font-medium text-slate-200">Mobile Nav</span>
           </div>
@@ -206,7 +206,7 @@ const components = [
     id: "pagination",
     title: "Pagination",
     description: "Page navigation with numbered pages",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <Button variant="outline" size="sm">
     <ArrowLeft className="h-4 w-4" />
   </Button>
@@ -217,7 +217,7 @@ const components = [
   </Button>
 </div>`,
     component: (
-      <div className="flex items-centre gap-2 flex-wrap">
+      <div className="flex items-center gap-2 flex-wrap">
         <Button variant="outline" size="sm" className="hover:bg-slate-700">
           <ArrowLeft className="h-4 w-4" />
         </Button>
@@ -245,24 +245,24 @@ const components = [
     id: "step-navigation",
     title: "Step Navigation",
     description: "Multi-step process navigation",
-    code: `<div className="flex items-centre gap-6">
-  <div className="flex items-centre gap-2">
-    <div className="w-8 h-8 bg-fuchsia-500 rounded-full flex items-centre justify-centre text-white text-sm">1</div>
+    code: `<div className="flex items-center gap-6">
+  <div className="flex items-center gap-2">
+    <div className="w-8 h-8 bg-fuchsia-500 rounded-full flex items-center justify-center text-white text-sm">1</div>
     <span className="text-fuchsia-300">Step 1</span>
   </div>
 </div>`,
     component: (
       <div className="w-full max-w-lg">
-        <div className="flex items-centre justify-between">
+        <div className="flex items-center justify-between">
           {[
             { step: 1, label: "Application", completed: true, active: false },
             { step: 2, label: "Review", completed: true, active: false },
             { step: 3, label: "Interview", completed: false, active: true },
             { step: 4, label: "Decision", completed: false, active: false }
           ].map((item, index) => (
-            <div key={index} className="flex items-centre">
-              <div className="flex flex-col items-centre">
-                <div className={`w-8 h-8 rounded-full flex items-centre justify-centre text-sm font-medium ${
+            <div key={index} className="flex items-center">
+              <div className="flex flex-col items-center">
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                   item.completed
                     ? 'bg-green-500 text-white'
                     : item.active
@@ -315,7 +315,7 @@ const components = [
               ].map((item, index) => (
                 <button
                   key={index}
-                  className="w-full flex items-centre gap-2 px-3 py-2 text-slate-300 hover:text-fuchsia-300 hover:bg-slate-700/50 rounded transition-all duration-300 rounded-lg text-left"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-slate-300 hover:text-fuchsia-300 hover:bg-slate-700/50 rounded transition-all duration-300 rounded-lg text-left"
                   style={{ transitionDuration: 'var(--animation-speed)' }}
                 >
                   <item.icon className="h-4 w-4" />
@@ -339,7 +339,7 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-xs">
-        <div className="flex items-centre gap-2 p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl">
+        <div className="flex items-center gap-2 p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl">
           <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">
             <User className="h-4 w-4 mr-1" />
             Add
@@ -361,7 +361,7 @@ const components = [
     id: "filter-nav",
     title: "Filter Navigation",
     description: "Filter and sort controls",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <Select>
     <SelectTrigger>
       <SelectValue placeholder="Sort by" />
@@ -373,8 +373,8 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="flex items-centre gap-2 flex-wrap">
-          <div className="flex items-centre gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
+          <div className="flex items-center gap-2">
             <span className="text-sm text-slate-300">Sort:</span>
             <select className="bg-slate-800/50 border border-slate-600 rounded px-2 py-1 text-sm text-slate-300">
               <option>Name</option>
@@ -382,7 +382,7 @@ const components = [
               <option>Status</option>
             </select>
           </div>
-          <div className="flex items-centre gap-2">
+          <div className="flex items-center gap-2">
             <span className="text-sm text-slate-300">Filter:</span>
             <Button size="sm" variant="outline" className="hover:bg-slate-700">
               <Filter className="h-3 w-3 mr-1" />
@@ -409,7 +409,7 @@ const components = [
     component: (
       <div className="w-full max-w-xs">
         <div className="bg-slate-800/90 backdrop-blur-xl border border-slate-700/50 rounded-lg p-3 shadow-xl">
-          <div className="flex items-centre justify-between mb-3">
+          <div className="flex items-center justify-between mb-3">
             <span className="text-sm font-medium text-slate-200">Quick Access</span>
             <Button size="sm" variant="ghost" className="h-6 w-6 p-0 hover:bg-slate-700">
               <X className="h-3 w-3" />
@@ -425,7 +425,7 @@ const components = [
               <a
                 key={index}
                 href="#"
-                className={`flex items-centre gap-2 px-2 py-1 rounded text-sm transition-all duration-300 rounded-lg ${
+                className={`flex items-center gap-2 px-2 py-1 rounded text-sm transition-all duration-300 rounded-lg ${
                   item.active
                     ? 'text-fuchsia-300 bg-fuchsia-500/20'
                     : 'text-slate-300 hover:text-fuchsia-300 hover:bg-slate-700/50'
@@ -445,20 +445,20 @@ const components = [
     id: "contextual-nav",
     title: "Contextual Navigation",
     description: "Context-aware navigation based on current page",
-    code: `<div className="flex items-centre gap-4">
+    code: `<div className="flex items-center gap-4">
   <Button variant="ghost" size="sm">
     <ArrowLeft className="h-4 w-4 mr-1" />
     Back
   </Button>
-  <div className="flex items-centre gap-2">
+  <div className="flex items-center gap-2">
     <Button size="sm">Edit</Button>
     <Button size="sm" variant="outline">Delete</Button>
   </div>
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="flex items-centre justify-between p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl">
-          <div className="flex items-centre gap-2">
+        <div className="flex items-center justify-between p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl">
+          <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" className="hover:bg-slate-700">
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back
@@ -466,7 +466,7 @@ const components = [
             <span className="text-sm text-slate-400">|</span>
             <span className="text-sm text-slate-300">Sarah Johnson</span>
           </div>
-          <div className="flex items-centre gap-2">
+          <div className="flex items-center gap-2">
             <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">
               <User className="h-3 w-3 mr-1" />
               Edit
@@ -502,7 +502,7 @@ export function NavigationComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Navigation Components</h2>
             <p className="text-slate-400">Navigation patterns and menu systems for seamless user journeys</p>
@@ -533,7 +533,7 @@ export function NavigationComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
             <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -546,6 +546,7 @@ export function NavigationComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
 
 
 

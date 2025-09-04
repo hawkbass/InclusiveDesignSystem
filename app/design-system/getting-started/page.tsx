@@ -316,7 +316,7 @@ export function MyComponent() {
           
           <div className="relative px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
-              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-centre gap-8 mb-8">
+              <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
                 <div>
                   <Badge className="bg-gradient-to-r from-green-500/20 to-blue-500/20 text-green-300 border-green-500/30 mb-4">
                     <Play className="w-3 h-3 mr-1" />
@@ -334,7 +334,7 @@ export function MyComponent() {
 
                 {/* Progress Status */}
                 <div className="flex flex-col gap-4 w-full lg:w-80">
-                  <div className="text-centre p-4 rounded-lg bg-slate-800/30 border border-slate-700/50">
+                  <div className="text-center p-4 rounded-lg bg-slate-800/30 border border-slate-700/50">
                     <div className="text-2xl font-bold text-slate-100">{completedSteps.size}</div>
                     <div className="text-sm text-slate-500">Steps Completed</div>
                     <Badge className="mt-2 bg-fuchsia-500/20 text-fuchsia-300">
@@ -367,7 +367,7 @@ export function MyComponent() {
                 </div>
                 
                 {/* Popular Searches */}
-                <div className="flex flex-wrap justify-centre gap-2 mt-4">
+                <div className="flex flex-wrap justify-center gap-2 mt-4">
                   <span className="text-sm text-slate-500">Popular:</span>
                   {popularSearches.map((search, index) => (
                     <Button
@@ -388,7 +388,7 @@ export function MyComponent() {
                     <CardContent className="p-4">
                       <div className="space-y-3">
                         {searchResults.map((result) => (
-                          <div key={result.id} className="flex items-centre gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
+                          <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
                             <div className="p-2 rounded bg-slate-700/50">
                               {result.type === "command" && <Terminal className="h-4 w-4 text-green-400" />}
                               {result.type === "config" && <Settings className="h-4 w-4 text-blue-400" />}
@@ -428,7 +428,7 @@ export function MyComponent() {
 
               {/* Quick Value Preview - Always Visible */}
               <div className="mt-12">
-                <h3 className="text-lg font-medium text-slate-300 mb-6 text-centre">Start Building Instantly:</h3>
+                <h3 className="text-lg font-medium text-slate-300 mb-6 text-center">Start Building Instantly:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                   {quickPreviewItems.map((item, index) => {
                     const status = environmentStatus[item.name] || 'unchecked'
@@ -438,9 +438,9 @@ export function MyComponent() {
                         status === 'not-found' ? 'border-yellow-500/30 shadow-yellow-500/10' :
                         status === 'checking' ? 'border-blue-500/30 shadow-blue-500/10' : ''
                       }`}>
-                        <CardContent className="p-6 text-centre">
-                          <div className="flex items-centre justify-between mb-4">
-                            <div className="flex items-centre justify-centre flex-1">
+                        <CardContent className="p-6 text-center">
+                          <div className="flex items-center justify-between mb-4">
+                            <div className="flex items-center justify-center flex-1">
                               <div className="p-3 rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-purple-500/20">
                                 <item.icon className="h-6 w-6 text-fuchsia-400" />
                               </div>
@@ -533,7 +533,7 @@ export function MyComponent() {
             {/* Essential Steps - Always Visible */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader>
-                <div className="flex items-centre gap-3">
+                <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-fuchsia-500/20">
                     <Zap className="h-5 w-5 text-fuchsia-400" />
                   </div>
@@ -550,7 +550,7 @@ export function MyComponent() {
                   {/* Installation */}
                   <Card className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
                     <CardContent className="p-6">
-                      <div className="flex items-centre gap-3 mb-4">
+                      <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 rounded-xl bg-green-500/20">
                           <Download className="h-6 w-6 text-green-400" />
                         </div>
@@ -594,7 +594,7 @@ export function MyComponent() {
                   {/* Configuration */}
                   <Card className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
                     <CardContent className="p-6">
-                      <div className="flex items-centre gap-3 mb-4">
+                      <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 rounded-xl bg-blue-500/20">
                           <Settings className="h-6 w-6 text-blue-400" />
                         </div>
@@ -627,7 +627,7 @@ export function MyComponent() {
                   {/* First Component */}
                   <Card className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
                     <CardContent className="p-6">
-                      <div className="flex items-centre gap-3 mb-4">
+                      <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 rounded-xl bg-purple-500/20">
                           <Component className="h-6 w-6 text-purple-400" />
                         </div>
@@ -664,8 +664,8 @@ export function MyComponent() {
             {/* Quick Setup Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("quick-setup")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
                       <Zap className="h-5 w-5 text-green-400" />
                     </div>
@@ -676,7 +676,7 @@ export function MyComponent() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-green-500/20 text-green-300">5 Min Setup</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("quick-setup") ? 
@@ -693,8 +693,8 @@ export function MyComponent() {
                     {/* Installation Step */}
                     <div className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-centre gap-3">
-                          <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-500/30 flex items-centre justify-centre">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-500/30 flex items-center justify-center">
                             <span className="text-sm font-bold text-green-400">1</span>
                           </div>
                           <div>
@@ -721,7 +721,7 @@ export function MyComponent() {
                           { label: "Yarn", command: "yarn add @inclusive-design/core", id: "yarn-cmd" },
                           { label: "PNPM", command: "pnpm add @inclusive-design/core", id: "pnpm-cmd" }
                         ].map((cmd) => (
-                          <div key={cmd.id} className="flex items-centre gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700/30">
+                          <div key={cmd.id} className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700/30">
                             <Badge className="bg-slate-700/50 text-slate-300 text-xs">
                               {cmd.label}
                             </Badge>
@@ -747,8 +747,8 @@ export function MyComponent() {
                     {/* Import Styles Step */}
                     <div className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-centre gap-3">
-                          <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-blue-500/30 flex items-centre justify-centre">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-blue-500/30 flex items-center justify-center">
                             <span className="text-sm font-bold text-blue-400">2</span>
                           </div>
                           <div>
@@ -791,8 +791,8 @@ import "@inclusive-design/core/styles.css"`}</code>
                     {/* First Component Step */}
                     <div className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
                       <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-centre gap-3">
-                          <div className="w-8 h-8 rounded-full bg-purple-500/20 border-2 border-purple-500/30 flex items-centre justify-centre">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-full bg-purple-500/20 border-2 border-purple-500/30 flex items-center justify-center">
                             <span className="text-sm font-bold text-purple-400">3</span>
                           </div>
                           <div>
@@ -854,8 +854,8 @@ function MyComponent() {
             {/* Resources & Quick Tools Section */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("resources")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-cyan-500/20">
                       <BookOpen className="h-5 w-5 text-cyan-400" />
                     </div>
@@ -866,7 +866,7 @@ function MyComponent() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-cyan-500/20 text-cyan-300">Always Updated</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("resources") ? 
@@ -883,7 +883,7 @@ function MyComponent() {
                     
                     {/* Quick Tools */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
                         <Zap className="h-4 w-4 text-orange-400" />
                         Quick Tools
                       </h4>
@@ -1014,7 +1014,7 @@ module.exports = {
 
                     {/* Documentation Links */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
                         <FileText className="h-4 w-4 text-blue-400" />
                         Documentation
                       </h4>
@@ -1040,7 +1040,7 @@ module.exports = {
 
                     {/* Downloads */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-centre gap-2">
+                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
                         <Download className="h-4 w-4 text-green-400" />
                         Downloads
                       </h4>
@@ -1084,8 +1084,8 @@ module.exports = {
             {completedSteps.size > 0 && (
               <Card className="border-slate-700/50 bg-slate-800/30">
                 <CardHeader>
-                  <div className="flex items-centre justify-between">
-                    <div className="flex items-centre gap-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
                       <div className="p-2 rounded-lg bg-purple-500/20">
                         <TrendingUp className="h-5 w-5 text-purple-400" />
                       </div>
@@ -1102,7 +1102,7 @@ module.exports = {
                 <CardContent>
                   <div className="space-y-4">
                     <Progress value={(completedSteps.size / 10) * 100} className="h-2" />
-                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-centre">
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
                       {[
                         { label: "Steps Completed", value: completedSteps.size },
                         { label: "favourites", value: favourites.size },
@@ -1127,6 +1127,7 @@ module.exports = {
     </div>
   )
 }
+
 
 
 

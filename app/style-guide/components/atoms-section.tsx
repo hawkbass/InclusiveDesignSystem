@@ -62,7 +62,7 @@ export function AtomsSection({
               key={type.id}
               variant={activeAtomType === type.id ? "default" : "outline"}
               onClick={() => setActiveAtomType(type.id)}
-              className={`flex items-centre gap-2 ${
+              className={`flex items-center gap-2 ${
                 activeAtomType === type.id 
                   ? "bg-fuchsia-500 text-white" 
                   : "hover:border-fuchsia-500/50"
@@ -97,7 +97,7 @@ export function AtomsSection({
               {/* Typography Scale */}
               <Card className="bg-slate-800/30 border-slate-700/50">
                 <CardHeader>
-                  <CardTitle className="flex items-centre gap-2">
+                  <CardTitle className="flex items-center gap-2">
                     <Type className="h-5 w-5" />
                     Typography Scale
                   </CardTitle>
@@ -116,12 +116,12 @@ export function AtomsSection({
                     { name: "Caption", class: "text-xs font-medium", example: "Caption Text" },
                     { name: "Label", class: "text-xs font-semibold uppercase tracking-wide", example: "Label Text" }
                   ].map((typo) => (
-                    <div key={typo.name} className="flex items-centre justify-between p-4 bg-slate-900/50 rounded-lg">
+                    <div key={typo.name} className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
                       <div className="flex-1">
                         <div className="text-sm text-slate-400 mb-1">{typo.name}</div>
                         <div className={`${typo.class} text-slate-100`}>{typo.example}</div>
                       </div>
-                      <div className="flex items-centre gap-2">
+                      <div className="flex items-center gap-2">
                         <code className="text-xs bg-slate-800 px-2 py-1 rounded text-slate-300">
                           {typo.class}
                         </code>
@@ -149,7 +149,7 @@ export function AtomsSection({
           <div className="space-y-4">
             <Card className="bg-slate-800/30 border-slate-700/50">
               <CardHeader>
-                <CardTitle className="flex items-centre gap-2">
+                <CardTitle className="flex items-center gap-2">
                   <Move3D className="h-5 w-5" />
                   Spacing Scale
                 </CardTitle>
@@ -166,8 +166,8 @@ export function AtomsSection({
                   { name: "3xl", value: "4rem", class: "space-x-16", pixels: "64px" },
                   { name: "4xl", value: "6rem", class: "space-x-24", pixels: "96px" }
                 ].map((spacing) => (
-                  <div key={spacing.name} className="flex items-centre justify-between p-3 bg-slate-900/50 rounded-lg">
-                    <div className="flex items-centre gap-4">
+                  <div key={spacing.name} className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg">
+                    <div className="flex items-center gap-4">
                       <div className="text-sm font-medium text-slate-300 w-8">{spacing.name}</div>
                       <div className="w-16 h-4 bg-fuchsia-500/20 rounded relative">
                         <div 
@@ -177,7 +177,7 @@ export function AtomsSection({
                       </div>
                       <div className="text-xs text-slate-400">{spacing.pixels}</div>
                     </div>
-                    <div className="flex items-centre gap-2">
+                    <div className="flex items-center gap-2">
                       <code className="text-xs bg-slate-800 px-2 py-1 rounded text-slate-300">
                         {spacing.class}
                       </code>
@@ -204,7 +204,7 @@ export function AtomsSection({
           <div className="space-y-4">
             <Card className="bg-slate-800/30 border-slate-700/50">
               <CardHeader>
-                <CardTitle className="flex items-centre gap-2">
+                <CardTitle className="flex items-center gap-2">
                   <Layers className="h-5 w-5" />
                   Shadow System
                 </CardTitle>
@@ -221,15 +221,15 @@ export function AtomsSection({
                   { name: "colored", class: "shadow-lg shadow-fuchsia-500/25", description: "Colored shadow with brand" },
                   { name: "glow", class: "shadow-2xl shadow-purple-500/30", description: "Glowing effect shadow" }
                 ].map((shadow) => (
-                  <div key={shadow.name} className="flex items-centre justify-between p-4 bg-slate-900/50 rounded-lg">
-                    <div className="flex items-centre gap-4">
+                  <div key={shadow.name} className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
+                    <div className="flex items-center gap-4">
                       <div className={`w-16 h-16 bg-slate-700 rounded-lg ${shadow.class}`} />
                       <div>
                         <div className="text-sm font-medium text-slate-300">{shadow.name}</div>
                         <div className="text-xs text-slate-400">{shadow.description}</div>
                       </div>
                     </div>
-                    <div className="flex items-centre gap-2">
+                    <div className="flex items-center gap-2">
                       <code className="text-xs bg-slate-800 px-2 py-1 rounded text-slate-300">
                         {shadow.class}
                       </code>
@@ -256,7 +256,7 @@ export function AtomsSection({
           <div className="space-y-4">
             <Card className="bg-slate-800/30 border-slate-700/50">
               <CardHeader>
-                <CardTitle className="flex items-centre gap-2">
+                <CardTitle className="flex items-center gap-2">
                   <Sparkles className="h-5 w-5" />
                   Visual Effects
                 </CardTitle>
@@ -273,8 +273,8 @@ export function AtomsSection({
                   { name: "gradient-blur", class: "bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 backdrop-blur-lg", description: "Gradient with blur" },
                   { name: "neon-glow", class: "bg-fuchsia-500/10 shadow-lg shadow-fuchsia-500/25 border border-fuchsia-500/30", description: "Neon glow effect" }
                 ].map((effect) => (
-                  <div key={effect.name} className="flex items-centre justify-between p-4 bg-slate-900/50 rounded-lg">
-                    <div className="flex items-centre gap-4">
+                  <div key={effect.name} className="flex items-center justify-between p-4 bg-slate-900/50 rounded-lg">
+                    <div className="flex items-center gap-4">
                       <div className={`w-16 h-16 rounded-lg ${effect.class} relative overflow-hidden`}>
                         <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-400/20 to-purple-400/20" />
                       </div>
@@ -283,7 +283,7 @@ export function AtomsSection({
                         <div className="text-xs text-slate-400">{effect.description}</div>
                       </div>
                     </div>
-                    <div className="flex items-centre gap-2">
+                    <div className="flex items-center gap-2">
                       <Button
                         variant="ghost"
                         size="sm"
@@ -306,6 +306,7 @@ export function AtomsSection({
     </div>
   )
 }
+
 
 
 

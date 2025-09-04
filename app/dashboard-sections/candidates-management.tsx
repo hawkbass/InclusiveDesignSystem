@@ -203,12 +203,12 @@ export function CandidatesManagement({
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-centre justify-between">
+      <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-semibold text-slate-100">Candidates</h2>
           <p className="text-sm text-slate-400">Manage your talent pipeline</p>
         </div>
-        <div className="flex items-centre gap-2">
+        <div className="flex items-center gap-2">
           <Button
             variant="outline"
             size="sm"
@@ -231,7 +231,7 @@ export function CandidatesManagement({
 
       {/* Pipeline Overview */}
       <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
-        <div className="flex items-centre justify-between mb-4">
+        <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-medium text-slate-100">Pipeline Overview</h3>
           <div className="text-sm text-slate-400">{filteredCandidates.length} candidates</div>
         </div>
@@ -240,7 +240,7 @@ export function CandidatesManagement({
             <button
               key={stage.key}
               onClick={() => setCandidateStageFilter(stage.key)}
-              className={`p-2 sm:p-3 rounded-lg border transition-all duration-200 text-centre ${
+              className={`p-2 sm:p-3 rounded-lg border transition-all duration-200 text-center ${
                 candidateStageFilter === stage.key
                   ? 'border-fuchsia-500/50 bg-fuchsia-500/10'
                   : 'border-slate-700/50 bg-slate-700/30 hover:border-slate-600/50'
@@ -263,7 +263,7 @@ export function CandidatesManagement({
 
       {/* Filters and Search */}
       <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-centre gap-4">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
           {/* Search */}
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -296,7 +296,7 @@ export function CandidatesManagement({
                       <label className="text-sm font-medium text-slate-300 mb-2 block">Experience Level</label>
                       <div className="space-y-2">
                         {["Entry", "Mid", "Senior", "Lead"].map((level) => (
-                          <label key={level} className="flex items-centre">
+                          <label key={level} className="flex items-center">
                             <input type="checkbox" className="mr-2" />
                             <span className="text-sm text-slate-400">{level}</span>
                           </label>
@@ -307,7 +307,7 @@ export function CandidatesManagement({
                       <label className="text-sm font-medium text-slate-300 mb-2 block">Location</label>
                       <div className="space-y-2">
                         {["Remote", "London", "Manchester", "Birmingham", "Bristol", "Leeds", "Glasgow", "Edinburgh"].map((location) => (
-                          <label key={location} className="flex items-centre">
+                          <label key={location} className="flex items-center">
                             <input type="checkbox" className="mr-2" />
                             <span className="text-sm text-slate-400">{location}</span>
                           </label>
@@ -318,7 +318,7 @@ export function CandidatesManagement({
                       <label className="text-sm font-medium text-slate-300 mb-2 block">Source</label>
                       <div className="space-y-2">
                         {["LinkedIn", "Indeed", "Company Website", "Referral"].map((source) => (
-                          <label key={source} className="flex items-centre">
+                          <label key={source} className="flex items-center">
                             <input type="checkbox" className="mr-2" />
                             <span className="text-sm text-slate-400">{source}</span>
                           </label>
@@ -326,7 +326,7 @@ export function CandidatesManagement({
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-centre justify-between mt-4 pt-4 border-t border-slate-700/50">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-700/50">
                     <Button
                       variant="ghost"
                       size="sm"
@@ -354,8 +354,8 @@ export function CandidatesManagement({
       <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 overflow-hidden backdrop-blur-sm">
         {/* Table Header */}
         <div className="p-4 border-b border-slate-700/50">
-          <div className="flex items-centre justify-between">
-            <div className="flex items-centre gap-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
               <button
                 onClick={handleSelectAll}
                 className="text-slate-400 hover:text-slate-300 transition-colours"
@@ -372,7 +372,7 @@ export function CandidatesManagement({
             </div>
             
             {selectedCandidateIds.size > 0 && (
-              <div className="flex items-centre gap-2">
+              <div className="flex items-center gap-2">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -412,9 +412,9 @@ export function CandidatesManagement({
               key={candidate.id}
               className="p-4 hover:bg-slate-700/30 transition-all duration-200"
             >
-              <div className="flex flex-col sm:flex-row sm:items-centre gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                 {/* Checkbox and Avatar Row */}
-                <div className="flex items-centre gap-4">
+                <div className="flex items-center gap-4">
                   {/* Checkbox */}
                   <button
                     onClick={() => handleSelectCandidate(candidate.id)}
@@ -428,33 +428,33 @@ export function CandidatesManagement({
                   </button>
 
                   {/* Avatar */}
-                  <div className="w-12 h-12 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white font-medium">
+                  <div className="w-12 h-12 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white font-medium">
                     {candidate.avatar}
                   </div>
                 </div>
 
                 {/* Candidate Info */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-col sm:flex-row sm:items-centre gap-2 mb-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
                     <div className="text-sm font-medium text-slate-100">{candidate.name}</div>
                     <StatusBadge status={candidate.status as "applied" | "screening" | "interview" | "offer" | "hired" | "rejected"} />
                   </div>
                   <div className="text-sm text-slate-300 mb-1">{candidate.position}</div>
-                  <div className="flex flex-col sm:flex-row sm:items-centre gap-2 sm:gap-4 text-xs text-slate-400">
-                    <div className="flex items-centre gap-1">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-slate-400">
+                    <div className="flex items-center gap-1">
                       <MapPin className="h-3 w-3" />
                       {candidate.location}
                     </div>
-                    <div className="flex items-centre gap-1">
+                    <div className="flex items-center gap-1">
                       <User className="h-3 w-3" />
                       {candidate.experience}
                     </div>
-                    <div className="flex items-centre gap-1">
+                    <div className="flex items-center gap-1">
                       <Clock className="h-3 w-3" />
                       {candidate.lastActivity}
                     </div>
                   </div>
-                  <div className="flex flex-wrap items-centre gap-2 mt-2">
+                  <div className="flex flex-wrap items-center gap-2 mt-2">
                     {candidate.skills.slice(0, 3).map((skill) => (
                       <span 
                         key={skill}
@@ -478,7 +478,7 @@ export function CandidatesManagement({
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-centre gap-1">
+                  <div className="flex items-center gap-1">
                     <Button
                       variant="ghost"
                       size="sm"
@@ -521,11 +521,11 @@ export function CandidatesManagement({
         {/* Pagination */}
         {totalPages > 1 && (
           <div className="p-4 border-t border-slate-700/50">
-            <div className="flex flex-col sm:flex-row items-centre justify-between gap-4">
-              <div className="text-sm text-slate-400 text-centre sm:text-left">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="text-sm text-slate-400 text-center sm:text-left">
                 Showing {startIndex + 1}-{Math.min(endIndex, filteredCandidates.length)} of {filteredCandidates.length} candidates
               </div>
-              <div className="flex flex-col sm:flex-row items-centre gap-2">
+              <div className="flex flex-col sm:flex-row items-center gap-2">
                 <Button
                   variant="outline"
                   size="sm"
@@ -535,7 +535,7 @@ export function CandidatesManagement({
                 >
                   Previous
                 </Button>
-                <div className="flex items-centre gap-1 flex-wrap justify-centre">
+                <div className="flex items-center gap-1 flex-wrap justify-center">
                   {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
                     <Button
                       key={page}
@@ -568,6 +568,7 @@ export function CandidatesManagement({
     </div>
   )
 } 
+
 
 
 

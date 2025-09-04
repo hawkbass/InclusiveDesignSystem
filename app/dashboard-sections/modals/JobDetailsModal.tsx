@@ -16,9 +16,9 @@ export function JobDetailsModal({ open, job, onClose }: JobDetailsModalProps) {
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-blue-800/20 to-blue-800/10 rounded-t-xl">
-          <div className="flex items-centre justify-between">
-            <div className="flex items-centre gap-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-centre justify-centre">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                 <Briefcase className="h-6 w-6 text-white" />
               </div>
               <div>
@@ -58,6 +58,7 @@ export function JobDetailsModal({ open, job, onClose }: JobDetailsModalProps) {
     </Dialog>
   )
 } 
+
 
 
 

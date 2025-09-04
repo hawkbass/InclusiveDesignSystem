@@ -96,7 +96,7 @@ export function SettingsPanel({
 
   const renderProfileTab = () => (
     <div className="space-y-6">
-      <div className="flex items-centre justify-between">
+      <div className="flex items-center justify-between">
         <h3 className="text-lg font-medium text-slate-100">Profile Information</h3>
         <Button
           variant="outline"
@@ -182,7 +182,7 @@ export function SettingsPanel({
         />
       </div>
 
-      <div className="flex items-centre gap-4">
+      <div className="flex items-center gap-4">
         <Button
           size="sm"
           className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
@@ -206,7 +206,7 @@ export function SettingsPanel({
       <h3 className="text-lg font-medium text-slate-100">Notification Preferences</h3>
       
       <div className="space-y-4">
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">New Applications</div>
             <div className="text-xs text-slate-400">Get notified when new candidates apply</div>
@@ -217,7 +217,7 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Interview Reminders</div>
             <div className="text-xs text-slate-400">Receive reminders before scheduled interviews</div>
@@ -228,7 +228,7 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Status Updates</div>
             <div className="text-xs text-slate-400">Updates on candidate status changes</div>
@@ -239,7 +239,7 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Team Mentions</div>
             <div className="text-xs text-slate-400">When team members mention you</div>
@@ -250,7 +250,7 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Weekly Reports</div>
             <div className="text-xs text-slate-400">Summary of weekly hiring activities</div>
@@ -261,7 +261,7 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Security Alerts</div>
             <div className="text-xs text-slate-400">Important security notifications</div>
@@ -280,12 +280,12 @@ export function SettingsPanel({
       <h3 className="text-lg font-medium text-slate-100">Security Settings</h3>
       
       <div className="space-y-4">
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Two-Factor Authentication</div>
             <div className="text-xs text-slate-400">Add an extra layer of security to your account</div>
           </div>
-          <div className="flex items-centre gap-2">
+          <div className="flex items-center gap-2">
             <Switch
               checked={securitySettings.twoFactorAuth}
               onCheckedChange={(checked) => setSecuritySettings({ ...securitySettings, twoFactorAuth: checked })}
@@ -296,7 +296,7 @@ export function SettingsPanel({
           </div>
         </div>
 
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Login Notifications</div>
             <div className="text-xs text-slate-400">Get notified of new login attempts</div>
@@ -307,7 +307,7 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
           <div>
             <div className="text-sm font-medium text-slate-200">Device Management</div>
             <div className="text-xs text-slate-400">Manage active sessions and devices</div>
@@ -334,7 +334,7 @@ export function SettingsPanel({
           </select>
         </div>
 
-        <div className="flex items-centre gap-4">
+        <div className="flex items-center gap-4">
           <Button
             variant="outline"
             size="sm"
@@ -360,7 +360,7 @@ export function SettingsPanel({
 
   const renderTeamTab = () => (
     <div className="space-y-6">
-      <div className="flex items-centre justify-between">
+      <div className="flex items-center justify-between">
         <h3 className="text-lg font-medium text-slate-100">Team Management</h3>
         <Button
           size="sm"
@@ -374,9 +374,9 @@ export function SettingsPanel({
 
       <div className="space-y-3">
         {teamMembers.map((member) => (
-          <div key={member.id} className="flex items-centre justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
-            <div className="flex items-centre gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white font-medium">
+          <div key={member.id} className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white font-medium">
                 {member.avatar}
               </div>
               <div>
@@ -385,8 +385,8 @@ export function SettingsPanel({
                 <div className="text-xs text-slate-500">{member.email}</div>
               </div>
             </div>
-            <div className="flex items-centre gap-3">
-              <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${getStatusColor(member.status)}`}></div>
                 <span className="text-xs text-slate-400 capitalize">{member.status}</span>
               </div>
@@ -416,7 +416,7 @@ export function SettingsPanel({
       {/* Settings Tabs */}
       <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 backdrop-blur-sm">
         <div className="p-4 border-b border-slate-700/50">
-          <div className="flex items-centre gap-1">
+          <div className="flex items-center gap-1">
             {settingsTabs.map((tab) => {
               const Icon = tab.icon
               const isActive = activeSettingsTab === tab.id
@@ -425,7 +425,7 @@ export function SettingsPanel({
                 <button
                   key={tab.id}
                   onClick={() => setActiveSettingsTab(tab.id as SettingsTabType)}
-                  className={`flex items-centre gap-2 px-4 py-2 rounded-md text-sm transition-all ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm transition-all ${
                     isActive 
                       ? 'bg-fuchsia-500/20 text-fuchsia-300' 
                       : 'text-slate-400 hover:text-slate-300 hover:bg-slate-700/50'
@@ -449,6 +449,7 @@ export function SettingsPanel({
     </div>
   )
 } 
+
 
 
 

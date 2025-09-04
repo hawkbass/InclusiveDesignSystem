@@ -89,8 +89,8 @@ export function AccessibilitySection({
           return (
             <Card key={guideline.id} className="bg-slate-800/30 border-slate-700/50">
               <CardHeader>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
                       <IconComponent className="h-5 w-5 text-green-400" />
                     </div>
@@ -101,7 +101,7 @@ export function AccessibilitySection({
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge 
                       className={`${
                         guideline.status === 'compliant' ? 'bg-green-500/20 text-green-300' :
@@ -127,11 +127,11 @@ export function AccessibilitySection({
                   <div className="space-y-2">
                     <h4 className="text-sm font-medium text-slate-300">Examples</h4>
                     {guideline.examples.map((example, index) => (
-                      <div key={index} className="flex items-centre justify-between p-3 bg-slate-900/50 rounded-lg">
+                      <div key={index} className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg">
                         <div className={`${example.bg} ${example.text} px-3 py-1 rounded text-sm font-medium`}>
                           Sample Text
                         </div>
-                        <div className="flex items-centre gap-2 text-xs">
+                        <div className="flex items-center gap-2 text-xs">
                           <span className="text-slate-400">Ratio: {example.ratio}</span>
                           <Badge className={`${
                             example.level === 'AAA' ? 'bg-green-500/20 text-green-300' : 'bg-blue-500/20 text-blue-300'
@@ -175,7 +175,7 @@ export function AccessibilitySection({
       {/* Accessibility Checklist */}
       <Card className="bg-slate-800/30 border-slate-700/50">
         <CardHeader>
-          <CardTitle className="flex items-centre gap-2">
+          <CardTitle className="flex items-center gap-2">
             <CheckCircle2 className="h-5 w-5 text-green-400" />
             WCAG 2.1 AA Compliance Checklist
           </CardTitle>
@@ -195,7 +195,7 @@ export function AccessibilitySection({
               "Screen reader compatibility",
               "Motion preferences respected"
             ].map((item, index) => (
-              <div key={index} className="flex items-centre gap-2 text-sm">
+              <div key={index} className="flex items-center gap-2 text-sm">
                 <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
                 <span className="text-slate-300">{item}</span>
               </div>
@@ -206,6 +206,7 @@ export function AccessibilitySection({
     </div>
   )
 }
+
 
 
 

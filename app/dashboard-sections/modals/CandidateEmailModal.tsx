@@ -18,9 +18,9 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
       <DialogContent className="max-w-2xl p-0 overflow-hidden">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-blue-800/20 to-blue-800/10 rounded-t-xl">
-          <div className="flex items-centre justify-between">
-            <div className="flex items-centre gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-centre justify-centre">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                 <Mail className="h-5 w-5 text-white" />
               </div>
               <div>
@@ -65,8 +65,8 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
         </div>
         {/* Footer */}
         <div className="p-6 border-t border-slate-700/50 bg-slate-800/30 rounded-b-xl">
-          <div className="flex justify-between items-centre">
-            <div className="flex items-centre gap-2">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
               <Button
                 size="sm"
                 className="bg-blue-500 hover:bg-blue-600 text-white"
@@ -103,6 +103,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
     </Dialog>
   )
 } 
+
 
 
 

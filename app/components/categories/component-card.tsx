@@ -68,7 +68,7 @@ export function ComponentCard({
   }
 
   const cardClasses = viewMode === "list" 
-    ? "flex items-centre gap-6 p-6" 
+    ? "flex items-center gap-6 p-6" 
     : "flex flex-col p-6"
 
   const handleSaveEdit = () => {
@@ -102,7 +102,7 @@ export function ComponentCard({
             </div>
             
             {/* Status Indicators */}
-            <div className="flex items-centre gap-2 ml-4">
+            <div className="flex items-center gap-2 ml-4">
               <Badge variant="outline" className="text-xs border-green-400/30 text-green-400">
                 <CheckCircle2 className="h-3 w-3 mr-1" />
                 Ready
@@ -120,8 +120,8 @@ export function ComponentCard({
       </div>
 
       {/* Action Buttons */}
-      <div className={`flex items-centre justify-between ${viewMode === "list" ? "flex-col gap-2" : "mt-4"}`}>
-        <div className="flex items-centre gap-2">
+      <div className={`flex items-center justify-between ${viewMode === "list" ? "flex-col gap-2" : "mt-4"}`}>
+        <div className="flex items-center gap-2">
           {code && onCopyCode && (
             <Button
               size="sm"
@@ -161,7 +161,7 @@ export function ComponentCard({
             </DialogTrigger>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
               <DialogHeader>
-                <DialogTitle className="text-xl font-bold text-slate-100 flex items-centre gap-2">
+                <DialogTitle className="text-xl font-bold text-slate-100 flex items-center gap-2">
                   <Component className="h-5 w-5 text-fuchsia-400" />
                   {title}
                 </DialogTitle>
@@ -216,7 +216,7 @@ export function ComponentCard({
                 {/* Code Display */}
                 {code && (
                   <div className="space-y-3">
-                    <div className="flex items-centre justify-between">
+                    <div className="flex items-center justify-between">
                       <h3 className="text-lg font-semibold text-slate-200">Source Code</h3>
                       <Button
                         size="sm"
@@ -253,7 +253,7 @@ export function ComponentCard({
             </DialogTrigger>
             <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
               <DialogHeader>
-                <DialogTitle className="text-xl font-bold text-slate-100 flex items-centre gap-2">
+                <DialogTitle className="text-xl font-bold text-slate-100 flex items-center gap-2">
                   <Edit className="h-5 w-5 text-fuchsia-400" />
                   Edit Component: {title}
                 </DialogTitle>
@@ -296,9 +296,9 @@ export function ComponentCard({
 
                 {/* Code Editor */}
                 <div className="space-y-3">
-                  <div className="flex items-centre justify-between">
+                  <div className="flex items-center justify-between">
                     <Label className="text-slate-300 text-lg font-semibold">Component Code</Label>
-                    <div className="flex items-centre gap-2">
+                    <div className="flex items-center gap-2">
                       <Button
                         size="sm"
                         variant="outline"
@@ -328,7 +328,7 @@ export function ComponentCard({
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-centre justify-end gap-3 pt-4 border-t border-slate-700">
+                <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-700">
                   <Button
                     variant="outline"
                     onClick={() => setIsEditOpen(false)}
@@ -350,7 +350,7 @@ export function ComponentCard({
         </div>
 
         {/* favourite Button - Now positioned at bottom right */}
-        <div className="flex items-centre gap-2">
+        <div className="flex items-center gap-2">
           {isFavourite && (
             <Badge variant="outline" className="text-xs border-red-400/30 text-red-400">
               <Heart className="h-3 w-3 mr-1 fill-current" />
@@ -377,6 +377,7 @@ export function ComponentCard({
     </Card>
   )
 } 
+
 
 
 

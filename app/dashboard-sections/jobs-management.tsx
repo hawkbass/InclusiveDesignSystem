@@ -123,12 +123,12 @@ export function JobsManagement({
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-centre justify-between">
+      <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-semibold text-slate-100">Jobs</h2>
           <p className="text-sm text-slate-400">Manage job postings and applications</p>
         </div>
-        <div className="flex items-centre gap-2">
+        <div className="flex items-center gap-2">
           <Button
             variant="outline"
             size="sm"
@@ -150,7 +150,7 @@ export function JobsManagement({
 
       {/* Job Status Overview */}
       <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
-        <div className="flex items-centre justify-between mb-4">
+        <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-medium text-slate-100">Job Status Overview</h3>
           <div className="text-sm text-slate-400">{filteredJobs.length} jobs</div>
         </div>
@@ -159,7 +159,7 @@ export function JobsManagement({
             <button
               key={status.key}
               onClick={() => setJobFilter(status.key)}
-              className={`p-3 rounded-lg border transition-all duration-200 text-centre ${
+              className={`p-3 rounded-lg border transition-all duration-200 text-center ${
                 jobFilter === status.key
                   ? 'border-fuchsia-500/50 bg-fuchsia-500/10'
                   : 'border-slate-700/50 bg-slate-700/30 hover:border-slate-600/50'
@@ -182,7 +182,7 @@ export function JobsManagement({
 
       {/* Search and Filters */}
       <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
-        <div className="flex items-centre gap-4">
+        <div className="flex items-center gap-4">
           <div className="flex-1 relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
             <Input
@@ -211,13 +211,13 @@ export function JobsManagement({
               {/* Job Header */}
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-centre gap-2 mb-1">
+                  <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-lg font-medium text-slate-100 truncate">{job.title}</h3>
                     <JobStatus status={job.status as any} />
                   </div>
                   <div className="text-sm text-slate-400">{job.department}</div>
                 </div>
-                <div className="flex items-centre gap-1">
+                <div className="flex items-center gap-1">
                   <Button
                     variant="ghost"
                     size="sm"
@@ -253,37 +253,37 @@ export function JobsManagement({
 
               {/* Job Details */}
               <div className="space-y-3">
-                <div className="flex items-centre gap-4 text-sm">
-                  <div className="flex items-centre gap-1 text-slate-400">
+                <div className="flex items-center gap-4 text-sm">
+                  <div className="flex items-center gap-1 text-slate-400">
                     <MapPin className="h-4 w-4" />
                     {job.location}
                   </div>
-                  <div className="flex items-centre gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-slate-400">
                     <Briefcase className="h-4 w-4" />
                     {job.type}
                   </div>
-                  <div className="flex items-centre gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-slate-400">
                     <TrendingUp className="h-4 w-4" />
                     {job.level}
                   </div>
                 </div>
 
-                <div className="flex items-centre gap-4 text-sm">
-                  <div className="flex items-centre gap-1 text-slate-400">
+                <div className="flex items-center gap-4 text-sm">
+                  <div className="flex items-center gap-1 text-slate-400">
                     <PoundSterling className="h-4 w-4" />
                     {job.salary}
                   </div>
-                  <div className="flex items-centre gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-slate-400">
                     <Users className="h-4 w-4" />
                     {job.applicants} applicants
                   </div>
-                  <div className="flex items-centre gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-slate-400">
                     <Clock className="h-4 w-4" />
                     {job.posted}
                   </div>
                 </div>
 
-                <div className="flex items-centre gap-2">
+                <div className="flex items-center gap-2">
                   <div className={`px-2 py-1 rounded text-xs border ${getPriorityColor(job.priority)}`}>
                     {job.priority} priority
                   </div>
@@ -292,7 +292,7 @@ export function JobsManagement({
                 <p className="text-sm text-slate-300 line-clamp-2">{job.description}</p>
 
                 {/* Requirements Preview */}
-                <div className="flex items-centre gap-2">
+                <div className="flex items-center gap-2">
                   {job.requirements.slice(0, 2).map((req) => (
                     <span 
                       key={req}
@@ -308,8 +308,8 @@ export function JobsManagement({
               </div>
 
               {/* Job Actions */}
-              <div className="flex items-centre justify-between mt-4 pt-4 border-t border-slate-700/50">
-                <div className="flex items-centre gap-2">
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-700/50">
+                <div className="flex items-center gap-2">
                   <Button
                     variant="outline"
                     size="sm"
@@ -329,7 +329,7 @@ export function JobsManagement({
                     Edit
                   </Button>
                 </div>
-                <div className="flex items-centre gap-1">
+                <div className="flex items-center gap-1">
                   {job.status === "active" && (
                     <Button
                       variant="outline"
@@ -370,8 +370,8 @@ export function JobsManagement({
 
       {/* Empty State */}
       {filteredJobs.length === 0 && (
-        <div className="text-centre py-12">
-          <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-centre justify-centre mx-auto mb-4">
+        <div className="text-center py-12">
+          <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Briefcase className="h-8 w-8 text-slate-500" />
           </div>
           <h3 className="text-lg font-medium text-slate-200 mb-2">No jobs found</h3>
@@ -396,6 +396,7 @@ export function JobsManagement({
     </div>
   )
 } 
+
 
 
 

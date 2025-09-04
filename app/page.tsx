@@ -255,7 +255,7 @@ function ComponentPlayground() {
   ${demoState !== 'default' ? `state="${demoState}" ` : ''}${customProps ? `${customProps} ` : ''}className="transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
 >
   <CardHeader>
-    <CardTitle className="flex items-centre gap-2">
+    <CardTitle className="flex items-center gap-2">
       ${demoState === 'loading' ? '<Loader2 className="h-5 w-5 animate-spin" />' : '<Sparkles className="h-5 w-5" />'}
       ${customContent || 'Enhanced Card'}
     </CardTitle>
@@ -276,7 +276,7 @@ function ComponentPlayground() {
   ${demoState !== 'default' ? `:state="${demoState}" ` : ''}${customProps ? `${customProps} ` : ''}class="transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
 >
   <CardHeader>
-    <CardTitle class="flex items-centre gap-2">
+    <CardTitle class="flex items-center gap-2">
       <Loader2 v-if="state === 'loading'" class="h-5 w-5 animate-spin" />
       <Sparkles v-else class="h-5 w-5" />
       ${customContent || 'Enhanced Card'}
@@ -298,7 +298,7 @@ function ComponentPlayground() {
   ${demoState !== 'default' ? `[state]="${demoState}" ` : ''}${customProps ? `${customProps} ` : ''}class="inclusive-card transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
 >
   <div class="card-header">
-    <h3 class="card-title flex items-centre gap-2">
+    <h3 class="card-title flex items-center gap-2">
       <i [class]="state === 'loading' ? 'loader-icon animate-spin' : 'sparkles-icon'"></i>
       ${customContent || 'Enhanced Card'}
     </h3>
@@ -457,9 +457,9 @@ function ComponentPlayground() {
   return (
     <div className="space-y-8">
       {/* Strategic Header - Value First */}
-      <div className="text-centre space-y-4">
-        <div className="flex items-centre justify-centre gap-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-600 rounded-xl flex items-centre justify-centre">
+      <div className="text-center space-y-4">
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-600 rounded-xl flex items-center justify-center">
             <Beaker className="h-6 w-6 text-white" />
           </div>
           <div>
@@ -469,7 +469,7 @@ function ComponentPlayground() {
         </div>
         
         {/* Universal Quick Actions */}
-        <div className="flex justify-centre gap-3">
+        <div className="flex justify-center gap-3">
           <Button
             size="sm"
             variant={showAccessibility ? "default" : "outline"}
@@ -494,7 +494,7 @@ function ComponentPlayground() {
       {/* Primary Control Panel - Optimized for Scanning */}
       <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/60 transition-all">
         <CardHeader className="pb-4">
-          <CardTitle className="text-lg flex items-centre gap-2">
+          <CardTitle className="text-lg flex items-center gap-2">
             <ComponentIcon className="h-5 w-5 text-fuchsia-400" />
             Component Configuration
           </CardTitle>
@@ -506,7 +506,7 @@ function ComponentPlayground() {
           {/* Core Selection - Most Important First */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
-              <Label className="text-sm font-semibold text-slate-200 flex items-centre gap-2">
+              <Label className="text-sm font-semibold text-slate-200 flex items-center gap-2">
                 <ComponentIcon className="h-4 w-4" />
                 Component Type
               </Label>
@@ -517,7 +517,7 @@ function ComponentPlayground() {
                 <SelectContent className="bg-slate-900 border-slate-600">
                   {Object.keys(components).map((component) => (
                     <SelectItem key={component} value={component} className="text-slate-300 focus:bg-slate-800">
-                      <div className="flex items-centre gap-3">
+                      <div className="flex items-center gap-3">
                         <ComponentIcon className="h-4 w-4 text-fuchsia-400" />
                         <span className="font-medium">{component}</span>
                       </div>
@@ -528,7 +528,7 @@ function ComponentPlayground() {
             </div>
 
             <div className="space-y-3">
-              <Label className="text-sm font-semibold text-slate-200 flex items-centre gap-2">
+              <Label className="text-sm font-semibold text-slate-200 flex items-center gap-2">
                 <Code2 className="h-4 w-4" />
                 Export Format
               </Label>
@@ -538,25 +538,25 @@ function ComponentPlayground() {
                 </SelectTrigger>
                 <SelectContent className="bg-slate-900 border-slate-600">
                   <SelectItem value="react" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Code2 className="h-4 w-4 text-blue-400" />
                       <span className="font-medium">React/JSX</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="vue" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Code2 className="h-4 w-4 text-green-400" />
                       <span className="font-medium">Vue</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="angular" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Code2 className="h-4 w-4 text-red-400" />
                       <span className="font-medium">Angular</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="css" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Palette className="h-4 w-4 text-purple-400" />
                       <span className="font-medium">CSS Only</span>
                     </div>
@@ -668,12 +668,12 @@ function ComponentPlayground() {
         {/* Live Preview Section */}
         <Card className="bg-slate-800/50 border-slate-700/50">
           <CardHeader className="pb-4">
-            <div className="flex items-centre justify-between">
-              <CardTitle className="text-lg flex items-centre gap-2">
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-lg flex items-center gap-2">
                 <Eye className="h-5 w-5 text-blue-400" />
                 Live Preview
               </CardTitle>
-              <div className="flex items-centre gap-2">
+              <div className="flex items-center gap-2">
                 {Object.entries(responsiveIcons).map(([view, Icon]) => (
                   <Button
                     key={view}
@@ -705,8 +705,8 @@ function ComponentPlayground() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className={`${darkMode ? 'bg-slate-900/50' : 'bg-white'} rounded-xl p-6 md:p-12 border border-slate-700/50 min-h-[300px] flex items-centre justify-centre transition-all duration-300 ${responsiveBreakpoints[responsiveView as keyof typeof responsiveBreakpoints]} mx-auto overflow-hidden`}>
-              <div className="flex flex-col items-centre gap-6 w-full max-w-full">
+            <div className={`${darkMode ? 'bg-slate-900/50' : 'bg-white'} rounded-xl p-6 md:p-12 border border-slate-700/50 min-h-[300px] flex items-center justify-center transition-all duration-300 ${responsiveBreakpoints[responsiveView as keyof typeof responsiveBreakpoints]} mx-auto overflow-hidden`}>
+              <div className="flex flex-col items-center gap-6 w-full max-w-full">
                 {selectedComponent === "Button" && (
                   <Button 
                     variant={demoVariant as any} 
@@ -730,7 +730,7 @@ function ComponentPlayground() {
                 {selectedComponent === "Card" && (
                   <Card className={`w-full max-w-xs sm:max-w-sm transition-all duration-300 ${demoState === 'hover' ? 'scale-105 shadow-xl' : ''} ${demoState === 'selected' ? 'ring-2 ring-fuchsia-500' : ''}`}>
                     <CardHeader>
-                      <CardTitle className="flex items-centre gap-2">
+                      <CardTitle className="flex items-center gap-2">
                         {demoState === 'loading' && <div className="w-4 h-4 border-2 border-slate-400 border-t-slate-600 rounded-full animate-spin"></div>}
                         <Sparkles className="h-5 w-5" />
                         {customContent || 'Enhanced Card'}
@@ -755,7 +755,7 @@ function ComponentPlayground() {
                 )}
                 
                 {/* Preview Info */}
-                <div className="text-centre space-y-1">
+                <div className="text-center space-y-1">
                   <div className="text-xs text-slate-500 uppercase tracking-wide">
                     {responsiveView} • {darkMode ? 'Dark' : 'Light'} Mode
                   </div>
@@ -771,12 +771,12 @@ function ComponentPlayground() {
         {/* Generated Code Section */}
         <Card className="bg-slate-800/50 border-slate-700/50">
           <CardHeader className="pb-4">
-            <div className="flex items-centre justify-between">
-              <CardTitle className="text-lg flex items-centre gap-2">
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-lg flex items-center gap-2">
                 <Code2 className="h-5 w-5 text-green-400" />
                 Production Code
               </CardTitle>
-              <div className="flex items-centre gap-2">
+              <div className="flex items-center gap-2">
                 <Button
                   onClick={handleCopy}
                   size="sm"
@@ -857,7 +857,7 @@ export default Enhanced${selectedComponent}Demo`
           {showAccessibility && (
             <Card className="bg-blue-500/10 border-blue-500/30">
               <CardHeader>
-                <CardTitle className="text-sm flex items-centre gap-2">
+                <CardTitle className="text-sm flex items-center gap-2">
                   <Shield className="h-4 w-4 text-blue-400" />
                   Accessibility analysis
                 </CardTitle>
@@ -888,7 +888,7 @@ export default Enhanced${selectedComponent}Demo`
           {showPerformance && (
             <Card className="bg-green-500/10 border-green-500/30">
               <CardHeader>
-                <CardTitle className="text-sm flex items-centre gap-2">
+                <CardTitle className="text-sm flex items-center gap-2">
                   <Gauge className="h-4 w-4 text-green-400" />
                   Performance Metrics
                 </CardTitle>
@@ -985,9 +985,9 @@ function TokenVisualizer() {
   return (
     <div className="space-y-8">
       {/* Strategic Header - Value First */}
-      <div className="text-centre space-y-4">
-        <div className="flex items-centre justify-centre gap-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-xl flex items-centre justify-centre">
+      <div className="text-center space-y-4">
+        <div className="flex items-center justify-center gap-3">
+          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center">
             <Palette className="h-6 w-6 text-white" />
           </div>
           <div>
@@ -997,7 +997,7 @@ function TokenVisualizer() {
         </div>
         
         {/* Universal Quick Actions */}
-        <div className="flex justify-centre gap-3">
+        <div className="flex justify-center gap-3">
           <Button
             size="sm"
             variant="outline"
@@ -1020,7 +1020,7 @@ function TokenVisualizer() {
       {/* Primary Control Panel */}
       <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/60 transition-all">
         <CardHeader className="pb-4">
-          <CardTitle className="text-lg flex items-centre gap-2">
+          <CardTitle className="text-lg flex items-center gap-2">
             <Palette className="h-5 w-5 text-blue-400" />
             Token Configuration
           </CardTitle>
@@ -1032,7 +1032,7 @@ function TokenVisualizer() {
           {/* Core Selection */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-3">
-              <Label className="text-sm font-semibold text-slate-200 flex items-centre gap-2">
+              <Label className="text-sm font-semibold text-slate-200 flex items-center gap-2">
                 <Target className="h-4 w-4" />
                 Token Category
               </Label>
@@ -1043,7 +1043,7 @@ function TokenVisualizer() {
                 <SelectContent className="bg-slate-900 border-slate-600">
                   {Object.keys(tokenCategories).map((category) => (
                     <SelectItem key={category} value={category} className="text-slate-300 focus:bg-slate-800">
-                      <div className="flex items-centre gap-3">
+                      <div className="flex items-center gap-3">
                         <Palette className="h-4 w-4 text-blue-400" />
                         <span className="font-medium capitalize">{category}</span>
                       </div>
@@ -1054,7 +1054,7 @@ function TokenVisualizer() {
             </div>
 
             <div className="space-y-3">
-              <Label className="text-sm font-semibold text-slate-200 flex items-centre gap-2">
+              <Label className="text-sm font-semibold text-slate-200 flex items-center gap-2">
                 <Code2 className="h-4 w-4" />
                 Export Format
               </Label>
@@ -1064,25 +1064,25 @@ function TokenVisualizer() {
                 </SelectTrigger>
                 <SelectContent className="bg-slate-900 border-slate-600">
                   <SelectItem value="css" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Code2 className="h-4 w-4 text-blue-400" />
                       <span className="font-medium">CSS Variables</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="scss" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Code2 className="h-4 w-4 text-pink-400" />
                       <span className="font-medium">SCSS Variables</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="js" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Code2 className="h-4 w-4 text-yellow-400" />
                       <span className="font-medium">JavaScript</span>
                     </div>
                   </SelectItem>
                   <SelectItem value="json" className="text-slate-300 focus:bg-slate-800">
-                    <div className="flex items-centre gap-3">
+                    <div className="flex items-center gap-3">
                       <Code2 className="h-4 w-4 text-green-400" />
                       <span className="font-medium">JSON</span>
                     </div>
@@ -1097,7 +1097,7 @@ function TokenVisualizer() {
       {/* Token Grid - Optimized for Scanning */}
       <Card className="bg-slate-800/50 border-slate-700/50">
         <CardHeader className="pb-4">
-          <CardTitle className="text-lg flex items-centre gap-2">
+          <CardTitle className="text-lg flex items-center gap-2">
             <Eye className="h-5 w-5 text-purple-400" />
             {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} Tokens
           </CardTitle>
@@ -1114,8 +1114,8 @@ function TokenVisualizer() {
                 onClick={() => handleCopyToken(token, data.value)}
               >
                 <CardContent className="p-4">
-                  <div className="flex items-centre justify-between">
-                    <div className="flex items-centre gap-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
                       {/* Visual Preview */}
                       <div className="flex-shrink-0">
                         {selectedCategory === "colours" && (
@@ -1125,7 +1125,7 @@ function TokenVisualizer() {
                           />
                         )}
                         {selectedCategory === "spacing" && (
-                          <div className="w-12 h-12 bg-slate-800 rounded-xl border border-slate-600 flex items-centre justify-centre group-hover:scale-110 transition-transform">
+                          <div className="w-12 h-12 bg-slate-800 rounded-xl border border-slate-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <div 
                               className="bg-blue-400 rounded"
                               style={{ 
@@ -1137,7 +1137,7 @@ function TokenVisualizer() {
                           </div>
                         )}
                         {selectedCategory === "typography" && (
-                          <div className="w-12 h-12 bg-slate-800 rounded-xl border border-slate-600 flex items-centre justify-centre group-hover:scale-110 transition-transform">
+                          <div className="w-12 h-12 bg-slate-800 rounded-xl border border-slate-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                             <span 
                               className="text-purple-400 font-bold"
                               style={{ fontSize: Math.min(parseFloat(data.value) * 16, 24) + "px" }}
@@ -1150,7 +1150,7 @@ function TokenVisualizer() {
                       
                       {/* Token Info */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-centre gap-2 mb-1">
+                        <div className="flex items-center gap-2 mb-1">
                           <h4 className="font-semibold text-slate-200 group-hover:text-white transition-colours">
                             {token}
                           </h4>
@@ -1227,7 +1227,7 @@ export default function HomePage() {
           
           <div className="relative px-6 lg:px-12 py-12 lg:py-20">
             <div className="max-w-7xl mx-auto">
-              <div className="grid lg:grid-cols-2 gap-12 items-centre">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Value Proposition */}
                 <div className="space-y-8">
                   <div className="space-y-4">
@@ -1280,16 +1280,16 @@ export default function HomePage() {
                   {/* Trust Indicators */}
                   <div className="pt-4">
                     <p className="text-sm text-slate-500 mb-3">Trusted by UK enterprises and startups</p>
-                    <div className="flex items-centre gap-6 text-slate-600">
-                      <div className="flex items-centre gap-2">
+                    <div className="flex items-center gap-6 text-slate-600">
+                      <div className="flex items-center gap-2">
                         <Shield className="h-4 w-4" />
                         <span className="text-sm">SOC 2 Compliant</span>
                       </div>
-                      <div className="flex items-centre gap-2">
+                      <div className="flex items-center gap-2">
                         <CheckCircle2 className="h-4 w-4" />
                         <span className="text-sm">WCAG 2.1 AAA</span>
                       </div>
-                      <div className="flex items-centre gap-2">
+                      <div className="flex items-center gap-2">
                         <Globe className="h-4 w-4" />
                         <span className="text-sm">GDPR Ready</span>
                       </div>
@@ -1299,14 +1299,14 @@ export default function HomePage() {
 
                 {/* Impact Metrics Dashboard */}
                 <div className="space-y-6">
-                  <div className="text-centre lg:text-left">
+                  <div className="text-center lg:text-left">
                     <h2 className="text-2xl font-bold text-slate-200 mb-2">Real Impact, Real Results</h2>
                     <p className="text-slate-400">What teams achieve with our design system</p>
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
                     <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-fuchsia-400 mb-2">3x</div>
                         <div className="text-sm text-slate-300 font-medium">Faster Development</div>
                         <div className="text-xs text-slate-500 mt-1">vs custom builds</div>
@@ -1314,7 +1314,7 @@ export default function HomePage() {
                     </Card>
                     
                     <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-blue-400 mb-2">99.8%</div>
                         <div className="text-sm text-slate-300 font-medium">Uptime</div>
                         <div className="text-xs text-slate-500 mt-1">enterprise SLA</div>
@@ -1322,7 +1322,7 @@ export default function HomePage() {
                     </Card>
                     
                     <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-green-400 mb-2">49+</div>
                         <div className="text-sm text-slate-300 font-medium">Components</div>
                         <div className="text-xs text-slate-500 mt-1">production ready</div>
@@ -1330,7 +1330,7 @@ export default function HomePage() {
                     </Card>
                     
                     <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-all group">
-                      <CardContent className="p-6 text-centre">
+                      <CardContent className="p-6 text-center">
                         <div className="text-4xl font-bold text-purple-400 mb-2">AAA</div>
                         <div className="text-sm text-slate-300 font-medium">Accessibility</div>
                         <div className="text-xs text-slate-500 mt-1">WCAG 2.1 certified</div>
@@ -1340,7 +1340,7 @@ export default function HomePage() {
 
                   {/* Quick Stats */}
                   <div className="bg-slate-800/30 rounded-xl p-4 border border-slate-700/50">
-                    <div className="grid grid-cols-3 gap-4 text-centre">
+                    <div className="grid grid-cols-3 gap-4 text-center">
                       <div>
                         <div className="text-lg font-bold text-slate-200">200+</div>
                         <div className="text-xs text-slate-500">Design Tokens</div>
@@ -1365,8 +1365,8 @@ export default function HomePage() {
         <section className="bg-slate-900/50 border-b border-slate-800/50">
           <div className="px-6 lg:px-12 py-6">
             <div className="max-w-7xl mx-auto">
-              <div className="flex items-centre justify-between">
-                <div className="flex items-centre gap-3">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
                   <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                   <span className="text-slate-300 font-medium">Ready for immediate implementation</span>
                 </div>
@@ -1407,7 +1407,7 @@ export default function HomePage() {
         <div className="px-6 lg:px-12 py-8">
           {/* Live System Showcase */}
           <section className="mb-20">
-            <div className="text-centre mb-12">
+            <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">
                 <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                   Experience the System
@@ -1425,8 +1425,8 @@ export default function HomePage() {
               {/* Component Playground */}
               <Card className="bg-slate-800/50 border-slate-700/50">
                 <CardHeader>
-                  <CardTitle className="flex items-centre gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-purple-600 rounded-lg flex items-centre justify-centre">
+                  <CardTitle className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-fuchsia-500 to-purple-600 rounded-lg flex items-center justify-center">
                       <ComponentIcon className="h-5 w-5 text-white" />
                     </div>
                     <span>Live Component Playground</span>
@@ -1443,8 +1443,8 @@ export default function HomePage() {
               {/* Design Token Visualizer */}
               <Card className="bg-slate-800/50 border-slate-700/50">
                 <CardHeader>
-                  <CardTitle className="flex items-centre gap-3">
-                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg flex items-centre justify-centre">
+                  <CardTitle className="flex items-center gap-3">
+                    <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
                       <Palette className="h-5 w-5 text-white" />
                     </div>
                     <span>Design Token Studio</span>
@@ -1460,11 +1460,11 @@ export default function HomePage() {
             </div>
 
             {/* Action Bar */}
-            <div className="mt-12 text-centre">
+            <div className="mt-12 text-center">
               <div className="bg-slate-800/30 rounded-2xl p-6 border border-slate-700/50">
                 <h3 className="text-xl font-bold text-slate-200 mb-2">Ready to Start Building?</h3>
                 <p className="text-slate-400 mb-6">Get everything you've seen here in your project today</p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-centre">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-600 hover:to-purple-700">
                     <Download className="mr-2 h-5 w-5" />
                     Install Design System
@@ -1484,6 +1484,7 @@ export default function HomePage() {
     </div>
   )
 }
+
 
 
 

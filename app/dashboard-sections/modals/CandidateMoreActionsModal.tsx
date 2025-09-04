@@ -26,9 +26,9 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
       <DialogContent className="max-w-md p-0 overflow-hidden">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-purple-800/20 to-purple-800/10 rounded-t-xl">
-          <div className="flex items-centre justify-between">
-            <div className="flex items-centre gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-centre justify-centre">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
                 <MoreVertical className="h-5 w-5 text-white" />
               </div>
               <div>
@@ -52,7 +52,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
             {actions.map((action, i) => (
               <button
                 key={i}
-                className="w-full flex items-centre gap-3 p-3 rounded-lg hover:bg-slate-800/50 transition-colours text-left"
+                className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800/50 transition-colours text-left"
                 onClick={() => {
                   onClose()
                   setNotifications(prev => [
@@ -72,6 +72,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
     </Dialog>
   )
 } 
+
 
 
 

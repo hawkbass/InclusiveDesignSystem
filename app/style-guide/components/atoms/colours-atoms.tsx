@@ -179,7 +179,7 @@ export function ColoursAtoms({
     <div className="space-y-12">
       {filteredPalettes.map((palette) => (
         <div key={palette.id} className="space-y-6">
-          <div className="flex items-centre justify-between">
+          <div className="flex items-center justify-between">
             <div>
               <h3 className="text-3xl font-bold text-slate-100 mb-3">{palette.name}</h3>
               <p className="text-lg text-slate-400 mb-2">{palette.description}</p>
@@ -229,7 +229,7 @@ export function ColoursAtoms({
                     
                     {/* colour Info */}
                     <div>
-                      <div className="flex items-centre justify-between mb-2">
+                      <div className="flex items-center justify-between mb-2">
                         <h4 className="font-semibold text-slate-100 group-hover:text-fuchsia-400 transition-colours text-sm">
                           {colour.name}
                         </h4>
@@ -280,6 +280,7 @@ export function ColoursAtoms({
     </div>
   )
 }
+
 
 
 

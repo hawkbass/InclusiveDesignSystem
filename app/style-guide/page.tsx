@@ -73,7 +73,7 @@ export default function StyleGuide() {
           
           <div className="relative px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
-              <div className="text-centre mb-8">
+              <div className="text-center mb-8">
                 <Badge className="bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 text-fuchsia-300 border-fuchsia-500/30 mb-4">
                   Design System v2.0
                 </Badge>
@@ -112,19 +112,19 @@ export default function StyleGuide() {
 
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-                <div className="text-centre">
+                <div className="text-center">
                   <div className="text-2xl font-bold text-slate-100">47</div>
                   <div className="text-sm text-slate-500">Design Tokens</div>
                 </div>
-                <div className="text-centre">
+                <div className="text-center">
                   <div className="text-2xl font-bold text-slate-100">23</div>
                   <div className="text-sm text-slate-500">Components</div>
                 </div>
-                <div className="text-centre">
+                <div className="text-center">
                   <div className="text-2xl font-bold text-slate-100">17</div>
                   <div className="text-sm text-slate-500">Organisms</div>
                 </div>
-                <div className="text-centre">
+                <div className="text-center">
                   <div className="text-2xl font-bold text-slate-100">{favourites.size}</div>
                   <div className="text-sm text-slate-500">Favorited</div>
                 </div>
@@ -142,10 +142,10 @@ export default function StyleGuide() {
                 <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 h-auto p-1 bg-slate-800/50 border border-slate-700/50 rounded-lg">
                   <TabsTrigger
                     value="atoms"
-                    className="flex flex-col items-centre gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
+                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
                   >
                     <Palette className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-centre hidden sm:block text-xs">Atoms</span>
+                    <span className="font-medium text-center hidden sm:block text-xs">Atoms</span>
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
                       47
                     </Badge>
@@ -153,10 +153,10 @@ export default function StyleGuide() {
 
                   <TabsTrigger
                     value="molecules"
-                    className="flex flex-col items-centre gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
+                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
                   >
                     <Component className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-centre hidden sm:block text-xs">Molecules</span>
+                    <span className="font-medium text-center hidden sm:block text-xs">Molecules</span>
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
                       23
                     </Badge>
@@ -164,10 +164,10 @@ export default function StyleGuide() {
 
                   <TabsTrigger
                     value="specialized"
-                    className="flex flex-col items-centre gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
+                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
                   >
                     <Layers className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-centre hidden sm:block text-xs">Advanced</span>
+                    <span className="font-medium text-center hidden sm:block text-xs">Advanced</span>
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
                       10
                     </Badge>
@@ -175,10 +175,10 @@ export default function StyleGuide() {
 
                   <TabsTrigger
                     value="organisms"
-                    className="flex flex-col items-centre gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
+                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
                   >
                     <Grid3X3 className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-centre hidden sm:block text-xs">Organisms</span>
+                    <span className="font-medium text-center hidden sm:block text-xs">Organisms</span>
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
                       17
                     </Badge>
@@ -186,10 +186,10 @@ export default function StyleGuide() {
 
                   <TabsTrigger
                     value="accessibility"
-                    className="flex flex-col items-centre gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
+                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
                   >
                     <Eye className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-centre hidden sm:block text-xs">A11y</span>
+                    <span className="font-medium text-center hidden sm:block text-xs">A11y</span>
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
                       AAA
                     </Badge>
@@ -197,10 +197,10 @@ export default function StyleGuide() {
 
                   <TabsTrigger
                     value="testing"
-                    className="flex flex-col items-centre gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
+                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
                   >
                     <Zap className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-centre hidden sm:block text-xs">Testing</span>
+                    <span className="font-medium text-center hidden sm:block text-xs">Testing</span>
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
                       4
                     </Badge>
@@ -284,6 +284,7 @@ export default function StyleGuide() {
     </div>
   )
 }
+
 
 
 

@@ -17,9 +17,9 @@ export function EditJobModal({ open, job, onClose }: EditJobModalProps) {
       <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-emerald-800/20 to-emerald-800/10 rounded-t-xl">
-          <div className="flex items-centre justify-between">
-            <div className="flex items-centre gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full flex items-centre justify-centre">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center">
                 <Settings className="h-5 w-5 text-white" />
               </div>
               <div>
@@ -155,6 +155,7 @@ export function EditJobModal({ open, job, onClose }: EditJobModalProps) {
     </Dialog>
   )
 } 
+
 
 
 

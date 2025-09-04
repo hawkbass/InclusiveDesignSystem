@@ -47,8 +47,8 @@ export function SidebarNavigation({
     <div className="w-64 bg-slate-800/50 border-r border-slate-700/50 backdrop-blur-sm">
       {/* User Profile Section */}
       <div className="p-4 border-b border-slate-700/50">
-        <div className="flex items-centre gap-3 mb-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white font-medium">
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white font-medium">
             SW
           </div>
           <div className="flex-1 min-w-0">
@@ -64,8 +64,8 @@ export function SidebarNavigation({
           </Button>
         </div>
         
-        <div className="flex items-centre justify-between text-xs">
-          <div className="flex items-centre gap-1 text-slate-400">
+        <div className="flex items-center justify-between text-xs">
+          <div className="flex items-center gap-1 text-slate-400">
             <div className="w-2 h-2 bg-green-400 rounded-full"></div>
             <span>Online</span>
           </div>
@@ -96,7 +96,7 @@ export function SidebarNavigation({
                 <Icon className="h-4 w-4 mr-3" />
                 {tab.label}
                 {isSettings && (
-                  <div className="ml-auto flex items-centre gap-1">
+                  <div className="ml-auto flex items-center gap-1">
                     <div className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></div>
                   </div>
                 )}
@@ -139,22 +139,22 @@ export function SidebarNavigation({
       <div className="p-4 border-t border-slate-700/50 mt-auto">
         <div className="text-xs font-medium text-slate-400 mb-3">Quick Stats</div>
         <div className="space-y-2">
-          <div className="flex items-centre justify-between text-xs">
+          <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400">Active Jobs</span>
             <span className="text-slate-200 font-medium">24</span>
           </div>
-          <div className="flex items-centre justify-between text-xs">
+          <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400">Candidates</span>
             <span className="text-slate-200 font-medium">156</span>
           </div>
-          <div className="flex items-centre justify-between text-xs">
+          <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400">Interviews</span>
             <span className="text-slate-200 font-medium">32</span>
           </div>
         </div>
         
         <div className="mt-3 pt-3 border-t border-slate-700/30">
-          <div className="flex items-centre justify-between text-xs">
+          <div className="flex items-center justify-between text-xs">
             <span className="text-slate-400">Time Saved</span>
             <span className="text-emerald-400 font-medium">48h</span>
           </div>
@@ -163,6 +163,7 @@ export function SidebarNavigation({
     </div>
   )
 } 
+
 
 
 

@@ -75,11 +75,11 @@ const components = [
           </div>
           <Progress value={85} className="h-3" />
         </div>
-        <div className="flex items-centre gap-6">
+        <div className="flex items-center gap-6">
           <div className="animate-spin rounded-full h-6 w-6 border-2 border-fuchsia-400 border-t-transparent"></div>
           <span className="text-sm text-slate-300">Loading candidates...</span>
         </div>
-        <div className="flex items-centre gap-6">
+        <div className="flex items-center gap-6">
           <div className="flex space-x-1">
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce"></div>
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
@@ -95,7 +95,7 @@ const components = [
     title: "Toast Notifications",
     description: "Dismissible toast messages",
     code: `<div className="fixed top-4 right-4 bg-slate-800 border border-slate-700/50 shadow-xl rounded-lg p-4 shadow-lg">
-  <div className="flex items-centre gap-3">
+  <div className="flex items-center gap-3">
     <CheckCircle2 className="h-5 w-5 text-green-400" />
     <div>
       <h4 className="font-medium">Application Submitted</h4>
@@ -162,7 +162,7 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-3">
-          <div className="flex items-centre gap-3">
+          <div className="flex items-center gap-3">
             <div className="w-12 h-12 bg-slate-700 rounded-full animate-pulse"></div>
             <div className="space-y-2 flex-1">
               <div className="h-4 bg-slate-700 rounded animate-pulse"></div>
@@ -186,7 +186,7 @@ const components = [
     id: "status-indicators",
     title: "Status Indicators",
     description: "Visual status and state indicators",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
   <span className="text-sm">Online</span>
 </div>`,
@@ -198,8 +198,8 @@ const components = [
           { status: "Busy", colour: "bg-red-400", pulse: true },
           { status: "Offline", colour: "bg-slate-600", pulse: false }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre justify-between p-3 bg-slate-800/30 rounded-lg">
-            <div className="flex items-centre gap-3">
+          <div key={index} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
+            <div className="flex items-center gap-3">
               <div className={`w-3 h-3 ${item.colour} rounded-full ${item.pulse ? 'animate-pulse' : ''}`}></div>
               <span className="text-sm text-slate-300">{item.status}</span>
             </div>
@@ -216,7 +216,7 @@ const components = [
     title: "Rating & Feedback",
     description: "Star ratings and thumbs up/down feedback",
     code: `<div className="space-y-4">
-  <div className="flex items-centre gap-2">
+  <div className="flex items-center gap-2">
     <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
     <span>4.5/5</span>
   </div>
@@ -232,7 +232,7 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-3">
-          <div className="flex items-centre justify-between">
+          <div className="flex items-center justify-between">
             <span className="text-slate-300 text-sm">Rate this candidate</span>
             <div className="flex gap-1">
               {[1,2,3,4,5].map(star => (
@@ -246,7 +246,7 @@ const components = [
               ))}
             </div>
           </div>
-          <div className="flex items-centre justify-between">
+          <div className="flex items-center justify-between">
             <span className="text-slate-300 text-sm">Was this helpful?</span>
             <div className="flex gap-2">
               <Button size="sm" variant="outline" className="hover:bg-green-500/20 hover:border-green-500/50 hover:text-green-300">
@@ -301,7 +301,7 @@ const components = [
   <div className="flex gap-3">
     <div className="w-8 h-8 bg-slate-600 rounded-full"></div>
     <div>
-      <div className="flex items-centre gap-2">
+      <div className="flex items-center gap-2">
         <span className="font-medium">John Doe</span>
         <span className="text-xs text-slate-500">2 hours ago</span>
       </div>
@@ -332,16 +332,16 @@ const components = [
           }
         ].map((comment, index) => (
           <div key={index} className="flex gap-3 p-3 bg-slate-800/30 rounded-lg">
-            <div className="w-8 h-8 bg-fuchsia-500/20 text-fuchsia-300 rounded-full flex items-centre justify-centre text-xs font-medium">
+            <div className="w-8 h-8 bg-fuchsia-500/20 text-fuchsia-300 rounded-full flex items-center justify-center text-xs font-medium">
               {comment.avatar}
             </div>
             <div className="flex-1">
-              <div className="flex items-centre gap-2 mb-1">
+              <div className="flex items-center gap-2 mb-1">
                 <span className="font-medium text-slate-200 text-sm">{comment.name}</span>
                 <span className="text-xs text-slate-500">{comment.time}</span>
               </div>
               <p className="text-sm text-slate-300">{comment.comment}</p>
-              <div className="flex items-centre gap-4 mt-2">
+              <div className="flex items-center gap-4 mt-2">
                 <button className="text-xs text-slate-500 hover:text-fuchsia-400 transition-colours">
                   Reply
                 </button>
@@ -360,7 +360,7 @@ const components = [
     title: "Notification centre",
     description: "Centralized notification management",
     code: `<div className="space-y-2">
-  <div className="flex items-centre gap-3 p-3 bg-slate-800/50 rounded-lg">
+  <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
     <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
     <div className="flex-1">
       <p className="text-sm">New application received</p>
@@ -370,7 +370,7 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-3">
-        <div className="flex items-centre justify-between mb-3">
+        <div className="flex items-center justify-between mb-3">
           <h4 className="font-medium text-slate-200">Notifications</h4>
           <Button size="sm" variant="ghost" className="text-xs text-slate-400 hover:text-slate-300">
             Mark all read
@@ -399,7 +399,7 @@ const components = [
             unread: false
           }
         ].map((notification, index) => (
-          <div key={index} className={`flex items-centre gap-3 p-3 rounded-lg transition-all duration-300 ${
+          <div key={index} className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ${
             notification.unread 
               ? 'bg-slate-800/50 border border-slate-700/50' 
               : 'bg-slate-800/30'
@@ -437,7 +437,7 @@ export function FeedbackComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Feedback Components</h2>
             <p className="text-slate-400">User feedback, notifications, and status indicators</p>
@@ -468,7 +468,7 @@ export function FeedbackComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
             <MessageSquare className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -481,6 +481,7 @@ export function FeedbackComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
 
 
 

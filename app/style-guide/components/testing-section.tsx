@@ -171,7 +171,7 @@ export function TestingSection({
             className="border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/50 transition-all group cursor-pointer"
             onClick={tool.action}
           >
-            <CardContent className="p-6 text-centre">
+            <CardContent className="p-6 text-center">
               <div className={`p-3 rounded-lg mb-4 mx-auto w-fit bg-${tool.colour}-500/20 group-hover:bg-${tool.colour}-500/30 transition-all`}>
                 <tool.icon className={`h-6 w-6 text-${tool.colour}-400 group-hover:scale-110 transition-transform`} />
               </div>
@@ -192,7 +192,7 @@ export function TestingSection({
       {/* Live Component Testing Area */}
       <Card className="border-slate-700/50 bg-slate-800/30">
         <CardHeader>
-          <CardTitle className="text-xl text-slate-100 flex items-centre gap-2">
+          <CardTitle className="text-xl text-slate-100 flex items-center gap-2">
             <Zap className="h-5 w-5 text-orange-400" />
             Live Component Preview
           </CardTitle>
@@ -237,7 +237,7 @@ export function TestingSection({
                   placeholder="Error state" 
                   className="bg-slate-800 border-red-500 text-slate-200"
                 />
-                <div className="flex items-centre space-x-2">
+                <div className="flex items-center space-x-2">
                   <Switch defaultChecked />
                   <span className="text-sm text-slate-400">Toggle setting</span>
                 </div>
@@ -260,7 +260,7 @@ export function TestingSection({
                   <div className="text-xs text-slate-400 mb-1">Complete</div>
                   <Progress value={100} className="h-2" />
                 </div>
-                <div className="flex items-centre gap-2">
+                <div className="flex items-center gap-2">
                   <Avatar className="w-8 h-8">
                     <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 text-xs">
                       JD
@@ -281,7 +281,7 @@ export function TestingSection({
       <Dialog open={showColorGenerator} onOpenChange={setShowColorGenerator}>
         <DialogContent className="max-w-2xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-centre gap-2">
+            <DialogTitle className="text-slate-100 flex items-center gap-2">
               <Palette className="h-5 w-5 text-fuchsia-400" />
               Generated Colour Palette
             </DialogTitle>
@@ -299,7 +299,7 @@ export function TestingSection({
                     style={{ backgroundColor: colour }}
                     onClick={() => onCopyCode(colour, `generated-${index}`)}
                   >
-                    <div className="w-full h-full flex items-centre justify-centre opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="w-full h-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                       {copiedCode === `generated-${index}` ? (
                         <CheckCircle2 className="h-4 w-4 text-white" />
                       ) : (
@@ -307,7 +307,7 @@ export function TestingSection({
                       )}
                     </div>
                   </div>
-                  <div className="text-xs text-slate-400 mt-2 text-centre font-mono">
+                  <div className="text-xs text-slate-400 mt-2 text-center font-mono">
                     {colour}
                   </div>
                 </div>
@@ -338,7 +338,7 @@ export function TestingSection({
       <Dialog open={showAccessibilityTest} onOpenChange={setShowAccessibilityTest}>
         <DialogContent className="max-w-xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-centre gap-2">
+            <DialogTitle className="text-slate-100 flex items-center gap-2">
               <Target className="h-5 w-5 text-green-400" />
               Accessibility Test Results
             </DialogTitle>
@@ -349,7 +349,7 @@ export function TestingSection({
           
           <div className="space-y-4">
             {testResults && Object.entries(testResults).map(([key, result]: [string, any]) => (
-              <div key={key} className="flex items-centre justify-between p-3 bg-slate-800/50 rounded-lg">
+              <div key={key} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
                 <div className="flex-1">
                   <div className="text-sm font-medium text-slate-200 capitalize">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
@@ -379,7 +379,7 @@ export function TestingSection({
       <Dialog open={showResponsiveTest} onOpenChange={setShowResponsiveTest}>
         <DialogContent className="max-w-4xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-centre gap-2">
+            <DialogTitle className="text-slate-100 flex items-center gap-2">
               <Monitor className="h-5 w-5 text-blue-400" />
               Responsive Preview
             </DialogTitle>
@@ -391,15 +391,15 @@ export function TestingSection({
           <div className="space-y-4">
             <Tabs value={selectedViewport} onValueChange={setSelectedViewport}>
               <TabsList className="grid w-full grid-cols-3">
-                <TabsTrigger value="mobile" className="flex items-centre gap-2">
+                <TabsTrigger value="mobile" className="flex items-center gap-2">
                   <Smartphone className="h-4 w-4" />
                   Mobile
                 </TabsTrigger>
-                <TabsTrigger value="tablet" className="flex items-centre gap-2">
+                <TabsTrigger value="tablet" className="flex items-center gap-2">
                   <Tablet className="h-4 w-4" />
                   Tablet
                 </TabsTrigger>
-                <TabsTrigger value="desktop" className="flex items-centre gap-2">
+                <TabsTrigger value="desktop" className="flex items-center gap-2">
                   <Monitor className="h-4 w-4" />
                   Desktop
                 </TabsTrigger>
@@ -408,7 +408,7 @@ export function TestingSection({
               {Object.entries(responsiveBreakpoints).map(([key, viewport]) => (
                 <TabsContent key={key} value={key} className="mt-4">
                   <div className="bg-slate-800 rounded-lg p-6 border border-slate-700/50">
-                    <div className="text-centre mb-4">
+                    <div className="text-center mb-4">
                       <Badge variant="outline" className="text-slate-400 border-slate-600">
                         {viewport.width} × {viewport.height}
                       </Badge>
@@ -423,7 +423,7 @@ export function TestingSection({
                     >
                       {/* Sample responsive content */}
                       <div className="space-y-3">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <h3 className="text-lg font-semibold text-slate-200">Sample Content</h3>
                           <Badge className="bg-fuchsia-500/20 text-fuchsia-300">Live</Badge>
                         </div>
@@ -461,7 +461,7 @@ export function TestingSection({
       <Dialog open={showExportModal} onOpenChange={setShowExportModal}>
         <DialogContent className="max-w-xl bg-slate-900 border-slate-700">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-centre gap-2">
+            <DialogTitle className="text-slate-100 flex items-center gap-2">
               <Download className="h-5 w-5 text-purple-400" />
               Design System Export
             </DialogTitle>
@@ -491,6 +491,7 @@ export function TestingSection({
     </div>
   )
 }
+
 
 
 

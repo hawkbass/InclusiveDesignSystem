@@ -85,7 +85,7 @@ export function SpecializedMoleculesSection({
       usageCount: "All pages",
       component: (
         <div className="space-y-2">
-          <div className="flex items-centre gap-2 text-xs">
+          <div className="flex items-center gap-2 text-xs">
             <span className="text-fuchsia-400">Design System</span>
             <span className="text-slate-600">→</span>
             <span className="text-slate-400">Style Guide</span>
@@ -118,8 +118,8 @@ export function SpecializedMoleculesSection({
       component: (
         <div className="space-y-2">
           <Progress value={65} className="h-2" />
-          <div className="flex items-centre gap-2">
-            <div className="w-6 h-6 bg-fuchsia-500 rounded-full flex items-centre justify-centre">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 bg-fuchsia-500 rounded-full flex items-center justify-center">
               <CheckCircle2 className="h-3 w-3 text-white" />
             </div>
             <span className="text-xs text-slate-300">Step 3 of 5: Components</span>
@@ -150,7 +150,7 @@ export function SpecializedMoleculesSection({
       usageCount: "User areas",
       component: (
         <div className="space-y-2">
-          <div className="flex items-centre gap-2">
+          <div className="flex items-center gap-2">
             <User className="h-4 w-4 text-fuchsia-400" />
             <span className="text-xs text-slate-300 font-medium">James Doe</span>
           </div>
@@ -222,13 +222,13 @@ export function SpecializedMoleculesSection({
       usageCount: "Analytics",
       component: (
         <div className="w-48 p-3 bg-slate-800/30 rounded-lg border border-slate-700">
-          <div className="flex items-centre justify-between mb-2">
+          <div className="flex items-center justify-between mb-2">
             <span className="text-xs text-slate-400">Active Users</span>
             <Heart className="h-3 w-3 text-slate-500" />
           </div>
           <div className="flex items-end gap-2">
             <span className="text-lg font-bold text-slate-200">2,847</span>
-            <div className="flex items-centre text-xs text-green-400">
+            <div className="flex items-center text-xs text-green-400">
               <TrendingUp className="h-3 w-3 mr-1" />
               +12%
             </div>
@@ -326,7 +326,7 @@ export function SpecializedMoleculesSection({
               />
             ))}
           </div>
-          <div className="absolute inset-0 flex items-centre justify-centre">
+          <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-xs text-slate-400">Animated starfield</span>
           </div>
         </div>
@@ -358,7 +358,7 @@ export function SpecializedMoleculesSection({
              style={{
                background: 'linear-gradient(135deg, rgba(217, 70, 239, 0.1) 0%, rgba(147, 51, 234, 0.08) 50%, rgba(59, 130, 246, 0.06) 100%)'
              }}>
-          <div className="absolute inset-0 flex items-centre justify-centre">
+          <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-xs text-slate-400">Token-aware gradients</span>
           </div>
         </div>
@@ -384,7 +384,7 @@ export function SpecializedMoleculesSection({
       complexity: "Low",
       usageCount: "App-wide",
       component: (
-        <div className="flex items-centre gap-2 p-2 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-2 p-2 bg-slate-800/30 rounded-lg">
           <div className="w-4 h-4 bg-slate-900 rounded border border-slate-600" />
           <span className="text-xs text-slate-300">Dark</span>
           <div className="w-4 h-4 bg-slate-100 rounded border border-slate-300" />
@@ -443,21 +443,21 @@ function App() {
 
   return (
     <div className="space-y-12">
-      <div className="text-centre">
+      <div className="text-center">
         <h3 className="text-3xl font-bold text-slate-100 mb-4">Specialized Molecules</h3>
         <p className="text-lg text-slate-400 max-w-4xl mx-auto">
           Advanced UI components with sophisticated logic, state management, and user experience patterns
         </p>
-        <div className="flex justify-centre gap-6 mt-6">
-          <div className="text-centre">
+        <div className="flex justify-center gap-6 mt-6">
+          <div className="text-center">
             <div className="text-2xl font-bold text-fuchsia-400">{specializedMolecules.length}</div>
             <div className="text-xs text-slate-500">Advanced Components</div>
           </div>
-          <div className="text-centre">
+          <div className="text-center">
             <div className="text-2xl font-bold text-purple-400">{Object.keys(groupedMolecules).length}</div>
             <div className="text-xs text-slate-500">Categories</div>
           </div>
-          <div className="text-centre">
+          <div className="text-center">
             <div className="text-2xl font-bold text-blue-400">{favourites.size}</div>
             <div className="text-xs text-slate-500">Favorited</div>
           </div>
@@ -466,7 +466,7 @@ function App() {
 
       {Object.entries(groupedMolecules).map(([category, categoryMolecules]) => (
         <div key={category} className="space-y-6">
-          <div className="flex items-centre gap-3">
+          <div className="flex items-center gap-3">
             <h4 className="text-2xl font-bold text-slate-100">{category}</h4>
             <Badge variant="outline" className={categoryColors[category as keyof typeof categoryColors]}>
               {categoryMolecules.length} Components
@@ -486,7 +486,7 @@ function App() {
                         {molecule.description}
                       </CardDescription>
                     </div>
-                    <div className="flex items-centre gap-2">
+                    <div className="flex items-center gap-2">
                       <Badge className={complexityColors[molecule.complexity as keyof typeof complexityColors]}>
                         {molecule.complexity}
                       </Badge>
@@ -589,7 +589,7 @@ function App() {
       ))}
 
       {filteredMolecules.length === 0 && searchQuery && (
-        <div className="text-centre py-12 text-slate-400">
+        <div className="text-center py-12 text-slate-400">
           <Sparkles className="h-12 w-12 mx-auto mb-4 opacity-50" />
           <p className="text-lg font-medium mb-2">No specialized molecules found</p>
           <p className="text-sm">Try adjusting your search query</p>
@@ -598,6 +598,7 @@ function App() {
     </div>
   )
 }
+
 
 
 

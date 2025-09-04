@@ -123,7 +123,7 @@ const components = [
     id: "loading-spinners",
     title: "Loading Spinners",
     description: "Various loading state indicators",
-    code: `<div className="flex items-centre gap-6">
+    code: `<div className="flex items-center gap-6">
   <div className="animate-spin rounded-full h-6 w-6 border-2 border-fuchsia-400 border-t-transparent"></div>
   <div className="flex space-x-1">
     <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce"></div>
@@ -133,11 +133,11 @@ const components = [
 </div>`,
     component: (
       <div className="space-y-6 w-full max-w-md">
-        <div className="flex items-centre gap-6">
+        <div className="flex items-center gap-6">
           <div className="animate-spin rounded-full h-6 w-6 border-2 border-fuchsia-400 border-t-transparent"></div>
           <span className="text-sm text-slate-300">Loading candidates...</span>
         </div>
-        <div className="flex items-centre gap-6">
+        <div className="flex items-center gap-6">
           <div className="flex space-x-1">
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce"></div>
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
@@ -145,11 +145,11 @@ const components = [
           </div>
           <span className="text-sm text-slate-300">Processing application...</span>
         </div>
-        <div className="flex items-centre gap-6">
+        <div className="flex items-center gap-6">
           <div className="w-6 h-6 border-2 border-slate-600 border-l-fuchsia-400 rounded-full animate-spin"></div>
           <span className="text-sm text-slate-300">Saving changes...</span>
         </div>
-        <div className="flex items-centre gap-6">
+        <div className="flex items-center gap-6">
           <div className="relative">
             <div className="w-6 h-6 border-2 border-slate-600 rounded-full"></div>
             <div className="absolute inset-0 border-2 border-fuchsia-400 border-r-transparent rounded-full animate-spin"></div>
@@ -163,7 +163,7 @@ const components = [
     id: "copy-clipboard",
     title: "Copy to Clipboard",
     description: "Copy text with visual feedback",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <Input value="sarah.johnson@email.com" readOnly />
   <Button size="sm" onClick={() => navigator.clipboard.writeText('sarah.johnson@email.com')}>
     <Copy className="h-4 w-4" />
@@ -178,7 +178,7 @@ const components = [
         ].map((item, index) => (
           <div key={index} className="space-y-2">
             <Label className="text-slate-300 text-sm">{item.label}</Label>
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <Input
                 value={item.value}
                 readOnly
@@ -206,7 +206,7 @@ const components = [
     id: "keyboard-shortcuts",
     title: "Keyboard Shortcuts",
     description: "Visual keyboard shortcut indicators",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <span>Save</span>
   <kbd className="px-2 py-1 bg-slate-700 text-slate-300 rounded text-xs">Ctrl+S</kbd>
 </div>`,
@@ -219,7 +219,7 @@ const components = [
           { action: "Quick filter", shortcut: "Ctrl+F" },
           { action: "Export data", shortcut: "Ctrl+E" }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre justify-between p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <div key={index} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <span className="text-slate-300 text-sm">{item.action}</span>
             <kbd className="px-2 py-1 bg-slate-700 text-slate-300 rounded text-xs font-mono border border-slate-600">
               {item.shortcut}
@@ -269,7 +269,7 @@ const components = [
               { colour: "bg-yellow-500", label: "Low", hex: "#EAB308" },
               { colour: "bg-green-500", label: "Completed", hex: "#22C55E" }
             ].map((item, index) => (
-              <div key={index} className="text-centre">
+              <div key={index} className="text-center">
                 <div className={`w-full h-8 ${item.colour} rounded border border-slate-600 hover:scale-105 transition-transform cursor-pointer`} style={{ transitionDuration: 'var(--animation-speed)' }}></div>
                 <span className="text-xs text-slate-400 mt-1 block">{item.label}</span>
                 <span className="text-xs text-slate-500 font-mono">{item.hex}</span>
@@ -307,7 +307,7 @@ const components = [
             { icon: RefreshCw, label: "Refresh", colour: "text-yellow-400" },
             { icon: Bell, label: "Notifications", colour: "text-red-400" }
           ].map((item, index) => (
-            <div key={index} className="text-centre p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div key={index} className="text-center p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <item.icon className={`h-6 w-6 mx-auto mb-2 ${item.colour}`} />
               <span className="text-xs text-slate-400">{item.label}</span>
             </div>
@@ -338,27 +338,27 @@ const components = [
     id: "security-badges",
     title: "Security Badges",
     description: "Security and verification indicators",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <Shield className="h-4 w-4 text-green-400" />
   <span className="text-sm">Verified</span>
 </div>`,
     component: (
       <div className="space-y-4 w-full max-w-md">
-        <div className="flex items-centre gap-3 p-3 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
           <Shield className="h-5 w-5 text-green-400" />
           <div>
             <span className="text-sm font-medium text-slate-200">Verified Account</span>
             <p className="text-xs text-slate-400">Email and phone verified</p>
           </div>
         </div>
-        <div className="flex items-centre gap-3 p-3 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
           <Lock className="h-5 w-5 text-blue-400" />
           <div>
             <span className="text-sm font-medium text-slate-200">Secure Connection</span>
             <p className="text-xs text-slate-400">End-to-end encrypted</p>
           </div>
         </div>
-        <div className="flex items-centre gap-3 p-3 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
           <CheckCircle2 className="h-5 w-5 text-purple-400" />
           <div>
             <span className="text-sm font-medium text-slate-200">Background Check</span>
@@ -400,7 +400,7 @@ export function UtilityComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Utility Components</h2>
             <p className="text-slate-400">Helper components and utility elements</p>
@@ -431,7 +431,7 @@ export function UtilityComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
             <Wrench className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -444,6 +444,7 @@ export function UtilityComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
 
 
 

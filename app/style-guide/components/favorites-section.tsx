@@ -107,7 +107,7 @@ export function FavoritesSection({
 
   if (favourites.size === 0) {
     return (
-      <div className="text-centre py-12">
+      <div className="text-center py-12">
         <Heart className="h-16 w-16 text-slate-600 mx-auto mb-4" />
         <h3 className="text-lg font-semibold text-slate-300 mb-2">No Favourites Yet</h3>
         <p className="text-slate-400 mb-6 max-w-md mx-auto">
@@ -129,8 +129,8 @@ export function FavoritesSection({
   return (
     <div className="space-y-6">
       {/* Favourites Controls */}
-      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-centre justify-between">
-        <div className="flex items-centre gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
+        <div className="flex items-center gap-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
             <Input
@@ -154,7 +154,7 @@ export function FavoritesSection({
           </select>
         </div>
 
-        <div className="flex items-centre gap-2">
+        <div className="flex items-center gap-2">
           <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30">
             {filteredFavorites.length} of {favourites.size} shown
           </Badge>
@@ -183,7 +183,7 @@ export function FavoritesSection({
 
       {/* Favourites Grid/List */}
       {filteredFavorites.length === 0 ? (
-        <div className="text-centre py-8">
+        <div className="text-center py-8">
           <Search className="h-12 w-12 text-slate-600 mx-auto mb-4" />
           <p className="text-slate-400">No favourites match your search criteria</p>
         </div>
@@ -197,7 +197,7 @@ export function FavoritesSection({
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <div className="flex items-centre gap-2 mb-2">
+                    <div className="flex items-center gap-2 mb-2">
                       <CardTitle className="text-lg text-slate-100">{item.name}</CardTitle>
                       <Badge 
                         variant="outline" 
@@ -231,7 +231,7 @@ export function FavoritesSection({
                 </div>
                 
                 {/* Actions */}
-                <div className="flex items-centre justify-between">
+                <div className="flex items-center justify-between">
                   <Button
                     variant="outline"
                     size="sm"
@@ -289,6 +289,7 @@ export function FavoritesSection({
     </div>
   )
 }
+
 
 
 

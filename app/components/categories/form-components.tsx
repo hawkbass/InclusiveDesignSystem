@@ -148,7 +148,7 @@ const components = [
 </div>`,
     component: (
       <div className="space-y-6 w-full max-w-md">
-        <div className="flex items-centre justify-between">
+        <div className="flex items-center justify-between">
           <Label className="text-slate-300">Email Notifications</Label>
           <Switch defaultChecked />
         </div>
@@ -195,11 +195,11 @@ const components = [
     title: "Checkbox Group",
     description: "Multiple selection checkboxes with labels",
     code: `<div className="space-y-3">
-  <div className="flex items-centre space-x-2">
+  <div className="flex items-center space-x-2">
     <Checkbox id="skill1" />
     <Label htmlFor="skill1">JavaScript</Label>
   </div>
-  <div className="flex items-centre space-x-2">
+  <div className="flex items-center space-x-2">
     <Checkbox id="skill2" />
     <Label htmlFor="skill2">React</Label>
   </div>
@@ -214,7 +214,7 @@ const components = [
           { id: "python", label: "Python", checked: true },
           { id: "aws", label: "AWS", checked: false }
         ].map((skill) => (
-          <div key={skill.id} className="flex items-centre space-x-2">
+          <div key={skill.id} className="flex items-center space-x-2">
             <Checkbox id={skill.id} defaultChecked={skill.checked} />
             <Label htmlFor={skill.id} className="text-slate-300 text-sm">{skill.label}</Label>
           </div>
@@ -227,11 +227,11 @@ const components = [
     title: "Radio Button Group",
     description: "Single selection radio buttons",
     code: `<RadioGroup defaultValue="remote">
-  <div className="flex items-centre space-x-2">
+  <div className="flex items-center space-x-2">
     <RadioGroupItem value="remote" id="remote" />
     <Label htmlFor="remote">Remote</Label>
   </div>
-  <div className="flex items-centre space-x-2">
+  <div className="flex items-center space-x-2">
     <RadioGroupItem value="hybrid" id="hybrid" />
     <Label htmlFor="hybrid">Hybrid</Label>
   </div>
@@ -245,9 +245,9 @@ const components = [
             { value: "hybrid", label: "Hybrid", icon: <Building2 className="h-4 w-4" /> },
             { value: "onsite", label: "On-site", icon: <Building2 className="h-4 w-4" /> }
           ].map((option) => (
-            <div key={option.value} className="flex items-centre space-x-2">
+            <div key={option.value} className="flex items-center space-x-2">
               <RadioGroupItem value={option.value} id={option.value} />
-              <Label htmlFor={option.value} className="text-slate-300 text-sm flex items-centre gap-2">
+              <Label htmlFor={option.value} className="text-slate-300 text-sm flex items-center gap-2">
                 <span>{option.icon}</span>
                 {option.label}
               </Label>
@@ -261,14 +261,14 @@ const components = [
     id: "file-upload",
     title: "File Upload Field",
     description: "Drag and drop file upload with preview",
-    code: `<div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-centre">
+    code: `<div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center">
   <Upload className="h-8 w-8 mx-auto mb-2 text-slate-400" />
   <p className="text-sm text-slate-400">Drop files here or click to upload</p>
 </div>`,
     component: (
       <div className="w-full max-w-md">
         <Label className="text-slate-300 mb-2 block">Upload CV</Label>
-        <div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-centre hover:border-fuchsia-500/50 transition-all duration-300" style={{ transitionDuration: 'var(--animation-speed)' }}>
+        <div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center hover:border-fuchsia-500/50 transition-all duration-300" style={{ transitionDuration: 'var(--animation-speed)' }}>
           <Upload className="h-8 w-8 mx-auto mb-2 text-slate-400" />
           <p className="text-sm text-slate-400 mb-2">Drop your CV here or click to upload</p>
           <p className="text-xs text-slate-500">PDF, DOC, DOCX up to 5MB</p>
@@ -431,7 +431,7 @@ const components = [
             defaultValue="invalid-email"
             className="bg-slate-800/50 border-red-500 focus:border-red-500"
           />
-          <p className="text-red-400 text-sm flex items-centre gap-1">
+          <p className="text-red-400 text-sm flex items-center gap-1">
             <AlertTriangle className="h-3 w-3" />
             Please enter a valid email address
           </p>
@@ -443,7 +443,7 @@ const components = [
             defaultValue="password123"
             className="bg-slate-800/50 border-green-500 focus:border-green-500"
           />
-          <p className="text-green-400 text-sm flex items-centre gap-1">
+          <p className="text-green-400 text-sm flex items-center gap-1">
             <CheckCircle2 className="h-3 w-3" />
             Password meets requirements
           </p>
@@ -472,7 +472,7 @@ const components = [
     id: "toggle-switch",
     title: "Toggle Switches",
     description: "Binary toggle switches for preferences",
-    code: `<div className="flex items-centre justify-between">
+    code: `<div className="flex items-center justify-between">
   <Label>Email Notifications</Label>
   <Switch defaultChecked />
 </div>`,
@@ -484,7 +484,7 @@ const components = [
           { label: "Push Notifications", checked: true },
           { label: "Weekly Reports", checked: false }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre justify-between p-2 bg-slate-800/30 rounded-lg">
+          <div key={index} className="flex items-center justify-between p-2 bg-slate-800/30 rounded-lg">
             <Label className="text-slate-300">{item.label}</Label>
             <Switch defaultChecked={item.checked} />
           </div>
@@ -533,23 +533,23 @@ const components = [
     title: "Form Progress Indicator",
     description: "Step-by-step form progress visualization",
     code: `<div className="space-y-4">
-  <div className="flex items-centre gap-6">
-    <div className="w-8 h-8 bg-fuchsia-500 rounded-full flex items-centre justify-centre text-white text-sm">1</div>
+  <div className="flex items-center gap-6">
+    <div className="w-8 h-8 bg-fuchsia-500 rounded-full flex items-center justify-center text-white text-sm">1</div>
     <div className="flex-1 h-0.5 bg-fuchsia-500"></div>
-    <div className="w-8 h-8 bg-slate-600 rounded-full flex items-centre justify-centre text-slate-300 text-sm">2</div>
+    <div className="w-8 h-8 bg-slate-600 rounded-full flex items-center justify-center text-slate-300 text-sm">2</div>
   </div>
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-4">
-        <div className="flex items-centre gap-2">
+        <div className="flex items-center gap-2">
           {[
             { step: 1, label: "Personal", completed: true },
             { step: 2, label: "Experience", completed: true },
             { step: 3, label: "Skills", completed: false },
             { step: 4, label: "Review", completed: false }
           ].map((item, index) => (
-            <div key={index} className="flex items-centre gap-2 flex-1">
-              <div className={`w-8 h-8 rounded-full flex items-centre justify-centre text-sm font-medium ${
+            <div key={index} className="flex items-center gap-2 flex-1">
+              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium ${
                 item.completed ? 'bg-fuchsia-500 text-white' : 'bg-slate-600 text-slate-300'
               }`}>
                 {item.completed ? <Check className="h-4 w-4" /> : item.step}
@@ -628,7 +628,7 @@ const components = [
             Submit Application
           </Button>
         </div>
-        <div className="mt-3 text-xs text-slate-500 text-centre">
+        <div className="mt-3 text-xs text-slate-500 text-center">
           By submitting, you agree to our Terms of Service
         </div>
       </div>
@@ -652,7 +652,7 @@ export function FormComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Form Components</h2>
             <p className="text-slate-400">Interactive form elements and input controls</p>
@@ -683,7 +683,7 @@ export function FormComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
             <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -696,6 +696,7 @@ export function FormComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
 
 
 

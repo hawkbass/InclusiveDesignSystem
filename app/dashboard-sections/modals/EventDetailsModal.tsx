@@ -16,9 +16,9 @@ export function EventDetailsModal({ open, event, onClose }: EventDetailsModalPro
       <DialogContent className="max-w-2xl p-0 overflow-hidden">
         {/* Header */}
         <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-blue-800/20 to-blue-800/10 rounded-t-xl">
-          <div className="flex items-centre justify-between">
-            <div className="flex items-centre gap-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-centre justify-centre text-white text-lg font-bold">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white text-lg font-bold">
                 {event.avatar}
               </div>
               <div>
@@ -58,6 +58,7 @@ export function EventDetailsModal({ open, event, onClose }: EventDetailsModalPro
     </Dialog>
   )
 } 
+
 
 
 

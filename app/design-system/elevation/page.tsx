@@ -52,8 +52,8 @@ export default function Elevation() {
         {/* Enhanced Header */}
         <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800/50 shadow-lg shadow-slate-900/20">
           <div className="px-6 lg:px-12 py-4">
-            <div className="flex items-centre justify-between">
-              <div className="flex items-centre gap-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
                 <div>
                   <h1 className="text-2xl font-bold text-slate-100">Elevation</h1>
                   <p className="text-sm text-slate-400">Shadows, depth, and layering system</p>
@@ -61,7 +61,7 @@ export default function Elevation() {
               </div>
 
               {/* Header Actions */}
-              <div className="flex items-centre gap-4">
+              <div className="flex items-center gap-4">
                 <Button
                   variant="outline"
                   size="sm"
@@ -73,7 +73,7 @@ export default function Elevation() {
                   Settings
                 </Button>
                 
-                <div className="hidden md:flex items-centre gap-2">
+                <div className="hidden md:flex items-center gap-2">
                   <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <Download className="h-4 w-4 mr-2" />
                     Export Shadows
@@ -89,7 +89,7 @@ export default function Elevation() {
             {/* Settings Panel */}
             {settingsOpen && (
               <div className="mt-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700 animate-in slide-in-from-top-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-centre justify-between mb-4">
+                <div className="flex items-center justify-between mb-4">
                   <h3 className="font-medium text-slate-200">Interface Settings</h3>
                   <Button
                     variant="ghost"
@@ -102,7 +102,7 @@ export default function Elevation() {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <div className="flex items-centre justify-between">
+                    <div className="flex items-center justify-between">
                       <Label className="text-sm font-medium">Animation Speed</Label>
                       <span className="text-xs text-slate-400 font-mono">{safeAnimationSpeed}x</span>
                     </div>
@@ -117,7 +117,7 @@ export default function Elevation() {
                   </div>
                   <div className="space-y-2">
                     <Label className="text-sm font-medium">View Options</Label>
-                    <div className="flex items-centre gap-2">
+                    <div className="flex items-center gap-2">
                       <Button size="sm" variant="outline" className="h-8">
                         <Eye className="h-3 w-3 mr-1" />
                         Preview
@@ -138,7 +138,7 @@ export default function Elevation() {
           {/* Quick Value Surface - Universal Comprehension */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-              <CardContent className="p-4 text-centre">
+              <CardContent className="p-4 text-center">
                 <Mountain className="h-6 w-6 text-purple-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">8</div>
                 <div className="text-xs text-slate-400">Elevation Levels</div>
@@ -146,7 +146,7 @@ export default function Elevation() {
               </CardContent>
             </Card>
             <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-              <CardContent className="p-4 text-centre">
+              <CardContent className="p-4 text-center">
                 <Box className="h-6 w-6 text-blue-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">15</div>
                 <div className="text-xs text-slate-400">Shadow Variants</div>
@@ -154,7 +154,7 @@ export default function Elevation() {
               </CardContent>
             </Card>
             <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-              <CardContent className="p-4 text-centre">
+              <CardContent className="p-4 text-center">
                 <Zap className="h-6 w-6 text-green-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">6</div>
                 <div className="text-xs text-slate-400">Blur Effects</div>
@@ -162,7 +162,7 @@ export default function Elevation() {
               </CardContent>
             </Card>
             <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm hover:bg-slate-800/70 transition-colours cursor-pointer">
-              <CardContent className="p-4 text-centre">
+              <CardContent className="p-4 text-center">
                 <Copy className="h-6 w-6 text-fuchsia-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-slate-100">CSS</div>
                 <div className="text-xs text-slate-400">Copy Ready</div>
@@ -174,8 +174,8 @@ export default function Elevation() {
           {/* Hero Section */}
           <section className="mb-12 relative">
             <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5 rounded-3xl -z-10" />
-            <div className="text-centre max-w-4xl mx-auto py-12">
-              <div className="flex items-centre justify-centre gap-3 mb-6">
+            <div className="text-center max-w-4xl mx-auto py-12">
+              <div className="flex items-center justify-center gap-3 mb-6">
                 <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
                   <Mountain className="w-3 h-3 mr-1" />
                   8 Levels
@@ -208,7 +208,7 @@ export default function Elevation() {
                   <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
                     <TabsTrigger 
                       value="overview"
-                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
                       <div className="relative z-10">
@@ -218,7 +218,7 @@ export default function Elevation() {
                           <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
                         </div>
                       </div>
-                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Overview
                       </span>
                       <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
@@ -226,7 +226,7 @@ export default function Elevation() {
                     
                     <TabsTrigger 
                       value="shadows"
-                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
                       <div className="relative z-10">
@@ -236,7 +236,7 @@ export default function Elevation() {
                           <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
                         </div>
                       </div>
-                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Shadows
                       </span>
                       <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
@@ -244,7 +244,7 @@ export default function Elevation() {
                     
                     <TabsTrigger 
                       value="blur"
-                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
                       <div className="relative z-10">
@@ -254,7 +254,7 @@ export default function Elevation() {
                           <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
                         </div>
                       </div>
-                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Blur & Glass
                       </span>
                       <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
@@ -262,7 +262,7 @@ export default function Elevation() {
                     
                     <TabsTrigger 
                       value="usage"
-                      className="group flex flex-col items-centre gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
+                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
                       <div className="relative z-10">
@@ -272,7 +272,7 @@ export default function Elevation() {
                           <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
                         </div>
                       </div>
-                      <span className="font-medium leading-tight text-centre text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
+                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
                         Usage
                       </span>
                       <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
@@ -324,19 +324,19 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
               <div>
                 <h3 className="text-lg font-semibold text-slate-200 mb-3">Design Philosophy</h3>
                 <ul className="space-y-2 text-slate-400">
-                  <li className="flex items-centre gap-2">
+                  <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-400" />
                     Dark-first shadow optimisation
                   </li>
-                  <li className="flex items-centre gap-2">
+                  <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-400" />
                     Glassmorphic design principles
                   </li>
-                  <li className="flex items-centre gap-2">
+                  <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-400" />
                     Semantic elevation naming
                   </li>
-                  <li className="flex items-centre gap-2">
+                  <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-green-400" />
                     Consistent layering system
                   </li>
@@ -347,19 +347,19 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
               <div>
                 <h3 className="text-lg font-semibold text-slate-200 mb-3">Elevation Categories</h3>
                 <div className="space-y-3">
-                  <div className="flex items-centre gap-3 p-3 bg-slate-900/30 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-slate-900/30 rounded-lg">
                     <Mountain className="h-5 w-5 text-purple-400" />
                     <span className="text-slate-300">Surface Shadows</span>
                   </div>
-                  <div className="flex items-centre gap-3 p-3 bg-slate-900/30 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-slate-900/30 rounded-lg">
                     <Sun className="h-5 w-5 text-blue-400" />
                     <span className="text-slate-300">Colored Shadows</span>
                   </div>
-                  <div className="flex items-centre gap-3 p-3 bg-slate-900/30 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-slate-900/30 rounded-lg">
                     <Zap className="h-5 w-5 text-green-400" />
                     <span className="text-slate-300">Blur Effects</span>
                   </div>
-                  <div className="flex items-centre gap-3 p-3 bg-slate-900/30 rounded-lg">
+                  <div className="flex items-center gap-3 p-3 bg-slate-900/30 rounded-lg">
                     <Box className="h-5 w-5 text-orange-400" />
                     <span className="text-slate-300">Glassmorphism</span>
                   </div>
@@ -388,9 +388,9 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
               { level: 6, name: "Highest", shadow: "shadow-2xl", description: "Tooltips" },
               { level: 7, name: "Float", shadow: "shadow-2xl shadow-fuchsia-500/25", description: "Interactive" }
             ].map((item) => (
-              <div key={item.level} className="text-centre">
+              <div key={item.level} className="text-center">
                 <div 
-                  className={`w-full h-20 bg-slate-800 rounded-lg ${item.shadow} mb-3 flex items-centre justify-centre text-slate-300 font-medium border border-slate-700/50`}
+                  className={`w-full h-20 bg-slate-800 rounded-lg ${item.shadow} mb-3 flex items-center justify-center text-slate-300 font-medium border border-slate-700/50`}
                   style={{ transition: `all ${1 / safeAnimationSpeed}s` }}
                 >
                   {item.level}
@@ -485,8 +485,8 @@ function ShadowsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode
         <CardContent>
           <div className="space-y-4">
             {shadowTokens.map((shadow) => (
-              <div key={shadow.name} className="flex items-centre justify-between p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-centre gap-4">
+              <div key={shadow.name} className="flex items-center justify-between p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className="flex items-center gap-4">
                   <div 
                     className={`w-16 h-16 bg-slate-800 rounded-lg ${shadow.name} border border-slate-700/50`}
                   />
@@ -496,7 +496,7 @@ function ShadowsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode
                     <div className="text-xs text-slate-500">{shadow.usage}</div>
                   </div>
                 </div>
-                <div className="flex items-centre gap-2">
+                <div className="flex items-center gap-2">
                   <div className="text-xs text-slate-400 font-mono max-w-xs truncate">
                     {shadow.value}
                   </div>
@@ -525,8 +525,8 @@ function ShadowsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode
         <CardContent>
           <div className="space-y-4">
             {coloredShadows.map((shadow) => (
-              <div key={shadow.name} className="flex items-centre justify-between p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-centre gap-4">
+              <div key={shadow.name} className="flex items-center justify-between p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className="flex items-center gap-4">
                   <div 
                     className={`w-16 h-16 bg-slate-800 rounded-lg shadow-lg ${shadow.name} border border-slate-700/50`}
                   />
@@ -536,7 +536,7 @@ function ShadowsTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode
                     <div className="text-xs text-slate-500">{shadow.usage}</div>
                   </div>
                 </div>
-                <div className="flex items-centre gap-2">
+                <div className="flex items-center gap-2">
                   <div className="text-xs text-slate-400 font-mono max-w-xs truncate">
                     {shadow.value}
                   </div>
@@ -633,8 +633,8 @@ function BlurTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (
         <CardContent>
           <div className="space-y-4">
             {blurEffects.map((blur) => (
-              <div key={blur.name} className="flex items-centre justify-between p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                <div className="flex items-centre gap-4">
+              <div key={blur.name} className="flex items-center justify-between p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 transition-colours group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                <div className="flex items-center gap-4">
                   <div className="relative w-16 h-16 rounded-lg overflow-hidden border border-slate-700/50">
                     {/* Background pattern */}
                     <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500 via-purple-500 to-blue-500 opacity-50"></div>
@@ -648,7 +648,7 @@ function BlurTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (
                     <div className="text-xs text-slate-500">{blur.usage}</div>
                   </div>
                 </div>
-                <div className="flex items-centre gap-2">
+                <div className="flex items-center gap-2">
                   <div className="text-xs text-slate-400 font-mono">
                     {blur.value}
                   </div>
@@ -684,12 +684,12 @@ function BlurTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: (
                   <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500 via-purple-500 to-blue-500"></div>
                   <div className="absolute inset-0 opacity-30" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20c0 11.046-8.954 20-20 20v-40c11.046 0 20 8.954 20 20z'/%3E%3C/g%3E%3C/svg%3E")` }}></div>
                   {/* Glass effect */}
-                  <div className={`absolute inset-4 rounded-lg ${effect.classes} flex items-centre justify-centre`}>
+                  <div className={`absolute inset-4 rounded-lg ${effect.classes} flex items-center justify-center`}>
                     <span className="text-xs text-slate-300">{effect.name}</span>
                   </div>
                 </div>
                 <div className="text-xs text-slate-500">{effect.usage}</div>
-                <div className="flex items-centre justify-between">
+                <div className="flex items-center justify-between">
                   <code className="text-xs text-slate-400 font-mono">{effect.classes}</code>
                   <Button
                     variant="ghost"
@@ -882,6 +882,7 @@ const GlassCard = ({ children, elevation = "medium" }) => {
     </div>
   )
 }
+
 
 
 

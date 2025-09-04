@@ -95,7 +95,7 @@ const components = [
     code: `<Card className="hover:border-fuchsia-500/50 transition-all">
   <CardHeader>
     <div className="flex items-start justify-between">
-      <div className="flex items-centre gap-3">
+      <div className="flex items-center gap-3">
         <Avatar className="h-12 w-12">
           <AvatarImage src="/placeholder.svg" />
           <AvatarFallback>SJ</AvatarFallback>
@@ -113,7 +113,7 @@ const components = [
       <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
         <CardHeader>
           <div className="flex items-start justify-between">
-            <div className="flex items-centre gap-3">
+            <div className="flex items-center gap-3">
               <Avatar className="h-12 w-12 ring-2 ring-slate-600 hover:ring-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
                 <AvatarImage src="/placeholder.svg?height=48&width=48" />
                 <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 font-bold">SJ</AvatarFallback>
@@ -128,19 +128,19 @@ const components = [
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-6 text-sm">
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-slate-400" />
               <span className="text-slate-300">5 years exp.</span>
             </div>
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-slate-400" />
               <span className="text-slate-300">London, UK</span>
             </div>
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <PoundSterling className="h-4 w-4 text-slate-400" />
               <span className="text-slate-300">£95k - £120k</span>
             </div>
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <Star className="h-4 w-4 text-yellow-400" />
               <span className="text-slate-300">4.8 rating</span>
             </div>
@@ -178,7 +178,7 @@ const components = [
                   <CardDescription>Remote • Full-time • $120k-$150k</CardDescription>
   </CardHeader>
   <CardContent>
-    <div className="flex justify-between items-centre">
+    <div className="flex justify-between items-center">
       <Badge>25 Applicants</Badge>
       <Button size="sm">View Details</Button>
     </div>
@@ -196,12 +196,12 @@ const components = [
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-centre gap-6 text-sm">
-            <div className="flex items-centre gap-2">
+          <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-2">
               <PoundSterling className="h-4 w-4 text-green-400" />
               <span className="text-slate-300">£95k - £120k</span>
             </div>
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-blue-400" />
               <span className="text-slate-300">25 applicants</span>
             </div>
@@ -225,7 +225,7 @@ const components = [
   </CardHeader>
   <CardContent>
     <div className="space-y-3">
-      <div className="flex items-centre gap-2">
+      <div className="flex items-center gap-2">
         <Calendar className="h-4 w-4" />
         <span>March 15, 2024 at 2:00 PM</span>
       </div>
@@ -241,11 +241,11 @@ const components = [
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2 text-sm">
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-blue-400" />
               <span className="text-slate-300">March 15, 2024 at 2:00 PM</span>
             </div>
-            <div className="flex items-centre gap-2">
+            <div className="flex items-center gap-2">
               <Video className="h-4 w-4 text-green-400" />
               <span className="text-slate-300">Google Meet</span>
             </div>
@@ -290,8 +290,8 @@ const components = [
     title: "Application Status Tracker",
     description: "Visual progress tracker for applications",
     code: `<div className="space-y-4">
-  <div className="flex items-centre gap-6">
-    <div className="w-8 h-8 bg-green-500 rounded-full flex items-centre justify-centre">
+  <div className="flex items-center gap-6">
+    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
       <Check className="h-4 w-4 text-white" />
     </div>
     <span>Application Submitted</span>
@@ -306,8 +306,8 @@ const components = [
           { step: "Final Interview", status: "pending", icon: Users },
           { step: "Decision", status: "pending", icon: CheckCircle2 }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre gap-6">
-            <div className={`w-8 h-8 rounded-full flex items-centre justify-centre ${
+          <div key={index} className="flex items-center gap-6">
+            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
               item.status === 'completed' ? 'bg-green-500' : 
               item.status === 'current' ? 'bg-blue-500' : 'bg-slate-600'
             }`}>
@@ -372,7 +372,7 @@ const components = [
     description: "Display team member information",
     code: `<Card>
   <CardContent className="p-4">
-    <div className="flex items-centre gap-3">
+    <div className="flex items-center gap-3">
       <Avatar>
         <AvatarFallback>JD</AvatarFallback>
       </Avatar>
@@ -386,14 +386,14 @@ const components = [
     component: (
       <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
         <CardContent className="p-4">
-          <div className="flex items-centre gap-3">
+          <div className="flex items-center gap-3">
             <Avatar className="ring-2 ring-slate-600">
               <AvatarFallback className="bg-blue-500/20 text-blue-300">JD</AvatarFallback>
             </Avatar>
             <div>
               <h4 className="font-medium text-slate-100">John Doe</h4>
               <p className="text-sm text-slate-400">Hiring Manager</p>
-              <div className="flex items-centre gap-1 mt-1">
+              <div className="flex items-center gap-1 mt-1">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                 <span className="text-xs text-green-300">Online</span>
               </div>
@@ -471,7 +471,7 @@ const components = [
     id: "rating-system",
     title: "Candidate Rating",
     description: "Star rating system for candidate evaluation",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <div className="flex gap-1">
     {[1,2,3,4,5].map(star => (
       <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
@@ -483,7 +483,7 @@ const components = [
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-2">
           <Label className="text-slate-300">Overall Rating</Label>
-          <div className="flex items-centre gap-2">
+          <div className="flex items-center gap-2">
             <div className="flex gap-1">
               {[1,2,3,4,5].map(star => (
                 <Star 
@@ -548,7 +548,7 @@ const components = [
     id: "experience-level",
     title: "Experience Level Indicator",
     description: "Visual experience level classification",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <Badge className="bg-green-500/20 text-green-300">Senior</Badge>
   <span className="text-sm">5+ years experience</span>
 </div>`,
@@ -560,8 +560,8 @@ const components = [
           { level: "Senior", years: "5+ years", colour: "bg-green-500/20 text-green-300", icon: <Shield className="h-4 w-4" /> },
           { level: "Lead", years: "8+ years", colour: "bg-purple-500/20 text-purple-300", icon: <Star className="h-4 w-4" /> }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre justify-between p-2 bg-slate-800/30 rounded-lg">
-            <div className="flex items-centre gap-3">
+          <div key={index} className="flex items-center justify-between p-2 bg-slate-800/30 rounded-lg">
+            <div className="flex items-center gap-3">
               <div className="text-slate-400">{item.icon}</div>
               <div>
                 <Badge className={item.colour}>{item.level}</Badge>
@@ -577,7 +577,7 @@ const components = [
     id: "availability-status",
     title: "Availability Status",
     description: "Candidate availability indicator",
-    code: `<div className="flex items-centre gap-2">
+    code: `<div className="flex items-center gap-2">
   <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
   <span className="text-sm">Available immediately</span>
 </div>`,
@@ -589,7 +589,7 @@ const components = [
           { status: "Available in 1 month", colour: "bg-orange-400", textColor: "text-orange-300" },
           { status: "Not actively looking", colour: "bg-red-400", textColor: "text-red-300" }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre gap-3 p-2 bg-slate-800/30 rounded-lg">
+          <div key={index} className="flex items-center gap-3 p-2 bg-slate-800/30 rounded-lg">
             <div className={`w-3 h-3 ${item.colour} rounded-full animate-pulse`}></div>
             <span className={`text-sm ${item.textColor}`}>{item.status}</span>
           </div>
@@ -601,14 +601,14 @@ const components = [
     id: "resume-upload",
     title: "Resume Upload",
     description: "File upload component for resumes",
-    code: `<div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-centre">
+    code: `<div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center">
   <Upload className="h-8 w-8 mx-auto mb-2 text-slate-400" />
   <p className="text-sm text-slate-400">Drop resume here or click to upload</p>
   <Button className="mt-2" size="sm">Choose File</Button>
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-centre hover:border-fuchsia-500/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+        <div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center hover:border-fuchsia-500/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
           <Upload className="h-8 w-8 mx-auto mb-2 text-slate-400" />
           <p className="text-sm text-slate-400 mb-2">Drop resume here or click to upload</p>
           <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">Choose File</Button>
@@ -664,7 +664,7 @@ const components = [
     description: "Side-by-side candidate comparison",
     code: `<div className="grid grid-cols-2 gap-6">
   <Card>
-    <CardContent className="p-4 text-centre">
+    <CardContent className="p-4 text-center">
       <Avatar className="mx-auto mb-2">
         <AvatarFallback>SJ</AvatarFallback>
       </Avatar>
@@ -673,7 +673,7 @@ const components = [
     </CardContent>
   </Card>
   <Card>
-    <CardContent className="p-4 text-centre">
+    <CardContent className="p-4 text-center">
       <Avatar className="mx-auto mb-2">
         <AvatarFallback>MK</AvatarFallback>
       </Avatar>
@@ -690,13 +690,13 @@ const components = [
             { name: "Michael Kim", exp: "3 years", rating: 4.5, initials: "MK", colour: "bg-blue-500/20 text-blue-300" }
           ].map((candidate, index) => (
             <Card key={index} className="bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
-              <CardContent className="p-4 text-centre">
+              <CardContent className="p-4 text-center">
                 <Avatar className="mx-auto mb-2 ring-2 ring-slate-600">
                   <AvatarFallback className={candidate.colour}>{candidate.initials}</AvatarFallback>
                 </Avatar>
                 <h4 className="font-medium text-slate-100 text-sm">{candidate.name}</h4>
                 <p className="text-xs text-slate-400">{candidate.exp} exp.</p>
-                <div className="flex items-centre justify-centre gap-1 mt-1">
+                <div className="flex items-center justify-center gap-1 mt-1">
                   <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                   <span className="text-xs text-slate-300">{candidate.rating}</span>
                 </div>
@@ -712,11 +712,11 @@ const components = [
     title: "Job Requirements Checklist",
     description: "Interactive requirements matching",
     code: `<div className="space-y-3">
-  <div className="flex items-centre gap-2">
+  <div className="flex items-center gap-2">
     <Checkbox checked />
     <span className="text-sm">5+ years React experience</span>
   </div>
-  <div className="flex items-centre gap-2">
+  <div className="flex items-center gap-2">
     <Checkbox />
     <span className="text-sm">TypeScript proficiency</span>
   </div>
@@ -730,7 +730,7 @@ const components = [
           { requirement: "Team leadership", met: true },
           { requirement: "Bachelor's degree", met: false }
         ].map((item, index) => (
-          <div key={index} className="flex items-centre gap-3 p-2 bg-slate-800/30 rounded-lg">
+          <div key={index} className="flex items-center gap-3 p-2 bg-slate-800/30 rounded-lg">
             <Checkbox 
               checked={item.met} 
               className={item.met ? "data-[state=checked]:bg-green-500" : ""}
@@ -758,7 +758,7 @@ const components = [
   </SelectTrigger>
   <SelectContent className="bg-slate-800/95 backdrop-blur-sm border-slate-600">
     <SelectItem value="applied" className="hover:bg-slate-700/50 hover:text-fuchsia-300">
-      <div className="flex items-centre gap-3">
+      <div className="flex items-center gap-3">
         <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
         <FileText className="h-4 w-4" />
         <div>
@@ -772,7 +772,7 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-2">
-          <Label className="text-slate-200 font-medium flex items-centre gap-2">
+          <Label className="text-slate-200 font-medium flex items-center gap-2">
             <Users className="h-4 w-4 text-fuchsia-400" />
             Pipeline Stage
           </Label>
@@ -784,7 +784,7 @@ const components = [
           </SelectTrigger>
           <SelectContent className="bg-slate-800/95 backdrop-blur-sm border-slate-600 shadow-xl">
             <SelectItem value="applied" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
-              <div className="flex items-centre gap-3">
+              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></div>
                 <FileText className="h-4 w-4 text-blue-400 flex-shrink-0" />
                 <div className="flex-1">
@@ -794,7 +794,7 @@ const components = [
               </div>
             </SelectItem>
             <SelectItem value="screening" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
-              <div className="flex items-centre gap-3">
+              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full flex-shrink-0"></div>
                 <Search className="h-4 w-4 text-yellow-400 flex-shrink-0" />
                 <div className="flex-1">
@@ -804,7 +804,7 @@ const components = [
               </div>
             </SelectItem>
             <SelectItem value="interview" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
-              <div className="flex items-centre gap-3">
+              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-purple-400 rounded-full flex-shrink-0"></div>
                 <Users className="h-4 w-4 text-purple-400 flex-shrink-0" />
                 <div className="flex-1">
@@ -814,7 +814,7 @@ const components = [
               </div>
             </SelectItem>
             <SelectItem value="final" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
-              <div className="flex items-centre gap-3">
+              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></div>
                 <Target className="h-4 w-4 text-orange-400 flex-shrink-0" />
                 <div className="flex-1">
@@ -824,7 +824,7 @@ const components = [
               </div>
             </SelectItem>
             <SelectItem value="offer" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
-              <div className="flex items-centre gap-3">
+              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
                 <PoundSterling className="h-4 w-4 text-green-400 flex-shrink-0" />
                 <div className="flex-1">
@@ -834,7 +834,7 @@ const components = [
               </div>
             </SelectItem>
             <SelectItem value="hired" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
-              <div className="flex items-centre gap-3">
+              <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full flex-shrink-0"></div>
                 <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />
                 <div className="flex-1">
@@ -845,7 +845,7 @@ const components = [
             </SelectItem>
           </SelectContent>
         </Select>
-        <div className="text-xs text-slate-500 flex items-centre gap-2">
+        <div className="text-xs text-slate-500 flex items-center gap-2">
           <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
           <span>Status will be updated automatically</span>
         </div>
@@ -858,7 +858,7 @@ const components = [
     description: "Track employee referrals and rewards",
     code: `<Card>
   <CardContent className="p-4">
-    <div className="flex items-centre justify-between">
+    <div className="flex items-center justify-between">
       <div>
         <h4 className="font-medium">Referred by John Doe</h4>
         <p className="text-sm text-muted-foreground">Engineering Team</p>
@@ -870,8 +870,8 @@ const components = [
     component: (
       <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50">
         <CardContent className="p-4">
-          <div className="flex items-centre justify-between">
-            <div className="flex items-centre gap-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
               <Avatar className="ring-2 ring-slate-600">
                 <AvatarFallback className="bg-green-500/20 text-green-300">JD</AvatarFallback>
               </Avatar>
@@ -925,7 +925,7 @@ const components = [
     id: "bulk-actions",
     title: "Bulk Actions Toolbar",
     description: "Perform actions on multiple candidates",
-    code: `<div className="flex items-centre gap-2 p-2 bg-slate-800 rounded-lg">
+    code: `<div className="flex items-center gap-2 p-2 bg-slate-800 rounded-lg">
   <Checkbox />
   <span className="text-sm">3 selected</span>
   <div className="flex gap-2 ml-auto">
@@ -935,7 +935,7 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="flex items-centre gap-2 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-xl">
+        <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-xl">
           <Checkbox checked />
           <span className="text-sm text-slate-300">3 candidates selected</span>
           <div className="flex gap-2 ml-auto">
@@ -1012,7 +1012,7 @@ export function RecruitmentComponents({
   return (
     <div className="space-y-12">
       <section>
-        <div className="flex items-centre justify-between mb-8">
+        <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-bold mb-2 text-slate-100">Recruitment Components</h2>
             <p className="text-slate-400">Specialised components for talent acquisition and candidate management</p>
@@ -1043,7 +1043,7 @@ export function RecruitmentComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-centre py-12 text-slate-400">
+          <div className="text-center py-12 text-slate-400">
             <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>
@@ -1056,6 +1056,7 @@ export function RecruitmentComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
+
 
 
 

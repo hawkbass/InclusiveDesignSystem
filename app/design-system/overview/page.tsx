@@ -194,7 +194,7 @@ export default function Overview() {
                 </Badge>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-12 items-centre">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Value Proposition */}
                 <div className="space-y-6">
                   <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
@@ -241,7 +241,7 @@ export default function Overview() {
                 <div className="space-y-6">
                   <Card className="bg-slate-800/50 border-slate-700/50">
                     <CardHeader>
-                      <CardTitle className="flex items-centre gap-2">
+                      <CardTitle className="flex items-center gap-2">
                         <Activity className="h-5 w-5 text-green-400" />
                         System Health
                       </CardTitle>
@@ -252,11 +252,11 @@ export default function Overview() {
                     <CardContent className="space-y-6">
                       {/* Health Indicators */}
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="text-centre">
+                        <div className="text-center">
                           <div className="text-3xl font-bold text-green-400 mb-1">99.8%</div>
                           <div className="text-xs text-slate-500">Uptime</div>
                         </div>
-                        <div className="text-centre">
+                        <div className="text-center">
                           <div className="text-3xl font-bold text-blue-400 mb-1">2.1s</div>
                           <div className="text-xs text-slate-500">Avg Load Time</div>
                         </div>
@@ -264,19 +264,19 @@ export default function Overview() {
 
                       {/* Component Health */}
                       <div className="space-y-3">
-                        <div className="flex justify-between items-centre">
+                        <div className="flex justify-between items-center">
                           <span className="text-sm text-slate-300">Component Coverage</span>
                           <span className="text-sm text-green-400">96%</span>
                         </div>
                         <Progress value={96} className="h-2" />
                         
-                        <div className="flex justify-between items-centre">
+                        <div className="flex justify-between items-center">
                           <span className="text-sm text-slate-300">Accessibility Score</span>
                           <span className="text-sm text-purple-400">AAA</span>
                         </div>
                         <Progress value={100} className="h-2" />
                         
-                        <div className="flex justify-between items-centre">
+                        <div className="flex justify-between items-center">
                           <span className="text-sm text-slate-300">Performance</span>
                           <span className="text-sm text-fuchsia-400">98/100</span>
                         </div>
@@ -306,7 +306,7 @@ export default function Overview() {
           {/* System Metrics Dashboard */}
           <section className="mb-16">
             <div className="max-w-6xl mx-auto">
-              <div className="text-centre mb-12">
+              <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                     Performance Metrics
@@ -330,7 +330,7 @@ export default function Overview() {
                       onClick={() => setSelectedMetric(key)}
                     >
                       <CardContent className="p-6">
-                        <div className="flex items-centre justify-between mb-4">
+                        <div className="flex items-center justify-between mb-4">
                           <IconComponent className={`h-8 w-8 ${metric.colour}`} />
                           <Badge variant="outline" className="text-xs">
                             {metric.change}
@@ -356,7 +356,7 @@ export default function Overview() {
               {/* Detailed Metric View */}
               <Card className="bg-slate-800/30 border-slate-700/50">
                 <CardHeader>
-                  <CardTitle className="flex items-centre gap-2">
+                  <CardTitle className="flex items-center gap-2">
                     {React.createElement(systemMetrics[selectedMetric as keyof typeof systemMetrics].icon, {
                       className: `h-5 w-5 ${systemMetrics[selectedMetric as keyof typeof systemMetrics].colour}`
                     })}
@@ -430,7 +430,7 @@ export default function Overview() {
           {/* Quick Actions Hub */}
           <section className="mb-16">
             <div className="max-w-6xl mx-auto">
-              <div className="text-centre mb-12">
+              <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent">
                     Quick Actions
@@ -449,7 +449,7 @@ export default function Overview() {
                       <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-all duration-300 group cursor-pointer h-full">
                         <CardContent className="p-6">
                           <div className="space-y-4">
-                            <div className={`w-12 h-12 bg-gradient-to-r ${action.gradient} rounded-xl flex items-centre justify-centre group-hover:scale-110 transition-transform`}>
+                            <div className={`w-12 h-12 bg-gradient-to-r ${action.gradient} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
                               <IconComponent className="h-6 w-6 text-white" />
                             </div>
                             
@@ -462,7 +462,7 @@ export default function Overview() {
                               </p>
                             </div>
 
-                            <div className="flex items-centre justify-between">
+                            <div className="flex items-center justify-between">
                               <Badge variant="outline" className="text-xs">
                                 {action.stats}
                               </Badge>
@@ -481,7 +481,7 @@ export default function Overview() {
           {/* Recent System Updates */}
           <section className="mb-16">
             <div className="max-w-6xl mx-auto">
-              <div className="flex items-centre justify-between mb-8">
+              <div className="flex items-center justify-between mb-8">
                 <div>
                   <h2 className="text-3xl font-bold mb-2">
                     <span className="bg-gradient-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent">
@@ -506,7 +506,7 @@ export default function Overview() {
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between">
                         <div className="space-y-3 flex-1">
-                          <div className="flex items-centre gap-3">
+                          <div className="flex items-center gap-3">
                             <h3 className="font-bold text-slate-200">{update.title}</h3>
                             <Badge 
                               variant="outline" 
@@ -527,12 +527,12 @@ export default function Overview() {
                             {update.description}
                           </p>
                           
-                          <div className="flex items-centre gap-4 text-xs text-slate-500">
-                            <div className="flex items-centre gap-1">
+                          <div className="flex items-center gap-4 text-xs text-slate-500">
+                            <div className="flex items-center gap-1">
                               <Clock className="h-3 w-3" />
                               {update.timestamp}
                             </div>
-                            <div className="flex items-centre gap-1">
+                            <div className="flex items-center gap-1">
                               <GitCommit className="h-3 w-3" />
                               {update.changes}
                             </div>
@@ -554,7 +554,7 @@ export default function Overview() {
           {/* System Resources */}
           <section className="mb-16">
             <div className="max-w-6xl mx-auto">
-              <div className="text-centre mb-12">
+              <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                     Essential Resources
@@ -569,7 +569,7 @@ export default function Overview() {
                 {/* For Developers */}
                 <Card className="bg-slate-800/30 border-slate-700/50">
                   <CardHeader>
-                    <CardTitle className="flex items-centre gap-2">
+                    <CardTitle className="flex items-center gap-2">
                       <Code2 className="h-5 w-5 text-blue-400" />
                       For Developers
                     </CardTitle>
@@ -580,7 +580,7 @@ export default function Overview() {
                   <CardContent className="space-y-4">
                     <div className="space-y-3">
                       <Link href="/design-system/getting-started" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Getting Started</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -588,7 +588,7 @@ export default function Overview() {
                       </Link>
                       
                       <Link href="/design-system/tokens" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Design Tokens</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -596,7 +596,7 @@ export default function Overview() {
                       </Link>
                       
                       <Link href="/components" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Component Library</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -609,7 +609,7 @@ export default function Overview() {
                 {/* For Designers */}
                 <Card className="bg-slate-800/30 border-slate-700/50">
                   <CardHeader>
-                    <CardTitle className="flex items-centre gap-2">
+                    <CardTitle className="flex items-center gap-2">
                       <Palette className="h-5 w-5 text-fuchsia-400" />
                       For Designers
                     </CardTitle>
@@ -620,7 +620,7 @@ export default function Overview() {
                   <CardContent className="space-y-4">
                     <div className="space-y-3">
                       <Link href="/design-system/principles" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Design Principles</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -628,7 +628,7 @@ export default function Overview() {
                       </Link>
                       
                       <Link href="/design-system/style-guide" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Style Guide</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -636,7 +636,7 @@ export default function Overview() {
                       </Link>
                       
                       <Link href="/design-system/elevation" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Elevation System</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -649,7 +649,7 @@ export default function Overview() {
                 {/* For Teams */}
                 <Card className="bg-slate-800/30 border-slate-700/50">
                   <CardHeader>
-                    <CardTitle className="flex items-centre gap-2">
+                    <CardTitle className="flex items-center gap-2">
                       <Users className="h-5 w-5 text-green-400" />
                       For Teams
                     </CardTitle>
@@ -660,7 +660,7 @@ export default function Overview() {
                   <CardContent className="space-y-4">
                     <div className="space-y-3">
                       <Link href="/design-system/best-practices" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Best Practices</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -668,7 +668,7 @@ export default function Overview() {
                       </Link>
                       
                       <Link href="/design-system/accessibility" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Accessibility</span>
                           <ArrowRight className="h-4 w-4 text-slate-400" />
                         </div>
@@ -676,7 +676,7 @@ export default function Overview() {
                       </Link>
                       
                       <div className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <span className="text-sm font-medium text-slate-200">Support</span>
                           <ExternalLink className="h-4 w-4 text-slate-400" />
                         </div>
@@ -693,6 +693,7 @@ export default function Overview() {
     </div>
   )
 }
+
 
 
 

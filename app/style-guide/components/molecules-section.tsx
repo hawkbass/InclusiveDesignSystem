@@ -253,19 +253,19 @@ export function MoleculesSection({
     <div className="space-y-12">
       {/* Summary Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
           <div className="text-3xl font-bold text-purple-400">{basicComponents.length}</div>
           <div className="text-sm text-slate-400">Basic Components</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
           <div className="text-3xl font-bold text-indigo-400">{advancedMolecules.length}</div>
           <div className="text-sm text-slate-400">Advanced Molecules</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
           <div className="text-3xl font-bold text-fuchsia-400">{basicComponents.length + advancedMolecules.length}</div>
           <div className="text-sm text-slate-400">Total Components</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-centre border border-slate-700/30">
+        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
           <div className="text-3xl font-bold text-green-400">{advancedMolecules.filter(mol => mol.status === 'Production Ready').length}</div>
           <div className="text-sm text-slate-400">Production Ready</div>
         </div>
@@ -273,7 +273,7 @@ export function MoleculesSection({
 
       {/* Basic Components Section */}
       <div>
-        <div className="flex items-centre gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-6">
           <div className="p-2 rounded-lg bg-purple-500/20">
             <Component className="h-5 w-5 text-purple-400" />
           </div>
@@ -287,9 +287,9 @@ export function MoleculesSection({
           {filteredBasicComponents.map((comp, index) => (
             <Card key={comp.id} className="bg-slate-800/30 border-slate-700/50 hover:border-purple-500/50 transition-all group">
               <CardHeader>
-                <div className="flex items-centre justify-between">
+                <div className="flex items-center justify-between">
                   <div className="flex-1">
-                    <div className="flex items-centre gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-1">
                       <CardTitle className="text-lg text-slate-200">{comp.name}</CardTitle>
                       <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
                         {comp.category}
@@ -312,7 +312,7 @@ export function MoleculesSection({
 
               <CardContent className="space-y-4">
                 {/* Live Preview */}
-                <div className="bg-slate-900/50 rounded-lg p-4 flex items-centre justify-centre min-h-[60px] border border-slate-700/30">
+                <div className="bg-slate-900/50 rounded-lg p-4 flex items-center justify-center min-h-[60px] border border-slate-700/30">
                   {comp.component}
                 </div>
 
@@ -362,7 +362,7 @@ export function MoleculesSection({
 
       {/* Advanced Molecules Section */}
       <div>
-        <div className="flex items-centre gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-6">
           <div className="p-2 rounded-lg bg-indigo-500/20">
             <Sparkles className="h-5 w-5 text-indigo-400" />
           </div>
@@ -378,7 +378,7 @@ export function MoleculesSection({
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <div className="flex items-centre gap-2 mb-2">
+                    <div className="flex items-center gap-2 mb-2">
                       <CardTitle className="text-lg text-slate-200">{molecule.name}</CardTitle>
                       <Badge className={`text-xs ${
                         molecule.status === 'Production Ready' ? 'bg-green-500/20 text-green-300' :
@@ -388,7 +388,7 @@ export function MoleculesSection({
                         {molecule.status}
                       </Badge>
                     </div>
-                    <div className="flex items-centre gap-2 mb-3">
+                    <div className="flex items-center gap-2 mb-3">
                       <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
                         {molecule.category}
                       </Badge>
@@ -487,6 +487,7 @@ export function MoleculesSection({
     </div>
   )
 }
+
 
 
 

@@ -325,9 +325,9 @@ export default function ThemingUniversal() {
         {/* Strategic Header with Immediate Value */}
         <section className="relative px-6 lg:px-12 pt-8 pb-6 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row items-start lg:items-centre justify-between gap-6">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div className="flex-1">
-                <div className="flex items-centre gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-xl bg-fuchsia-500/20">
                     <Palette className="h-8 w-8 text-fuchsia-400" />
                   </div>
@@ -338,19 +338,19 @@ export default function ThemingUniversal() {
                 </div>
                 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                  <div className="text-centre p-3 rounded-lg bg-slate-800/30">
+                  <div className="text-center p-3 rounded-lg bg-slate-800/30">
                     <div className="text-2xl font-bold text-slate-100">{themeChanges}</div>
                     <div className="text-sm text-slate-500">Themes Applied</div>
                   </div>
-                  <div className="text-centre p-3 rounded-lg bg-slate-800/30">
+                  <div className="text-center p-3 rounded-lg bg-slate-800/30">
                     <div className="text-2xl font-bold text-slate-100">{customizationScore}%</div>
                     <div className="text-sm text-slate-500">customisation Score</div>
                   </div>
-                  <div className="text-centre p-3 rounded-lg bg-slate-800/30">
+                  <div className="text-center p-3 rounded-lg bg-slate-800/30">
                     <div className="text-2xl font-bold text-slate-100">{favourites.size}</div>
                     <div className="text-sm text-slate-500">Favourites</div>
                   </div>
-                  <div className="text-centre p-3 rounded-lg bg-slate-800/30">
+                  <div className="text-center p-3 rounded-lg bg-slate-800/30">
                     <div className="text-2xl font-bold text-slate-100">AAA</div>
                     <div className="text-sm text-slate-500">Contrast Rating</div>
                   </div>
@@ -401,7 +401,7 @@ export default function ThemingUniversal() {
                   {filteredItems.length > 0 ? (
                     filteredItems.slice(0, 6).map((item) => (
                       <div key={item.id} className="p-3 hover:bg-slate-700/30 cursor-pointer border-b border-slate-700/30 last:border-b-0">
-                        <div className="flex items-centre justify-between">
+                        <div className="flex items-center justify-between">
                           <div>
                             <div className="font-medium text-slate-100">{item.name}</div>
                             <div className="text-sm text-slate-400">{item.usage}</div>
@@ -411,7 +411,7 @@ export default function ThemingUniversal() {
                       </div>
                     ))
                   ) : (
-                    <div className="p-4 text-centre text-slate-500">No results found</div>
+                    <div className="p-4 text-center text-slate-500">No results found</div>
                   )}
                 </div>
               )}
@@ -426,7 +426,7 @@ export default function ThemingUniversal() {
             {/* Immediate Theme Previews */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader>
-                <div className="flex items-centre gap-3">
+                <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-fuchsia-500/20">
                     <Sparkles className="h-5 w-5 text-fuchsia-400" />
                   </div>
@@ -529,8 +529,8 @@ export default function ThemingUniversal() {
             {/* Live customisation Tools */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("customisation")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-blue-500/20">
                       <Sliders className="h-5 w-5 text-blue-400" />
                     </div>
@@ -541,7 +541,7 @@ export default function ThemingUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-blue-500/20 text-blue-300">Live Preview</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("customisation") ? 
@@ -557,14 +557,14 @@ export default function ThemingUniversal() {
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     {/* colour Controls */}
                     <div className="space-y-6">
-                      <h3 className="text-lg font-semibold text-slate-100 flex items-centre gap-2">
+                      <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
                         <PaintBucket className="h-5 w-5 text-fuchsia-400" />
                         colour Scheme
                       </h3>
                       
                       {Object.entries(customTheme).map(([key, value]) => (
                         <div key={key} className="space-y-2">
-                          <div className="flex items-centre justify-between">
+                          <div className="flex items-center justify-between">
                             <label className="text-sm font-medium text-slate-300 capitalize">
                               {key.replace(/([A-Z])/g, ' $1')}
                             </label>
@@ -572,7 +572,7 @@ export default function ThemingUniversal() {
                               {value}
                             </Badge>
                           </div>
-                          <div className="flex items-centre gap-3">
+                          <div className="flex items-center gap-3">
                             <div
                               className="w-10 h-10 rounded-lg border border-slate-600"
                               style={{ backgroundColor: value }}
@@ -607,7 +607,7 @@ export default function ThemingUniversal() {
                     
                     {/* Live Preview */}
                     <div className="space-y-6">
-                      <h3 className="text-lg font-semibold text-slate-100 flex items-centre gap-2">
+                      <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
                         <Eye className="h-5 w-5 text-green-400" />
                         Live Preview
                       </h3>
@@ -658,7 +658,7 @@ export default function ThemingUniversal() {
                           </div>
                         </div>
                         
-                        <div className="text-centre">
+                        <div className="text-center">
                           <Button onClick={testContrast} size="sm" variant="outline">
                             <TestTube className="h-4 w-4 mr-2" />
                             Test Contrast
@@ -674,8 +674,8 @@ export default function ThemingUniversal() {
             {/* CSS Variables Reference */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("variables")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
                       <Code className="h-5 w-5 text-green-400" />
                     </div>
@@ -686,7 +686,7 @@ export default function ThemingUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-green-500/20 text-green-300">Ready to Use</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("variables") ? 
@@ -710,8 +710,8 @@ export default function ThemingUniversal() {
                         { name: "Surface", var: "--colour-surface", value: "#1e293b" },
                         { name: "Text", var: "--colour-text", value: "#f8fafc" }
                       ].map((colour) => (
-                        <div key={colour.var} className="flex items-centre justify-between p-3 rounded-lg bg-slate-900/30">
-                          <div className="flex items-centre gap-3">
+                        <div key={colour.var} className="flex items-center justify-between p-3 rounded-lg bg-slate-900/30">
+                          <div className="flex items-center gap-3">
                             <div 
                               className="w-6 h-6 rounded border border-slate-600"
                               style={{ backgroundColor: colour.value }}
@@ -746,8 +746,8 @@ export default function ThemingUniversal() {
                         { name: "LG", var: "--spacing-lg", value: "1.5rem" },
                         { name: "XL", var: "--spacing-xl", value: "2rem" }
                       ].map((spacing) => (
-                        <div key={spacing.var} className="flex items-centre justify-between p-3 rounded-lg bg-slate-900/30">
-                          <div className="flex items-centre gap-3">
+                        <div key={spacing.var} className="flex items-center justify-between p-3 rounded-lg bg-slate-900/30">
+                          <div className="flex items-center gap-3">
                             <div 
                               className="bg-fuchsia-500/30 h-4 border border-fuchsia-500/50"
                               style={{ width: spacing.value }}
@@ -782,7 +782,7 @@ export default function ThemingUniversal() {
                         { name: "LG", var: "--font-size-lg", value: "1.125rem" },
                         { name: "XL", var: "--font-size-xl", value: "1.25rem" }
                       ].map((font) => (
-                        <div key={font.var} className="flex items-centre justify-between p-3 rounded-lg bg-slate-900/30">
+                        <div key={font.var} className="flex items-center justify-between p-3 rounded-lg bg-slate-900/30">
                           <div>
                             <div 
                               className="font-medium text-slate-100"
@@ -814,8 +814,8 @@ export default function ThemingUniversal() {
             {/* Accessibility & Testing Tools */}
             <Card className="border-slate-700/50 bg-slate-800/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("tools")}>
-                <div className="flex items-centre justify-between">
-                  <div className="flex items-centre gap-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-purple-500/20">
                       <TestTube className="h-5 w-5 text-purple-400" />
                     </div>
@@ -826,7 +826,7 @@ export default function ThemingUniversal() {
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-centre gap-2">
+                  <div className="flex items-center gap-2">
                     <Badge className="bg-purple-500/20 text-purple-300">WCAG AAA</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("tools") ? 
@@ -884,8 +884,8 @@ export default function ThemingUniversal() {
                       }
                     ].map((tool) => (
                       <Card key={tool.id} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 transition-all group cursor-pointer">
-                        <CardContent className="p-6 text-centre">
-                          <div className={`w-12 h-12 rounded-xl ${tool.colour} mx-auto mb-4 flex items-centre justify-centre`}>
+                        <CardContent className="p-6 text-center">
+                          <div className={`w-12 h-12 rounded-xl ${tool.colour} mx-auto mb-4 flex items-center justify-center`}>
                             <tool.icon className="h-6 w-6" />
                           </div>
                           <h3 className="text-lg font-semibold text-slate-100 mb-2">{tool.title}</h3>
@@ -911,6 +911,7 @@ export default function ThemingUniversal() {
     </div>
   )
 }
+
 
 
 
