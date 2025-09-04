@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
+import { Tabs, TabsContent } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import {
   ArrowRight,
@@ -36,909 +38,610 @@ import {
   Shield,
   RefreshCw,
   AlertTriangle,
-  TrendingUp
+  TrendingUp,
+  Lightbulb
 } from "lucide-react"
 import Link from "next/link"
 
-// Enhanced pattern data with Universal Comprehension structure
-const patternCategories = [
-  {
-    name: "Navigation Patterns",
-    description: "Common navigation structures and wayfinding solutions for recruitment applications",
-    icon: Navigation,
-    colour: "from-blue-500 to-cyan-600",
-    bgColor: "bg-blue-500/10",
-    count: 8,
-    patterns: [
-      {
-        id: "nav-primary",
-        name: "Primary Navigation",
-        description: "Top-level navigation for main site sections",
-        complexity: "Simple",
-        usage: "Site-wide navigation, main menu systems",
-        examples: ["Header nav", "Sidebar menu", "Tab navigation"],
-        category: "Navigation Patterns",
-        tags: ["navigation", "header", "menu"],
-        code: `<nav className="flex items-center space-x-6">
-  <Link href="/" className="text-slate-700 hover:text-slate-900">Home</Link>
-  <Link href="/candidates" className="text-slate-700 hover:text-slate-900">Candidates</Link>
-  <Link href="/jobs" className="text-slate-700 hover:text-slate-900">Jobs</Link>
-</nav>`
-      },
-      {
-        id: "nav-breadcrumb",
-        name: "Breadcrumb Navigation",
-        description: "Hierarchical navigation showing user location",
-        complexity: "Simple",
-        usage: "Deep site structures, user orientation",
-        examples: ["File explorer", "Candidate profiles", "Job details"],
-        category: "Navigation Patterns",
-        tags: ["navigation", "breadcrumb", "hierarchy"],
-        code: `<nav aria-label="Breadcrumb">
-  <ol className="flex items-center space-x-2">
-    <li><Link href="/">Home</Link></li>
-    <li>></li>
-    <li><Link href="/candidates">Candidates</Link></li>
-    <li>></li>
-    <li>Profile</li>
-  </ol>
-</nav>`
-      },
-      {
-        id: "nav-tabs",
-        name: "Tab Navigation",
-        description: "Content switching within the same page context",
-        complexity: "Medium",
-        usage: "Content organisation, settings panels",
-        examples: ["Candidate profile", "Job details", "Dashboard sections"],
-        category: "Navigation Patterns",
-        tags: ["navigation", "tabs", "content"],
-        code: `<Tabs defaultValue="overview">
-  <TabsList>
-    <TabsTrigger value="overview">Overview</TabsTrigger>
-    <TabsTrigger value="experience">Experience</TabsTrigger>
-    <TabsTrigger value="skills">Skills</TabsTrigger>
-  </TabsList>
-  <TabsContent value="overview">Candidate overview</TabsContent>
-</Tabs>`
-      }
-    ]
-  },
-  {
-    name: "Form Patterns",
-    description: "Data collection and input patterns for recruitment workflows",
-    icon: FileText,
-    colour: "from-green-500 to-emerald-600",
-    bgColor: "bg-green-500/10",
-    count: 6,
-    patterns: [
-      {
-        id: "form-candidate",
-        name: "Candidate Application Form",
-        description: "Comprehensive candidate information collection",
-        complexity: "Complex",
-        usage: "Application process, profile creation",
-        examples: ["Job application", "Candidate registration", "Profile updates"],
-        category: "Form Patterns",
-        tags: ["form", "candidate", "application"],
-        code: `<form className="space-y-6">
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div>
-      <Label htmlFor="firstName">First Name</Label>
-      <Input id="firstName" required />
-    </div>
-    <div>
-      <Label htmlFor="lastName">Last Name</Label>
-      <Input id="lastName" required />
-    </div>
-  </div>
-  <div>
-    <Label htmlFor="email">Email</Label>
-    <Input id="email" type="email" required />
-  </div>
-  <div>
-    <Label htmlFor="cv">CV Upload</Label>
-    <Input id="cv" type="file" accept=".pdf,.doc,.docx" />
-  </div>
-  <Button type="submit">Submit Application</Button>
-</form>`
-      },
-      {
-        id: "form-job-posting",
-        name: "Job Posting Form",
-        description: "Create and edit job postings efficiently",
-        complexity: "Medium",
-        usage: "Job creation, posting management",
-        examples: ["New job posting", "Job editing", "Requirements setup"],
-        category: "Form Patterns",
-        tags: ["form", "job", "posting"],
-        code: `<form className="space-y-4">
-  <div>
-    <Label htmlFor="jobTitle">Job Title</Label>
-    <Input id="jobTitle" placeholder="Senior React Developer" />
-  </div>
-  <div>
-    <Label htmlFor="location">Location</Label>
-    <Select>
-      <SelectValue placeholder="Select location" />
-      <SelectContent>
-        <SelectItem value="remote">Remote</SelectItem>
-        <SelectItem value="london">London, UK</SelectItem>
-        <SelectItem value="manchester">Manchester, UK</SelectItem>
-      </SelectContent>
-    </Select>
-  </div>
-  <div>
-    <Label htmlFor="description">Job Description</Label>
-    <Textarea id="description" rows={6} />
-  </div>
-  <Button type="submit">Publish Job</Button>
-</form>`
-      }
-    ]
-  },
-  {
-    name: "Layout Patterns",
-    description: "Page structure and content organisation for recruitment interfaces",
-    icon: Layout,
-    colour: "from-purple-500 to-violet-600",
-    bgColor: "bg-purple-500/10",
-    count: 5,
-    patterns: [
-      {
-        id: "layout-dashboard",
-        name: "Recruitment Dashboard",
-        description: "Data-rich interface for recruitment metrics and actions",
-        complexity: "Complex",
-        usage: "Admin panels, analytics, candidate management",
-        examples: ["Recruiter dashboard", "Analytics panel", "Candidate overview"],
-        category: "Layout Patterns",
-        tags: ["layout", "dashboard", "recruitment"],
-        code: `<div className="grid grid-cols-12 gap-6">
-  <aside className="col-span-2">
-    <RecruitmentSidebar />
-  </aside>
-  <main className="col-span-7">
-    <CandidateList />
-    <JobPostings />
-  </main>
-  <aside className="col-span-3">
-    <UpcomingInterviews />
-    <RecentActivity />
-  </aside>
-</div>`
-      },
-      {
-        id: "layout-candidate-grid",
-        name: "Candidate Grid Layout",
-        description: "Responsive grid of candidate cards",
-        complexity: "Simple",
-        usage: "Candidate browsing, search results",
-        examples: ["Candidate search", "Talent pool", "Shortlist view"],
-        category: "Layout Patterns",
-        tags: ["layout", "grid", "candidates"],
-        code: `<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-  {candidates.map(candidate => (
-    <CandidateCard 
-      key={candidate.id}
-      candidate={candidate}
-      onSelect={handleSelect}
-    />
-  ))}
-</div>`
-      }
-    ]
-  },
-  {
-    name: "Data Display Patterns",
-    description: "Patterns for presenting recruitment data and analytics",
-    icon: Table,
-    colour: "from-orange-500 to-red-600",
-    bgColor: "bg-orange-500/10",
-    count: 7,
-    patterns: [
-      {
-        id: "data-candidate-table",
-        name: "Candidate Data Table",
-        description: "Structured candidate data with sorting and filtering",
-        complexity: "Medium",
-        usage: "Candidate management, bulk operations",
-        examples: ["Candidate lists", "Application tracking", "Interview scheduling"],
-        category: "Data Display Patterns",
-        tags: ["data", "table", "candidates"],
-        code: `<Table>
-  <TableHeader>
-    <TableRow>
-      <TableHead>Name</TableHead>
-      <TableHead>Email</TableHead>
-      <TableHead>Status</TableHead>
-      <TableHead>Applied Date</TableHead>
-      <TableHead>Actions</TableHead>
-    </TableRow>
-  </TableHeader>
-  <TableBody>
-    {candidates.map(candidate => (
-      <TableRow key={candidate.id}>
-        <TableCell>{candidate.name}</TableCell>
-        <TableCell>{candidate.email}</TableCell>
-        <TableCell><StatusBadge status={candidate.status} /></TableCell>
-        <TableCell>{formatDate(candidate.appliedAt)}</TableCell>
-        <TableCell>
-          <Button size="sm">View</Button>
-        </TableCell>
-      </TableRow>
-    ))}
-  </TableBody>
-</Table>`
-      },
-      {
-        id: "data-recruitment-stats",
-        name: "Recruitment Statistics Dashboard",
-        description: "Key recruitment metrics and performance indicators",
-        complexity: "Medium",
-        usage: "Performance tracking, recruitment analytics",
-        examples: ["Hiring metrics", "Pipeline analytics", "Team performance"],
-        category: "Data Display Patterns",
-        tags: ["data", "stats", "analytics"],
-        code: `<div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-  {stats.map(stat => (
-    <Card key={stat.id}>
-      <CardContent className="p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <div className="text-2xl font-bold">{stat.value}</div>
-            <div className="text-sm text-slate-600">{stat.label}</div>
-          </div>
-          <stat.icon className="h-8 w-8 text-fuchsia-500" />
-        </div>
-        <div className="text-sm text-green-600 mt-2">
-          {stat.change}% from last month
-        </div>
-      </CardContent>
-    </Card>
-  ))}
-</div>`
-      }
-    ]
-  }
-]
-
-// Get all patterns flattened with enhanced metadata
-const allPatterns = patternCategories.flatMap(category => 
-  category.patterns.map(pattern => ({
-    ...pattern,
-    categoryIcon: category.icon,
-    categoryColor: category.colour
-  }))
-)
-
-// Quick Actions for immediate value
-const quickActions = [
-  {
-    title: "Copy All Patterns",
-    description: "Export complete pattern library",
-    icon: Copy,
-    action: "copy-all",
-    colour: "bg-green-500/20 text-green-300 border-green-500/30"
-  },
-  {
-    title: "Download Templates",
-    description: "Get ready-to-use component templates",
-    icon: Download,
-    action: "download-templates",
-    colour: "bg-blue-500/20 text-blue-300 border-blue-500/30"
-  },
-  {
-    title: "View Best Practices",
-    description: "Pattern implementation guidelines",
-    icon: BookOpen,
-    action: "view-practices",
-    colour: "bg-purple-500/20 text-purple-300 border-purple-500/30"
-  },
-  {
-    title: "Test Patterns",
-    description: "Interactive pattern playground",
-    icon: PlayCircle,
-    action: "test-patterns",
-    colour: "bg-orange-500/20 text-orange-300 border-orange-500/30"
-  }
-]
-
-// Pattern statistics
-const patternStats = [
-  { 
-    label: "Total Patterns", 
-    value: allPatterns.length, 
-    icon: Component, 
-    colour: "text-fuchsia-400",
-    change: "+3 this month"
-  },
-  { 
-    label: "Categories", 
-    value: patternCategories.length, 
-    icon: Grid3X3, 
-    colour: "text-blue-400",
-    change: "Organized system"
-  },
-  { 
-    label: "Simple Patterns", 
-    value: allPatterns.filter(p => p.complexity === "Simple").length, 
-    icon: Zap, 
-    colour: "text-green-400",
-    change: "Quick to implement"
-  },
-  { 
-    label: "Production Ready", 
-    value: "100%", 
-    icon: CheckCircle2, 
-    colour: "text-purple-400",
-    change: "Battle tested"
-  }
-]
-
-export default function PatternsPage() {
+export default function Patterns() {
   const [mounted, setMounted] = useState(false)
-  const [animationSpeed, setAnimationSpeed] = useState([1])
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("all")
-  const [complexityFilter, setComplexityFilter] = useState("all")
-  const [favourites, setFavorites] = useState<Set<string>>(new Set())
   const [copiedCode, setCopiedCode] = useState("")
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(["overview", "navigation", "forms", "layouts", "data"]))
+  const [activeTab, setActiveTab] = useState("overview")
+  const [selectedCategory, setSelectedCategory] = useState("all")
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  useEffect(() => {
-    if (animationSpeed?.[0]) {
-      document.documentElement.style.setProperty('--animation-speed', `${1 / animationSpeed[0]}s`)
-    }
-  }, [animationSpeed])
-
-  const handleCopyCode = async (code: string, id?: string) => {
-    try {
-      await navigator.clipboard.writeText(code)
-      setCopiedCode(id || 'copied')
-      setTimeout(() => setCopiedCode(""), 2000)
-    } catch (err) {
-      console.error('Failed to copy code:', err)
-    }
-  }
-
-  const handleToggleFavorite = (patternId: string) => {
-    setFavorites(prev => {
-      const newFavorites = new Set(prev)
-      if (newFavorites.has(patternId)) {
-        newFavorites.delete(patternId)
-      } else {
-        newFavorites.add(patternId)
-      }
-      return newFavorites
-    })
-  }
-
-  const handleQuickAction = async (action: string) => {
-    switch (action) {
-      case 'copy-all':
-        const allCode = allPatterns.map(p => `// ${p.name}\n${p.code}`).join('\n\n')
-        await handleCopyCode(allCode, 'copy-all')
-        break
-      case 'download-templates':
-        const templateData = allPatterns.map(p => ({
-          name: p.name,
-          category: p.category,
-          complexity: p.complexity,
-          code: p.code
-        }))
-        const blob = new Blob([JSON.stringify(templateData, null, 2)], { type: 'application/json' })
-        const url = URL.createObjectURL(blob)
-        const a = document.createElement('a')
-        a.href = url
-        a.download = 'ui-patterns-templates.json'
-        a.click()
-        URL.revokeObjectURL(url)
-        break
-      case 'view-practices':
-        // Navigate to best practices
-        break
-      case 'test-patterns':
-        // Open pattern playground
-        break
-    }
-  }
-
-  const toggleSection = (sectionId: string) => {
-    setExpandedSections(prev => {
-      const newExpanded = new Set(prev)
-      if (newExpanded.has(sectionId)) {
-        newExpanded.delete(sectionId)
-      } else {
-        newExpanded.add(sectionId)
-      }
-      return newExpanded
-    })
-  }
-
-  // Filter patterns for search
-  const searchResults = searchQuery ? allPatterns.filter(pattern =>
-    pattern.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    pattern.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    pattern.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
-  ) : []
-
   if (!mounted) {
     return null
   }
 
+  const handleCopyCode = (code: string, id: string) => {
+    navigator.clipboard.writeText(code)
+    setCopiedCode(id)
+    setTimeout(() => setCopiedCode(""), 2000)
+  }
+
+  const patternCategories = [
+    {
+      id: "navigation",
+      name: "Navigation",
+      description: "Wayfinding and menu systems",
+      icon: Navigation,
+      color: "from-blue-500 to-cyan-600",
+      count: 8,
+      patterns: ["Primary Nav", "Breadcrumbs", "Tabs", "Pagination"]
+    },
+    {
+      id: "layout",
+      name: "Layout",
+      description: "Page and content structure patterns",
+      icon: Layout,
+      color: "from-green-500 to-emerald-600",
+      count: 12,
+      patterns: ["Grid Systems", "Card Layouts", "Sidebars", "Headers"]
+    },
+    {
+      id: "forms",
+      name: "Forms",
+      description: "Input and data collection patterns",
+      icon: FileText,
+      color: "from-purple-500 to-fuchsia-600",
+      count: 15,
+      patterns: ["Login Forms", "Multi-step", "Validation", "Search"]
+    },
+    {
+      id: "feedback",
+      name: "Feedback",
+      description: "User feedback and status patterns",
+      icon: AlertTriangle,
+      color: "from-orange-500 to-red-600",
+      count: 10,
+      patterns: ["Alerts", "Notifications", "Loading", "Empty States"]
+    }
+  ]
+
   return (
     <div className="flex bg-slate-950 min-h-screen">
-      <UnifiedSidebar animationSpeed={animationSpeed} />
+      <UnifiedSidebar />
+      
       <main className="flex-1 overflow-auto">
-        {/* Universal Comprehension Header */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-slate-800">
-          <div className="px-6 lg:px-12 py-12">
-            <div className="max-w-7xl mx-auto">
-              {/* Quick Value Metrics - Immediate surfacing */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                {patternStats.map((stat, index) => (
-                  <Card key={stat.label} className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm">
-                    <CardContent className="p-4 text-center">
-                      <div className="flex items-center justify-center mb-2">
-                        <stat.icon className={`h-6 w-6 ${stat.colour}`} />
-                      </div>
-                      <div className="text-2xl font-bold text-slate-100">{stat.value}</div>
-                      <div className="text-xs text-slate-400">{stat.label}</div>
-                      <div className="text-xs text-green-400 mt-1">{stat.change}</div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                {/* Value Proposition */}
-                <div className="space-y-6">
-                  <div className="flex flex-wrap gap-3 mb-4">
-                    <Badge className="bg-green-950 text-green-300 border-green-800">
-                      <CheckCircle2 className="w-3 h-3 mr-1" />
-                      {allPatterns.length} Ready Patterns
-                    </Badge>
-                    <Badge className="bg-blue-950 text-blue-300 border-blue-800">
-                      <Award className="w-3 h-3 mr-1" />
-                      Production Tested
-                    </Badge>
-                    <Badge className="bg-purple-950 text-purple-300 border-purple-800">
-                      <Target className="w-3 h-3 mr-1" />
-                      Recruitment Focused
-                    </Badge>
-                  </div>
-                  
-                  <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
-                    <span className="bg-gradient-to-r from-fuchsia-600 via-purple-600 to-blue-600 bg-clip-text text-transparent">
-                      UI Patterns
-                    </span>
-                    <br />
-                    <span className="text-slate-100">Library</span>
+        <div className="flex flex-col min-h-screen">
+          {/* Header */}
+          <header className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
+            <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-indigo-500/5" />
+            <div className="absolute top-0 left-1/3 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+            
+            <div className="relative px-6 lg:px-12 py-12">
+              <div className="max-w-7xl mx-auto">
+                <div className="text-center mb-8">
+                  <Badge className="bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 text-fuchsia-300 border-fuchsia-500/30 mb-4">
+                    Design System Patterns
+                  </Badge>
+                  <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+                    UI Patterns
+                    <span className="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent"> Library</span>
                   </h1>
-                  
-                  <p className="text-xl text-slate-300 leading-relaxed max-w-2xl">
-                    Production-ready interface patterns for recruitment applications. Each pattern includes 
-                    <span className="text-fuchsia-400 font-semibold"> accessibility guidelines</span>, 
-                    <span className="text-purple-400 font-semibold"> copy-paste code</span>, and real-world usage examples.
+                  <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+                    Proven interface patterns and solutions for common design challenges. Build faster with tested, accessible patterns.
                   </p>
+                </div>
 
-                  {/* Quick Actions */}
-                  <div className="grid grid-cols-2 gap-3">
-                    {quickActions.map((action) => (
+                {/* Search Bar */}
+                <div className="max-w-2xl mx-auto relative mb-8">
+                  <div className="relative">
+                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-500" />
+                    <Input
+                      placeholder="Search patterns... Try 'navigation', 'forms', or 'feedback'"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      className="pl-12 pr-12 py-4 text-lg bg-slate-800/50 border-slate-700 text-slate-200 placeholder-slate-500 rounded-xl"
+                    />
+                    {searchQuery && (
                       <Button
-                        key={action.action}
-                        variant="outline"
-                        className={`${action.colour} hover:scale-105 transition-all text-left justify-start h-auto p-4`}
-                        onClick={() => handleQuickAction(action.action)}
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setSearchQuery("")}
+                        className="absolute right-2 top-1/2 transform -translate-y-1/2 text-slate-400 hover:text-slate-200"
                       >
-                        <action.icon className="h-5 w-5 mr-3 flex-shrink-0" />
-                        <div>
-                          <div className="font-medium">{action.title}</div>
-                          <div className="text-xs opacity-80">{action.description}</div>
-                        </div>
-                        {copiedCode === action.action && <CheckCircle2 className="h-4 w-4 ml-auto text-green-400" />}
+                        ✕
                       </Button>
-                    ))}
+                    )}
                   </div>
                 </div>
 
-                {/* Live Search & Discovery */}
-                <div className="space-y-6">
-                  <div className="relative">
-                    <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-400" />
-                    <Input
-                      placeholder="Search patterns, categories, or use cases..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="pl-12 h-14 text-lg bg-slate-800/50 border-slate-700/50 focus:border-fuchsia-500/50"
-                    />
-                  </div>
-
-                  {/* Search Results - Immediate surfacing */}
-                  {searchQuery && (
-                    <Card className="bg-slate-800/50 border-slate-700/50">
-                      <CardHeader>
-                        <CardTitle className="text-lg">
-                          Found {searchResults.length} patterns for "{searchQuery}"
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-3 max-h-80 overflow-y-auto">
-                        {searchResults.map((pattern) => (
-                          <div
-                            key={pattern.id}
-                            className="flex items-center justify-between p-3 bg-slate-900/50 rounded-lg hover:bg-slate-900/70 transition-colours cursor-pointer"
-                            onClick={() => {
-                              setSelectedCategory(pattern.category)
-                              setSearchQuery("")
-                              document.getElementById(pattern.id)?.scrollIntoView({ behaviour: 'smooth' })
-                            }}
-                          >
-                            <div className="flex items-center gap-3">
-                              <pattern.categoryIcon className="h-5 w-5 text-fuchsia-400" />
-                              <div>
-                                <div className="font-medium text-slate-200">{pattern.name}</div>
-                                <div className="text-sm text-slate-400">{pattern.category}</div>
-                              </div>
-                            </div>
-                            <ArrowRight className="h-4 w-4 text-slate-400" />
-                          </div>
-                        ))}
-                      </CardContent>
-                    </Card>
-                  )}
-
-                  {/* Category Quick Access */}
-                  <div className="grid grid-cols-2 gap-3">
-                    {patternCategories.map((category) => (
-                      <Button
-                        key={category.name}
-                        variant="outline"
-                        className="border-slate-600 hover:border-fuchsia-500/50 h-auto p-4 justify-start"
-                        onClick={() => {
-                          setSelectedCategory(category.name)
-                          toggleSection(category.name.toLowerCase().replace(' ', '-'))
-                        }}
-                      >
-                        <category.icon className="h-5 w-5 mr-3 text-slate-400" />
-                        <div className="text-left">
-                          <div className="font-medium text-slate-200">{category.name}</div>
-                          <div className="text-xs text-slate-400">{category.count} patterns</div>
-                        </div>
-                      </Button>
-                    ))}
-                  </div>
+                {/* Quick Actions */}
+                <div className="flex flex-wrap justify-center gap-4">
+                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours">
+                    <Download className="h-4 w-4 mr-2" />
+                    Export Patterns
+                  </Button>
+                  <Button size="sm" className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25 transition-all">
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Figma Library
+                  </Button>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
+          </header>
 
-        {/* Smart Progressive Disclosure - Pattern Categories */}
-        <div className="px-6 lg:px-12 py-8">
-          <div className="max-w-7xl mx-auto space-y-8">
-            {patternCategories.map((category) => {
-              const sectionId = category.name.toLowerCase().replace(' patterns', '').replace(' ', '-')
-              const isExpanded = expandedSections.has(sectionId)
-              
-              return (
-                <Card key={category.name} className="bg-slate-800/30 border-slate-700/50">
-                  <CardHeader className="cursor-pointer" onClick={() => toggleSection(sectionId)}>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className={`w-12 h-12 ${category.bgColor} rounded-xl flex items-center justify-center`}>
-                          <category.icon className="h-6 w-6 text-slate-300" />
-                        </div>
-                        <div>
-                          <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
-                            {category.name}
-                            <Badge variant="outline" className="border-slate-600">
-                              {category.count} patterns
-                            </Badge>
-                          </CardTitle>
-                          <CardDescription className="mt-1">{category.description}</CardDescription>
-                        </div>
-                      </div>
-                      <Button variant="ghost" size="sm">
-                        {isExpanded ? "Collapse" : "Expand"}
-                        <ArrowRight className={`h-4 w-4 ml-2 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
-                      </Button>
+          {/* What are UI Patterns? */}
+          <section className="px-6 lg:px-12 py-12 bg-slate-900/30">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                  <h2 className="text-3xl font-bold text-slate-100 mb-6">What are UI Patterns?</h2>
+                  <div className="space-y-4 text-slate-300">
+                    <p className="text-lg">
+                      UI patterns are <strong className="text-fuchsia-300">reusable solutions</strong> to common interface design problems. They provide tested approaches that users already understand.
+                    </p>
+                    <p>
+                      Each pattern includes <strong className="text-purple-300">usage guidance, accessibility considerations, and implementation examples</strong> to help you build better interfaces faster.
+                    </p>
+                  </div>
+                </div>
+                <Card className="bg-slate-800/50 border-slate-700/50">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <Lightbulb className="h-6 w-6 text-fuchsia-400" />
+                      <CardTitle className="text-slate-100">Why Use Patterns?</CardTitle>
                     </div>
                   </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong className="text-slate-200">Faster Development</strong>
+                        <p className="text-sm text-slate-400">Reuse proven solutions instead of starting from scratch</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong className="text-slate-200">Better UX</strong>
+                        <p className="text-sm text-slate-400">Leverage familiar patterns users already understand</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <strong className="text-slate-200">Accessibility Built-in</strong>
+                        <p className="text-sm text-slate-400">Patterns include WCAG compliance by default</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          </section>
 
-                  {isExpanded && (
-                    <CardContent className="space-y-6">
-                      <div className="grid gap-6">
-                        {category.patterns.map((pattern) => (
-                          <Card key={pattern.id} id={pattern.id} className="bg-slate-900/30 border-slate-700/30">
-                            <CardContent className="p-6">
-                              <div className="flex items-start justify-between mb-4">
-                                <div className="flex-1">
-                                  <div className="flex items-center gap-3 mb-2">
-                                    <h3 className="text-lg font-semibold text-slate-100">{pattern.name}</h3>
-                                    <Badge 
-                                      className={
-                                        pattern.complexity === 'Simple' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
-                                        pattern.complexity === 'Medium' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
-                                        'bg-red-500/20 text-red-300 border-red-500/30'
-                                      }
-                                    >
-                                      {pattern.complexity}
-                                    </Badge>
-                                  </div>
-                                  <p className="text-slate-400 mb-3">{pattern.description}</p>
-                                  
-                                  <div className="grid md:grid-cols-2 gap-4 mb-4 text-sm">
-                                    <div>
-                                      <span className="font-medium text-slate-300">Usage:</span>
-                                      <span className="text-slate-400 ml-2">{pattern.usage}</span>
-                                    </div>
-                                    <div>
-                                      <span className="font-medium text-slate-300">Examples:</span>
-                                      <span className="text-slate-400 ml-2">{pattern.examples.join(", ")}</span>
-                                    </div>
-                                  </div>
+          {/* Navigation */}
+          <section className="px-6 lg:px-12 py-8 border-b border-slate-800/50">
+            <div className="max-w-7xl mx-auto">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+                <div className="flex items-center gap-3 mb-8">
+                  <h2 className="text-lg font-semibold text-slate-200">Viewing:</h2>
+                  <Select value={activeTab} onValueChange={setActiveTab}>
+                    <SelectTrigger className="w-auto min-w-[200px] h-10 bg-slate-800/40 border border-slate-700/30 hover:bg-slate-800/60 transition-colors text-slate-300">
+                      {(() => {
+                        const tabs = [
+                          { value: "overview", label: "Overview", icon: Eye },
+                          { value: "navigation", label: "Navigation", icon: Navigation },
+                          { value: "layout", label: "Layout", icon: Layout },
+                          { value: "forms", label: "Forms", icon: FileText },
+                          { value: "feedback", label: "Feedback", icon: AlertTriangle }
+                        ];
+                        const currentTab = tabs.find(tab => tab.value === activeTab);
+                        return currentTab ? (
+                          <div className="flex items-center gap-3">
+                            <currentTab.icon className="h-4 w-4" />
+                            <span>{currentTab.label}</span>
+                          </div>
+                        ) : null;
+                      })()}
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-800 border-slate-700">
+                      <SelectItem value="overview" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <Eye className="h-4 w-4 text-slate-400" />
+                          <span>Overview</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="navigation" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <Navigation className="h-4 w-4 text-slate-400" />
+                          <span>Navigation</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="layout" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <Layout className="h-4 w-4 text-slate-400" />
+                          <span>Layout</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="forms" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <FileText className="h-4 w-4 text-slate-400" />
+                          <span>Forms</span>
+                        </div>
+                      </SelectItem>
+                      <SelectItem value="feedback" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <AlertTriangle className="h-4 w-4 text-slate-400" />
+                          <span>Feedback</span>
+                        </div>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
 
-                                  <div className="flex flex-wrap gap-2 mb-4">
-                                    {pattern.tags.map((tag) => (
-                                      <Badge key={tag} variant="outline" className="text-xs border-slate-600">
-                                        {tag}
-                                      </Badge>
-                                    ))}
-                                  </div>
-                                </div>
+                {/* Overview Tab */}
+                <TabsContent value="overview" className="space-y-8">
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {patternCategories.map((category) => (
+                      <Card key={category.id} className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-colors cursor-pointer" onClick={() => setActiveTab(category.id)}>
+                        <CardHeader className="text-center">
+                          <div className={`mx-auto mb-4 p-3 bg-gradient-to-br ${category.color}/20 rounded-xl w-fit`}>
+                            <category.icon className={`h-8 w-8 text-${category.color.split('-')[1]}-400`} />
+                          </div>
+                          <CardTitle className="text-slate-100">{category.name}</CardTitle>
+                          <CardDescription>{category.description}</CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                          <div className="flex items-center justify-between mb-3">
+                            <Badge variant="outline" className="text-xs">{category.count} patterns</Badge>
+                            <ArrowRight className="h-4 w-4 text-slate-400" />
+                          </div>
+                          <div className="flex flex-wrap gap-1">
+                            {category.patterns.slice(0, 3).map((pattern) => (
+                              <Badge key={pattern} variant="secondary" className="text-xs bg-slate-700/50 text-slate-400">
+                                {pattern}
+                              </Badge>
+                            ))}
+                            {category.patterns.length > 3 && (
+                              <Badge variant="secondary" className="text-xs bg-slate-700/50 text-slate-400">
+                                +{category.patterns.length - 3}
+                              </Badge>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
 
-                                <div className="flex items-center gap-2 ml-4">
-                                  <Button
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={() => handleToggleFavorite(pattern.id)}
-                                    className={`${favourites.has(pattern.id) ? 'text-red-400 border-red-500/50' : 'text-slate-400 border-slate-600'}`}
-                                  >
-                                    <Heart className={`h-4 w-4 ${favourites.has(pattern.id) ? 'fill-current' : ''}`} />
-                                  </Button>
-                                  <Button
-                                    variant="outline"
-                                    size="sm"
-                                    onClick={() => handleCopyCode(pattern.code, pattern.id)}
-                                    className="hover:border-fuchsia-500/50"
-                                  >
-                                    {copiedCode === pattern.id ? (
-                                      <CheckCircle2 className="h-4 w-4 text-green-400" />
-                                    ) : (
-                                      <Copy className="h-4 w-4" />
-                                    )}
-                                  </Button>
-                                </div>
-                              </div>
-
-                              {/* Code Preview */}
-                              <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/30">
-                                <div className="flex items-center justify-between mb-3">
-                                  <div className="flex items-center gap-2">
-                                    <Code2 className="h-4 w-4 text-slate-400" />
-                                    <span className="text-sm font-medium text-slate-300">Implementation</span>
-                                  </div>
-                                  <div className="flex items-center gap-2">
-                                    <Button
-                                      variant="ghost"
-                                      size="sm"
-                                      className="h-6 px-2 text-xs hover:bg-fuchsia-50 dark:hover:bg-fuchsia-950 hover:text-fuchsia-600 dark:hover:text-fuchsia-400"
-                                    >
-                                      <PlayCircle className="h-3 w-3 mr-1" />
-                                      Preview
-                                    </Button>
-                                    <Button
-                                      variant="ghost"
-                                      size="sm"
-                                      onClick={() => handleCopyCode(pattern.code, `${pattern.id}-code`)}
-                                      className="h-6 px-2 text-xs"
-                                    >
-                                      {copiedCode === `${pattern.id}-code` ? (
-                                        <CheckCircle2 className="h-3 w-3 text-green-400" />
-                                      ) : (
-                                        <Copy className="h-3 w-3" />
-                                      )}
-                                    </Button>
-                                  </div>
-                                </div>
-                                <pre className="text-sm overflow-x-auto">
-                                  <code className="text-slate-300">{pattern.code}</code>
-                                </pre>
-                              </div>
-                            </CardContent>
-                          </Card>
+                  {/* Popular Patterns */}
+                  <Card className="bg-slate-800/30 border-slate-700/50">
+                    <CardHeader>
+                      <CardTitle className="text-slate-100 flex items-center gap-3">
+                        <TrendingUp className="h-5 w-5 text-fuchsia-400" />
+                        Most Popular Patterns
+                      </CardTitle>
+                      <CardDescription>Commonly used patterns across successful interfaces</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {[
+                          { name: "Card Layout", category: "Layout", usage: "Content organisation", icon: Layers },
+                          { name: "Navigation Bar", category: "Navigation", usage: "Site navigation", icon: Navigation },
+                          { name: "Login Form", category: "Forms", usage: "User authentication", icon: Shield },
+                          { name: "Loading States", category: "Feedback", usage: "Progress indication", icon: RefreshCw },
+                          { name: "Search Bar", category: "Forms", usage: "Content discovery", icon: Search },
+                          { name: "Breadcrumbs", category: "Navigation", usage: "Location awareness", icon: ArrowRight }
+                        ].map((pattern) => (
+                          <div key={pattern.name} className="p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:bg-slate-800/70 transition-colors cursor-pointer">
+                            <div className="flex items-center gap-3 mb-2">
+                              <pattern.icon className="h-5 w-5 text-fuchsia-400" />
+                              <span className="font-medium text-slate-200">{pattern.name}</span>
+                            </div>
+                            <div className="text-sm text-slate-400 mb-2">{pattern.usage}</div>
+                            <Badge variant="outline" className="text-xs">{pattern.category}</Badge>
+                          </div>
                         ))}
                       </div>
                     </CardContent>
-                  )}
-                </Card>
-              )
-            })}
+                  </Card>
+                </TabsContent>
 
-            {/* favourites Section - If any favourites exist */}
-            {favourites.size > 0 && (
-              <Card className="bg-slate-800/30 border-slate-700/50">
-                <CardHeader>
-                  <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
-                    <Heart className="h-6 w-6 text-red-400" />
-                    favourite Patterns
-                    <Badge variant="outline" className="border-slate-600">
-                      {favourites.size} saved
-                    </Badge>
-                  </CardTitle>
-                  <CardDescription>Your bookmarked patterns for quick access</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {allPatterns.filter(p => favourites.has(p.id)).map((pattern) => (
-                      <div key={pattern.id} className="flex items-center justify-between p-3 bg-slate-900/30 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <pattern.categoryIcon className="h-5 w-5 text-fuchsia-400" />
-                          <div>
-                            <div className="font-medium text-slate-200">{pattern.name}</div>
-                            <div className="text-sm text-slate-400">{pattern.category}</div>
+                {/* Navigation Tab */}
+                <TabsContent value="navigation" className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-100 mb-4">Navigation Patterns</h3>
+                    <p className="text-slate-400 mb-8">
+                      Essential navigation patterns for wayfinding and user orientation across your application.
+                    </p>
+                  </div>
+
+                  <div className="grid lg:grid-cols-2 gap-8">
+                    <Card className="bg-slate-800/30 border-slate-700/50">
+                      <CardHeader>
+                        <CardTitle className="text-slate-100 flex items-center gap-3">
+                          <Navigation className="h-5 w-5 text-blue-400" />
+                          Primary Navigation
+                        </CardTitle>
+                        <CardDescription>Main site navigation typically placed in header</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                          <strong className="text-slate-200">When to use:</strong>
+                          <ul className="text-sm text-slate-400 space-y-1 ml-4">
+                            <li>• Site-wide navigation</li>
+                            <li>• Main sections access</li>
+                            <li>• Consistent across pages</li>
+                          </ul>
+                        </div>
+                        
+                        <div>
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium text-slate-300">Implementation:</span>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleCopyCode('<nav className="flex items-center space-x-6">\n  <Link href="/" className="text-slate-700 hover:text-slate-900">Home</Link>\n  <Link href="/about" className="text-slate-700 hover:text-slate-900">About</Link>\n  <Link href="/contact" className="text-slate-700 hover:text-slate-900">Contact</Link>\n</nav>', 'primary-nav')}
+                              className="text-slate-400 hover:text-slate-200"
+                            >
+                              {copiedCode === 'primary-nav' ? (
+                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                              ) : (
+                                <Copy className="h-4 w-4" />
+                              )}
+                            </Button>
+                          </div>
+                          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm text-slate-300 whitespace-pre-wrap">
+{`<nav className="flex items-center space-x-6">
+  <Link href="/" className="text-slate-700 hover:text-slate-900">Home</Link>
+  <Link href="/about" className="text-slate-700 hover:text-slate-900">About</Link>
+  <Link href="/contact" className="text-slate-700 hover:text-slate-900">Contact</Link>
+</nav>`}
+                          </pre>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="bg-slate-800/30 border-slate-700/50">
+                      <CardHeader>
+                        <CardTitle className="text-slate-100 flex items-center gap-3">
+                          <ArrowRight className="h-5 w-5 text-green-400" />
+                          Breadcrumb Navigation
+                        </CardTitle>
+                        <CardDescription>Hierarchical navigation showing user location</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                          <strong className="text-slate-200">When to use:</strong>
+                          <ul className="text-sm text-slate-400 space-y-1 ml-4">
+                            <li>• Deep site structures</li>
+                            <li>• User orientation</li>
+                            <li>• Quick navigation up levels</li>
+                          </ul>
+                        </div>
+                        
+                        <div>
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium text-slate-300">Implementation:</span>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleCopyCode('<nav aria-label="Breadcrumb">\n  <ol className="flex items-center space-x-2">\n    <li><Link href="/">Home</Link></li>\n    <li>></li>\n    <li><Link href="/products">Products</Link></li>\n    <li>></li>\n    <li>Current Page</li>\n  </ol>\n</nav>', 'breadcrumb')}
+                              className="text-slate-400 hover:text-slate-200"
+                            >
+                              {copiedCode === 'breadcrumb' ? (
+                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                              ) : (
+                                <Copy className="h-4 w-4" />
+                              )}
+                            </Button>
+                          </div>
+                          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm text-slate-300 whitespace-pre-wrap">
+{`<nav aria-label="Breadcrumb">
+  <ol className="flex items-center space-x-2">
+    <li><Link href="/">Home</Link></li>
+    <li>></li>
+    <li><Link href="/products">Products</Link></li>
+    <li>></li>
+    <li>Current Page</li>
+  </ol>
+</nav>`}
+                          </pre>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </TabsContent>
+
+                {/* Layout Tab */}
+                <TabsContent value="layout" className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-100 mb-4">Layout Patterns</h3>
+                    <p className="text-slate-400 mb-8">
+                      Fundamental layout patterns for organising content and creating visual hierarchy.
+                    </p>
+                  </div>
+
+                  <Card className="bg-slate-800/30 border-slate-700/50">
+                    <CardHeader>
+                      <CardTitle className="text-slate-100 flex items-center gap-3">
+                        <Grid3X3 className="h-5 w-5 text-green-400" />
+                        Card Layout
+                      </CardTitle>
+                      <CardDescription>Flexible content containers with consistent styling</CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="grid md:grid-cols-3 gap-4">
+                        <div className="p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                          <div className="w-full h-20 bg-fuchsia-500/20 rounded mb-3"></div>
+                          <div className="space-y-2">
+                            <div className="h-4 bg-slate-700 rounded w-3/4"></div>
+                            <div className="h-3 bg-slate-800 rounded w-full"></div>
+                            <div className="h-3 bg-slate-800 rounded w-2/3"></div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleCopyCode(pattern.code, `fav-${pattern.id}`)}
-                            className="h-8 w-8 p-0"
-                          >
-                            {copiedCode === `fav-${pattern.id}` ? (
-                              <CheckCircle2 className="h-3 w-3 text-green-400" />
-                            ) : (
-                              <Copy className="h-3 w-3" />
-                            )}
-                          </Button>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleToggleFavorite(pattern.id)}
-                            className="h-8 w-8 p-0 text-red-400"
-                          >
-                            <Heart className="h-3 w-3 fill-current" />
-                          </Button>
+                        <div className="p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                          <div className="w-full h-20 bg-purple-500/20 rounded mb-3"></div>
+                          <div className="space-y-2">
+                            <div className="h-4 bg-slate-700 rounded w-3/4"></div>
+                            <div className="h-3 bg-slate-800 rounded w-full"></div>
+                            <div className="h-3 bg-slate-800 rounded w-2/3"></div>
+                          </div>
+                        </div>
+                        <div className="p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                          <div className="w-full h-20 bg-blue-500/20 rounded mb-3"></div>
+                          <div className="space-y-2">
+                            <div className="h-4 bg-slate-700 rounded w-3/4"></div>
+                            <div className="h-3 bg-slate-800 rounded w-full"></div>
+                            <div className="h-3 bg-slate-800 rounded w-2/3"></div>
+                          </div>
                         </div>
                       </div>
-                    ))}
+                      <p className="text-sm text-slate-400">
+                        Cards provide consistent content containers with flexible layouts for different content types.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+
+                {/* Forms Tab */}
+                <TabsContent value="forms" className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-100 mb-4">Form Patterns</h3>
+                    <p className="text-slate-400 mb-8">
+                      User-friendly form patterns for data collection and input validation.
+                    </p>
+                  </div>
+
+                  <Card className="bg-slate-800/30 border-slate-700/50">
+                    <CardHeader>
+                      <CardTitle className="text-slate-100 flex items-center gap-3">
+                        <Shield className="h-5 w-5 text-purple-400" />
+                        Login Form
+                      </CardTitle>
+                      <CardDescription>Standard authentication form with best practices</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="max-w-md">
+                        <div className="space-y-4 p-6 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                          <div>
+                            <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                            <div className="w-full h-10 bg-slate-800 rounded border border-slate-700"></div>
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-slate-300 mb-2">Password</label>
+                            <div className="w-full h-10 bg-slate-800 rounded border border-slate-700"></div>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                              <div className="w-4 h-4 bg-slate-700 rounded border border-slate-600"></div>
+                              <span className="text-sm text-slate-400">Remember me</span>
+                            </div>
+                            <span className="text-sm text-fuchsia-400 cursor-pointer">Forgot password?</span>
+                          </div>
+                          <div className="w-full h-10 bg-fuchsia-500/20 border border-fuchsia-500/30 rounded flex items-center justify-center">
+                            <span className="text-fuchsia-300 font-medium">Sign In</span>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+
+                {/* Feedback Tab */}
+                <TabsContent value="feedback" className="space-y-8">
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-100 mb-4">Feedback Patterns</h3>
+                    <p className="text-slate-400 mb-8">
+                      Essential patterns for providing user feedback and system status communication.
+                    </p>
+                  </div>
+
+                  <div className="grid lg:grid-cols-2 gap-8">
+                    <Card className="bg-slate-800/30 border-slate-700/50">
+                      <CardHeader>
+                        <CardTitle className="text-slate-100 flex items-center gap-3">
+                          <CheckCircle2 className="h-5 w-5 text-green-400" />
+                          Success States
+                        </CardTitle>
+                        <CardDescription>Positive feedback for completed actions</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                          <div className="flex items-center gap-3">
+                            <CheckCircle2 className="h-5 w-5 text-green-400" />
+                            <span className="text-green-300 font-medium">Success!</span>
+                          </div>
+                          <p className="text-sm text-green-400 mt-2">Your changes have been saved successfully.</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    <Card className="bg-slate-800/30 border-slate-700/50">
+                      <CardHeader>
+                        <CardTitle className="text-slate-100 flex items-center gap-3">
+                          <AlertTriangle className="h-5 w-5 text-orange-400" />
+                          Warning States
+                        </CardTitle>
+                        <CardDescription>Cautionary feedback for user attention</CardDescription>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
+                          <div className="flex items-center gap-3">
+                            <AlertTriangle className="h-5 w-5 text-orange-400" />
+                            <span className="text-orange-300 font-medium">Warning</span>
+                          </div>
+                          <p className="text-sm text-orange-400 mt-2">This action cannot be undone. Please confirm.</p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </TabsContent>
+              </Tabs>
+            </div>
+          </section>
+
+          {/* Cross-references */}
+          <section className="px-6 lg:px-12 py-12">
+            <div className="max-w-7xl mx-auto">
+              <Card className="bg-slate-800/30 border-slate-700/50">
+                <CardHeader>
+                  <CardTitle className="text-slate-100 flex items-center gap-3">
+                    <Layers className="h-5 w-5 text-fuchsia-400" />
+                    Related Resources
+                  </CardTitle>
+                  <CardDescription>Explore related documentation and guidelines</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <Link href="/components" className="block p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:bg-slate-800/70 transition-colors">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Component className="h-5 w-5 text-blue-400" />
+                        <span className="font-medium text-slate-200">Components</span>
+                      </div>
+                      <p className="text-sm text-slate-400">See patterns implemented as reusable components</p>
+                    </Link>
+                    
+                    <Link href="/design-system/best-practices" className="block p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:bg-slate-800/70 transition-colors">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Award className="h-5 w-5 text-green-400" />
+                        <span className="font-medium text-slate-200">Best Practices</span>
+                      </div>
+                      <p className="text-sm text-slate-400">Implementation guidelines and tips</p>
+                    </Link>
+                    
+                    <Link href="/design-system/accessibility" className="block p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:bg-slate-800/70 transition-colors">
+                      <div className="flex items-center gap-3 mb-2">
+                        <Shield className="h-5 w-5 text-purple-400" />
+                        <span className="font-medium text-slate-200">Accessibility</span>
+                      </div>
+                      <p className="text-sm text-slate-400">Ensure patterns meet WCAG standards</p>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>
-            )}
-          </div>
+            </div>
+          </section>
         </div>
       </main>
     </div>
   )
 }
-
-// Pattern Card Component
-function PatternCard({ pattern }: { pattern: any }) {
-  const handleCopy = () => {
-    // Copy functionality would go here
-  }
-
-  const complexityColors = {
-    Basic: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    Intermediate: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200", 
-    Advanced: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200"
-  }
-
-  return (
-    <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-slate-200 dark:border-slate-700/50">
-      <CardContent className="p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colours">
-                {pattern.name}
-              </h3>
-              <Badge className={complexityColors[pattern.complexity as keyof typeof complexityColors]}>
-                {pattern.complexity}
-              </Badge>
-            </div>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-3">
-              {pattern.description}
-            </p>
-            <div className="space-y-2 text-xs text-slate-500 dark:text-slate-500">
-              <div><span className="font-medium">Usage:</span> {pattern.usage}</div>
-              <div>
-                <span className="font-medium">Examples:</span> 
-                <span className="ml-1">{pattern.examples.join(", ")}</span>
-              </div>
-            </div>
-          </div>
-          <Button
-            size="sm"
-            variant="outline"
-            onClick={handleCopy}
-            className={`${
-              copied 
-                ? 'border-green-500 text-green-600 bg-green-50 dark:bg-green-950' 
-                : 'border-slate-300 dark:border-slate-600 hover:border-fuchsia-500 dark:hover:border-fuchsia-400'
-            } transition-all ml-4`}
-          >
-            {copied ? (
-              <CheckCircle2 className="h-3 w-3" />
-            ) : (
-              <Copy className="h-3 w-3" />
-            )}
-          </Button>
-        </div>
-        
-        <div className="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 mb-3">
-          <pre className="text-xs text-slate-600 dark:text-slate-400 overflow-x-auto">
-            <code>{pattern.code}</code>
-          </pre>
-        </div>
-        
-        <div className="flex items-center justify-between text-xs">
-          <span className="text-slate-500 dark:text-slate-500 flex items-center gap-1">
-            <pattern.categoryIcon className="h-3 w-3" />
-            {pattern.category}
-          </span>
-          <Button 
-            size="sm" 
-            variant="ghost" 
-            className="h-6 px-2 text-xs hover:bg-fuchsia-50 dark:hover:bg-fuchsia-950 hover:text-fuchsia-600 dark:hover:text-fuchsia-400 transition-colours"
-          >
-            <PlayCircle className="h-3 w-3 mr-1" />
-            Live Demo
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
-
-// Category Overview Card
-function CategoryOverviewCard({ category }: { category: any }) {
-  return (
-    <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-slate-200 dark:border-slate-700/50">
-      <CardContent className="p-6">
-        <div className="flex items-start gap-4">
-          <div className={`w-12 h-12 rounded-xl ${category.bgColor} border border-slate-200 dark:border-slate-700 flex items-center justify-center group-hover:scale-110 transition-transform`}>
-            <category.icon className="h-6 w-6 text-slate-700 dark:text-slate-300" />
-          </div>
-          <div className="flex-1">
-            <div className="flex items-center justify-between mb-2">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100 group-hover:text-fuchsia-600 dark:group-hover:text-fuchsia-400 transition-colours">
-                {category.name}
-              </h3>
-              <Badge variant="outline" className="border-slate-300 dark:border-slate-600">
-                {category.count} patterns
-              </Badge>
-            </div>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
-              {category.description}
-            </p>
-            <div className="flex flex-wrap gap-1">
-              {category.patterns.slice(0, 3).map((pattern: any) => (
-                <span key={pattern.name} className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-1 rounded">
-                  {pattern.name}
-                </span>
-              ))}
-              {category.patterns.length > 3 && (
-                <span className="text-xs text-slate-500 dark:text-slate-500 px-2 py-1">
-                  +{category.patterns.length - 3} more
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
-
-
-
-
-

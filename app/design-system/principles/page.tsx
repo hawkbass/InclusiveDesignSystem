@@ -145,7 +145,8 @@ export default function Principles() {
                   Design Principles
                 </h1>
                 <p className="text-xl text-slate-300 mb-6 max-w-3xl mx-auto">
-                  Foundation for all design decisions. Make better choices faster with evidence-based guidelines.
+                  The foundational principles that guide Inclusive's design decisions. Build consistent, 
+                  efficient recruitment experiences that scale across all products.
                 </p>
                 
                 {/* Impact Metrics */}
@@ -227,7 +228,7 @@ During Development:
 □ Semantic HTML structure implemented?
 □ Keyboard navigation working correctly?
 □ Focus management handled properly?
-□ Performance optimized?
+□ Performance optimised?
 
 Post-Implementation:
 □ Tested with assistive technologies?
@@ -462,7 +463,7 @@ Post-Implementation:
                     </div>
                     <div className="flex items-center gap-2 text-sm text-slate-400">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
-                      <span>Performance optimized</span>
+                      <span>Performance optimised</span>
                     </div>
                   </div>
                   
@@ -625,7 +626,7 @@ During Development:
 □ Semantic HTML structure implemented?
 □ Keyboard navigation working correctly?
 □ Focus management handled properly?
-□ Performance optimized?
+□ Performance optimised?
 
 Post-Implementation:
 □ Tested with assistive technologies?
@@ -898,7 +899,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
       checklist: [
         "Tested with assistive technologies?",
         "Validated with diverse user groups?",
-        "Performance measured and optimized?",
+        "Performance measured and optimised?",
         "Feedback incorporated into design?"
       ]
     }

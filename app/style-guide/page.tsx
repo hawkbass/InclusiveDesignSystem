@@ -2,7 +2,8 @@
 
 import React, { useState } from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -32,7 +33,7 @@ export default function StyleGuide() {
   const [searchQuery, setSearchQuery] = useState("")
   const [copiedCode, setCopiedCode] = useState("")
   const [favourites, setFavorites] = useState<Set<string>>(new Set())
-  const [activeTab, setActiveTab] = useState("atoms")
+  const [activeSection, setActiveSection] = useState("atoms")
   const [activeAtomType, setActiveAtomType] = useState("colours")
 
   const handleCopyCode = (code: string, id: string) => {
@@ -136,148 +137,150 @@ export default function StyleGuide() {
         {/* Main Content */}
         <section className="px-6 lg:px-12 py-8">
           <div className="max-w-7xl mx-auto">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              {/* Tab Navigation */}
-              <div className="mb-8">
-                <TabsList className="grid w-full grid-cols-2 lg:grid-cols-6 h-auto p-1 bg-slate-800/50 border border-slate-700/50 rounded-lg">
-                  <TabsTrigger
-                    value="atoms"
-                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
-                  >
-                    <Palette className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-center hidden sm:block text-xs">Atoms</span>
-                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
-                      47
-                    </Badge>
-                  </TabsTrigger>
-
-                  <TabsTrigger
-                    value="molecules"
-                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
-                  >
-                    <Component className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-center hidden sm:block text-xs">Molecules</span>
-                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
-                      23
-                    </Badge>
-                  </TabsTrigger>
-
-                  <TabsTrigger
-                    value="specialized"
-                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
-                  >
-                    <Layers className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-center hidden sm:block text-xs">Advanced</span>
-                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
-                      10
-                    </Badge>
-                  </TabsTrigger>
-
-                  <TabsTrigger
-                    value="organisms"
-                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
-                  >
-                    <Grid3X3 className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-center hidden sm:block text-xs">Organisms</span>
-                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
-                      17
-                    </Badge>
-                  </TabsTrigger>
-
-                  <TabsTrigger
-                    value="accessibility"
-                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
-                  >
-                    <Eye className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-center hidden sm:block text-xs">A11y</span>
-                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
-                      AAA
-                    </Badge>
-                  </TabsTrigger>
-
-                  <TabsTrigger
-                    value="testing"
-                    className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/10 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent"
-                  >
-                    <Zap className="h-5 w-5 flex-shrink-0" />
-                    <span className="font-medium text-center hidden sm:block text-xs">Testing</span>
-                    <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0">
-                      4
-                    </Badge>
-                  </TabsTrigger>
-                </TabsList>
+            <div className="w-full">
+              {/* Section Navigation */}
+              <div className="flex items-center gap-3 mb-8">
+                <h2 className="text-lg font-semibold text-slate-200">Viewing:</h2>
+                <Select value={activeSection} onValueChange={setActiveSection}>
+                  <SelectTrigger className="w-auto min-w-[200px] h-10 bg-slate-800/40 border border-slate-700/30 hover:bg-slate-800/60 transition-colors text-slate-300">
+                    {(() => {
+                      const tabs = [
+                        { value: "atoms", label: "Atoms", icon: Palette, count: 47 },
+                        { value: "molecules", label: "Molecules", icon: Component, count: 23 },
+                        { value: "specialized", label: "Advanced", icon: Layers, count: 10 },
+                        { value: "organisms", label: "Organisms", icon: Grid3X3, count: 17 },
+                        { value: "accessibility", label: "A11y", icon: Eye, count: "AAA" },
+                        { value: "testing", label: "Testing", icon: Zap, count: 4 }
+                      ];
+                      const currentTab = tabs.find(tab => tab.value === activeSection);
+                      return currentTab ? (
+                        <div className="flex items-center gap-3">
+                          <currentTab.icon className="h-5 w-5 text-fuchsia-400" />
+                          <span className="font-medium text-slate-200">{currentTab.label}</span>
+                          <span className="text-xs text-slate-500">({currentTab.count})</span>
+                        </div>
+                      ) : null;
+                    })()}
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-900/95 backdrop-blur-xl border border-slate-800/60 rounded-lg">
+                    <SelectItem value="atoms" className="focus:bg-slate-800/60 cursor-pointer">
+                      <div className="flex items-center gap-3">
+                        <Palette className="h-4 w-4 text-slate-400" />
+                        <span>Atoms</span>
+                        <span className="text-xs text-slate-500 ml-auto">(47)</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="molecules" className="focus:bg-slate-800/60 cursor-pointer">
+                      <div className="flex items-center gap-3">
+                        <Component className="h-4 w-4 text-slate-400" />
+                        <span>Molecules</span>
+                        <span className="text-xs text-slate-500 ml-auto">(23)</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="specialized" className="focus:bg-slate-800/60 cursor-pointer">
+                      <div className="flex items-center gap-3">
+                        <Layers className="h-4 w-4 text-slate-400" />
+                        <span>Advanced</span>
+                        <span className="text-xs text-slate-500 ml-auto">(10)</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="organisms" className="focus:bg-slate-800/60 cursor-pointer">
+                      <div className="flex items-center gap-3">
+                        <Grid3X3 className="h-4 w-4 text-slate-400" />
+                        <span>Organisms</span>
+                        <span className="text-xs text-slate-500 ml-auto">(17)</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="accessibility" className="focus:bg-slate-800/60 cursor-pointer">
+                      <div className="flex items-center gap-3">
+                        <Eye className="h-4 w-4 text-slate-400" />
+                        <span>A11y</span>
+                        <span className="text-xs text-slate-500 ml-auto">(AAA)</span>
+                      </div>
+                    </SelectItem>
+                    <SelectItem value="testing" className="focus:bg-slate-800/60 cursor-pointer">
+                      <div className="flex items-center gap-3">
+                        <Zap className="h-4 w-4 text-slate-400" />
+                        <span>Testing</span>
+                        <span className="text-xs text-slate-500 ml-auto">(4)</span>
+                      </div>
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
-              {/* Tab Content */}
-              <TabsContent value="atoms" className="mt-0">
-                <AtomsSection
-                  activeAtomType={activeAtomType}
-                  setActiveAtomType={setActiveAtomType}
-                  searchQuery={searchQuery}
-                  viewMode="grid"
-                  onCopyCode={handleCopyCode}
-                  copiedCode={copiedCode}
-                  favourites={favourites}
-                  onToggleFavorite={toggleFavorite}
-                />
-              </TabsContent>
+              {/* Section Content */}
+              <div className="mt-0">
+                {activeSection === "atoms" && (
+                  <AtomsSection
+                    activeAtomType={activeAtomType}
+                    setActiveAtomType={setActiveAtomType}
+                    searchQuery={searchQuery}
+                    viewMode="grid"
+                    onCopyCode={handleCopyCode}
+                    copiedCode={copiedCode}
+                    favourites={favourites}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                )}
 
-              <TabsContent value="molecules" className="mt-0">
-                <MoleculesSection
-                  searchQuery={searchQuery}
-                  viewMode="grid"
-                  onCopyCode={handleCopyCode}
-                  copiedCode={copiedCode}
-                  favourites={favourites}
-                  onToggleFavorite={toggleFavorite}
-                />
-              </TabsContent>
+                {activeSection === "molecules" && (
+                  <MoleculesSection
+                    searchQuery={searchQuery}
+                    viewMode="grid"
+                    onCopyCode={handleCopyCode}
+                    copiedCode={copiedCode}
+                    favourites={favourites}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                )}
 
-              <TabsContent value="specialized" className="mt-0">
-                <SpecializedMoleculesSection
-                  searchQuery={searchQuery}
-                  viewMode="grid"
-                  onCopyCode={handleCopyCode}
-                  copiedCode={copiedCode}
-                  favourites={favourites}
-                  onToggleFavorite={toggleFavorite}
-                />
-              </TabsContent>
+                {activeSection === "specialized" && (
+                  <SpecializedMoleculesSection
+                    searchQuery={searchQuery}
+                    viewMode="grid"
+                    onCopyCode={handleCopyCode}
+                    copiedCode={copiedCode}
+                    favourites={favourites}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                )}
 
-              <TabsContent value="organisms" className="mt-0">
-                <OrganismsSection
-                  searchQuery={searchQuery}
-                  viewMode="grid"
-                  onCopyCode={handleCopyCode}
-                  copiedCode={copiedCode}
-                  favourites={favourites}
-                  onToggleFavorite={toggleFavorite}
-                  onNavigateToComponent={handleNavigateToComponent}
-                />
-              </TabsContent>
+                {activeSection === "organisms" && (
+                  <OrganismsSection
+                    searchQuery={searchQuery}
+                    viewMode="grid"
+                    onCopyCode={handleCopyCode}
+                    copiedCode={copiedCode}
+                    favourites={favourites}
+                    onToggleFavorite={toggleFavorite}
+                    onNavigateToComponent={handleNavigateToComponent}
+                  />
+                )}
 
-              <TabsContent value="accessibility" className="mt-0">
-                <AccessibilitySection
-                  searchQuery={searchQuery}
-                  viewMode="grid"
-                  onCopyCode={handleCopyCode}
-                  copiedCode={copiedCode}
-                  favourites={favourites}
-                  onToggleFavorite={toggleFavorite}
-                />
-              </TabsContent>
+                {activeSection === "accessibility" && (
+                  <AccessibilitySection
+                    searchQuery={searchQuery}
+                    viewMode="grid"
+                    onCopyCode={handleCopyCode}
+                    copiedCode={copiedCode}
+                    favourites={favourites}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                )}
 
-              <TabsContent value="testing" className="mt-0">
-                <TestingSection
-                  searchQuery={searchQuery}
-                  viewMode="grid"
-                  onCopyCode={handleCopyCode}
-                  copiedCode={copiedCode}
-                  favourites={favourites}
-                  onToggleFavorite={toggleFavorite}
-                />
-              </TabsContent>
-            </Tabs>
+                {activeSection === "testing" && (
+                  <TestingSection
+                    searchQuery={searchQuery}
+                    viewMode="grid"
+                    onCopyCode={handleCopyCode}
+                    copiedCode={copiedCode}
+                    favourites={favourites}
+                    onToggleFavorite={toggleFavorite}
+                  />
+                )}
+              </div>
+            </div>
           </div>
         </section>
       </main>

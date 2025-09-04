@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useMemo, lazy, Suspense } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -22,6 +23,11 @@ import {
   Search,
   X,
   Eye,
+  ChevronLeft,
+  ChevronRight,
+  ChevronDown,
+  Grid3X3,
+  Filter,
 } from "lucide-react"
 import { ComponentCard } from "./categories/component-card"
 
@@ -64,6 +70,7 @@ export default function ComponentsPage() {
   const [activeTab, setActiveTab] = useState("recruitment")
   const [searchQuery, setSearchQuery] = useState("")
   const [animationSpeed] = useState([1])
+  const [showCategoryMenu, setShowCategoryMenu] = useState(false)
   const [copiedCode, setCopiedCode] = useState("")
   const [favourites, setFavorites] = useState<Set<string>>(new Set())
   const [viewMode] = useState<"grid" | "list">("grid")
@@ -216,28 +223,113 @@ export default function ComponentsPage() {
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <div className="mb-8">
-                <TabsList className="grid w-full h-auto p-1 bg-slate-800/50 border border-slate-700/50 rounded-lg backdrop-blur-sm" style={{gridTemplateColumns: `repeat(${filteredTabs.length}, 1fr)`}}>
-                  {filteredTabs.map((tab) => (
-                    <TabsTrigger
-                      key={tab.id}
-                      value={tab.id}
-                      className="flex flex-col items-center gap-2 py-3 px-2 text-xs sm:text-sm data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 data-[state=active]:border-fuchsia-500/30 hover:bg-slate-700/50 hover:text-slate-200 transition-all duration-200 rounded-md border border-transparent min-h-[80px] justify-center"
-                    >
-                      <tab.icon className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0 text-slate-400 group-hover:text-slate-200 data-[state=active]:text-fuchsia-300 transition-colours" />
-                      
-                      <span className="font-medium text-center text-slate-400 data-[state=active]:text-fuchsia-300 transition-colours text-xs leading-tight">
-                        {tab.label}
-                      </span>
-                      
-                      <Badge 
-                        variant="secondary" 
-                        className="text-xs px-1.5 py-0.5 h-4 bg-slate-700/60 text-slate-400 border-0 data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-colours"
-                      >
-                        {tab.count}
-                      </Badge>
-                    </TabsTrigger>
-                  ))}
-                </TabsList>
+              {/* Page Header */}
+              <div className="mb-6">
+                <h1 className="text-2xl font-bold text-slate-200 mb-2">Component Library</h1>
+                <p className="text-slate-400 text-sm max-w-3xl">
+                  Production-ready components built for Inclusive's recruitment platform. Each component includes usage guidelines, 
+                  accessibility features, and implementation examples to help you build consistent experiences.
+                </p>
+              </div>
+
+              {/* Quick Implementation Guide */}
+              <div className="mb-8 p-6 bg-slate-800/30 rounded-lg border border-slate-700/50">
+                <h3 className="text-lg font-semibold text-slate-200 mb-4 flex items-center gap-2">
+                  <Eye className="h-5 w-5 text-fuchsia-400" />
+                  Quick Implementation Guide
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
+                        <span className="text-xs font-bold text-green-400">1</span>
+                      </div>
+                      <span className="text-sm font-medium text-slate-200">Choose Component</span>
+                    </div>
+                    <p className="text-xs text-slate-400 ml-8">
+                      Browse categories to find the right component for your use case
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
+                        <span className="text-xs font-bold text-blue-400">2</span>
+                      </div>
+                      <span className="text-sm font-medium text-slate-200">Copy Code</span>
+                    </div>
+                    <p className="text-xs text-slate-400 ml-8">
+                      Use the copy button to get ready-to-use component code
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-6 h-6 rounded-full bg-purple-500/20 flex items-center justify-center">
+                        <span className="text-xs font-bold text-purple-400">3</span>
+                      </div>
+                      <span className="text-sm font-medium text-slate-200">Customise</span>
+                    </div>
+                    <p className="text-xs text-slate-400 ml-8">
+                      Adapt styling and props to match your specific requirements
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Category Navigation */}
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-lg font-semibold text-slate-200">Viewing:</h2>
+                <Select value={activeTab} onValueChange={setActiveTab}>
+                  <SelectTrigger className="w-auto min-w-[200px] h-10 bg-slate-800/40 border border-slate-700/30 hover:bg-slate-800/60 transition-colors text-slate-300">
+                    {(() => {
+                      const currentTab = filteredTabs.find(tab => tab.id === activeTab);
+                      return currentTab ? (
+                        <div className="flex items-center gap-3">
+                          <currentTab.icon className="h-5 w-5 text-fuchsia-400" />
+                          <span className="font-medium text-slate-200">{currentTab.label}</span>
+                          <span className="text-xs text-slate-500">({currentTab.count})</span>
+                        </div>
+                      ) : null;
+                    })()}
+                  </SelectTrigger>
+                  <SelectContent className="bg-slate-900/95 backdrop-blur-xl border border-slate-800/60 rounded-lg">
+                    {filteredTabs.map((tab) => (
+                      <SelectItem key={tab.id} value={tab.id} className="focus:bg-slate-800/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <tab.icon className="h-4 w-4 text-slate-400" />
+                          <span>{tab.label}</span>
+                          <span className="text-xs text-slate-500 ml-auto">({tab.count})</span>
+                        </div>
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Category Context & When to Use */}
+              <div className="mb-6 p-4 bg-slate-800/20 rounded-lg border border-slate-700/30">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-2 h-2 bg-fuchsia-400 rounded-full"></div>
+                  <h3 className="text-sm font-medium text-slate-200">
+                    When to use {filteredTabs.find(tab => tab.id === activeTab)?.label || 'these components'}
+                  </h3>
+                </div>
+                <div className="text-xs text-slate-400 leading-relaxed">
+                  {(() => {
+                    const contextMap: Record<string, string> = {
+                      recruitment: "Use recruitment components when building candidate profiles, job listings, interview scheduling, and hiring workflows. Perfect for applicant tracking systems, candidate databases, and recruitment dashboards.",
+                      forms: "Use form components for user input, data collection, and interactive workflows. Essential for application forms, profile updates, search filters, and any user data entry scenarios.",
+                      navigation: "Use navigation components to help users move through your application. Ideal for menus, breadcrumbs, pagination, and any interface that requires user wayfinding or section switching.",
+                      feedback: "Use feedback components to communicate system status, user actions, and important information. Perfect for notifications, alerts, loading states, and confirmation messages.",
+                      "data-display": "Use data display components to present information clearly and efficiently. Ideal for tables, cards, lists, charts, and any scenario where you need to show structured data.",
+                      layout: "Use layout components to structure your application's visual hierarchy. Essential for grids, containers, spacing, and organising content in a consistent, responsive manner.",
+                      media: "Use media components for images, videos, avatars, and file handling. Perfect for user profiles, document uploads, media galleries, and any content that includes visual assets.",
+                      utility: "Use utility components for common interface patterns and helper functions. Ideal for badges, tooltips, progress indicators, and small reusable interface elements.",
+                      dashboard: "Use dashboard components for data visualisation and analytics interfaces. Perfect for recruitment metrics, performance charts, KPI displays, and executive reporting views."
+                    };
+                    return contextMap[activeTab] || "Select a category to see specific usage guidance.";
+                  })()}
+                </div>
+              </div>
             </div>
               
               <div className="mt-4 flex items-center justify-between text-sm text-slate-400">
@@ -268,120 +360,120 @@ export default function ComponentsPage() {
 
             <TabsContent value="recruitment" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <RecruitmentComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <RecruitmentComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="forms" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <FormComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <FormComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="navigation" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <NavigationComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <NavigationComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="feedback" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <FeedbackComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <FeedbackComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="data" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <DataDisplayComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <DataDisplayComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="layout" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <LayoutComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <LayoutComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="media" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <MediaComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <MediaComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="utility" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <UtilityComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <UtilityComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="dashboard" className="mt-0">
               <Suspense fallback={<ComponentLoadingFallback />}>
-                <DashboardComponents 
-                  searchQuery={searchQuery} 
-                  onCopyCode={handleCopyCode} 
-                  copiedCode={copiedCode}
-                  viewMode={viewMode}
+  <DashboardComponents 
+    searchQuery={searchQuery} 
+    onCopyCode={handleCopyCode} 
+    copiedCode={copiedCode}
+    viewMode={viewMode}
                   favourites={favourites}
-                  onToggleFavourite={toggleFavourite}
-                />
+    onToggleFavourite={toggleFavourite}
+  />
               </Suspense>
-            </TabsContent>
+</TabsContent>
 
             <TabsContent value="favourites" className="mt-0">
     <div className="space-y-12">

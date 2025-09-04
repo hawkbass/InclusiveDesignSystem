@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useCallback } from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -52,7 +52,9 @@ import {
   Clock,
   TrendingUp,
   Activity,
-  Compass
+  Compass,
+  Palette,
+  Hash
 } from "lucide-react"
 
 // Simple contrast checker utility
@@ -68,6 +70,268 @@ function getContrast(hex1: string, hex2: string) {
   const brightest = Math.max(lum1, lum2);
   const darkest = Math.min(lum1, lum2);
   return (brightest + 0.05) / (darkest + 0.05);
+}
+
+// Custom Color Picker Component with System Functionality
+function CustomColorPicker({ value, onChange, label, type }: { 
+  value: string; 
+  onChange: (color: string) => void; 
+  label: string;
+  type: 'foreground' | 'background';
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [hexInput, setHexInput] = useState(value);
+
+  // Convert hex to HSV
+  const hexToHsv = useCallback((hex: string) => {
+    const r = parseInt(hex.slice(1, 3), 16) / 255;
+    const g = parseInt(hex.slice(3, 5), 16) / 255;
+    const b = parseInt(hex.slice(5, 7), 16) / 255;
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    const diff = max - min;
+
+    let h = 0;
+    if (diff !== 0) {
+      if (max === r) h = ((g - b) / diff) % 6;
+      else if (max === g) h = (b - r) / diff + 2;
+      else h = (r - g) / diff + 4;
+    }
+    h = Math.round(h * 60);
+    if (h < 0) h += 360;
+
+    const s = max === 0 ? 0 : Math.round((diff / max) * 100);
+    const v = Math.round(max * 100);
+
+    return { h, s, v };
+  }, []);
+
+  // Convert HSV to hex
+  const hsvToHex = useCallback((h: number, s: number, v: number) => {
+    const c = (v / 100) * (s / 100);
+    const x = c * (1 - Math.abs(((h / 60) % 2) - 1));
+    const m = (v / 100) - c;
+
+    let r = 0, g = 0, b = 0;
+    if (h >= 0 && h < 60) { r = c; g = x; b = 0; }
+    else if (h >= 60 && h < 120) { r = x; g = c; b = 0; }
+    else if (h >= 120 && h < 180) { r = 0; g = c; b = x; }
+    else if (h >= 180 && h < 240) { r = 0; g = x; b = c; }
+    else if (h >= 240 && h < 300) { r = x; g = 0; b = c; }
+    else if (h >= 300 && h < 360) { r = c; g = 0; b = x; }
+
+    r = Math.round((r + m) * 255);
+    g = Math.round((g + m) * 255);
+    b = Math.round((b + m) * 255);
+
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+  }, []);
+
+  const currentHsv = hexToHsv(value);
+  const [hue, setHue] = useState(currentHsv.h);
+  const [saturation, setSaturation] = useState(currentHsv.s);
+  const [brightness, setBrightness] = useState(currentHsv.v);
+
+  // Update HSV when value changes externally
+  useEffect(() => {
+    const hsv = hexToHsv(value);
+    setHue(hsv.h);
+    setSaturation(hsv.s);
+    setBrightness(hsv.v);
+    setHexInput(value);
+  }, [value, hexToHsv]);
+
+  const handleHsvChange = useCallback((newH: number, newS: number, newV: number) => {
+    const newHex = hsvToHex(newH, newS, newV);
+    onChange(newHex);
+    setHexInput(newHex);
+  }, [onChange, hsvToHex]);
+
+  const handleHexChange = useCallback((newHex: string) => {
+    if (newHex.match(/^#[0-9A-Fa-f]{6}$/)) {
+      onChange(newHex);
+      setHexInput(newHex);
+    } else {
+      setHexInput(newHex);
+    }
+  }, [onChange]);
+
+  return (
+    <div className="relative">
+      <div className="flex items-center justify-between mb-3">
+        <Label className="text-slate-200 font-medium">{label}</Label>
+        <Badge className={`text-xs ${
+          type === 'foreground' ? 'bg-blue-500/20 text-blue-300' : 'bg-purple-500/20 text-purple-300'
+        }`}>
+          {type === 'foreground' ? 'Text' : 'Surface'}
+        </Badge>
+      </div>
+      
+      <div className="space-y-3">
+        {/* Color Display & Trigger */}
+        <div className="flex items-center gap-3">
+          <div 
+            className="w-16 h-16 rounded-xl border-2 border-slate-600 cursor-pointer hover:border-fuchsia-500/50 transition-colors relative overflow-hidden"
+            onClick={() => setIsOpen(!isOpen)}
+            style={{ backgroundColor: value }}
+          >
+            <div className="absolute bottom-1 right-1">
+              <div className="p-1 bg-slate-900/80 rounded border border-slate-700/50">
+                <Palette className="h-2 w-2 text-slate-300" />
+              </div>
+            </div>
+          </div>
+          <div className="flex-1">
+            <div className="text-lg font-mono text-slate-200 mb-1">{value.toUpperCase()}</div>
+            <div className="text-xs text-slate-400">Click to change colour</div>
+          </div>
+        </div>
+
+        {/* Floating Color Picker Modal */}
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <div 
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
+              onClick={() => setIsOpen(false)}
+            />
+            
+            {/* Floating Modal */}
+            <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+              <Card className="bg-slate-900/95 border-slate-700/50 p-4 w-80 shadow-2xl">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-medium text-slate-200">Colour Picker</span>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => setIsOpen(false)}
+                      className="h-6 w-6 p-0 hover:bg-slate-800/50"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+
+                  {/* Color Preview */}
+                  <div className="h-16 rounded-lg border border-slate-600" style={{ backgroundColor: value }}>
+                    <div className="w-full h-full rounded-lg bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                  </div>
+
+                  {/* Hex Input */}
+                  <div className="flex items-center gap-2">
+                    <Hash className="h-4 w-4 text-slate-400" />
+                    <Input
+                      value={hexInput}
+                      onChange={(e) => handleHexChange(e.target.value)}
+                      onBlur={() => setHexInput(value)}
+                      className="font-mono text-sm bg-slate-900/30 border-slate-600 focus:border-fuchsia-500/50"
+                      placeholder="#000000"
+                    />
+                  </div>
+
+                  {/* HSV Sliders */}
+                  <div className="space-y-3">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <Label className="text-sm text-slate-300">Hue</Label>
+                        <span className="text-xs text-slate-400 font-mono">{hue}°</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="360"
+                        value={hue}
+                        onChange={(e) => {
+                          const newHue = parseInt(e.target.value);
+                          setHue(newHue);
+                          handleHsvChange(newHue, saturation, brightness);
+                        }}
+                        className="w-full h-3 rounded-lg appearance-none cursor-pointer"
+                        style={{
+                          background: `linear-gradient(to right, 
+                            hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), 
+                            hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), 
+                            hsl(360, 100%, 50%))`
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <Label className="text-sm text-slate-300">Saturation</Label>
+                        <span className="text-xs text-slate-400 font-mono">{saturation}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={saturation}
+                        onChange={(e) => {
+                          const newSat = parseInt(e.target.value);
+                          setSaturation(newSat);
+                          handleHsvChange(hue, newSat, brightness);
+                        }}
+                        className="w-full h-3 rounded-lg appearance-none cursor-pointer"
+                        style={{
+                          background: `linear-gradient(to right, 
+                            hsl(${hue}, 0%, ${brightness/2}%), 
+                            hsl(${hue}, 100%, ${brightness/2}%))`
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <Label className="text-sm text-slate-300">Brightness</Label>
+                        <span className="text-xs text-slate-400 font-mono">{brightness}%</span>
+                      </div>
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={brightness}
+                        onChange={(e) => {
+                          const newBright = parseInt(e.target.value);
+                          setBrightness(newBright);
+                          handleHsvChange(hue, saturation, newBright);
+                        }}
+                        className="w-full h-3 rounded-lg appearance-none cursor-pointer"
+                        style={{
+                          background: `linear-gradient(to right, 
+                            hsl(${hue}, ${saturation}%, 0%), 
+                            hsl(${hue}, ${saturation}%, 50%))`
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  {/* System Color Picker Fallback */}
+                  <div className="flex items-center gap-2 pt-3 border-t border-slate-700/50">
+                    <input
+                      type="color"
+                      value={value}
+                      onChange={(e) => {
+                        onChange(e.target.value);
+                        setHexInput(e.target.value);
+                      }}
+                      className="sr-only"
+                      id={`system-picker-${type}`}
+                    />
+                    <Label
+                      htmlFor={`system-picker-${type}`}
+                      className="flex items-center gap-2 text-sm text-slate-400 cursor-pointer hover:text-slate-300 transition-colors"
+                    >
+                      <Palette className="h-4 w-4" />
+                      Use system picker
+                    </Label>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
 }
 
 function passesWCAG(contrast: number, large = false) {
@@ -352,7 +616,7 @@ export default function AccessibilityUniversal() {
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-gradient-to-r from-green-500/20 to-blue-500/20 text-green-300 border-green-500/30">
+                    <Badge className="bg-slate-800/40 text-slate-300 border-slate-700/50">
                       <Shield className="w-3 h-3 mr-1" />
                       WCAG 2.1 AA Compliant
                     </Badge>
@@ -366,9 +630,29 @@ export default function AccessibilityUniversal() {
                     <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent"> Guidelines</span>
                   </h1>
                   <p className="text-xl text-slate-400 max-w-3xl">
-                    Build inclusive experiences that work for everyone. Comprehensive accessibility guidelines, 
-                    testing tools, and implementation patterns for WCAG 2.1 AA compliance.
+                    Build inclusive recruitment experiences that work for everyone. Comprehensive accessibility guidelines, 
+                    testing tools, and implementation patterns for WCAG 2.1 AA compliance in Inclusive's design system.
                   </p>
+
+                  {/* Key Benefits */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-green-400">100%</div>
+                      <div className="text-xs text-slate-500">Component Coverage</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-blue-400">AAA</div>
+                      <div className="text-xs text-slate-500">Contrast Ratios</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-purple-400">508</div>
+                      <div className="text-xs text-slate-500">Section Compliant</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-orange-400">15+</div>
+                      <div className="text-xs text-slate-500">Testing Tools</div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* User Mode Toggle */}
@@ -563,22 +847,31 @@ export default function AccessibilityUniversal() {
                         )}
                         
                         {item.code ? (
-                          <div className="relative">
-                            <pre className="bg-slate-900/50 p-3 rounded-lg text-xs text-slate-300 font-mono overflow-x-auto border border-slate-700/30">
-                              <code>{item.code}</code>
-                            </pre>
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-slate-500 font-medium">Code example:</span>
                             <Button
                               size="sm"
                               variant="ghost"
                               onClick={() => handleCopyCode(item.code!, `quick-${index}`)}
-                              className="absolute top-2 right-2 h-6 w-6 p-0"
+                                className="h-6 px-2 text-xs"
                             >
                               {copiedCode === `quick-${index}` ? (
-                                <CheckCircle2 className="h-3 w-3 text-green-400" />
+                                  <>
+                                    <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                    Copied
+                                  </>
                               ) : (
-                                <Copy className="h-3 w-3" />
+                                  <>
+                                    <Copy className="h-3 w-3 mr-1" />
+                                    Copy
+                                  </>
                               )}
                             </Button>
+                            </div>
+                            <pre className="bg-slate-900/50 p-3 rounded-lg text-xs text-slate-300 font-mono whitespace-pre-wrap border border-slate-700/30">
+                              <code>{item.code}</code>
+                            </pre>
                           </div>
                         ) : (
                           <Button
@@ -817,25 +1110,37 @@ export default function AccessibilityUniversal() {
             </Card>
 
             {/* Interactive Contrast Checker */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-slate-700/50 bg-slate-800/30 overflow-hidden">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("contrast-checker")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-purple-500/20">
-                      <Eye className="h-5 w-5 text-purple-400" />
+                    <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 border border-purple-500/20">
+                      <Eye className="h-6 w-6 text-purple-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100">Interactive Contrast Checker</CardTitle>
+                      <CardTitle className="text-xl text-slate-100 flex items-center gap-2">
+                        Interactive Contrast Checker
+                        <Badge className="bg-slate-700/50 text-slate-300 text-xs">Live</Badge>
+                      </CardTitle>
                       <CardDescription>
-                        Live WCAG colour contrast validation with real-time preview
+                        Real-time WCAG compliance testing with visual preview and code generation
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Badge className={`${passes ? 'bg-green-500/20 text-green-300' : 'bg-red-500/20 text-red-300'}`}>
-                      {contrast.toFixed(1)}:1 {passes ? "✓ Pass" : "✗ Fail"}
+                  <div className="flex items-center gap-3">
+                    <div className="flex flex-col items-end gap-1">
+                      <Badge className={`px-3 py-1 font-mono text-sm border ${
+                        passes 
+                          ? 'bg-green-500/20 text-green-300 border-green-500/30' 
+                          : 'bg-red-500/20 text-red-300 border-red-500/30'
+                      }`}>
+                        {contrast.toFixed(1)}:1
                     </Badge>
-                    <Button variant="ghost" size="sm">
+                      <div className={`text-xs font-medium ${passes ? "text-green-400" : "text-red-400"}`}>
+                        {passes ? "WCAG AA ✓" : "WCAG AA ✗"}
+                      </div>
+                    </div>
+                    <Button variant="ghost" size="sm" className="hover:bg-slate-700/50">
                       {expandedSections.has("contrast-checker") ? 
                         <ChevronUp className="h-4 w-4" /> : 
                         <ChevronDown className="h-4 w-4" />
@@ -845,56 +1150,189 @@ export default function AccessibilityUniversal() {
                 </div>
               </CardHeader>
               {expandedSections.has("contrast-checker") && (
-                <CardContent>
-                  <div className="space-y-6">
-                    <div className="grid md:grid-cols-3 gap-6 items-center">
-                      <div>
-                        <Label className="block text-slate-200 mb-2 font-medium">Foreground colour</Label>
-                        <div className="flex items-center gap-3">
-                          <input 
-                            type="colour" 
+                <CardContent className="space-y-6">
+                  {/* Color Selection */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <Card className="bg-slate-900/30 border-slate-700/30 p-4">
+                      <CustomColorPicker
                             value={fg} 
-                            onChange={e => setFg(e.target.value)} 
-                            className="w-12 h-10 border border-slate-700 rounded cursor-pointer" 
-                          />
-                          <span className="text-sm text-slate-400 font-mono">{fg}</span>
-                        </div>
-                      </div>
-                      <div>
-                        <Label className="block text-slate-200 mb-2 font-medium">Background colour</Label>
-                        <div className="flex items-center gap-3">
-                          <input 
-                            type="colour" 
+                        onChange={setFg}
+                        label="Foreground"
+                        type="foreground"
+                      />
+                    </Card>
+
+                    <Card className="bg-slate-900/30 border-slate-700/30 p-4">
+                      <CustomColorPicker
                             value={bg} 
-                            onChange={e => setBg(e.target.value)} 
-                            className="w-12 h-10 border border-slate-700 rounded cursor-pointer" 
+                        onChange={setBg}
+                        label="Background"
+                        type="background"
                           />
-                          <span className="text-sm text-slate-400 font-mono">{bg}</span>
+                    </Card>
                         </div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-slate-200 mb-2 font-medium">Contrast Ratio</div>
-                        <div className="text-3xl font-bold mb-1" style={{ colour: passes ? '#22d3ee' : '#ef4444' }}>
+
+                  {/* Results Dashboard */}
+                  <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 border-slate-700/50 p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <h4 className="text-lg font-semibold text-slate-200">Compliance Results</h4>
+                      <div className="flex items-center gap-2">
+                        <Badge className={`px-3 py-1 ${
+                          contrast >= 7 ? 'bg-green-500/20 text-green-300 border-green-500/30' :
+                          contrast >= 4.5 ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
+                          contrast >= 3 ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
+                          'bg-red-500/20 text-red-300 border-red-500/30'
+                        } border font-mono text-lg`}>
                           {contrast.toFixed(2)}:1
+                        </Badge>
                         </div>
-                        <div className={`text-sm ${passes ? "text-green-400" : "text-red-400"}`}>
-                          {passes ? "✓ WCAG AA Pass" : "✗ WCAG AA Fail"}
                         </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className={`p-4 rounded-lg border ${
+                        contrast >= 4.5 ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'
+                      }`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-medium text-slate-200">Normal Text</span>
+                          {contrast >= 4.5 ? (
+                            <CheckCircle2 className="h-4 w-4 text-green-400" />
+                          ) : (
+                            <X className="h-4 w-4 text-red-400" />
+                          )}
+                        </div>
+                        <div className={`text-xs ${contrast >= 4.5 ? 'text-green-400' : 'text-red-400'}`}>
+                          {contrast >= 4.5 ? 'WCAG AA Pass' : 'WCAG AA Fail'} (4.5:1 required)
                       </div>
                     </div>
 
-                    <div className="p-6 rounded-lg border border-slate-700" style={{ background: bg, colour: fg }}>
-                      <h3 className="text-xl font-bold mb-2">Sample Heading</h3>
-                      <p className="mb-4">This is normal body text that demonstrates how readable your colour combination is. WCAG 2.1 AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.</p>
-                      <button 
-                        className="px-4 py-2 rounded font-medium transition-opacity hover:opacity-80" 
-                        style={{ background: fg, colour: bg }}
-                        onClick={() => handleCopyCode(`/* colours */\ncolor: ${fg};\nbackground: ${bg};\n/* Contrast: ${contrast.toFixed(2)}:1 */`, "contrast-colours")}
-                      >
-                        {copiedCode === "contrast-colours" ? "✓ Copied!" : "Copy colours"}
-                      </button>
+                      <div className={`p-4 rounded-lg border ${
+                        contrast >= 3 ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'
+                      }`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-medium text-slate-200">Large Text</span>
+                          {contrast >= 3 ? (
+                            <CheckCircle2 className="h-4 w-4 text-green-400" />
+                          ) : (
+                            <X className="h-4 w-4 text-red-400" />
+                          )}
+                        </div>
+                        <div className={`text-xs ${contrast >= 3 ? 'text-green-400' : 'text-red-400'}`}>
+                          {contrast >= 3 ? 'WCAG AA Pass' : 'WCAG AA Fail'} (3:1 required)
+                        </div>
+                      </div>
+
+                      <div className={`p-4 rounded-lg border ${
+                        contrast >= 7 ? 'bg-green-500/10 border-green-500/30' : 'bg-gray-500/10 border-gray-500/30'
+                      }`}>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-sm font-medium text-slate-200">AAA Level</span>
+                          {contrast >= 7 ? (
+                            <Award className="h-4 w-4 text-green-400" />
+                          ) : (
+                            <Target className="h-4 w-4 text-slate-400" />
+                          )}
+                        </div>
+                        <div className={`text-xs ${contrast >= 7 ? 'text-green-400' : 'text-slate-400'}`}>
+                          {contrast >= 7 ? 'WCAG AAA Pass' : 'WCAG AAA Goal'} (7:1 target)
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+
+                  {/* Live Preview */}
+                  <Card className="overflow-hidden border-slate-700/50">
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-lg text-slate-200">Live Preview</CardTitle>
+                        <div className="flex items-center gap-2">
+                          <Badge className="bg-slate-700/50 text-slate-300 text-xs">Interactive</Badge>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleCopyCode(`/* Contrast: ${contrast.toFixed(2)}:1 - ${passes ? 'WCAG AA Pass' : 'WCAG AA Fail'} */\ncolor: ${fg};\nbackground-color: ${bg};`, "contrast-css")}
+                            className="h-8 px-3 text-xs"
+                          >
+                            {copiedCode === "contrast-css" ? (
+                              <>
+                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                Copied
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="h-3 w-3 mr-1" />
+                                Copy CSS
+                              </>
+                            )}
+                          </Button>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                      <div className="p-8 border-t border-slate-700/30" style={{ backgroundColor: bg, color: fg }}>
+                        <div className="space-y-4">
+                          <h3 className="text-2xl font-bold">Sample Heading</h3>
+                          <p className="text-lg">Large text example (18pt+) for WCAG testing</p>
+                          <p className="text-base leading-relaxed">
+                            This is normal body text that demonstrates readability with your chosen colour combination. 
+                            WCAG 2.1 AA requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text.
+                          </p>
+                          <div className="flex items-center gap-3 pt-2">
+                            <Button 
+                              size="sm"
+                              className="font-medium transition-all hover:scale-105" 
+                              style={{ backgroundColor: fg, color: bg }}
+                            >
+                              Interactive Button
+                            </Button>
+                            <span className="text-sm opacity-75">Hover and click to test interactivity</span>
+                          </div>
                     </div>
                   </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Quick Presets */}
+                  <Card className="bg-slate-900/30 border-slate-700/30">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg text-slate-200">Quick Presets</CardTitle>
+                      <CardDescription>Common colour combinations for testing</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        {[
+                          { name: "Dark Theme", fg: "#f1f5f9", bg: "#0f172a", desc: "Slate on Dark" },
+                          { name: "Light Theme", fg: "#1e293b", bg: "#f8fafc", desc: "Dark on Light" },
+                          { name: "Primary", fg: "#ffffff", bg: "#ec4899", desc: "White on Fuchsia" },
+                          { name: "Success", fg: "#ffffff", bg: "#22c55e", desc: "White on Green" }
+                        ].map((preset, idx) => (
+                          <Button
+                            key={idx}
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setFg(preset.fg);
+                              setBg(preset.bg);
+                            }}
+                            className="h-auto p-3 flex flex-col items-start hover:bg-slate-800/50 border-slate-600/50"
+                          >
+                            <div className="flex items-center gap-2 mb-1">
+                              <div 
+                                className="w-4 h-4 rounded border border-slate-600" 
+                                style={{ backgroundColor: preset.bg }}
+                              >
+                                <div 
+                                  className="w-2 h-2 rounded-sm m-0.5" 
+                                  style={{ backgroundColor: preset.fg }}
+                                ></div>
+                              </div>
+                              <span className="text-xs font-medium text-slate-200">{preset.name}</span>
+                            </div>
+                            <span className="text-xs text-slate-400">{preset.desc}</span>
+                          </Button>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
                 </CardContent>
               )}
             </Card>
@@ -1014,27 +1452,39 @@ export default function AccessibilityUniversal() {
                           { name: "Lighthouse", description: "Google accessibility audit", code: "lighthouse --only-categories=accessibility" },
                           { name: "Pa11y", description: "Command line testing", code: "pa11y https://example.com" }
                         ].map((tool, index) => (
-                          <div key={index} className="p-3 rounded-lg border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-800/30 transition-all group">
+                          <div key={index} className="p-3 rounded-lg border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-800/30 transition-all">
                             <div className="flex items-start justify-between mb-2">
                               <div>
                                 <div className="text-sm font-medium text-slate-200">{tool.name}</div>
                                 <div className="text-xs text-slate-500">{tool.description}</div>
                               </div>
-                              <Button
-                                size="sm"
-                                variant="ghost"
-                                onClick={() => handleCopyCode(tool.code, `tool-${index}`)}
-                                className="opacity-0 group-hover:opacity-100 transition-opacity h-6 w-6 p-0"
-                              >
-                                {copiedCode === `tool-${index}` ? 
-                                  <CheckCircle2 className="h-3 w-3 text-green-400" /> : 
-                                  <Copy className="h-3 w-3" />
-                                }
-                              </Button>
                             </div>
-                            <pre className="text-xs bg-slate-900/50 p-2 rounded font-mono text-slate-400 overflow-x-auto">
-                              <code>{tool.code}</code>
-                            </pre>
+                            <div className="space-y-2">
+                              <div className="flex items-center justify-between">
+                                <span className="text-xs text-slate-500 font-medium">Installation:</span>
+                                <Button
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() => handleCopyCode(tool.code, `tool-${index}`)}
+                                  className="h-6 px-2 text-xs"
+                                >
+                                  {copiedCode === `tool-${index}` ? (
+                                    <>
+                                      <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                      Copied
+                                    </>
+                                  ) : (
+                                    <>
+                                      <Copy className="h-3 w-3 mr-1" />
+                                      Copy
+                                    </>
+                                  )}
+                                </Button>
+                              </div>
+                              <pre className="text-xs bg-slate-900/50 p-2 rounded font-mono text-slate-400 whitespace-pre-wrap">
+                                <code>{tool.code}</code>
+                              </pre>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -1205,29 +1655,39 @@ test('should not have accessibility violations', async () => {
                       }
                     ].map((example, index) => (
                       <div key={index} className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
-                        <div className="flex items-start justify-between mb-4">
-                          <div>
-                            <h3 className="text-lg font-semibold text-slate-100 mb-2">
-                              {example.title}
-                            </h3>
-                            <p className="text-slate-400 text-sm">{example.description}</p>
-                          </div>
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={() => handleCopyCode(example.code, `example-${index}`)}
-                            className="h-8 w-8 p-0"
-                          >
-                            {copiedCode === `example-${index}` ? 
-                              <CheckCircle2 className="h-4 w-4 text-green-400" /> : 
-                              <Copy className="h-4 w-4" />
-                            }
-                          </Button>
+                        <div className="mb-4">
+                          <h3 className="text-lg font-semibold text-slate-100 mb-2">
+                            {example.title}
+                          </h3>
+                          <p className="text-slate-400 text-sm">{example.description}</p>
                         </div>
-                        <pre className="bg-slate-950/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30 mb-3">
-                          <code className="text-slate-300">{example.code}</code>
-                        </pre>
-                        <div className="text-xs text-slate-500">
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-slate-500 font-medium">Code example:</span>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleCopyCode(example.code, `example-${index}`)}
+                              className="h-6 px-2 text-xs"
+                            >
+                              {copiedCode === `example-${index}` ? (
+                                <>
+                                  <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                  Copied
+                                </>
+                              ) : (
+                                <>
+                                  <Copy className="h-3 w-3 mr-1" />
+                                  Copy
+                                </>
+                              )}
+                            </Button>
+                          </div>
+                          <pre className="bg-slate-950/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
+                            <code className="text-slate-300">{example.code}</code>
+                          </pre>
+                        </div>
+                        <div className="text-xs text-slate-500 mt-3">
                           <strong>Accessibility Note:</strong> {example.explanation}
                         </div>
                       </div>

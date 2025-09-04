@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
 import { CheckCircle2, X, Clock, Copy, Settings, Eye, Code2, Download, ExternalLink, Sparkles, Shield, Zap, Users, Globe, Target, AlertTriangle, Lightbulb, Award } from "lucide-react"
@@ -57,7 +58,7 @@ export default function BestPractices() {
               <div className="flex items-center gap-4">
                 <div>
                   <h1 className="text-2xl font-bold text-slate-100">Best Practices</h1>
-                  <p className="text-sm text-slate-400">Guidelines for building accessible, performant applications</p>
+                  <p className="text-sm text-slate-400">Guidelines for building accessible, performant recruitment applications with Inclusive's design system</p>
                 </div>
               </div>
 
@@ -204,125 +205,54 @@ export default function BestPractices() {
           <section className="mb-12">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
               <div className="mb-8">
-                {/* Enhanced Tab Navigation with Component Gallery Styling */}
-                <div className="relative">
-                  <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
-                  <TabsTrigger 
-                    value="overview"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      {/* Background glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      
-                      {/* Icon with enhanced effects */}
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <Target className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          
-                          {/* Icon glow */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          
-                          {/* Active pulse effect */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
+                {/* Simple Dropdown Navigation */}
+                <div className="flex items-center gap-3 mb-4">
+                  <h2 className="text-lg font-semibold text-slate-200">Viewing:</h2>
+                  <Select value={activeTab} onValueChange={setActiveTab}>
+                    <SelectTrigger className="w-auto min-w-[200px] h-10 bg-slate-800/40 border border-slate-700/30 hover:bg-slate-800/60 transition-colors text-slate-300">
+                      {(() => {
+                        const tabs = [
+                          { value: "overview", label: "Overview", icon: Target },
+                          { value: "development", label: "Development", icon: Code2 },
+                          { value: "accessibility", label: "Accessibility", icon: Shield },
+                          { value: "performance", label: "Performance", icon: Zap }
+                        ];
+                        const currentTab = tabs.find(tab => tab.value === activeTab);
+                        return currentTab ? (
+                          <div className="flex items-center gap-3">
+                            <currentTab.icon className="h-4 w-4" />
+                            <span>{currentTab.label}</span>
+                          </div>
+                        ) : null;
+                      })()}
+                    </SelectTrigger>
+                    <SelectContent className="bg-slate-800 border-slate-700">
+                      <SelectItem value="overview" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <Target className="h-4 w-4 text-slate-400" />
+                          <span>Overview</span>
                         </div>
-                      </div>
-                      
-                      {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
-                        Overview
-                      </span>
-                      
-                      {/* Active indicator line */}
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="development"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      {/* Background glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      
-                      {/* Icon with enhanced effects */}
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <Code2 className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          
-                          {/* Icon glow */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          
-                          {/* Active pulse effect */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
+                      </SelectItem>
+                      <SelectItem value="development" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <Code2 className="h-4 w-4 text-slate-400" />
+                          <span>Development</span>
                         </div>
-                      </div>
-                      
-                      {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
-                        Development
-                      </span>
-                      
-                      {/* Active indicator line */}
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="accessibility"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      {/* Background glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      
-                      {/* Icon with enhanced effects */}
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <Globe className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          
-                          {/* Icon glow */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          
-                          {/* Active pulse effect */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
+                      </SelectItem>
+                      <SelectItem value="accessibility" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <Shield className="h-4 w-4 text-slate-400" />
+                          <span>Accessibility</span>
                         </div>
-                      </div>
-                      
-                      {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
-                        Accessibility
-                      </span>
-                      
-                      {/* Active indicator line */}
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                  <TabsTrigger 
-                    value="performance"
-                      className="group flex flex-col items-center gap-3 py-5 px-3 text-xs sm:text-sm data-[state=active]:bg-gradient-to-br data-[state=active]:from-fuchsia-500/25 data-[state=active]:via-purple-500/20 data-[state=active]:to-pink-500/15 data-[state=active]:text-white data-[state=active]:border-fuchsia-400/40 data-[state=active]:shadow-lg data-[state=active]:shadow-fuchsia-500/20 hover:bg-slate-700/40 hover:border-slate-600/60 transition-all duration-300 ease-out rounded-2xl relative border border-transparent overflow-hidden"
-                    >
-                      {/* Background glow effect */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/0 via-purple-500/0 to-pink-500/0 group-hover:from-fuchsia-500/5 group-hover:via-purple-500/5 group-hover:to-pink-500/5 group-data-[state=active]:from-fuchsia-500/10 group-data-[state=active]:via-purple-500/8 group-data-[state=active]:to-pink-500/6 transition-all duration-500 rounded-2xl"></div>
-                      
-                      {/* Icon with enhanced effects */}
-                      <div className="relative z-10">
-                        <div className="relative">
-                          <Zap className="h-6 w-6 flex-shrink-0 text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-fuchsia-300 group-hover:scale-110 group-data-[state=active]:scale-115 transition-all duration-300 ease-out drop-shadow-sm" />
-                          
-                          {/* Icon glow */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-hover:bg-fuchsia-400/20 group-data-[state=active]:bg-fuchsia-400/30 rounded-lg blur-md scale-150 transition-all duration-300"></div>
-                          
-                          {/* Active pulse effect */}
-                          <div className="absolute inset-0 bg-fuchsia-400/0 group-data-[state=active]:bg-fuchsia-400/20 rounded-lg blur-xl scale-200 animate-pulse opacity-0 group-data-[state=active]:opacity-100 transition-opacity duration-1000"></div>
+                      </SelectItem>
+                      <SelectItem value="performance" className="focus:bg-slate-700/60 cursor-pointer">
+                        <div className="flex items-center gap-3">
+                          <Zap className="h-4 w-4 text-slate-400" />
+                          <span>Performance</span>
                         </div>
-                      </div>
-                      
-                      {/* Label with better typography */}
-                      <span className="font-medium leading-tight text-center text-slate-400 group-hover:text-slate-200 group-data-[state=active]:text-white group-data-[state=active]:font-semibold transition-all duration-300 hidden sm:block text-xs lg:text-sm tracking-wide">
-                        Performance
-                      </span>
-                      
-                      {/* Active indicator line */}
-                      <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-fuchsia-400 to-purple-400 rounded-full group-data-[state=active]:w-8 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}></div>
-                  </TabsTrigger>
-                </TabsList>
-                  
-                  {/* Background gradient effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5 rounded-2xl -z-10 blur-xl"></div>
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
 
@@ -540,7 +470,7 @@ function DevelopmentTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <h4 className="font-medium text-fuchsia-300">TypeScript Best Practices</h4>
-              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
+              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
                 <code className="text-slate-300">{`// Good: Explicit types and interfaces
 interface Candidate {
   id: string
@@ -564,7 +494,7 @@ async function fetchCandidates(): Promise<Candidate[]> {
             </div>
             <div className="space-y-4">
               <h4 className="font-medium text-fuchsia-300">Component Structure</h4>
-              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
+              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
                 <code className="text-slate-300">{`// Good: Clear component with proper types
 interface CandidateCardProps {
   candidate: Candidate
@@ -926,7 +856,7 @@ function PerformanceTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <h4 className="font-medium text-fuchsia-300">Code Splitting</h4>
-              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
+              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
                 <code className="text-slate-300">{`// Lazy load components
 const CandidateDetails = lazy(() => 
   import('./CandidateDetails')
@@ -945,7 +875,7 @@ const JobsPage = lazy(() =>
             </div>
             <div className="space-y-4">
               <h4 className="font-medium text-fuchsia-300">Image optimisation</h4>
-              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
+              <pre className="bg-slate-900/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
                 <code className="text-slate-300">{`// Next.js Image component
 <Image
   src="/candidate-photo.jpg"

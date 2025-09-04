@@ -265,7 +265,8 @@ export function Example() {
   const quickPreviewItems = [
     { 
       name: "Install Package", 
-      code: "npm install @inclusive-design/core tailwindcss @types/react",
+      code: `npm install @inclusive/design-system \\
+  tailwindcss @types/react`,
       icon: Download,
       category: "Installation",
       validation: () => {
@@ -277,7 +278,7 @@ export function Example() {
     { 
       name: "Import Styles", 
       code: `// In your _app.tsx or layout.tsx
-import "@inclusive-design/core/styles.css"
+import "@inclusive/design-system/styles.css"
 import "./globals.css"`,
       icon: Palette,
       category: "Setup",
@@ -285,12 +286,13 @@ import "./globals.css"`,
     },
     { 
       name: "First Component", 
-      code: `import { Button } from "@inclusive-design/core"
+      code: `import { Button } from "@inclusive/design-system"
 
-export function MyComponent() {
+export function CandidateCard() {
   return (
-    <Button className="bg-fuchsia-600 hover:bg-fuchsia-700">
-      Get Started
+    <Button className="bg-fuchsia-600 
+                     hover:bg-fuchsia-700">
+      View Profile
     </Button>
   )
 }`,
@@ -318,7 +320,7 @@ export function MyComponent() {
             <div className="max-w-7xl mx-auto">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
                 <div>
-                  <Badge className="bg-gradient-to-r from-green-500/20 to-blue-500/20 text-green-300 border-green-500/30 mb-4">
+                  <Badge className="bg-slate-800/40 text-slate-300 border-slate-700/50 mb-4">
                     <Play className="w-3 h-3 mr-1" />
                     Quick Start Guide
                   </Badge>
@@ -327,9 +329,25 @@ export function MyComponent() {
                     <span className="bg-gradient-to-r from-fuchsia-400 to-blue-400 bg-clip-text text-transparent"> in Minutes</span>
                   </h1>
                   <p className="text-xl text-slate-400 max-w-3xl">
-                    Begin your journey with the Inclusive Design System. Choose your learning path, 
-                    explore components, and start building accessible experiences today.
+                    Begin your journey with Inclusive's Design System. Choose your learning path, 
+                    explore components, and start building recruitment experiences today. Get up and running in under 5 minutes.
                   </p>
+
+                  {/* Quick Stats */}
+                  <div className="grid grid-cols-3 gap-6 mt-8">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-400">5 min</div>
+                      <div className="text-sm text-slate-500">Setup Time</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-400">49+</div>
+                      <div className="text-sm text-slate-500">Components</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-purple-400">3</div>
+                      <div className="text-sm text-slate-500">Learning Paths</div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Progress Status */}
@@ -464,22 +482,31 @@ export function MyComponent() {
                             {item.category}
                           </Badge>
                           
-                          <div className="relative mb-4">
-                            <pre className="bg-slate-900/50 p-3 rounded-lg text-xs text-slate-300 font-mono overflow-x-auto border border-slate-700/30">
-                              <code>{item.code}</code>
-                            </pre>
+                          <div className="mb-4">
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="text-xs text-slate-500 font-medium">Code Example:</span>
                             <Button
                               size="sm"
                               variant="ghost"
                               onClick={() => handleCopyCode(item.code, `quick-${index}`)}
-                              className="absolute top-2 right-2 h-6 w-6 p-0"
+                                className="h-6 px-2 text-xs"
                             >
                               {copiedCode === `quick-${index}` ? (
-                                <CheckCircle2 className="h-3 w-3 text-green-400" />
+                                  <>
+                                    <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                    Copied
+                                  </>
                               ) : (
-                                <Copy className="h-3 w-3" />
+                                  <>
+                                    <Copy className="h-3 w-3 mr-1" />
+                                    Copy
+                                  </>
                               )}
                             </Button>
+                            </div>
+                            <pre className="bg-slate-900/50 p-3 rounded-lg text-xs text-slate-300 font-mono whitespace-pre-wrap border border-slate-700/30">
+                              <code>{item.code}</code>
+                            </pre>
                           </div>
                           
                           <div className="flex gap-2">
@@ -561,31 +588,45 @@ export function MyComponent() {
                       </div>
                       <p className="text-slate-400 text-sm mb-4">Add the design system to your project</p>
                       <div className="space-y-3">
-                        <div className="relative">
-                          <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono">
-                            <code>npm install @inclusive-design/core</code>
-                          </pre>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-slate-500">NPM:</span>
                           <Button
                             size="sm"
                             variant="ghost"
-                            onClick={() => handleCopyCode("npm install @inclusive-design/core", "install-npm")}
-                            className="absolute top-1 right-1 h-6 w-6 p-0"
-                          >
-                            {copiedCode === "install-npm" ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
+                              onClick={() => handleCopyCode("npm install @inclusive/design-system", "install-npm")}
+                              className="h-5 px-2 text-xs"
+                            >
+                              {copiedCode === "install-npm" ? (
+                                <CheckCircle2 className="h-3 w-3 text-green-400" />
+                              ) : (
+                                <Copy className="h-3 w-3" />
+                              )}
                           </Button>
                         </div>
-                        <div className="relative">
-                          <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono">
-                            <code>yarn add @inclusive-design/core</code>
+                          <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono whitespace-pre-wrap">
+                            <code>npm install @inclusive/design-system</code>
                           </pre>
+                        </div>
+                        <div className="space-y-2">
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs text-slate-500">Yarn:</span>
                           <Button
                             size="sm"
                             variant="ghost"
-                            onClick={() => handleCopyCode("yarn add @inclusive-design/core", "install-yarn")}
-                            className="absolute top-1 right-1 h-6 w-6 p-0"
-                          >
-                            {copiedCode === "install-yarn" ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
+                              onClick={() => handleCopyCode("yarn add @inclusive/design-system", "install-yarn")}
+                              className="h-5 px-2 text-xs"
+                            >
+                              {copiedCode === "install-yarn" ? (
+                                <CheckCircle2 className="h-3 w-3 text-green-400" />
+                              ) : (
+                                <Copy className="h-3 w-3" />
+                              )}
                           </Button>
+                          </div>
+                          <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono whitespace-pre-wrap">
+                            <code>yarn add @inclusive/design-system</code>
+                          </pre>
                         </div>
                       </div>
                     </CardContent>
@@ -717,9 +758,9 @@ export function MyComponent() {
                       
                       <div className="grid gap-3">
                         {[
-                          { label: "NPM", command: "npm install @inclusive-design/core", id: "npm-cmd" },
-                          { label: "Yarn", command: "yarn add @inclusive-design/core", id: "yarn-cmd" },
-                          { label: "PNPM", command: "pnpm add @inclusive-design/core", id: "pnpm-cmd" }
+                          { label: "NPM", command: "npm install @inclusive/design-system", id: "npm-cmd" },
+                          { label: "Yarn", command: "yarn add @inclusive/design-system", id: "yarn-cmd" },
+                          { label: "PNPM", command: "pnpm add @inclusive/design-system", id: "pnpm-cmd" }
                         ].map((cmd) => (
                           <div key={cmd.id} className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700/30">
                             <Badge className="bg-slate-700/50 text-slate-300 text-xs">
@@ -769,22 +810,32 @@ export function MyComponent() {
                         </Button>
                       </div>
                       
-                      <div className="relative">
-                        <pre className="bg-slate-800/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-                          <code className="text-slate-300">{`// In your main CSS or app file
-import "@inclusive-design/core/styles.css"`}</code>
-                        </pre>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-slate-500 font-medium">Import styles:</span>
                         <Button
                           size="sm"
                           variant="ghost"
-                          onClick={() => handleCopyCode(`import "@inclusive-design/core/styles.css"`, "import-styles")}
-                          className="absolute top-2 right-2 h-8 w-8 p-0"
-                        >
-                          {copiedCode === "import-styles" ? 
-                            <CheckCircle2 className="h-3 w-3 text-green-400" /> : 
-                            <Copy className="h-3 w-3" />
-                          }
+                            onClick={() => handleCopyCode(`import "@inclusive/design-system/styles.css"`, "import-styles")}
+                            className="h-6 px-2 text-xs"
+                          >
+                            {copiedCode === "import-styles" ? (
+                              <>
+                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                Copied
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="h-3 w-3 mr-1" />
+                                Copy
+                              </>
+                            )}
                         </Button>
+                        </div>
+                        <pre className="bg-slate-800/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
+                          <code className="text-slate-300">{`// In your main CSS or app file
+import "@inclusive/design-system/styles.css"`}</code>
+                        </pre>
                       </div>
                     </div>
 
@@ -813,37 +864,48 @@ import "@inclusive-design/core/styles.css"`}</code>
                         </Button>
                       </div>
                       
-                      <div className="relative">
-                        <pre className="bg-slate-800/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-                          <code className="text-slate-300">{`import { Button } from "@inclusive-design/core"
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-slate-500 font-medium">Component example:</span>
+                        <Button
+                          size="sm"
+                          variant="ghost"
+                            onClick={() => handleCopyCode(`import { Button } from "@inclusive/design-system"
 
-function MyComponent() {
+function RecruitmentComponent() {
   return (
     <Button className="bg-fuchsia-600 hover:bg-fuchsia-700">
-      Get Started
+      View Candidates
+    </Button>
+  )
+}`, "first-component")}
+                            className="h-6 px-2 text-xs"
+                          >
+                            {copiedCode === "first-component" ? (
+                              <>
+                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                Copied
+                              </>
+                            ) : (
+                              <>
+                                <Copy className="h-3 w-3 mr-1" />
+                                Copy
+                              </>
+                            )}
+                        </Button>
+                        </div>
+                        <pre className="bg-slate-800/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
+                          <code className="text-slate-300">{`import { Button } from "@inclusive/design-system"
+
+function RecruitmentComponent() {
+  return (
+    <Button className="bg-fuchsia-600 
+                     hover:bg-fuchsia-700">
+      View Candidates
     </Button>
   )
 }`}</code>
                         </pre>
-                        <Button
-                          size="sm"
-                          variant="ghost"
-                          onClick={() => handleCopyCode(`import { Button } from "@inclusive-design/core"
-
-function MyComponent() {
-  return (
-    <Button className="bg-fuchsia-600 hover:bg-fuchsia-700">
-      Get Started
-    </Button>
-  )
-}`, "first-component")}
-                          className="absolute top-2 right-2 h-8 w-8 p-0"
-                        >
-                          {copiedCode === "first-component" ? 
-                            <CheckCircle2 className="h-3 w-3 text-green-400" /> : 
-                            <Copy className="h-3 w-3" />
-                          }
-                        </Button>
                       </div>
                     </div>
                   </div>
@@ -894,10 +956,16 @@ function MyComponent() {
                             description: "Generate boilerplate code", 
                             icon: Code, 
                             action: () => {
-                              const componentName = prompt("Enter component name (e.g., MyButton):");
+                              const componentName = prompt("Enter component name (e.g., CandidateCard):");
                               if (componentName) {
                                 const boilerplate = `import React from 'react'
 import { Button } from '@/components/ui/button'
+import { 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle 
+} from '@/components/ui/card'
 import { cn } from '@/lib/utils'
 
 interface ${componentName}Props {
@@ -915,18 +983,27 @@ export function ${componentName}({
   ...props 
 }: ${componentName}Props) {
   return (
-    <Button
-      className={cn('', className)}
-      variant={variant}
-      size={size}
-      {...props}
-    >
-      {children}
-    </Button>
+    <Card className={cn(
+      'bg-slate-800/30 border-slate-700/50', 
+      className
+    )}>
+      <CardHeader>
+        <CardTitle>Recruitment Component</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Button
+          variant={variant}
+          size={size}
+          {...props}
+        >
+          {children}
+        </Button>
+      </CardContent>
+    </Card>
   )
 }`;
                                 navigator.clipboard.writeText(boilerplate);
-                                alert(`${componentName} component generated and copied to clipboard!`);
+                                alert(`${componentName} recruitment component generated and copied to clipboard!`);
                               }
                             }
                           },

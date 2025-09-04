@@ -317,7 +317,7 @@ export default function ComponentsPage() {
                       <CheckCircle2 className="w-3 h-3 mr-1" />
                       {allComponents.filter(c => c.status === "Stable").length} Production Ready
                     </Badge>
-                    <Badge className="bg-purple-950 text-purple-300 border-purple-800">
+                    <Badge className="bg-slate-800/40 text-slate-300 border-slate-700/50">
                       <ComponentIcon className="w-3 h-3 mr-1" />
                       {allComponents.length} Total Components
                     </Badge>

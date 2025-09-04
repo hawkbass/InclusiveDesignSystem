@@ -80,6 +80,13 @@ const mainNavigation = [
     metrics: { total: "102", categories: "8" }
   },
   { 
+    href: "/playground", 
+    label: "Playground", 
+    icon: Activity, 
+    description: "Interactive component testing",
+    metrics: { components: "4", status: "Live" }
+  },
+  { 
     href: "/style-guide", 
     label: "Style Guide", 
     icon: LayoutDashboard, 
@@ -197,17 +204,6 @@ const designSystemSections = [
     priority: 10
   },
 
-  // Analytics & Tools - System Health
-  { 
-    href: "/design-system/dashboard", 
-    label: "Dashboard", 
-    icon: BarChart3,
-    description: "Analytics and system metrics overview",
-    status: "stable" as const,
-    category: "Analytics",
-    metrics: { metrics: "12", uptime: "99.9%" },
-    priority: 11
-  },
 ]
 
 interface UnifiedSidebarProps {
