@@ -70,7 +70,7 @@ export default function GettingStartedUniversal() {
   const [currentPath, setCurrentPath] = useState("")
   const [showProgressModal, setShowProgressModal] = useState(false)
   const [environmentStatus, setEnvironmentStatus] = useState<{[key: string]: 'checking' | 'installed' | 'not-found' | 'error'}>({})
-  const [playgroundCode, setPlaygroundCode] = useState(`import { Button } from "@inclusive-design/core"
+  const [playgroundCode, setPlaygroundCode] = useState(`import { Button } from "@hawkbass/inclusive-design-core"
 
 export function Example() {
   return (
@@ -90,11 +90,11 @@ export function Example() {
   const allSearchableItems = [
     // Quick Start Items
     { id: "npm-install", name: "NPM Install Command", category: "Installation", type: "command", 
-      value: "npm install @inclusive-design/core", usage: "Package installation", difficulty: "beginner" },
+      value: "npm install @hawkbass/inclusive-design-core", usage: "Package installation", difficulty: "beginner" },
     { id: "yarn-install", name: "Yarn Install Command", category: "Installation", type: "command", 
-      value: "yarn add @inclusive-design/core", usage: "Package installation", difficulty: "beginner" },
+      value: "yarn add @hawkbass/inclusive-design-core", usage: "Package installation", difficulty: "beginner" },
     { id: "pnpm-install", name: "PNPM Install Command", category: "Installation", type: "command", 
-      value: "pnpm add @inclusive-design/core", usage: "Package installation", difficulty: "beginner" },
+      value: "pnpm add @hawkbass/inclusive-design-core", usage: "Package installation", difficulty: "beginner" },
       
     // Configuration
     { id: "theme-config", name: "Theme Configuration", category: "Configuration", type: "config",
@@ -265,7 +265,7 @@ export function Example() {
   const quickPreviewItems = [
     { 
       name: "Install Package", 
-      code: `npm install @inclusive-design/core \\
+      code: `npm install @hawkbass/inclusive-design-core \\
   tailwindcss @types/react`,
       icon: Download,
       category: "Installation",
@@ -278,7 +278,7 @@ export function Example() {
     { 
       name: "Import Styles", 
       code: `// In your _app.tsx or layout.tsx
-import "@inclusive-design/core/styles.css"
+import "@hawkbass/inclusive-design-core/styles.css"
 import "./globals.css"`,
       icon: Palette,
       category: "Setup",
@@ -286,7 +286,7 @@ import "./globals.css"`,
     },
     { 
       name: "First Component", 
-      code: `import { Button } from "@inclusive-design/core"
+      code: `import { Button } from "@hawkbass/inclusive-design-core"
 
 export function CandidateCard() {
   return (
@@ -594,7 +594,7 @@ export function CandidateCard() {
                           <Button
                             size="sm"
                             variant="ghost"
-                              onClick={() => handleCopyCode("npm install @inclusive-design/core", "install-npm")}
+                              onClick={() => handleCopyCode("npm install @hawkbass/inclusive-design-core", "install-npm")}
                               className="h-5 px-2 text-xs"
                             >
                               {copiedCode === "install-npm" ? (
@@ -605,7 +605,7 @@ export function CandidateCard() {
                           </Button>
                         </div>
                           <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono whitespace-pre-wrap">
-                            <code>npm install @inclusive-design/core</code>
+                            <code>npm install @hawkbass/inclusive-design-core</code>
                           </pre>
                         </div>
                         <div className="space-y-2">
@@ -614,7 +614,7 @@ export function CandidateCard() {
                           <Button
                             size="sm"
                             variant="ghost"
-                              onClick={() => handleCopyCode("yarn add @inclusive-design/core", "install-yarn")}
+                              onClick={() => handleCopyCode("yarn add @hawkbass/inclusive-design-core", "install-yarn")}
                               className="h-5 px-2 text-xs"
                             >
                               {copiedCode === "install-yarn" ? (
@@ -625,7 +625,7 @@ export function CandidateCard() {
                           </Button>
                           </div>
                           <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono whitespace-pre-wrap">
-                            <code>yarn add @inclusive-design/core</code>
+                            <code>yarn add @hawkbass/inclusive-design-core</code>
                           </pre>
                         </div>
                       </div>
@@ -647,7 +647,7 @@ export function CandidateCard() {
                       <p className="text-muted-foreground text-sm mb-4">Import styles and setup provider</p>
                       <div className="relative">
                         <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono">
-                          <code>{`import "@inclusive-design/core/styles.css"
+                          <code>{`import "@hawkbass/inclusive-design-core/styles.css"
 
 <ThemeProvider theme="dark">
   <YourApp />
@@ -656,7 +656,7 @@ export function CandidateCard() {
                         <Button
                           size="sm"
                           variant="ghost"
-                          onClick={() => handleCopyCode(`import "@inclusive-design/core/styles.css"\n\n<ThemeProvider theme="dark">\n  <YourApp />\n</ThemeProvider>`, "config-setup")}
+                          onClick={() => handleCopyCode(`import "@hawkbass/inclusive-design-core/styles.css"\n\n<ThemeProvider theme="dark">\n  <YourApp />\n</ThemeProvider>`, "config-setup")}
                           className="absolute top-1 right-1 h-6 w-6 p-0"
                         >
                           {copiedCode === "config-setup" ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
@@ -680,7 +680,7 @@ export function CandidateCard() {
                       <p className="text-muted-foreground text-sm mb-4">Create your first component</p>
                       <div className="relative">
                         <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono">
-                          <code>{`import { Button } from "@inclusive-design/core"
+                          <code>{`import { Button } from "@hawkbass/inclusive-design-core"
 
 <Button className="bg-fuchsia-600">
   Get Started
@@ -689,7 +689,7 @@ export function CandidateCard() {
                         <Button
                           size="sm"
                           variant="ghost"
-                          onClick={() => handleCopyCode(`import { Button } from "@inclusive-design/core"\n\n<Button className="bg-fuchsia-600">\n  Get Started\n</Button>`, "first-component")}
+                          onClick={() => handleCopyCode(`import { Button } from "@hawkbass/inclusive-design-core"\n\n<Button className="bg-fuchsia-600">\n  Get Started\n</Button>`, "first-component")}
                           className="absolute top-1 right-1 h-6 w-6 p-0"
                         >
                           {copiedCode === "first-component" ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
@@ -758,9 +758,9 @@ export function CandidateCard() {
                       
                       <div className="grid gap-3">
                         {[
-                          { label: "NPM", command: "npm install @inclusive-design/core", id: "npm-cmd" },
-                          { label: "Yarn", command: "yarn add @inclusive-design/core", id: "yarn-cmd" },
-                          { label: "PNPM", command: "pnpm add @inclusive-design/core", id: "pnpm-cmd" }
+                          { label: "NPM", command: "npm install @hawkbass/inclusive-design-core", id: "npm-cmd" },
+                          { label: "Yarn", command: "yarn add @hawkbass/inclusive-design-core", id: "yarn-cmd" },
+                          { label: "PNPM", command: "pnpm add @hawkbass/inclusive-design-core", id: "pnpm-cmd" }
                         ].map((cmd) => (
                           <div key={cmd.id} className="flex items-center gap-3 p-3 bg-card/50 rounded-lg border border-border/30">
                             <Badge className="bg-muted/50 text-foreground/80 text-xs">
@@ -816,7 +816,7 @@ export function CandidateCard() {
                         <Button
                           size="sm"
                           variant="ghost"
-                            onClick={() => handleCopyCode(`import "@inclusive-design/core/styles.css"`, "import-styles")}
+                            onClick={() => handleCopyCode(`import "@hawkbass/inclusive-design-core/styles.css"`, "import-styles")}
                             className="h-6 px-2 text-xs"
                           >
                             {copiedCode === "import-styles" ? (
@@ -834,7 +834,7 @@ export function CandidateCard() {
                         </div>
                         <pre className="bg-card/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-border/30">
                           <code className="text-foreground/80">{`// In your main CSS or app file
-import "@inclusive-design/core/styles.css"`}</code>
+import "@hawkbass/inclusive-design-core/styles.css"`}</code>
                         </pre>
                       </div>
                     </div>
@@ -870,7 +870,7 @@ import "@inclusive-design/core/styles.css"`}</code>
                         <Button
                           size="sm"
                           variant="ghost"
-                            onClick={() => handleCopyCode(`import { Button } from "@inclusive-design/core"
+                            onClick={() => handleCopyCode(`import { Button } from "@hawkbass/inclusive-design-core"
 
 function RecruitmentComponent() {
   return (
@@ -895,7 +895,7 @@ function RecruitmentComponent() {
                         </Button>
                         </div>
                         <pre className="bg-card/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-border/30">
-                          <code className="text-foreground/80">{`import { Button } from "@inclusive-design/core"
+                          <code className="text-foreground/80">{`import { Button } from "@hawkbass/inclusive-design-core"
 
 function RecruitmentComponent() {
   return (

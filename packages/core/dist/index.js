@@ -2,6 +2,7 @@
 
 var jsxRuntime = require('react/jsx-runtime');
 var React = require('react');
+var nextThemes = require('next-themes');
 
 function _interopNamespaceDefault(e) {
   var n = Object.create(null);
@@ -2831,14 +2832,15 @@ const Button = React__namespace.forwardRef(({ className, variant, size, asChild 
 });
 Button.displayName = "Button";
 
-const c=["light","dark"],i="(prefers-color-scheme: dark)",d="undefined"==typeof window,u=/*#__PURE__*/React.createContext(void 0),h={setTheme:e=>{},themes:[]},y=()=>{var e;return null!==(e=React.useContext(u))&&void 0!==e?e:h},$=r=>React.useContext(u)?/*#__PURE__*/React.createElement(React.Fragment,null,r.children):/*#__PURE__*/React.createElement(f,r),v=["light","dark"],f=({forcedTheme:t,disableTransitionOnChange:n=false,enableSystem:l=true,enableColorScheme:m=true,storageKey:d="theme",themes:h=v,defaultTheme:y=(l?"system":"light"),attribute:$="data-theme",value:f,children:w,nonce:T})=>{const[E,k]=React.useState(()=>S(d,y)),[C,L]=React.useState(()=>S(d)),x=f?Object.values(f):h,I=React.useCallback(e=>{let t=e;if(!t)return;"system"===e&&l&&(t=p());const r=f?f[t]:t,o=n?b():null,a=document.documentElement;if("class"===$?(a.classList.remove(...x),r&&a.classList.add(r)):r?a.setAttribute($,r):a.removeAttribute($),m){const e=c.includes(y)?y:null,n=c.includes(t)?t:e;a.style.colorScheme=n;}null==o||o();},[]),O=React.useCallback(e=>{k(e);try{localStorage.setItem(d,e);}catch(e){}},[t]),M=React.useCallback(e=>{const n=p(e);L(n),"system"===E&&l&&!t&&I("system");},[E,t]);React.useEffect(()=>{const e=window.matchMedia(i);return e.addListener(M),M(e),()=>e.removeListener(M)},[M]),React.useEffect(()=>{const e=e=>{e.key===d&&O(e.newValue||y);};return window.addEventListener("storage",e),()=>window.removeEventListener("storage",e)},[O]),React.useEffect(()=>{I(null!=t?t:E);},[t,E]);const A=React.useMemo(()=>({theme:E,setTheme:O,forcedTheme:t,resolvedTheme:"system"===E?C:E,themes:l?[...h,"system"]:h,systemTheme:l?C:void 0}),[E,O,t,C,l,h]);return React.createElement(u.Provider,{value:A},/*#__PURE__*/React.createElement(g,{forcedTheme:t,disableTransitionOnChange:n,enableSystem:l,enableColorScheme:m,storageKey:d,themes:h,defaultTheme:y,attribute:$,value:f,children:w,attrs:x,nonce:T}),w)},g=/*#__PURE__*/React.memo(({forcedTheme:t,storageKey:n,attribute:r,enableSystem:o,enableColorScheme:a,defaultTheme:s,value:l,attrs:m,nonce:d})=>{const u="system"===s,h="class"===r?`var d=document.documentElement,c=d.classList;c.remove(${m.map(e=>`'${e}'`).join(",")});`:`var d=document.documentElement,n='${r}',s='setAttribute';`,y=a?c.includes(s)&&s?`if(e==='light'||e==='dark'||!e)d.style.colorScheme=e||'${s}'`:"if(e==='light'||e==='dark')d.style.colorScheme=e":"",$=(e,t=false,n=true)=>{const o=l?l[e]:e,s=t?e+"|| ''":`'${o}'`;let m="";return a&&n&&!t&&c.includes(e)&&(m+=`d.style.colorScheme = '${e}';`),"class"===r?m+=t||o?`c.add(${s})`:"null":o&&(m+=`d[s](n,${s})`),m},v=t?`!function(){${h}${$(t)}}()`:o?`!function(){try{${h}var e=localStorage.getItem('${n}');if('system'===e||(!e&&${u})){var t='${i}',m=window.matchMedia(t);if(m.media!==t||m.matches){${$("dark")}}else{${$("light")}}}else if(e){${l?`var x=${JSON.stringify(l)};`:""}${$(l?"x[e]":"e",true)}}${u?"":"else{"+$(s,false,false)+"}"}${y}}catch(e){}}()`:`!function(){try{${h}var e=localStorage.getItem('${n}');if(e){${l?`var x=${JSON.stringify(l)};`:""}${$(l?"x[e]":"e",true)}}else{${$(s,false,false)};}${y}}catch(t){}}();`;return React.createElement("script",{nonce:d,dangerouslySetInnerHTML:{__html:v}})},()=>true),S=(e,t)=>{if(d)return;let n;try{n=localStorage.getItem(e)||void 0;}catch(e){}return n||t},b=()=>{const e=document.createElement("style");return e.appendChild(document.createTextNode("*{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}")),document.head.appendChild(e),()=>{window.getComputedStyle(document.body),setTimeout(()=>{document.head.removeChild(e);},1);}},p=e=>(e||(e=window.matchMedia(i)),e.matches?"dark":"light");
-
 function ThemeProvider({ children, ...props }) {
-    return jsxRuntime.jsx($, { ...props, children: children });
+    return jsxRuntime.jsx(nextThemes.ThemeProvider, { ...props, children: children });
 }
 
+Object.defineProperty(exports, "useTheme", {
+  enumerable: true,
+  get: function () { return nextThemes.useTheme; }
+});
 exports.Button = Button;
 exports.ThemeProvider = ThemeProvider;
 exports.cn = cn;
-exports.useTheme = y;
 //# sourceMappingURL=index.js.map

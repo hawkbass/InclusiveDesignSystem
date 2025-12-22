@@ -1,8 +1,8 @@
-# @inclusive-design/core
+# @hawkbass/inclusive-design-core
 
 > A comprehensive, accessible design system for modern React applications. Built with accessibility-first principles for recruitment and enterprise applications.
 
-[![npm version](https://img.shields.io/npm/v/@inclusive-design/core.svg)](https://www.npmjs.com/package/@inclusive-design/core)
+[![npm version](https://img.shields.io/npm/v/@hawkbass/inclusive-design-core.svg)](https://www.npmjs.com/package/@hawkbass/inclusive-design-core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
@@ -19,13 +19,13 @@
 
 ```bash
 # npm
-npm install @inclusive-design/core
+npm install @hawkbass/inclusive-design-core
 
 # yarn
-yarn add @inclusive-design/core
+yarn add @hawkbass/inclusive-design-core
 
 # pnpm
-pnpm add @inclusive-design/core
+pnpm add @hawkbass/inclusive-design-core
 ```
 
 ## Quick Start
@@ -36,13 +36,13 @@ Add the styles to your app's entry point:
 
 ```tsx
 // app/layout.tsx or _app.tsx
-import "@inclusive-design/core/styles.css"
+import "@hawkbass/inclusive-design-core/styles.css"
 ```
 
 ### 2. Use Components
 
 ```tsx
-import { Button, ThemeProvider } from "@inclusive-design/core"
+import { Button, ThemeProvider } from "@hawkbass/inclusive-design-core"
 
 function App() {
   return (
@@ -64,13 +64,13 @@ import {
   Button,
   ThemeProvider,
   useTheme 
-} from "@inclusive-design/core"
+} from "@hawkbass/inclusive-design-core"
 ```
 
 ### Utilities
 
 ```tsx
-import { cn } from "@inclusive-design/core"
+import { cn } from "@hawkbass/inclusive-design-core"
 
 // Merge Tailwind classes conditionally
 cn("base-class", isActive && "active-class", className)
@@ -80,7 +80,7 @@ cn("base-class", isActive && "active-class", className)
 
 ```css
 /* Import CSS custom properties */
-@import "@inclusive-design/core/tokens.css";
+@import "@hawkbass/inclusive-design-core/tokens.css";
 ```
 
 ### Design Tokens (JavaScript)
@@ -89,7 +89,7 @@ For Tailwind CSS configuration:
 
 ```js
 // tailwind.config.js
-const tokens = require("@inclusive-design/core/tokens")
+const tokens = require("@hawkbass/inclusive-design-core/tokens")
 
 module.exports = {
   theme: {

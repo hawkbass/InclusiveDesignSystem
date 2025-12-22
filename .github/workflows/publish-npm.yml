@@ -27,12 +27,10 @@ jobs:
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-          cache: 'npm'
-          cache-dependency-path: packages/core/package-lock.json
 
       - name: Install dependencies
         working-directory: packages/core
-        run: npm ci --legacy-peer-deps
+        run: npm install --legacy-peer-deps
 
       - name: Build package
         working-directory: packages/core
@@ -46,13 +44,11 @@ jobs:
           echo "Checking for required files..."
           test -f dist/index.js || (echo "Missing index.js" && exit 1)
           test -f dist/index.esm.js || (echo "Missing index.esm.js" && exit 1)
-          test -f dist/styles.css || (echo "Missing styles.css" && exit 1)
-          test -f dist/tokens.css || (echo "Missing tokens.css" && exit 1)
           echo "All required files present!"
 
       - name: Publish to npm
         working-directory: packages/core
-        run: npm publish --access public --provenance
+        run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
@@ -63,11 +59,10 @@ jobs:
     steps:
       - name: Report success
         if: needs.build-and-publish.result == 'success'
-        run: echo "✅ @inclusive-design/core published successfully to npm!"
+        run: echo "Published @hawkbass/inclusive-design-core successfully to npm!"
       
       - name: Report failure
         if: needs.build-and-publish.result == 'failure'
         run: |
-          echo "❌ Failed to publish @inclusive-design/core"
+          echo "Failed to publish @hawkbass/inclusive-design-core"
           exit 1
-

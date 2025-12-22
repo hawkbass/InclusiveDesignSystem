@@ -1,8 +1,8 @@
 /**
- * @inclusive-design/core - Design Tokens (JavaScript)
+ * @hawkbass/inclusive-design-core - Design Tokens (JavaScript)
  * 
  * Import these tokens for Tailwind config extension or runtime access
- * Usage: const tokens = require('@inclusive-design/core/tokens')
+ * Usage: const tokens = require('@hawkbass/inclusive-design-core/tokens')
  */
 
 export const colors = {

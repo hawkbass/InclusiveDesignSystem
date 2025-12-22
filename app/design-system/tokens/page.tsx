@@ -1446,7 +1446,7 @@ export default function Tokens() {
                             Import the CSS file in your root layout or _app file.
                           </p>
                           <code className="text-xs bg-card/50 p-2 rounded block">
-                            import '@inclusive-design/core/tokens.css'
+                            import '@hawkbass/inclusive-design-core/tokens.css'
                           </code>
                         </div>
                         <div className="p-4 bg-card/50 rounded-lg border border-border/50">
@@ -1455,7 +1455,7 @@ export default function Tokens() {
                             Add to your global styles or nuxt.config.
                           </p>
                           <code className="text-xs bg-card/50 p-2 rounded block">
-                            css: ['@inclusive-design/core/tokens.css']
+                            css: ['@hawkbass/inclusive-design-core/tokens.css']
                           </code>
                         </div>
                         <div className="p-4 bg-card/50 rounded-lg border border-border/50">
@@ -1464,7 +1464,7 @@ export default function Tokens() {
                             Extend your tailwind.config with token values.
                           </p>
                           <code className="text-xs bg-card/50 p-2 rounded block">
-                            extend: require('@inclusive-design/core/tokens')
+                            extend: require('@hawkbass/inclusive-design-core/tokens')
                           </code>
                         </div>
                       </div>

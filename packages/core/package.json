@@ -1,5 +1,5 @@
 {
-  "name": "@inclusive-design/core",
+  "name": "@hawkbass/inclusive-design-core",
   "version": "1.0.0",
   "description": "Inclusive Design System - Core Components and Styles",
   "main": "./dist/index.js",
