@@ -121,7 +121,7 @@ export default function Homepage() {
   ]
 
   return (
-    <div className="flex bg-background min-h-screen relative z-10">
+    <div className="flex min-h-screen relative z-10">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">

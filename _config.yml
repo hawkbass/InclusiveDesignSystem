@@ -1,0 +1,20 @@
+# Exclude directories from Jekyll processing
+# This project uses Next.js, not Jekyll
+exclude:
+  - specs/
+  - ui-specs/
+  - node_modules/
+  - packages/
+  - app/
+  - components/
+  - lib/
+  - public/
+  - docs/
+  - repo/
+  - "*.tsx"
+  - "*.ts"
+  - "*.json"
+  - "*.js"
+  - "*.mjs"
+  - "*.cjs"
+
