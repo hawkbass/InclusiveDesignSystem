@@ -32,6 +32,10 @@ jobs:
         working-directory: packages/core
         run: npm install --legacy-peer-deps
 
+      - name: Fix rollup permissions
+        working-directory: packages/core
+        run: chmod +x node_modules/.bin/*
+
       - name: Build package
         working-directory: packages/core
         run: npm run build

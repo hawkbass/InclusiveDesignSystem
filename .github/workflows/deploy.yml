@@ -32,6 +32,10 @@ jobs:
       working-directory: packages/core
       run: npm install --legacy-peer-deps
       
+    - name: Fix permissions
+      working-directory: packages/core
+      run: chmod +x node_modules/.bin/*
+      
     - name: Build core package
       working-directory: packages/core
       run: npm run build
