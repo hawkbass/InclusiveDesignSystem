@@ -306,13 +306,13 @@ export function CandidateCard() {
   const popularSearches = ["npm install", "button component", "theme config", "designer path", "accessibility"]
 
   return (
-    <div className="flex bg-slate-950 min-h-screen">
+    <div className="flex bg-background min-h-screen">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
         {/* Universal Comprehension Header */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-slate-800">
-          <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5" />
+        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-border">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-blue-500/5" />
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
           
@@ -320,15 +320,15 @@ export function CandidateCard() {
             <div className="max-w-7xl mx-auto">
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
                 <div>
-                  <Badge className="bg-slate-800/40 text-slate-300 border-slate-700/50 mb-4">
+                  <Badge className="bg-card/40 text-foreground/80 border-border/50 mb-4">
                     <Play className="w-3 h-3 mr-1" />
                     Quick Start Guide
                   </Badge>
-                  <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+                  <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                     Getting Started
                     <span className="bg-gradient-to-r from-fuchsia-400 to-blue-400 bg-clip-text text-transparent"> in Minutes</span>
                   </h1>
-                  <p className="text-xl text-slate-400 max-w-3xl">
+                  <p className="text-xl text-muted-foreground max-w-3xl">
                     Begin your journey with Inclusive's Design System. Choose your learning path, 
                     explore components, and start building recruitment experiences today. Get up and running in under 5 minutes.
                   </p>
@@ -337,25 +337,25 @@ export function CandidateCard() {
                   <div className="grid grid-cols-3 gap-6 mt-8">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-green-400">5 min</div>
-                      <div className="text-sm text-slate-500">Setup Time</div>
+                      <div className="text-sm text-muted-foreground">Setup Time</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-blue-400">49+</div>
-                      <div className="text-sm text-slate-500">Components</div>
+                      <div className="text-sm text-muted-foreground">Components</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-purple-400">3</div>
-                      <div className="text-sm text-slate-500">Learning Paths</div>
+                      <div className="text-sm text-muted-foreground">Learning Paths</div>
                     </div>
                   </div>
                 </div>
 
                 {/* Progress Status */}
                 <div className="flex flex-col gap-4 w-full lg:w-80">
-                  <div className="text-center p-4 rounded-lg bg-slate-800/30 border border-slate-700/50">
-                    <div className="text-2xl font-bold text-slate-100">{completedSteps.size}</div>
-                    <div className="text-sm text-slate-500">Steps Completed</div>
-                    <Badge className="mt-2 bg-fuchsia-500/20 text-fuchsia-300">
+                  <div className="text-center p-4 rounded-lg bg-card/30 border border-border/50">
+                    <div className="text-2xl font-bold text-foreground">{completedSteps.size}</div>
+                    <div className="text-sm text-muted-foreground">Steps Completed</div>
+                    <Badge className="mt-2 bg-fuchsia-500/20 text-primary">
                       Universal Access
                     </Badge>
                   </div>
@@ -365,12 +365,12 @@ export function CandidateCard() {
               {/* Functional Search Bar */}
               <div className="max-w-2xl mx-auto relative">
                 <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-500" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     placeholder="Search guides, commands, components... Try 'npm install' or 'button'"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-12 pr-4 py-4 text-lg bg-slate-800/50 border-slate-700 text-slate-200 placeholder-slate-500 rounded-xl"
+                    className="pl-12 pr-4 py-4 text-lg bg-card/50 border-border text-foreground placeholder-muted-foreground rounded-xl"
                   />
                   {searchQuery && (
                     <Button
@@ -386,14 +386,14 @@ export function CandidateCard() {
                 
                 {/* Popular Searches */}
                 <div className="flex flex-wrap justify-center gap-2 mt-4">
-                  <span className="text-sm text-slate-500">Popular:</span>
+                  <span className="text-sm text-muted-foreground">Popular:</span>
                   {popularSearches.map((search, index) => (
                     <Button
                       key={index}
                       variant="ghost"
                       size="sm"
                       onClick={() => setSearchQuery(search)}
-                      className="text-xs text-slate-400 hover:text-fuchsia-400 h-6 px-2"
+                      className="text-xs text-muted-foreground hover:text-primary h-6 px-2"
                     >
                       {search}
                     </Button>
@@ -402,25 +402,25 @@ export function CandidateCard() {
 
                 {/* Live Search Results */}
                 {searchResults.length > 0 && (
-                  <Card className="absolute top-full left-0 right-0 mt-2 z-50 bg-slate-800 border-slate-700 max-h-96 overflow-y-auto">
+                  <Card className="absolute top-full left-0 right-0 mt-2 z-50 bg-card border-border max-h-96 overflow-y-auto">
                     <CardContent className="p-4">
                       <div className="space-y-3">
                         {searchResults.map((result) => (
-                          <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
-                            <div className="p-2 rounded bg-slate-700/50">
+                          <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-accent/50 rounded-lg cursor-pointer group">
+                            <div className="p-2 rounded bg-muted/50">
                               {result.type === "command" && <Terminal className="h-4 w-4 text-green-400" />}
                               {result.type === "config" && <Settings className="h-4 w-4 text-blue-400" />}
                               {result.type === "component" && <Component className="h-4 w-4 text-purple-400" />}
-                              {result.type === "path" && <Navigation className="h-4 w-4 text-fuchsia-400" />}
+                              {result.type === "path" && <Navigation className="h-4 w-4 text-primary" />}
                               {result.type === "reference" && <BookOpen className="h-4 w-4 text-cyan-400" />}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="text-sm font-medium text-slate-200">{result.name}</div>
-                              <div className="text-xs text-slate-400 truncate">
+                              <div className="text-sm font-medium text-foreground">{result.name}</div>
+                              <div className="text-xs text-muted-foreground truncate">
                                 {result.description || result.usage}
                               </div>
                             </div>
-                            <Badge className="bg-slate-700 text-slate-300 text-xs">
+                            <Badge className="bg-muted text-foreground/80 text-xs">
                               {result.difficulty}
                             </Badge>
                             <Button
@@ -446,12 +446,12 @@ export function CandidateCard() {
 
               {/* Quick Value Preview - Always Visible */}
               <div className="mt-12">
-                <h3 className="text-lg font-medium text-slate-300 mb-6 text-center">Start Building Instantly:</h3>
+                <h3 className="text-lg font-medium text-foreground/80 mb-6 text-center">Start Building Instantly:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                   {quickPreviewItems.map((item, index) => {
                     const status = environmentStatus[item.name] || 'unchecked'
                     return (
-                      <Card key={index} className={`bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group cursor-pointer ${
+                      <Card key={index} className={`bg-card/30 border-border/50 hover:bg-card/50 transition-all group cursor-pointer ${
                         status === 'installed' ? 'border-green-500/30 shadow-green-500/10' :
                         status === 'not-found' ? 'border-yellow-500/30 shadow-yellow-500/10' :
                         status === 'checking' ? 'border-blue-500/30 shadow-blue-500/10' : ''
@@ -459,8 +459,8 @@ export function CandidateCard() {
                         <CardContent className="p-6 text-center">
                           <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center justify-center flex-1">
-                              <div className="p-3 rounded-xl bg-gradient-to-br from-fuchsia-500/20 to-purple-500/20">
-                                <item.icon className="h-6 w-6 text-fuchsia-400" />
+                              <div className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20">
+                                <item.icon className="h-6 w-6 text-primary" />
                               </div>
                             </div>
                             {status !== 'unchecked' && (
@@ -468,7 +468,7 @@ export function CandidateCard() {
                                 status === 'installed' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
                                 status === 'not-found' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
                                 status === 'checking' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
-                                'bg-slate-500/20 text-slate-300 border-slate-500/30'
+                                'bg-slate-500/20 text-foreground/80 border-slate-500/30'
                               }`}>
                                 {status === 'installed' ? '✓ Ready' :
                                  status === 'not-found' ? '⚠ Missing' :
@@ -477,14 +477,14 @@ export function CandidateCard() {
                             )}
                           </div>
                           
-                          <h4 className="font-medium text-slate-200 mb-2">{item.name}</h4>
-                          <Badge className="bg-slate-700/50 text-slate-300 text-xs mb-4">
+                          <h4 className="font-medium text-foreground mb-2">{item.name}</h4>
+                          <Badge className="bg-muted/50 text-foreground/80 text-xs mb-4">
                             {item.category}
                           </Badge>
                           
                           <div className="mb-4">
                             <div className="flex items-center justify-between mb-2">
-                              <span className="text-xs text-slate-500 font-medium">Code Example:</span>
+                              <span className="text-xs text-muted-foreground font-medium">Code Example:</span>
                             <Button
                               size="sm"
                               variant="ghost"
@@ -504,7 +504,7 @@ export function CandidateCard() {
                               )}
                             </Button>
                             </div>
-                            <pre className="bg-slate-900/50 p-3 rounded-lg text-xs text-slate-300 font-mono whitespace-pre-wrap border border-slate-700/30">
+                            <pre className="bg-card/50 p-3 rounded-lg text-xs text-foreground/80 font-mono whitespace-pre-wrap border border-border/30">
                               <code>{item.code}</code>
                             </pre>
                           </div>
@@ -558,14 +558,14 @@ export function CandidateCard() {
           <div className="max-w-7xl mx-auto space-y-6">
             
             {/* Essential Steps - Always Visible */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-border/50 bg-card/30">
               <CardHeader>
                 <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-fuchsia-500/20">
-                    <Zap className="h-5 w-5 text-fuchsia-400" />
+                    <Zap className="h-5 w-5 text-primary" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl text-slate-100">Essential Steps</CardTitle>
+                    <CardTitle className="text-xl text-foreground">Essential Steps</CardTitle>
                     <CardDescription>
                       Everything you need to start building with the Inclusive Design System
                     </CardDescription>
@@ -575,22 +575,22 @@ export function CandidateCard() {
               <CardContent>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {/* Installation */}
-                  <Card className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
+                  <Card className="bg-card/30 border-border/30 hover:bg-card/50 hover:border-border/50 transition-all group">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 rounded-xl bg-green-500/20">
                           <Download className="h-6 w-6 text-green-400" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-semibold text-slate-100">1. Install</h3>
+                          <h3 className="text-lg font-semibold text-foreground">1. Install</h3>
                           <Badge className="bg-green-500/20 text-green-300 text-xs">2 minutes</Badge>
                         </div>
                       </div>
-                      <p className="text-slate-400 text-sm mb-4">Add the design system to your project</p>
+                      <p className="text-muted-foreground text-sm mb-4">Add the design system to your project</p>
                       <div className="space-y-3">
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-slate-500">NPM:</span>
+                            <span className="text-xs text-muted-foreground">NPM:</span>
                           <Button
                             size="sm"
                             variant="ghost"
@@ -604,13 +604,13 @@ export function CandidateCard() {
                               )}
                           </Button>
                         </div>
-                          <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono whitespace-pre-wrap">
+                          <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono whitespace-pre-wrap">
                             <code>npm install @inclusive/design-system</code>
                           </pre>
                         </div>
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-slate-500">Yarn:</span>
+                            <span className="text-xs text-muted-foreground">Yarn:</span>
                           <Button
                             size="sm"
                             variant="ghost"
@@ -624,7 +624,7 @@ export function CandidateCard() {
                               )}
                           </Button>
                           </div>
-                          <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono whitespace-pre-wrap">
+                          <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono whitespace-pre-wrap">
                             <code>yarn add @inclusive/design-system</code>
                           </pre>
                         </div>
@@ -633,20 +633,20 @@ export function CandidateCard() {
                   </Card>
 
                   {/* Configuration */}
-                  <Card className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
+                  <Card className="bg-card/30 border-border/30 hover:bg-card/50 hover:border-border/50 transition-all group">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 rounded-xl bg-blue-500/20">
                           <Settings className="h-6 w-6 text-blue-400" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-semibold text-slate-100">2. Configure</h3>
+                          <h3 className="text-lg font-semibold text-foreground">2. Configure</h3>
                           <Badge className="bg-blue-500/20 text-blue-300 text-xs">3 minutes</Badge>
                         </div>
                       </div>
-                      <p className="text-slate-400 text-sm mb-4">Import styles and setup provider</p>
+                      <p className="text-muted-foreground text-sm mb-4">Import styles and setup provider</p>
                       <div className="relative">
-                        <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono">
+                        <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono">
                           <code>{`import "@inclusive-design/core/styles.css"
 
 <ThemeProvider theme="dark">
@@ -666,20 +666,20 @@ export function CandidateCard() {
                   </Card>
 
                   {/* First Component */}
-                  <Card className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
+                  <Card className="bg-card/30 border-border/30 hover:bg-card/50 hover:border-border/50 transition-all group">
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 rounded-xl bg-purple-500/20">
                           <Component className="h-6 w-6 text-purple-400" />
                         </div>
                         <div>
-                          <h3 className="text-lg font-semibold text-slate-100">3. Build</h3>
+                          <h3 className="text-lg font-semibold text-foreground">3. Build</h3>
                           <Badge className="bg-purple-500/20 text-purple-300 text-xs">1 minute</Badge>
                         </div>
                       </div>
-                      <p className="text-slate-400 text-sm mb-4">Create your first component</p>
+                      <p className="text-muted-foreground text-sm mb-4">Create your first component</p>
                       <div className="relative">
-                        <pre className="bg-slate-950/50 p-3 rounded text-xs text-slate-300 font-mono">
+                        <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono">
                           <code>{`import { Button } from "@inclusive-design/core"
 
 <Button className="bg-fuchsia-600">
@@ -703,7 +703,7 @@ export function CandidateCard() {
 
 
             {/* Quick Setup Section */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-border/50 bg-card/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("quick-setup")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -711,7 +711,7 @@ export function CandidateCard() {
                       <Zap className="h-5 w-5 text-green-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100">Quick Setup</CardTitle>
+                      <CardTitle className="text-xl text-foreground">Quick Setup</CardTitle>
                       <CardDescription>
                         Complete installation and configuration commands for immediate use
                       </CardDescription>
@@ -732,15 +732,15 @@ export function CandidateCard() {
                 <CardContent>
                   <div className="space-y-6">
                     {/* Installation Step */}
-                    <div className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
+                    <div className="border border-border/50 rounded-lg p-6 bg-card/30">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-500/30 flex items-center justify-center">
                             <span className="text-sm font-bold text-green-400">1</span>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold text-slate-100">Install Package</h3>
-                            <p className="text-slate-400 text-sm">Add the design system to your project</p>
+                            <h3 className="text-lg font-semibold text-foreground">Install Package</h3>
+                            <p className="text-muted-foreground text-sm">Add the design system to your project</p>
                           </div>
                         </div>
                         <Button
@@ -762,11 +762,11 @@ export function CandidateCard() {
                           { label: "Yarn", command: "yarn add @inclusive/design-system", id: "yarn-cmd" },
                           { label: "PNPM", command: "pnpm add @inclusive/design-system", id: "pnpm-cmd" }
                         ].map((cmd) => (
-                          <div key={cmd.id} className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg border border-slate-700/30">
-                            <Badge className="bg-slate-700/50 text-slate-300 text-xs">
+                          <div key={cmd.id} className="flex items-center gap-3 p-3 bg-card/50 rounded-lg border border-border/30">
+                            <Badge className="bg-muted/50 text-foreground/80 text-xs">
                               {cmd.label}
                             </Badge>
-                            <pre className="flex-1 text-sm text-slate-300 font-mono">
+                            <pre className="flex-1 text-sm text-foreground/80 font-mono">
                               <code>{cmd.command}</code>
                             </pre>
                             <Button
@@ -786,15 +786,15 @@ export function CandidateCard() {
                     </div>
 
                     {/* Import Styles Step */}
-                    <div className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
+                    <div className="border border-border/50 rounded-lg p-6 bg-card/30">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-full bg-blue-500/20 border-2 border-blue-500/30 flex items-center justify-center">
                             <span className="text-sm font-bold text-blue-400">2</span>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold text-slate-100">Import Styles</h3>
-                            <p className="text-slate-400 text-sm">Add CSS styles to your application</p>
+                            <h3 className="text-lg font-semibold text-foreground">Import Styles</h3>
+                            <p className="text-muted-foreground text-sm">Add CSS styles to your application</p>
                           </div>
                         </div>
                         <Button
@@ -812,7 +812,7 @@ export function CandidateCard() {
                       
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs text-slate-500 font-medium">Import styles:</span>
+                          <span className="text-xs text-muted-foreground font-medium">Import styles:</span>
                         <Button
                           size="sm"
                           variant="ghost"
@@ -832,23 +832,23 @@ export function CandidateCard() {
                             )}
                         </Button>
                         </div>
-                        <pre className="bg-slate-800/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
-                          <code className="text-slate-300">{`// In your main CSS or app file
+                        <pre className="bg-card/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-border/30">
+                          <code className="text-foreground/80">{`// In your main CSS or app file
 import "@inclusive/design-system/styles.css"`}</code>
                         </pre>
                       </div>
                     </div>
 
                     {/* First Component Step */}
-                    <div className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
+                    <div className="border border-border/50 rounded-lg p-6 bg-card/30">
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-full bg-purple-500/20 border-2 border-purple-500/30 flex items-center justify-center">
                             <span className="text-sm font-bold text-purple-400">3</span>
                           </div>
                           <div>
-                            <h3 className="text-lg font-semibold text-slate-100">Create First Component</h3>
-                            <p className="text-slate-400 text-sm">Build your first button with our design system</p>
+                            <h3 className="text-lg font-semibold text-foreground">Create First Component</h3>
+                            <p className="text-muted-foreground text-sm">Build your first button with our design system</p>
                           </div>
                         </div>
                         <Button
@@ -866,7 +866,7 @@ import "@inclusive/design-system/styles.css"`}</code>
                       
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-xs text-slate-500 font-medium">Component example:</span>
+                          <span className="text-xs text-muted-foreground font-medium">Component example:</span>
                         <Button
                           size="sm"
                           variant="ghost"
@@ -894,8 +894,8 @@ function RecruitmentComponent() {
                             )}
                         </Button>
                         </div>
-                        <pre className="bg-slate-800/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
-                          <code className="text-slate-300">{`import { Button } from "@inclusive/design-system"
+                        <pre className="bg-card/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-border/30">
+                          <code className="text-foreground/80">{`import { Button } from "@inclusive/design-system"
 
 function RecruitmentComponent() {
   return (
@@ -914,7 +914,7 @@ function RecruitmentComponent() {
             </Card>
 
             {/* Resources & Quick Tools Section */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-border/50 bg-card/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("resources")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -922,7 +922,7 @@ function RecruitmentComponent() {
                       <BookOpen className="h-5 w-5 text-cyan-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100">Resources & Quick Tools</CardTitle>
+                      <CardTitle className="text-xl text-foreground">Resources & Quick Tools</CardTitle>
                       <CardDescription>
                         Essential links, downloads, and interactive tools to accelerate your workflow
                       </CardDescription>
@@ -945,7 +945,7 @@ function RecruitmentComponent() {
                     
                     {/* Quick Tools */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
                         <Zap className="h-4 w-4 text-orange-400" />
                         Quick Tools
                       </h4>
@@ -984,7 +984,7 @@ export function ${componentName}({
 }: ${componentName}Props) {
   return (
     <Card className={cn(
-      'bg-slate-800/30 border-slate-700/50', 
+      'bg-card/30 border-border/50', 
       className
     )}>
       <CardHeader>
@@ -1077,12 +1077,12 @@ module.exports = {
                             variant="outline"
                             size="sm"
                             onClick={tool.action}
-                            className="w-full justify-start h-auto p-3 hover:bg-slate-800/50"
+                            className="w-full justify-start h-auto p-3 hover:bg-card/50"
                           >
-                            <tool.icon className="h-4 w-4 mr-3 text-slate-400" />
+                            <tool.icon className="h-4 w-4 mr-3 text-muted-foreground" />
                             <div className="text-left flex-1">
-                              <div className="text-sm font-medium text-slate-200">{tool.name}</div>
-                              <div className="text-xs text-slate-500">{tool.description}</div>
+                              <div className="text-sm font-medium text-foreground">{tool.name}</div>
+                              <div className="text-xs text-muted-foreground">{tool.description}</div>
                             </div>
                           </Button>
                         ))}
@@ -1091,7 +1091,7 @@ module.exports = {
 
                     {/* Documentation Links */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
                         <FileText className="h-4 w-4 text-blue-400" />
                         Documentation
                       </h4>
@@ -1104,12 +1104,12 @@ module.exports = {
                           <a
                             key={index}
                             href={link.href}
-                            className="block p-3 rounded-lg border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-800/30 transition-all group"
+                            className="block p-3 rounded-lg border border-border/30 hover:border-border/50 hover:bg-card/30 transition-all group"
                           >
-                            <div className="text-sm font-medium text-slate-200 group-hover:text-blue-400 transition-colours">
+                            <div className="text-sm font-medium text-foreground group-hover:text-blue-400 transition-colours">
                               {link.name}
                             </div>
-                            <div className="text-xs text-slate-500">{link.description}</div>
+                            <div className="text-xs text-muted-foreground">{link.description}</div>
                           </a>
                         ))}
                       </div>
@@ -1117,7 +1117,7 @@ module.exports = {
 
                     {/* Downloads */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
                         <Download className="h-4 w-4 text-green-400" />
                         Downloads
                       </h4>
@@ -1141,12 +1141,12 @@ module.exports = {
                             variant="outline"
                             size="sm"
                             onClick={download.action}
-                            className="w-full justify-start h-auto p-3 hover:bg-slate-800/50"
+                            className="w-full justify-start h-auto p-3 hover:bg-card/50"
                           >
                             <Download className="h-4 w-4 mr-3 text-green-400" />
                             <div className="text-left flex-1">
-                              <div className="text-sm font-medium text-slate-200">{download.name}</div>
-                              <div className="text-xs text-slate-500">{download.description}</div>
+                              <div className="text-sm font-medium text-foreground">{download.name}</div>
+                              <div className="text-xs text-muted-foreground">{download.description}</div>
                             </div>
                           </Button>
                         ))}
@@ -1159,7 +1159,7 @@ module.exports = {
 
             {/* Progress Tracking - Only show if user has started */}
             {completedSteps.size > 0 && (
-              <Card className="border-slate-700/50 bg-slate-800/30">
+              <Card className="border-border/50 bg-card/30">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -1167,7 +1167,7 @@ module.exports = {
                         <TrendingUp className="h-5 w-5 text-purple-400" />
                       </div>
                       <div>
-                        <CardTitle className="text-xl text-slate-100">Your Progress</CardTitle>
+                        <CardTitle className="text-xl text-foreground">Your Progress</CardTitle>
                         <CardDescription>Track your journey through the design system</CardDescription>
                       </div>
                     </div>
@@ -1188,8 +1188,8 @@ module.exports = {
                         { label: "Access", value: "Universal" }
                       ].map((stat, index) => (
                         <div key={index}>
-                          <div className="text-lg font-bold text-slate-100">{stat.value}</div>
-                          <div className="text-xs text-slate-500">{stat.label}</div>
+                          <div className="text-lg font-bold text-foreground">{stat.value}</div>
+                          <div className="text-xs text-muted-foreground">{stat.label}</div>
                         </div>
                       ))}
                     </div>

@@ -60,7 +60,7 @@ export function ComponentCard({
     const parts = text.split(new RegExp(`(${query})`, 'gi'))
     return parts.map((part, index) => 
       part.toLowerCase() === query.toLowerCase() ? (
-        <mark key={index} className="bg-fuchsia-500/30 text-fuchsia-200 px-1 rounded">
+        <mark key={index} className="bg-primary/20 text-primary px-1 rounded">
           {part}
         </mark>
       ) : part
@@ -85,17 +85,17 @@ export function ComponentCard({
   }
 
   return (
-    <Card className={`group relative overflow-hidden bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all hover:shadow-lg hover:shadow-fuchsia-500/10 ${cardClasses}`} style={{ transitionDuration: 'var(--animation-speed)' }}>
+    <Card className={`group relative overflow-hidden bg-card/60 border-border/50 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-fuchsia-500/10 ${cardClasses}`} style={{ transitionDuration: 'var(--animation-speed)' }}>
       {/* Content Layout */}
       <div className={viewMode === "list" ? "flex-1" : "flex-1 space-y-4"}>
         <CardHeader className="p-0">
           <div className="flex items-start justify-between">
             <div className="space-y-2">
-              <CardTitle className="text-lg font-semibold text-slate-100 group-hover:text-fuchsia-300 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+              <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
                 {highlightText(title, searchQuery)}
               </CardTitle>
               {description && (
-                <CardDescription className="text-slate-400 leading-relaxed">
+                <CardDescription className="text-muted-foreground leading-relaxed">
                   {highlightText(description, searchQuery)}
                 </CardDescription>
               )}
@@ -103,7 +103,7 @@ export function ComponentCard({
             
             {/* Status Indicators */}
             <div className="flex items-center gap-2 ml-4">
-              <Badge variant="outline" className="text-xs border-green-400/30 text-green-400">
+              <Badge variant="outline" className="text-xs border-green-600/30 dark:border-green-400/30 text-green-700 dark:text-green-400">
                 <CheckCircle2 className="h-3 w-3 mr-1" />
                 Ready
               </Badge>
@@ -113,7 +113,7 @@ export function ComponentCard({
 
         {/* Component Preview */}
         <CardContent className={`p-0 ${viewMode === "list" ? "flex-1" : ""}`}>
-          <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/50 shadow-xl/50 group-hover:border-slate-600/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <div className="bg-card/50 rounded-lg p-4 border border-border/50 shadow-xl/50 group-hover:border-border/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
             {children}
           </div>
         </CardContent>
@@ -127,7 +127,7 @@ export function ComponentCard({
               size="sm"
               variant="outline"
               onClick={() => onCopyCode(code, id)}
-              className="hover:bg-fuchsia-500/20 hover:border-fuchsia-500/50 transition-all duration-300 rounded-lg"
+              className="hover:bg-fuchsia-500/20 hover:border-primary/50 transition-all duration-300 rounded-lg"
               style={{ transitionDuration: 'var(--animation-speed)' }}
               aria-label="Copy component code"
             >
@@ -151,7 +151,7 @@ export function ComponentCard({
               <Button
                 size="sm"
                 variant="ghost"
-                className="hover:bg-slate-700 transition-all duration-300 rounded-lg"
+                className="hover:bg-accent transition-all duration-300 rounded-lg"
                 style={{ transitionDuration: 'var(--animation-speed)' }}
                 aria-label="View component details"
               >
@@ -159,13 +159,13 @@ export function ComponentCard({
                 View
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
+            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card border-border">
               <DialogHeader>
-                <DialogTitle className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                  <Component className="h-5 w-5 text-fuchsia-400" />
+                <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
+                  <Component className="h-5 w-5 text-primary" />
                   {title}
                 </DialogTitle>
-                <DialogDescription className="text-slate-400">
+                <DialogDescription className="text-muted-foreground">
                   {description}
                 </DialogDescription>
               </DialogHeader>
@@ -173,8 +173,8 @@ export function ComponentCard({
               <div className="space-y-6 mt-6">
                 {/* Component Preview */}
                 <div className="space-y-3">
-                  <h3 className="text-lg font-semibold text-slate-200">Live Preview</h3>
-                  <div className="bg-slate-800/50 rounded-lg p-6 border border-slate-700/50 shadow-xl">
+                  <h3 className="text-lg font-semibold text-foreground">Live Preview</h3>
+                  <div className="bg-card/50 rounded-lg p-6 border border-border/50 shadow-xl">
                     {children}
                   </div>
                 </div>
@@ -182,29 +182,29 @@ export function ComponentCard({
                 {/* Component Information */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-slate-200">Component Details</h3>
+                    <h3 className="text-lg font-semibold text-foreground">Component Details</h3>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-slate-400">ID:</span>
-                        <span className="text-slate-300 font-mono">{id}</span>
+                        <span className="text-muted-foreground">ID:</span>
+                        <span className="text-foreground/80 font-mono">{id}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Status:</span>
-                        <Badge variant="outline" className="text-xs border-green-400/30 text-green-400">
+                        <span className="text-muted-foreground">Status:</span>
+                        <Badge variant="outline" className="text-xs border-green-600/30 dark:border-green-400/30 text-green-700 dark:text-green-400">
                           <CheckCircle2 className="h-3 w-3 mr-1" />
                           Ready
                         </Badge>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Favourite:</span>
-                        <span className="text-slate-300">{isFavourite ? "Yes" : "No"}</span>
+                        <span className="text-muted-foreground">Favourite:</span>
+                        <span className="text-foreground/80">{isFavourite ? "Yes" : "No"}</span>
                       </div>
                     </div>
                   </div>
                   
                   <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-slate-200">Usage Guidelines</h3>
-                    <div className="text-sm text-slate-400 space-y-2">
+                    <h3 className="text-lg font-semibold text-foreground">Usage Guidelines</h3>
+                    <div className="text-sm text-muted-foreground space-y-2">
                       <p>• Use this component for {description?.toLowerCase() || 'UI elements'}</p>
                       <p>• Ensure proper accessibility attributes</p>
                       <p>• Test on different screen sizes</p>
@@ -217,18 +217,18 @@ export function ComponentCard({
                 {code && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-slate-200">Source Code</h3>
+                      <h3 className="text-lg font-semibold text-foreground">Source Code</h3>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => onCopyCode && onCopyCode(code, id)}
-                        className="hover:bg-fuchsia-500/20 hover:border-fuchsia-500/50"
+                        className="hover:bg-fuchsia-500/20 hover:border-primary/50"
                       >
                         <Copy className="h-4 w-4 mr-2" />
                         Copy
                       </Button>
                     </div>
-                    <pre className="bg-slate-800/80 rounded-lg p-4 border border-slate-700/50 shadow-xl text-sm text-slate-300 overflow-x-auto">
+                    <pre className="bg-card/80 rounded-lg p-4 border border-border/50 shadow-xl text-sm text-foreground/80 overflow-x-auto">
                       <code>{code}</code>
                     </pre>
                   </div>
@@ -243,7 +243,7 @@ export function ComponentCard({
               <Button
                 size="sm"
                 variant="ghost"
-                className="hover:bg-slate-700 transition-all duration-300 rounded-lg"
+                className="hover:bg-accent transition-all duration-300 rounded-lg"
                 style={{ transitionDuration: 'var(--animation-speed)' }}
                 aria-label="Edit component"
               >
@@ -251,13 +251,13 @@ export function ComponentCard({
                 Edit
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-slate-900 border-slate-700">
+            <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-card border-border">
               <DialogHeader>
-                <DialogTitle className="text-xl font-bold text-slate-100 flex items-center gap-2">
-                  <Edit className="h-5 w-5 text-fuchsia-400" />
+                <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
+                  <Edit className="h-5 w-5 text-primary" />
                   Edit Component: {title}
                 </DialogTitle>
-                <DialogDescription className="text-slate-400">
+                <DialogDescription className="text-muted-foreground">
                   Modify the component details and code. Changes are saved locally.
                 </DialogDescription>
               </DialogHeader>
@@ -267,28 +267,28 @@ export function ComponentCard({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <Label className="text-slate-300">Component Title</Label>
+                      <Label className="text-foreground/80">Component Title</Label>
                       <Input
                         value={editedTitle}
                         onChange={(e) => setEditedTitle(e.target.value)}
-                        className="bg-slate-800/50 border-slate-600 hover:border-fuchsia-500/50 focus:border-fuchsia-500"
+                        className="bg-card/50 border-border hover:border-primary/50 focus:border-primary"
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <Label className="text-slate-300">Description</Label>
+                      <Label className="text-foreground/80">Description</Label>
                       <Textarea
                         value={editedDescription}
                         onChange={(e) => setEditedDescription(e.target.value)}
-                        className="bg-slate-800/50 border-slate-600 hover:border-fuchsia-500/50 focus:border-fuchsia-500 min-h-[100px]"
+                        className="bg-card/50 border-border hover:border-primary/50 focus:border-primary min-h-[100px]"
                         placeholder="Enter component description..."
                       />
                     </div>
                   </div>
                   
                   <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-slate-200">Live Preview</h3>
-                    <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50 shadow-xl">
+                    <h3 className="text-lg font-semibold text-foreground">Live Preview</h3>
+                    <div className="bg-card/50 rounded-lg p-4 border border-border/50 shadow-xl">
                       {children}
                     </div>
                   </div>
@@ -297,13 +297,13 @@ export function ComponentCard({
                 {/* Code Editor */}
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <Label className="text-slate-300 text-lg font-semibold">Component Code</Label>
+                    <Label className="text-foreground/80 text-lg font-semibold">Component Code</Label>
                     <div className="flex items-center gap-2">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={handleResetEdit}
-                        className="hover:bg-slate-700"
+                        className="hover:bg-accent"
                       >
                         <RotateCcw className="h-4 w-4 mr-2" />
                         Reset
@@ -312,7 +312,7 @@ export function ComponentCard({
                         size="sm"
                         variant="outline"
                         onClick={() => navigator.clipboard.writeText(editedCode)}
-                        className="hover:bg-fuchsia-500/20 hover:border-fuchsia-500/50"
+                        className="hover:bg-fuchsia-500/20 hover:border-primary/50"
                       >
                         <Copy className="h-4 w-4 mr-2" />
                         Copy
@@ -322,23 +322,23 @@ export function ComponentCard({
                   <Textarea
                     value={editedCode}
                     onChange={(e) => setEditedCode(e.target.value)}
-                    className="bg-slate-800/80 border-slate-600 hover:border-fuchsia-500/50 focus:border-fuchsia-500 font-mono text-sm min-h-[200px]"
+                    className="bg-card/80 border-border hover:border-primary/50 focus:border-primary font-mono text-sm min-h-[200px]"
                     placeholder="Enter component code..."
                   />
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex items-center justify-end gap-3 pt-4 border-t border-slate-700">
+                <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
                   <Button
                     variant="outline"
                     onClick={() => setIsEditOpen(false)}
-                    className="hover:bg-slate-700"
+                    className="hover:bg-accent"
                   >
                     Cancel
                   </Button>
                   <Button
                     onClick={handleSaveEdit}
-                    className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25"
+                    className="bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25"
                   >
                     <Save className="h-4 w-4 mr-2" />
                     Save Changes
@@ -362,7 +362,7 @@ export function ComponentCard({
               size="sm"
               variant="ghost"
               onClick={() => onToggleFavourite(id)}
-              className={`h-8 w-8 p-0 transition-all ${isFavourite ? 'text-red-400 hover:text-red-300' : 'text-slate-400 hover:text-red-400'}`}
+              className={`h-8 w-8 p-0 transition-all ${isFavourite ? 'text-red-400 hover:text-red-300' : 'text-muted-foreground hover:text-red-400'}`}
               style={{ transitionDuration: 'var(--animation-speed)' }}
               aria-label={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
             >
@@ -373,7 +373,7 @@ export function ComponentCard({
       </div>
 
       {/* Hover Effects */}
-      <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ transitionDuration: 'var(--animation-speed)' }} />
+      <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style={{ transitionDuration: 'var(--animation-speed)' }} />
     </Card>
   )
 } 

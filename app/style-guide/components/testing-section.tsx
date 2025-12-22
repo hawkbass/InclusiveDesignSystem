@@ -168,15 +168,15 @@ export function TestingSection({
         {testingTools.map((tool) => (
           <Card 
             key={tool.id}
-            className="border-slate-700/50 bg-slate-800/30 hover:bg-slate-800/50 transition-all group cursor-pointer"
+            className="border-border/50 bg-card/30 hover:bg-card/50 transition-all group cursor-pointer"
             onClick={tool.action}
           >
             <CardContent className="p-6 text-center">
               <div className={`p-3 rounded-lg mb-4 mx-auto w-fit bg-${tool.colour}-500/20 group-hover:bg-${tool.colour}-500/30 transition-all`}>
                 <tool.icon className={`h-6 w-6 text-${tool.colour}-400 group-hover:scale-110 transition-transform`} />
               </div>
-              <h3 className="text-lg font-medium text-slate-200 mb-2">{tool.name}</h3>
-              <p className="text-sm text-slate-400 mb-4">{tool.description}</p>
+              <h3 className="text-lg font-medium text-foreground mb-2">{tool.name}</h3>
+              <p className="text-sm text-muted-foreground mb-4">{tool.description}</p>
               <Button 
                 size="sm" 
                 className={`w-full bg-${tool.colour}-600 hover:bg-${tool.colour}-700 group-hover:shadow-lg group-hover:shadow-${tool.colour}-500/25 transition-all`}
@@ -190,9 +190,9 @@ export function TestingSection({
       </div>
 
       {/* Live Component Testing Area */}
-      <Card className="border-slate-700/50 bg-slate-800/30">
+      <Card className="border-border/50 bg-card/30">
         <CardHeader>
-          <CardTitle className="text-xl text-slate-100 flex items-center gap-2">
+          <CardTitle className="text-xl text-foreground flex items-center gap-2">
             <Zap className="h-5 w-5 text-orange-400" />
             Live Component Preview
           </CardTitle>
@@ -204,15 +204,15 @@ export function TestingSection({
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Button Variants */}
             <div className="space-y-4">
-              <h4 className="text-lg font-medium text-slate-200">Button Variants</h4>
+              <h4 className="text-lg font-medium text-foreground">Button Variants</h4>
               <div className="space-y-3">
                 <Button className="w-full bg-fuchsia-600 hover:bg-fuchsia-700">
                   Primary Action
                 </Button>
-                <Button variant="outline" className="w-full border-slate-600 text-slate-200 hover:bg-slate-800">
+                <Button variant="outline" className="w-full border-border text-foreground hover:bg-card">
                   Secondary Action
                 </Button>
-                <Button variant="ghost" className="w-full text-slate-300 hover:bg-slate-800">
+                <Button variant="ghost" className="w-full text-foreground/80 hover:bg-card">
                   Ghost Action
                 </Button>
                 <Button variant="destructive" className="w-full">
@@ -223,52 +223,52 @@ export function TestingSection({
 
             {/* Form Controls */}
             <div className="space-y-4">
-              <h4 className="text-lg font-medium text-slate-200">Form Controls</h4>
+              <h4 className="text-lg font-medium text-foreground">Form Controls</h4>
               <div className="space-y-3">
                 <Input 
                   placeholder="Normal input state" 
-                  className="bg-slate-800 border-slate-700 text-slate-200"
+                  className="bg-card border-border text-foreground"
                 />
                 <Input 
                   placeholder="Focused state" 
-                  className="bg-slate-800 border-fuchsia-500 ring-2 ring-fuchsia-500/20 text-slate-200"
+                  className="bg-card border-primary ring-2 ring-fuchsia-500/20 text-foreground"
                 />
                 <Input 
                   placeholder="Error state" 
-                  className="bg-slate-800 border-red-500 text-slate-200"
+                  className="bg-card border-red-500 text-foreground"
                 />
                 <div className="flex items-center space-x-2">
                   <Switch defaultChecked />
-                  <span className="text-sm text-slate-400">Toggle setting</span>
+                  <span className="text-sm text-muted-foreground">Toggle setting</span>
                 </div>
               </div>
             </div>
 
             {/* Progress & Feedback */}
             <div className="space-y-4">
-              <h4 className="text-lg font-medium text-slate-200">Progress & Feedback</h4>
+              <h4 className="text-lg font-medium text-foreground">Progress & Feedback</h4>
               <div className="space-y-3">
                 <div>
-                  <div className="text-xs text-slate-400 mb-1">Loading progress</div>
+                  <div className="text-xs text-muted-foreground mb-1">Loading progress</div>
                   <Progress value={33} className="h-2" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-400 mb-1">Upload progress</div>
+                  <div className="text-xs text-muted-foreground mb-1">Upload progress</div>
                   <Progress value={66} className="h-2" />
                 </div>
                 <div>
-                  <div className="text-xs text-slate-400 mb-1">Complete</div>
+                  <div className="text-xs text-muted-foreground mb-1">Complete</div>
                   <Progress value={100} className="h-2" />
                 </div>
                 <div className="flex items-center gap-2">
                   <Avatar className="w-8 h-8">
-                    <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 text-xs">
+                    <AvatarFallback className="bg-fuchsia-500/20 text-primary text-xs">
                       JD
                     </AvatarFallback>
                   </Avatar>
                   <div className="text-sm">
-                    <div className="text-slate-200">John Doe</div>
-                    <div className="text-slate-400 text-xs">User Avatar</div>
+                    <div className="text-foreground">John Doe</div>
+                    <div className="text-muted-foreground text-xs">User Avatar</div>
                   </div>
                 </div>
               </div>
@@ -279,10 +279,10 @@ export function TestingSection({
 
       {/* Colour Generator Modal */}
       <Dialog open={showColorGenerator} onOpenChange={setShowColorGenerator}>
-        <DialogContent className="max-w-2xl bg-slate-900 border-slate-700">
+        <DialogContent className="max-w-2xl bg-card border-border">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
-              <Palette className="h-5 w-5 text-fuchsia-400" />
+            <DialogTitle className="text-foreground flex items-center gap-2">
+              <Palette className="h-5 w-5 text-primary" />
               Generated Colour Palette
             </DialogTitle>
             <DialogDescription>
@@ -295,7 +295,7 @@ export function TestingSection({
               {generatedColors.map((colour, index) => (
                 <div key={index} className="group">
                   <div 
-                    className="w-full h-20 rounded-lg border border-slate-700/50 group-hover:scale-105 transition-all cursor-pointer"
+                    className="w-full h-20 rounded-lg border border-border/50 group-hover:scale-105 transition-all cursor-pointer"
                     style={{ backgroundColor: colour }}
                     onClick={() => onCopyCode(colour, `generated-${index}`)}
                   >
@@ -307,7 +307,7 @@ export function TestingSection({
                       )}
                     </div>
                   </div>
-                  <div className="text-xs text-slate-400 mt-2 text-center font-mono">
+                  <div className="text-xs text-muted-foreground mt-2 text-center font-mono">
                     {colour}
                   </div>
                 </div>
@@ -336,9 +336,9 @@ export function TestingSection({
 
       {/* Accessibility Test Modal */}
       <Dialog open={showAccessibilityTest} onOpenChange={setShowAccessibilityTest}>
-        <DialogContent className="max-w-xl bg-slate-900 border-slate-700">
+        <DialogContent className="max-w-xl bg-card border-border">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
+            <DialogTitle className="text-foreground flex items-center gap-2">
               <Target className="h-5 w-5 text-green-400" />
               Accessibility Test Results
             </DialogTitle>
@@ -349,12 +349,12 @@ export function TestingSection({
           
           <div className="space-y-4">
             {testResults && Object.entries(testResults).map(([key, result]: [string, any]) => (
-              <div key={key} className="flex items-center justify-between p-3 bg-slate-800/50 rounded-lg">
+              <div key={key} className="flex items-center justify-between p-3 bg-card/50 rounded-lg">
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-slate-200 capitalize">
+                  <div className="text-sm font-medium text-foreground capitalize">
                     {key.replace(/([A-Z])/g, ' $1').trim()}
                   </div>
-                  <div className="text-xs text-slate-400">{result.details}</div>
+                  <div className="text-xs text-muted-foreground">{result.details}</div>
                 </div>
                 <Badge className={`${
                   result.score === 'AAA' || result.score === 'Pass' || result.score === 'Excellent' || result.score === 'Optimized' || result.score === 'Responsive'
@@ -377,9 +377,9 @@ export function TestingSection({
 
       {/* Responsive Test Modal */}
       <Dialog open={showResponsiveTest} onOpenChange={setShowResponsiveTest}>
-        <DialogContent className="max-w-4xl bg-slate-900 border-slate-700">
+        <DialogContent className="max-w-4xl bg-card border-border">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
+            <DialogTitle className="text-foreground flex items-center gap-2">
               <Monitor className="h-5 w-5 text-blue-400" />
               Responsive Preview
             </DialogTitle>
@@ -407,14 +407,14 @@ export function TestingSection({
               
               {Object.entries(responsiveBreakpoints).map(([key, viewport]) => (
                 <TabsContent key={key} value={key} className="mt-4">
-                  <div className="bg-slate-800 rounded-lg p-6 border border-slate-700/50">
+                  <div className="bg-card rounded-lg p-6 border border-border/50">
                     <div className="text-center mb-4">
-                      <Badge variant="outline" className="text-slate-400 border-slate-600">
+                      <Badge variant="outline" className="text-muted-foreground border-border">
                         {viewport.width} × {viewport.height}
                       </Badge>
                     </div>
                     <div 
-                      className="bg-slate-950 rounded border border-slate-700/50 mx-auto p-4 overflow-hidden"
+                      className="bg-background rounded border border-border/50 mx-auto p-4 overflow-hidden"
                       style={{ 
                         width: key === 'desktop' ? '100%' : viewport.width,
                         height: '300px',
@@ -424,8 +424,8 @@ export function TestingSection({
                       {/* Sample responsive content */}
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-lg font-semibold text-slate-200">Sample Content</h3>
-                          <Badge className="bg-fuchsia-500/20 text-fuchsia-300">Live</Badge>
+                          <h3 className="text-lg font-semibold text-foreground">Sample Content</h3>
+                          <Badge className="bg-fuchsia-500/20 text-primary">Live</Badge>
                         </div>
                         <div className={`grid gap-3 ${
                           key === 'mobile' ? 'grid-cols-1' :
@@ -444,7 +444,7 @@ export function TestingSection({
                             </Button>
                           )}
                         </div>
-                        <div className="text-sm text-slate-400">
+                        <div className="text-sm text-muted-foreground">
                           Viewport: {viewport.label} ({viewport.width} × {viewport.height})
                         </div>
                       </div>
@@ -459,9 +459,9 @@ export function TestingSection({
 
       {/* Export Modal */}
       <Dialog open={showExportModal} onOpenChange={setShowExportModal}>
-        <DialogContent className="max-w-xl bg-slate-900 border-slate-700">
+        <DialogContent className="max-w-xl bg-card border-border">
           <DialogHeader>
-            <DialogTitle className="text-slate-100 flex items-center gap-2">
+            <DialogTitle className="text-foreground flex items-center gap-2">
               <Download className="h-5 w-5 text-purple-400" />
               Design System Export
             </DialogTitle>
@@ -471,9 +471,9 @@ export function TestingSection({
           </DialogHeader>
           
           <div className="space-y-4">
-            <div className="bg-slate-800/50 rounded-lg p-4">
-              <div className="text-sm text-slate-300 mb-2">Export includes:</div>
-              <ul className="text-xs text-slate-400 space-y-1">
+            <div className="bg-card/50 rounded-lg p-4">
+              <div className="text-sm text-foreground/80 mb-2">Export includes:</div>
+              <ul className="text-xs text-muted-foreground space-y-1">
                 <li>• Complete colour palette with hex values</li>
                 <li>• Typography scale and font family</li>
                 <li>• Spacing system tokens</li>

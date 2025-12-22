@@ -44,16 +44,16 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
     }
 
     const variantClasses = {
-      default: "bg-slate-800/50 border-slate-700/50 hover:border-fuchsia-500/50",
-      outlined: "bg-transparent border-slate-600 hover:border-fuchsia-500/50",
-      ghost: "bg-slate-900/30 border-slate-700/30 hover:border-slate-600/50"
+      default: "bg-card/50 border-border/50 hover:border-primary/50",
+      outlined: "bg-transparent border-border hover:border-primary/50",
+      ghost: "bg-card/30 border-border/30 hover:border-border/50"
     }
 
     const getTrendColor = () => {
       switch (trend) {
         case "up": return "text-green-400"
         case "down": return "text-red-400"
-        default: return "text-slate-400"
+        default: return "text-muted-foreground"
       }
     }
 
@@ -70,9 +70,9 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
         <Card className={cn("animate-pulse", variantClasses[variant], sizeClasses[size], className)} ref={ref}>
           <CardContent className="p-4">
             <div className="space-y-2">
-              <div className="h-4 bg-slate-700 rounded w-3/4"></div>
-              <div className="h-6 bg-slate-700 rounded w-1/2"></div>
-              <div className="h-3 bg-slate-700 rounded w-1/4"></div>
+              <div className="h-4 bg-muted rounded w-3/4"></div>
+              <div className="h-6 bg-muted rounded w-1/2"></div>
+              <div className="h-3 bg-muted rounded w-1/4"></div>
             </div>
           </CardContent>
         </Card>
@@ -92,7 +92,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
       >
         <CardContent className="p-4 h-full flex flex-col">
           <div className="flex justify-between items-start mb-2">
-            <div className="text-xs text-slate-400 font-medium">{title}</div>
+            <div className="text-xs text-muted-foreground font-medium">{title}</div>
             <div className="flex items-center gap-2">
               {icon && (
                 <div className="flex-shrink-0">
@@ -111,7 +111,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
                 >
                   <Heart className={cn(
                     "h-3 w-3",
-                    isFavorited ? "fill-current text-fuchsia-400" : "text-slate-400"
+                    isFavorited ? "fill-current text-primary" : "text-muted-foreground"
                   )} />
                 </Button>
               )}
@@ -120,11 +120,11 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
           
           <div className="flex-1 flex flex-col justify-between">
             <div>
-              <div className="text-2xl font-bold text-slate-100 mb-1">
+              <div className="text-2xl font-bold text-foreground mb-1">
                 {value}
               </div>
               {description && (
-                <div className="text-xs text-slate-500">{description}</div>
+                <div className="text-xs text-muted-foreground">{description}</div>
               )}
             </div>
             
@@ -140,7 +140,7 @@ const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
           </div>
 
           {/* Hover effect */}
-          <div className="mt-2 pt-2 border-t border-slate-700/50 text-xs text-fuchsia-400 flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="mt-2 pt-2 border-t border-border/50 text-xs text-primary flex items-center opacity-0 group-hover:opacity-100 transition-opacity">
             View details
             <svg className="ml-1 h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

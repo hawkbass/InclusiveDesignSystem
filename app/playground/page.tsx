@@ -308,7 +308,7 @@ function ComponentPlayground() {
 >
   <CardHeader>
     <CardTitle className="flex items-center gap-2">
-      <Sparkles className="h-5 w-5 text-fuchsia-400" />
+      <Sparkles className="h-5 w-5 text-primary" />
       ${customContent || 'Card Title'}
     </CardTitle>
     <CardDescription>
@@ -316,7 +316,7 @@ function ComponentPlayground() {
     </CardDescription>
   </CardHeader>
   <CardContent>
-    <p className="text-slate-300">Card content goes here with proper spacing and typography.</p>
+    <p className="text-foreground/80">Card content goes here with proper spacing and typography.</p>
   </CardContent>
 </Card>`,
         vue: `<Card 
@@ -326,7 +326,7 @@ function ComponentPlayground() {
 >
   <CardHeader>
     <CardTitle class="flex items-center gap-2">
-      <Sparkles class="h-5 w-5 text-fuchsia-400" />
+      <Sparkles class="h-5 w-5 text-primary" />
       ${customContent || 'Card Title'}
     </CardTitle>
     <CardDescription>
@@ -334,7 +334,7 @@ function ComponentPlayground() {
     </CardDescription>
   </CardHeader>
   <CardContent>
-    <p class="text-slate-300">Card content goes here with proper spacing and typography.</p>
+    <p class="text-foreground/80">Card content goes here with proper spacing and typography.</p>
   </CardContent>
 </Card>`,
         angular: `<mat-card 
@@ -344,7 +344,7 @@ function ComponentPlayground() {
 >
   <mat-card-header>
     <mat-card-title class="flex items-center gap-2">
-      <mat-icon class="text-fuchsia-400">auto_awesome</mat-icon>
+      <mat-icon class="text-primary">auto_awesome</mat-icon>
       {{cardTitle || '${customContent || 'Card Title'}'}}
     </mat-card-title>
     <mat-card-subtitle>
@@ -352,7 +352,7 @@ function ComponentPlayground() {
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p class="text-slate-300">Card content goes here with proper spacing and typography.</p>
+    <p class="text-foreground/80">Card content goes here with proper spacing and typography.</p>
   </mat-card-content>
 </mat-card>`,
         css: `.card {
@@ -777,7 +777,7 @@ function ComponentPlayground() {
           }`}>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Sparkles className="h-5 w-5 text-fuchsia-400" />
+                <Sparkles className="h-5 w-5 text-primary" />
                 {customContent || 'Card Title'}
               </CardTitle>
               <CardDescription>
@@ -785,7 +785,7 @@ function ComponentPlayground() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-slate-300">Card content goes here with proper spacing and typography.</p>
+              <p className="text-foreground/80">Card content goes here with proper spacing and typography.</p>
             </CardContent>
           </Card>
         )
@@ -825,10 +825,10 @@ function ComponentPlayground() {
   return (
     <div className="space-y-8">
       {/* Component Selection */}
-      <Card className="bg-slate-800/50 border-slate-700/50">
+      <Card className="bg-card/50 border-border/50">
         <CardHeader>
-          <CardTitle className="text-slate-100 flex items-center gap-3">
-            <ComponentIcon className="h-5 w-5 text-fuchsia-400" />
+          <CardTitle className="text-foreground flex items-center gap-3">
+            <ComponentIcon className="h-5 w-5 text-primary" />
             Component Selection
           </CardTitle>
           <CardDescription>Choose a component to customise and experiment with</CardDescription>
@@ -859,14 +859,14 @@ function ComponentPlayground() {
 
       {/* Controls */}
       <div className="grid lg:grid-cols-2 gap-8">
-        <Card className="bg-slate-800/50 border-slate-700/50">
+        <Card className="bg-card/50 border-border/50">
           <CardHeader>
-            <CardTitle className="text-slate-100">Customisation Controls</CardTitle>
+            <CardTitle className="text-foreground">Customisation Controls</CardTitle>
             <CardDescription>Adjust component properties and see changes in real-time</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
-              <Label className="text-slate-300">Variant</Label>
+              <Label className="text-foreground/80">Variant</Label>
               <Select value={demoVariant} onValueChange={setDemoVariant}>
                 <SelectTrigger>
                   <SelectValue />
@@ -882,7 +882,7 @@ function ComponentPlayground() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-slate-300">Size</Label>
+              <Label className="text-foreground/80">Size</Label>
               <Select value={demoSize} onValueChange={setDemoSize}>
                 <SelectTrigger>
                   <SelectValue />
@@ -898,7 +898,7 @@ function ComponentPlayground() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-slate-300">State</Label>
+              <Label className="text-foreground/80">State</Label>
               <Select value={demoState} onValueChange={setDemoState}>
                 <SelectTrigger>
                   <SelectValue />
@@ -914,38 +914,38 @@ function ComponentPlayground() {
             </div>
 
             <div className="space-y-2">
-              <Label className="text-slate-300">Custom Content</Label>
+              <Label className="text-foreground/80">Custom Content</Label>
               <Input
                 value={customContent}
                 onChange={(e) => setCustomContent(e.target.value)}
                 placeholder="Enter custom text..."
-                className="bg-slate-900/50 border-slate-700"
+                className="bg-card/50 border-border"
               />
             </div>
 
             <div className="space-y-2">
-              <Label className="text-slate-300">Custom Props</Label>
+              <Label className="text-foreground/80">Custom Props</Label>
               <Input
                 value={customProps}
                 onChange={(e) => setCustomProps(e.target.value)}
                 placeholder="e.g., disabled, fullWidth"
-                className="bg-slate-900/50 border-slate-700"
+                className="bg-card/50 border-border"
               />
             </div>
           </CardContent>
         </Card>
 
         {/* Live Preview */}
-        <Card className="bg-slate-800/50 border-slate-700/50">
+        <Card className="bg-card/50 border-border/50">
           <CardHeader>
-            <CardTitle className="text-slate-100 flex items-center gap-3">
+            <CardTitle className="text-foreground flex items-center gap-3">
               <Eye className="h-5 w-5 text-green-400" />
               Live Preview
             </CardTitle>
             <CardDescription>See your component changes in real-time</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="min-h-[200px] flex items-center justify-center p-8 bg-slate-900/50 rounded-lg border border-slate-700/30">
+            <div className="min-h-[200px] flex items-center justify-center p-8 bg-card/50 rounded-lg border border-border/30">
               {renderComponent()}
             </div>
           </CardContent>
@@ -953,11 +953,11 @@ function ComponentPlayground() {
       </div>
 
       {/* Code Output */}
-      <Card className="bg-slate-800/50 border-slate-700/50">
+      <Card className="bg-card/50 border-border/50">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-slate-100 flex items-center gap-3">
+              <CardTitle className="text-foreground flex items-center gap-3">
                 <Code2 className="h-5 w-5 text-blue-400" />
                 Generated Code
               </CardTitle>
@@ -987,7 +987,7 @@ function ComponentPlayground() {
           </div>
         </CardHeader>
         <CardContent>
-          <pre className="bg-slate-950/50 p-4 rounded-lg text-sm text-slate-300 border border-slate-800/50 whitespace-pre-wrap">
+          <pre className="bg-background/50 p-4 rounded-lg text-sm text-foreground/80 border border-border/50 whitespace-pre-wrap">
             <code>{currentComponent.code[exportFormat as keyof typeof currentComponent.code]}</code>
           </pre>
         </CardContent>
@@ -995,9 +995,9 @@ function ComponentPlayground() {
 
       {/* Component Info */}
       <div className="grid lg:grid-cols-2 gap-8">
-        <Card className="bg-slate-800/50 border-slate-700/50">
+        <Card className="bg-card/50 border-border/50">
           <CardHeader>
-            <CardTitle className="text-slate-100 flex items-center gap-3">
+            <CardTitle className="text-foreground flex items-center gap-3">
               <Shield className="h-5 w-5 text-green-400" />
               Accessibility
             </CardTitle>
@@ -1005,27 +1005,27 @@ function ComponentPlayground() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-slate-400">Role:</span>
-              <span className="text-slate-300">{currentComponent.accessibility.role}</span>
+              <span className="text-muted-foreground">Role:</span>
+              <span className="text-foreground/80">{currentComponent.accessibility.role}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Contrast:</span>
-              <span className="text-slate-300">{currentComponent.accessibility.contrast}</span>
+              <span className="text-muted-foreground">Contrast:</span>
+              <span className="text-foreground/80">{currentComponent.accessibility.contrast}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Keyboard:</span>
-              <span className="text-slate-300">{currentComponent.accessibility.keyboardShortcuts.join(", ")}</span>
+              <span className="text-muted-foreground">Keyboard:</span>
+              <span className="text-foreground/80">{currentComponent.accessibility.keyboardShortcuts.join(", ")}</span>
             </div>
             <div>
-              <span className="text-slate-400">Description:</span>
-              <p className="text-slate-300 text-sm mt-1">{currentComponent.accessibility.ariaLabel}</p>
+              <span className="text-muted-foreground">Description:</span>
+              <p className="text-foreground/80 text-sm mt-1">{currentComponent.accessibility.ariaLabel}</p>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-slate-800/50 border-slate-700/50">
+        <Card className="bg-card/50 border-border/50">
           <CardHeader>
-            <CardTitle className="text-slate-100 flex items-center gap-3">
+            <CardTitle className="text-foreground flex items-center gap-3">
               <Zap className="h-5 w-5 text-yellow-400" />
               Performance
             </CardTitle>
@@ -1033,20 +1033,20 @@ function ComponentPlayground() {
           </CardHeader>
           <CardContent className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-slate-400">Bundle Size:</span>
-              <span className="text-slate-300">{currentComponent.performance.bundleSize}</span>
+              <span className="text-muted-foreground">Bundle Size:</span>
+              <span className="text-foreground/80">{currentComponent.performance.bundleSize}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Render Time:</span>
-              <span className="text-slate-300">{currentComponent.performance.renderTime}</span>
+              <span className="text-muted-foreground">Render Time:</span>
+              <span className="text-foreground/80">{currentComponent.performance.renderTime}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Re-renders:</span>
-              <span className="text-slate-300">{currentComponent.performance.reRenders}</span>
+              <span className="text-muted-foreground">Re-renders:</span>
+              <span className="text-foreground/80">{currentComponent.performance.reRenders}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-400">Interactions:</span>
-              <span className="text-slate-300">{currentComponent.performance.interactions}</span>
+              <span className="text-muted-foreground">Interactions:</span>
+              <span className="text-foreground/80">{currentComponent.performance.interactions}</span>
             </div>
           </CardContent>
         </Card>
@@ -1067,39 +1067,39 @@ export default function PlaygroundPage() {
   }
 
   return (
-    <div className="flex bg-slate-950 min-h-screen">
+    <div className="flex bg-background min-h-screen">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
         <div className="flex flex-col min-h-screen">
           {/* Header */}
-          <header className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
-            <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-indigo-500/5" />
+          <header className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background border-b border-border/50">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-indigo-500/5" />
             <div className="absolute top-0 left-1/3 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
             
             <div className="relative px-6 lg:px-12 py-12">
               <div className="max-w-7xl mx-auto text-center">
-                <Badge className="bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 text-fuchsia-300 border-fuchsia-500/30 mb-4">
+                <Badge className="bg-gradient-to-r from-primary/20 to-accent/20 text-primary border-primary/30 mb-4">
                   Interactive Playground
                 </Badge>
-                <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+                <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                   Component
                   <span className="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent"> Playground</span>
                 </h1>
-                <p className="text-xl text-slate-400 max-w-3xl mx-auto mb-8">
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                   Experiment with our components in real-time. Customise properties, see live previews, and generate code for your framework of choice.
                 </p>
                 
                 <div className="flex flex-wrap justify-center gap-4">
                   <Link href="/components">
-                    <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours">
+                    <Button variant="outline" size="sm" className="hover:bg-card transition-colours">
                       <ComponentIcon className="h-4 w-4 mr-2" />
                       Browse All Components
                     </Button>
                   </Link>
                   <Link href="/design-system/getting-started">
-                    <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours">
+                    <Button variant="outline" size="sm" className="hover:bg-card transition-colours">
                       <BookOpen className="h-4 w-4 mr-2" />
                       Getting Started
                     </Button>
@@ -1110,85 +1110,85 @@ export default function PlaygroundPage() {
           </header>
 
           {/* Documentation Section */}
-          <section className="px-6 lg:px-12 py-8 bg-slate-900/30">
+          <section className="px-6 lg:px-12 py-8 bg-card/30">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-3 gap-8">
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
-                    <CardTitle className="text-slate-100 flex items-center gap-3">
+                    <CardTitle className="text-foreground flex items-center gap-3">
                       <PlayCircle className="h-5 w-5 text-green-400" />
                       How It Works
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3 text-slate-300">
+                  <CardContent className="space-y-3 text-foreground/80">
                     <p>The Component Playground provides an interactive environment for testing and customising our design system components.</p>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <span className="text-fuchsia-400 mt-1">•</span>
+                        <span className="text-primary mt-1">•</span>
                         <span>Select any component to begin customisation</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-fuchsia-400 mt-1">•</span>
+                        <span className="text-primary mt-1">•</span>
                         <span>Adjust variants, sizes, and states in real-time</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-fuchsia-400 mt-1">•</span>
+                        <span className="text-primary mt-1">•</span>
                         <span>Generate production-ready code for React, Vue, or Angular</span>
                       </li>
                     </ul>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
-                    <CardTitle className="text-slate-100 flex items-center gap-3">
+                    <CardTitle className="text-foreground flex items-center gap-3">
                       <Code2 className="h-5 w-5 text-blue-400" />
                       Code Generation
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3 text-slate-300">
+                  <CardContent className="space-y-3 text-foreground/80">
                     <p>All generated code follows our design system standards and best practices for accessibility and performance.</p>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Frameworks:</span>
+                        <span className="text-muted-foreground">Frameworks:</span>
                         <span>React, Vue, Angular</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Styling:</span>
+                        <span className="text-muted-foreground">Styling:</span>
                         <span>CSS, SCSS</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-400">Standards:</span>
+                        <span className="text-muted-foreground">Standards:</span>
                         <span>WCAG 2.1 AA</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-slate-400">TypeScript:</span>
+                        <span className="text-muted-foreground">TypeScript:</span>
                         <span className="text-green-400">Supported</span>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
-                    <CardTitle className="text-slate-100 flex items-center gap-3">
+                    <CardTitle className="text-foreground flex items-center gap-3">
                       <Settings className="h-5 w-5 text-purple-400" />
                       Advanced Features
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-3 text-slate-300">
+                  <CardContent className="space-y-3 text-foreground/80">
                     <p>Professional development tools for comprehensive component testing and validation.</p>
                     <ul className="space-y-2 text-sm">
                       <li className="flex items-start gap-2">
-                        <span className="text-fuchsia-400 mt-1">•</span>
+                        <span className="text-primary mt-1">•</span>
                         <span>Accessibility compliance checking</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-fuchsia-400 mt-1">•</span>
+                        <span className="text-primary mt-1">•</span>
                         <span>Performance metrics and bundle analysis</span>
                       </li>
                       <li className="flex items-start gap-2">
-                        <span className="text-fuchsia-400 mt-1">•</span>
+                        <span className="text-primary mt-1">•</span>
                         <span>Real-time responsive preview</span>
                       </li>
                     </ul>

@@ -34,37 +34,37 @@ const components = [
   </Avatar>
   <div>
     <h4 className="font-medium">Sarah Johnson</h4>
-    <p className="text-sm text-slate-400">Senior Software Engineer</p>
+    <p className="text-sm text-muted-foreground">Senior Software Engineer</p>
   </div>
 </div>`,
     component: (
       <div className="space-y-4 w-full">
         <div className="flex items-center gap-6">
-          <Avatar className="h-16 w-16 ring-2 ring-slate-600 hover:ring-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <Avatar className="h-16 w-16 ring-2 ring-border dark:ring-slate-600 hover:ring-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <AvatarImage src="/placeholder.svg?height=64&width=64" />
-            <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 text-lg font-bold">SJ</AvatarFallback>
+            <AvatarFallback className="bg-fuchsia-500/20 text-primary text-lg font-bold">SJ</AvatarFallback>
           </Avatar>
           <div>
-            <h4 className="font-medium text-slate-200">Sarah Johnson</h4>
-            <p className="text-sm text-slate-400">Senior Software Engineer</p>
+            <h4 className="font-medium text-foreground">Sarah Johnson</h4>
+            <p className="text-sm text-muted-foreground">Senior Software Engineer</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <Avatar className="h-12 w-12 hover:scale-110 transition-transform" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <AvatarFallback className="bg-blue-500/20 text-blue-300 font-semibold">MK</AvatarFallback>
+            <AvatarFallback className="bg-blue-500/20 text-blue-700 dark:text-blue-300 font-semibold">MK</AvatarFallback>
           </Avatar>
           <div>
-            <h5 className="font-medium text-slate-200">Michael Kim</h5>
-            <p className="text-sm text-slate-400">Product Designer</p>
+            <h5 className="font-medium text-foreground">Michael Kim</h5>
+            <p className="text-sm text-muted-foreground">Product Designer</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10 hover:scale-110 transition-transform" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <AvatarFallback className="bg-green-500/20 text-green-300 text-sm font-semibold">AL</AvatarFallback>
+            <AvatarFallback className="bg-green-500/20 text-green-700 dark:text-green-300 text-sm font-semibold">AL</AvatarFallback>
           </Avatar>
           <div>
-            <h5 className="font-medium text-sm text-slate-200">Alex Liu</h5>
-            <p className="text-xs text-slate-400">Full Stack Developer</p>
+            <h5 className="font-medium text-sm text-foreground">Alex Liu</h5>
+            <p className="text-xs text-muted-foreground">Full Stack Developer</p>
           </div>
         </div>
       </div>
@@ -74,24 +74,24 @@ const components = [
     id: "image-placeholder",
     title: "Image Placeholders",
     description: "Placeholder components for images",
-    code: `<div className="aspect-video bg-slate-900/50 border border-slate-700/50 shadow-xl rounded-lg flex items-center justify-center">
+    code: `<div className="aspect-video bg-card/50 border border-border/50 shadow-xl rounded-lg flex items-center justify-center">
   <div className="text-center">
-    <ImageIcon className="h-8 w-8 text-slate-400 mx-auto mb-2" />
-    <p className="text-sm text-slate-400">16:9 Aspect Ratio</p>
+    <ImageIcon className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+    <p className="text-sm text-muted-foreground">16:9 Aspect Ratio</p>
   </div>
 </div>`,
     component: (
       <div className="space-y-4 w-full max-w-md">
-        <div className="aspect-video bg-slate-800/50 border border-slate-600 rounded-lg flex items-center justify-center hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+        <div className="aspect-video bg-card/50 border border-border rounded-lg flex items-center justify-center hover:border-primary-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
           <div className="text-center">
-            <ImageIcon className="h-8 w-8 text-slate-400 mx-auto mb-2" />
-            <p className="text-sm text-slate-400">16:9 Aspect Ratio</p>
+            <ImageIcon className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+            <p className="text-sm text-muted-foreground">16:9 Aspect Ratio</p>
           </div>
         </div>
-        <div className="aspect-square bg-slate-800/50 border border-slate-600 rounded-lg flex items-center justify-center hover:border-slate-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+        <div className="aspect-square bg-card/50 border border-border rounded-lg flex items-center justify-center hover:border-primary-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
           <div className="text-center">
-            <ImageIcon className="h-6 w-6 text-slate-400 mx-auto mb-2" />
-            <p className="text-sm text-slate-400">1:1 Square</p>
+            <ImageIcon className="h-6 w-6 text-muted-foreground mx-auto mb-2" />
+            <p className="text-sm text-muted-foreground">1:1 Square</p>
           </div>
         </div>
       </div>
@@ -115,34 +115,34 @@ const components = [
     component: (
       <div className="space-y-4 w-full max-w-md">
         <div>
-          <h4 className="font-medium text-slate-200 mb-3">Hiring Team</h4>
+          <h4 className="font-medium text-foreground mb-3">Hiring Team</h4>
           <div className="flex -space-x-2">
             {[
-              { initials: "SJ", name: "Sarah Johnson", colour: "bg-fuchsia-500/20 text-fuchsia-300" },
-              { initials: "MK", name: "Michael Kim", colour: "bg-blue-500/20 text-blue-300" },
-              { initials: "AL", name: "Alex Liu", colour: "bg-green-500/20 text-green-300" },
-              { initials: "JD", name: "Jane Doe", colour: "bg-purple-500/20 text-purple-300" }
+              { initials: "SJ", name: "Sarah Johnson", colour: "bg-fuchsia-500/20 text-primary" },
+              { initials: "MK", name: "Michael Kim", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300" },
+              { initials: "AL", name: "Alex Liu", colour: "bg-green-500/20 text-green-700 dark:text-green-300" },
+              { initials: "JD", name: "Jane Doe", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-300" }
             ].map((person, index) => (
-              <Avatar key={index} className="border-2 border-slate-800 hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+              <Avatar key={index} className="border-2 border-border hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
                 <AvatarFallback className={person.colour} title={person.name}>
                   {person.initials}
                 </AvatarFallback>
               </Avatar>
             ))}
-            <div className="flex items-center justify-center w-10 h-10 bg-slate-700 border-2 border-slate-800 rounded-full text-xs text-slate-300 hover:bg-slate-600 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div className="flex items-center justify-center w-10 h-10 bg-muted border-2 border-border rounded-full text-xs text-foreground/80 hover:bg-muted transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
               +3
             </div>
           </div>
         </div>
         <div>
-          <h4 className="font-medium text-slate-200 mb-3">Interview Panel</h4>
+          <h4 className="font-medium text-foreground mb-3">Interview Panel</h4>
           <div className="flex -space-x-2">
             {[
-              { initials: "RW", colour: "bg-orange-500/20 text-orange-300" },
-              { initials: "LB", colour: "bg-cyan-500/20 text-cyan-300" },
-              { initials: "KM", colour: "bg-pink-500/20 text-pink-300" }
+              { initials: "RW", colour: "bg-orange-500/20 text-orange-700 dark:text-orange-300" },
+              { initials: "LB", colour: "bg-cyan-500/20 text-cyan-700 dark:text-cyan-300" },
+              { initials: "KM", colour: "bg-pink-500/20 text-pink-700 dark:text-pink-300" }
             ].map((person, index) => (
-              <Avatar key={index} className="border-2 border-slate-800 hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+              <Avatar key={index} className="border-2 border-border hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
                 <AvatarFallback className={person.colour}>
                   {person.initials}
                 </AvatarFallback>
@@ -158,7 +158,7 @@ const components = [
     title: "Image Gallery",
     description: "Grid-based image gallery with preview",
     code: `<div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-  <div className="aspect-square bg-slate-800/50 rounded-lg overflow-hidden">
+  <div className="aspect-square bg-card/50 rounded-lg overflow-hidden">
     <img src="/placeholder.svg" alt="Gallery item" className="w-full h-full object-cover" />
   </div>
 </div>`,
@@ -175,12 +175,12 @@ const components = [
           ].map((item, index) => (
             <div
               key={index}
-              className={`aspect-square ${item.colour} rounded-xl border border-slate-600 flex items-center justify-center hover:scale-105 transition-transform cursor-pointer`}
+              className={`aspect-square ${item.colour} rounded-xl border border-border flex items-center justify-center hover:scale-105 transition-transform cursor-pointer`}
               style={{ transitionDuration: 'var(--animation-speed)' }}
             >
               <div className="text-center">
-                <ImageIcon className="h-6 w-6 mx-auto mb-1 text-slate-400" />
-                <p className="text-xs text-slate-400">{item.title}</p>
+                <ImageIcon className="h-6 w-6 mx-auto mb-1 text-muted-foreground" />
+                <p className="text-xs text-muted-foreground">{item.title}</p>
               </div>
             </div>
           ))}
@@ -201,20 +201,20 @@ const components = [
     component: (
       <div className="w-full max-w-md">
         <div className="relative">
-          <div className="h-24 bg-gradient-to-r from-fuchsia-500 via-purple-500 to-blue-500 rounded-xl border border-slate-600">
-            <div className="absolute inset-0 bg-slate-900/20 rounded-lg"></div>
+          <div className="h-24 bg-gradient-to-r from-primary via-purple-500 to-blue-500 rounded-xl border border-border">
+            <div className="absolute inset-0 bg-card/20 rounded-lg"></div>
           </div>
-          <Avatar className="absolute -bottom-6 left-4 h-12 w-12 border-2 border-slate-800 ring-2 ring-slate-600">
-            <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 font-bold">SJ</AvatarFallback>
+          <Avatar className="absolute -bottom-6 left-4 h-12 w-12 border-2 border-border ring-2 ring-border dark:ring-slate-600">
+            <AvatarFallback className="bg-fuchsia-500/20 text-primary font-bold">SJ</AvatarFallback>
           </Avatar>
         </div>
         <div className="mt-8 px-4">
-          <h3 className="font-bold text-slate-200">Sarah Johnson</h3>
-          <p className="text-sm text-slate-400">Senior Frontend Developer at TechCorp</p>
+          <h3 className="font-bold text-foreground">Sarah Johnson</h3>
+          <p className="text-sm text-muted-foreground">Senior Frontend Developer at TechCorp</p>
           <div className="flex gap-2 mt-2">
-            <Badge className="bg-blue-500/20 text-blue-300 text-xs">React</Badge>
-            <Badge className="bg-green-500/20 text-green-300 text-xs">Node.js</Badge>
-            <Badge className="bg-purple-500/20 text-purple-300 text-xs">TypeScript</Badge>
+            <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30 text-xs">React</Badge>
+            <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30 text-xs">Node.js</Badge>
+            <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300 hover:bg-purple-500/30 text-xs">TypeScript</Badge>
           </div>
         </div>
       </div>
@@ -224,25 +224,25 @@ const components = [
     id: "media-player",
     title: "Media Player",
     description: "Video/audio player interface",
-    code: `<div className="bg-slate-900 rounded-lg p-4">
-  <div className="aspect-video bg-slate-800 rounded mb-4 flex items-center justify-center">
-    <Video className="h-12 w-12 text-slate-400" />
+    code: `<div className="bg-card rounded-lg p-4">
+  <div className="aspect-video bg-card rounded mb-4 flex items-center justify-center">
+    <Video className="h-12 w-12 text-muted-foreground" />
   </div>
   <div className="flex items-center gap-6">
     <Button size="sm"><Play className="h-4 w-4" /></Button>
-    <div className="flex-1 bg-slate-700 h-1 rounded">
+    <div className="flex-1 bg-muted h-1 rounded">
       <div className="bg-fuchsia-500 h-1 rounded w-1/3"></div>
     </div>
-    <span className="text-sm text-slate-400">2:34 / 7:42</span>
+    <span className="text-sm text-muted-foreground">2:34 / 7:42</span>
   </div>
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="bg-slate-800/50 border border-slate-600 rounded-lg p-4">
-          <div className="aspect-video bg-slate-800/80 rounded mb-4 flex items-center justify-center hover:bg-slate-800 hover:scale-105 transition-all duration-300 rounded-lg hover:shadow-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+        <div className="bg-card/50 border border-border rounded-lg p-4">
+          <div className="aspect-video bg-card/80 rounded mb-4 flex items-center justify-center hover:bg-card hover:scale-105 transition-all duration-300 rounded-lg hover:shadow-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <div className="text-center">
-              <Video className="h-12 w-12 text-slate-400 mx-auto mb-2" />
-              <p className="text-sm text-slate-400">Interview Recording</p>
+              <Video className="h-12 w-12 text-muted-foreground mx-auto mb-2" />
+              <p className="text-sm text-muted-foreground">Interview Recording</p>
             </div>
           </div>
           <div className="space-y-3">
@@ -250,21 +250,21 @@ const components = [
               <Button size="sm" className="w-8 h-8 p-0 bg-fuchsia-500 hover:bg-fuchsia-600">
                 <ArrowRight className="h-4 w-4 ml-0.5" />
               </Button>
-              <div className="flex-1 bg-slate-700 h-2 rounded-full overflow-hidden">
+              <div className="flex-1 bg-muted h-2 rounded-full overflow-hidden">
                 <div className="bg-fuchsia-500 h-full rounded-full w-1/3 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}></div>
               </div>
-              <span className="text-sm text-slate-400 font-mono">2:34 / 7:42</span>
+              <span className="text-sm text-muted-foreground font-mono">2:34 / 7:42</span>
             </div>
             <div className="flex items-center justify-between text-sm">
               <div className="flex items-center gap-2">
-                <Button size="sm" variant="ghost" className="w-8 h-8 p-0 hover:bg-slate-700">
+                <Button size="sm" variant="ghost" className="w-8 h-8 p-0 hover:bg-accent">
                   <RefreshCw className="h-3 w-3" />
                 </Button>
-                <Button size="sm" variant="ghost" className="w-8 h-8 p-0 hover:bg-slate-700">
+                <Button size="sm" variant="ghost" className="w-8 h-8 p-0 hover:bg-accent">
                   <Download className="h-3 w-3" />
                 </Button>
               </div>
-              <div className="text-slate-400">Sarah Johnson - Technical Interview</div>
+              <div className="text-muted-foreground">Sarah Johnson - Technical Interview</div>
             </div>
           </div>
         </div>
@@ -291,10 +291,10 @@ export function MediaComponents({
       <section>
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2 text-slate-100">Media Components</h2>
-            <p className="text-slate-400">Images, avatars, and media display components</p>
+            <h2 className="text-3xl font-bold mb-2 text-foreground">Media Components</h2>
+            <p className="text-muted-foreground">Images, avatars, and media display components</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>
@@ -320,7 +320,7 @@ export function MediaComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-center py-12 text-muted-foreground">
             <ImageIcon className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>

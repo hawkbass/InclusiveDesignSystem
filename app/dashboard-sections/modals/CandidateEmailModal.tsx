@@ -17,21 +17,21 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl p-0 overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-blue-800/20 to-blue-800/10 rounded-t-xl">
+        <div className="p-6 border-b border-border/50 bg-gradient-to-r from-blue-800/20 to-blue-800/10 rounded-t-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                 <Mail className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-slate-100">Compose Email</h3>
-                <p className="text-slate-400 text-sm">Send message to {candidate.name}</p>
+                <h3 className="text-lg font-semibold text-foreground">Compose Email</h3>
+                <p className="text-muted-foreground text-sm">Send message to {candidate.name}</p>
               </div>
             </div>
             <Button
               variant="ghost"
               size="sm"
-              className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+              className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
             >
               <X className="h-4 w-4" />
@@ -41,30 +41,30 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
         {/* Content */}
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">To</label>
+            <label className="block text-sm font-medium text-foreground/80 mb-2">To</label>
             <Input 
               value={candidate.email} 
               readOnly 
-              className="bg-slate-800/50 border-slate-700/50 text-slate-300"
+              className="bg-card/50 border-border/50 text-foreground/80"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Subject</label>
+            <label className="block text-sm font-medium text-foreground/80 mb-2">Subject</label>
             <Input 
               defaultValue={`Interview Opportunity - ${candidate.position}`}
-              className="bg-slate-800/50 border-slate-700/50 text-slate-300"
+              className="bg-card/50 border-border/50 text-foreground/80"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-300 mb-2">Message</label>
+            <label className="block text-sm font-medium text-foreground/80 mb-2">Message</label>
             <textarea 
-              className="w-full h-32 p-3 bg-slate-800/50 border border-slate-700/50 rounded-md text-slate-300 placeholder:text-slate-500 resize-none"
+              className="w-full h-32 p-3 bg-card/50 border border-border/50 rounded-md text-foreground/80 placeholder:text-muted-foreground resize-none"
               placeholder={`Hi ${candidate.name},\n\nI hope this email finds you well. I wanted to reach out regarding the ${candidate.position} position at our company.\n\nBased on your profile and experience, I believe you would be an excellent fit for our team. Would you be available for a brief conversation to discuss this opportunity further?\n\nBest regards,\nHiring Team`}
             />
           </div>
         </div>
         {/* Footer */}
-        <div className="p-6 border-t border-slate-700/50 bg-slate-800/30 rounded-b-xl">
+        <div className="p-6 border-t border-border/50 bg-card/30 rounded-b-xl">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
               <Button
@@ -84,7 +84,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
               <Button
                 variant="outline"
                 size="sm"
-                className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+                className="border-border/50 text-foreground/80 hover:bg-accent/50"
               >
                 Save Draft
               </Button>
@@ -92,7 +92,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
             <Button
               variant="ghost"
               size="sm"
-              className="text-slate-400 hover:text-slate-300"
+              className="text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
             >
               Cancel

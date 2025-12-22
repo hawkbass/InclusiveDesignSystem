@@ -133,9 +133,9 @@ export default function Theming() {
     title: string;
   }) => (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-      <div className="bg-slate-800 border border-slate-700 rounded-xl p-6 w-full max-w-md">
+      <div className="bg-card border border-border rounded-xl p-6 w-full max-w-md">
         <div className="flex items-center justify-between mb-6">
-          <h3 className="text-lg font-semibold text-slate-200">{title}</h3>
+          <h3 className="text-lg font-semibold text-foreground">{title}</h3>
           <Button variant="ghost" size="sm" onClick={onClose}>
             <X className="h-4 w-4" />
           </Button>
@@ -145,12 +145,12 @@ export default function Theming() {
           {/* Color Preview */}
           <div className="flex items-center gap-4">
             <div 
-              className="w-16 h-16 rounded-lg border-2 border-slate-600"
+              className="w-16 h-16 rounded-lg border-2 border-border"
               style={{ backgroundColor: hsvToHex(hsv.h, hsv.s, hsv.v) }}
             ></div>
             <div className="flex-1">
-              <div className="text-sm text-slate-300 mb-1">Preview</div>
-              <div className="text-xs text-slate-400 font-mono">
+              <div className="text-sm text-foreground/80 mb-1">Preview</div>
+              <div className="text-xs text-muted-foreground font-mono">
                 {hsvToHex(hsv.h, hsv.s, hsv.v)}
               </div>
             </div>
@@ -158,7 +158,7 @@ export default function Theming() {
 
           {/* Hue Slider */}
           <div className="space-y-2">
-            <Label className="text-slate-300 text-sm">Hue</Label>
+            <Label className="text-foreground/80 text-sm">Hue</Label>
             <div className="relative">
               <input
                 type="range"
@@ -172,12 +172,12 @@ export default function Theming() {
                 }}
               />
             </div>
-            <div className="text-xs text-slate-400">{hsv.h}°</div>
+            <div className="text-xs text-muted-foreground">{hsv.h}°</div>
           </div>
 
           {/* Saturation Slider */}
           <div className="space-y-2">
-            <Label className="text-slate-300 text-sm">Saturation</Label>
+            <Label className="text-foreground/80 text-sm">Saturation</Label>
             <div className="relative">
               <input
                 type="range"
@@ -191,12 +191,12 @@ export default function Theming() {
                 }}
               />
             </div>
-            <div className="text-xs text-slate-400">{hsv.s}%</div>
+            <div className="text-xs text-muted-foreground">{hsv.s}%</div>
           </div>
 
           {/* Value/Brightness Slider */}
           <div className="space-y-2">
-            <Label className="text-slate-300 text-sm">Brightness</Label>
+            <Label className="text-foreground/80 text-sm">Brightness</Label>
             <div className="relative">
               <input
                 type="range"
@@ -210,12 +210,12 @@ export default function Theming() {
                 }}
               />
             </div>
-            <div className="text-xs text-slate-400">{hsv.v}%</div>
+            <div className="text-xs text-muted-foreground">{hsv.v}%</div>
           </div>
 
           {/* Hex Input */}
           <div className="space-y-2">
-            <Label className="text-slate-300 text-sm">Hex Value</Label>
+            <Label className="text-foreground/80 text-sm">Hex Value</Label>
             <input
               type="text"
               value={hsvToHex(hsv.h, hsv.s, hsv.v)}
@@ -226,7 +226,7 @@ export default function Theming() {
                   onChange(newHsv)
                 }
               }}
-              className="w-full px-3 py-2 bg-slate-900/50 border border-slate-700 rounded-lg text-slate-300 font-mono text-sm"
+              className="w-full px-3 py-2 bg-card/50 border border-border rounded-lg text-foreground/80 font-mono text-sm"
               placeholder="#000000"
             />
           </div>
@@ -241,7 +241,7 @@ export default function Theming() {
       name: "Dark Theme",
       description: "Professional dark interface",
       icon: Moon,
-      preview: "bg-slate-900 text-slate-100",
+      preview: "bg-card text-foreground",
       usage: "Default theme, reduces eye strain"
     },
     {
@@ -271,40 +271,40 @@ export default function Theming() {
   ]
 
   return (
-    <div className="flex bg-slate-950 min-h-screen">
+    <div className="flex bg-background min-h-screen">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
         <div className="flex flex-col min-h-screen">
           {/* Header */}
-          <header className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
-            <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-indigo-500/5" />
+          <header className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background border-b border-border/50">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-indigo-500/5" />
             <div className="absolute top-0 left-1/3 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
             
             <div className="relative px-6 lg:px-12 py-12">
               <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-8">
-                  <Badge className="bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 text-fuchsia-300 border-fuchsia-500/30 mb-4">
+                  <Badge className="bg-gradient-to-r from-primary/20 to-accent/20 text-primary border-primary/30 mb-4">
                     Theme Customisation
                   </Badge>
-                  <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+                  <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                     Theming System
                     <span className="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent"> & Customisation</span>
                   </h1>
-                  <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+                  <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                     Customise the entire design system appearance with themes, colour schemes, and personalisation options.
                   </p>
                 </div>
 
                 {/* Theme Selector */}
                 <div className="flex justify-center items-center gap-4 mb-8">
-                  <span className="text-slate-400">Current theme:</span>
+                  <span className="text-muted-foreground">Current theme:</span>
                   <Select value={activeTheme} onValueChange={setActiveTheme}>
-                    <SelectTrigger className="w-auto min-w-[150px] bg-slate-800/50 border-slate-700">
+                    <SelectTrigger className="w-auto min-w-[150px] bg-card/50 border-border">
                       <SelectValue />
                     </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-slate-700">
+                    <SelectContent className="bg-card border-border">
                       {themes.map((theme) => (
                         <SelectItem key={theme.id} value={theme.id}>
                           <div className="flex items-center gap-2">
@@ -319,15 +319,15 @@ export default function Theming() {
 
                 {/* Quick Actions */}
                 <div className="flex flex-wrap justify-center gap-4">
-                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours">
+                  <Button variant="outline" size="sm" className="hover:bg-card transition-colours">
                     <Download className="h-4 w-4 mr-2" />
                     Export Theme
                   </Button>
-                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours">
+                  <Button variant="outline" size="sm" className="hover:bg-card transition-colours">
                     <PaintBucket className="h-4 w-4 mr-2" />
                     Theme Builder
                   </Button>
-                  <Button size="sm" className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25 transition-all">
+                  <Button size="sm" className="bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25 transition-all">
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Figma Plugin
                   </Button>
@@ -337,47 +337,47 @@ export default function Theming() {
           </header>
 
           {/* What is Theming? */}
-          <section className="px-6 lg:px-12 py-12 bg-slate-900/30">
+          <section className="px-6 lg:px-12 py-12 bg-card/30">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold text-slate-100 mb-6">What is Theming?</h2>
-                  <div className="space-y-4 text-slate-300">
+                  <h2 className="text-3xl font-bold text-foreground mb-6">What is Theming?</h2>
+                  <div className="space-y-4 text-foreground/80">
                     <p className="text-lg">
-                      Theming allows you to <strong className="text-fuchsia-300">customise the entire visual appearance</strong> of the design system while maintaining consistency and accessibility.
+                      Theming allows you to <strong className="text-primary">customise the entire visual appearance</strong> of the design system while maintaining consistency and accessibility.
                     </p>
                     <p>
                       Unlike design tokens (which define the values), theming provides <strong className="text-purple-300">complete visual control and user personalisation</strong> options.
                     </p>
                   </div>
                 </div>
-                <Card className="bg-slate-800/50 border-slate-700/50">
+                <Card className="bg-card/50 border-border/50">
                   <CardHeader>
                     <div className="flex items-center gap-3">
-                      <Lightbulb className="h-6 w-6 text-fuchsia-400" />
-                      <CardTitle className="text-slate-100">Theming vs Tokens</CardTitle>
+                      <Lightbulb className="h-6 w-6 text-primary" />
+                      <CardTitle className="text-foreground">Theming vs Tokens</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-3">
                       <Target className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
                       <div>
-                        <strong className="text-slate-200">Design Tokens</strong>
-                        <p className="text-sm text-slate-400">Define the foundational values (colours, spacing, typography)</p>
+                        <strong className="text-foreground">Design Tokens</strong>
+                        <p className="text-sm text-muted-foreground">Define the foundational values (colours, spacing, typography)</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <Brush className="h-5 w-5 text-purple-400 mt-0.5 flex-shrink-0" />
                       <div>
-                        <strong className="text-slate-200">Theming</strong>
-                        <p className="text-sm text-slate-400">Applies those values in different combinations and contexts</p>
+                        <strong className="text-foreground">Theming</strong>
+                        <p className="text-sm text-muted-foreground">Applies those values in different combinations and contexts</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
                       <Settings className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
-                        <strong className="text-slate-200">Customisation</strong>
-                        <p className="text-sm text-slate-400">Lets users personalise the appearance to their preferences</p>
+                        <strong className="text-foreground">Customisation</strong>
+                        <p className="text-sm text-muted-foreground">Lets users personalise the appearance to their preferences</p>
                       </div>
                     </div>
                   </CardContent>
@@ -387,13 +387,13 @@ export default function Theming() {
           </section>
 
           {/* Navigation */}
-          <section className="px-6 lg:px-12 py-8 border-b border-slate-800/50">
+          <section className="px-6 lg:px-12 py-8 border-b border-border/50">
             <div className="max-w-7xl mx-auto">
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <div className="flex items-center gap-3 mb-8">
-                  <h2 className="text-lg font-semibold text-slate-200">Viewing:</h2>
+                  <h2 className="text-lg font-semibold text-foreground">Viewing:</h2>
                   <Select value={activeTab} onValueChange={setActiveTab}>
-                    <SelectTrigger className="w-auto min-w-[200px] h-10 bg-slate-800/40 border border-slate-700/30 hover:bg-slate-800/60 transition-colors text-slate-300">
+                    <SelectTrigger className="w-auto min-w-[200px] h-10 bg-card/40 border border-border/30 hover:bg-card/60 transition-colors text-foreground/80">
                       {(() => {
                         const tabs = [
                           { value: "overview", label: "Overview", icon: Eye },
@@ -410,28 +410,28 @@ export default function Theming() {
                         ) : null;
                       })()}
                     </SelectTrigger>
-                    <SelectContent className="bg-slate-800 border-slate-700">
-                      <SelectItem value="overview" className="focus:bg-slate-700/60 cursor-pointer">
+                    <SelectContent className="bg-card border-border">
+                      <SelectItem value="overview" className="focus:bg-muted/60 cursor-pointer">
                         <div className="flex items-center gap-3">
-                          <Eye className="h-4 w-4 text-slate-400" />
+                          <Eye className="h-4 w-4 text-muted-foreground" />
                           <span>Overview</span>
                         </div>
                       </SelectItem>
-                      <SelectItem value="themes" className="focus:bg-slate-700/60 cursor-pointer">
+                      <SelectItem value="themes" className="focus:bg-muted/60 cursor-pointer">
                         <div className="flex items-center gap-3">
-                          <Palette className="h-4 w-4 text-slate-400" />
+                          <Palette className="h-4 w-4 text-muted-foreground" />
                           <span>Built-in Themes</span>
                         </div>
                       </SelectItem>
-                      <SelectItem value="customisation" className="focus:bg-slate-700/60 cursor-pointer">
+                      <SelectItem value="customisation" className="focus:bg-muted/60 cursor-pointer">
                         <div className="flex items-center gap-3">
-                          <Settings className="h-4 w-4 text-slate-400" />
+                          <Settings className="h-4 w-4 text-muted-foreground" />
                           <span>Customisation</span>
                         </div>
                       </SelectItem>
-                      <SelectItem value="implementation" className="focus:bg-slate-700/60 cursor-pointer">
+                      <SelectItem value="implementation" className="focus:bg-muted/60 cursor-pointer">
                         <div className="flex items-center gap-3">
-                          <Zap className="h-4 w-4 text-slate-400" />
+                          <Zap className="h-4 w-4 text-muted-foreground" />
                           <span>Implementation</span>
                         </div>
                       </SelectItem>
@@ -442,76 +442,76 @@ export default function Theming() {
                 {/* Overview Tab */}
                 <TabsContent value="overview" className="space-y-8">
                   <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-colors cursor-pointer" onClick={() => setActiveTab("themes")}>
+                    <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab("themes")}>
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl w-fit">
                           <Palette className="h-8 w-8 text-blue-400" />
                         </div>
-                        <CardTitle className="text-slate-100">Built-in Themes</CardTitle>
+                        <CardTitle className="text-foreground">Built-in Themes</CardTitle>
                         <CardDescription>Pre-designed theme options</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="flex items-center justify-between">
                           <Badge variant="outline" className="text-xs">4 themes</Badge>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-colors cursor-pointer" onClick={() => setActiveTab("customisation")}>
+                    <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab("customisation")}>
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-purple-500/20 to-fuchsia-500/20 rounded-xl w-fit">
                           <Settings className="h-8 w-8 text-purple-400" />
                         </div>
-                        <CardTitle className="text-slate-100">Customisation</CardTitle>
+                        <CardTitle className="text-foreground">Customisation</CardTitle>
                         <CardDescription>Create custom themes and variations</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="flex items-center justify-between">
                           <Badge variant="outline" className="text-xs">Unlimited</Badge>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-colors cursor-pointer" onClick={() => setActiveTab("implementation")}>
+                    <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab("implementation")}>
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl w-fit">
                           <Zap className="h-8 w-8 text-green-400" />
                         </div>
-                        <CardTitle className="text-slate-100">Implementation</CardTitle>
+                        <CardTitle className="text-foreground">Implementation</CardTitle>
                         <CardDescription>How to integrate themes in your project</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="flex items-center justify-between">
                           <Badge variant="outline" className="text-xs">CSS & JS</Badge>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-colors">
+                    <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors">
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-xl w-fit">
                           <PaintBucket className="h-8 w-8 text-orange-400" />
                         </div>
-                        <CardTitle className="text-slate-100">Theme Builder</CardTitle>
+                        <CardTitle className="text-foreground">Theme Builder</CardTitle>
                         <CardDescription>Visual theme creation tool</CardDescription>
                       </CardHeader>
                       <CardContent>
                         <div className="flex items-center justify-between">
                           <Badge variant="outline" className="text-xs">Coming Soon</Badge>
-                          <Eye className="h-4 w-4 text-slate-400" />
+                          <Eye className="h-4 w-4 text-muted-foreground" />
                         </div>
                       </CardContent>
                     </Card>
                   </div>
 
                   {/* Theme Comparison */}
-                  <Card className="bg-slate-800/30 border-slate-700/50">
+                  <Card className="bg-card/30 border-border/50">
                     <CardHeader>
-                      <CardTitle className="text-slate-100 flex items-center gap-3">
-                        <Contrast className="h-5 w-5 text-fuchsia-400" />
+                      <CardTitle className="text-foreground flex items-center gap-3">
+                        <Contrast className="h-5 w-5 text-primary" />
                         Theme Comparison
                       </CardTitle>
                       <CardDescription>See how different themes affect the same components</CardDescription>
@@ -533,7 +533,7 @@ export default function Theming() {
                                 </div>
                               </div>
                             </div>
-                            <p className="text-xs text-slate-400">{theme.usage}</p>
+                            <p className="text-xs text-muted-foreground">{theme.usage}</p>
                           </div>
                         ))}
                       </div>
@@ -544,18 +544,18 @@ export default function Theming() {
                 {/* Themes Tab */}
                 <TabsContent value="themes" className="space-y-8">
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-100 mb-4">Built-in Themes</h3>
-                    <p className="text-slate-400 mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-4">Built-in Themes</h3>
+                    <p className="text-muted-foreground mb-8">
                       Ready-to-use themes designed for different contexts and accessibility requirements.
                     </p>
                   </div>
 
                   <div className="grid lg:grid-cols-2 gap-8">
                     {themes.map((theme) => (
-                      <Card key={theme.id} className="bg-slate-800/30 border-slate-700/50">
+                      <Card key={theme.id} className="bg-card/30 border-border/50">
                         <CardHeader>
-                          <CardTitle className="text-slate-100 flex items-center gap-3">
-                            <theme.icon className="h-6 w-6 text-fuchsia-400" />
+                          <CardTitle className="text-foreground flex items-center gap-3">
+                            <theme.icon className="h-6 w-6 text-primary" />
                             {theme.name}
                           </CardTitle>
                           <CardDescription>{theme.description}</CardDescription>
@@ -587,14 +587,14 @@ export default function Theming() {
                             </div>
                           </div>
                           <div className="space-y-2">
-                            <strong className="text-slate-200">Best for:</strong>
-                            <p className="text-sm text-slate-400">{theme.usage}</p>
+                            <strong className="text-foreground">Best for:</strong>
+                            <p className="text-sm text-muted-foreground">{theme.usage}</p>
                           </div>
                           <Button
                             variant="outline"
                             size="sm"
                             onClick={() => setActiveTheme(theme.id)}
-                            className={`w-full ${activeTheme === theme.id ? 'border-fuchsia-500 text-fuchsia-300' : ''}`}
+                            className={`w-full ${activeTheme === theme.id ? 'border-primary text-primary' : ''}`}
                           >
                             {activeTheme === theme.id ? 'Current Theme' : 'Apply Theme'}
                           </Button>
@@ -607,44 +607,44 @@ export default function Theming() {
                 {/* Customisation Tab */}
                 <TabsContent value="customisation" className="space-y-8">
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-100 mb-4">Theme Customisation</h3>
-                    <p className="text-slate-400 mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-4">Theme Customisation</h3>
+                    <p className="text-muted-foreground mb-8">
                       Create custom themes by adjusting colours, spacing, and other design properties.
                     </p>
                   </div>
 
                   <div className="grid lg:grid-cols-2 gap-8">
-                    <Card className="bg-slate-800/30 border-slate-700/50">
+                    <Card className="bg-card/30 border-border/50">
                       <CardHeader>
-                        <CardTitle className="text-slate-100">Colour Customisation</CardTitle>
+                        <CardTitle className="text-foreground">Colour Customisation</CardTitle>
                         <CardDescription>Adjust primary and secondary colours</CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-6">
                         <div className="space-y-3">
-                          <Label className="text-slate-300">Primary Colour</Label>
+                          <Label className="text-foreground/80">Primary Colour</Label>
                           <div className="flex items-center gap-3">
                             <div
-                              className="w-12 h-12 rounded border border-slate-700 bg-transparent cursor-pointer hover:border-slate-600 transition-colors"
+                              className="w-12 h-12 rounded border border-border bg-transparent cursor-pointer hover:border-border transition-colors"
                               style={{ backgroundColor: customPrimary }}
                               onClick={() => setPrimaryPickerOpen(true)}
                             />
                             <div className="flex-1">
-                              <div className="text-sm text-slate-300 mb-1">Current: {customPrimary}</div>
+                              <div className="text-sm text-foreground/80 mb-1">Current: {customPrimary}</div>
                               <div className="h-4 rounded" style={{ backgroundColor: customPrimary }}></div>
                             </div>
                           </div>
                         </div>
 
                         <div className="space-y-3">
-                          <Label className="text-slate-300">Secondary Colour</Label>
+                          <Label className="text-foreground/80">Secondary Colour</Label>
                           <div className="flex items-center gap-3">
                             <div
-                              className="w-12 h-12 rounded border border-slate-700 bg-transparent cursor-pointer hover:border-slate-600 transition-colors"
+                              className="w-12 h-12 rounded border border-border bg-transparent cursor-pointer hover:border-border transition-colors"
                               style={{ backgroundColor: customSecondary }}
                               onClick={() => setSecondaryPickerOpen(true)}
                             />
                             <div className="flex-1">
-                              <div className="text-sm text-slate-300 mb-1">Current: {customSecondary}</div>
+                              <div className="text-sm text-foreground/80 mb-1">Current: {customSecondary}</div>
                               <div className="h-4 rounded" style={{ backgroundColor: customSecondary }}></div>
                             </div>
                           </div>
@@ -661,25 +661,25 @@ export default function Theming() {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-slate-800/30 border-slate-700/50">
+                    <Card className="bg-card/30 border-border/50">
                       <CardHeader>
-                        <CardTitle className="text-slate-100">Live Preview</CardTitle>
+                        <CardTitle className="text-foreground">Live Preview</CardTitle>
                         <CardDescription>See your customisations in real-time</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <div className="p-6 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                        <div className="p-6 bg-card/50 rounded-lg border border-border/30">
                           <div className="space-y-4">
                             <div className="flex items-center justify-between">
-                              <span className="text-slate-200 font-medium">Custom Theme Preview</span>
+                              <span className="text-foreground font-medium">Custom Theme Preview</span>
                               <div className="flex gap-1">
                                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: customPrimary }}></div>
                                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: customSecondary }}></div>
                               </div>
                             </div>
                             <div className="space-y-2">
-                              <div className="h-4 bg-slate-700 rounded"></div>
-                              <div className="h-4 bg-slate-800 rounded w-4/5"></div>
-                              <div className="h-4 bg-slate-800 rounded w-3/5"></div>
+                              <div className="h-4 bg-muted rounded"></div>
+                              <div className="h-4 bg-card rounded w-4/5"></div>
+                              <div className="h-4 bg-card rounded w-3/5"></div>
                             </div>
                             <div className="flex gap-2">
                               <div 
@@ -705,27 +705,27 @@ export default function Theming() {
                 {/* Implementation Tab */}
                 <TabsContent value="implementation" className="space-y-8">
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-100 mb-4">Theme Implementation</h3>
-                    <p className="text-slate-400 mb-8">
+                    <h3 className="text-2xl font-bold text-foreground mb-4">Theme Implementation</h3>
+                    <p className="text-muted-foreground mb-8">
                       How to integrate and use themes in your applications.
                     </p>
                   </div>
 
                   <div className="grid lg:grid-cols-2 gap-8">
-                    <Card className="bg-slate-800/30 border-slate-700/50">
+                    <Card className="bg-card/30 border-border/50">
                       <CardHeader>
-                        <CardTitle className="text-slate-100">CSS Implementation</CardTitle>
+                        <CardTitle className="text-foreground">CSS Implementation</CardTitle>
                         <CardDescription>Apply themes using CSS variables</CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-medium text-slate-300">Theme CSS:</span>
+                            <span className="text-sm font-medium text-foreground/80">Theme CSS:</span>
                             <Button
                               size="sm"
                               variant="ghost"
                               onClick={() => handleCopyCode(':root {\n  --colour-primary: #d946ef;\n  --colour-secondary: #8b5cf6;\n  --colour-background: #0f172a;\n  --colour-surface: #1e293b;\n  --colour-text: #f8fafc;\n}\n\n[data-theme="light"] {\n  --colour-background: #ffffff;\n  --colour-surface: #f8fafc;\n  --colour-text: #0f172a;\n}', 'css-theme')}
-                              className="text-slate-400 hover:text-slate-200"
+                              className="text-muted-foreground hover:text-foreground"
                             >
                               {copiedCode === 'css-theme' ? (
                                 <CheckCircle2 className="h-4 w-4 text-green-400" />
@@ -734,7 +734,7 @@ export default function Theming() {
                               )}
                             </Button>
                           </div>
-                          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm text-slate-300 whitespace-pre-wrap">
+                          <pre className="bg-card/50 p-4 rounded-lg text-sm text-foreground/80 whitespace-pre-wrap">
 {`:root {
   --colour-primary: #d946ef;
   --colour-secondary: #8b5cf6;
@@ -753,20 +753,20 @@ export default function Theming() {
                       </CardContent>
                     </Card>
 
-                    <Card className="bg-slate-800/30 border-slate-700/50">
+                    <Card className="bg-card/30 border-border/50">
                       <CardHeader>
-                        <CardTitle className="text-slate-100">JavaScript Implementation</CardTitle>
+                        <CardTitle className="text-foreground">JavaScript Implementation</CardTitle>
                         <CardDescription>Dynamic theme switching with JavaScript</CardDescription>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div>
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-medium text-slate-300">Theme Switcher:</span>
+                            <span className="text-sm font-medium text-foreground/80">Theme Switcher:</span>
                             <Button
                               size="sm"
                               variant="ghost"
                               onClick={() => handleCopyCode('function setTheme(theme) {\n  document.documentElement.setAttribute(\'data-theme\', theme);\n  localStorage.setItem(\'theme\', theme);\n}\n\n// Apply saved theme on load\nconst savedTheme = localStorage.getItem(\'theme\') || \'dark\';\nsetTheme(savedTheme);', 'js-theme')}
-                              className="text-slate-400 hover:text-slate-200"
+                              className="text-muted-foreground hover:text-foreground"
                             >
                               {copiedCode === 'js-theme' ? (
                                 <CheckCircle2 className="h-4 w-4 text-green-400" />
@@ -775,7 +775,7 @@ export default function Theming() {
                               )}
                             </Button>
                           </div>
-                          <pre className="bg-slate-900/50 p-4 rounded-lg text-sm text-slate-300 whitespace-pre-wrap">
+                          <pre className="bg-card/50 p-4 rounded-lg text-sm text-foreground/80 whitespace-pre-wrap">
 {`function setTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
   localStorage.setItem('theme', theme);
@@ -791,38 +791,38 @@ setTheme(savedTheme);`}
                   </div>
 
                   {/* Cross-references */}
-                  <Card className="bg-slate-800/30 border-slate-700/50">
+                  <Card className="bg-card/30 border-border/50">
                     <CardHeader>
-                      <CardTitle className="text-slate-100 flex items-center gap-3">
-                        <Layers className="h-5 w-5 text-fuchsia-400" />
+                      <CardTitle className="text-foreground flex items-center gap-3">
+                        <Layers className="h-5 w-5 text-primary" />
                         Related Resources
                       </CardTitle>
                       <CardDescription>Explore related documentation and tools</CardDescription>
                     </CardHeader>
                     <CardContent>
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/design-system/tokens" className="block p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:bg-slate-800/70 transition-colors">
+                        <Link href="/design-system/tokens" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                           <div className="flex items-center gap-3 mb-2">
                             <Target className="h-5 w-5 text-blue-400" />
-                            <span className="font-medium text-slate-200">Design Tokens</span>
+                            <span className="font-medium text-foreground">Design Tokens</span>
                           </div>
-                          <p className="text-sm text-slate-400">Foundational values used in themes</p>
+                          <p className="text-sm text-muted-foreground">Foundational values used in themes</p>
                         </Link>
                         
-                        <Link href="/components" className="block p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:bg-slate-800/70 transition-colors">
+                        <Link href="/components" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                           <div className="flex items-center gap-3 mb-2">
                             <Layers className="h-5 w-5 text-green-400" />
-                            <span className="font-medium text-slate-200">Components</span>
+                            <span className="font-medium text-foreground">Components</span>
                           </div>
-                          <p className="text-sm text-slate-400">See themes applied to components</p>
+                          <p className="text-sm text-muted-foreground">See themes applied to components</p>
                         </Link>
                         
-                        <Link href="/design-system/accessibility" className="block p-4 bg-slate-800/50 rounded-lg border border-slate-700/50 hover:bg-slate-800/70 transition-colors">
+                        <Link href="/design-system/accessibility" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                           <div className="flex items-center gap-3 mb-2">
                             <CheckCircle2 className="h-5 w-5 text-purple-400" />
-                            <span className="font-medium text-slate-200">Accessibility</span>
+                            <span className="font-medium text-foreground">Accessibility</span>
                           </div>
-                          <p className="text-sm text-slate-400">Ensure theme accessibility compliance</p>
+                          <p className="text-sm text-muted-foreground">Ensure theme accessibility compliance</p>
                         </Link>
                       </div>
                     </CardContent>

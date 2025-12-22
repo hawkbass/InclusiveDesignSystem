@@ -35,8 +35,8 @@ export function ColoursAtoms({
       description: "Main brand identity colours - CTAs, highlights, gradients throughout project",
       category: "Brand",
       colours: [
-        { name: "Fuchsia 300", value: "#f8b4d9", class: "bg-fuchsia-300", usage: "Light accents, tab active states", textClass: "text-fuchsia-300" },
-        { name: "Fuchsia 400", value: "#f472b6", class: "bg-fuchsia-400", usage: "Interactive elements, bullet points", textClass: "text-fuchsia-400" },
+        { name: "Fuchsia 300", value: "#f8b4d9", class: "bg-fuchsia-300", usage: "Light accents, tab active states", textClass: "text-primary" },
+        { name: "Fuchsia 400", value: "#f472b6", class: "bg-fuchsia-400", usage: "Interactive elements, bullet points", textClass: "text-primary" },
         { name: "Fuchsia 500", value: "#ec4899", class: "bg-fuchsia-500", usage: "Primary buttons, brand highlights", textClass: "text-fuchsia-500" },
         { name: "Fuchsia 600", value: "#db2777", class: "bg-fuchsia-600", usage: "Primary button default state", textClass: "text-fuchsia-600" },
         { name: "Fuchsia 700", value: "#be185d", class: "bg-fuchsia-700", usage: "Primary button hover state", textClass: "text-fuchsia-700" },
@@ -63,16 +63,16 @@ export function ColoursAtoms({
       description: "Core neutral colours - backgrounds, text, borders throughout interface", 
       category: "System",
       colours: [
-        { name: "Slate 950", value: "#020617", class: "bg-slate-950", usage: "Page background, darkest areas", textClass: "text-slate-950" },
-        { name: "Slate 900", value: "#0f172a", class: "bg-slate-900", usage: "Card backgrounds, main sections", textClass: "text-slate-900" },
-        { name: "Slate 800", value: "#1e293b", class: "bg-slate-800", usage: "Interactive backgrounds, code blocks", textClass: "text-slate-800" },
-        { name: "Slate 700", value: "#334155", class: "bg-slate-700", usage: "Borders, dividers, hover states", textClass: "text-slate-700" },
-        { name: "Slate 600", value: "#475569", class: "bg-slate-600", usage: "Muted elements, borders", textClass: "text-slate-600" },
-        { name: "Slate 500", value: "#64748b", class: "bg-slate-500", usage: "Disabled states, placeholders", textClass: "text-slate-500" },
-        { name: "Slate 400", value: "#94a3b8", class: "bg-slate-400", usage: "Secondary text, descriptions", textClass: "text-slate-400" },
-        { name: "Slate 300", value: "#cbd5e1", class: "bg-slate-300", usage: "Muted text, icons", textClass: "text-slate-300" },
-        { name: "Slate 200", value: "#e2e8f0", class: "bg-slate-200", usage: "Light borders, text on dark", textClass: "text-slate-200" },
-        { name: "Slate 100", value: "#f1f5f9", class: "bg-slate-100", usage: "Primary text on dark backgrounds", textClass: "text-slate-100" }
+        { name: "Slate 950", value: "#020617", class: "bg-background", usage: "Page background, darkest areas", textClass: "text-slate-950" },
+        { name: "Slate 900", value: "#0f172a", class: "bg-card", usage: "Card backgrounds, main sections", textClass: "text-slate-900" },
+        { name: "Slate 800", value: "#1e293b", class: "bg-card", usage: "Interactive backgrounds, code blocks", textClass: "text-slate-800" },
+        { name: "Slate 700", value: "#334155", class: "bg-muted", usage: "Borders, dividers, hover states", textClass: "text-slate-700" },
+        { name: "Slate 600", value: "#475569", class: "bg-muted", usage: "Muted elements, borders", textClass: "text-slate-600" },
+        { name: "Slate 500", value: "#64748b", class: "bg-slate-500", usage: "Disabled states, placeholders", textClass: "text-muted-foreground" },
+        { name: "Slate 400", value: "#94a3b8", class: "bg-slate-400", usage: "Secondary text, descriptions", textClass: "text-muted-foreground" },
+        { name: "Slate 300", value: "#cbd5e1", class: "bg-slate-300", usage: "Muted text, icons", textClass: "text-foreground/80" },
+        { name: "Slate 200", value: "#e2e8f0", class: "bg-slate-200", usage: "Light borders, text on dark", textClass: "text-foreground" },
+        { name: "Slate 100", value: "#f1f5f9", class: "bg-slate-100", usage: "Primary text on dark backgrounds", textClass: "text-foreground" }
       ]
     },
     {
@@ -84,7 +84,7 @@ export function ColoursAtoms({
         // Primary Brand Gradients
         { name: "Primary Gradient", value: "linear-gradient(to right, #db2777, #9333ea)", class: "bg-gradient-to-r from-fuchsia-600 to-purple-600", usage: "Primary buttons, brand elements, icons" },
         { name: "Primary Hover", value: "linear-gradient(to right, #be185d, #7c3aed)", class: "bg-gradient-to-r from-fuchsia-700 to-purple-700", usage: "Primary button hover states" },
-        { name: "Primary Light", value: "linear-gradient(to right, #ec4899, #a855f7)", class: "bg-gradient-to-r from-fuchsia-500 to-purple-500", usage: "Visual elements, spacing previews" },
+        { name: "Primary Light", value: "linear-gradient(to right, #ec4899, #a855f7)", class: "bg-gradient-to-r from-primary to-accent", usage: "Visual elements, spacing previews" },
         
         // Blue/Cyan System Gradients (MISSING FROM PREVIOUS VERSION)
         { name: "Blue Primary", value: "linear-gradient(to right, #3b82f6, #06b6d4)", class: "bg-gradient-to-r from-blue-500 to-cyan-600", usage: "Secondary buttons, info states, icons" },
@@ -96,7 +96,7 @@ export function ColoursAtoms({
         { name: "Green Light", value: "linear-gradient(to right, #34d399, #6ee7b7)", class: "bg-gradient-to-r from-green-400 to-emerald-400", usage: "Success text gradients" },
         
         // Active State Gradients (THE CRITICAL MISSING ONES)
-        { name: "Active State Gradient", value: "linear-gradient(to bottom right, rgba(236,72,153,0.25), rgba(168,85,247,0.2), rgba(236,72,153,0.15))", class: "bg-gradient-to-br from-fuchsia-500/25 via-purple-500/20 to-pink-500/15", usage: "Active tab states, selected navigation items" },
+        { name: "Active State Gradient", value: "linear-gradient(to bottom right, rgba(236,72,153,0.25), rgba(168,85,247,0.2), rgba(236,72,153,0.15))", class: "bg-gradient-to-br from-primary/25 via-purple-500/20 to-pink-500/15", usage: "Active tab states, selected navigation items" },
         { name: "Blue Active State", value: "linear-gradient(to bottom right, rgba(59,130,246,0.25), rgba(59,130,246,0.05), transparent)", class: "bg-gradient-to-br from-blue-500/25 via-blue-500/5 to-transparent", usage: "Blue section active states" },
         { name: "Green Active State", value: "linear-gradient(to bottom right, rgba(34,197,94,0.25), rgba(34,197,94,0.05), transparent)", class: "bg-gradient-to-br from-green-500/25 via-green-500/5 to-transparent", usage: "Green section active states" },
         
@@ -124,9 +124,9 @@ export function ColoursAtoms({
       description: "Transparent overlays and glass-like effects with backdrop blur",
       category: "Effects",
       colours: [
-        { name: "Glass Card", value: "rgba(30, 41, 59, 0.5)", class: "bg-slate-800/50", usage: "Card backgrounds with transparency" },
-        { name: "Glass Light", value: "rgba(30, 41, 59, 0.3)", class: "bg-slate-800/30", usage: "Lighter glass overlays" },
-        { name: "Glass Heavy", value: "rgba(15, 23, 42, 0.5)", class: "bg-slate-900/50", usage: "Stronger glass effects" },
+        { name: "Glass Card", value: "rgba(30, 41, 59, 0.5)", class: "bg-card/50", usage: "Card backgrounds with transparency" },
+        { name: "Glass Light", value: "rgba(30, 41, 59, 0.3)", class: "bg-card/30", usage: "Lighter glass overlays" },
+        { name: "Glass Heavy", value: "rgba(15, 23, 42, 0.5)", class: "bg-card/50", usage: "Stronger glass effects" },
         { name: "Brand Glass", value: "rgba(236, 72, 153, 0.2)", class: "bg-fuchsia-500/20", usage: "Brand-colored glass effects" },
         { name: "Overlay Light", value: "rgba(236, 72, 153, 0.05)", class: "bg-fuchsia-500/5", usage: "Subtle brand overlays" },
         { name: "Overlay Medium", value: "rgba(236, 72, 153, 0.1)", class: "bg-fuchsia-500/10", usage: "Medium brand overlays with blur" },
@@ -158,12 +158,12 @@ export function ColoursAtoms({
       description: "Hover, active, and focus states used throughout components",
       category: "System",
       colours: [
-        { name: "Hover Slate", value: "#334155", class: "hover:bg-slate-700", usage: "General hover backgrounds" },
-        { name: "Hover Light", value: "#475569", class: "hover:bg-slate-600", usage: "Lighter hover states" },
+        { name: "Hover Slate", value: "#334155", class: "hover:bg-accent", usage: "General hover backgrounds" },
+        { name: "Hover Light", value: "#475569", class: "hover:bg-muted", usage: "Lighter hover states" },
         { name: "Active Fuchsia", value: "rgba(236, 72, 153, 0.2)", class: "bg-fuchsia-500/20", usage: "Active tab backgrounds" },
         { name: "Focus Ring", value: "#db2777", class: "ring-fuchsia-600", usage: "Focus indicators" },
-        { name: "Border Hover", value: "#475569", class: "hover:border-slate-600", usage: "Border hover states" },
-        { name: "Text Hover", value: "#f472b6", class: "hover:text-fuchsia-400", usage: "Text hover states" },
+        { name: "Border Hover", value: "#475569", class: "hover:border-border", usage: "Border hover states" },
+        { name: "Text Hover", value: "#f472b6", class: "hover:text-primary", usage: "Text hover states" },
         { name: "Scale Hover", value: "transform: scale(1.05)", class: "hover:scale-105", usage: "Hover scaling effects" }
       ]
     }
@@ -181,9 +181,9 @@ export function ColoursAtoms({
         <div key={palette.id} className="space-y-6">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-3xl font-bold text-slate-100 mb-3">{palette.name}</h3>
-              <p className="text-lg text-slate-400 mb-2">{palette.description}</p>
-              <Badge variant="outline" className="border-slate-600 text-slate-400">
+              <h3 className="text-3xl font-bold text-foreground mb-3">{palette.name}</h3>
+              <p className="text-lg text-muted-foreground mb-2">{palette.description}</p>
+              <Badge variant="outline" className="border-border text-muted-foreground">
                 {palette.category}
               </Badge>
             </div>
@@ -191,7 +191,7 @@ export function ColoursAtoms({
               variant="ghost"
               size="sm"
               onClick={() => onToggleFavorite(palette.id)}
-              className="text-slate-400 hover:text-pink-400"
+              className="text-muted-foreground hover:text-pink-400"
             >
               <Heart className={`h-5 w-5 ${favourites.has(palette.id) ? 'fill-current text-pink-400' : ''}`} />
             </Button>
@@ -199,18 +199,18 @@ export function ColoursAtoms({
 
           <div className={`grid ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" : "grid-cols-1"} gap-6`}>
             {palette.colours.map((colour) => (
-              <Card key={colour.name} className="group hover:shadow-xl transition-all duration-500 hover:scale-105 border-slate-700/50 bg-slate-800/30">
+              <Card key={colour.name} className="group hover:shadow-xl transition-all duration-500 hover:scale-105 border-border/50 bg-card/30">
                 <CardContent className="p-6">
                   <div className="space-y-4">
                     {/* colour Preview */}
                     <div className="relative">
                       {palette.id === 'gradients' ? (
                         <div 
-                          className={`w-full h-24 rounded-xl border-2 border-slate-600 shadow-lg group-hover:scale-110 transition-transform cursor-pointer ${colour.class}`}
+                          className={`w-full h-24 rounded-xl border-2 border-border shadow-lg group-hover:scale-110 transition-transform cursor-pointer ${colour.class}`}
                           onClick={() => onCopyCode(colour.class, `${palette.id}-${colour.name}`)}
                         />
                       ) : palette.id === 'glassmorphism' ? (
-                        <div className="relative w-full h-24 rounded-xl border-2 border-slate-600 shadow-lg overflow-hidden">
+                        <div className="relative w-full h-24 rounded-xl border-2 border-border shadow-lg overflow-hidden">
                           {/* Background pattern to show transparency */}
                           <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900/20 to-blue-900/20" />
                           <div 
@@ -220,7 +220,7 @@ export function ColoursAtoms({
                         </div>
                       ) : (
                         <div 
-                          className="w-full h-24 rounded-xl border-2 border-slate-600 shadow-lg group-hover:scale-110 transition-transform cursor-pointer"
+                          className="w-full h-24 rounded-xl border-2 border-border shadow-lg group-hover:scale-110 transition-transform cursor-pointer"
                           style={{ backgroundColor: colour.value }}
                           onClick={() => onCopyCode(colour.value, `${palette.id}-${colour.name}`)}
                         />
@@ -230,7 +230,7 @@ export function ColoursAtoms({
                     {/* colour Info */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <h4 className="font-semibold text-slate-100 group-hover:text-fuchsia-400 transition-colours text-sm">
+                        <h4 className="font-semibold text-foreground group-hover:text-primary transition-colours text-sm">
                           {colour.name}
                         </h4>
                         <Button
@@ -240,7 +240,7 @@ export function ColoursAtoms({
                           className={`${
                             copiedCode === `${palette.id}-${colour.name}-class`
                               ? 'text-green-400' 
-                              : 'text-slate-400 hover:text-slate-200'
+                              : 'text-muted-foreground hover:text-foreground'
                           } transition-all`}
                         >
                           {copiedCode === `${palette.id}-${colour.name}-class` ? (
@@ -253,19 +253,19 @@ export function ColoursAtoms({
                       
                       <div className="space-y-2">
                         {palette.id !== 'gradients' && (
-                          <code className="text-xs bg-slate-700 px-3 py-1 rounded text-slate-300 font-mono block">
+                          <code className="text-xs bg-muted px-3 py-1 rounded text-foreground/80 font-mono block">
                             {colour.value}
                           </code>
                         )}
-                        <code className="text-xs bg-slate-800 px-3 py-1 rounded text-slate-400 font-mono block">
+                        <code className="text-xs bg-card px-3 py-1 rounded text-muted-foreground font-mono block">
                           {colour.class}
                         </code>
                         {(colour as any).textClass && (
-                          <code className="text-xs bg-slate-700 px-3 py-1 rounded text-slate-300 font-mono block">
+                          <code className="text-xs bg-muted px-3 py-1 rounded text-foreground/80 font-mono block">
                             {(colour as any).textClass}
                           </code>
                         )}
-                        <p className="text-xs text-slate-500 leading-relaxed">
+                        <p className="text-xs text-muted-foreground leading-relaxed">
                           {colour.usage}
                         </p>
                       </div>

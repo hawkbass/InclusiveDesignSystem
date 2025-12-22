@@ -86,9 +86,9 @@ export function JobsManagement({
       case "closed":
         return <X className="h-4 w-4 text-red-400" />
       case "draft":
-        return <AlertCircle className="h-4 w-4 text-slate-400" />
+        return <AlertCircle className="h-4 w-4 text-muted-foreground" />
       default:
-        return <AlertCircle className="h-4 w-4 text-slate-400" />
+        return <AlertCircle className="h-4 w-4 text-muted-foreground" />
     }
   }
 
@@ -101,9 +101,9 @@ export function JobsManagement({
       case "closed":
         return "bg-red-500/20 text-red-300 border-red-500/30"
       case "draft":
-        return "bg-slate-500/20 text-slate-300 border-slate-500/30"
+        return "bg-slate-500/20 text-foreground/80 border-slate-500/30"
       default:
-        return "bg-slate-500/20 text-slate-300 border-slate-500/30"
+        return "bg-slate-500/20 text-foreground/80 border-slate-500/30"
     }
   }
 
@@ -116,7 +116,7 @@ export function JobsManagement({
       case "low":
         return "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
       default:
-        return "bg-slate-500/20 text-slate-300 border-slate-500/30"
+        return "bg-slate-500/20 text-foreground/80 border-slate-500/30"
     }
   }
 
@@ -125,14 +125,14 @@ export function JobsManagement({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-slate-100">Jobs</h2>
-          <p className="text-sm text-slate-400">Manage job postings and applications</p>
+          <h2 className="text-xl font-semibold text-foreground">Jobs</h2>
+          <p className="text-sm text-muted-foreground">Manage job postings and applications</p>
         </div>
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
             size="sm"
-            className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50"
           >
             <Download className="h-4 w-4 mr-2" />
             Export
@@ -149,10 +149,10 @@ export function JobsManagement({
       </div>
 
       {/* Job Status Overview */}
-      <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
+      <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-medium text-slate-100">Job Status Overview</h3>
-          <div className="text-sm text-slate-400">{filteredJobs.length} jobs</div>
+          <h3 className="text-lg font-medium text-foreground">Job Status Overview</h3>
+          <div className="text-sm text-muted-foreground">{filteredJobs.length} jobs</div>
         </div>
         <div className="grid grid-cols-5 gap-3">
           {jobStatuses.map((status) => (
@@ -161,17 +161,17 @@ export function JobsManagement({
               onClick={() => setJobFilter(status.key)}
               className={`p-3 rounded-lg border transition-all duration-200 text-center ${
                 jobFilter === status.key
-                  ? 'border-fuchsia-500/50 bg-fuchsia-500/10'
-                  : 'border-slate-700/50 bg-slate-700/30 hover:border-slate-600/50'
+                  ? 'border-primary/50 bg-fuchsia-500/10'
+                  : 'border-border/50 bg-muted/30 hover:border-border/50'
               }`}
             >
               <div className={`text-lg font-bold mb-1 ${
-                jobFilter === status.key ? 'text-fuchsia-300' : 'text-slate-200'
+                jobFilter === status.key ? 'text-primary' : 'text-foreground'
               }`}>
                 {status.count}
               </div>
               <div className={`text-xs ${
-                jobFilter === status.key ? 'text-fuchsia-400' : 'text-slate-400'
+                jobFilter === status.key ? 'text-primary' : 'text-muted-foreground'
               }`}>
                 {status.label}
               </div>
@@ -181,21 +181,21 @@ export function JobsManagement({
       </div>
 
       {/* Search and Filters */}
-      <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
+      <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
         <div className="flex items-center gap-4">
           <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search jobs..."
               value={jobSearchTerm}
               onChange={(e) => setJobSearchTerm(e.target.value)}
-              className="pl-10 bg-slate-700/50 border-slate-600/50 text-slate-200 placeholder:text-slate-400"
+              className="pl-10 bg-muted/50 border-border/50 text-foreground placeholder:text-muted-foreground"
             />
           </div>
           <Button
             variant="outline"
             size="sm"
-            className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50"
           >
             <Filter className="h-4 w-4 mr-2" />
             Filters
@@ -207,21 +207,21 @@ export function JobsManagement({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {filteredJobs.map((job) => (
           <AnimatedElement key={job.id} animation="slide-up">
-            <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm hover:border-fuchsia-500/50 transition-all duration-200">
+            <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm hover:border-primary/50 transition-all duration-200">
               {/* Job Header */}
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-medium text-slate-100 truncate">{job.title}</h3>
+                    <h3 className="text-lg font-medium text-foreground truncate">{job.title}</h3>
                     <JobStatus status={job.status as any} />
                   </div>
-                  <div className="text-sm text-slate-400">{job.department}</div>
+                  <div className="text-sm text-muted-foreground">{job.department}</div>
                 </div>
                 <div className="flex items-center gap-1">
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                     onClick={() => {
                       setSelectedJob(job)
                       setShowJobDetailsModal(true)
@@ -232,7 +232,7 @@ export function JobsManagement({
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                     onClick={() => {
                       setSelectedJob(job)
                       setShowEditJobModal(true)
@@ -243,7 +243,7 @@ export function JobsManagement({
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                     onClick={() => handleJobAction(job.id, "more")}
                   >
                     <MoreVertical className="h-4 w-4" />
@@ -254,30 +254,30 @@ export function JobsManagement({
               {/* Job Details */}
               <div className="space-y-3">
                 <div className="flex items-center gap-4 text-sm">
-                  <div className="flex items-center gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-muted-foreground">
                     <MapPin className="h-4 w-4" />
                     {job.location}
                   </div>
-                  <div className="flex items-center gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-muted-foreground">
                     <Briefcase className="h-4 w-4" />
                     {job.type}
                   </div>
-                  <div className="flex items-center gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-muted-foreground">
                     <TrendingUp className="h-4 w-4" />
                     {job.level}
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4 text-sm">
-                  <div className="flex items-center gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-muted-foreground">
                     <PoundSterling className="h-4 w-4" />
                     {job.salary}
                   </div>
-                  <div className="flex items-center gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-muted-foreground">
                     <Users className="h-4 w-4" />
                     {job.applicants} applicants
                   </div>
-                  <div className="flex items-center gap-1 text-slate-400">
+                  <div className="flex items-center gap-1 text-muted-foreground">
                     <Clock className="h-4 w-4" />
                     {job.posted}
                   </div>
@@ -289,31 +289,31 @@ export function JobsManagement({
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-300 line-clamp-2">{job.description}</p>
+                <p className="text-sm text-foreground/80 line-clamp-2">{job.description}</p>
 
                 {/* Requirements Preview */}
                 <div className="flex items-center gap-2">
                   {job.requirements.slice(0, 2).map((req) => (
                     <span 
                       key={req}
-                      className="px-2 py-1 bg-slate-700/50 text-xs text-slate-300 rounded-md"
+                      className="px-2 py-1 bg-muted/50 text-xs text-foreground/80 rounded-md"
                     >
                       {req}
                     </span>
                   ))}
                   {job.requirements.length > 2 && (
-                    <span className="text-xs text-slate-500">+{job.requirements.length - 2} more</span>
+                    <span className="text-xs text-muted-foreground">+{job.requirements.length - 2} more</span>
                   )}
                 </div>
               </div>
 
               {/* Job Actions */}
-              <div className="flex items-center justify-between mt-4 pt-4 border-t border-slate-700/50">
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
                 <div className="flex items-center gap-2">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+                    className="border-border/50 text-foreground/80 hover:bg-accent/50"
                     onClick={() => handleJobAction(job.id, "view-applicants")}
                   >
                     <Users className="h-4 w-4 mr-1" />
@@ -322,7 +322,7 @@ export function JobsManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+                    className="border-border/50 text-foreground/80 hover:bg-accent/50"
                     onClick={() => handleJobAction(job.id, "edit")}
                   >
                     <Edit className="h-4 w-4 mr-1" />
@@ -371,11 +371,11 @@ export function JobsManagement({
       {/* Empty State */}
       {filteredJobs.length === 0 && (
         <div className="text-center py-12">
-          <div className="w-16 h-16 bg-slate-700/50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <Briefcase className="h-8 w-8 text-slate-500" />
+          <div className="w-16 h-16 bg-muted/50 rounded-full flex items-center justify-center mx-auto mb-4">
+            <Briefcase className="h-8 w-8 text-muted-foreground" />
           </div>
-          <h3 className="text-lg font-medium text-slate-200 mb-2">No jobs found</h3>
-          <p className="text-sm text-slate-400 mb-4">
+          <h3 className="text-lg font-medium text-foreground mb-2">No jobs found</h3>
+          <p className="text-sm text-muted-foreground mb-4">
             {jobSearchTerm || jobFilter !== "all" 
               ? "Try adjusting your search or filters" 
               : "Get started by creating your first job posting"

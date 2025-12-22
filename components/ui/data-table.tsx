@@ -87,13 +87,13 @@ export function DataTable<T = any>({
 
   if (loading) {
     return (
-      <div className={cn("rounded-lg border border-slate-700/50 overflow-hidden", className)}>
+      <div className={cn("rounded-lg border border-border/50 overflow-hidden", className)}>
         <Table>
           <TableHeader>
-            <TableRow className="border-slate-700/50">
+            <TableRow className="border-border/50">
               {columns.map((column) => (
-                <TableHead key={column.key} className="text-slate-400">
-                  <div className="h-4 bg-slate-700 rounded animate-pulse w-3/4"></div>
+                <TableHead key={column.key} className="text-muted-foreground">
+                  <div className="h-4 bg-muted rounded animate-pulse w-3/4"></div>
                 </TableHead>
               ))}
               {showActions && <TableHead className="w-16"></TableHead>}
@@ -101,15 +101,15 @@ export function DataTable<T = any>({
           </TableHeader>
           <TableBody>
             {Array.from({ length: 5 }).map((_, i) => (
-              <TableRow key={i} className="border-slate-700/30">
+              <TableRow key={i} className="border-border/30">
                 {columns.map((column) => (
                   <TableCell key={column.key}>
-                    <div className="h-4 bg-slate-700 rounded animate-pulse w-full"></div>
+                    <div className="h-4 bg-muted rounded animate-pulse w-full"></div>
                   </TableCell>
                 ))}
                 {showActions && (
                   <TableCell>
-                    <div className="h-6 w-6 bg-slate-700 rounded animate-pulse"></div>
+                    <div className="h-6 w-6 bg-muted rounded animate-pulse"></div>
                   </TableCell>
                 )}
               </TableRow>
@@ -121,16 +121,16 @@ export function DataTable<T = any>({
   }
 
   return (
-    <div className={cn("rounded-lg border border-slate-700/50 overflow-hidden bg-slate-900/30", className)}>
+    <div className={cn("rounded-lg border border-border/50 overflow-hidden bg-card/30", className)}>
       <Table>
         <TableHeader>
-          <TableRow className="border-slate-700/50 hover:bg-slate-800/30">
+          <TableRow className="border-border/50 hover:bg-card/30">
             {columns.map((column) => (
               <TableHead 
                 key={column.key}
                 className={cn(
-                  "text-slate-400 font-medium",
-                  column.sortable && "cursor-pointer hover:text-slate-300 select-none",
+                  "text-muted-foreground font-medium",
+                  column.sortable && "cursor-pointer hover:text-foreground/80 select-none",
                   column.align === "center" && "text-center",
                   column.align === "right" && "text-right"
                 )}
@@ -154,7 +154,7 @@ export function DataTable<T = any>({
             <TableRow>
               <TableCell 
                 colSpan={columns.length + (showActions ? 1 : 0)} 
-                className="text-center py-8 text-slate-500"
+                className="text-center py-8 text-muted-foreground"
               >
                 {emptyMessage}
               </TableCell>
@@ -164,7 +164,7 @@ export function DataTable<T = any>({
               <TableRow
                 key={index}
                 className={cn(
-                  "border-slate-700/30 hover:bg-slate-800/30 transition-colors",
+                  "border-border/30 hover:bg-card/30 transition-colors",
                   onRowClick && "cursor-pointer",
                   rowClassName?.(row)
                 )}
@@ -174,7 +174,7 @@ export function DataTable<T = any>({
                   <TableCell 
                     key={column.key}
                     className={cn(
-                      "text-slate-300",
+                      "text-foreground/80",
                       column.align === "center" && "text-center",
                       column.align === "right" && "text-right"
                     )}
@@ -190,7 +190,7 @@ export function DataTable<T = any>({
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-8 text-xs text-slate-400 hover:text-fuchsia-400"
+                          className="h-8 text-xs text-muted-foreground hover:text-primary"
                           onClick={(e) => {
                             e.stopPropagation()
                             onRowAction?.(row, actions[0].action)
@@ -203,7 +203,7 @@ export function DataTable<T = any>({
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+                          className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <MoreHorizontal className="h-4 w-4" />

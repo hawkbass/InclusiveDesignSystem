@@ -34,8 +34,8 @@ export function DashboardTabs({ activeTab, setActiveTab }: DashboardTabsProps) {
           onClick={() => setActiveTab(tab.id)}
           className={`w-full flex items-center gap-3 px-4 py-3 text-sm font-medium rounded-lg transition-all ${
             activeTab === tab.id
-              ? "bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/50"
-              : "text-slate-400 hover:text-slate-300 hover:bg-slate-800/50"
+              ? "bg-fuchsia-500/20 text-primary border border-primary/50"
+              : "text-muted-foreground hover:text-foreground/80 hover:bg-card/50"
           }`}
         >
           <tab.icon className="h-3.5 w-3.5" />

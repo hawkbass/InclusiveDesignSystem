@@ -210,21 +210,21 @@ export function OrganismsSection({
     <div className="space-y-8">
       {/* Summary Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
           <div className="text-3xl font-bold text-emerald-400">{organisms.length}</div>
-          <div className="text-sm text-slate-400">Total Organisms</div>
+          <div className="text-sm text-muted-foreground">Total Organisms</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
           <div className="text-3xl font-bold text-blue-400">{Object.keys(groupedOrganisms).length}</div>
-          <div className="text-sm text-slate-400">Categories</div>
+          <div className="text-sm text-muted-foreground">Categories</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
           <div className="text-3xl font-bold text-purple-400">{organisms.reduce((acc, org) => acc + org.components.length, 0)}</div>
-          <div className="text-sm text-slate-400">Total Components</div>
+          <div className="text-sm text-muted-foreground">Total Components</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
-          <div className="text-3xl font-bold text-fuchsia-400">{organisms.filter(org => org.complexity === 'High').length}</div>
-          <div className="text-sm text-slate-400">Complex Systems</div>
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
+          <div className="text-3xl font-bold text-primary">{organisms.filter(org => org.complexity === 'High').length}</div>
+          <div className="text-sm text-muted-foreground">Complex Systems</div>
         </div>
       </div>
 
@@ -236,22 +236,22 @@ export function OrganismsSection({
               <Grid3X3 className="h-5 w-5 text-emerald-400" />
             </div>
             <div>
-              <h4 className="text-xl font-bold text-slate-200 flex items-center gap-2">
+              <h4 className="text-xl font-bold text-foreground flex items-center gap-2">
                 <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
                 {category} ({categoryOrganisms.length})
               </h4>
-              <p className="text-slate-400 text-sm">Complex system assemblies for {category.toLowerCase()}</p>
+              <p className="text-muted-foreground text-sm">Complex system assemblies for {category.toLowerCase()}</p>
             </div>
           </div>
           
           <div className={`grid ${viewMode === "grid" ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"} gap-6`}>
             {categoryOrganisms.map((organism) => (
-              <Card key={organism.id} className="bg-slate-800/30 border-slate-700/50 hover:border-emerald-500/50 transition-all group">
+              <Card key={organism.id} className="bg-card/30 border-border/50 hover:border-emerald-500/50 transition-all group">
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-2">
-                        <CardTitle className="text-lg text-slate-200">{organism.name}</CardTitle>
+                        <CardTitle className="text-lg text-foreground">{organism.name}</CardTitle>
                         <Badge className={`text-xs ${
                           organism.complexity === 'High' ? 'bg-red-500/20 text-red-300' :
                           organism.complexity === 'Medium' ? 'bg-yellow-500/20 text-yellow-300' :
@@ -260,10 +260,10 @@ export function OrganismsSection({
                           {organism.complexity}
                         </Badge>
                       </div>
-                      <Badge variant="outline" className="text-xs border-slate-600 text-slate-400 mb-3">
+                      <Badge variant="outline" className="text-xs border-border text-muted-foreground mb-3">
                         {organism.category}
                       </Badge>
-                      <CardDescription className="text-slate-400">
+                      <CardDescription className="text-muted-foreground">
                         {organism.description}
                       </CardDescription>
                     </div>
@@ -273,7 +273,7 @@ export function OrganismsSection({
                       onClick={() => onToggleFavorite(organism.id)}
                       className="opacity-0 group-hover:opacity-100 transition-opacity"
                     >
-                      <Heart className={`h-4 w-4 ${favourites.has(organism.id) ? 'fill-current text-pink-400' : 'text-slate-400'}`} />
+                      <Heart className={`h-4 w-4 ${favourites.has(organism.id) ? 'fill-current text-pink-400' : 'text-muted-foreground'}`} />
                     </Button>
                   </div>
                 </CardHeader>
@@ -281,7 +281,7 @@ export function OrganismsSection({
                 <CardContent className="space-y-4">
                   {/* Components breakdown */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-300">Composed of ({organism.components.length}):</div>
+                    <div className="text-sm font-medium text-foreground/80">Composed of ({organism.components.length}):</div>
                     <div className="flex flex-wrap gap-1">
                       {organism.components.map((component, index) => (
                         <Button
@@ -292,28 +292,28 @@ export function OrganismsSection({
                             const componentInfo = `// ${component} Component\n// Part of: ${organism.name}\n// Location: ${organism.location}\n// Category: ${organism.category}`
                             onCopyCode(componentInfo, `component-${organism.id}-${index}`)
                           }}
-                          className="text-xs border-slate-600 text-slate-400 hover:border-fuchsia-500 hover:text-fuchsia-300 h-6 px-2 transition-all group"
+                          className="text-xs border-border text-muted-foreground hover:border-primary hover:text-primary h-6 px-2 transition-all group"
                         >
                           {component}
                           <ExternalLink className="h-2 w-2 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Button>
                       ))}
                     </div>
-                    <div className="text-xs text-slate-500 italic">
+                    <div className="text-xs text-muted-foreground italic">
                       Click components to copy their documentation
                     </div>
                   </div>
 
                   {/* File location */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-300">Implementation:</div>
-                    <div className="bg-slate-900/50 rounded p-3 border border-slate-700/30 relative">
-                      <code className="text-xs text-slate-400 font-mono">{organism.location}</code>
+                    <div className="text-sm font-medium text-foreground/80">Implementation:</div>
+                    <div className="bg-card/50 rounded p-3 border border-border/30 relative">
+                      <code className="text-xs text-muted-foreground font-mono">{organism.location}</code>
                       <Button
                         size="sm"
                         variant="ghost"
                         onClick={() => onCopyCode(organism.location, `location-${organism.id}`)}
-                        className="absolute top-2 right-2 text-slate-400 hover:text-slate-200"
+                        className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
                       >
                         {copiedCode === `location-${organism.id}` ? (
                           <CheckCircle2 className="h-3 w-3 text-green-400" />
@@ -333,7 +333,7 @@ export function OrganismsSection({
                         const docsText = `// ${organism.name} Documentation\n// Description: ${organism.description}\n// Components: ${organism.components.join(', ')}\n// Complexity: ${organism.complexity}\n// Category: ${organism.category}`
                         onCopyCode(docsText, `docs-${organism.id}`)
                       }}
-                      className="flex-1 text-slate-400 border-slate-600 hover:border-emerald-500 hover:text-emerald-300"
+                      className="flex-1 text-muted-foreground border-border hover:border-emerald-500 hover:text-emerald-300"
                     >
                       View Docs
                     </Button>
@@ -344,7 +344,7 @@ export function OrganismsSection({
                         const importText = `import { ${organism.name.replace(/\s+/g, '')} } from "${organism.location.replace('.tsx', '')}"`
                         onCopyCode(importText, `import-${organism.id}`)
                       }}
-                      className="flex-1 text-slate-400 border-slate-600 hover:border-purple-500 hover:text-purple-300"
+                      className="flex-1 text-muted-foreground border-border hover:border-purple-500 hover:text-purple-300"
                     >
                       Copy Import
                     </Button>
@@ -359,8 +359,8 @@ export function OrganismsSection({
       {/* No Results Message */}
       {filteredOrganisms.length === 0 && searchQuery && (
         <div className="text-center py-12">
-          <div className="text-slate-400 mb-4">No organisms found matching "{searchQuery}"</div>
-          <p className="text-sm text-slate-500">
+          <div className="text-muted-foreground mb-4">No organisms found matching "{searchQuery}"</div>
+          <p className="text-sm text-muted-foreground">
             Try searching for categories like "Layout", "Navigation", "Business Logic", or component names
           </p>
         </div>

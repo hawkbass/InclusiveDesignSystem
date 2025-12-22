@@ -294,7 +294,7 @@ export function MainDashboard() {
     <div
       ref={dashboardRef}
       className={`
-        relative rounded-xl overflow-hidden border border-slate-700/50 shadow-xl shadow-slate-900/20 bg-slate-900/95 backdrop-blur-sm
+        relative rounded-xl overflow-hidden border border-border/50 shadow-xl shadow-slate-900/20 bg-card/95 backdrop-blur-sm
         transition-all duration-500 w-full max-w-full
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
       `}

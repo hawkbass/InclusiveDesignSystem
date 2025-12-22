@@ -50,7 +50,7 @@ const favoriteItems = [
     category: "Molecules",
     type: "component",
     description: "Flexible container for grouping content",
-    code: `<Card className="bg-slate-800/50 border-slate-700/50">
+    code: `<Card className="bg-card/50 border-border/50">
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
     <CardDescription>Card description</CardDescription>
@@ -109,15 +109,15 @@ export function FavoritesSection({
     return (
       <div className="text-center py-12">
         <Heart className="h-16 w-16 text-slate-600 mx-auto mb-4" />
-        <h3 className="text-lg font-semibold text-slate-300 mb-2">No Favourites Yet</h3>
-        <p className="text-slate-400 mb-6 max-w-md mx-auto">
+        <h3 className="text-lg font-semibold text-foreground/80 mb-2">No Favourites Yet</h3>
+        <p className="text-muted-foreground mb-6 max-w-md mx-auto">
           Start adding components to your favourites by clicking the heart icon on any component. 
           Your favourited items will appear here for quick access.
         </p>
         <Button 
           variant="outline" 
           onClick={() => onNavigateToSection?.("atoms")}
-          className="hover:border-fuchsia-500/50"
+          className="hover:border-primary/50"
         >
           <ArrowRight className="h-4 w-4 mr-2" />
           Browse Components
@@ -132,19 +132,19 @@ export function FavoritesSection({
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <div className="flex items-center gap-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search favourites..."
               value={localSearchQuery}
               onChange={(e) => setLocalSearchQuery(e.target.value)}
-              className="pl-10 w-64 bg-slate-800/50 border-slate-700/50"
+              className="pl-10 w-64 bg-card/50 border-border/50"
             />
           </div>
           
           <select
             value={selectedCategory}
             onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-3 py-2 bg-slate-800/50 border border-slate-700/50 rounded-md text-slate-300"
+            className="px-3 py-2 bg-card/50 border border-border/50 rounded-md text-foreground/80"
           >
             {categories.map(category => (
               <option key={category} value={category}>
@@ -185,7 +185,7 @@ export function FavoritesSection({
       {filteredFavorites.length === 0 ? (
         <div className="text-center py-8">
           <Search className="h-12 w-12 text-slate-600 mx-auto mb-4" />
-          <p className="text-slate-400">No favourites match your search criteria</p>
+          <p className="text-muted-foreground">No favourites match your search criteria</p>
         </div>
       ) : (
         <div className={viewMode === "grid" 
@@ -193,20 +193,20 @@ export function FavoritesSection({
           : "space-y-4"
         }>
           {filteredFavorites.map((item) => (
-            <Card key={item.id} className="bg-slate-800/30 border-slate-700/50 hover:border-pink-500/50 transition-all group">
+            <Card key={item.id} className="bg-card/30 border-border/50 hover:border-pink-500/50 transition-all group">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <CardTitle className="text-lg text-slate-100">{item.name}</CardTitle>
+                      <CardTitle className="text-lg text-foreground">{item.name}</CardTitle>
                       <Badge 
                         variant="outline" 
-                        className="text-xs border-slate-600"
+                        className="text-xs border-border"
                       >
                         {item.category}
                       </Badge>
                     </div>
-                    <CardDescription className="text-slate-400">
+                    <CardDescription className="text-muted-foreground">
                       {item.description}
                     </CardDescription>
                   </div>
@@ -224,9 +224,9 @@ export function FavoritesSection({
               
               <CardContent className="space-y-4">
                 {/* Code Preview */}
-                <div className="bg-slate-900/50 rounded-lg p-3 border border-slate-700/30">
+                <div className="bg-card/50 rounded-lg p-3 border border-border/30">
                   <pre className="text-xs overflow-x-auto">
-                    <code className="text-slate-300">{item.code}</code>
+                    <code className="text-foreground/80">{item.code}</code>
                   </pre>
                 </div>
                 
@@ -236,7 +236,7 @@ export function FavoritesSection({
                     variant="outline"
                     size="sm"
                     onClick={() => onNavigateToSection?.(item.section)}
-                    className="hover:border-fuchsia-500/50"
+                    className="hover:border-primary/50"
                   >
                     <Eye className="h-3 w-3 mr-2" />
                     View Section
@@ -262,7 +262,7 @@ export function FavoritesSection({
       )}
 
       {/* Quick Actions */}
-      <div className="flex flex-wrap gap-3 pt-4 border-t border-slate-700/50">
+      <div className="flex flex-wrap gap-3 pt-4 border-t border-border/50">
         <Button
           variant="outline"
           size="sm"

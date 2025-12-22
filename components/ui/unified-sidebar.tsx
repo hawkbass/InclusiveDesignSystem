@@ -1,12 +1,21 @@
+"use client"
+
 import * as React from "react"
-import { useState, useCallback, useMemo } from "react"
+import { useState, useCallback, useMemo, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
+import { GlobalSettings, ThemeToggle } from "@/components/ui/global-settings"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import {
   Hexagon,
   BookOpen,
@@ -24,187 +33,205 @@ import {
   LayoutDashboard,
   Menu as MenuIcon,
   X as CloseIcon,
-
   ChevronRight,
-  ChevronDown,
-  BarChart3,
   Settings,
   HelpCircle,
   ExternalLink,
   Mountain,
-  Star,
   Clock,
-  CheckCircle2,
-  TrendingUp,
-  Copy,
   Heart,
-  Sparkles,
-  Filter,
-  ArrowRight,
-  Eye,
-  Users,
   Activity,
-  Gauge
+  Sun,
+  Moon,
+  FileText,
+  GitBranch,
+  MessageSquare,
+  Play,
+  Users,
+  Code2,
+  Paintbrush,
+  Sparkles,
 } from "lucide-react"
 
-// Universal Comprehension Navigation Structure
+/* =============================================================================
+   NAVIGATION DATA - Structured like Atlassian Design System
+   ============================================================================= */
+
 const quickStats = [
-  { label: "Components", value: "102+", icon: ComponentIcon, color: "text-fuchsia-400" },
-  { label: "Patterns", value: "24", icon: Grid3X3, color: "text-blue-400" },
-  { label: "Tokens", value: "89", icon: Palette, color: "text-green-400" },
-  { label: "Updated", value: "Today", icon: Clock, color: "text-purple-400" },
+  { label: "Components", value: "102+", icon: ComponentIcon, color: "text-primary" },
+  { label: "Patterns", value: "45+", icon: Grid3X3, color: "text-accent" },
+  { label: "Tokens", value: "150+", icon: Palette, color: "text-success" },
 ]
 
-// Removed quick actions for cleaner UI
-
+// Main navigation - Primary destinations
 const mainNavigation = [
   { 
     href: "/", 
     label: "Home", 
     icon: HomeIcon, 
-    description: "Design system homepage",
-    metrics: { views: "2.1k", updated: "Today" }
-  },
-  { 
-    href: "/design-system/overview", 
-    label: "Design System", 
-    icon: Hexagon, 
-    description: "Main design system overview",
-    metrics: { components: "12", status: "Complete" }
+    description: "Design system overview",
   },
   { 
     href: "/components", 
     label: "Components", 
     icon: ComponentIcon, 
-    description: "Component library",
-    metrics: { total: "102", categories: "8" }
+    description: "Browse component library",
+    badge: "102+"
   },
   { 
     href: "/playground", 
     label: "Playground", 
-    icon: Activity, 
-    description: "Interactive component testing",
-    metrics: { components: "4", status: "Live" }
-  },
-  { 
-    href: "/style-guide", 
-    label: "Style Guide", 
-    icon: LayoutDashboard, 
-    description: "Visual style guide",
-    metrics: { atoms: "23+", molecules: "18+" }
+    icon: Play, 
+    description: "Interactive testing",
+    badge: "Live"
   },
 ]
 
-const designSystemSections = [
-  // Quick Start - Immediate Value
+// Product section - ATS Demo & Sales
+const productItems = [
+  { 
+    href: "/dashboard", 
+    label: "Live Demo", 
+    icon: LayoutDashboard, 
+    description: "Interactive ATS dashboard",
+    badge: "Demo"
+  },
+  { 
+    href: "/why-inclusive", 
+    label: "Why Inclusive?", 
+    icon: Sparkles, 
+    description: "Features & comparison",
+    badge: "New"
+  },
+]
+
+// Get Started section - Role-based guides like Atlassian
+const getStartedItems = [
   { 
     href: "/design-system/getting-started", 
-    label: "Getting Started", 
-    icon: Zap,
-    description: "Quick setup and installation guide",
-    status: "stable" as const,
-    category: "Quick Start",
-    metrics: { time: "5 min", difficulty: "Easy" },
-    priority: 1
+    label: "For Developers", 
+    icon: Code2,
+    description: "Installation and setup",
   },
   { 
-    href: "/design-system/principles", 
-    label: "Design Principles", 
-    icon: Target,
-    description: "Core design philosophy and guidelines", 
-    status: "stable" as const,
-    category: "Quick Start",
-    metrics: { principles: "6", examples: "24" },
-    priority: 2
+    href: "/design-system/getting-started#designers", 
+    label: "For Designers", 
+    icon: Paintbrush,
+    description: "Figma libraries and guidelines",
   },
+  { 
+    href: "/design-system/getting-started#content", 
+    label: "For Content", 
+    icon: FileText,
+    description: "Voice and tone standards",
+  },
+]
 
-  // Core Foundations - Building Blocks
+// Foundations - Core design decisions
+const foundationsItems = [
   { 
     href: "/design-system/tokens", 
     label: "Design Tokens", 
     icon: Palette,
-    description: "Colours, spacing, typography tokens",
+    description: "Colours, spacing, typography",
     status: "stable" as const,
-    category: "Foundations",
-    metrics: { tokens: "89", categories: "8" },
-    priority: 3
-  },
-  { 
-    href: "/design-system/elevation", 
-    label: "Elevation", 
-    icon: Mountain,
-    description: "Shadows, depth, and glassmorphic effects",
-    status: "stable" as const,
-    category: "Foundations",
-    metrics: { levels: "8", variants: "16" },
-    priority: 4
   },
   { 
     href: "/design-system/accessibility", 
     label: "Accessibility", 
     icon: Shield,
-    description: "WCAG compliance and inclusive design",
+    description: "WCAG 2.1 AA compliance",
     status: "stable" as const,
-    category: "Foundations",
-    metrics: { compliance: "AAA", score: "98%" },
-    priority: 5
+  },
+  { 
+    href: "/design-system/elevation", 
+    label: "Elevation", 
+    icon: Mountain,
+    description: "Shadows and depth",
+    status: "stable" as const,
   },
   { 
     href: "/design-system/responsive", 
-    label: "Responsive Design", 
+    label: "Responsive", 
     icon: Monitor,
-    description: "Breakpoints and responsive patterns",
+    description: "Breakpoints and grids",
     status: "stable" as const,
-    category: "Foundations",
-    metrics: { breakpoints: "5", patterns: "12" },
-    priority: 6
   },
-
-  // Implementation - Practical Usage
-  { 
-    href: "/design-system/components", 
-    label: "Component Guidelines", 
-    icon: Layers,
-    description: "Component usage and best practices",
-    status: "beta" as const,
-    category: "Implementation",
-    metrics: { guidelines: "24", examples: "48" },
-    priority: 7
-  },
-  { 
-    href: "/design-system/patterns", 
-    label: "UI Patterns", 
-    icon: Grid3X3,
-    description: "Common interface patterns and layouts",
-    status: "stable" as const,
-    category: "Implementation",
-    metrics: { patterns: "24", categories: "4" },
-    priority: 8
-  },
-
-  // Advanced - Power User Features
   { 
     href: "/design-system/theming", 
     label: "Theming", 
     icon: Type,
-    description: "Customisation and theme development",
+    description: "Custom themes",
     status: "beta" as const,
-    category: "Advanced",
-    metrics: { themes: "4", variables: "120" },
-    priority: 9
+  },
+]
+
+// Patterns - Common solutions
+const patternsItems = [
+  { 
+    href: "/design-system/patterns", 
+    label: "UI Patterns", 
+    icon: Grid3X3,
+    description: "Interface patterns",
+    status: "stable" as const,
+  },
+  { 
+    href: "/design-system/patterns#forms", 
+    label: "Forms", 
+    icon: FileText,
+    description: "Form layouts and validation",
+    status: "stable" as const,
+  },
+  { 
+    href: "/design-system/patterns#navigation", 
+    label: "Navigation", 
+    icon: LayoutDashboard,
+    description: "Navigation patterns",
+    status: "stable" as const,
+  },
+]
+
+// Resources - Help and support
+const resourcesItems = [
+  { 
+    href: "/design-system/principles", 
+    label: "Design Principles", 
+    icon: Target,
+    description: "Core philosophy",
   },
   { 
     href: "/design-system/best-practices", 
     label: "Best Practices", 
     icon: Award,
-    description: "Implementation guidelines and tips",
-    status: "stable" as const,
-    category: "Advanced",
-    metrics: { practices: "18", coverage: "95%" },
-    priority: 10
+    description: "Implementation tips",
   },
-
+  { 
+    href: "/style-guide", 
+    label: "Style Guide", 
+    icon: LayoutDashboard,
+    description: "Visual references",
+  },
 ]
+
+// What's New section
+const whatsNewItems = [
+  { 
+    href: "/design-system/changelog", 
+    label: "Changelog", 
+    icon: GitBranch,
+    description: "Release history",
+  },
+  { 
+    href: "/design-system/roadmap", 
+    label: "Roadmap", 
+    icon: Target,
+    description: "Upcoming features",
+  },
+]
+
+/* =============================================================================
+   SIDEBAR COMPONENT
+   ============================================================================= */
 
 interface UnifiedSidebarProps {
   animationSpeed?: number[]
@@ -213,36 +240,40 @@ interface UnifiedSidebarProps {
 
 export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSidebarProps) {
   const pathname = usePathname()
+  const { theme, resolvedTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
-  // Search removed for cleaner UI
-  const [expandedCategories, setExpandedCategories] = useState<string[]>(["Quick Start", "Foundations", "Implementation"])
-  const [copiedAction, setCopiedAction] = useState("")
+  const [expandedSections, setExpandedSections] = useState<string[]>(["get-started", "foundations"])
   const [favourites, setFavourites] = useState<Set<string>>(new Set())
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+    // Load favourites from localStorage
+    const saved = localStorage.getItem("inclusive-sidebar-favourites")
+    if (saved) {
+      setFavourites(new Set(JSON.parse(saved)))
+    }
+  }, [])
+
+  useEffect(() => {
+    if (mounted && favourites.size > 0) {
+      localStorage.setItem("inclusive-sidebar-favourites", JSON.stringify(Array.from(favourites)))
+    }
+  }, [favourites, mounted])
 
   const safeAnimationSpeed = animationSpeed?.[0] ?? 1
 
-  // Search functionality removed for cleaner UI
-  const filteredSections = designSystemSections
-
-  const categorizedSections = filteredSections.reduce((acc, section) => {
-    if (!acc[section.category]) {
-      acc[section.category] = []
-    }
-    acc[section.category].push(section)
-    return acc
-  }, {} as Record<string, typeof filteredSections>)
-
-  const toggleCategory = useCallback((category: string) => {
-    setExpandedCategories(prev => 
-      prev.includes(category) 
-        ? prev.filter(c => c !== category)
-        : [...prev, category]
+  const toggleSection = useCallback((section: string) => {
+    setExpandedSections(prev => 
+      prev.includes(section) 
+        ? prev.filter(s => s !== section)
+        : [...prev, section]
     )
   }, [])
 
-  // Removed quick actions handler for cleaner UI
-
-  const toggleFavourite = useCallback((href: string) => {
+  const toggleFavourite = useCallback((href: string, e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
     setFavourites(prev => {
       const newFavourites = new Set(prev)
       if (newFavourites.has(href)) {
@@ -254,139 +285,135 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
     })
   }, [])
 
+  // Navigation link component
   const NavLink = ({ 
     href, 
     label, 
     icon: Icon, 
     description, 
     status,
-    metrics,
-    isMainNav = false 
+    badge,
+    showFavourite = true,
+    compact = false,
   }: { 
     href: string
     label: string
     icon: React.ElementType
     description?: string
     status?: "stable" | "beta" | "alpha"
-    metrics?: Record<string, string | number>
-    isMainNav?: boolean
+    badge?: string
+    showFavourite?: boolean
+    compact?: boolean
   }) => {
-    const active = pathname === href
+    const active = pathname === href || (href !== "/" && pathname?.startsWith(href))
     const isFavourite = favourites.has(href)
     
     return (
       <div className="group relative">
         <Link
           href={href}
+          onClick={() => setMobileOpen(false)}
           className={cn(
-            "flex items-center gap-3 px-4 py-3 rounded-lg transition-all text-sm font-medium border relative overflow-hidden",
+            "flex items-center gap-3 rounded-lg transition-all text-sm relative",
+            compact ? "px-3 py-2" : "px-3 py-2.5",
             active
-              ? "bg-fuchsia-500/10 text-fuchsia-300 border-fuchsia-500/30"
-              : "hover:bg-slate-800/50 text-slate-300 border-transparent hover:border-slate-700/30",
-            isMainNav && "font-semibold py-4"
+              ? "bg-primary/10 text-primary font-medium border-l-2 border-primary"
+              : "hover:bg-accent/50 text-foreground/80 hover:text-foreground border-l-2 border-transparent",
           )}
-          style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
+          style={{ transitionDuration: `${0.15 / safeAnimationSpeed}s` }}
           aria-current={active ? "page" : undefined}
         >
           <Icon className={cn(
-            "h-4 w-4 shrink-0 transition-transform",
-            active ? "text-fuchsia-400 scale-110" : "text-slate-400 group-hover:scale-110"
-          )} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
+            "h-4 w-4 shrink-0 transition-colors",
+            active ? "text-primary" : "text-muted-foreground group-hover:text-foreground"
+          )} />
           
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-1">
-              <span className="whitespace-nowrap truncate font-medium">{label}</span>
-              <div className="flex items-center gap-1">
-                {status && (
-                  <Badge className={cn(
-                    "text-xs px-1.5 py-0.5",
-                    status === "stable" && "bg-green-500/20 text-green-300 border-green-500/30",
-                    status === "beta" && "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
-                    status === "alpha" && "bg-red-500/20 text-red-300 border-red-500/30"
-                  )}>
-                    {status}
-                  </Badge>
-                )}
-                {!isMainNav && (
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={(e) => {
-                      e.preventDefault()
-                      toggleFavourite(href)
-                    }}
-                    className="h-5 w-5 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                  >
-                    <Heart className={cn(
-                      "h-3 w-3",
-                      isFavourite ? "fill-current text-red-400" : "text-slate-400"
-                    )} />
-                  </Button>
-                )}
-              </div>
-            </div>
-            {description && (
-              <div className="text-xs text-slate-500 mb-1 truncate">{description}</div>
+          <span className="flex-1 truncate">{label}</span>
+          
+          <div className="flex items-center gap-1.5">
+            {badge && (
+              <Badge variant="secondary" className="text-[10px] px-1.5 py-0 h-5">
+                {badge}
+              </Badge>
             )}
-            {metrics && isMainNav && (
-              <div className="flex items-center gap-3 text-xs text-slate-400">
-                {Object.entries(metrics).map(([key, value]) => (
-                  <span key={key}>
-                    <span className="text-slate-500">{key}:</span> 
-                    <span className="text-slate-300 ml-1">{value}</span>
-                  </span>
-                ))}
-              </div>
+            {status && status !== "stable" && (
+              <Badge 
+                variant="outline" 
+                className={cn(
+                  "text-[10px] px-1.5 py-0 h-5",
+                  status === "beta" && "border-warning/50 text-warning",
+                  status === "alpha" && "border-error/50 text-error"
+                )}
+              >
+                {status}
+              </Badge>
+            )}
+            {showFavourite && (
+              <button
+                onClick={(e) => toggleFavourite(href, e)}
+                className={cn(
+                  "h-5 w-5 flex items-center justify-center rounded opacity-0 group-hover:opacity-100 transition-opacity",
+                  "hover:bg-accent"
+                )}
+                aria-label={isFavourite ? "Remove from favourites" : "Add to favourites"}
+              >
+                <Heart className={cn(
+                  "h-3 w-3",
+                  isFavourite ? "fill-primary text-primary" : "text-muted-foreground"
+                )} />
+              </button>
             )}
           </div>
-          
-          {active && (
-            <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-transparent pointer-events-none" />
-          )}
         </Link>
       </div>
     )
   }
 
-  const CategorySection = ({ category, sections }: { category: string, sections: typeof designSystemSections }) => {
-    const isExpanded = expandedCategories.includes(category)
-    const categoryStats = useMemo(() => {
-      const total = sections.length
-      const completed = sections.filter(s => s.status === "stable").length
-      return { total, completed, percentage: Math.round((completed / total) * 100) }
-    }, [sections])
+  // Collapsible section component
+  const CollapsibleSection = ({ 
+    id, 
+    title, 
+    items,
+    defaultExpanded = false,
+  }: { 
+    id: string
+    title: string
+    items: Array<{
+      href: string
+      label: string
+      icon: React.ElementType
+      description?: string
+      status?: "stable" | "beta" | "alpha"
+    }>
+    defaultExpanded?: boolean
+  }) => {
+    const isExpanded = expandedSections.includes(id)
     
     return (
-      <div className="space-y-2">
+      <div className="space-y-1">
         <button
-          onClick={() => toggleCategory(category)}
-          className="flex items-center gap-3 px-4 py-3 text-sm font-semibold text-slate-300 hover:text-slate-100 transition-colors w-full text-left bg-slate-800/30 rounded-lg hover:bg-slate-800/50"
-          style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
+          onClick={() => toggleSection(id)}
+          className={cn(
+            "flex items-center gap-2 w-full px-3 py-2 text-xs font-semibold uppercase tracking-wider",
+            "text-muted-foreground hover:text-foreground transition-colors rounded-lg hover:bg-accent/30"
+          )}
+          aria-expanded={isExpanded}
         >
           <ChevronRight className={cn(
-            "h-4 w-4 transition-transform text-slate-400",
+            "h-3 w-3 transition-transform",
             isExpanded && "rotate-90"
-          )} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }} />
-          <div className="flex-1 flex items-center justify-between">
-            <span>{category}</span>
-            <div className="flex items-center gap-2">
-              <Badge variant="outline" className="text-xs border-slate-600">
-                {categoryStats.total}
-              </Badge>
-              <div className="text-xs text-slate-400">
-                {categoryStats.percentage}%
-              </div>
-            </div>
-          </div>
+          )} />
+          <span>{title}</span>
+          <Badge variant="outline" className="ml-auto text-[10px] px-1.5 py-0 h-4">
+            {items.length}
+          </Badge>
         </button>
         
         {isExpanded && (
-          <div className="space-y-1 animate-in slide-in-from-top-2 pl-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
-            {sections
-              .sort((a, b) => (a.priority || 999) - (b.priority || 999))
-              .map((section) => (
-                <NavLink key={section.href} {...section} metrics={section.metrics} />
-              ))}
+          <div className="space-y-0.5 pl-2 animate-in slide-in-from-top-1 duration-200">
+            {items.map((item) => (
+              <NavLink key={item.href} {...item} compact />
+            ))}
           </div>
         )}
       </div>
@@ -395,130 +422,180 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
-      {/* Universal Comprehension Header */}
-      <div className="px-4 py-6 border-b border-slate-700/50">
-        <Link 
-          href="/" 
-          className="flex items-center gap-3 font-bold text-fuchsia-400 text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 rounded group hover:scale-105 transition-transform mb-4"
-          style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
-        >
-          <Hexagon className="h-8 w-8 group-hover:rotate-180 transition-transform duration-500" />
-          <div className="flex flex-col leading-tight">
-            <span>Inclusive</span>
-            <span className="text-sm text-slate-300 font-medium">Design System</span>
+      {/* Header with Logo and Theme Controls */}
+      <div className="px-4 py-4 border-b border-border">
+        <div className="flex items-center justify-between mb-4">
+          <Link 
+            href="/" 
+            className={cn(
+              "flex items-center gap-2.5 font-bold text-lg",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg",
+              "group transition-all hover:opacity-80"
+            )}
+            onClick={() => setMobileOpen(false)}
+          >
+            <div className={cn(
+              "h-8 w-8 rounded-lg flex items-center justify-center transition-all",
+              "bg-gradient-to-br",
+              mounted && resolvedTheme === "dark" 
+                ? "from-fuchsia-500 to-purple-600" 
+                : "from-purple-500 to-indigo-600"
+            )}>
+              <Hexagon className="h-5 w-5 text-white" />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="text-foreground">Inclusive</span>
+              <span className="text-[10px] text-muted-foreground font-normal">Design System v2.1</span>
+            </div>
+          </Link>
+          
+          {/* Theme Controls */}
+          <div className="flex items-center gap-1">
+            <ThemeToggle />
+            <GlobalSettings />
           </div>
-        </Link>
+        </div>
 
-        {/* Quick Stats - Immediate Value Surfacing */}
-        <div className="grid grid-cols-2 gap-2 mb-4">
+        {/* Quick Stats */}
+        <div className="grid grid-cols-3 gap-2">
           {quickStats.map((stat) => (
-            <div key={stat.label} className="bg-slate-800/30 rounded-lg p-2 text-center">
-              <div className="flex items-center justify-center mb-1">
-                <stat.icon className={`h-3 w-3 ${stat.color}`} />
-              </div>
-              <div className="text-xs font-semibold text-slate-200">{stat.value}</div>
-              <div className="text-xs text-slate-400">{stat.label}</div>
+            <div 
+              key={stat.label} 
+              className="bg-card rounded-lg p-2 text-center border border-border/50"
+            >
+              <stat.icon className={cn("h-3.5 w-3.5 mx-auto mb-1", stat.color)} />
+              <div className="text-xs font-semibold text-foreground">{stat.value}</div>
+              <div className="text-[10px] text-muted-foreground">{stat.label}</div>
             </div>
           ))}
         </div>
-
-        {/* Quick Actions removed for cleaner UI */}
       </div>
 
-      {/* Search removed for cleaner UI */}
-
-      {/* Main Navigation - Enhanced with metrics */}
-      <div className="px-4 mb-4">
-        <div className="space-y-2">
-          <div className="text-xs font-semibold text-slate-400 px-2 mb-2">MAIN NAVIGATION</div>
+      {/* Main Navigation */}
+      <div className="px-3 py-4 border-b border-border">
+        <div className="space-y-0.5">
           {mainNavigation.map((item) => (
-            <NavLink key={item.href} {...item} isMainNav />
+            <NavLink key={item.href} {...item} showFavourite={false} />
           ))}
         </div>
       </div>
 
-      {/* Progressive Disclosure - Documentation Sections */}
-      <div className="flex-1 px-4 space-y-3 overflow-y-auto">
-        <div className="text-xs font-semibold text-slate-400 px-2 mb-2">DOCUMENTATION</div>
-        {Object.entries(categorizedSections).map(([category, sections]) => (
-          <CategorySection key={category} category={category} sections={sections} />
-        ))}
+      {/* Scrollable Content */}
+      <div className="flex-1 overflow-y-auto px-3 py-4 space-y-4">
+        {/* Product - ATS Demo */}
+        <CollapsibleSection
+          id="product"
+          title="Product"
+          items={productItems}
+          defaultExpanded
+        />
 
-        {/* Favourites Section - If any exist */}
+        {/* Get Started */}
+        <CollapsibleSection
+          id="get-started"
+          title="Get Started"
+          items={getStartedItems}
+          defaultExpanded
+        />
+
+        {/* Foundations */}
+        <CollapsibleSection
+          id="foundations"
+          title="Foundations"
+          items={foundationsItems}
+          defaultExpanded
+        />
+
+        {/* Patterns */}
+        <CollapsibleSection
+          id="patterns"
+          title="Patterns"
+          items={patternsItems}
+        />
+
+        {/* Resources */}
+        <CollapsibleSection
+          id="resources"
+          title="Resources"
+          items={resourcesItems}
+        />
+
+        {/* What's New */}
+        <CollapsibleSection
+          id="whats-new"
+          title="What's New"
+          items={whatsNewItems}
+        />
+
+        {/* Favourites */}
         {favourites.size > 0 && (
-          <div className="space-y-2 mt-6 pt-4 border-t border-slate-700/50">
-            <div className="text-xs font-semibold text-slate-400 px-2 flex items-center gap-2">
-              <Heart className="h-3 w-3 text-red-400" />
-              FAVOURITES ({favourites.size})
+          <div className="space-y-1 pt-2 border-t border-border">
+            <div className="flex items-center gap-2 px-3 py-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+              <Heart className="h-3 w-3 text-primary fill-primary" />
+              <span>Favourites</span>
+              <Badge variant="outline" className="ml-auto text-[10px] px-1.5 py-0 h-4">
+                {favourites.size}
+              </Badge>
             </div>
-            <div className="space-y-1">
+            <div className="space-y-0.5">
               {Array.from(favourites).slice(0, 5).map((href) => {
-                const item = allSearchableContent.find(item => item.href === href)
-                return item ? (
-                  <Link
-                    key={href}
-                    href={href}
-                    className="flex items-center gap-2 px-3 py-2 text-xs rounded hover:bg-slate-800/50 transition-colors"
-                  >
-                    <item.icon className="h-3 w-3 text-fuchsia-400" />
-                    <span className="flex-1 truncate text-slate-300">{item.label}</span>
-                  </Link>
-                ) : null
+                const allItems = [
+                  ...foundationsItems,
+                  ...patternsItems,
+                  ...resourcesItems,
+                  ...whatsNewItems,
+                ]
+                const item = allItems.find(i => i.href === href)
+                if (!item) return null
+                return (
+                  <NavLink key={href} {...item} compact />
+                )
               })}
             </div>
           </div>
         )}
       </div>
 
-      {/* System Health Footer - Live Status */}
-      <div className="px-4 py-4 mt-auto border-t border-slate-700/50">
-        <Card className="bg-slate-800/30 border-slate-700/50">
-          <CardContent className="p-3">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-xs font-semibold text-slate-300">System Health</span>
-              <Badge className="ml-auto text-xs bg-green-500/20 text-green-300 border-green-500/30">
-                Operational
-              </Badge>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-2 text-xs mb-3">
-              <div className="text-center">
-                <div className="text-fuchsia-400 font-semibold">102+</div>
-                <div className="text-slate-400">Components</div>
-              </div>
-              <div className="text-center">
-                <div className="text-blue-400 font-semibold">99.9%</div>
-                <div className="text-slate-400">Uptime</div>
-              </div>
-            </div>
-
-            <div className="flex gap-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-6 px-2 text-xs flex-1"
-                asChild
-              >
-                <Link href="/design-system/getting-started">
-                  <HelpCircle className="h-3 w-3 mr-1" />
-                  Help
-                </Link>
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-6 px-2 text-xs flex-1"
-                asChild
-              >
-                <Link href="https://github.com/inclusive-design/system" target="_blank">
-                  <ExternalLink className="h-3 w-3 mr-1" />
-                  GitHub
-                </Link>
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Footer */}
+      <div className="px-3 py-3 border-t border-border mt-auto">
+        <div className="flex items-center gap-2">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-8 flex-1 justify-start" asChild>
+                  <Link href="/design-system/getting-started">
+                    <HelpCircle className="h-4 w-4 mr-2" />
+                    Help
+                  </Link>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>Get help and support</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+          
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button variant="ghost" size="sm" className="h-8 flex-1 justify-start" asChild>
+                  <Link href="https://github.com/inclusive" target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    GitHub
+                  </Link>
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>View on GitHub</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+        
+        {/* Version and Status */}
+        <div className="flex items-center justify-between mt-3 px-1 text-[10px] text-muted-foreground">
+          <div className="flex items-center gap-1.5">
+            <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+            <span>All systems operational</span>
+          </div>
+          <span>v2.1.0</span>
+        </div>
       </div>
     </div>
   )
@@ -527,32 +604,41 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
     <>
       {/* Desktop Sidebar */}
       <aside className={cn(
-        "hidden lg:flex flex-col w-80 min-h-screen sticky top-0 bg-slate-900/95 backdrop-blur-xl border-r border-slate-800/60 z-40",
+        "hidden lg:flex flex-col w-72 min-h-screen sticky top-0 bg-card/95 backdrop-blur-xl border-r border-border z-40",
         className
       )}>
         <SidebarContent />
       </aside>
       
-      {/* Mobile Sidebar */}
+      {/* Mobile Menu Button */}
       <div className="lg:hidden">
         <button
-          className="fixed top-4 left-4 z-50 p-2 rounded-lg bg-slate-900/90 border border-slate-800/60 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-400 backdrop-blur-sm"
+          className={cn(
+            "fixed top-4 left-4 z-50 p-2 rounded-lg border",
+            "bg-card/95 backdrop-blur-sm border-border",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          )}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? (
-            <CloseIcon className="h-6 w-6 text-fuchsia-400" />
+            <CloseIcon className="h-5 w-5 text-foreground" />
           ) : (
-            <MenuIcon className="h-6 w-6 text-fuchsia-400" />
+            <MenuIcon className="h-5 w-5 text-foreground" />
           )}
         </button>
         
+        {/* Mobile Sidebar Overlay */}
         {mobileOpen && (
-          <div className="fixed inset-0 bg-slate-950/80 z-40 flex backdrop-blur-sm">
-            <aside className="w-80 bg-slate-900/95 border-r border-slate-800/60 h-full overflow-y-auto">
+          <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-40 flex animate-in fade-in duration-200">
+            <aside className="w-72 bg-card border-r border-border h-full overflow-y-auto animate-in slide-in-from-left duration-300">
               <SidebarContent />
             </aside>
-            <div className="flex-1" onClick={() => setMobileOpen(false)} />
+            <div 
+              className="flex-1" 
+              onClick={() => setMobileOpen(false)} 
+              aria-label="Close menu"
+            />
           </div>
         )}
       </div>
@@ -560,4 +646,4 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
   )
 }
 
-export default UnifiedSidebar 
+export default UnifiedSidebar

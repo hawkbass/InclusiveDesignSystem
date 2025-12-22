@@ -87,7 +87,7 @@ export default function Overview() {
       change: "+5",
       description: "Average Lighthouse performance",
       icon: Zap,
-      colour: "text-fuchsia-400"
+      colour: "text-primary"
     },
     accessibility: {
       title: "Accessibility",
@@ -138,7 +138,7 @@ export default function Overview() {
       description: "Explore our 49+ production-ready components",
       href: "/components",
       icon: ComponentIcon,
-      gradient: "from-fuchsia-500 to-purple-600",
+      gradient: "from-primary to-purple-600",
       stats: "49+ Components"
     },
     {
@@ -168,13 +168,13 @@ export default function Overview() {
   ]
 
   return (
-    <div className="flex bg-slate-950 min-h-screen">
+    <div className="flex bg-background min-h-screen">
       <UnifiedSidebar animationSpeed={animationSpeed} />
       <main className="flex-1 overflow-auto">
         {/* Strategic Header - System Status */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-blue-500/5" />
-          <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+        <section className="relative bg-gradient-to-br from-background via-muted/30 to-background overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5" />
+          <div className="absolute top-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
           
           <div className="relative px-6 lg:px-12 py-12">
             <div className="max-w-6xl mx-auto">
@@ -188,7 +188,7 @@ export default function Overview() {
                   <Activity className="w-3 h-3 mr-1" />
                   3 Recent Updates
                 </Badge>
-                <Badge className="bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/30 px-3 py-1">
+                <Badge className="bg-fuchsia-500/20 text-primary border-primary/30 px-3 py-1">
                   <Star className="w-3 h-3 mr-1" />
                   v2.1.0 Latest
                 </Badge>
@@ -202,10 +202,10 @@ export default function Overview() {
                       Inclusive
                     </span>
                     <br />
-                    <span className="text-slate-100">Design System</span>
+                    <span className="text-foreground">Design System</span>
                   </h1>
                   
-                  <p className="text-xl text-slate-300 leading-relaxed max-w-2xl">
+                  <p className="text-xl text-foreground/80 leading-relaxed max-w-2xl">
                     Build consistent, efficient, and scalable recruitment interfaces with Inclusive's comprehensive design system. 
                     Reduce development time by 31% while maintaining high-quality user experiences across all products.
                   </p>
@@ -228,23 +228,23 @@ export default function Overview() {
 
                   {/* Key System Stats */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                    <div className="bg-card/50 rounded-lg p-4 border border-border/50">
                       <div className="text-2xl font-bold text-green-400">94%</div>
-                      <div className="text-sm text-slate-400">Team Adoption</div>
+                      <div className="text-sm text-muted-foreground">Team Adoption</div>
                     </div>
-                    <div className="bg-slate-800/50 rounded-lg p-4 border border-slate-700/50">
+                    <div className="bg-card/50 rounded-lg p-4 border border-border/50">
                       <div className="text-2xl font-bold text-blue-400">49+</div>
-                      <div className="text-sm text-slate-400">Components</div>
+                      <div className="text-sm text-muted-foreground">Components</div>
                     </div>
                   </div>
 
                   {/* Primary Actions */}
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Button size="lg" className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:from-fuchsia-600 hover:to-purple-700 shadow-lg shadow-fuchsia-500/25">
+                    <Button size="lg" className="bg-gradient-to-r from-primary to-purple-600 hover:from-fuchsia-600 hover:to-purple-700 shadow-lg shadow-fuchsia-500/25">
                       <Eye className="mr-2 h-5 w-5" />
                       View Live System
                     </Button>
-                    <Button size="lg" variant="outline" className="border-slate-600 hover:bg-slate-800" asChild>
+                    <Button size="lg" variant="outline" className="border-border hover:bg-card" asChild>
                       <Link href="/design-system/tokens">
                         <Download className="mr-2 h-5 w-5" />
                         Export Tokens
@@ -255,7 +255,7 @@ export default function Overview() {
 
                 {/* System Health Dashboard */}
                 <div className="space-y-6">
-                  <Card className="bg-slate-800/50 border-slate-700/50">
+                  <Card className="bg-card/50 border-border/50">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Activity className="h-5 w-5 text-green-400" />
@@ -270,42 +270,42 @@ export default function Overview() {
                       <div className="grid grid-cols-2 gap-4">
                         <div className="text-center">
                           <div className="text-3xl font-bold text-green-400 mb-1">99.8%</div>
-                          <div className="text-xs text-slate-500">Uptime</div>
+                          <div className="text-xs text-muted-foreground">Uptime</div>
                         </div>
                         <div className="text-center">
                           <div className="text-3xl font-bold text-blue-400 mb-1">2.1s</div>
-                          <div className="text-xs text-slate-500">Avg Load Time</div>
+                          <div className="text-xs text-muted-foreground">Avg Load Time</div>
                         </div>
                       </div>
 
                       {/* Component Health */}
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-slate-300">Component Coverage</span>
+                          <span className="text-sm text-foreground/80">Component Coverage</span>
                           <span className="text-sm text-green-400">96%</span>
                         </div>
                         <Progress value={96} className="h-2" />
                         
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-slate-300">Accessibility Score</span>
+                          <span className="text-sm text-foreground/80">Accessibility Score</span>
                           <span className="text-sm text-purple-400">AAA</span>
                         </div>
                         <Progress value={100} className="h-2" />
                         
                         <div className="flex justify-between items-center">
-                          <span className="text-sm text-slate-300">Performance</span>
-                          <span className="text-sm text-fuchsia-400">98/100</span>
+                          <span className="text-sm text-foreground/80">Performance</span>
+                          <span className="text-sm text-primary">98/100</span>
                         </div>
                         <Progress value={98} className="h-2" />
                       </div>
 
                       {/* Quick Health Actions */}
                       <div className="flex gap-2">
-                        <Button size="sm" variant="outline" className="border-slate-600 text-slate-400 hover:text-slate-200 flex-1">
+                        <Button size="sm" variant="outline" className="border-border text-muted-foreground hover:text-foreground flex-1">
                           <BarChart3 className="h-3 w-3 mr-1" />
                           View Analytics
                         </Button>
-                        <Button size="sm" variant="outline" className="border-slate-600 text-slate-400 hover:text-slate-200 flex-1">
+                        <Button size="sm" variant="outline" className="border-border text-muted-foreground hover:text-foreground flex-1">
                           <AlertCircle className="h-3 w-3 mr-1" />
                           Report Issue
                         </Button>
@@ -328,7 +328,7 @@ export default function Overview() {
                     Performance Metrics
                   </span>
                 </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">
+                <p className="text-muted-foreground max-w-2xl mx-auto">
                   Track the impact and effectiveness of your design system across teams and projects
                 </p>
               </div>
@@ -340,7 +340,7 @@ export default function Overview() {
                   return (
                     <Card 
                       key={key}
-                      className={`bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-all cursor-pointer ${
+                      className={`bg-card/50 border-border/50 hover:bg-card/70 transition-all cursor-pointer ${
                         selectedMetric === key ? 'ring-2 ring-fuchsia-500/50' : ''
                       }`}
                       onClick={() => setSelectedMetric(key)}
@@ -353,13 +353,13 @@ export default function Overview() {
                           </Badge>
                         </div>
                         <div className="space-y-2">
-                          <div className="text-3xl font-bold text-slate-200">
+                          <div className="text-3xl font-bold text-foreground">
                             {metric.value}
                           </div>
-                          <div className="text-sm font-medium text-slate-300">
+                          <div className="text-sm font-medium text-foreground/80">
                             {metric.title}
                           </div>
-                          <div className="text-xs text-slate-500">
+                          <div className="text-xs text-muted-foreground">
                             {metric.description}
                           </div>
                         </div>
@@ -370,7 +370,7 @@ export default function Overview() {
               </div>
 
               {/* Detailed Metric View */}
-              <Card className="bg-slate-800/30 border-slate-700/50">
+              <Card className="bg-card/30 border-border/50">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     {React.createElement(systemMetrics[selectedMetric as keyof typeof systemMetrics].icon, {
@@ -385,44 +385,44 @@ export default function Overview() {
                 <CardContent>
                   <div className="grid md:grid-cols-3 gap-6">
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200">Current Status</h4>
+                      <h4 className="font-medium text-foreground">Current Status</h4>
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span className="text-sm text-slate-400">This Week</span>
+                          <span className="text-sm text-muted-foreground">This Week</span>
                           <span className="text-sm text-green-400">+5.2%</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-slate-400">This Month</span>
+                          <span className="text-sm text-muted-foreground">This Month</span>
                           <span className="text-sm text-green-400">+12.8%</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-slate-400">Quarter</span>
+                          <span className="text-sm text-muted-foreground">Quarter</span>
                           <span className="text-sm text-green-400">+28.3%</span>
                         </div>
                       </div>
                     </div>
                     
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200">Team Impact</h4>
+                      <h4 className="font-medium text-foreground">Team Impact</h4>
                       <div className="space-y-2">
                         <div className="flex justify-between">
-                          <span className="text-sm text-slate-400">Frontend Teams</span>
-                          <span className="text-sm text-slate-300">8/9</span>
+                          <span className="text-sm text-muted-foreground">Frontend Teams</span>
+                          <span className="text-sm text-foreground/80">8/9</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-slate-400">Design Teams</span>
-                          <span className="text-sm text-slate-300">5/5</span>
+                          <span className="text-sm text-muted-foreground">Design Teams</span>
+                          <span className="text-sm text-foreground/80">5/5</span>
                         </div>
                         <div className="flex justify-between">
-                          <span className="text-sm text-slate-400">Product Teams</span>
-                          <span className="text-sm text-slate-300">12/15</span>
+                          <span className="text-sm text-muted-foreground">Product Teams</span>
+                          <span className="text-sm text-foreground/80">12/15</span>
                         </div>
                       </div>
                     </div>
                     
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200">Recommendations</h4>
-                      <div className="space-y-2 text-sm text-slate-400">
+                      <h4 className="font-medium text-foreground">Recommendations</h4>
+                      <div className="space-y-2 text-sm text-muted-foreground">
                         <div className="flex items-start gap-2">
                           <Lightbulb className="h-4 w-4 text-yellow-400 mt-0.5 flex-shrink-0" />
                           <span>Focus on mobile component adoption</span>
@@ -452,7 +452,7 @@ export default function Overview() {
                     Quick Actions
                   </span>
                 </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">
+                <p className="text-muted-foreground max-w-2xl mx-auto">
                   Everything you need to work with the design system, one click away
                 </p>
               </div>
@@ -462,7 +462,7 @@ export default function Overview() {
                   const IconComponent = action.icon
                   return (
                     <Link key={index} href={action.href}>
-                      <Card className="bg-slate-800/50 border-slate-700/50 hover:bg-slate-800/70 transition-all duration-300 group cursor-pointer h-full">
+                      <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-all duration-300 group cursor-pointer h-full">
                         <CardContent className="p-6">
                           <div className="space-y-4">
                             <div className={`w-12 h-12 bg-gradient-to-r ${action.gradient} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
@@ -470,10 +470,10 @@ export default function Overview() {
                             </div>
                             
                             <div className="space-y-2">
-                              <h3 className="font-bold text-slate-200 group-hover:text-white transition-colours">
+                              <h3 className="font-bold text-foreground group-hover:text-white transition-colours">
                                 {action.title}
                               </h3>
-                              <p className="text-sm text-slate-400 leading-relaxed">
+                              <p className="text-sm text-muted-foreground leading-relaxed">
                                 {action.description}
                               </p>
                             </div>
@@ -482,7 +482,7 @@ export default function Overview() {
                               <Badge variant="outline" className="text-xs">
                                 {action.stats}
                               </Badge>
-                              <ArrowRight className="h-4 w-4 text-slate-400 group-hover:text-slate-200 group-hover:translate-x-1 transition-all" />
+                              <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-foreground group-hover:translate-x-1 transition-all" />
                             </div>
                           </div>
                         </CardContent>
@@ -504,11 +504,11 @@ export default function Overview() {
                       Recent Updates
                     </span>
                   </h2>
-                  <p className="text-slate-400">
+                  <p className="text-muted-foreground">
                     Latest improvements and additions to the design system
                   </p>
                 </div>
-                <Button variant="outline" className="border-slate-600 text-slate-400 hover:text-slate-200" asChild>
+                <Button variant="outline" className="border-border text-muted-foreground hover:text-foreground" asChild>
                   <Link href="/design-system/changelog">
                     <FileText className="h-4 w-4 mr-2" />
                     View Full Changelog
@@ -518,12 +518,12 @@ export default function Overview() {
 
               <div className="space-y-4">
                 {recentUpdates.map((update) => (
-                  <Card key={update.id} className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all">
+                  <Card key={update.id} className="bg-card/30 border-border/50 hover:bg-card/50 transition-all">
                     <CardContent className="p-6">
                       <div className="flex items-start justify-between">
                         <div className="space-y-3 flex-1">
                           <div className="flex items-center gap-3">
-                            <h3 className="font-bold text-slate-200">{update.title}</h3>
+                            <h3 className="font-bold text-foreground">{update.title}</h3>
                             <Badge 
                               variant="outline" 
                               className={`text-xs ${
@@ -539,11 +539,11 @@ export default function Overview() {
                             </Badge>
                           </div>
                           
-                          <p className="text-slate-400 leading-relaxed">
+                          <p className="text-muted-foreground leading-relaxed">
                             {update.description}
                           </p>
                           
-                          <div className="flex items-center gap-4 text-xs text-slate-500">
+                          <div className="flex items-center gap-4 text-xs text-muted-foreground">
                             <div className="flex items-center gap-1">
                               <Clock className="h-3 w-3" />
                               {update.timestamp}
@@ -555,7 +555,7 @@ export default function Overview() {
                           </div>
                         </div>
                         
-                        <Button size="sm" variant="outline" className="border-slate-600 text-slate-400 hover:text-slate-200">
+                        <Button size="sm" variant="outline" className="border-border text-muted-foreground hover:text-foreground">
                           <Eye className="h-3 w-3 mr-1" />
                           View Details
                         </Button>
@@ -576,7 +576,7 @@ export default function Overview() {
                     Why Choose Our Design System
                   </span>
                 </h2>
-                                  <p className="text-slate-400 max-w-3xl mx-auto text-lg">
+                                  <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
                   Proven results from teams using Inclusive's design system. Faster delivery, consistent experiences, 
                   and reduced maintenance overhead across all recruitment products.
                 </p>
@@ -590,8 +590,8 @@ export default function Overview() {
                       <Clock className="h-8 w-8 text-green-400" />
                     </div>
                     <div className="text-3xl font-bold text-green-400 mb-2">31%</div>
-                    <div className="text-sm font-medium text-slate-200 mb-2">Faster Development</div>
-                    <div className="text-xs text-slate-400">Pre-built components reduce implementation time</div>
+                    <div className="text-sm font-medium text-foreground mb-2">Faster Development</div>
+                    <div className="text-xs text-muted-foreground">Pre-built components reduce implementation time</div>
                   </CardContent>
                 </Card>
 
@@ -602,8 +602,8 @@ export default function Overview() {
                       <Shield className="h-8 w-8 text-blue-400" />
                     </div>
                     <div className="text-3xl font-bold text-blue-400 mb-2">AAA</div>
-                    <div className="text-sm font-medium text-slate-200 mb-2">Accessibility Score</div>
-                    <div className="text-xs text-slate-400">WCAG 2.1 compliance built into every component</div>
+                    <div className="text-sm font-medium text-foreground mb-2">Accessibility Score</div>
+                    <div className="text-xs text-muted-foreground">WCAG 2.1 compliance built into every component</div>
                   </CardContent>
                 </Card>
 
@@ -614,8 +614,8 @@ export default function Overview() {
                       <Target className="h-8 w-8 text-purple-400" />
                     </div>
                     <div className="text-3xl font-bold text-purple-400 mb-2">96%</div>
-                    <div className="text-sm font-medium text-slate-200 mb-2">Design Consistency</div>
-                    <div className="text-xs text-slate-400">Unified patterns across all products</div>
+                    <div className="text-sm font-medium text-foreground mb-2">Design Consistency</div>
+                    <div className="text-xs text-muted-foreground">Unified patterns across all products</div>
                   </CardContent>
                 </Card>
 
@@ -626,15 +626,15 @@ export default function Overview() {
                       <Users className="h-8 w-8 text-orange-400" />
                     </div>
                     <div className="text-3xl font-bold text-orange-400 mb-2">94%</div>
-                    <div className="text-sm font-medium text-slate-200 mb-2">Team Adoption</div>
-                    <div className="text-xs text-slate-400">Trusted by development and design teams</div>
+                    <div className="text-sm font-medium text-foreground mb-2">Team Adoption</div>
+                    <div className="text-xs text-muted-foreground">Trusted by development and design teams</div>
                   </CardContent>
                 </Card>
               </div>
 
               {/* Detailed Benefits */}
               <div className="grid md:grid-cols-3 gap-8">
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <TrendingUp className="h-5 w-5 text-green-400" />
@@ -644,24 +644,24 @@ export default function Overview() {
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Pre-built, tested components reduce development time by 31%</span>
+                      <span className="text-foreground/80">Pre-built, tested components reduce development time by 31%</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">TypeScript support with comprehensive prop definitions</span>
+                      <span className="text-foreground/80">TypeScript support with comprehensive prop definitions</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Copy-paste code examples for immediate implementation</span>
+                      <span className="text-foreground/80">Copy-paste code examples for immediate implementation</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Automated testing reduces QA overhead</span>
+                      <span className="text-foreground/80">Automated testing reduces QA overhead</span>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Shield className="h-5 w-5 text-blue-400" />
@@ -671,24 +671,24 @@ export default function Overview() {
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">WCAG 2.1 AA compliance built into every component</span>
+                      <span className="text-foreground/80">WCAG 2.1 AA compliance built into every component</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Screen reader compatibility and keyboard navigation</span>
+                      <span className="text-foreground/80">Screen reader compatibility and keyboard navigation</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">High contrast ratios and focus management</span>
+                      <span className="text-foreground/80">High contrast ratios and focus management</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Semantic HTML structure by default</span>
+                      <span className="text-foreground/80">Semantic HTML structure by default</span>
                     </div>
                   </CardContent>
                 </Card>
 
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Gauge className="h-5 w-5 text-purple-400" />
@@ -698,19 +698,19 @@ export default function Overview() {
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Design tokens enable consistent theming across products</span>
+                      <span className="text-foreground/80">Design tokens enable consistent theming across products</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Version-controlled updates with migration guides</span>
+                      <span className="text-foreground/80">Version-controlled updates with migration guides</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Framework-agnostic patterns work with React, Vue, Angular</span>
+                      <span className="text-foreground/80">Framework-agnostic patterns work with React, Vue, Angular</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Performance optimised with tree-shaking and lazy loading</span>
+                      <span className="text-foreground/80">Performance optimised with tree-shaking and lazy loading</span>
                     </div>
                   </CardContent>
                 </Card>
@@ -727,14 +727,14 @@ export default function Overview() {
                     Essential Resources
                   </span>
                 </h2>
-                <p className="text-slate-400 max-w-2xl mx-auto">
+                <p className="text-muted-foreground max-w-2xl mx-auto">
                   Everything your team needs to succeed with the design system
                 </p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
                 {/* For Developers */}
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Code2 className="h-5 w-5 text-blue-400" />
@@ -746,38 +746,38 @@ export default function Overview() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-3">
-                      <Link href="/design-system/getting-started" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/design-system/getting-started" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Getting Started</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Getting Started</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">Setup and installation guide</div>
+                        <div className="text-xs text-muted-foreground mt-1">Setup and installation guide</div>
                       </Link>
                       
-                      <Link href="/design-system/tokens" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/design-system/tokens" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Design Tokens</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Design Tokens</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">CSS variables, colours, typography, spacing</div>
+                        <div className="text-xs text-muted-foreground mt-1">CSS variables, colours, typography, spacing</div>
                       </Link>
                       
-                      <Link href="/components" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/components" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Component Library</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Component Library</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">Browse all 49+ components</div>
+                        <div className="text-xs text-muted-foreground mt-1">Browse all 49+ components</div>
                       </Link>
                     </div>
                   </CardContent>
                 </Card>
 
                 {/* For Designers */}
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Palette className="h-5 w-5 text-fuchsia-400" />
+                      <Palette className="h-5 w-5 text-primary" />
                       For Designers
                     </CardTitle>
                     <CardDescription>
@@ -786,35 +786,35 @@ export default function Overview() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-3">
-                      <Link href="/design-system/principles" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/design-system/principles" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Design Principles</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Design Principles</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">Core design philosophy</div>
+                        <div className="text-xs text-muted-foreground mt-1">Core design philosophy</div>
                       </Link>
                       
-                      <Link href="/design-system/style-guide" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/design-system/style-guide" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Style Guide</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Style Guide</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">Typography, colours, spacing</div>
+                        <div className="text-xs text-muted-foreground mt-1">Typography, colours, spacing</div>
                       </Link>
                       
-                      <Link href="/design-system/elevation" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/design-system/elevation" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Elevation System</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Elevation System</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">Shadows, blur, glassmorphism</div>
+                        <div className="text-xs text-muted-foreground mt-1">Shadows, blur, glassmorphism</div>
                       </Link>
                     </div>
                   </CardContent>
                 </Card>
 
                 {/* For Teams */}
-                <Card className="bg-slate-800/30 border-slate-700/50">
+                <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <Users className="h-5 w-5 text-green-400" />
@@ -826,28 +826,28 @@ export default function Overview() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-3">
-                      <Link href="/design-system/best-practices" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/design-system/best-practices" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Best Practices</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Best Practices</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">Implementation guidelines</div>
+                        <div className="text-xs text-muted-foreground mt-1">Implementation guidelines</div>
                       </Link>
                       
-                      <Link href="/design-system/accessibility" className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30 hover:bg-slate-900/70 transition-colours">
+                      <Link href="/design-system/accessibility" className="block p-3 rounded-lg bg-muted/50 border border-border/30 hover:bg-muted/70 transition-colours">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Accessibility</span>
-                          <ArrowRight className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Accessibility</span>
+                          <ArrowRight className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">WCAG 2.1 AAA compliance</div>
+                        <div className="text-xs text-muted-foreground mt-1">WCAG 2.1 AAA compliance</div>
                       </Link>
                       
-                      <div className="block p-3 rounded-lg bg-slate-900/50 border border-slate-700/30">
+                      <div className="block p-3 rounded-lg bg-muted/50 border border-border/30">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-slate-200">Support</span>
-                          <ExternalLink className="h-4 w-4 text-slate-400" />
+                          <span className="text-sm font-medium text-foreground">Support</span>
+                          <ExternalLink className="h-4 w-4 text-muted-foreground" />
                         </div>
-                        <div className="text-xs text-slate-500 mt-1">Get help from our team</div>
+                        <div className="text-xs text-muted-foreground mt-1">Get help from our team</div>
                       </div>
                     </div>
                   </CardContent>

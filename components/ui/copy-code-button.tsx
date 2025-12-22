@@ -66,7 +66,7 @@ export function CodeSnippetWithCopy({
     <div className={cn("relative", className)}>
       {title && (
         <div className="flex items-center justify-between mb-3">
-          <span className="text-sm font-medium text-slate-300">{title}</span>
+          <span className="text-sm font-medium text-foreground/80">{title}</span>
           <CopyCodeButton
             code={code}
             id={id}
@@ -75,7 +75,7 @@ export function CodeSnippetWithCopy({
           />
         </div>
       )}
-      <pre className="bg-slate-950/50 p-4 rounded-lg text-sm text-slate-300 border border-slate-800/50 whitespace-pre-wrap overflow-hidden">
+      <pre className="bg-background/50 p-4 rounded-lg text-sm text-foreground/80 border border-border/50 whitespace-pre-wrap overflow-hidden">
         <code>{code}</code>
       </pre>
       {!title && (

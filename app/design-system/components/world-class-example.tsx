@@ -265,56 +265,56 @@ export default function WorldClassComponentDocs() {
   }), [])
 
   return (
-    <div className="flex min-h-screen bg-slate-950 text-slate-100">
+    <div className="flex min-h-screen bg-background text-foreground">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
         {/* World-Class Hero Section */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-slate-800">
+        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-border">
           <div className="px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
               {/* Quick Value Metrics */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm">
+                <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center mb-2">
                       <Shield className="h-6 w-6 text-green-400" />
                     </div>
-                    <div className="text-2xl font-bold text-slate-100">AAA</div>
-                    <div className="text-xs text-slate-400">Accessibility</div>
+                    <div className="text-2xl font-bold text-foreground">AAA</div>
+                    <div className="text-xs text-muted-foreground">Accessibility</div>
                     <div className="text-xs text-green-400 mt-1">WCAG 2.1</div>
                   </CardContent>
                 </Card>
                 
-                <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm">
+                <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center mb-2">
                       <Gauge className="h-6 w-6 text-blue-400" />
                     </div>
-                    <div className="text-2xl font-bold text-slate-100">98%</div>
-                    <div className="text-xs text-slate-400">Performance</div>
+                    <div className="text-2xl font-bold text-foreground">98%</div>
+                    <div className="text-xs text-muted-foreground">Performance</div>
                     <div className="text-xs text-blue-400 mt-1">Lighthouse</div>
                   </CardContent>
                 </Card>
                 
-                <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm">
+                <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center mb-2">
                       <Users className="h-6 w-6 text-purple-400" />
                     </div>
-                    <div className="text-2xl font-bold text-slate-100">15k+</div>
-                    <div className="text-xs text-slate-400">Downloads</div>
+                    <div className="text-2xl font-bold text-foreground">15k+</div>
+                    <div className="text-xs text-muted-foreground">Downloads</div>
                     <div className="text-xs text-purple-400 mt-1">This month</div>
                   </CardContent>
                 </Card>
                 
-                <Card className="bg-slate-800/50 border-slate-700/50 backdrop-blur-sm">
+                <Card className="bg-card/50 border-border/50 backdrop-blur-sm">
                   <CardContent className="p-4 text-center">
                     <div className="flex items-center justify-center mb-2">
                       <TrendingUp className="h-6 w-6 text-orange-400" />
                     </div>
-                    <div className="text-2xl font-bold text-slate-100">5</div>
-                    <div className="text-xs text-slate-400">Sizes</div>
+                    <div className="text-2xl font-bold text-foreground">5</div>
+                    <div className="text-xs text-muted-foreground">Sizes</div>
                     <div className="text-xs text-orange-400 mt-1">Responsive</div>
                   </CardContent>
                 </Card>
@@ -324,7 +324,7 @@ export default function WorldClassComponentDocs() {
                 {/* Value Proposition */}
                 <div className="space-y-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-fuchsia-950 text-fuchsia-300 border-fuchsia-800">
+                    <Badge className="bg-fuchsia-950 text-primary border-fuchsia-800">
                       <Monitor className="w-3 h-3 mr-1" />
                       Component
                     </Badge>
@@ -338,13 +338,13 @@ export default function WorldClassComponentDocs() {
                     </Badge>
                   </div>
                   
-                  <h1 className="text-5xl font-bold text-slate-100 leading-tight">
+                  <h1 className="text-5xl font-bold text-foreground leading-tight">
                     Dialog Component
                   </h1>
                   
-                  <p className="text-xl text-slate-300 leading-relaxed max-w-2xl">
+                  <p className="text-xl text-foreground/80 leading-relaxed max-w-2xl">
                     A modal dialog component that interrupts the user with important content and expects a response. 
-                    Built with <span className="text-fuchsia-400 font-semibold">accessibility</span>, 
+                    Built with <span className="text-primary font-semibold">accessibility</span>, 
                     <span className="text-purple-400 font-semibold"> performance</span>, and 
                     <span className="text-blue-400 font-semibold"> developer experience</span> in mind.
                   </p>
@@ -353,7 +353,7 @@ export default function WorldClassComponentDocs() {
                   <div className="grid grid-cols-2 gap-3">
                     <Button
                       variant="outline"
-                      className="border-slate-600 hover:border-fuchsia-500/50 h-auto p-4 justify-start"
+                      className="border-border hover:border-primary/50 h-auto p-4 justify-start"
                       onClick={() => handleCopyCode(examples.basic.code, 'hero-copy')}
                     >
                       <Copy className="h-5 w-5 mr-3" />
@@ -366,7 +366,7 @@ export default function WorldClassComponentDocs() {
                     
                     <Button
                       variant="outline"
-                      className="border-slate-600 hover:border-blue-500/50 h-auto p-4 justify-start"
+                      className="border-border hover:border-blue-500/50 h-auto p-4 justify-start"
                       onClick={() => setShowDialog(true)}
                     >
                       <Play className="h-5 w-5 mr-3" />
@@ -379,9 +379,9 @@ export default function WorldClassComponentDocs() {
                 </div>
 
                 {/* Live Preview */}
-                <div className="bg-slate-800/30 rounded-xl p-8 border border-slate-700/50">
+                <div className="bg-card/30 rounded-xl p-8 border border-border/50">
                   <div className="text-center">
-                    <h3 className="text-lg font-semibold text-slate-200 mb-4">Live Example</h3>
+                    <h3 className="text-lg font-semibold text-foreground mb-4">Live Example</h3>
                     <Dialog open={showDialog} onOpenChange={setShowDialog}>
                       <DialogTrigger asChild>
                         <Button size="lg" className="bg-fuchsia-600 hover:bg-fuchsia-700">
@@ -402,7 +402,7 @@ export default function WorldClassComponentDocs() {
                         </div>
                       </DialogContent>
                     </Dialog>
-                    <p className="text-sm text-slate-400 mt-4">
+                    <p className="text-sm text-muted-foreground mt-4">
                       Click to see the component in action
                     </p>
                   </div>
@@ -430,7 +430,7 @@ export default function WorldClassComponentDocs() {
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Target className="h-5 w-5 text-fuchsia-400" />
+                      <Target className="h-5 w-5 text-primary" />
                       When to Use
                     </CardTitle>
                   </CardHeader>
@@ -441,7 +441,7 @@ export default function WorldClassComponentDocs() {
                           <CheckCircle className="h-4 w-4" />
                           Use Dialog when:
                         </h4>
-                        <ul className="space-y-2 text-sm text-slate-300">
+                        <ul className="space-y-2 text-sm text-foreground/80">
                           <li>• Requiring immediate user attention</li>
                           <li>• Collecting user input in a form</li>
                           <li>• Confirming destructive actions</li>
@@ -454,7 +454,7 @@ export default function WorldClassComponentDocs() {
                           <XCircle className="h-4 w-4" />
                           Don't use Dialog when:
                         </h4>
-                        <ul className="space-y-2 text-sm text-slate-300">
+                        <ul className="space-y-2 text-sm text-foreground/80">
                           <li>• Displaying non-critical information</li>
                           <li>• Simple confirmations (use AlertDialog)</li>
                           <li>• Navigation between pages</li>
@@ -477,10 +477,10 @@ export default function WorldClassComponentDocs() {
                   <CardContent>
                     <div className="grid gap-4">
                       {componentAnatomy.parts.map((part) => (
-                        <div key={part.id} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
+                        <div key={part.id} className="flex items-center justify-between p-3 bg-card/30 rounded-lg">
                           <div>
-                            <div className="font-medium text-slate-200">{part.name}</div>
-                            <div className="text-sm text-slate-400">{part.description}</div>
+                            <div className="font-medium text-foreground">{part.name}</div>
+                            <div className="text-sm text-muted-foreground">{part.description}</div>
                           </div>
                           <Badge variant={part.required ? "default" : "outline"}>
                             {part.required ? "Required" : "Optional"}
@@ -516,9 +516,9 @@ export default function WorldClassComponentDocs() {
                         </div>
                       </CardHeader>
                       <CardContent>
-                        <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-700/30">
+                        <div className="bg-card/50 rounded-lg p-4 border border-border/30">
                           <pre className="text-sm overflow-x-auto">
-                            <code className="text-slate-300">{example.code}</code>
+                            <code className="text-foreground/80">{example.code}</code>
                           </pre>
                         </div>
                       </CardContent>
@@ -537,7 +537,7 @@ export default function WorldClassComponentDocs() {
                     <div className="overflow-x-auto">
                       <table className="w-full border-collapse">
                         <thead>
-                          <tr className="border-b border-slate-700">
+                          <tr className="border-b border-border">
                             <th className="text-left p-3 font-medium">Name</th>
                             <th className="text-left p-3 font-medium">Type</th>
                             <th className="text-left p-3 font-medium">Default</th>
@@ -546,11 +546,11 @@ export default function WorldClassComponentDocs() {
                         </thead>
                         <tbody>
                           {apiReference.props.map((prop) => (
-                            <tr key={prop.name} className="border-b border-slate-800">
-                              <td className="p-3 font-mono text-sm text-fuchsia-400">{prop.name}</td>
+                            <tr key={prop.name} className="border-b border-border">
+                              <td className="p-3 font-mono text-sm text-primary">{prop.name}</td>
                               <td className="p-3 font-mono text-sm text-blue-400">{prop.type}</td>
-                              <td className="p-3 font-mono text-sm text-slate-400">{prop.default}</td>
-                              <td className="p-3 text-sm text-slate-300">{prop.description}</td>
+                              <td className="p-3 font-mono text-sm text-muted-foreground">{prop.default}</td>
+                              <td className="p-3 text-sm text-foreground/80">{prop.description}</td>
                             </tr>
                           ))}
                         </tbody>
@@ -571,9 +571,9 @@ export default function WorldClassComponentDocs() {
                   <CardContent>
                     <div className="grid gap-3">
                       {accessibilityChecklist.map((item) => (
-                        <div key={item.id} className="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+                        <div key={item.id} className="flex items-center gap-3 p-3 bg-card/30 rounded-lg">
                           <CheckCircle className="h-5 w-5 text-green-400" />
-                          <span className="text-slate-200">{item.label}</span>
+                          <span className="text-foreground">{item.label}</span>
                           <Badge className="ml-auto bg-green-500/20 text-green-300 border-green-500/30">
                             {item.status}
                           </Badge>
@@ -637,24 +637,24 @@ export default function WorldClassComponentDocs() {
                   <CardContent className="space-y-6">
                     <div className="grid md:grid-cols-3 gap-6">
                       <div>
-                        <h4 className="font-semibold text-slate-200 mb-3">Spacing</h4>
-                        <ul className="space-y-2 text-sm text-slate-300">
+                        <h4 className="font-semibold text-foreground mb-3">Spacing</h4>
+                        <ul className="space-y-2 text-sm text-foreground/80">
                           <li>• Padding: 24px (1.5rem)</li>
                           <li>• Gap between elements: 16px (1rem)</li>
                           <li>• Margin from viewport edge: 16px</li>
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-slate-200 mb-3">Typography</h4>
-                        <ul className="space-y-2 text-sm text-slate-300">
+                        <h4 className="font-semibold text-foreground mb-3">Typography</h4>
+                        <ul className="space-y-2 text-sm text-foreground/80">
                           <li>• Title: 20px, semibold</li>
                           <li>• Description: 14px, regular</li>
                           <li>• Line height: 1.5</li>
                         </ul>
                       </div>
                       <div>
-                        <h4 className="font-semibold text-slate-200 mb-3">Colours</h4>
-                        <ul className="space-y-2 text-sm text-slate-300">
+                        <h4 className="font-semibold text-foreground mb-3">Colours</h4>
+                        <ul className="space-y-2 text-sm text-foreground/80">
                           <li>• Background: slate-900/95</li>
                           <li>• Border: slate-700/50</li>
                           <li>• Text: slate-100</li>

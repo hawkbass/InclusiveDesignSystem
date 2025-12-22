@@ -237,8 +237,8 @@ export function MetricChart({
 
         {/* Fallback for when chart doesn't render */}
         {!isVisible && (
-          <div className="absolute inset-0 flex items-center justify-center bg-slate-800/50 rounded-lg border border-slate-700/50">
-            <div className="text-slate-400 text-sm">Loading chart...</div>
+          <div className="absolute inset-0 flex items-center justify-center bg-card/50 rounded-lg border border-border/50">
+            <div className="text-muted-foreground text-sm">Loading chart...</div>
           </div>
         )}
 
@@ -252,7 +252,7 @@ export function MetricChart({
         {/* Tooltip */}
         {showTooltip && hoverPoint !== null && data.length > 0 && (
           <div
-            className="absolute bg-slate-800/90 border border-slate-600/50 px-3 py-2 rounded-md shadow-lg text-xs pointer-events-none backdrop-blur-sm z-10"
+            className="absolute bg-card/90 border border-border/50 px-3 py-2 rounded-md shadow-lg text-xs pointer-events-none backdrop-blur-sm z-10"
             style={{
               top: "10px",
               left: `${(hoverPoint / Math.max(data.length - 1, 1)) * 100}%`,
@@ -260,10 +260,10 @@ export function MetricChart({
             }}
           >
             {labels[hoverPoint] && (
-              <div className="font-medium text-slate-200 mb-1">{labels[hoverPoint]}</div>
+              <div className="font-medium text-foreground mb-1">{labels[hoverPoint]}</div>
             )}
             <div className="flex items-center justify-between gap-3">
-              <span className="text-slate-300">Value: {data[hoverPoint]}</span>
+              <span className="text-foreground/80">Value: {data[hoverPoint]}</span>
               {changes[hoverPoint] && (
                 <span
                   className={
@@ -271,7 +271,7 @@ export function MetricChart({
                       ? "text-green-400" 
                       : changes[hoverPoint].startsWith("-") 
                         ? "text-red-400" 
-                        : "text-slate-400"
+                        : "text-muted-foreground"
                   }
                 >
                   {changes[hoverPoint]}
@@ -284,7 +284,7 @@ export function MetricChart({
 
       {/* Labels */}
       {labels.length > 0 && (
-        <div className="flex justify-between mt-2 text-xs text-slate-500 px-5">
+        <div className="flex justify-between mt-2 text-xs text-muted-foreground px-5">
           {labels.map((label, i) => (
             <span key={i}>{label}</span>
           ))}

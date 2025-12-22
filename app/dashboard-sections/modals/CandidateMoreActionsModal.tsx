@@ -25,21 +25,21 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-md p-0 overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-slate-700/50 bg-gradient-to-r from-purple-800/20 to-purple-800/10 rounded-t-xl">
+        <div className="p-6 border-b border-border/50 bg-gradient-to-r from-purple-800/20 to-purple-800/10 rounded-t-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center">
                 <MoreVertical className="h-5 w-5 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-slate-100">More Actions</h3>
-                <p className="text-slate-400 text-sm">{candidate.name}</p>
+                <h3 className="text-lg font-semibold text-foreground">More Actions</h3>
+                <p className="text-muted-foreground text-sm">{candidate.name}</p>
               </div>
             </div>
             <Button
               variant="ghost"
               size="sm"
-              className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+              className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
             >
               <X className="h-4 w-4" />
@@ -52,7 +52,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
             {actions.map((action, i) => (
               <button
                 key={i}
-                className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-slate-800/50 transition-colours text-left"
+                className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-card/50 transition-colours text-left"
                 onClick={() => {
                   onClose()
                   setNotifications(prev => [
@@ -62,8 +62,8 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
                 }}
               >
                 <div className={`${action.colour}`}>{action.icon}</div>
-                <span className="text-slate-300">{action.label}</span>
-                <ArrowRight className="h-3 w-3 text-slate-500 ml-auto" />
+                <span className="text-foreground/80">{action.label}</span>
+                <ArrowRight className="h-3 w-3 text-muted-foreground ml-auto" />
               </button>
             ))}
           </div>

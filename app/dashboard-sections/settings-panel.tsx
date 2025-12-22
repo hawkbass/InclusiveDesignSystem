@@ -97,11 +97,11 @@ export function SettingsPanel({
   const renderProfileTab = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-medium text-slate-100">Profile Information</h3>
+        <h3 className="text-lg font-medium text-foreground">Profile Information</h3>
         <Button
           variant="outline"
           size="sm"
-          className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+          className="border-border/50 text-foreground/80 hover:bg-accent/50"
         >
           <Edit className="h-4 w-4 mr-2" />
           Edit Profile
@@ -111,74 +111,74 @@ export function SettingsPanel({
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-4">
           <div>
-            <label className="text-sm font-medium text-slate-300 mb-2 block">Full Name</label>
+            <label className="text-sm font-medium text-foreground/80 mb-2 block">Full Name</label>
             <Input
               value={profileData.fullName}
               onChange={(e) => setProfileData({ ...profileData, fullName: e.target.value })}
-              className="bg-slate-700/50 border-slate-600/50 text-slate-200"
+              className="bg-muted/50 border-border/50 text-foreground"
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-300 mb-2 block">Email</label>
+            <label className="text-sm font-medium text-foreground/80 mb-2 block">Email</label>
             <Input
               value={profileData.email}
               onChange={(e) => setProfileData({ ...profileData, email: e.target.value })}
-              className="bg-slate-700/50 border-slate-600/50 text-slate-200"
+              className="bg-muted/50 border-border/50 text-foreground"
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-300 mb-2 block">Job Title</label>
+            <label className="text-sm font-medium text-foreground/80 mb-2 block">Job Title</label>
             <Input
               value={profileData.jobTitle}
               onChange={(e) => setProfileData({ ...profileData, jobTitle: e.target.value })}
-              className="bg-slate-700/50 border-slate-600/50 text-slate-200"
+              className="bg-muted/50 border-border/50 text-foreground"
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-300 mb-2 block">Department</label>
+            <label className="text-sm font-medium text-foreground/80 mb-2 block">Department</label>
             <Input
               value={profileData.department}
               onChange={(e) => setProfileData({ ...profileData, department: e.target.value })}
-              className="bg-slate-700/50 border-slate-600/50 text-slate-200"
+              className="bg-muted/50 border-border/50 text-foreground"
             />
           </div>
         </div>
 
         <div className="space-y-4">
           <div>
-            <label className="text-sm font-medium text-slate-300 mb-2 block">Phone</label>
+            <label className="text-sm font-medium text-foreground/80 mb-2 block">Phone</label>
             <Input
               value={profileData.phone}
               onChange={(e) => setProfileData({ ...profileData, phone: e.target.value })}
-              className="bg-slate-700/50 border-slate-600/50 text-slate-200"
+              className="bg-muted/50 border-border/50 text-foreground"
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-300 mb-2 block">Location</label>
+            <label className="text-sm font-medium text-foreground/80 mb-2 block">Location</label>
             <Input
               value={profileData.location}
               onChange={(e) => setProfileData({ ...profileData, location: e.target.value })}
-              className="bg-slate-700/50 border-slate-600/50 text-slate-200"
+              className="bg-muted/50 border-border/50 text-foreground"
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-slate-300 mb-2 block">Timezone</label>
+            <label className="text-sm font-medium text-foreground/80 mb-2 block">Timezone</label>
             <Input
               value={profileData.timezone}
               onChange={(e) => setProfileData({ ...profileData, timezone: e.target.value })}
-              className="bg-slate-700/50 border-slate-600/50 text-slate-200"
+              className="bg-muted/50 border-border/50 text-foreground"
             />
           </div>
         </div>
       </div>
 
       <div>
-        <label className="text-sm font-medium text-slate-300 mb-2 block">Bio</label>
+        <label className="text-sm font-medium text-foreground/80 mb-2 block">Bio</label>
         <textarea
           value={profileData.bio}
           onChange={(e) => setProfileData({ ...profileData, bio: e.target.value })}
           rows={4}
-          className="w-full bg-slate-700/50 border border-slate-600/50 rounded-md px-3 py-2 text-slate-200 resize-none"
+          className="w-full bg-muted/50 border border-border/50 rounded-md px-3 py-2 text-foreground resize-none"
         />
       </div>
 
@@ -193,7 +193,7 @@ export function SettingsPanel({
         <Button
           variant="outline"
           size="sm"
-          className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+          className="border-border/50 text-foreground/80 hover:bg-accent/50"
         >
           Cancel
         </Button>
@@ -203,13 +203,13 @@ export function SettingsPanel({
 
   const renderNotificationsTab = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-medium text-slate-100">Notification Preferences</h3>
+      <h3 className="text-lg font-medium text-foreground">Notification Preferences</h3>
       
       <div className="space-y-4">
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">New Applications</div>
-            <div className="text-xs text-slate-400">Get notified when new candidates apply</div>
+            <div className="text-sm font-medium text-foreground">New Applications</div>
+            <div className="text-xs text-muted-foreground">Get notified when new candidates apply</div>
           </div>
           <Switch
             checked={notificationPrefs.newApplications}
@@ -217,10 +217,10 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Interview Reminders</div>
-            <div className="text-xs text-slate-400">Receive reminders before scheduled interviews</div>
+            <div className="text-sm font-medium text-foreground">Interview Reminders</div>
+            <div className="text-xs text-muted-foreground">Receive reminders before scheduled interviews</div>
           </div>
           <Switch
             checked={notificationPrefs.interviewReminders}
@@ -228,10 +228,10 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Status Updates</div>
-            <div className="text-xs text-slate-400">Updates on candidate status changes</div>
+            <div className="text-sm font-medium text-foreground">Status Updates</div>
+            <div className="text-xs text-muted-foreground">Updates on candidate status changes</div>
           </div>
           <Switch
             checked={notificationPrefs.statusUpdates}
@@ -239,10 +239,10 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Team Mentions</div>
-            <div className="text-xs text-slate-400">When team members mention you</div>
+            <div className="text-sm font-medium text-foreground">Team Mentions</div>
+            <div className="text-xs text-muted-foreground">When team members mention you</div>
           </div>
           <Switch
             checked={notificationPrefs.teamMentions}
@@ -250,10 +250,10 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Weekly Reports</div>
-            <div className="text-xs text-slate-400">Summary of weekly hiring activities</div>
+            <div className="text-sm font-medium text-foreground">Weekly Reports</div>
+            <div className="text-xs text-muted-foreground">Summary of weekly hiring activities</div>
           </div>
           <Switch
             checked={notificationPrefs.weeklyReports}
@@ -261,10 +261,10 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Security Alerts</div>
-            <div className="text-xs text-slate-400">Important security notifications</div>
+            <div className="text-sm font-medium text-foreground">Security Alerts</div>
+            <div className="text-xs text-muted-foreground">Important security notifications</div>
           </div>
           <Switch
             checked={notificationPrefs.securityAlerts}
@@ -277,13 +277,13 @@ export function SettingsPanel({
 
   const renderSecurityTab = () => (
     <div className="space-y-6">
-      <h3 className="text-lg font-medium text-slate-100">Security Settings</h3>
+      <h3 className="text-lg font-medium text-foreground">Security Settings</h3>
       
       <div className="space-y-4">
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Two-Factor Authentication</div>
-            <div className="text-xs text-slate-400">Add an extra layer of security to your account</div>
+            <div className="text-sm font-medium text-foreground">Two-Factor Authentication</div>
+            <div className="text-xs text-muted-foreground">Add an extra layer of security to your account</div>
           </div>
           <div className="flex items-center gap-2">
             <Switch
@@ -296,10 +296,10 @@ export function SettingsPanel({
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Login Notifications</div>
-            <div className="text-xs text-slate-400">Get notified of new login attempts</div>
+            <div className="text-sm font-medium text-foreground">Login Notifications</div>
+            <div className="text-xs text-muted-foreground">Get notified of new login attempts</div>
           </div>
           <Switch
             checked={securitySettings.loginNotifications}
@@ -307,10 +307,10 @@ export function SettingsPanel({
           />
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+        <div className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
           <div>
-            <div className="text-sm font-medium text-slate-200">Device Management</div>
-            <div className="text-xs text-slate-400">Manage active sessions and devices</div>
+            <div className="text-sm font-medium text-foreground">Device Management</div>
+            <div className="text-xs text-muted-foreground">Manage active sessions and devices</div>
           </div>
           <Switch
             checked={securitySettings.deviceManagement}
@@ -321,11 +321,11 @@ export function SettingsPanel({
 
       <div className="space-y-4">
         <div>
-          <label className="text-sm font-medium text-slate-300 mb-2 block">Session Timeout</label>
+          <label className="text-sm font-medium text-foreground/80 mb-2 block">Session Timeout</label>
           <select
             value={securitySettings.sessionTimeout}
             onChange={(e) => setSecuritySettings({ ...securitySettings, sessionTimeout: e.target.value })}
-            className="w-full bg-slate-700/50 border border-slate-600/50 rounded-md px-3 py-2 text-slate-200"
+            className="w-full bg-muted/50 border border-border/50 rounded-md px-3 py-2 text-foreground"
           >
             <option value="1 hour">1 hour</option>
             <option value="4 hours">4 hours</option>
@@ -338,7 +338,7 @@ export function SettingsPanel({
           <Button
             variant="outline"
             size="sm"
-            className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50"
             onClick={() => setShowChangePasswordModal(true)}
           >
             <Key className="h-4 w-4 mr-2" />
@@ -361,7 +361,7 @@ export function SettingsPanel({
   const renderTeamTab = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-medium text-slate-100">Team Management</h3>
+        <h3 className="text-lg font-medium text-foreground">Team Management</h3>
         <Button
           size="sm"
           className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
@@ -374,27 +374,27 @@ export function SettingsPanel({
 
       <div className="space-y-3">
         {teamMembers.map((member) => (
-          <div key={member.id} className="flex items-center justify-between p-4 bg-slate-700/30 rounded-lg border border-slate-600/30">
+          <div key={member.id} className="flex items-center justify-between p-4 bg-muted/30 rounded-lg border border-border/30">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-r from-fuchsia-500 to-purple-500 rounded-full flex items-center justify-center text-white font-medium">
+              <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white font-medium">
                 {member.avatar}
               </div>
               <div>
-                <div className="text-sm font-medium text-slate-200">{member.name}</div>
-                <div className="text-xs text-slate-400">{member.role}</div>
-                <div className="text-xs text-slate-500">{member.email}</div>
+                <div className="text-sm font-medium text-foreground">{member.name}</div>
+                <div className="text-xs text-muted-foreground">{member.role}</div>
+                <div className="text-xs text-muted-foreground">{member.email}</div>
               </div>
             </div>
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
                 <div className={`w-2 h-2 rounded-full ${getStatusColor(member.status)}`}></div>
-                <span className="text-xs text-slate-400 capitalize">{member.status}</span>
+                <span className="text-xs text-muted-foreground capitalize">{member.status}</span>
               </div>
-              <div className="text-xs text-slate-500">{member.lastActive}</div>
+              <div className="text-xs text-muted-foreground">{member.lastActive}</div>
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               >
                 <Settings className="h-4 w-4" />
               </Button>
@@ -409,13 +409,13 @@ export function SettingsPanel({
     <div className="space-y-4">
       {/* Header */}
       <div>
-        <h2 className="text-xl font-semibold text-slate-100">Settings</h2>
-        <p className="text-sm text-slate-400">Manage your account and preferences</p>
+        <h2 className="text-xl font-semibold text-foreground">Settings</h2>
+        <p className="text-sm text-muted-foreground">Manage your account and preferences</p>
       </div>
 
       {/* Settings Tabs */}
-      <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 backdrop-blur-sm">
-        <div className="p-4 border-b border-slate-700/50">
+      <div className="bg-card/50 rounded-lg border border-border/50 backdrop-blur-sm">
+        <div className="p-4 border-b border-border/50">
           <div className="flex items-center gap-1">
             {settingsTabs.map((tab) => {
               const Icon = tab.icon
@@ -427,8 +427,8 @@ export function SettingsPanel({
                   onClick={() => setActiveSettingsTab(tab.id as SettingsTabType)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm transition-all ${
                     isActive 
-                      ? 'bg-fuchsia-500/20 text-fuchsia-300' 
-                      : 'text-slate-400 hover:text-slate-300 hover:bg-slate-700/50'
+                      ? 'bg-fuchsia-500/20 text-primary' 
+                      : 'text-muted-foreground hover:text-foreground/80 hover:bg-accent/50'
                   }`}
                 >
                   <Icon className="h-4 w-4" />

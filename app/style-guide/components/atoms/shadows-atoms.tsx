@@ -207,8 +207,8 @@ export function ShadowsAtoms({
   }, {} as Record<string, typeof effectSystem>)
 
   const categoryColors = {
-    Shadow: "border-slate-600 text-slate-400",
-    Glow: "border-fuchsia-600 text-fuchsia-400",
+    Shadow: "border-border text-muted-foreground",
+    Glow: "border-fuchsia-600 text-primary",
     Blur: "border-purple-600 text-purple-400", 
     Glassmorphism: "border-blue-600 text-blue-400"
   }
@@ -216,14 +216,14 @@ export function ShadowsAtoms({
   return (
     <div className="space-y-12">
       <div className="text-center">
-        <h3 className="text-3xl font-bold text-slate-100 mb-4">Elevation & Effects System</h3>
-        <p className="text-lg text-slate-400">Complete shadow, blur, and glassmorphism system for depth, elevation, and modern UI effects</p>
+        <h3 className="text-3xl font-bold text-foreground mb-4">Elevation & Effects System</h3>
+        <p className="text-lg text-muted-foreground">Complete shadow, blur, and glassmorphism system for depth, elevation, and modern UI effects</p>
       </div>
 
       {Object.entries(groupedEffects).map(([category, effects]) => (
         <div key={category} className="space-y-6">
           <div className="flex items-center gap-3">
-            <h4 className="text-2xl font-bold text-slate-100">{category} Effects</h4>
+            <h4 className="text-2xl font-bold text-foreground">{category} Effects</h4>
             <Badge variant="outline" className={categoryColors[category as keyof typeof categoryColors]}>
               {effects.length} Effects
             </Badge>
@@ -231,11 +231,11 @@ export function ShadowsAtoms({
 
           <div className={`grid ${viewMode === "grid" ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1"} gap-6`}>
             {effects.map((effect) => (
-              <Card key={effect.id} className="group hover:shadow-lg transition-all duration-300 border-slate-700/50 bg-slate-800/30">
+              <Card key={effect.id} className="group hover:shadow-lg transition-all duration-300 border-border/50 bg-card/30">
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <h5 className="font-semibold text-slate-100 text-lg">{effect.name}</h5>
+                      <h5 className="font-semibold text-foreground text-lg">{effect.name}</h5>
                       <Badge variant="outline" className={`text-xs mt-1 ${categoryColors[effect.category as keyof typeof categoryColors]}`}>
                         {effect.category}
                       </Badge>
@@ -245,7 +245,7 @@ export function ShadowsAtoms({
                         variant="ghost"
                         size="sm"
                         onClick={() => onToggleFavorite(effect.id)}
-                        className="text-slate-400 hover:text-pink-400"
+                        className="text-muted-foreground hover:text-pink-400"
                       >
                         <Heart className={`h-4 w-4 ${favourites.has(effect.id) ? 'fill-current text-pink-400' : ''}`} />
                       </Button>
@@ -256,7 +256,7 @@ export function ShadowsAtoms({
                         className={`${
                           copiedCode === effect.id
                             ? 'border-green-500 text-green-400 bg-green-950' 
-                            : 'border-slate-600 hover:border-fuchsia-500 text-slate-400 hover:text-slate-200'
+                            : 'border-border hover:border-primary text-muted-foreground hover:text-foreground'
                         } transition-all`}
                       >
                         {copiedCode === effect.id ? (
@@ -269,49 +269,49 @@ export function ShadowsAtoms({
                   </div>
                   
                   {/* Effect Preview */}
-                  <div className="bg-slate-900 rounded-lg p-6 flex items-center justify-center mb-4 relative overflow-hidden">
+                  <div className="bg-card rounded-lg p-6 flex items-center justify-center mb-4 relative overflow-hidden">
                     {effect.category === 'Glassmorphism' ? (
                       <>
                         {/* Background for glassmorphism demo */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/20 via-purple-500/20 to-blue-500/20" />
-                        <div className="absolute inset-2 bg-slate-800/50 rounded-lg" />
-                        <div className={`relative w-20 h-20 bg-slate-700/30 rounded-lg ${effect.class} flex items-center justify-center text-slate-300 text-xs font-medium`}>
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-purple-500/20 to-blue-500/20" />
+                        <div className="absolute inset-2 bg-card/50 rounded-lg" />
+                        <div className={`relative w-20 h-20 bg-muted/30 rounded-lg ${effect.class} flex items-center justify-center text-foreground/80 text-xs font-medium`}>
                           Glass
                         </div>
                       </>
                     ) : effect.category === 'Blur' ? (
                       <>
                         {/* Background pattern for blur demo */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-500/30 via-purple-500/30 to-blue-500/30" />
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-purple-500/30 to-blue-500/30" />
                         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,72,153,0.3),transparent_50%)]" />
-                        <div className={`w-full h-16 bg-slate-700/50 rounded-lg ${effect.class}`} />
+                        <div className={`w-full h-16 bg-muted/50 rounded-lg ${effect.class}`} />
                       </>
                     ) : effect.category === 'Glow' ? (
                       <div 
-                        className={`w-20 h-20 bg-slate-700 rounded-lg ${effect.class}`}
+                        className={`w-20 h-20 bg-muted rounded-lg ${effect.class}`}
                         style={effect.id.includes('fuchsia') || effect.id.includes('purple') ? { 
                           boxShadow: effect.value 
                         } : {}}
                       />
                     ) : (
                       <div 
-                        className={`w-20 h-20 bg-slate-700 rounded-lg ${effect.class}`}
+                        className={`w-20 h-20 bg-muted rounded-lg ${effect.class}`}
                       />
                     )}
                   </div>
 
-                  <p className="text-sm text-slate-500 mb-3">
+                  <p className="text-sm text-muted-foreground mb-3">
                     {effect.usage}
                   </p>
 
                   <div className="space-y-2">
-                    <div className="bg-slate-800 rounded-lg p-3">
-                      <code className="text-xs text-slate-300 font-mono">
+                    <div className="bg-card rounded-lg p-3">
+                      <code className="text-xs text-foreground/80 font-mono">
                         {effect.class}
                       </code>
                     </div>
-                    <div className="bg-slate-700 rounded-lg p-3">
-                      <code className="text-xs text-slate-400 font-mono">
+                    <div className="bg-muted rounded-lg p-3">
+                      <code className="text-xs text-muted-foreground font-mono">
                         {effect.value}
                       </code>
                     </div>

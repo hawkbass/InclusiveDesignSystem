@@ -47,17 +47,17 @@ export default function Principles() {
   }
 
   return (
-    <div className="flex bg-slate-950 min-h-screen">
+    <div className="flex bg-background min-h-screen">
       <UnifiedSidebar animationSpeed={animationSpeed} />
       <main className="flex-1 overflow-auto">
         {/* Enhanced Header */}
-        <header className="sticky top-0 z-30 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800/50 shadow-lg shadow-slate-900/20">
+        <header className="sticky top-0 z-30 bg-card/95 backdrop-blur-xl border-b border-border/50 shadow-lg shadow-slate-900/20">
           <div className="px-6 lg:px-12 py-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
           <div>
-                  <h1 className="text-2xl font-bold text-slate-100">Design Principles</h1>
-                  <p className="text-sm text-slate-400">Core philosophy and guidelines</p>
+                  <h1 className="text-2xl font-bold text-foreground">Design Principles</h1>
+                  <p className="text-sm text-muted-foreground">Core philosophy and guidelines</p>
                 </div>
               </div>
 
@@ -67,7 +67,7 @@ export default function Principles() {
                   variant="outline"
                   size="sm"
                   onClick={() => setSettingsOpen(!settingsOpen)}
-                  className={`transition-all ${settingsOpen ? 'bg-fuchsia-500/20 border-fuchsia-500/50' : 'hover:bg-slate-800'}`}
+                  className={`transition-all ${settingsOpen ? 'bg-fuchsia-500/20 border-primary/50' : 'hover:bg-card'}`}
                   style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
                 >
                   <Settings className="h-4 w-4 mr-2" />
@@ -75,11 +75,11 @@ export default function Principles() {
                 </Button>
                 
                 <div className="hidden md:flex items-center gap-2">
-                  <Button variant="outline" size="sm" className="hover:bg-slate-800 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                  <Button variant="outline" size="sm" className="hover:bg-card transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <Download className="h-4 w-4 mr-2" />
                     Design Guide
                   </Button>
-                  <Button size="sm" className="bg-gradient-to-r from-fuchsia-500 to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                  <Button size="sm" className="bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <ExternalLink className="h-4 w-4 mr-2" />
                     Figma Kit
                   </Button>
@@ -89,9 +89,9 @@ export default function Principles() {
 
             {/* Settings Panel */}
             {settingsOpen && (
-              <div className="mt-4 p-4 bg-slate-800/50 rounded-lg border border-slate-700 animate-in slide-in-from-top-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
+              <div className="mt-4 p-4 bg-card/50 rounded-lg border border-border animate-in slide-in-from-top-2" style={{ animationDuration: `${1 / safeAnimationSpeed}s` }}>
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-medium text-slate-200">Interface Settings</h3>
+                  <h3 className="font-medium text-foreground">Interface Settings</h3>
                   <Button
                     variant="ghost"
                     size="sm"
@@ -105,7 +105,7 @@ export default function Principles() {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <Label className="text-sm font-medium">Animation Speed</Label>
-                      <span className="text-xs text-slate-400 font-mono">{safeAnimationSpeed}x</span>
+                      <span className="text-xs text-muted-foreground font-mono">{safeAnimationSpeed}x</span>
                     </div>
                     <Slider
                       value={animationSpeed}
@@ -136,7 +136,7 @@ export default function Principles() {
         </header>
 
         {/* Strategic Header - Value First */}
-        <header className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-green-500/10 border-b border-slate-800/50">
+        <header className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-green-500/10 border-b border-border/50">
         <div className="px-6 lg:px-12 py-8">
             <div className="max-w-6xl mx-auto">
               {/* Value Proposition */}
@@ -144,7 +144,7 @@ export default function Principles() {
                 <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-blue-500 via-purple-500 to-green-500 bg-clip-text text-transparent">
                   Design Principles
                 </h1>
-                <p className="text-xl text-slate-300 mb-6 max-w-3xl mx-auto">
+                <p className="text-xl text-foreground/80 mb-6 max-w-3xl mx-auto">
                   The foundational principles that guide Inclusive's design decisions. Build consistent, 
                   efficient recruitment experiences that scale across all products.
                 </p>
@@ -153,19 +153,19 @@ export default function Principles() {
                 <div className="flex flex-wrap justify-center gap-6 mb-8">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-red-400">98%</div>
-                    <div className="text-sm text-slate-400">User Satisfaction</div>
+                    <div className="text-sm text-muted-foreground">User Satisfaction</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-blue-400">150+</div>
-                    <div className="text-sm text-slate-400">User Studies</div>
+                    <div className="text-sm text-muted-foreground">User Studies</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-green-400">96%</div>
-                    <div className="text-sm text-slate-400">Design Consistency</div>
+                    <div className="text-sm text-muted-foreground">Design Consistency</div>
                   </div>
                   <div className="text-center">
                     <div className="text-2xl font-bold text-purple-400">94%</div>
-                    <div className="text-sm text-slate-400">Task Completion</div>
+                    <div className="text-sm text-muted-foreground">Task Completion</div>
                   </div>
                 </div>
               </div>
@@ -256,7 +256,7 @@ Post-Implementation:
                 
                 <Button
                   variant="outline"
-                  className="border-slate-600 hover:bg-slate-700 h-auto py-4"
+                  className="border-border hover:bg-accent h-auto py-4"
                   onClick={() => window.open('/design-system/tokens', '_blank')}
                 >
                   <div className="text-center">
@@ -268,7 +268,7 @@ Post-Implementation:
                 
                 <Button
                   variant="outline"
-                  className="border-slate-600 hover:bg-slate-700 h-auto py-4"
+                  className="border-border hover:bg-accent h-auto py-4"
                   onClick={() => {
                     // Scroll to resources tab
                     const resourcesTab = document.querySelector('[data-tab="resources"]')
@@ -302,27 +302,27 @@ Post-Implementation:
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">Human-centred Design</h3>
+                        <h3 className="text-xl font-bold text-foreground">Human-centred Design</h3>
                         <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                           98% Satisfaction
                 </Badge>
                       </div>
-                      <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                      <p className="text-foreground/80 text-sm leading-relaxed mb-4">
                         Every decision starts with user needs. We prioritize accessibility, inclusion, and real user testing.
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>WCAG 2.1 AA compliance by default</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Test with real users before implementation</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Focus on diverse user groups</span>
                     </div>
@@ -348,27 +348,27 @@ Post-Implementation:
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">Evidence-Based Decisions</h3>
+                        <h3 className="text-xl font-bold text-foreground">Evidence-Based Decisions</h3>
                 <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
                           150+ Studies
                 </Badge>
                       </div>
-                      <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                      <p className="text-foreground/80 text-sm leading-relaxed mb-4">
                         Back all choices with research and user testing. Measure impact and iterate based on data.
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>A/B testing for major changes</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Document decision rationale</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Continuous performance monitoring</span>
                     </div>
@@ -395,27 +395,27 @@ Post-Implementation:
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">Consistency & Scalability</h3>
+                        <h3 className="text-xl font-bold text-foreground">Consistency & Scalability</h3>
                 <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
                           96% Consistency
                 </Badge>
               </div>
-                      <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                      <p className="text-foreground/80 text-sm leading-relaxed mb-4">
                         Maintain unified patterns across all products. Design systems that grow with the organisation.
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Shared component library</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Unified design tokens</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Cross-platform patterns</span>
                     </div>
@@ -441,27 +441,27 @@ Post-Implementation:
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="text-xl font-bold text-slate-100">Efficiency & Performance</h3>
+                        <h3 className="text-xl font-bold text-foreground">Efficiency & Performance</h3>
                         <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
                           94% Completion
                         </Badge>
                       </div>
-                      <p className="text-slate-300 text-sm leading-relaxed mb-4">
+                      <p className="text-foreground/80 text-sm leading-relaxed mb-4">
                         optimise for both user and developer experience. Smart defaults reduce cognitive load.
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Minimal cognitive load</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Smart defaults & automation</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-slate-400">
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <CheckCircle2 className="h-4 w-4 text-green-400" />
                       <span>Performance optimised</span>
                     </div>
@@ -484,20 +484,20 @@ Post-Implementation:
           {/* Implementation Guide */}
           <section className="mb-12">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-3 text-slate-100">
+              <h2 className="text-3xl font-bold mb-3 text-foreground">
                 Implementation Guide
               </h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 Put these principles into practice with actionable steps and tools.
               </p>
                         </div>
 
             <div className="grid md:grid-cols-3 gap-6">
               {/* For Designers */}
-              <Card className="bg-gradient-to-br from-fuchsia-500/10 via-fuchsia-500/5 to-transparent border-fuchsia-500/20 hover:border-fuchsia-400/40 transition-all duration-300">
+              <Card className="bg-gradient-to-br from-primary/10 via-fuchsia-500/5 to-transparent border-primary/20 hover:border-fuchsia-400/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
-                    <Lightbulb className="h-5 w-5 text-fuchsia-400" />
+                  <CardTitle className="flex items-center gap-2 text-lg text-foreground">
+                    <Lightbulb className="h-5 w-5 text-primary" />
                     For Designers
                   </CardTitle>
                   <CardDescription>Apply principles in your design process</CardDescription>
@@ -506,15 +506,15 @@ Post-Implementation:
                   <div className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Start with user research and personas</span>
+                      <span className="text-foreground/80">Start with user research and personas</span>
                       </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Use design tokens for consistency</span>
+                      <span className="text-foreground/80">Use design tokens for consistency</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Test prototypes with real users</span>
+                      <span className="text-foreground/80">Test prototypes with real users</span>
                     </div>
                   </div>
                   <Button 
@@ -531,7 +531,7 @@ Post-Implementation:
               {/* For Developers */}
               <Card className="bg-gradient-to-br from-blue-500/10 via-blue-500/5 to-transparent border-blue-500/20 hover:border-blue-400/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
+                  <CardTitle className="flex items-center gap-2 text-lg text-foreground">
                     <Code2 className="h-5 w-5 text-blue-400" />
                     For Developers
                   </CardTitle>
@@ -541,15 +541,15 @@ Post-Implementation:
                   <div className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Use semantic HTML structure</span>
+                      <span className="text-foreground/80">Use semantic HTML structure</span>
                         </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Implement keyboard navigation</span>
+                      <span className="text-foreground/80">Implement keyboard navigation</span>
                       </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Test with screen readers</span>
+                      <span className="text-foreground/80">Test with screen readers</span>
                     </div>
                   </div>
                   <Button 
@@ -566,7 +566,7 @@ Post-Implementation:
               {/* For Product Managers */}
               <Card className="bg-gradient-to-br from-green-500/10 via-green-500/5 to-transparent border-green-500/20 hover:border-green-400/40 transition-all duration-300">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg text-slate-100">
+                  <CardTitle className="flex items-center gap-2 text-lg text-foreground">
                     <Target className="h-5 w-5 text-green-400" />
                     For Product Managers
                   </CardTitle>
@@ -576,15 +576,15 @@ Post-Implementation:
                   <div className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Use the review checklist for features</span>
+                      <span className="text-foreground/80">Use the review checklist for features</span>
                         </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Measure user satisfaction metrics</span>
+                      <span className="text-foreground/80">Measure user satisfaction metrics</span>
                       </div>
                     <div className="flex items-start gap-2 text-sm">
                       <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
-                      <span className="text-slate-300">Document design decisions</span>
+                      <span className="text-foreground/80">Document design decisions</span>
                     </div>
                   </div>
                   <Button 
@@ -603,10 +603,10 @@ Post-Implementation:
           {/* Resources & Downloads */}
           <section className="mb-12" data-tab="resources">
             <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold mb-3 text-slate-100">
+              <h2 className="text-3xl font-bold mb-3 text-foreground">
                 Resources & Downloads
               </h2>
-              <p className="text-slate-400 max-w-2xl mx-auto">
+              <p className="text-muted-foreground max-w-2xl mx-auto">
                 Ready-to-use tools and templates to implement these principles.
               </p>
                       </div>
@@ -680,7 +680,7 @@ Post-Implementation:
                   setTimeout(() => setCopiedCode(''), 2000)
                 }}
                 variant="outline"
-                className="h-auto py-4 border-slate-600 hover:bg-slate-700"
+                className="h-auto py-4 border-border hover:bg-accent"
               >
                 <div className="text-center">
                   {copiedCode === 'principles-doc' ? (
@@ -697,7 +697,7 @@ Post-Implementation:
 
               <Button
                 variant="outline"
-                className="h-auto py-4 border-slate-600 hover:bg-slate-700"
+                className="h-auto py-4 border-border hover:bg-accent"
                 onClick={() => window.open('/design-system/accessibility', '_blank')}
               >
                 <div className="text-center">
@@ -709,7 +709,7 @@ Post-Implementation:
 
               <Button
                 variant="outline"
-                className="h-auto py-4 border-slate-600 hover:bg-slate-700"
+                className="h-auto py-4 border-border hover:bg-accent"
                 onClick={() => window.open('/design-system/best-practices', '_blank')}
               >
                 <div className="text-center">
@@ -793,41 +793,41 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
 
   return (
     <div className="space-y-8">
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
                 <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
-            <Target className="h-6 w-6 text-fuchsia-400" />
+          <CardTitle className="text-2xl text-foreground flex items-center gap-3">
+            <Target className="h-6 w-6 text-primary" />
             Core Design Principles
           </CardTitle>
-          <CardDescription className="text-slate-400 mt-2">
+          <CardDescription className="text-muted-foreground mt-2">
             The foundational principles that guide every design decision and ensure consistent, user-centred experiences.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-8">
             {corePrinciples.map((principle, index) => (
-              <Card key={index} className="bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 hover:border-slate-600/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+              <Card key={index} className="bg-card/30 border-border/50 hover:bg-card/50 hover:border-border/50 transition-all group" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-6">
                     <div className={`w-14 h-14 ${principle.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                       <principle.icon className={`h-7 w-7 ${principle.colour}`} />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-semibold text-slate-100 mb-3 group-hover:text-fuchsia-300 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                         {principle.title}
                       </h3>
-                      <p className="text-slate-400 leading-relaxed mb-4">
+                      <p className="text-muted-foreground leading-relaxed mb-4">
                         {principle.description}
                       </p>
                     </div>
                   </div>
                   
                   <div className="space-y-3">
-                    <h4 className="text-sm font-medium text-slate-300 mb-3">Key Features:</h4>
+                    <h4 className="text-sm font-medium text-foreground/80 mb-3">Key Features:</h4>
                     {principle.details.map((detail, idx) => (
-                      <div key={idx} className="flex items-center gap-3 p-2 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <div key={idx} className="flex items-center gap-3 p-2 bg-card/30 rounded-lg hover:bg-card/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                         <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
-                        <span className="text-slate-300 text-sm">{detail}</span>
+                        <span className="text-foreground/80 text-sm">{detail}</span>
                       </div>
                     ))}
                   </div>
@@ -908,13 +908,13 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
   return (
     <div className="space-y-8">
       {/* Application Areas */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
-            <Zap className="h-6 w-6 text-fuchsia-400" />
+          <CardTitle className="text-2xl text-foreground flex items-center gap-3">
+            <Zap className="h-6 w-6 text-primary" />
             Principle Applications
           </CardTitle>
-          <CardDescription className="text-slate-400 mt-2">
+          <CardDescription className="text-muted-foreground mt-2">
             How our design principles are applied in practice across different areas.
           </CardDescription>
         </CardHeader>
@@ -924,18 +924,18 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
               <div key={index} className="space-y-4">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-fuchsia-500/20 rounded-lg flex items-center justify-center">
-                    <area.icon className="h-5 w-5 text-fuchsia-400" />
+                    <area.icon className="h-5 w-5 text-primary" />
     </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-100">{area.title}</h3>
-                    <p className="text-sm text-slate-400">{area.description}</p>
+                    <h3 className="text-lg font-semibold text-foreground">{area.title}</h3>
+                    <p className="text-sm text-muted-foreground">{area.description}</p>
                   </div>
                 </div>
                 <div className="grid md:grid-cols-3 gap-4">
                   {area.examples.map((example, idx) => (
-                    <div key={idx} className="p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                      <div className="text-sm font-medium text-fuchsia-300 mb-2">{example.principle}</div>
-                      <div className="text-sm text-slate-400">{example.application}</div>
+                    <div key={idx} className="p-4 bg-card/30 rounded-lg border border-border/30 hover:border-border/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <div className="text-sm font-medium text-primary mb-2">{example.principle}</div>
+                      <div className="text-sm text-muted-foreground">{example.application}</div>
                     </div>
                   ))}
                 </div>
@@ -946,13 +946,13 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
       </Card>
 
       {/* Implementation Guidelines */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
-            <CheckCircle2 className="h-6 w-6 text-fuchsia-400" />
+          <CardTitle className="text-2xl text-foreground flex items-center gap-3">
+            <CheckCircle2 className="h-6 w-6 text-primary" />
             Implementation Checklists
           </CardTitle>
-          <CardDescription className="text-slate-400 mt-2">
+          <CardDescription className="text-muted-foreground mt-2">
             Practical checklists to ensure principles are followed during design and development.
           </CardDescription>
         </CardHeader>
@@ -960,7 +960,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
           <div className="grid md:grid-cols-3 gap-6">
             {implementationGuidelines.map((guideline, index) => (
               <div key={index} className="space-y-4">
-                <h3 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
+                <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <div className="w-6 h-6 bg-green-500/20 rounded flex items-center justify-center">
                     <CheckCircle2 className="h-4 w-4 text-green-400" />
                   </div>
@@ -968,9 +968,9 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
                 </h3>
                 <div className="space-y-3">
                   {guideline.checklist.map((item, idx) => (
-                    <div key={idx} className="flex items-start gap-3 p-3 bg-slate-900/30 rounded-lg hover:bg-slate-900/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                      <div className="w-4 h-4 border border-slate-600 rounded mt-0.5 flex-shrink-0"></div>
-                      <span className="text-sm text-slate-300">{item}</span>
+                    <div key={idx} className="flex items-start gap-3 p-3 bg-card/30 rounded-lg hover:bg-card/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                      <div className="w-4 h-4 border border-border rounded mt-0.5 flex-shrink-0"></div>
+                      <span className="text-sm text-foreground/80">{item}</span>
                     </div>
                   ))}
                 </div>
@@ -981,15 +981,15 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
       </Card>
 
       {/* Code Example */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
         <CardHeader>
-          <CardTitle className="text-xl text-slate-100">Example: Accessible Button Implementation</CardTitle>
+          <CardTitle className="text-xl text-foreground">Example: Accessible Button Implementation</CardTitle>
           <CardDescription>How our principles translate to actual component code</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <pre className="bg-slate-900/50 p-4 rounded-lg text-sm overflow-x-auto border border-slate-700/30">
-              <code className="text-slate-300">{`// Accessibility First: ARIA attributes, keyboard support
+            <pre className="bg-card/50 p-4 rounded-lg text-sm overflow-x-auto border border-border/30">
+              <code className="text-foreground/80">{`// Accessibility First: ARIA attributes, keyboard support
 // Consistency: Standardized variants and sizes  
 // Efficiency: Smart defaults and TypeScript support
 // Scalability: Flexible styling system
@@ -1160,31 +1160,31 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
       {/* Quick Links */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
-            <Zap className="h-6 w-6 text-fuchsia-400" />
+          <CardTitle className="text-2xl text-foreground flex items-center gap-3">
+            <Zap className="h-6 w-6 text-primary" />
             Quick Links
           </CardTitle>
-          <CardDescription className="text-slate-400 mt-2">
+          <CardDescription className="text-muted-foreground mt-2">
             Essential resources and tools for immediate access.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-4">
             {quickLinks.map((link, index) => (
-              <div key={index} className="group p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-fuchsia-500/30 hover:bg-slate-900/50 transition-all cursor-pointer" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+              <div key={index} className="group p-4 bg-card/30 rounded-lg border border-border/30 hover:border-primary/30 hover:bg-card/50 transition-all cursor-pointer" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-fuchsia-500/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                      <link.icon className="h-5 w-5 text-fuchsia-400" />
+                      <link.icon className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-slate-100 group-hover:text-fuchsia-300 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{link.title}</h3>
-                      <p className="text-sm text-slate-400">{link.description}</p>
+                      <h3 className="font-medium text-foreground group-hover:text-primary transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{link.title}</h3>
+                      <p className="text-sm text-muted-foreground">{link.description}</p>
                     </div>
                   </div>
-                  <Badge variant="secondary" className="bg-slate-800/50 text-slate-300 border-slate-600/50">
+                  <Badge variant="secondary" className="bg-card/50 text-foreground/80 border-border/50">
                     {link.action}
                   </Badge>
                 </div>
@@ -1197,9 +1197,9 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       {/* Resource Categories */}
       <div className="space-y-8">
         {resources.map((category, index) => (
-          <Card key={index} className="bg-slate-800/30 border-slate-700/50">
+          <Card key={index} className="bg-card/30 border-border/50">
             <CardHeader>
-              <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
+              <CardTitle className="text-xl text-foreground flex items-center gap-3">
                 <div className={`w-8 h-8 ${category.bgColor} rounded-lg flex items-center justify-center`}>
                   <category.icon className={`h-5 w-5 ${category.colour}`} />
                 </div>
@@ -1209,15 +1209,15 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
             <CardContent>
               <div className="grid md:grid-cols-2 gap-4">
                 {category.items.map((item, idx) => (
-                  <div key={idx} className="group p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-900/50 transition-all cursor-pointer" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                  <div key={idx} className="group p-4 bg-card/30 rounded-lg border border-border/30 hover:border-border/50 hover:bg-card/50 transition-all cursor-pointer" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <div className="flex items-start justify-between mb-2">
-                      <h3 className="font-medium text-slate-100 group-hover:text-fuchsia-300 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{item.title}</h3>
+                      <h3 className="font-medium text-foreground group-hover:text-primary transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>{item.title}</h3>
                       <Badge variant="outline" className="text-xs">
                         {item.type}
                       </Badge>
                     </div>
-                    <p className="text-sm text-slate-400 leading-relaxed">{item.description}</p>
-                    <div className="mt-3 flex items-center gap-2 text-xs text-slate-500 group-hover:text-slate-400 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                    <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground group-hover:text-muted-foreground transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                       <ExternalLink className="h-3 w-3" />
                       View Resource
                     </div>
@@ -1230,13 +1230,13 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       </div>
 
       {/* Support */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
         <CardHeader>
-          <CardTitle className="text-xl text-slate-100 flex items-center gap-3">
-            <Heart className="h-6 w-6 text-fuchsia-400" />
+          <CardTitle className="text-xl text-foreground flex items-center gap-3">
+            <Heart className="h-6 w-6 text-primary" />
             Support & Community
           </CardTitle>
-          <CardDescription className="text-slate-400 mt-2">
+          <CardDescription className="text-muted-foreground mt-2">
             Get help and connect with other design system users.
           </CardDescription>
         </CardHeader>
@@ -1246,8 +1246,8 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
               <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto">
                 <Users className="h-6 w-6 text-blue-400" />
               </div>
-              <h3 className="font-medium text-slate-100">Community Forum</h3>
-              <p className="text-sm text-slate-400">Ask questions and share experiences with other users.</p>
+              <h3 className="font-medium text-foreground">Community Forum</h3>
+              <p className="text-sm text-muted-foreground">Ask questions and share experiences with other users.</p>
               <Button variant="outline" size="sm" className="w-full">
                 Join Discussion
               </Button>
@@ -1256,8 +1256,8 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
               <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto">
                 <BookOpen className="h-6 w-6 text-green-400" />
               </div>
-              <h3 className="font-medium text-slate-100">Documentation</h3>
-              <p className="text-sm text-slate-400">Comprehensive guides and API references.</p>
+              <h3 className="font-medium text-foreground">Documentation</h3>
+              <p className="text-sm text-muted-foreground">Comprehensive guides and API references.</p>
               <Button variant="outline" size="sm" className="w-full">
                 Browse Docs
               </Button>
@@ -1266,8 +1266,8 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
               <div className="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mx-auto">
                 <Heart className="h-6 w-6 text-purple-400" />
               </div>
-              <h3 className="font-medium text-slate-100">Direct Support</h3>
-              <p className="text-sm text-slate-400">Get help directly from the design system team.</p>
+              <h3 className="font-medium text-foreground">Direct Support</h3>
+              <p className="text-sm text-muted-foreground">Get help directly from the design system team.</p>
               <Button variant="outline" size="sm" className="w-full">
                 Contact Support
               </Button>
@@ -1314,28 +1314,28 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
   return (
     <div className="space-y-8">
       {/* Philosophy Cards */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
-            <Lightbulb className="h-6 w-6 text-fuchsia-400" />
+          <CardTitle className="text-2xl text-foreground flex items-center gap-3">
+            <Lightbulb className="h-6 w-6 text-primary" />
             Design Philosophy
           </CardTitle>
-          <CardDescription className="text-slate-400 mt-2">
+          <CardDescription className="text-muted-foreground mt-2">
             Our approach to creating meaningful, accessible, and effective design solutions.
           </CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-6">
             {designPhilosophy.map((item, index) => (
-              <div key={index} className="group p-6 bg-slate-900/30 rounded-xl border border-slate-700/30 hover:border-fuchsia-500/30 hover:bg-slate-900/50 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+              <div key={index} className="group p-6 bg-card/30 rounded-xl border border-border/30 hover:border-primary/30 hover:bg-card/50 transition-all" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 bg-slate-800/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+                  <div className="w-12 h-12 bg-card/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                     <item.icon className={`h-6 w-6 ${item.colour}`} />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-slate-100 mb-2">{item.title}</h3>
-                    <p className="text-slate-400 text-sm leading-relaxed mb-3">{item.description}</p>
-                    <Badge variant="secondary" className="bg-slate-800/50 text-slate-300 border-slate-600/50">
+                    <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed mb-3">{item.description}</p>
+                    <Badge variant="secondary" className="bg-card/50 text-foreground/80 border-border/50">
                       {item.stats}
                     </Badge>
                   </div>
@@ -1347,13 +1347,13 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       </Card>
 
       {/* Impact Metrics */}
-      <Card className="bg-slate-800/30 border-slate-700/50">
+      <Card className="bg-card/30 border-border/50">
         <CardHeader>
-          <CardTitle className="text-2xl text-slate-100 flex items-center gap-3">
-            <Award className="h-6 w-6 text-fuchsia-400" />
+          <CardTitle className="text-2xl text-foreground flex items-center gap-3">
+            <Award className="h-6 w-6 text-primary" />
             Impact & Results
           </CardTitle>
-          <CardDescription className="text-slate-400 mt-2">
+          <CardDescription className="text-muted-foreground mt-2">
             Measurable outcomes from applying our design principles.
           </CardDescription>
         </CardHeader>
@@ -1365,10 +1365,10 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
               { label: "Task Completion", value: "94%", change: "+8% efficiency", colour: "text-purple-400" },
               { label: "Design Consistency", value: "96%", change: "Across all products", colour: "text-orange-400" }
             ].map((metric, index) => (
-              <div key={index} className="text-center p-4 bg-slate-900/30 rounded-lg border border-slate-700/30 hover:border-slate-600/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
+              <div key={index} className="text-center p-4 bg-card/30 rounded-lg border border-border/30 hover:border-border/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
                 <div className={`text-2xl font-bold ${metric.colour} mb-1`}>{metric.value}</div>
-                <div className="text-sm text-slate-300 mb-1">{metric.label}</div>
-                <div className="text-xs text-slate-500">{metric.change}</div>
+                <div className="text-sm text-foreground/80 mb-1">{metric.label}</div>
+                <div className="text-xs text-muted-foreground">{metric.change}</div>
               </div>
             ))}
           </div>

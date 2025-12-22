@@ -7,6 +7,16 @@ import { Loader2 } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Button component with accessible touch targets
+ * 
+ * All interactive sizes meet or approach 44px minimum height
+ * 
+ * Reference: 
+ * - WCAG 2.5.5 Target Size: 44x44px minimum
+ * - Fitts's Law: Larger targets are faster to acquire
+ * - Apple HIG: 44pt minimum touch target
+ */
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
@@ -20,12 +30,22 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        xs: "h-7 px-2 text-xs",
-        sm: "h-8 px-3 text-xs",
-        default: "h-10 px-4 py-2",
-        lg: "h-11 px-8",
-        xl: "h-12 px-10 text-base",
-        icon: "h-10 w-10",
+        /*
+         * SIZE VARIANTS - UPDATED for 44px touch target compliance
+         * 
+         * xs: 36px - Compact but accessible (desktop only recommendation)
+         * sm: 40px - Small but near-accessible
+         * default: 44px - Standard accessible size (MEETS WCAG 2.5.5)
+         * lg: 48px - Large comfortable touch target
+         * xl: 52px - Extra large for primary CTAs
+         * icon: 44px - Square icon button (MEETS WCAG 2.5.5)
+         */
+        xs: "h-9 px-2.5 text-xs",        // 36px height (was 28px)
+        sm: "h-10 px-3 text-xs",          // 40px height (was 32px)
+        default: "h-11 px-4 py-2",        // 44px height (was 40px) ← WCAG COMPLIANT
+        lg: "h-12 px-8",                  // 48px height (was 44px)
+        xl: "h-14 px-10 text-base",       // 56px height (was 48px) - using h-14 (Tailwind standard)
+        icon: "h-11 w-11",                // 44px square (was 40px) ← WCAG COMPLIANT
       },
     },
     defaultVariants: {

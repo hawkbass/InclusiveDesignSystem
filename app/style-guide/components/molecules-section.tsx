@@ -66,8 +66,8 @@ export function MoleculesSection({
       name: "Input", 
       category: "Forms",
       description: "Form input fields with slate styling and validation states",
-      component: <Input placeholder="Search..." className="bg-slate-800 border-slate-700 text-sm w-32" />,
-      code: `<Input placeholder="Search..." className="bg-slate-800 border-slate-700" />`,
+      component: <Input placeholder="Search..." className="bg-card border-border text-sm w-32" />,
+      code: `<Input placeholder="Search..." className="bg-card border-border" />`,
       variants: ["Text", "Email", "Password", "Search", "Number"],
       usage: "Text input, forms, search"
     },
@@ -96,7 +96,7 @@ export function MoleculesSection({
       name: "Avatar", 
       category: "Display",
       description: "User avatars with fallbacks and status indicators",
-      component: <Avatar className="w-8 h-8"><AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 text-xs">JD</AvatarFallback></Avatar>,
+      component: <Avatar className="w-8 h-8"><AvatarFallback className="bg-fuchsia-500/20 text-primary text-xs">JD</AvatarFallback></Avatar>,
       code: `<Avatar><AvatarFallback>JD</AvatarFallback></Avatar>`,
       variants: ["Image", "Fallback", "Group", "Status"],
       usage: "User representation, profiles"
@@ -253,21 +253,21 @@ export function MoleculesSection({
     <div className="space-y-12">
       {/* Summary Stats */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
           <div className="text-3xl font-bold text-purple-400">{basicComponents.length}</div>
-          <div className="text-sm text-slate-400">Basic Components</div>
+          <div className="text-sm text-muted-foreground">Basic Components</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
           <div className="text-3xl font-bold text-indigo-400">{advancedMolecules.length}</div>
-          <div className="text-sm text-slate-400">Advanced Molecules</div>
+          <div className="text-sm text-muted-foreground">Advanced Molecules</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
-          <div className="text-3xl font-bold text-fuchsia-400">{basicComponents.length + advancedMolecules.length}</div>
-          <div className="text-sm text-slate-400">Total Components</div>
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
+          <div className="text-3xl font-bold text-primary">{basicComponents.length + advancedMolecules.length}</div>
+          <div className="text-sm text-muted-foreground">Total Components</div>
         </div>
-        <div className="bg-slate-900/50 rounded-lg p-6 text-center border border-slate-700/30">
+        <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
           <div className="text-3xl font-bold text-green-400">{advancedMolecules.filter(mol => mol.status === 'Production Ready').length}</div>
-          <div className="text-sm text-slate-400">Production Ready</div>
+          <div className="text-sm text-muted-foreground">Production Ready</div>
         </div>
       </div>
 
@@ -278,24 +278,24 @@ export function MoleculesSection({
             <Component className="h-5 w-5 text-purple-400" />
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-slate-100">Basic Components</h3>
-            <p className="text-slate-400">Fundamental UI building blocks with live previews</p>
+            <h3 className="text-2xl font-bold text-foreground">Basic Components</h3>
+            <p className="text-muted-foreground">Fundamental UI building blocks with live previews</p>
           </div>
         </div>
 
         <div className={`grid ${viewMode === "grid" ? "grid-cols-1 lg:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"} gap-6`}>
           {filteredBasicComponents.map((comp, index) => (
-            <Card key={comp.id} className="bg-slate-800/30 border-slate-700/50 hover:border-purple-500/50 transition-all group">
+            <Card key={comp.id} className="bg-card/30 border-border/50 hover:border-purple-500/50 transition-all group">
               <CardHeader>
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <CardTitle className="text-lg text-slate-200">{comp.name}</CardTitle>
-                      <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
+                      <CardTitle className="text-lg text-foreground">{comp.name}</CardTitle>
+                      <Badge variant="outline" className="text-xs border-border text-muted-foreground">
                         {comp.category}
                       </Badge>
                     </div>
-                    <CardDescription className="text-slate-400 text-sm">
+                    <CardDescription className="text-muted-foreground text-sm">
                       {comp.description}
                     </CardDescription>
                   </div>
@@ -305,23 +305,23 @@ export function MoleculesSection({
                     onClick={() => onToggleFavorite(comp.id)}
                     className="opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <Heart className={`h-4 w-4 ${favourites.has(comp.id) ? 'fill-current text-pink-400' : 'text-slate-400'}`} />
+                    <Heart className={`h-4 w-4 ${favourites.has(comp.id) ? 'fill-current text-pink-400' : 'text-muted-foreground'}`} />
                   </Button>
                 </div>
               </CardHeader>
 
               <CardContent className="space-y-4">
                 {/* Live Preview */}
-                <div className="bg-slate-900/50 rounded-lg p-4 flex items-center justify-center min-h-[60px] border border-slate-700/30">
+                <div className="bg-card/50 rounded-lg p-4 flex items-center justify-center min-h-[60px] border border-border/30">
                   {comp.component}
                 </div>
 
                 {/* Variants */}
                 <div>
-                  <div className="text-xs text-slate-400 mb-2">Variants:</div>
+                  <div className="text-xs text-muted-foreground mb-2">Variants:</div>
                   <div className="flex flex-wrap gap-1">
                     {comp.variants.map((variant, vIndex) => (
-                      <Badge key={vIndex} variant="outline" className="text-xs border-slate-600 text-slate-400">
+                      <Badge key={vIndex} variant="outline" className="text-xs border-border text-muted-foreground">
                         {variant}
                       </Badge>
                     ))}
@@ -330,16 +330,16 @@ export function MoleculesSection({
 
                 {/* Code */}
                 <div>
-                  <div className="text-xs text-slate-400 mb-2">Code:</div>
-                  <div className="bg-slate-900/50 rounded p-3 border border-slate-700/30 relative">
-                    <code className="text-xs text-slate-300 font-mono block overflow-x-auto">
+                  <div className="text-xs text-muted-foreground mb-2">Code:</div>
+                  <div className="bg-card/50 rounded p-3 border border-border/30 relative">
+                    <code className="text-xs text-foreground/80 font-mono block overflow-x-auto">
                       {comp.code}
                     </code>
                     <Button
                       size="sm"
                       variant="ghost"
                       onClick={() => onCopyCode(comp.code, `basic-${index}`)}
-                      className="absolute top-2 right-2 text-slate-400 hover:text-slate-200"
+                      className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
                     >
                       {copiedCode === `basic-${index}` ? (
                         <CheckCircle2 className="h-3 w-3 text-green-400" />
@@ -351,7 +351,7 @@ export function MoleculesSection({
                 </div>
 
                 {/* Usage */}
-                <div className="text-xs text-slate-500 italic">
+                <div className="text-xs text-muted-foreground italic">
                   {comp.usage}
                 </div>
               </CardContent>
@@ -367,29 +367,29 @@ export function MoleculesSection({
             <Sparkles className="h-5 w-5 text-indigo-400" />
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-slate-100">Advanced Molecules</h3>
-            <p className="text-slate-400">Complex components with advanced functionality</p>
+            <h3 className="text-2xl font-bold text-foreground">Advanced Molecules</h3>
+            <p className="text-muted-foreground">Complex components with advanced functionality</p>
           </div>
         </div>
 
         <div className={`grid ${viewMode === "grid" ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"} gap-6`}>
           {filteredAdvancedMolecules.map((molecule, index) => (
-            <Card key={molecule.id} className="bg-slate-800/30 border-slate-700/50 hover:border-indigo-500/50 transition-all group">
+            <Card key={molecule.id} className="bg-card/30 border-border/50 hover:border-indigo-500/50 transition-all group">
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <CardTitle className="text-lg text-slate-200">{molecule.name}</CardTitle>
+                      <CardTitle className="text-lg text-foreground">{molecule.name}</CardTitle>
                       <Badge className={`text-xs ${
                         molecule.status === 'Production Ready' ? 'bg-green-500/20 text-green-300' :
                         molecule.status === 'Beta' ? 'bg-yellow-500/20 text-yellow-300' :
-                        'bg-slate-500/20 text-slate-300'
+                        'bg-slate-500/20 text-foreground/80'
                       }`}>
                         {molecule.status}
                       </Badge>
                     </div>
                     <div className="flex items-center gap-2 mb-3">
-                      <Badge variant="outline" className="text-xs border-slate-600 text-slate-400">
+                      <Badge variant="outline" className="text-xs border-border text-muted-foreground">
                         {molecule.category}
                       </Badge>
                       <Badge className={`text-xs ${
@@ -400,7 +400,7 @@ export function MoleculesSection({
                         {molecule.complexity}
                       </Badge>
                     </div>
-                    <CardDescription className="text-slate-400">
+                    <CardDescription className="text-muted-foreground">
                       {molecule.description}
                     </CardDescription>
                   </div>
@@ -410,7 +410,7 @@ export function MoleculesSection({
                     onClick={() => onToggleFavorite(molecule.id)}
                     className="opacity-0 group-hover:opacity-100 transition-opacity"
                   >
-                    <Heart className={`h-4 w-4 ${favourites.has(molecule.id) ? 'fill-current text-pink-400' : 'text-slate-400'}`} />
+                    <Heart className={`h-4 w-4 ${favourites.has(molecule.id) ? 'fill-current text-pink-400' : 'text-muted-foreground'}`} />
                   </Button>
                 </div>
               </CardHeader>
@@ -418,16 +418,16 @@ export function MoleculesSection({
               <CardContent className="space-y-4">
                 {/* Code Preview */}
                 <div>
-                  <div className="text-xs text-slate-400 mb-2">Usage:</div>
-                  <div className="bg-slate-900/50 rounded p-3 border border-slate-700/30 relative">
-                    <code className="text-xs text-slate-300 font-mono">
+                  <div className="text-xs text-muted-foreground mb-2">Usage:</div>
+                  <div className="bg-card/50 rounded p-3 border border-border/30 relative">
+                    <code className="text-xs text-foreground/80 font-mono">
                       {molecule.codePreview}
                     </code>
                     <Button
                       size="sm"
                       variant="ghost"
                       onClick={() => onCopyCode(molecule.codePreview, `advanced-${index}`)}
-                      className="absolute top-2 right-2 text-slate-400 hover:text-slate-200"
+                      className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
                     >
                       {copiedCode === `advanced-${index}` ? (
                         <CheckCircle2 className="h-3 w-3 text-green-400" />
@@ -440,10 +440,10 @@ export function MoleculesSection({
 
                 {/* Features */}
                 <div>
-                  <div className="text-xs text-slate-400 mb-2">Key Features:</div>
+                  <div className="text-xs text-muted-foreground mb-2">Key Features:</div>
                   <div className="flex flex-wrap gap-1">
                     {molecule.features.map((feature, fIndex) => (
-                      <Badge key={fIndex} variant="outline" className="text-xs border-slate-600 text-slate-400">
+                      <Badge key={fIndex} variant="outline" className="text-xs border-border text-muted-foreground">
                         {feature}
                       </Badge>
                     ))}
@@ -451,7 +451,7 @@ export function MoleculesSection({
                 </div>
 
                 {/* Usage */}
-                <div className="text-xs text-slate-500 italic">
+                <div className="text-xs text-muted-foreground italic">
                   {molecule.usage}
                 </div>
 
@@ -460,7 +460,7 @@ export function MoleculesSection({
                   <Button 
                     size="sm" 
                     variant="outline" 
-                    className="flex-1 text-slate-400 border-slate-600 hover:border-indigo-500 hover:text-indigo-300"
+                    className="flex-1 text-muted-foreground border-border hover:border-indigo-500 hover:text-indigo-300"
                     onClick={() => {
                       const docsText = `// ${molecule.name} Documentation\n// Features: ${molecule.features.join(', ')}\n// Status: ${molecule.status}\n// Complexity: ${molecule.complexity}`
                       onCopyCode(docsText, `docs-${index}`)
@@ -472,7 +472,7 @@ export function MoleculesSection({
                   <Button 
                     size="sm" 
                     variant="outline" 
-                    className="flex-1 text-slate-400 border-slate-600 hover:border-purple-500 hover:text-purple-300"
+                    className="flex-1 text-muted-foreground border-border hover:border-purple-500 hover:text-purple-300"
                     onClick={() => onCopyCode(molecule.codePreview, `source-${index}`)}
                   >
                     <Code className="h-3 w-3 mr-2" />

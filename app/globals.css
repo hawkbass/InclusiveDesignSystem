@@ -2,91 +2,689 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 13, 21, 37;
-  --background-end-rgb: 13, 21, 37;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
-}
+/* =============================================================================
+   INCLUSIVE DESIGN SYSTEM - THEME TOKENS
+   World-class theme system with distinct Light and Dark modes
+   ============================================================================= */
 
 @layer base {
-  :root {
-    --font-sans: "Inter", system-ui, sans-serif;
-    --background: 222 50% 10%; /* deep navy, matches #0d1525 */
-    --foreground: 210 40% 98%;
-    --card: 222 50% 12%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 50% 12%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 271 91% 65%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 20%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 210 40% 18%;
-    --muted-foreground: 215.4 16.3% 65%;
-    --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 222 50% 20%;
-    --input: 222 50% 20%;
-    --ring: 271 91% 65%;
-    --radius: 0.5rem;
+  /* ---------------------------------------------------------------------------
+     LIGHT MODE - "Daylight" Theme
+     A warm, professional, and highly readable light experience
+     Inspired by premium SaaS applications with a touch of warmth
+     --------------------------------------------------------------------------- */
+  :root,
+  .light {
+    /* Core semantic colours */
+    --background: 0 0% 99%;           /* Off-white, easier on eyes than pure white */
+    --foreground: 224 71% 10%;        /* Near-black with blue undertone */
+    
+    /* Card & Surface hierarchy */
+    --card: 0 0% 100%;                /* Pure white cards for elevation */
+    --card-foreground: 224 71% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 10%;
+    
+    /* Primary - Inclusive Purple (brand colour) */
+    --primary: 271 81% 56%;           /* Vibrant purple */
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Warm gray */
+    --secondary: 220 14% 96%;         /* Light warm gray */
+    --secondary-foreground: 224 71% 10%;
+    
+    /* Muted - Subtle backgrounds */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;   /* Medium gray for secondary text */
+    
+    /* Accent - Teal for actions */
+    --accent: 173 80% 40%;            /* Teal accent */
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive - Clear red */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 220 13% 91%;            /* Subtle border */
+    --input: 220 13% 91%;
+    --ring: 271 81% 56%;              /* Focus ring matches primary */
+    
+    /* Radius */
+    --radius: 0.625rem;               /* Slightly larger for light mode */
+    
+    /* ===================
+       LIGHT MODE SPECIFIC
+       =================== */
+    
+    /* Elevated surfaces */
+    --surface-elevated: 0 0% 100%;
+    --surface-sunken: 220 14% 97%;
+    
+    /* Interactive states */
+    --hover-overlay: 224 71% 4% / 0.04;
+    --active-overlay: 224 71% 4% / 0.08;
+    --focus-ring: 271 81% 56% / 0.5;
+    
+    /* Shadows - Soft and warm */
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.05), 0 1px 2px -1px rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+    --shadow-glow: 0 0 20px rgb(167 139 250 / 0.15);
+    
+    /* Gradients - Subtle and professional */
+    --gradient-primary: linear-gradient(135deg, hsl(271 81% 56%) 0%, hsl(291 64% 42%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(173 80% 40%) 0%, hsl(199 89% 48%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 14% 98%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(271 81% 97%) 0%, hsl(199 89% 97%) 50%, hsl(0 0% 99%) 100%);
+    
+    /* Status colours - Accessible in light mode */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --success-background: 142 76% 96%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 20%;
+    --warning-background: 48 96% 95%;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --info-background: 199 89% 96%;
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+    --error-background: 0 84% 97%;
+    
+    /* Chart colours - Vibrant but not overwhelming */
+    --chart-1: 271 81% 56%;
+    --chart-2: 173 80% 40%;
+    --chart-3: 199 89% 48%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 142 76% 36%;
+    
+    /* Sidebar - Slightly elevated */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 224 71% 10%;
+    --sidebar-primary: 271 81% 56%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 224 71% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 271 81% 56%;
+    
+    /* Code blocks */
+    --code-background: 220 14% 96%;
+    --code-foreground: 224 71% 25%;
+    --code-border: 220 13% 91%;
+    
+    /* Scrollbar - Subtle */
+    --scrollbar-track: hsl(220 14% 96%);
+    --scrollbar-thumb: hsl(220 9% 76%);
+    --scrollbar-thumb-hover: hsl(220 9% 60%);
   }
+
+  /* ---------------------------------------------------------------------------
+     DARK MODE - "Midnight" Theme
+     Deep, immersive, and easy on the eyes for extended use
+     Premium feel with vibrant accents
+     --------------------------------------------------------------------------- */
   .dark {
-    --background: 222 50% 10%; /* deep navy, matches #0d1525 */
-    --foreground: 210 40% 98%;
-    --card: 222 50% 12%;
+    /* Core semantic colours */
+    --background: 224 71% 4%;         /* Deep space navy */
+    --foreground: 210 40% 98%;        /* Soft white */
+    
+    /* Card & Surface hierarchy */
+    --card: 224 71% 6%;               /* Slightly elevated */
     --card-foreground: 210 40% 98%;
-    --popover: 222 50% 12%;
+    --popover: 224 71% 8%;
     --popover-foreground: 210 40% 98%;
-    --primary: 271 91% 65%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 20%;
+    
+    /* Primary - Inclusive Fuchsia (vibrant in dark) */
+    --primary: 289 86% 65%;           /* Bright fuchsia */
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary - Dark slate */
+    --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 210 40% 18%;
-    --muted-foreground: 215.4 16.3% 65%;
+    
+    /* Muted */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    /* Accent - Electric blue */
     --accent: 217 91% 60%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 222 50% 20%;
-    --input: 222 50% 20%;
-    --ring: 271 91% 65%;
+    --accent-foreground: 0 0% 100%;
+    
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Borders & Inputs */
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 289 86% 65%;
+    
+    /* Radius */
+    --radius: 0.5rem;
+    
+    /* ===================
+       DARK MODE SPECIFIC
+       =================== */
+    
+    /* Elevated surfaces */
+    --surface-elevated: 224 71% 8%;
+    --surface-sunken: 224 71% 3%;
+    
+    /* Interactive states */
+    --hover-overlay: 210 40% 98% / 0.04;
+    --active-overlay: 210 40% 98% / 0.08;
+    --focus-ring: 289 86% 65% / 0.5;
+    
+    /* Shadows - Subtle glow effects */
+    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.4), 0 1px 2px -1px rgb(0 0 0 / 0.4);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+    --shadow-glow: 0 0 30px rgb(217 70 239 / 0.2);
+    
+    /* Gradients - Vibrant and premium */
+    --gradient-primary: linear-gradient(135deg, hsl(289 86% 65%) 0%, hsl(271 91% 65%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(199 89% 48%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(224 71% 6%) 0%, hsl(224 71% 4%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(289 86% 10%) 0%, hsl(271 91% 8%) 50%, hsl(224 71% 4%) 100%);
+    
+    /* Status colours - Vibrant in dark mode */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --success-background: 142 71% 45% / 0.15;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 0%;
+    --warning-background: 38 92% 50% / 0.15;
+    --info: 199 89% 48%;
+    --info-foreground: 0 0% 100%;
+    --info-background: 199 89% 48% / 0.15;
+    --error: 0 84% 60%;
+    --error-foreground: 0 0% 100%;
+    --error-background: 0 84% 60% / 0.15;
+    
+    /* Chart colours */
+    --chart-1: 289 86% 65%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 173 80% 40%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 142 71% 45%;
+    
+    /* Sidebar */
+    --sidebar-background: 224 71% 5%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 289 86% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 289 86% 65%;
+    
+    /* Code blocks */
+    --code-background: 224 71% 8%;
+    --code-foreground: 210 40% 90%;
+    --code-border: 217 33% 17%;
+    
+    /* Scrollbar */
+    --scrollbar-track: hsl(224 71% 8%);
+    --scrollbar-thumb: hsl(217 33% 25%);
+    --scrollbar-thumb-hover: hsl(217 33% 35%);
+  }
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY TOKENS
+     Reference: Refactoring UI Ch.3, Material Design Typography
+     
+     Font Scale: Major Second ratio (1.125) with practical adjustments
+     Line Heights: Optimized for reading speed and visual balance
+     Letter Spacing: Optical adjustments for different sizes
+     Font Weights: Limited palette for clear hierarchy
+     --------------------------------------------------------------------------- */
+  :root {
+    /* ==================
+       FONT SIZE SCALE
+       ================== */
+    /*
+     * Scale based on Major Second (1.125) ratio
+     * Each step is ~12.5% larger than the previous
+     * Practical adjustments made for common screen sizes
+     *
+     * Usage guidelines:
+     * - xs/sm: Captions, labels, helper text
+     * - base: Body text, default
+     * - lg/xl: Emphasized text, card titles
+     * - 2xl-4xl: Headings (H3, H2, H1)
+     * - 5xl-6xl: Display text, heroes
+     */
+    /* Font sizes - rem-based for accessibility (respects user font size preferences) */
+    --text-xs: 0.75rem;      /* 12px - Captions, badges, timestamps */
+    --text-sm: 0.875rem;     /* 14px - Secondary text, helper text, labels */
+    --text-base: 1rem;       /* 16px - Body text, default size */
+    --text-lg: 1.125rem;     /* 18px - Emphasized body, lead paragraphs */
+    --text-xl: 1.25rem;      /* 20px - H4 equivalent, card titles */
+    --text-2xl: 1.5rem;      /* 24px - H3 equivalent, section subheadings */
+    --text-3xl: 1.875rem;    /* 30px - H2 equivalent, section titles */
+    --text-4xl: 2.25rem;     /* 36px - H1 equivalent, page titles */
+    --text-5xl: 3rem;        /* 48px - Display text, hero headings */
+    --text-6xl: 3.75rem;     /* 60px - Large display, marketing heroes */
+    
+    /*
+     * Why these specific values?
+     * 
+     * 12px (xs): Minimum readable size, use sparingly
+     * 14px (sm): Common for secondary UI text in modern apps
+     * 16px (base): Browser default, optimal for body text
+     * 18px (lg): 1.125x base, subtle emphasis without being a heading
+     * 20px (xl): Comfortable card title size
+     * 24px (2xl): Clear section header without dominating
+     * 30px (3xl): Major section title
+     * 36px (4xl): Page title, obvious hierarchy top
+     * 48px (5xl): Hero text, marketing emphasis
+     * 60px (6xl): Maximum size for special occasions
+     *
+     * Reference: Butterick's Practical Typography
+     * "Body text should be sized for comfortable reading at arm's length"
+     */
+
+    /* ==================
+       LINE HEIGHTS
+       ================== */
+    /*
+     * Line height (leading) controls vertical rhythm
+     * Tighter for headings, looser for body text
+     *
+     * Reference: Butterick's Practical Typography
+     * "Body text: 120-145% of point size"
+     * "Headings: 100-120% of point size"
+     */
+    --leading-none: 1;        /* Headings only, single line */
+    --leading-tight: 1.25;    /* Large headings, display text */
+    --leading-snug: 1.375;    /* Subheadings, card titles */
+    --leading-normal: 1.5;    /* Body text - optimal for reading */
+    --leading-relaxed: 1.625; /* Long-form content, articles */
+    --leading-loose: 2;       /* Sparse captions, maximum readability */
+
+    /* ==================
+       LETTER SPACING (Tracking)
+       ================== */
+    /*
+     * Optical adjustments for different text sizes
+     * Large text: tighter tracking (negative)
+     * Small text: wider tracking (positive)
+     * Uppercase: always needs wider tracking
+     *
+     * Reference: Material Design Typography Guidelines
+     */
+    --tracking-tighter: -0.05em;  /* Display text (48px+) */
+    --tracking-tight: -0.025em;   /* Headlines (24-48px) */
+    --tracking-normal: 0;         /* Body text (14-20px) */
+    --tracking-wide: 0.025em;     /* Buttons, small caps */
+    --tracking-wider: 0.05em;     /* Uppercase labels */
+    --tracking-widest: 0.1em;     /* Very small text (12px) */
+
+    /* ==================
+       FONT WEIGHTS
+       ================== */
+    /*
+     * Limited palette prevents hierarchy confusion
+     * 
+     * Reference: Refactoring UI Ch.3
+     * "Stick to two or three font weights... 
+     *  a normal weight (400/500) for body text,
+     *  a heavier weight (600/700) for emphasis"
+     */
+    --font-light: 300;      /* De-emphasized text, captions */
+    --font-normal: 400;     /* Body text, default */
+    --font-medium: 500;     /* Subtle emphasis, buttons */
+    --font-semibold: 600;   /* Headings, strong emphasis */
+    --font-bold: 700;       /* Heavy emphasis, hero text only */
+  }
+
+  /* ---------------------------------------------------------------------------
+     SPACING TOKENS - 8px Grid System
+     Reference: Carbon Design System, Refactoring UI Ch.4
+     
+     Base unit: 8px (0.5rem)
+     Micro unit: 4px (0.25rem) for tight spacing
+     
+     Usage guidelines:
+     * space-1 to space-2: Icon gaps, inline spacing
+     * space-3 to space-4: Component internal padding
+     * space-5 to space-6: Card padding, comfortable gaps
+     * space-8 to space-12: Section spacing, major gaps
+     * space-16+: Page margins, hero spacing
+     --------------------------------------------------------------------------- */
+  :root {
+    /* ==================
+       BASE SPACING SCALE
+       ================== */
+    /*
+     * Scale based on 8px (0.5rem) base unit
+     * 4px steps for fine control, 8px steps for major spacing
+     *
+     * Reference: Carbon Design System
+     * "The 8px grid creates a consistent visual rhythm"
+     */
+    --space-0: 0;
+    --space-px: 1px;           /* Borders only, never for spacing */
+    --space-0-5: 0.125rem;     /* 2px - Hairline gaps between inline elements */
+    --space-1: 0.25rem;        /* 4px - Icon-to-text gaps, micro spacing */
+    --space-1-5: 0.375rem;     /* 6px - Tight but visible spacing */
+    --space-2: 0.5rem;         /* 8px - BASE UNIT - Default tight spacing */
+    --space-2-5: 0.625rem;     /* 10px - Slightly more than base */
+    --space-3: 0.75rem;        /* 12px - Compact component padding */
+    --space-3-5: 0.875rem;     /* 14px - Between compact and comfortable */
+    --space-4: 1rem;           /* 16px - Default comfortable padding */
+    --space-5: 1.25rem;        /* 20px - Generous internal spacing */
+    --space-6: 1.5rem;         /* 24px - Standard card padding */
+    --space-7: 1.75rem;        /* 28px - Between card and section */
+    --space-8: 2rem;           /* 32px - Section internal spacing */
+    --space-9: 2.25rem;        /* 36px - Generous section spacing */
+    --space-10: 2.5rem;        /* 40px - Large internal gaps */
+    --space-11: 2.75rem;       /* 44px - TOUCH TARGET MINIMUM (WCAG 2.5.5) */
+    --space-12: 3rem;          /* 48px - Major section divisions */
+
+    /* ==================
+       EXTENDED SPACING SCALE
+       ================== */
+    /*
+     * Larger spacing for layout-level concerns
+     * Use for page margins, section breaks, hero areas
+     *
+     * Reference: Material Design Layout Grid
+     * "Use consistent spacing to create visual hierarchy"
+     */
+    --space-14: 3.5rem;        /* 56px - Generous section gaps */
+    --space-16: 4rem;          /* 64px - Page margins on desktop */
+    --space-20: 5rem;          /* 80px - Hero section padding */
+    --space-24: 6rem;          /* 96px - Large feature sections */
+    --space-28: 7rem;          /* 112px - Major visual breaks */
+    --space-32: 8rem;          /* 128px - Maximum spacing, full section breaks */
+    
+    /*
+     * Why stop at 32 (128px)?
+     *
+     * Beyond 128px, spacing should be handled by:
+     * - Viewport units (vh, vw)
+     * - Flexbox/Grid grow
+     * - Explicit pixel values for unique cases
+     *
+     * These tokens cover 99% of consistent spacing needs.
+     */
+
+    /* ==================
+       SEMANTIC SPACING
+       ================== */
+    /*
+     * Named tokens for specific use cases
+     * These reference the base scale for consistency
+     * Change the base scale value to update everywhere
+     *
+     * Reference: Design Systems best practices
+     * "Use semantic names to communicate intent"
+     */
+    --spacing-component-padding: var(--space-4);   /* 16px - Inside buttons, inputs */
+    --spacing-card-padding: var(--space-6);        /* 24px - Card internal padding */
+    --spacing-card-gap: var(--space-4);            /* 16px - Gap between card children */
+    --spacing-section-gap: var(--space-12);        /* 48px - Between page sections */
+    --spacing-page-margin: var(--space-8);         /* 32px - Page edge padding */
+    
+    /*
+     * CRITICAL: Touch Target Spacing
+     *
+     * Reference: WCAG 2.5.5 Target Size
+     * "The size of the target for pointer inputs is at least 44 by 44 CSS pixels"
+     *
+     * Reference: Apple Human Interface Guidelines
+     * "Provide a hit target of at least 44pt x 44pt for all controls"
+     *
+     * Reference: Fitts's Law
+     * "The time to acquire a target is a function of the target size"
+     */
+    --spacing-touch-target: var(--space-11);       /* 44px - Minimum interactive size */
+    
+    /* Layout constraints */
+    --spacing-sidebar-width: 280px;                /* Fixed sidebar width */
+    --spacing-content-max-width: 1400px;           /* Maximum content width */
+    --spacing-readable-max-width: 65ch;            /* Optimal reading line length */
+  }
+
+  /* ---------------------------------------------------------------------------
+     ANIMATION TOKENS
+     Reference: Nielsen Norman Group, Material Design Motion
+     
+     Duration scale based on perception research:
+     * 0-100ms: Perceived as instantaneous
+     * 100-300ms: Perceived as immediate, flow uninterrupted
+     * 300-1000ms: Noticeable delay, acceptable for transitions
+     * 1000ms+: User attention may be lost
+     
+     Usage guidelines:
+     * Hover states: 100ms (instantaneous feel)
+     * Button clicks: 150ms (immediate feedback)
+     * Dropdowns: 200ms (smooth appearance)
+     * Modals/panels: 300ms (noticeable but not slow)
+     * Page transitions: 500ms (deliberate movement)
+     --------------------------------------------------------------------------- */
+  :root {
+    /* ==================
+       DURATION SCALE
+       ================== */
+    /*
+     * Reference: Nielsen Norman Group - Response Time Limits
+     * https://www.nngroup.com/articles/response-times-3-important-limits/
+     *
+     * "0.1 second is about the limit for having the user feel
+     *  that the system is reacting instantaneously"
+     *
+     * "1.0 second is about the limit for the user's flow of thought
+     *  to stay uninterrupted"
+     */
+    --duration-instant: 0ms;       /* No animation, immediate state change */
+    --duration-75: 75ms;           /* Ultra-fast, barely perceptible */
+    --duration-100: 100ms;          /* Hover states, focus rings */
+    --duration-150: 150ms;          /* Button clicks, toggle states */
+    --duration-200: 200ms;          /* Dropdown appear, tooltip */
+    --duration-300: 300ms;          /* Modal enter, sidebar slide */
+    --duration-500: 500ms;          /* Page transitions, major reveals */
+    --duration-700: 700ms;          /* Orchestrated animation sequences */
+    --duration-1000: 1000ms;        /* Background effects only */
+
+    /* ==================
+       STANDARD EASING
+       ================== */
+    /*
+     * Reference: Material Design Motion
+     * https://m3.material.io/styles/motion/easing-and-duration
+     *
+     * Easing makes motion feel natural by mimicking physics:
+     * - Objects accelerate when starting
+     * - Objects decelerate when stopping
+     * - Sudden stops feel jarring and unnatural
+     */
+    
+    /* Linear - constant speed, use sparingly (loading indicators) */
+    --ease-linear: linear;
+    
+    /* Ease-in - acceleration (objects leaving the screen) */
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    
+    /* Ease-out - deceleration (objects entering, coming to rest) */
+    /* This is the most common easing for UI interactions */
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    
+    /* Ease-in-out - acceleration then deceleration (state changes) */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /*
+     * When to use each:
+     *
+     * ease-out: DEFAULT for most interactions
+     *   - Elements appearing (dropdowns, modals, tooltips)
+     *   - Button state changes
+     *   - Anything moving to its final position
+     *
+     * ease-in: Elements leaving
+     *   - Closing modals (combine with shorter duration)
+     *   - Dismissing notifications
+     *
+     * ease-in-out: State changes
+     *   - Tab switching
+     *   - Expanding/collapsing (accordion)
+     */
+
+    /* ==================
+       EXPRESSIVE EASING
+       ================== */
+    /*
+     * Use sparingly for special interactions
+     * Creates a premium, polished feel
+     *
+     * Reference: Material Design - Expressive Motion
+     * "Expressive easing captures attention and creates delight"
+     */
+    
+    /* Expo out - very snappy, quick to settle */
+    /* Great for: hover states on premium elements, quick reveals */
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    
+    /* Back out - slight overshoot before settling */
+    /* Great for: playful UI, notification badges, success states */
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Spring - bouncy, energetic feel */
+    /* Great for: celebrating achievements, call-to-action buttons */
+    --ease-spring: cubic-bezier(0.5, 1.5, 0.75, 1.25);
+    
+    /*
+     * IMPORTANT: Expressive easing guidelines
+     *
+     * 1. Use for EMPHASIS only, not default interactions
+     * 2. Combine with appropriate duration (150-300ms)
+     * 3. Test on slower devices - complex curves cost more
+     * 4. Never use for critical actions (form submit, delete)
+     */
+
+    /* ==================
+       MOTION GUIDELINES
+       ================== */
+    /*
+     * Brand: Professional & Premium
+     * Differentiator: Speed & Smoothness
+     *
+     * PERFORMANCE BUDGET:
+     * | Interaction      | Max Duration | Easing       |
+     * |------------------|--------------|--------------|
+     * | Hover states     | 100ms        | ease-out     |
+     * | Button clicks    | 150ms        | ease-out     |
+     * | Panel open/close | 300ms        | ease-out     |
+     * | Page transitions | 500ms        | ease-in-out  |
+     * | Background only  | 1000ms       | linear       |
+     *
+     * NEVER exceed 700ms for user-initiated actions
+     * Users should NEVER wait for animations to complete
+     */
   }
 }
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
 
 @layer base {
   * {
     @apply border-border;
   }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Focus visible styles for accessibility */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  
+  /* Selection styling */
+  ::selection {
+    @apply bg-primary/20 text-foreground;
   }
 }
 
-/* Animation utilities */
+/* =============================================================================
+   SCROLLBAR STYLES
+   ============================================================================= */
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* =============================================================================
+   ANIMATION UTILITIES
+   ============================================================================= */
+
+:root {
+  --animation-speed-multiplier: 1;
+}
+
 @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
   from {
     opacity: 0;
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@keyframes slideUp {
+@keyframes fadeInDown {
   from {
-    transform: translateY(20px);
     opacity: 0;
+    transform: translateY(-16px);
   }
   to {
-    transform: translateY(0);
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -101,86 +699,259 @@ body {
   }
 }
 
-@keyframes pulse {
-  0% {
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(-5%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
   }
   50% {
-    transform: scale(1.05);
-  }
-  100% {
-    transform: scale(1);
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
 @keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-  100% {
-    transform: translateY(0px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }
 
+/* Animation utility classes */
 .animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
-.animate-slide-up {
-  animation: slideUp 0.8s ease-out forwards;
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.5s ease-out forwards;
 }
 
 .animate-slide-in-right {
-  animation: slideInRight 0.8s ease-out forwards;
+  animation: slideInRight 0.5s ease-out forwards;
 }
 
-.animate-pulse-slow {
-  animation: pulse 3s infinite ease-in-out;
+.animate-slide-in-left {
+  animation: slideInLeft 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    hsl(var(--muted)) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
 }
 
 .animate-float {
-  animation: float 6s infinite ease-in-out;
+  animation: float 6s ease-in-out infinite;
 }
 
-.animate-delay-100 {
-  animation-delay: 100ms;
+/* Animation delays */
+.animate-delay-75 { animation-delay: 75ms; }
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-150 { animation-delay: 150ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
+.animate-delay-500 { animation-delay: 500ms; }
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
-.animate-delay-200 {
-  animation-delay: 200ms;
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+@layer utilities {
+  /* Text gradient */
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* Glass effect */
+  .bg-glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  .bg-glass-heavy {
+    background: hsl(var(--card) / 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  
+  /* Surface elevations */
+  .surface-elevated {
+    background: hsl(var(--surface-elevated));
+    box-shadow: var(--shadow-md);
+  }
+  
+  .surface-sunken {
+    background: hsl(var(--surface-sunken));
+  }
+  
+  /* Shadow utilities */
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  /* Focus ring utility */
+  .focus-ring {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Gradient borders */
+  .border-gradient {
+    border: 1px solid transparent;
+    background: 
+      linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+      var(--gradient-primary) border-box;
+  }
 }
 
-.animate-delay-300 {
-  animation-delay: 300ms;
+/* =============================================================================
+   LIGHT MODE SPECIFIC OVERRIDES
+   ============================================================================= */
+
+.light {
+  /* Softer box shadows in light mode */
+  .shadow-sm { box-shadow: var(--shadow-sm); }
+  .shadow-md { box-shadow: var(--shadow-md); }
+  .shadow-lg { box-shadow: var(--shadow-lg); }
+  .shadow-xl { box-shadow: var(--shadow-xl); }
+  
+  /* Light mode hero gradient background */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Code blocks in light mode */
+  pre, code {
+    background: hsl(var(--code-background));
+    color: hsl(var(--code-foreground));
+    border: 1px solid hsl(var(--code-border));
+  }
+  
+  /* Adjust glass effect for light mode */
+  .bg-glass {
+    background: hsl(var(--card) / 0.7);
+    border: 1px solid hsl(var(--border));
+  }
 }
 
-.animate-delay-400 {
-  animation-delay: 400ms;
+/* =============================================================================
+   DARK MODE SPECIFIC OVERRIDES
+   ============================================================================= */
+
+.dark {
+  /* Glow effects work better in dark mode */
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+  
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+  }
+  
+  /* Hero gradient for dark mode */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  /* Code blocks in dark mode */
+  pre, code {
+    background: hsl(var(--code-background));
+    color: hsl(var(--code-foreground));
+    border: 1px solid hsl(var(--code-border));
+  }
 }
 
-.animate-delay-500 {
-  animation-delay: 500ms;
-}
+/* =============================================================================
+   PRINT STYLES
+   ============================================================================= */
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
 }

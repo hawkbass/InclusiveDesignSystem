@@ -44,7 +44,7 @@ export function ResponsiveTest({ children, className = "" }: ResponsiveTestProps
     <div className={`relative ${className}`}>
       {/* Controls */}
       {showControls && (
-        <div className="absolute top-4 left-4 z-50 bg-slate-900/90 backdrop-blur-sm border border-slate-700/50 rounded-lg p-3 shadow-lg">
+        <div className="absolute top-4 left-4 z-50 bg-card/90 backdrop-blur-sm border border-border/50 rounded-lg p-3 shadow-lg">
           <div className="flex items-center gap-2 mb-3">
             <Badge variant="outline" className="text-xs">
               {currentBreakpoint.name} ({currentBreakpoint.width}×{currentBreakpoint.height})
@@ -92,7 +92,7 @@ export function ResponsiveTest({ children, className = "" }: ResponsiveTestProps
           size="sm"
           variant="outline"
           onClick={() => setShowControls(true)}
-          className="absolute top-4 left-4 z-50 h-8 px-2 bg-slate-900/90 backdrop-blur-sm border-slate-700/50"
+          className="absolute top-4 left-4 z-50 h-8 px-2 bg-card/90 backdrop-blur-sm border-border/50"
         >
           <RotateCcw className="h-3 w-3" />
         </Button>
@@ -100,8 +100,8 @@ export function ResponsiveTest({ children, className = "" }: ResponsiveTestProps
 
       {/* Preview Container */}
       <div
-        className={`mx-auto border-2 border-slate-700/50 rounded-lg overflow-hidden transition-all duration-300 ${
-          isFullscreen ? "fixed inset-0 z-40 bg-slate-950" : "relative"
+        className={`mx-auto border-2 border-border/50 rounded-lg overflow-hidden transition-all duration-300 ${
+          isFullscreen ? "fixed inset-0 z-40 bg-background" : "relative"
         }`}
         style={containerStyle}
       >
@@ -113,9 +113,9 @@ export function ResponsiveTest({ children, className = "" }: ResponsiveTestProps
       {/* Breakpoint Indicator */}
       {!isFullscreen && (
         <div className="mt-4 text-center">
-          <div className="inline-flex items-center gap-2 bg-slate-800/50 rounded-lg px-3 py-2 border border-slate-700/50">
-            <currentBreakpoint.icon className="h-4 w-4 text-slate-400" />
-            <span className="text-sm text-slate-300">
+          <div className="inline-flex items-center gap-2 bg-card/50 rounded-lg px-3 py-2 border border-border/50">
+            <currentBreakpoint.icon className="h-4 w-4 text-muted-foreground" />
+            <span className="text-sm text-foreground/80">
               {currentBreakpoint.name} ({currentBreakpoint.width}×{currentBreakpoint.height})
             </span>
           </div>
@@ -127,9 +127,9 @@ export function ResponsiveTest({ children, className = "" }: ResponsiveTestProps
 
 export function ResponsiveTestCard({ children, title }: { children: React.ReactNode; title: string }) {
   return (
-    <Card className="bg-slate-800/30 border-slate-700/50">
+    <Card className="bg-card/30 border-border/50">
       <CardHeader>
-        <CardTitle className="text-lg text-slate-100">{title}</CardTitle>
+        <CardTitle className="text-lg text-foreground">{title}</CardTitle>
       </CardHeader>
       <CardContent>
         <ResponsiveTest>

@@ -66,8 +66,8 @@ function SalaryRangeSlider() {
   return (
     <div className="w-full max-w-md space-y-4">
       <div className="flex justify-between text-sm">
-        <Label className="text-slate-300">Salary Range</Label>
-        <span className="text-slate-400">£{salaryRange[0]}k - £{salaryRange[1]}k</span>
+        <Label className="text-foreground/80">Salary Range</Label>
+        <span className="text-muted-foreground">£{salaryRange[0]}k - £{salaryRange[1]}k</span>
       </div>
       <Slider 
         value={salaryRange} 
@@ -78,7 +78,7 @@ function SalaryRangeSlider() {
         className="mt-2"
         minStepsBetweenThumbs={1}
       />
-      <div className="flex justify-between text-xs text-slate-500">
+      <div className="flex justify-between text-xs text-muted-foreground">
         <span>£30k</span>
         <span>£160k</span>
       </div>
@@ -92,7 +92,7 @@ const components = [
     id: "candidate-card",
     title: "Candidate Profile Card",
     description: "Comprehensive candidate information display",
-    code: `<Card className="hover:border-fuchsia-500/50 transition-all">
+    code: `<Card className="hover:border-primary/50 transition-all">
   <CardHeader>
     <div className="flex items-start justify-between">
       <div className="flex items-center gap-3">
@@ -105,50 +105,50 @@ const components = [
           <CardDescription>Senior Software Engineer</CardDescription>
         </div>
       </div>
-      <Badge className="bg-green-500/20 text-green-300">Available</Badge>
+      <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">Available</Badge>
     </div>
   </CardHeader>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+      <Card className="w-full max-w-md bg-card/60 border-border/50 hover:border-primary/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
         <CardHeader>
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-3">
               <Avatar className="h-12 w-12 ring-2 ring-slate-600 hover:ring-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
                 <AvatarImage src="/placeholder.svg?height=48&width=48" />
-                <AvatarFallback className="bg-fuchsia-500/20 text-fuchsia-300 font-bold">SJ</AvatarFallback>
+                <AvatarFallback className="bg-fuchsia-500/20 text-primary font-bold">SJ</AvatarFallback>
               </Avatar>
               <div>
-                <CardTitle className="text-lg text-slate-100">Sarah Johnson</CardTitle>
-                <CardDescription className="text-slate-400">Senior Software Engineer</CardDescription>
+                <CardTitle className="text-lg text-foreground">Sarah Johnson</CardTitle>
+                <CardDescription className="text-muted-foreground">Senior Software Engineer</CardDescription>
               </div>
             </div>
-            <Badge className="bg-green-500/20 text-green-300 border-green-500/30 animate-pulse">Available</Badge>
+            <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 animate-pulse">Available</Badge>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-2 gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <Clock className="h-4 w-4 text-slate-400" />
-              <span className="text-slate-300">5 years exp.</span>
+              <Clock className="h-4 w-4 text-muted-foreground" />
+              <span className="text-foreground/80">5 years exp.</span>
             </div>
             <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-slate-400" />
-              <span className="text-slate-300">London, UK</span>
+              <MapPin className="h-4 w-4 text-muted-foreground" />
+              <span className="text-foreground/80">London, UK</span>
             </div>
             <div className="flex items-center gap-2">
-              <PoundSterling className="h-4 w-4 text-slate-400" />
-              <span className="text-slate-300">£95k - £120k</span>
+              <PoundSterling className="h-4 w-4 text-muted-foreground" />
+              <span className="text-foreground/80">£95k - £120k</span>
             </div>
             <div className="flex items-center gap-2">
               <Star className="h-4 w-4 text-yellow-400" />
-              <span className="text-slate-300">4.8 rating</span>
+              <span className="text-foreground/80">4.8 rating</span>
             </div>
           </div>
           <div className="space-y-2">
             <div className="flex justify-between text-sm">
-              <span className="text-slate-400">Profile Completion</span>
-              <span className="text-slate-300">85%</span>
+              <span className="text-muted-foreground">Profile Completion</span>
+              <span className="text-foreground/80">85%</span>
             </div>
             <Progress value={85} className="h-2" />
           </div>
@@ -157,10 +157,10 @@ const components = [
               <Mail className="h-4 w-4 mr-2" />
               Contact
             </Button>
-            <Button size="sm" variant="outline" className="hover:bg-slate-700 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <Button size="sm" variant="outline" className="hover:bg-accent transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <Eye className="h-4 w-4" />
             </Button>
-            <Button size="sm" variant="outline" className="hover:bg-slate-700 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <Button size="sm" variant="outline" className="hover:bg-accent transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </div>
@@ -185,25 +185,25 @@ const components = [
   </CardContent>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+      <Card className="w-full max-w-md bg-card/60 border-border/50 hover:border-primary/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
         <CardHeader>
           <div className="flex items-start justify-between">
             <div>
-              <CardTitle className="text-lg text-slate-100">Senior Frontend Developer</CardTitle>
-                                <CardDescription className="text-slate-400 mt-1">Remote / London • Full-time</CardDescription>
+              <CardTitle className="text-lg text-foreground">Senior Frontend Developer</CardTitle>
+                                <CardDescription className="text-muted-foreground mt-1">Remote / London • Full-time</CardDescription>
             </div>
-            <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">Active</Badge>
+            <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30">Active</Badge>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <PoundSterling className="h-4 w-4 text-green-400" />
-              <span className="text-slate-300">£95k - £120k</span>
+              <span className="text-foreground/80">£95k - £120k</span>
             </div>
             <div className="flex items-center gap-2">
               <Users className="h-4 w-4 text-blue-400" />
-              <span className="text-slate-300">25 applicants</span>
+              <span className="text-foreground/80">25 applicants</span>
             </div>
           </div>
           <div className="flex gap-2">
@@ -234,20 +234,20 @@ const components = [
   </CardContent>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50 hover:border-blue-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+      <Card className="w-full max-w-md bg-card/60 border-border/50 hover:border-blue-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
         <CardHeader>
-          <CardTitle className="text-lg text-slate-100">Interview with Sarah Johnson</CardTitle>
-          <CardDescription className="text-slate-400">Technical Interview • 1 hour</CardDescription>
+          <CardTitle className="text-lg text-foreground">Interview with Sarah Johnson</CardTitle>
+          <CardDescription className="text-muted-foreground">Technical Interview • 1 hour</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2 text-sm">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-blue-400" />
-              <span className="text-slate-300">March 15, 2024 at 2:00 PM</span>
+              <span className="text-foreground/80">March 15, 2024 at 2:00 PM</span>
             </div>
             <div className="flex items-center gap-2">
               <Video className="h-4 w-4 text-green-400" />
-              <span className="text-slate-300">Google Meet</span>
+              <span className="text-foreground/80">Google Meet</span>
             </div>
           </div>
           <div className="flex gap-2">
@@ -272,15 +272,15 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-3">
         <div className="flex gap-2">
-          <Input placeholder="Search candidates..." className="flex-1 bg-slate-800/50 border-slate-600" />
-          <Button variant="outline" size="sm" className="hover:bg-slate-700">
+          <Input placeholder="Search candidates..." className="flex-1 bg-card/50 border-border" />
+          <Button variant="outline" size="sm" className="hover:bg-accent">
             <Filter className="h-4 w-4" />
           </Button>
         </div>
         <div className="flex gap-2 flex-wrap">
-          <Badge variant="secondary" className="bg-slate-700 text-slate-300">JavaScript</Badge>
-          <Badge variant="secondary" className="bg-slate-700 text-slate-300">Remote</Badge>
-          <Badge variant="secondary" className="bg-slate-700 text-slate-300">5+ years</Badge>
+          <Badge variant="secondary" className="bg-muted text-foreground/80">JavaScript</Badge>
+          <Badge variant="secondary" className="bg-muted text-foreground/80">Remote</Badge>
+          <Badge variant="secondary" className="bg-muted text-foreground/80">5+ years</Badge>
         </div>
       </div>
     )
@@ -309,13 +309,13 @@ const components = [
           <div key={index} className="flex items-center gap-6">
             <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
               item.status === 'completed' ? 'bg-green-500' : 
-              item.status === 'current' ? 'bg-blue-500' : 'bg-slate-600'
+              item.status === 'current' ? 'bg-blue-500' : 'bg-muted'
             }`}>
               <item.icon className="h-4 w-4 text-white" />
             </div>
             <span className={`text-sm ${
-              item.status === 'completed' ? 'text-green-300' :
-              item.status === 'current' ? 'text-blue-300' : 'text-slate-400'
+              item.status === 'completed' ? 'text-green-700 dark:text-green-300' :
+              item.status === 'current' ? 'text-blue-700 dark:text-blue-300' : 'text-muted-foreground'
             }`}>{item.step}</span>
           </div>
         ))}
@@ -327,19 +327,19 @@ const components = [
     title: "Skill Tags Component",
     description: "Interactive skill badges with proficiency levels",
     code: `<div className="flex flex-wrap gap-2">
-  <Badge className="bg-blue-500/20 text-blue-300">React</Badge>
-  <Badge className="bg-green-500/20 text-green-300">Node.js</Badge>
-  <Badge className="bg-purple-500/20 text-purple-300">TypeScript</Badge>
+  <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300">React</Badge>
+  <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">Node.js</Badge>
+  <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300">TypeScript</Badge>
 </div>`,
     component: (
       <div className="w-full max-w-md">
         <div className="flex flex-wrap gap-2">
           {[
-            { skill: "React", level: "Expert", colour: "bg-blue-500/20 text-blue-300" },
-            { skill: "Node.js", level: "Advanced", colour: "bg-green-500/20 text-green-300" },
-            { skill: "TypeScript", level: "Expert", colour: "bg-purple-500/20 text-purple-300" },
-            { skill: "Python", level: "Intermediate", colour: "bg-yellow-500/20 text-yellow-300" },
-            { skill: "AWS", level: "Advanced", colour: "bg-orange-500/20 text-orange-300" }
+            { skill: "React", level: "Expert", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30" },
+            { skill: "Node.js", level: "Advanced", colour: "bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30" },
+            { skill: "TypeScript", level: "Expert", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-300 hover:bg-purple-500/30" },
+            { skill: "Python", level: "Intermediate", colour: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/30" },
+            { skill: "AWS", level: "Advanced", colour: "bg-orange-500/20 text-orange-700 dark:text-orange-300 hover:bg-orange-500/30" }
           ].map((item, index) => (
             <Badge key={index} className={`${item.colour} hover:scale-105 transition-transform cursor-pointer`} style={{ transitionDuration: 'var(--animation-speed)' }}>
               {item.skill}
@@ -384,18 +384,18 @@ const components = [
   </CardContent>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+      <Card className="w-full max-w-md bg-card/60 border-border/50 hover:border-primary/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
             <Avatar className="ring-2 ring-slate-600">
-              <AvatarFallback className="bg-blue-500/20 text-blue-300">JD</AvatarFallback>
+              <AvatarFallback className="bg-blue-500/20 text-blue-700 dark:text-blue-300">JD</AvatarFallback>
             </Avatar>
             <div>
-              <h4 className="font-medium text-slate-100">John Doe</h4>
-              <p className="text-sm text-slate-400">Hiring Manager</p>
+              <h4 className="font-medium text-foreground">John Doe</h4>
+              <p className="text-sm text-muted-foreground">Hiring Manager</p>
               <div className="flex items-center gap-1 mt-1">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span className="text-xs text-green-300">Online</span>
+                <span className="text-xs text-green-700 dark:text-green-300">Online</span>
               </div>
             </div>
           </div>
@@ -421,15 +421,15 @@ const components = [
             <Calendar className="h-4 w-4 mr-1" />
             Schedule
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Mail className="h-4 w-4 mr-1" />
             Message
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Phone className="h-4 w-4 mr-1" />
             Call
           </Button>
-          <Button size="sm" variant="ghost" className="hover:bg-slate-700">
+          <Button size="sm" variant="ghost" className="hover:bg-accent">
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </div>
@@ -450,18 +450,18 @@ const components = [
   </CardContent>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50">
+      <Card className="w-full max-w-md bg-card/60 border-border/50">
         <CardHeader>
-          <CardTitle className="text-lg text-slate-100">Candidate Notes</CardTitle>
+          <CardTitle className="text-lg text-foreground">Candidate Notes</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <Textarea 
             placeholder="Add notes about this candidate..." 
-            className="bg-slate-800/50 border-slate-600 min-h-[80px]"
+            className="bg-card/50 border-border min-h-[80px]"
           />
           <div className="flex justify-between">
             <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">Save Note</Button>
-            <span className="text-xs text-slate-500">Last updated 2 hours ago</span>
+            <span className="text-xs text-muted-foreground">Last updated 2 hours ago</span>
           </div>
         </CardContent>
       </Card>
@@ -482,7 +482,7 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-2">
-          <Label className="text-slate-300">Overall Rating</Label>
+          <Label className="text-foreground/80">Overall Rating</Label>
           <div className="flex items-center gap-2">
             <div className="flex gap-1">
               {[1,2,3,4,5].map(star => (
@@ -495,13 +495,13 @@ const components = [
                 />
               ))}
             </div>
-            <span className="text-sm text-slate-300">4.0/5</span>
+            <span className="text-sm text-foreground/80">4.0/5</span>
           </div>
         </div>
         <div className="space-y-2">
-          <Label className="text-slate-300 text-sm">Technical Skills</Label>
+          <Label className="text-foreground/80 text-sm">Technical Skills</Label>
           <Progress value={85} className="h-2" />
-          <div className="flex justify-between text-xs text-slate-400">
+          <div className="flex justify-between text-xs text-muted-foreground">
             <span>Beginner</span>
             <span>Expert</span>
           </div>
@@ -525,9 +525,9 @@ const components = [
 </Select>`,
     component: (
       <div className="w-full max-w-md space-y-3">
-        <Label className="text-slate-300">Preferred Location</Label>
+        <Label className="text-foreground/80">Preferred Location</Label>
         <Select>
-          <SelectTrigger className="bg-slate-800/50 border-slate-600">
+          <SelectTrigger className="bg-card/50 border-border">
             <SelectValue placeholder="Select location" />
           </SelectTrigger>
           <SelectContent>
@@ -549,25 +549,25 @@ const components = [
     title: "Experience Level Indicator",
     description: "Visual experience level classification",
     code: `<div className="flex items-center gap-2">
-  <Badge className="bg-green-500/20 text-green-300">Senior</Badge>
+  <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">Senior</Badge>
   <span className="text-sm">5+ years experience</span>
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-3">
         {[
-          { level: "Entry", years: "0-2 years", colour: "bg-blue-500/20 text-blue-300", icon: <User className="h-4 w-4" /> },
-          { level: "Mid", years: "3-5 years", colour: "bg-yellow-500/20 text-yellow-300", icon: <Users className="h-4 w-4" /> },
-          { level: "Senior", years: "5+ years", colour: "bg-green-500/20 text-green-300", icon: <Shield className="h-4 w-4" /> },
-          { level: "Lead", years: "8+ years", colour: "bg-purple-500/20 text-purple-300", icon: <Star className="h-4 w-4" /> }
+          { level: "Entry", years: "0-2 years", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30", icon: <User className="h-4 w-4" /> },
+          { level: "Mid", years: "3-5 years", colour: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/30", icon: <Users className="h-4 w-4" /> },
+          { level: "Senior", years: "5+ years", colour: "bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30", icon: <Shield className="h-4 w-4" /> },
+          { level: "Lead", years: "8+ years", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-300 hover:bg-purple-500/30", icon: <Star className="h-4 w-4" /> }
         ].map((item, index) => (
-          <div key={index} className="flex items-center justify-between p-2 bg-slate-800/30 rounded-lg">
+          <div key={index} className="flex items-center justify-between p-2 bg-card/30 rounded-lg">
             <div className="flex items-center gap-3">
-              <div className="text-slate-400">{item.icon}</div>
+              <div className="text-muted-foreground">{item.icon}</div>
               <div>
                 <Badge className={item.colour}>{item.level}</Badge>
               </div>
             </div>
-            <span className="text-sm text-slate-400">{item.years}</span>
+            <span className="text-sm text-muted-foreground">{item.years}</span>
           </div>
         ))}
       </div>
@@ -584,12 +584,12 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-3">
         {[
-          { status: "Available immediately", colour: "bg-green-400", textColor: "text-green-300" },
-          { status: "Available in 2 weeks", colour: "bg-yellow-400", textColor: "text-yellow-300" },
-          { status: "Available in 1 month", colour: "bg-orange-400", textColor: "text-orange-300" },
-          { status: "Not actively looking", colour: "bg-red-400", textColor: "text-red-300" }
+          { status: "Available immediately", colour: "bg-green-400", textColor: "text-green-700 dark:text-green-300" },
+          { status: "Available in 2 weeks", colour: "bg-yellow-400", textColor: "text-yellow-700 dark:text-yellow-300" },
+          { status: "Available in 1 month", colour: "bg-orange-400", textColor: "text-orange-700 dark:text-orange-300" },
+          { status: "Not actively looking", colour: "bg-red-400", textColor: "text-red-700 dark:text-red-300" }
         ].map((item, index) => (
-          <div key={index} className="flex items-center gap-3 p-2 bg-slate-800/30 rounded-lg">
+          <div key={index} className="flex items-center gap-3 p-2 bg-card/30 rounded-lg">
             <div className={`w-3 h-3 ${item.colour} rounded-full animate-pulse`}></div>
             <span className={`text-sm ${item.textColor}`}>{item.status}</span>
           </div>
@@ -601,18 +601,18 @@ const components = [
     id: "resume-upload",
     title: "Resume Upload",
     description: "File upload component for resumes",
-    code: `<div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center">
-  <Upload className="h-8 w-8 mx-auto mb-2 text-slate-400" />
-  <p className="text-sm text-slate-400">Drop resume here or click to upload</p>
+    code: `<div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
+  <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+  <p className="text-sm text-muted-foreground">Drop resume here or click to upload</p>
   <Button className="mt-2" size="sm">Choose File</Button>
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center hover:border-fuchsia-500/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
-          <Upload className="h-8 w-8 mx-auto mb-2 text-slate-400" />
-          <p className="text-sm text-slate-400 mb-2">Drop resume here or click to upload</p>
+        <div className="border-2 border-dashed border-border rounded-lg p-6 text-center hover:border-primary/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+          <p className="text-sm text-muted-foreground mb-2">Drop resume here or click to upload</p>
           <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">Choose File</Button>
-          <p className="text-xs text-slate-500 mt-2">PDF, DOC, DOCX up to 10MB</p>
+          <p className="text-xs text-muted-foreground mt-2">PDF, DOC, DOCX up to 10MB</p>
         </div>
       </div>
     )
@@ -634,24 +634,24 @@ const components = [
   </CardContent>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50">
+      <Card className="w-full max-w-md bg-card/60 border-border/50">
         <CardHeader>
-          <CardTitle className="text-lg text-slate-100">Interview Feedback</CardTitle>
+          <CardTitle className="text-lg text-foreground">Interview Feedback</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label className="text-slate-300">Technical Skills</Label>
+            <Label className="text-foreground/80">Technical Skills</Label>
             <Slider defaultValue={[75]} max={100} />
           </div>
           <div className="space-y-2">
-            <Label className="text-slate-300">Communication</Label>
+            <Label className="text-foreground/80">Communication</Label>
             <Slider defaultValue={[85]} max={100} />
           </div>
           <div className="space-y-2">
-            <Label className="text-slate-300">Comments</Label>
+            <Label className="text-foreground/80">Comments</Label>
             <Textarea 
               placeholder="Additional feedback..." 
-              className="bg-slate-800/50 border-slate-600 min-h-[60px]"
+              className="bg-card/50 border-border min-h-[60px]"
             />
           </div>
         </CardContent>
@@ -686,19 +686,19 @@ const components = [
       <div className="w-full max-w-md">
         <div className="grid grid-cols-2 gap-3">
           {[
-            { name: "Sarah Johnson", exp: "5 years", rating: 4.8, initials: "SJ", colour: "bg-fuchsia-500/20 text-fuchsia-300" },
-            { name: "Michael Kim", exp: "3 years", rating: 4.5, initials: "MK", colour: "bg-blue-500/20 text-blue-300" }
+            { name: "Sarah Johnson", exp: "5 years", rating: 4.8, initials: "SJ", colour: "bg-fuchsia-500/20 text-primary" },
+            { name: "Michael Kim", exp: "3 years", rating: 4.5, initials: "MK", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300" }
           ].map((candidate, index) => (
-            <Card key={index} className="bg-slate-800/60 border-slate-600/50 hover:border-fuchsia-500/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <Card key={index} className="bg-card/60 border-border/50 hover:border-primary/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <CardContent className="p-4 text-center">
                 <Avatar className="mx-auto mb-2 ring-2 ring-slate-600">
                   <AvatarFallback className={candidate.colour}>{candidate.initials}</AvatarFallback>
                 </Avatar>
-                <h4 className="font-medium text-slate-100 text-sm">{candidate.name}</h4>
-                <p className="text-xs text-slate-400">{candidate.exp} exp.</p>
+                <h4 className="font-medium text-foreground text-sm">{candidate.name}</h4>
+                <p className="text-xs text-muted-foreground">{candidate.exp} exp.</p>
                 <div className="flex items-center justify-center gap-1 mt-1">
                   <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                  <span className="text-xs text-slate-300">{candidate.rating}</span>
+                  <span className="text-xs text-foreground/80">{candidate.rating}</span>
                 </div>
               </CardContent>
             </Card>
@@ -730,12 +730,12 @@ const components = [
           { requirement: "Team leadership", met: true },
           { requirement: "Bachelor's degree", met: false }
         ].map((item, index) => (
-          <div key={index} className="flex items-center gap-3 p-2 bg-slate-800/30 rounded-lg">
+          <div key={index} className="flex items-center gap-3 p-2 bg-card/30 rounded-lg">
             <Checkbox 
               checked={item.met} 
               className={item.met ? "data-[state=checked]:bg-green-500" : ""}
             />
-            <span className={`text-sm flex-1 ${item.met ? 'text-green-300' : 'text-slate-400'}`}>
+            <span className={`text-sm flex-1 ${item.met ? 'text-green-700 dark:text-green-300' : 'text-muted-foreground'}`}>
               {item.requirement}
             </span>
             {item.met ? (
@@ -753,17 +753,17 @@ const components = [
     title: "Pipeline Stage Selector",
     description: "Move candidates through hiring stages with enhanced UX",
     code: `<Select>
-  <SelectTrigger className="h-12 bg-slate-800/60 border-slate-600 hover:border-fuchsia-500/50 transition-all">
+  <SelectTrigger className="h-12 bg-card/60 border-border hover:border-primary/50 transition-all">
     <SelectValue placeholder="Select pipeline stage" />
   </SelectTrigger>
-  <SelectContent className="bg-slate-800/95 backdrop-blur-sm border-slate-600">
-    <SelectItem value="applied" className="hover:bg-slate-700/50 hover:text-fuchsia-300">
+  <SelectContent className="bg-card/95 backdrop-blur-sm border-border">
+    <SelectItem value="applied" className="hover:bg-accent/50 hover:text-primary">
       <div className="flex items-center gap-3">
         <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
         <FileText className="h-4 w-4" />
         <div>
           <div className="font-medium">Applied</div>
-          <div className="text-xs text-slate-400">Initial application</div>
+          <div className="text-xs text-muted-foreground">Initial application</div>
         </div>
       </div>
     </SelectItem>
@@ -772,80 +772,80 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-2">
-          <Label className="text-slate-200 font-medium flex items-center gap-2">
-            <Users className="h-4 w-4 text-fuchsia-400" />
+          <Label className="text-foreground font-medium flex items-center gap-2">
+            <Users className="h-4 w-4 text-primary" />
             Pipeline Stage
           </Label>
-          <p className="text-xs text-slate-400">Select the current stage for this candidate</p>
+          <p className="text-xs text-muted-foreground">Select the current stage for this candidate</p>
         </div>
         <Select>
-          <SelectTrigger className="h-12 bg-slate-800/60 border-slate-600 hover:border-fuchsia-500/50 focus:border-fuchsia-500 transition-all duration-200">
-            <SelectValue placeholder="Select pipeline stage" className="text-slate-300" />
+          <SelectTrigger className="h-12 bg-card/60 border-border hover:border-primary/50 focus:border-primary transition-all duration-200">
+            <SelectValue placeholder="Select pipeline stage" className="text-foreground/80" />
           </SelectTrigger>
-          <SelectContent className="bg-slate-800/95 backdrop-blur-sm border-slate-600 shadow-xl">
-            <SelectItem value="applied" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+          <SelectContent className="bg-card/95 backdrop-blur-sm border-border shadow-xl">
+            <SelectItem value="applied" className="hover:bg-accent/50 hover:text-primary focus:bg-muted/50 focus:text-primary py-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-blue-400 rounded-full flex-shrink-0"></div>
                 <FileText className="h-4 w-4 text-blue-400 flex-shrink-0" />
                 <div className="flex-1">
-                  <div className="font-medium text-slate-200">Applied</div>
-                  <div className="text-xs text-slate-400">Initial application received</div>
+                  <div className="font-medium text-foreground">Applied</div>
+                  <div className="text-xs text-muted-foreground">Initial application received</div>
                 </div>
               </div>
             </SelectItem>
-            <SelectItem value="screening" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+            <SelectItem value="screening" className="hover:bg-accent/50 hover:text-primary focus:bg-muted/50 focus:text-primary py-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full flex-shrink-0"></div>
                 <Search className="h-4 w-4 text-yellow-400 flex-shrink-0" />
                 <div className="flex-1">
-                  <div className="font-medium text-slate-200">Initial Screening</div>
-                  <div className="text-xs text-slate-400">Resume and qualifications review</div>
+                  <div className="font-medium text-foreground">Initial Screening</div>
+                  <div className="text-xs text-muted-foreground">Resume and qualifications review</div>
                 </div>
               </div>
             </SelectItem>
-            <SelectItem value="interview" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+            <SelectItem value="interview" className="hover:bg-accent/50 hover:text-primary focus:bg-muted/50 focus:text-primary py-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-purple-400 rounded-full flex-shrink-0"></div>
                 <Users className="h-4 w-4 text-purple-400 flex-shrink-0" />
                 <div className="flex-1">
-                  <div className="font-medium text-slate-200">Interview</div>
-                  <div className="text-xs text-slate-400">Technical or behavioural interview</div>
+                  <div className="font-medium text-foreground">Interview</div>
+                  <div className="text-xs text-muted-foreground">Technical or behavioural interview</div>
                 </div>
               </div>
             </SelectItem>
-            <SelectItem value="final" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+            <SelectItem value="final" className="hover:bg-accent/50 hover:text-primary focus:bg-muted/50 focus:text-primary py-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-orange-400 rounded-full flex-shrink-0"></div>
                 <Target className="h-4 w-4 text-orange-400 flex-shrink-0" />
                 <div className="flex-1">
-                  <div className="font-medium text-slate-200">Final Interview</div>
-                  <div className="text-xs text-slate-400">Final round with leadership</div>
+                  <div className="font-medium text-foreground">Final Interview</div>
+                  <div className="text-xs text-muted-foreground">Final round with leadership</div>
                 </div>
               </div>
             </SelectItem>
-            <SelectItem value="offer" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+            <SelectItem value="offer" className="hover:bg-accent/50 hover:text-primary focus:bg-muted/50 focus:text-primary py-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
                 <PoundSterling className="h-4 w-4 text-green-400 flex-shrink-0" />
                 <div className="flex-1">
-                  <div className="font-medium text-slate-200">Offer Extended</div>
-                  <div className="text-xs text-slate-400">Job offer sent to candidate</div>
+                  <div className="font-medium text-foreground">Offer Extended</div>
+                  <div className="text-xs text-muted-foreground">Job offer sent to candidate</div>
                 </div>
               </div>
             </SelectItem>
-            <SelectItem value="hired" className="hover:bg-slate-700/50 hover:text-fuchsia-300 focus:bg-slate-700/50 focus:text-fuchsia-300 py-3">
+            <SelectItem value="hired" className="hover:bg-accent/50 hover:text-primary focus:bg-muted/50 focus:text-primary py-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full flex-shrink-0"></div>
                 <CheckCircle2 className="h-4 w-4 text-emerald-400 flex-shrink-0" />
                 <div className="flex-1">
-                  <div className="font-medium text-slate-200">Hired</div>
-                  <div className="text-xs text-slate-400">Successfully onboarded</div>
+                  <div className="font-medium text-foreground">Hired</div>
+                  <div className="text-xs text-muted-foreground">Successfully onboarded</div>
                 </div>
               </div>
             </SelectItem>
           </SelectContent>
         </Select>
-        <div className="text-xs text-slate-500 flex items-center gap-2">
+        <div className="text-xs text-muted-foreground flex items-center gap-2">
           <div className="w-1 h-1 bg-slate-500 rounded-full"></div>
           <span>Status will be updated automatically</span>
         </div>
@@ -863,27 +863,27 @@ const components = [
         <h4 className="font-medium">Referred by John Doe</h4>
         <p className="text-sm text-muted-foreground">Engineering Team</p>
       </div>
-      <Badge className="bg-green-500/20 text-green-300">$500 Bonus</Badge>
+      <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30">$500 Bonus</Badge>
     </div>
   </CardContent>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50">
+      <Card className="w-full max-w-md bg-card/60 border-border/50">
         <CardContent className="p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Avatar className="ring-2 ring-slate-600">
-                <AvatarFallback className="bg-green-500/20 text-green-300">JD</AvatarFallback>
+                <AvatarFallback className="bg-green-500/20 text-green-700 dark:text-green-300">JD</AvatarFallback>
               </Avatar>
               <div>
-                <h4 className="font-medium text-slate-100">Referred by John Doe</h4>
-                <p className="text-sm text-slate-400">Engineering Team</p>
+                <h4 className="font-medium text-foreground">Referred by John Doe</h4>
+                <p className="text-sm text-muted-foreground">Engineering Team</p>
               </div>
             </div>
-            <Badge className="bg-green-500/20 text-green-300">£400 Bonus</Badge>
+            <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30">£400 Bonus</Badge>
           </div>
-          <div className="mt-3 pt-3 border-t border-slate-700">
-            <div className="text-xs text-slate-500">Referral Status: Qualified</div>
+          <div className="mt-3 pt-3 border-t border-border">
+            <div className="text-xs text-muted-foreground">Referral Status: Qualified</div>
           </div>
         </CardContent>
       </Card>
@@ -913,8 +913,8 @@ const components = [
           <div key={index} className="flex gap-3">
             <div className={`w-2 h-2 ${item.colour} rounded-full mt-2 flex-shrink-0`}></div>
             <div className="flex-1">
-              <p className="text-sm text-slate-300">{item.event}</p>
-              <p className="text-xs text-slate-500">{item.time}</p>
+              <p className="text-sm text-foreground/80">{item.event}</p>
+              <p className="text-xs text-muted-foreground">{item.time}</p>
             </div>
           </div>
         ))}
@@ -925,7 +925,7 @@ const components = [
     id: "bulk-actions",
     title: "Bulk Actions Toolbar",
     description: "Perform actions on multiple candidates",
-    code: `<div className="flex items-center gap-2 p-2 bg-slate-800 rounded-lg">
+    code: `<div className="flex items-center gap-2 p-2 bg-card rounded-lg">
   <Checkbox />
   <span className="text-sm">3 selected</span>
   <div className="flex gap-2 ml-auto">
@@ -935,15 +935,15 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="flex items-center gap-2 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50 shadow-xl">
+        <div className="flex items-center gap-2 p-3 bg-card/50 rounded-xl border border-border/50 shadow-xl">
           <Checkbox checked />
-          <span className="text-sm text-slate-300">3 candidates selected</span>
+          <span className="text-sm text-foreground/80">3 candidates selected</span>
           <div className="flex gap-2 ml-auto">
             <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">
               <Mail className="h-3 w-3 mr-1" />
               Email
             </Button>
-            <Button size="sm" variant="outline" className="hover:bg-slate-700">
+            <Button size="sm" variant="outline" className="hover:bg-accent">
               <ArrowRight className="h-3 w-3 mr-1" />
               Move
             </Button>
@@ -971,9 +971,9 @@ const components = [
   </CardContent>
 </Card>`,
     component: (
-      <Card className="w-full max-w-md bg-slate-800/60 border-slate-600/50">
+      <Card className="w-full max-w-md bg-card/60 border-border/50">
         <CardHeader>
-          <CardTitle className="text-lg text-slate-100">Diversity Metrics</CardTitle>
+          <CardTitle className="text-lg text-foreground">Diversity Metrics</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {[
@@ -983,11 +983,11 @@ const components = [
           ].map((item, index) => (
             <div key={index} className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-slate-300">{item.metric}</span>
-                <span className="text-slate-400">{item.current}</span>
+                <span className="text-foreground/80">{item.metric}</span>
+                <span className="text-muted-foreground">{item.current}</span>
               </div>
               <Progress value={item.value} className="h-2" />
-              <div className="text-xs text-slate-500">Target: {item.target}</div>
+              <div className="text-xs text-muted-foreground">Target: {item.target}</div>
             </div>
           ))}
         </CardContent>
@@ -1014,10 +1014,10 @@ export function RecruitmentComponents({
       <section>
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2 text-slate-100">Recruitment Components</h2>
-            <p className="text-slate-400">Specialised components for talent acquisition and candidate management</p>
+            <h2 className="text-3xl font-bold mb-2 text-foreground">Recruitment Components</h2>
+            <p className="text-muted-foreground">Specialised components for talent acquisition and candidate management</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>
@@ -1043,7 +1043,7 @@ export function RecruitmentComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-center py-12 text-muted-foreground">
             <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>

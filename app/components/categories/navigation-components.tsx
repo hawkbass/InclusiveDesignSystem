@@ -43,17 +43,17 @@ const components = [
     title: "Breadcrumbs",
     description: "Navigation breadcrumb with hover effects",
     code: `<nav className="flex items-center gap-2 text-sm">
-  <a href="#" className="text-slate-400 hover:text-white transition-all duration-300 rounded-lg">Dashboard</a>
-  <ChevronRight className="h-4 w-4 text-slate-500" />
+  <a href="#" className="text-muted-foreground hover:text-white transition-all duration-300 rounded-lg">Dashboard</a>
+  <ChevronRight className="h-4 w-4 text-muted-foreground" />
   <span className="text-white font-medium">Candidates</span>
 </nav>`,
     component: (
       <nav className="flex items-center gap-2 text-sm">
-        <a href="#" className="text-slate-400 hover:text-fuchsia-400 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Dashboard</a>
-        <ChevronRight className="h-4 w-4 text-slate-500" />
-        <a href="#" className="text-slate-400 hover:text-fuchsia-400 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Candidates</a>
-        <ChevronRight className="h-4 w-4 text-slate-500" />
-        <span className="text-fuchsia-300 font-medium">Sarah Johnson</span>
+        <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Dashboard</a>
+        <ChevronRight className="h-4 w-4 text-muted-foreground" />
+        <a href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Candidates</a>
+        <ChevronRight className="h-4 w-4 text-muted-foreground" />
+        <span className="text-primary font-medium">Sarah Johnson</span>
       </nav>
     )
   },
@@ -69,28 +69,28 @@ const components = [
 </Tabs>`,
     component: (
       <Tabs defaultValue="overview" className="w-full max-w-md">
-        <TabsList className="grid w-full grid-cols-3 h-auto p-3 bg-gradient-to-r from-slate-800/80 via-slate-800/90 to-slate-800/80 border border-slate-700/50 shadow-xl/60 rounded-3xl backdrop-blur-md shadow-2xl shadow-slate-900/40">
-          <TabsTrigger value="overview" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+        <TabsList className="grid w-full grid-cols-3 h-auto p-3 bg-muted/80 dark:bg-gradient-to-r dark:from-slate-800/80 dark:via-slate-800/90 dark:to-slate-800/80 border border-border/50 shadow-xl/60 rounded-3xl backdrop-blur-md">
+          <TabsTrigger value="overview" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-primary transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <User className="h-4 w-4 mr-2" />
             Profile
           </TabsTrigger>
-          <TabsTrigger value="details" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <TabsTrigger value="details" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-primary transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <Briefcase className="h-4 w-4 mr-2" />
             Experience
           </TabsTrigger>
-          <TabsTrigger value="skills" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-fuchsia-300 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <TabsTrigger value="skills" className="data-[state=active]:bg-fuchsia-500/20 data-[state=active]:text-primary transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <Star className="h-4 w-4 mr-2" />
             Skills
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="overview" className="mt-4 p-4 bg-slate-800/30 rounded-lg">
-          <p className="text-sm text-slate-300">Personal information and contact details.</p>
+        <TabsContent value="overview" className="mt-4 p-4 bg-card/30 rounded-lg">
+          <p className="text-sm text-foreground/80">Personal information and contact details.</p>
         </TabsContent>
-        <TabsContent value="details" className="mt-4 p-4 bg-slate-800/30 rounded-lg">
-          <p className="text-sm text-slate-300">Work experience and employment history.</p>
+        <TabsContent value="details" className="mt-4 p-4 bg-card/30 rounded-lg">
+          <p className="text-sm text-foreground/80">Work experience and employment history.</p>
         </TabsContent>
-        <TabsContent value="skills" className="mt-4 p-4 bg-slate-800/30 rounded-lg">
-          <p className="text-sm text-slate-300">Technical skills and expertise areas.</p>
+        <TabsContent value="skills" className="mt-4 p-4 bg-card/30 rounded-lg">
+          <p className="text-sm text-foreground/80">Technical skills and expertise areas.</p>
         </TabsContent>
       </Tabs>
     )
@@ -100,7 +100,7 @@ const components = [
     title: "Sidebar Navigation",
     description: "Collapsible sidebar with menu items",
     code: `<nav className="w-full max-w-64 lg:max-w-80 space-y-2">
-  <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all duration-300 rounded-lg">
+  <a href="#" className="flex items-center gap-3 px-3 py-2 rounded-lg text-foreground/80 hover:bg-card hover:text-white transition-all duration-300 rounded-lg">
     <Home className="h-5 w-5" />
     Dashboard
   </a>
@@ -120,8 +120,8 @@ const components = [
             href="#"
             className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-300 rounded-lg ${
               item.active
-                ? 'bg-fuchsia-500/20 text-fuchsia-300 border border-fuchsia-500/30'
-                : 'text-slate-300 hover:bg-slate-800/50 hover:text-fuchsia-300'
+                ? 'bg-fuchsia-500/20 text-primary border border-primary/30'
+                : 'text-foreground/80 hover:bg-card/50 hover:text-primary'
             }`}
             style={{ transitionDuration: 'var(--animation-speed)' }}
           >
@@ -137,9 +137,9 @@ const components = [
     title: "Top Navigation Bar",
     description: "Horizontal navigation with dropdowns",
     code: `<nav className="flex items-center gap-6">
-  <a href="#" className="text-slate-300 hover:text-white transition-all duration-300 rounded-lg">Home</a>
-  <a href="#" className="text-slate-300 hover:text-white transition-all duration-300 rounded-lg">About</a>
-  <a href="#" className="text-slate-300 hover:text-white transition-all duration-300 rounded-lg">Contact</a>
+  <a href="#" className="text-foreground/80 hover:text-white transition-all duration-300 rounded-lg">Home</a>
+  <a href="#" className="text-foreground/80 hover:text-white transition-all duration-300 rounded-lg">About</a>
+  <a href="#" className="text-foreground/80 hover:text-white transition-all duration-300 rounded-lg">Contact</a>
 </nav>`,
     component: (
       <nav className="flex items-center gap-6 w-full max-w-md">
@@ -154,8 +154,8 @@ const components = [
             href="#"
             className={`transition-all duration-300 rounded-lg font-medium ${
               item.active
-                ? 'text-fuchsia-300 border-b-2 border-fuchsia-500 pb-1'
-                : 'text-slate-300 hover:text-fuchsia-300'
+                ? 'text-primary border-b-2 border-primary pb-1'
+                : 'text-foreground/80 hover:text-primary'
             }`}
             style={{ transitionDuration: 'var(--animation-speed)' }}
           >
@@ -176,22 +176,22 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-sm">
-        <div className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center justify-between p-3 bg-card/30 rounded-lg">
           <div className="flex items-center gap-2">
-            <Hexagon className="h-6 w-6 text-fuchsia-400" />
-            <span className="font-medium text-slate-200">Mobile Nav</span>
+            <Hexagon className="h-6 w-6 text-primary" />
+            <span className="font-medium text-foreground">Mobile Nav</span>
           </div>
-          <Button variant="ghost" size="sm" className="hover:bg-slate-700">
+          <Button variant="ghost" size="sm" className="hover:bg-accent">
             <Menu className="h-5 w-5" />
           </Button>
         </div>
-        <div className="mt-2 p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl">
+        <div className="mt-2 p-3 bg-card/30 rounded-xl border border-border/50 shadow-xl">
           <div className="space-y-2">
             {["Dashboard", "Candidates", "Jobs", "Settings"].map((item, index) => (
               <a
                 key={index}
                 href="#"
-                className="block px-3 py-2 text-slate-300 hover:text-fuchsia-300 hover:bg-slate-800/50 rounded transition-all duration-300 rounded-lg"
+                className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-card/50 rounded transition-all duration-300 rounded-lg"
                 style={{ transitionDuration: 'var(--animation-speed)' }}
               >
                 {item}
@@ -218,7 +218,7 @@ const components = [
 </div>`,
     component: (
       <div className="flex items-center gap-2 flex-wrap">
-        <Button variant="outline" size="sm" className="hover:bg-slate-700">
+        <Button variant="outline" size="sm" className="hover:bg-accent">
           <ArrowLeft className="h-4 w-4" />
         </Button>
         {[1, 2, 3, 4, 5].map((page, index) => (
@@ -226,16 +226,16 @@ const components = [
             key={index}
             variant={page === 2 ? "default" : "outline"}
             size="sm"
-            className={page === 2 ? "bg-fuchsia-500 hover:bg-fuchsia-600" : "hover:bg-slate-700"}
+            className={page === 2 ? "bg-fuchsia-500 hover:bg-fuchsia-600" : "hover:bg-accent"}
           >
             {page}
           </Button>
         ))}
-        <span className="text-slate-400 mx-2">...</span>
-        <Button variant="outline" size="sm" className="hover:bg-slate-700">
+        <span className="text-muted-foreground mx-2">...</span>
+        <Button variant="outline" size="sm" className="hover:bg-accent">
           10
         </Button>
-        <Button variant="outline" size="sm" className="hover:bg-slate-700">
+        <Button variant="outline" size="sm" className="hover:bg-accent">
           <ArrowRight className="h-4 w-4" />
         </Button>
       </div>
@@ -248,7 +248,7 @@ const components = [
     code: `<div className="flex items-center gap-6">
   <div className="flex items-center gap-2">
     <div className="w-8 h-8 bg-fuchsia-500 rounded-full flex items-center justify-center text-white text-sm">1</div>
-    <span className="text-fuchsia-300">Step 1</span>
+    <span className="text-primary">Step 1</span>
   </div>
 </div>`,
     component: (
@@ -267,19 +267,19 @@ const components = [
                     ? 'bg-green-500 text-white'
                     : item.active
                     ? 'bg-fuchsia-500 text-white'
-                    : 'bg-slate-600 text-slate-300'
+                    : 'bg-muted text-foreground/80'
                 }`}>
                   {item.completed ? <Check className="h-4 w-4" /> : item.step}
                 </div>
                 <span className={`text-xs mt-1 ${
-                  item.active ? 'text-fuchsia-300' : item.completed ? 'text-green-300' : 'text-slate-400'
+                  item.active ? 'text-primary' : item.completed ? 'text-green-300' : 'text-muted-foreground'
                 }`}>
                   {item.label}
                 </span>
               </div>
               {index < 3 && (
                 <div className={`w-12 h-0.5 mx-2 ${
-                  item.completed ? 'bg-green-500' : 'bg-slate-600'
+                  item.completed ? 'bg-green-500' : 'bg-muted'
                 }`}></div>
               )}
             </div>
@@ -305,7 +305,7 @@ const components = [
             Actions
             <ChevronDown className="h-4 w-4 ml-2" />
           </Button>
-          <div className="absolute top-full left-0 right-0 mt-1 p-2 bg-slate-800/90 border border-slate-700/50 rounded-lg shadow-xl">
+          <div className="absolute top-full left-0 right-0 mt-1 p-2 bg-card/90 border border-border/50 rounded-lg shadow-xl">
             <div className="space-y-1">
               {[
                 { label: "View Profile", icon: User },
@@ -315,7 +315,7 @@ const components = [
               ].map((item, index) => (
                 <button
                   key={index}
-                  className="w-full flex items-center gap-2 px-3 py-2 text-slate-300 hover:text-fuchsia-300 hover:bg-slate-700/50 rounded transition-all duration-300 rounded-lg text-left"
+                  className="w-full flex items-center gap-2 px-3 py-2 text-foreground/80 hover:text-primary hover:bg-accent/50 rounded transition-all duration-300 rounded-lg text-left"
                   style={{ transitionDuration: 'var(--animation-speed)' }}
                 >
                   <item.icon className="h-4 w-4" />
@@ -339,18 +339,18 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-xs">
-        <div className="flex items-center gap-2 p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl">
+        <div className="flex items-center gap-2 p-3 bg-card/30 rounded-xl border border-border/50 shadow-xl">
           <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">
             <User className="h-4 w-4 mr-1" />
             Add
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Search className="h-4 w-4" />
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Filter className="h-4 w-4" />
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Settings className="h-4 w-4" />
           </Button>
         </div>
@@ -375,16 +375,16 @@ const components = [
       <div className="w-full max-w-md">
         <div className="flex items-center gap-2 flex-wrap">
           <div className="flex items-center gap-2">
-            <span className="text-sm text-slate-300">Sort:</span>
-            <select className="bg-slate-800/50 border border-slate-600 rounded px-2 py-1 text-sm text-slate-300">
+            <span className="text-sm text-foreground/80">Sort:</span>
+            <select className="bg-card/50 border border-border rounded px-2 py-1 text-sm text-foreground/80">
               <option>Name</option>
               <option>Date</option>
               <option>Status</option>
             </select>
           </div>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-slate-300">Filter:</span>
-            <Button size="sm" variant="outline" className="hover:bg-slate-700">
+            <span className="text-sm text-foreground/80">Filter:</span>
+            <Button size="sm" variant="outline" className="hover:bg-accent">
               <Filter className="h-3 w-3 mr-1" />
               Active
             </Button>
@@ -398,9 +398,9 @@ const components = [
     title: "Floating Navigation",
     description: "Floating navigation panel",
     code: `<div className="fixed bottom-4 left-4">
-  <div className="bg-slate-800/90 backdrop-blur-xl border border-slate-700/50 rounded-lg p-2">
+  <div className="bg-card/90 backdrop-blur-xl border border-border/50 rounded-lg p-2">
     <nav className="space-y-2">
-      <a href="#" className="block p-2 text-slate-300 hover:text-white hover:bg-slate-700/50 rounded transition-colours">
+      <a href="#" className="block p-2 text-foreground/80 hover:text-white hover:bg-accent/50 rounded transition-colours">
         <Home className="h-5 w-5" />
       </a>
     </nav>
@@ -408,10 +408,10 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-xs">
-        <div className="bg-slate-800/90 backdrop-blur-xl border border-slate-700/50 rounded-lg p-3 shadow-xl">
+        <div className="bg-card/90 backdrop-blur-xl border border-border/50 rounded-lg p-3 shadow-xl">
           <div className="flex items-center justify-between mb-3">
-            <span className="text-sm font-medium text-slate-200">Quick Access</span>
-            <Button size="sm" variant="ghost" className="h-6 w-6 p-0 hover:bg-slate-700">
+            <span className="text-sm font-medium text-foreground">Quick Access</span>
+            <Button size="sm" variant="ghost" className="h-6 w-6 p-0 hover:bg-accent">
               <X className="h-3 w-3" />
             </Button>
           </div>
@@ -427,8 +427,8 @@ const components = [
                 href="#"
                 className={`flex items-center gap-2 px-2 py-1 rounded text-sm transition-all duration-300 rounded-lg ${
                   item.active
-                    ? 'text-fuchsia-300 bg-fuchsia-500/20'
-                    : 'text-slate-300 hover:text-fuchsia-300 hover:bg-slate-700/50'
+                    ? 'text-primary bg-fuchsia-500/20'
+                    : 'text-foreground/80 hover:text-primary hover:bg-accent/50'
                 }`}
                 style={{ transitionDuration: 'var(--animation-speed)' }}
               >
@@ -457,25 +457,25 @@ const components = [
 </div>`,
     component: (
       <div className="w-full max-w-md">
-        <div className="flex items-center justify-between p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl">
+        <div className="flex items-center justify-between p-3 bg-card/30 rounded-xl border border-border/50 shadow-xl">
           <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" className="hover:bg-slate-700">
+            <Button variant="ghost" size="sm" className="hover:bg-accent">
               <ArrowLeft className="h-4 w-4 mr-1" />
               Back
             </Button>
-            <span className="text-sm text-slate-400">|</span>
-            <span className="text-sm text-slate-300">Sarah Johnson</span>
+            <span className="text-sm text-muted-foreground">|</span>
+            <span className="text-sm text-foreground/80">Sarah Johnson</span>
           </div>
           <div className="flex items-center gap-2">
             <Button size="sm" className="bg-fuchsia-500 hover:bg-fuchsia-600">
               <User className="h-3 w-3 mr-1" />
               Edit
             </Button>
-            <Button size="sm" variant="outline" className="hover:bg-slate-700">
+            <Button size="sm" variant="outline" className="hover:bg-accent">
               <Mail className="h-3 w-3 mr-1" />
               Contact
             </Button>
-            <Button size="sm" variant="outline" className="hover:bg-slate-700">
+            <Button size="sm" variant="outline" className="hover:bg-accent">
               <Calendar className="h-3 w-3 mr-1" />
               Schedule
             </Button>
@@ -504,8 +504,8 @@ export function NavigationComponents({
       <section>
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2 text-slate-100">Navigation Components</h2>
-            <p className="text-slate-400">Navigation patterns and menu systems for seamless user journeys</p>
+            <h2 className="text-3xl font-bold mb-2 text-foreground">Navigation Components</h2>
+            <p className="text-muted-foreground">Navigation patterns and menu systems for seamless user journeys</p>
           </div>
           <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
@@ -533,7 +533,7 @@ export function NavigationComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-center py-12 text-muted-foreground">
             <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>

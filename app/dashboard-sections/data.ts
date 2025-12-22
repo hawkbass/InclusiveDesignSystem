@@ -18,7 +18,7 @@ import type {
 } from "./types"
 
 export const initialNotifications: Notification[] = [
-  { id: 1, type: "interview", message: "Interview with Alex Morgan in 30 min", time: "2 min ago", urgent: true },
+  { id: 1, type: "interview", message: "Interview with Oliver Smith in 30 min", time: "2 min ago", urgent: true },
   { id: 2, type: "application", message: "5 new applications received", time: "15 min ago", urgent: false },
   { id: 3, type: "goal", message: "Monthly hiring goal 85% complete", time: "1 hour ago", urgent: false }
 ]
@@ -42,7 +42,7 @@ export const initialCandidates: Candidate[] = [
   { 
     id: "2",
     name: "Amelia Jones", 
-    position: "Frontend Dev", 
+    position: "Frontend Developer", 
     status: "screening", 
     match: "87%",
     avatar: "AJ",
@@ -80,6 +80,20 @@ export const initialCandidates: Candidate[] = [
     lastActivity: "3h ago",
     email: "sophie.williams@email.co.uk",
     phone: "+44 131 496 7890"
+  },
+  { 
+    id: "5",
+    name: "James Thompson", 
+    position: "Backend Developer", 
+    status: "screening", 
+    match: "81%",
+    avatar: "JT",
+    skills: ["Python", "Django", "PostgreSQL"],
+    experience: "6 years",
+    location: "Bristol",
+    lastActivity: "4h ago",
+    email: "james.thompson@email.co.uk",
+    phone: "+44 117 925 4567"
   }
 ]
 
@@ -136,17 +150,33 @@ export const initialJobsData: Job[] = [
     id: "4",
     title: "Marketing Specialist",
     department: "Marketing",
-    location: "Remote",
+    location: "Leeds",
     type: "Full-time",
     level: "Entry-level",
-    salary: "$45,000 - $65,000",
+    salary: "£35,000 - £45,000",
     applicants: 18,
     posted: "1 day ago",
     status: "active",
     description: "Drive growth through creative marketing campaigns...",
     requirements: ["2+ years marketing experience", "Social media expertise", "Content creation skills"],
-    benefits: ["Health insurance", "Remote work", "Performance bonuses", "Learning budget"],
+    benefits: ["Private healthcare", "Remote work", "Performance bonuses", "Learning budget"],
     priority: "medium"
+  },
+  {
+    id: "5",
+    title: "DevOps Engineer",
+    department: "Engineering",
+    location: "Bristol",
+    type: "Full-time",
+    level: "Senior",
+    salary: "£80,000 - £100,000",
+    applicants: 22,
+    posted: "5 days ago",
+    status: "active",
+    description: "Lead our cloud infrastructure and deployment pipelines...",
+    requirements: ["5+ years DevOps experience", "AWS/Azure expertise", "Kubernetes knowledge"],
+    benefits: ["Private healthcare", "25 days holiday + bank holidays", "Pension scheme", "Cycle to work"],
+    priority: "high"
   }
 ]
 
@@ -154,68 +184,68 @@ export const initialCalendarEvents: Record<number, CalendarEvent[]> = {
   15: [
     {
       id: "1",
-      candidate: "Alex Morgan",
+      candidate: "Oliver Smith",
       position: "UX Designer",
-      time: "10:00 AM",
+      time: "10:00",
       duration: "45 min",
       type: "Technical",
       status: "confirmed",
-      avatar: "AM",
-      interviewer: "Sarah Wilson",
+      avatar: "OS",
+      interviewer: "Emma Richardson",
       meetingLink: "meet.google.com/xyz-abc-def",
       notes: "Review candidate's portfolio and previous work samples. Focus on UX design process and problem-solving approach."
     },
     {
       id: "2",
-      candidate: "Jamie Chen",
+      candidate: "Amelia Jones",
       position: "Frontend Developer",
-      time: "2:00 PM",
+      time: "14:00",
       duration: "30 min",
       type: "First Round",
       status: "confirmed",
-      avatar: "JC",
-      interviewer: "Sarah Wilson",
+      avatar: "AJ",
+      interviewer: "Emma Richardson",
       meetingLink: "meet.google.com/abc-def-ghi"
     }
   ],
   16: [
     {
       id: "3",
-      candidate: "Taylor Kim",
+      candidate: "Harry Patel",
       position: "Product Manager",
-      time: "11:00 AM",
+      time: "11:00",
       duration: "60 min",
       type: "Second Round",
       status: "pending",
-      avatar: "TK",
-      interviewer: "Sarah Wilson"
+      avatar: "HP",
+      interviewer: "Emma Richardson"
     }
   ],
   18: [
     {
       id: "4",
-      candidate: "Casey Smith",
+      candidate: "Sophie Williams",
       position: "Data Analyst",
-      time: "3:00 PM",
+      time: "15:00",
       duration: "45 min",
       type: "Final Round",
       status: "confirmed",
-      avatar: "CS",
-      interviewer: "Sarah Wilson"
+      avatar: "SW",
+      interviewer: "Emma Richardson"
     }
   ]
 }
 
 export const initialProfileData: ProfileData = {
-  fullName: "Sarah Wilson",
-  email: "sarah.wilson@inclusive.io",
+  fullName: "Emma Richardson",
+  email: "emma.richardson@inclusive.io",
   jobTitle: "Senior Recruitment Manager",
-  department: "Human Resources",
-  phone: "+1 (555) 123-4567",
-  location: "San Francisco, CA",
-  timezone: "Pacific Time (PT)",
-  avatar: "SW",
-  bio: "Experienced recruitment professional with 8+ years in talent acquisition and team building."
+  department: "Talent Acquisition",
+  phone: "+44 20 7946 0123",
+  location: "London, UK",
+  timezone: "GMT (London)",
+  avatar: "ER",
+  bio: "Experienced recruitment professional with 8+ years in talent acquisition and team building across the UK."
 }
 
 export const initialNotificationPrefs: NotificationPrefs = {
@@ -237,10 +267,10 @@ export const initialSecuritySettings: SecuritySettings = {
 }
 
 export const initialTeamMembers: TeamMember[] = [
-  { id: 1, name: "Alex Morgan", role: "HR Coordinator", email: "alex.morgan@inclusive.io", avatar: "AM", status: "active", lastActive: "2 hours ago" },
-  { id: 2, name: "Jamie Chen", role: "Recruitment Specialist", email: "jamie.chen@inclusive.io", avatar: "JC", status: "active", lastActive: "30 minutes ago" },
-  { id: 3, name: "Taylor Kim", role: "Talent Acquisition Lead", email: "taylor.kim@inclusive.io", avatar: "TK", status: "away", lastActive: "1 day ago" },
-  { id: 4, name: "Casey Smith", role: "HR Analyst", email: "casey.smith@inclusive.io", avatar: "CS", status: "active", lastActive: "5 minutes ago" }
+  { id: 1, name: "Charlotte Davies", role: "HR Coordinator", email: "charlotte.davies@inclusive.io", avatar: "CD", status: "active", lastActive: "2 hours ago" },
+  { id: 2, name: "William Hughes", role: "Recruitment Specialist", email: "william.hughes@inclusive.io", avatar: "WH", status: "active", lastActive: "30 minutes ago" },
+  { id: 3, name: "Olivia Bennett", role: "Talent Acquisition Lead", email: "olivia.bennett@inclusive.io", avatar: "OB", status: "away", lastActive: "1 day ago" },
+  { id: 4, name: "George Taylor", role: "HR Analyst", email: "george.taylor@inclusive.io", avatar: "GT", status: "active", lastActive: "5 minutes ago" }
 ]
 
 export const getStatCards = (): StatCard[] => [

@@ -160,7 +160,7 @@ function CustomColorPicker({ value, onChange, label, type }: {
   return (
     <div className="relative">
       <div className="flex items-center justify-between mb-3">
-        <Label className="text-slate-200 font-medium">{label}</Label>
+        <Label className="text-foreground font-medium">{label}</Label>
         <Badge className={`text-xs ${
           type === 'foreground' ? 'bg-blue-500/20 text-blue-300' : 'bg-purple-500/20 text-purple-300'
         }`}>
@@ -172,19 +172,19 @@ function CustomColorPicker({ value, onChange, label, type }: {
         {/* Color Display & Trigger */}
         <div className="flex items-center gap-3">
           <div 
-            className="w-16 h-16 rounded-xl border-2 border-slate-600 cursor-pointer hover:border-fuchsia-500/50 transition-colors relative overflow-hidden"
+            className="w-16 h-16 rounded-xl border-2 border-border cursor-pointer hover:border-primary/50 transition-colors relative overflow-hidden"
             onClick={() => setIsOpen(!isOpen)}
             style={{ backgroundColor: value }}
           >
             <div className="absolute bottom-1 right-1">
-              <div className="p-1 bg-slate-900/80 rounded border border-slate-700/50">
-                <Palette className="h-2 w-2 text-slate-300" />
+              <div className="p-1 bg-card/80 rounded border border-border/50">
+                <Palette className="h-2 w-2 text-foreground/80" />
               </div>
             </div>
           </div>
           <div className="flex-1">
-            <div className="text-lg font-mono text-slate-200 mb-1">{value.toUpperCase()}</div>
-            <div className="text-xs text-slate-400">Click to change colour</div>
+            <div className="text-lg font-mono text-foreground mb-1">{value.toUpperCase()}</div>
+            <div className="text-xs text-muted-foreground">Click to change colour</div>
           </div>
         </div>
 
@@ -199,33 +199,33 @@ function CustomColorPicker({ value, onChange, label, type }: {
             
             {/* Floating Modal */}
             <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
-              <Card className="bg-slate-900/95 border-slate-700/50 p-4 w-80 shadow-2xl">
+              <Card className="bg-card/95 border-border/50 p-4 w-80 shadow-2xl">
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <span className="text-lg font-medium text-slate-200">Colour Picker</span>
+                    <span className="text-lg font-medium text-foreground">Colour Picker</span>
                     <Button
                       size="sm"
                       variant="ghost"
                       onClick={() => setIsOpen(false)}
-                      className="h-6 w-6 p-0 hover:bg-slate-800/50"
+                      className="h-6 w-6 p-0 hover:bg-card/50"
                     >
                       <X className="h-4 w-4" />
                     </Button>
                   </div>
 
                   {/* Color Preview */}
-                  <div className="h-16 rounded-lg border border-slate-600" style={{ backgroundColor: value }}>
+                  <div className="h-16 rounded-lg border border-border" style={{ backgroundColor: value }}>
                     <div className="w-full h-full rounded-lg bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                   </div>
 
                   {/* Hex Input */}
                   <div className="flex items-center gap-2">
-                    <Hash className="h-4 w-4 text-slate-400" />
+                    <Hash className="h-4 w-4 text-muted-foreground" />
                     <Input
                       value={hexInput}
                       onChange={(e) => handleHexChange(e.target.value)}
                       onBlur={() => setHexInput(value)}
-                      className="font-mono text-sm bg-slate-900/30 border-slate-600 focus:border-fuchsia-500/50"
+                      className="font-mono text-sm bg-card/30 border-border focus:border-primary/50"
                       placeholder="#000000"
                     />
                   </div>
@@ -234,8 +234,8 @@ function CustomColorPicker({ value, onChange, label, type }: {
                   <div className="space-y-3">
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <Label className="text-sm text-slate-300">Hue</Label>
-                        <span className="text-xs text-slate-400 font-mono">{hue}°</span>
+                        <Label className="text-sm text-foreground/80">Hue</Label>
+                        <span className="text-xs text-muted-foreground font-mono">{hue}°</span>
                       </div>
                       <input
                         type="range"
@@ -258,8 +258,8 @@ function CustomColorPicker({ value, onChange, label, type }: {
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <Label className="text-sm text-slate-300">Saturation</Label>
-                        <span className="text-xs text-slate-400 font-mono">{saturation}%</span>
+                        <Label className="text-sm text-foreground/80">Saturation</Label>
+                        <span className="text-xs text-muted-foreground font-mono">{saturation}%</span>
                       </div>
                       <input
                         type="range"
@@ -281,8 +281,8 @@ function CustomColorPicker({ value, onChange, label, type }: {
                     </div>
                     <div>
                       <div className="flex items-center justify-between mb-2">
-                        <Label className="text-sm text-slate-300">Brightness</Label>
-                        <span className="text-xs text-slate-400 font-mono">{brightness}%</span>
+                        <Label className="text-sm text-foreground/80">Brightness</Label>
+                        <span className="text-xs text-muted-foreground font-mono">{brightness}%</span>
                       </div>
                       <input
                         type="range"
@@ -305,7 +305,7 @@ function CustomColorPicker({ value, onChange, label, type }: {
                   </div>
 
                   {/* System Color Picker Fallback */}
-                  <div className="flex items-center gap-2 pt-3 border-t border-slate-700/50">
+                  <div className="flex items-center gap-2 pt-3 border-t border-border/50">
                     <input
                       type="color"
                       value={value}
@@ -318,7 +318,7 @@ function CustomColorPicker({ value, onChange, label, type }: {
                     />
                     <Label
                       htmlFor={`system-picker-${type}`}
-                      className="flex items-center gap-2 text-sm text-slate-400 cursor-pointer hover:text-slate-300 transition-colors"
+                      className="flex items-center gap-2 text-sm text-muted-foreground cursor-pointer hover:text-foreground/80 transition-colors"
                     >
                       <Palette className="h-4 w-4" />
                       Use system picker
@@ -578,7 +578,7 @@ export default function AccessibilityUniversal() {
   const popularSearches = ["aria-label", "contrast ratio", "screen reader", "keyboard navigation", "wcag guidelines"]
 
   return (
-    <div className="flex bg-slate-950 min-h-screen">
+    <div className="flex bg-background min-h-screen">
       <UnifiedSidebar />
       
       {/* Notifications */}
@@ -606,8 +606,8 @@ export default function AccessibilityUniversal() {
       
       <main className="flex-1 overflow-auto">
         {/* Universal Comprehension Header */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-green-950 border-b border-slate-800">
-          <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-blue-500/5 to-purple-500/5" />
+        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-green-950 border-b border-border">
+          <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-blue-500/5 to-accent/5" />
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
           
@@ -616,20 +616,20 @@ export default function AccessibilityUniversal() {
               <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-8">
                 <div>
                   <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-slate-800/40 text-slate-300 border-slate-700/50">
+                    <Badge className="bg-card/40 text-foreground/80 border-border/50">
                       <Shield className="w-3 h-3 mr-1" />
                       WCAG 2.1 AA Compliant
                     </Badge>
-                    <Badge className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 text-blue-300 border-blue-500/30">
+                    <Badge className="bg-gradient-to-r from-blue-500/20 to-accent/20 text-blue-300 border-blue-500/30">
                       <Globe className="w-3 h-3 mr-1" />
                       Inclusive Design
                     </Badge>
                   </div>
-                  <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+                  <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                     Accessibility
                     <span className="bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent"> Guidelines</span>
                   </h1>
-                  <p className="text-xl text-slate-400 max-w-3xl">
+                  <p className="text-xl text-muted-foreground max-w-3xl">
                     Build inclusive recruitment experiences that work for everyone. Comprehensive accessibility guidelines, 
                     testing tools, and implementation patterns for WCAG 2.1 AA compliance in Inclusive's design system.
                   </p>
@@ -638,19 +638,19 @@ export default function AccessibilityUniversal() {
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                     <div className="text-center">
                       <div className="text-lg font-bold text-green-400">100%</div>
-                      <div className="text-xs text-slate-500">Component Coverage</div>
+                      <div className="text-xs text-muted-foreground">Component Coverage</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-blue-400">AAA</div>
-                      <div className="text-xs text-slate-500">Contrast Ratios</div>
+                      <div className="text-xs text-muted-foreground">Contrast Ratios</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-purple-400">508</div>
-                      <div className="text-xs text-slate-500">Section Compliant</div>
+                      <div className="text-xs text-muted-foreground">Section Compliant</div>
                     </div>
                     <div className="text-center">
                       <div className="text-lg font-bold text-orange-400">15+</div>
-                      <div className="text-xs text-slate-500">Testing Tools</div>
+                      <div className="text-xs text-muted-foreground">Testing Tools</div>
                     </div>
                   </div>
                 </div>
@@ -679,10 +679,10 @@ export default function AccessibilityUniversal() {
                   </div>
                   
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-slate-100">
+                    <div className="text-2xl font-bold text-foreground">
                       {runningTest ? `${testingProgress}%` : `${complianceScore}%`}
                     </div>
-                    <div className="text-sm text-slate-500">
+                    <div className="text-sm text-muted-foreground">
                       {runningTest ? "Testing Progress" : "Compliance Score"}
                     </div>
                     <div className="mt-2">
@@ -703,12 +703,12 @@ export default function AccessibilityUniversal() {
               {/* Functional Search Bar */}
               <div className="max-w-2xl mx-auto relative">
                 <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-500" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     placeholder="Search guidelines, ARIA attributes, testing tools... Try 'aria-label' or 'contrast'"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-12 pr-4 py-4 text-lg bg-slate-800/50 border-slate-700 text-slate-200 placeholder-slate-500 rounded-xl"
+                    className="pl-12 pr-4 py-4 text-lg bg-card/50 border-border text-foreground placeholder-muted-foreground rounded-xl"
                   />
                   {searchQuery && (
                     <Button
@@ -724,14 +724,14 @@ export default function AccessibilityUniversal() {
                 
                 {/* Popular Searches */}
                 <div className="flex flex-wrap justify-center gap-2 mt-4">
-                  <span className="text-sm text-slate-500">Popular:</span>
+                  <span className="text-sm text-muted-foreground">Popular:</span>
                   {popularSearches.map((search, index) => (
                     <Button
                       key={index}
                       variant="ghost"
                       size="sm"
                       onClick={() => setSearchQuery(search)}
-                      className="text-xs text-slate-400 hover:text-green-400 h-6 px-2"
+                      className="text-xs text-muted-foreground hover:text-green-400 h-6 px-2"
                     >
                       {search}
                     </Button>
@@ -740,26 +740,26 @@ export default function AccessibilityUniversal() {
 
                 {/* Live Search Results */}
                 {searchResults.length > 0 && (
-                  <Card className="absolute top-full left-0 right-0 mt-2 z-50 bg-slate-800 border-slate-700 max-h-96 overflow-y-auto">
+                  <Card className="absolute top-full left-0 right-0 mt-2 z-50 bg-card border-border max-h-96 overflow-y-auto">
                     <CardContent className="p-4">
                       <div className="space-y-3">
                         {searchResults.map((result) => (
-                          <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-slate-700/50 rounded-lg cursor-pointer group">
-                            <div className="p-2 rounded bg-slate-700/50">
+                          <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-accent/50 rounded-lg cursor-pointer group">
+                            <div className="p-2 rounded bg-muted/50">
                               {result.type === "guideline" && <BookOpen className="h-4 w-4 text-green-400" />}
                               {result.type === "attribute" && <Code2 className="h-4 w-4 text-blue-400" />}
                               {result.type === "tool" && <Settings className="h-4 w-4 text-purple-400" />}
                               {result.type === "concept" && <Lightbulb className="h-4 w-4 text-yellow-400" />}
-                              {result.type === "pattern" && <Navigation className="h-4 w-4 text-fuchsia-400" />}
+                              {result.type === "pattern" && <Navigation className="h-4 w-4 text-primary" />}
                               {result.type === "code" && <Sparkles className="h-4 w-4 text-cyan-400" />}
                             </div>
                             <div className="flex-1 min-w-0">
-                              <div className="text-sm font-medium text-slate-200">{result.name}</div>
-                              <div className="text-xs text-slate-400 truncate">
+                              <div className="text-sm font-medium text-foreground">{result.name}</div>
+                              <div className="text-xs text-muted-foreground truncate">
                                 {result.description || result.usage}
                               </div>
                             </div>
-                            <Badge className="bg-slate-700 text-slate-300 text-xs">
+                            <Badge className="bg-muted text-foreground/80 text-xs">
                               {result.difficulty}
                             </Badge>
                             <Button
@@ -785,10 +785,10 @@ export default function AccessibilityUniversal() {
 
               {/* Quick Value Preview - Always Visible with Enhanced Status */}
               <div className="mt-12">
-                <h3 className="text-lg font-medium text-slate-300 mb-6 text-center">Essential Accessibility Tools:</h3>
+                <h3 className="text-lg font-medium text-foreground/80 mb-6 text-center">Essential Accessibility Tools:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
                   {quickPreviewItems.map((item, index) => (
-                    <Card key={index} className={`bg-slate-800/30 border-slate-700/50 hover:bg-slate-800/50 transition-all group cursor-pointer ${
+                    <Card key={index} className={`bg-card/30 border-border/50 hover:bg-card/50 transition-all group cursor-pointer ${
                       item.status === 'pass' ? 'border-green-500/30 shadow-green-500/10' : 
                       item.status === 'fail' ? 'border-yellow-500/30 shadow-yellow-500/10' :
                       item.status === 'running' ? 'border-blue-500/30 shadow-blue-500/10' : ''
@@ -799,7 +799,7 @@ export default function AccessibilityUniversal() {
                             <div className={`p-3 rounded-xl transition-all group-hover:scale-110 ${
                               item.status === 'pass' ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20' :
                               item.status === 'fail' ? 'bg-gradient-to-br from-yellow-500/20 to-orange-500/20' :
-                              item.status === 'running' ? 'bg-gradient-to-br from-blue-500/20 to-purple-500/20' :
+                              item.status === 'running' ? 'bg-gradient-to-br from-blue-500/20 to-accent/20' :
                               'bg-gradient-to-br from-green-500/20 to-blue-500/20'
                             }`}>
                               <item.icon className={`h-6 w-6 transition-colours ${
@@ -815,7 +815,7 @@ export default function AccessibilityUniversal() {
                               item.status === 'pass' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
                               item.status === 'fail' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
                               item.status === 'running' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
-                              'bg-slate-500/20 text-slate-300 border-slate-500/30'
+                              'bg-slate-500/20 text-foreground/80 border-slate-500/30'
                             }`}>
                               {item.status === 'pass' ? '✓ Pass' : 
                                item.status === 'fail' ? '⚠ Check' :
@@ -824,32 +824,32 @@ export default function AccessibilityUniversal() {
                           )}
                         </div>
                         
-                        <h4 className="font-medium text-slate-200 mb-2">{item.name}</h4>
+                        <h4 className="font-medium text-foreground mb-2">{item.name}</h4>
                         {item.category && (
-                          <Badge className="bg-slate-700/50 text-slate-300 text-xs mb-2">
+                          <Badge className="bg-muted/50 text-foreground/80 text-xs mb-2">
                             {item.category}
                           </Badge>
                         )}
-                        <p className="text-sm text-slate-400 mb-4 leading-relaxed">{item.description}</p>
+                        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{item.description}</p>
                         
                         {item.metrics && (
-                          <div className="mb-4 p-2 bg-slate-900/50 rounded-lg border border-slate-700/30">
-                            <div className="text-lg font-bold text-slate-100">{item.metrics}</div>
-                            <div className="text-xs text-slate-500">Current Ratio</div>
+                          <div className="mb-4 p-2 bg-card/50 rounded-lg border border-border/30">
+                            <div className="text-lg font-bold text-foreground">{item.metrics}</div>
+                            <div className="text-xs text-muted-foreground">Current Ratio</div>
                           </div>
                         )}
                         
                         {item.progress !== undefined && item.progress > 0 && (
                           <div className="mb-4">
                             <Progress value={item.progress} className="h-2" />
-                            <div className="text-xs text-slate-500 mt-1">{item.progress}% Complete</div>
+                            <div className="text-xs text-muted-foreground mt-1">{item.progress}% Complete</div>
                           </div>
                         )}
                         
                         {item.code ? (
                           <div className="space-y-2">
                             <div className="flex items-center justify-between">
-                              <span className="text-xs text-slate-500 font-medium">Code example:</span>
+                              <span className="text-xs text-muted-foreground font-medium">Code example:</span>
                             <Button
                               size="sm"
                               variant="ghost"
@@ -869,7 +869,7 @@ export default function AccessibilityUniversal() {
                               )}
                             </Button>
                             </div>
-                            <pre className="bg-slate-900/50 p-3 rounded-lg text-xs text-slate-300 font-mono whitespace-pre-wrap border border-slate-700/30">
+                            <pre className="bg-card/50 p-3 rounded-lg text-xs text-foreground/80 font-mono whitespace-pre-wrap border border-border/30">
                               <code>{item.code}</code>
                             </pre>
                           </div>
@@ -910,7 +910,7 @@ export default function AccessibilityUniversal() {
           <div className="max-w-7xl mx-auto space-y-6">
             
             {/* Learning Paths Section */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-border/50 bg-card/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("learning-paths")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -918,7 +918,7 @@ export default function AccessibilityUniversal() {
                       <Compass className="h-5 w-5 text-green-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100">Accessibility Learning Paths</CardTitle>
+                      <CardTitle className="text-xl text-foreground">Accessibility Learning Paths</CardTitle>
                       <CardDescription>
                         {userMode === "guided" 
                           ? "Structured learning journeys for different skill levels and roles"
@@ -942,7 +942,7 @@ export default function AccessibilityUniversal() {
                 <CardContent>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     {accessibilityPaths.map((path) => (
-                      <Card key={path.id} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group cursor-pointer">
+                      <Card key={path.id} className="bg-card/30 border-border/30 hover:bg-card/50 hover:border-border/50 transition-all group cursor-pointer">
                         <CardContent className="p-6">
                           <div className="flex items-start justify-between mb-4">
                             <div className={`p-3 rounded-xl ${path.bgColor}`}>
@@ -954,23 +954,23 @@ export default function AccessibilityUniversal() {
                               onClick={() => toggleFavorite(path.id)}
                               className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                             >
-                              <Heart className={`h-4 w-4 ${favourites.has(path.id) ? 'fill-current text-fuchsia-400' : 'text-slate-400'}`} />
+                              <Heart className={`h-4 w-4 ${favourites.has(path.id) ? 'fill-current text-primary' : 'text-muted-foreground'}`} />
                             </Button>
                           </div>
                           
-                          <h3 className="text-lg font-semibold text-slate-100 mb-2 group-hover:text-green-300 transition-colours">
+                          <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-green-300 transition-colours">
                             {path.title}
                           </h3>
-                          <p className="text-slate-400 text-sm mb-4 leading-relaxed">
+                          <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
                             {path.description}
                           </p>
                           
                           <div className="flex items-center gap-4 mb-4 text-xs">
-                            <Badge className="bg-slate-700/50 text-slate-300 flex items-center gap-1">
+                            <Badge className="bg-muted/50 text-foreground/80 flex items-center gap-1">
                               <Clock className="h-3 w-3" />
                               {path.duration}
                             </Badge>
-                            <Badge className="bg-slate-700/50 text-slate-300">
+                            <Badge className="bg-muted/50 text-foreground/80">
                               {path.difficulty}
                             </Badge>
                           </div>
@@ -978,15 +978,15 @@ export default function AccessibilityUniversal() {
                           {userMode === "technical" && (
                             <div className="space-y-2 mb-4">
                               {path.steps.slice(0, 2).map((step, index) => (
-                                <div key={step.id} className="flex items-center gap-2 text-xs text-slate-400">
-                                  <div className="w-4 h-4 rounded border border-slate-600 flex items-center justify-center">
-                                    <span className="text-slate-500">{index + 1}</span>
+                                <div key={step.id} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                  <div className="w-4 h-4 rounded border border-border flex items-center justify-center">
+                                    <span className="text-muted-foreground">{index + 1}</span>
                                   </div>
                                   <span>{step.title}</span>
                                 </div>
                               ))}
                               {path.steps.length > 2 && (
-                                <div className="text-xs text-slate-500 pl-6">
+                                <div className="text-xs text-muted-foreground pl-6">
                                   +{path.steps.length - 2} more steps
                                 </div>
                               )}
@@ -1010,7 +1010,7 @@ export default function AccessibilityUniversal() {
             </Card>
 
             {/* WCAG Guidelines Section */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-border/50 bg-card/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("wcag-guidelines")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -1018,7 +1018,7 @@ export default function AccessibilityUniversal() {
                       <BookOpen className="h-5 w-5 text-blue-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100">WCAG 2.1 Guidelines</CardTitle>
+                      <CardTitle className="text-xl text-foreground">WCAG 2.1 Guidelines</CardTitle>
                       <CardDescription>
                         {userMode === "guided" 
                           ? "The POUR principles explained with practical examples"
@@ -1079,23 +1079,23 @@ export default function AccessibilityUniversal() {
                         technical: "semantic elements, valid HTML, proper ARIA implementation"
                       }
                     ].map((principle, index) => (
-                      <Card key={principle.title} className="bg-slate-900/30 border-slate-700/30 hover:bg-slate-900/50 hover:border-slate-600/50 transition-all group">
+                      <Card key={principle.title} className="bg-card/30 border-border/30 hover:bg-card/50 hover:border-border/50 transition-all group">
                         <CardContent className="p-6">
                           <div className="flex items-start gap-4 mb-4">
                             <div className={`w-12 h-12 ${principle.bgColor} rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform`}>
                               <principle.icon className={`h-6 w-6 ${principle.colour}`} />
                             </div>
                             <div className="flex-1">
-                              <h3 className="font-semibold text-slate-100 group-hover:text-green-300 transition-colours mb-2">
+                              <h3 className="font-semibold text-foreground group-hover:text-green-300 transition-colours mb-2">
                                 {principle.title}
                               </h3>
-                              <p className="text-slate-400 text-sm mb-3">{principle.description}</p>
+                              <p className="text-muted-foreground text-sm mb-3">{principle.description}</p>
                               {userMode === "guided" ? (
-                                <div className="text-xs text-slate-500">
+                                <div className="text-xs text-muted-foreground">
                                   <strong>Example:</strong> {principle.example}
                                 </div>
                               ) : (
-                                <div className="text-xs text-slate-500">
+                                <div className="text-xs text-muted-foreground">
                                   <strong>Implementation:</strong> {principle.technical}
                                 </div>
                               )}
@@ -1110,7 +1110,7 @@ export default function AccessibilityUniversal() {
             </Card>
 
             {/* Interactive Contrast Checker */}
-            <Card className="border-slate-700/50 bg-slate-800/30 overflow-hidden">
+            <Card className="border-border/50 bg-card/30 overflow-hidden">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("contrast-checker")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -1118,9 +1118,9 @@ export default function AccessibilityUniversal() {
                       <Eye className="h-6 w-6 text-purple-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100 flex items-center gap-2">
+                      <CardTitle className="text-xl text-foreground flex items-center gap-2">
                         Interactive Contrast Checker
-                        <Badge className="bg-slate-700/50 text-slate-300 text-xs">Live</Badge>
+                        <Badge className="bg-muted/50 text-foreground/80 text-xs">Live</Badge>
                       </CardTitle>
                       <CardDescription>
                         Real-time WCAG compliance testing with visual preview and code generation
@@ -1140,7 +1140,7 @@ export default function AccessibilityUniversal() {
                         {passes ? "WCAG AA ✓" : "WCAG AA ✗"}
                       </div>
                     </div>
-                    <Button variant="ghost" size="sm" className="hover:bg-slate-700/50">
+                    <Button variant="ghost" size="sm" className="hover:bg-accent/50">
                       {expandedSections.has("contrast-checker") ? 
                         <ChevronUp className="h-4 w-4" /> : 
                         <ChevronDown className="h-4 w-4" />
@@ -1153,7 +1153,7 @@ export default function AccessibilityUniversal() {
                 <CardContent className="space-y-6">
                   {/* Color Selection */}
                   <div className="grid md:grid-cols-2 gap-6">
-                    <Card className="bg-slate-900/30 border-slate-700/30 p-4">
+                    <Card className="bg-card/30 border-border/30 p-4">
                       <CustomColorPicker
                             value={fg} 
                         onChange={setFg}
@@ -1162,7 +1162,7 @@ export default function AccessibilityUniversal() {
                       />
                     </Card>
 
-                    <Card className="bg-slate-900/30 border-slate-700/30 p-4">
+                    <Card className="bg-card/30 border-border/30 p-4">
                       <CustomColorPicker
                             value={bg} 
                         onChange={setBg}
@@ -1173,9 +1173,9 @@ export default function AccessibilityUniversal() {
                         </div>
 
                   {/* Results Dashboard */}
-                  <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 border-slate-700/50 p-6">
+                  <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 border-border/50 p-6">
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="text-lg font-semibold text-slate-200">Compliance Results</h4>
+                      <h4 className="text-lg font-semibold text-foreground">Compliance Results</h4>
                       <div className="flex items-center gap-2">
                         <Badge className={`px-3 py-1 ${
                           contrast >= 7 ? 'bg-green-500/20 text-green-300 border-green-500/30' :
@@ -1193,7 +1193,7 @@ export default function AccessibilityUniversal() {
                         contrast >= 4.5 ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'
                       }`}>
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm font-medium text-slate-200">Normal Text</span>
+                          <span className="text-sm font-medium text-foreground">Normal Text</span>
                           {contrast >= 4.5 ? (
                             <CheckCircle2 className="h-4 w-4 text-green-400" />
                           ) : (
@@ -1209,7 +1209,7 @@ export default function AccessibilityUniversal() {
                         contrast >= 3 ? 'bg-green-500/10 border-green-500/30' : 'bg-red-500/10 border-red-500/30'
                       }`}>
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm font-medium text-slate-200">Large Text</span>
+                          <span className="text-sm font-medium text-foreground">Large Text</span>
                           {contrast >= 3 ? (
                             <CheckCircle2 className="h-4 w-4 text-green-400" />
                           ) : (
@@ -1225,14 +1225,14 @@ export default function AccessibilityUniversal() {
                         contrast >= 7 ? 'bg-green-500/10 border-green-500/30' : 'bg-gray-500/10 border-gray-500/30'
                       }`}>
                         <div className="flex items-center justify-between mb-2">
-                          <span className="text-sm font-medium text-slate-200">AAA Level</span>
+                          <span className="text-sm font-medium text-foreground">AAA Level</span>
                           {contrast >= 7 ? (
                             <Award className="h-4 w-4 text-green-400" />
                           ) : (
-                            <Target className="h-4 w-4 text-slate-400" />
+                            <Target className="h-4 w-4 text-muted-foreground" />
                           )}
                         </div>
-                        <div className={`text-xs ${contrast >= 7 ? 'text-green-400' : 'text-slate-400'}`}>
+                        <div className={`text-xs ${contrast >= 7 ? 'text-green-400' : 'text-muted-foreground'}`}>
                           {contrast >= 7 ? 'WCAG AAA Pass' : 'WCAG AAA Goal'} (7:1 target)
                         </div>
                       </div>
@@ -1240,12 +1240,12 @@ export default function AccessibilityUniversal() {
                   </Card>
 
                   {/* Live Preview */}
-                  <Card className="overflow-hidden border-slate-700/50">
+                  <Card className="overflow-hidden border-border/50">
                     <CardHeader className="pb-3">
                       <div className="flex items-center justify-between">
-                        <CardTitle className="text-lg text-slate-200">Live Preview</CardTitle>
+                        <CardTitle className="text-lg text-foreground">Live Preview</CardTitle>
                         <div className="flex items-center gap-2">
-                          <Badge className="bg-slate-700/50 text-slate-300 text-xs">Interactive</Badge>
+                          <Badge className="bg-muted/50 text-foreground/80 text-xs">Interactive</Badge>
                           <Button
                             size="sm"
                             variant="outline"
@@ -1268,7 +1268,7 @@ export default function AccessibilityUniversal() {
                       </div>
                     </CardHeader>
                     <CardContent className="p-0">
-                      <div className="p-8 border-t border-slate-700/30" style={{ backgroundColor: bg, color: fg }}>
+                      <div className="p-8 border-t border-border/30" style={{ backgroundColor: bg, color: fg }}>
                         <div className="space-y-4">
                           <h3 className="text-2xl font-bold">Sample Heading</h3>
                           <p className="text-lg">Large text example (18pt+) for WCAG testing</p>
@@ -1292,9 +1292,9 @@ export default function AccessibilityUniversal() {
                   </Card>
 
                   {/* Quick Presets */}
-                  <Card className="bg-slate-900/30 border-slate-700/30">
+                  <Card className="bg-card/30 border-border/30">
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-lg text-slate-200">Quick Presets</CardTitle>
+                      <CardTitle className="text-lg text-foreground">Quick Presets</CardTitle>
                       <CardDescription>Common colour combinations for testing</CardDescription>
                     </CardHeader>
                     <CardContent>
@@ -1313,11 +1313,11 @@ export default function AccessibilityUniversal() {
                               setFg(preset.fg);
                               setBg(preset.bg);
                             }}
-                            className="h-auto p-3 flex flex-col items-start hover:bg-slate-800/50 border-slate-600/50"
+                            className="h-auto p-3 flex flex-col items-start hover:bg-card/50 border-border/50"
                           >
                             <div className="flex items-center gap-2 mb-1">
                               <div 
-                                className="w-4 h-4 rounded border border-slate-600" 
+                                className="w-4 h-4 rounded border border-border" 
                                 style={{ backgroundColor: preset.bg }}
                               >
                                 <div 
@@ -1325,9 +1325,9 @@ export default function AccessibilityUniversal() {
                                   style={{ backgroundColor: preset.fg }}
                                 ></div>
                               </div>
-                              <span className="text-xs font-medium text-slate-200">{preset.name}</span>
+                              <span className="text-xs font-medium text-foreground">{preset.name}</span>
                             </div>
-                            <span className="text-xs text-slate-400">{preset.desc}</span>
+                            <span className="text-xs text-muted-foreground">{preset.desc}</span>
                           </Button>
                         ))}
                       </div>
@@ -1338,7 +1338,7 @@ export default function AccessibilityUniversal() {
             </Card>
 
             {/* Testing Tools & Automation */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-border/50 bg-card/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("testing-tools")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -1346,7 +1346,7 @@ export default function AccessibilityUniversal() {
                       <TestTube className="h-5 w-5 text-orange-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100">Testing Tools & Automation</CardTitle>
+                      <CardTitle className="text-xl text-foreground">Testing Tools & Automation</CardTitle>
                       <CardDescription>
                         Comprehensive testing strategy with manual and automated approaches
                       </CardDescription>
@@ -1371,7 +1371,7 @@ export default function AccessibilityUniversal() {
                     
                     {/* Manual Testing */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
                         <Users className="h-4 w-4 text-blue-400" />
                         Manual Testing
                       </h4>
@@ -1411,21 +1411,21 @@ export default function AccessibilityUniversal() {
                               onClick={test.action}
                               disabled={isRunning || runningTest !== ""}
                               className={`w-full justify-start h-auto p-3 transition-all ${
-                                isRunning ? 'bg-blue-500/10 border-blue-500/30' : 'hover:bg-slate-800/50 hover:scale-105'
+                                isRunning ? 'bg-blue-500/10 border-blue-500/30' : 'hover:bg-card/50 hover:scale-105'
                               }`}
                             >
                               <div className="flex items-center gap-3 flex-1">
                                 {isRunning ? (
                                   <RefreshCw className="h-4 w-4 text-blue-400 animate-spin" />
                                 ) : (
-                                  <test.icon className="h-4 w-4 text-slate-400 group-hover:text-blue-400 transition-colours" />
+                                  <test.icon className="h-4 w-4 text-muted-foreground group-hover:text-blue-400 transition-colours" />
                                 )}
                                 <div className="text-left flex-1">
                                   <div className="flex items-center gap-2 mb-1">
-                                    <div className="text-sm font-medium text-slate-200">{test.name}</div>
-                                    <Badge className="bg-slate-700/50 text-slate-400 text-xs">{test.time}</Badge>
+                                    <div className="text-sm font-medium text-foreground">{test.name}</div>
+                                    <Badge className="bg-muted/50 text-muted-foreground text-xs">{test.time}</Badge>
                                   </div>
-                                  <div className="text-xs text-slate-500">{test.description}</div>
+                                  <div className="text-xs text-muted-foreground">{test.description}</div>
                                   <div className="text-xs text-slate-600 mt-1">{test.difficulty}</div>
                                 </div>
                                 {isRunning && (
@@ -1442,7 +1442,7 @@ export default function AccessibilityUniversal() {
 
                     {/* Automated Tools */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
                         <Zap className="h-4 w-4 text-green-400" />
                         Automated Tools
                       </h4>
@@ -1452,16 +1452,16 @@ export default function AccessibilityUniversal() {
                           { name: "Lighthouse", description: "Google accessibility audit", code: "lighthouse --only-categories=accessibility" },
                           { name: "Pa11y", description: "Command line testing", code: "pa11y https://example.com" }
                         ].map((tool, index) => (
-                          <div key={index} className="p-3 rounded-lg border border-slate-700/30 hover:border-slate-600/50 hover:bg-slate-800/30 transition-all">
+                          <div key={index} className="p-3 rounded-lg border border-border/30 hover:border-border/50 hover:bg-card/30 transition-all">
                             <div className="flex items-start justify-between mb-2">
                               <div>
-                                <div className="text-sm font-medium text-slate-200">{tool.name}</div>
-                                <div className="text-xs text-slate-500">{tool.description}</div>
+                                <div className="text-sm font-medium text-foreground">{tool.name}</div>
+                                <div className="text-xs text-muted-foreground">{tool.description}</div>
                               </div>
                             </div>
                             <div className="space-y-2">
                               <div className="flex items-center justify-between">
-                                <span className="text-xs text-slate-500 font-medium">Installation:</span>
+                                <span className="text-xs text-muted-foreground font-medium">Installation:</span>
                                 <Button
                                   size="sm"
                                   variant="ghost"
@@ -1481,7 +1481,7 @@ export default function AccessibilityUniversal() {
                                   )}
                                 </Button>
                               </div>
-                              <pre className="text-xs bg-slate-900/50 p-2 rounded font-mono text-slate-400 whitespace-pre-wrap">
+                              <pre className="text-xs bg-card/50 p-2 rounded font-mono text-muted-foreground whitespace-pre-wrap">
                                 <code>{tool.code}</code>
                               </pre>
                             </div>
@@ -1492,14 +1492,14 @@ export default function AccessibilityUniversal() {
 
                     {/* CI/CD Integration */}
                     <div className="space-y-4">
-                      <h4 className="font-medium text-slate-200 flex items-center gap-2">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
                         <Settings className="h-4 w-4 text-purple-400" />
                         CI/CD Integration
                       </h4>
                       <div className="space-y-2">
-                        <div className="p-3 rounded-lg border border-slate-700/30">
+                        <div className="p-3 rounded-lg border border-border/30">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-medium text-slate-200">GitHub Actions</span>
+                            <span className="text-sm font-medium text-foreground">GitHub Actions</span>
                             <Button
                               size="sm"
                               variant="ghost"
@@ -1521,12 +1521,12 @@ jobs:
                               }
                             </Button>
                           </div>
-                          <p className="text-xs text-slate-500 mb-2">Automated accessibility testing in CI</p>
+                          <p className="text-xs text-muted-foreground mb-2">Automated accessibility testing in CI</p>
                         </div>
                         
-                        <div className="p-3 rounded-lg border border-slate-700/30">
+                        <div className="p-3 rounded-lg border border-border/30">
                           <div className="flex items-center justify-between mb-2">
-                            <span className="text-sm font-medium text-slate-200">Jest Integration</span>
+                            <span className="text-sm font-medium text-foreground">Jest Integration</span>
                             <Button
                               size="sm"
                               variant="ghost"
@@ -1546,7 +1546,7 @@ test('should not have accessibility violations', async () => {
                               }
                             </Button>
                           </div>
-                          <p className="text-xs text-slate-500 mb-2">Component-level accessibility tests</p>
+                          <p className="text-xs text-muted-foreground mb-2">Component-level accessibility tests</p>
                         </div>
                       </div>
                     </div>
@@ -1554,12 +1554,12 @@ test('should not have accessibility violations', async () => {
 
                   {/* Testing Progress */}
                   {runningTest && (
-                    <div className="mt-6 p-4 bg-slate-900/50 rounded-lg border border-slate-700/30">
+                    <div className="mt-6 p-4 bg-card/50 rounded-lg border border-border/30">
                       <div className="flex items-center justify-between mb-2">
-                        <span className="text-sm font-medium text-slate-200">
+                        <span className="text-sm font-medium text-foreground">
                           Running {runningTest.replace(/-/g, ' ')} test...
                         </span>
-                        <span className="text-xs text-slate-400">{testingProgress}%</span>
+                        <span className="text-xs text-muted-foreground">{testingProgress}%</span>
                       </div>
                       <Progress value={testingProgress} className="h-2" />
                     </div>
@@ -1569,7 +1569,7 @@ test('should not have accessibility violations', async () => {
             </Card>
 
             {/* Code Examples & Patterns */}
-            <Card className="border-slate-700/50 bg-slate-800/30">
+            <Card className="border-border/50 bg-card/30">
               <CardHeader className="cursor-pointer" onClick={() => toggleSection("code-examples")}>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
@@ -1577,7 +1577,7 @@ test('should not have accessibility violations', async () => {
                       <Code2 className="h-5 w-5 text-cyan-400" />
                     </div>
                     <div>
-                      <CardTitle className="text-xl text-slate-100">Accessible Code Examples</CardTitle>
+                      <CardTitle className="text-xl text-foreground">Accessible Code Examples</CardTitle>
                       <CardDescription>
                         Ready-to-use patterns with proper ARIA implementation and semantic markup
                       </CardDescription>
@@ -1613,7 +1613,7 @@ test('should not have accessibility violations', async () => {
                         title: "Form with Error Handling",
                         description: "Input field with error association and validation",
                         code: `<div>
-  <label htmlFor="email" className="text-slate-200">
+  <label htmlFor="email" className="text-foreground">
     Email Address *
   </label>
   <input 
@@ -1638,7 +1638,7 @@ test('should not have accessibility violations', async () => {
   aria-labelledby="modal-title"
   className="fixed inset-0 bg-black/50 flex items-center justify-center"
 >
-  <div className="bg-slate-800 p-6 rounded-lg">
+  <div className="bg-card p-6 rounded-lg">
     <h2 id="modal-title" className="text-lg font-bold">
       Confirm Action
     </h2>
@@ -1654,16 +1654,16 @@ test('should not have accessibility violations', async () => {
                         explanation: "Uses dialog role, aria-modal, and proper focus management"
                       }
                     ].map((example, index) => (
-                      <div key={index} className="border border-slate-700/50 rounded-lg p-6 bg-slate-900/30">
+                      <div key={index} className="border border-border/50 rounded-lg p-6 bg-card/30">
                         <div className="mb-4">
-                          <h3 className="text-lg font-semibold text-slate-100 mb-2">
+                          <h3 className="text-lg font-semibold text-foreground mb-2">
                             {example.title}
                           </h3>
-                          <p className="text-slate-400 text-sm">{example.description}</p>
+                          <p className="text-muted-foreground text-sm">{example.description}</p>
                         </div>
                         <div className="space-y-2">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs text-slate-500 font-medium">Code example:</span>
+                            <span className="text-xs text-muted-foreground font-medium">Code example:</span>
                             <Button
                               variant="ghost"
                               size="sm"
@@ -1683,11 +1683,11 @@ test('should not have accessibility violations', async () => {
                               )}
                             </Button>
                           </div>
-                          <pre className="bg-slate-950/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-slate-700/30">
-                            <code className="text-slate-300">{example.code}</code>
+                          <pre className="bg-background/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-border/30">
+                            <code className="text-foreground/80">{example.code}</code>
                           </pre>
                         </div>
-                        <div className="text-xs text-slate-500 mt-3">
+                        <div className="text-xs text-muted-foreground mt-3">
                           <strong>Accessibility Note:</strong> {example.explanation}
                         </div>
                       </div>
@@ -1699,19 +1699,19 @@ test('should not have accessibility violations', async () => {
 
             {/* Progress & Analytics - Only show if user has activity */}
             {(favourites.size > 0 || testingProgress > 0) && (
-              <Card className="border-slate-700/50 bg-slate-800/30">
+              <Card className="border-border/50 bg-card/30">
                 <CardHeader>
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
                       <div className="p-2 rounded-lg bg-fuchsia-500/20">
-                        <TrendingUp className="h-5 w-5 text-fuchsia-400" />
+                        <TrendingUp className="h-5 w-5 text-primary" />
                       </div>
                       <div>
-                        <CardTitle className="text-xl text-slate-100">Your Accessibility Progress</CardTitle>
+                        <CardTitle className="text-xl text-foreground">Your Accessibility Progress</CardTitle>
                         <CardDescription>Track your learning and implementation progress</CardDescription>
                       </div>
                     </div>
-                    <Badge className="bg-fuchsia-500/20 text-fuchsia-300">
+                    <Badge className="bg-fuchsia-500/20 text-primary">
                       {Math.round(((favourites.size + (testingProgress / 100)) / 10) * 100)}% Progress
                     </Badge>
                   </div>
@@ -1728,8 +1728,8 @@ test('should not have accessibility violations', async () => {
                         { label: "Compliance Level", value: "AA" }
                       ].map((stat, index) => (
                         <div key={index}>
-                          <div className="text-lg font-bold text-slate-100">{stat.value}</div>
-                          <div className="text-xs text-slate-500">{stat.label}</div>
+                          <div className="text-lg font-bold text-foreground">{stat.value}</div>
+                          <div className="text-xs text-muted-foreground">{stat.label}</div>
                         </div>
                       ))}
                     </div>

@@ -51,11 +51,11 @@ const components = [
 </div>`,
     component: (
       <div className="flex flex-wrap gap-2">
-        <Badge className="bg-green-500/20 text-green-300 border-green-500/30 hover:bg-green-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Active</Badge>
-        <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30 hover:bg-yellow-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Under Review</Badge>
-        <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 hover:bg-blue-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Interview</Badge>
-        <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 hover:bg-purple-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Hired</Badge>
-        <Badge className="bg-red-500/20 text-red-300 border-red-500/30 hover:bg-red-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Rejected</Badge>
+        <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Active</Badge>
+        <Badge className="bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 border-yellow-500/30 hover:bg-yellow-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Under Review</Badge>
+        <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Interview</Badge>
+        <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/30 hover:bg-purple-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Hired</Badge>
+        <Badge className="bg-red-500/20 text-red-700 dark:text-red-300 border-red-500/30 hover:bg-red-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Rejected</Badge>
       </div>
     )
   },
@@ -70,19 +70,19 @@ const components = [
 </div>`,
     component: (
       <div className="space-y-4 w-full max-w-md">
-        <div className="p-4 bg-slate-800/30 rounded-lg">
-          <h4 className="font-medium text-slate-200">Personal Information</h4>
-          <p className="text-sm text-slate-400 mt-1">Basic profile details</p>
+        <div className="p-4 bg-card/30 rounded-lg">
+          <h4 className="font-medium text-foreground">Personal Information</h4>
+          <p className="text-sm text-muted-foreground mt-1">Basic profile details</p>
         </div>
-        <Separator className="bg-slate-700" />
-        <div className="p-4 bg-slate-800/30 rounded-lg">
-          <h4 className="font-medium text-slate-200">Work Experience</h4>
-          <p className="text-sm text-slate-400 mt-1">Employment history</p>
+        <Separator className="bg-muted" />
+        <div className="p-4 bg-card/30 rounded-lg">
+          <h4 className="font-medium text-foreground">Work Experience</h4>
+          <p className="text-sm text-muted-foreground mt-1">Employment history</p>
         </div>
-        <div className="h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent" />
-        <div className="p-4 bg-slate-800/30 rounded-lg">
-          <h4 className="font-medium text-slate-200">Skills & Expertise</h4>
-          <p className="text-sm text-slate-400 mt-1">Technical capabilities</p>
+        <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+        <div className="p-4 bg-card/30 rounded-lg">
+          <h4 className="font-medium text-foreground">Skills & Expertise</h4>
+          <p className="text-sm text-muted-foreground mt-1">Technical capabilities</p>
         </div>
       </div>
     )
@@ -98,21 +98,21 @@ const components = [
     component: (
       <div className="space-y-4 w-full max-w-md">
         <div className="flex gap-3 flex-wrap">
-          <Button variant="outline" size="sm" className="hover:bg-slate-700" title="Click to view candidate profile">
+          <Button variant="outline" size="sm" className="hover:bg-accent" title="Click to view candidate profile">
             <User className="h-4 w-4 mr-2" />
             Profile
           </Button>
-          <Button variant="outline" size="sm" className="hover:bg-slate-700" title="Schedule an interview with this candidate">
+          <Button variant="outline" size="sm" className="hover:bg-accent" title="Schedule an interview with this candidate">
             <Calendar className="h-4 w-4 mr-2" />
             Schedule
           </Button>
-          <Button variant="outline" size="sm" className="hover:bg-slate-700" title="Send email to candidate">
+          <Button variant="outline" size="sm" className="hover:bg-accent" title="Send email to candidate">
             <Mail className="h-4 w-4 mr-2" />
             Contact
           </Button>
         </div>
-        <div className="p-3 bg-slate-800/30 rounded-lg">
-          <p className="text-sm text-slate-400">
+        <div className="p-3 bg-card/30 rounded-lg">
+          <p className="text-sm text-muted-foreground">
             Hover over the buttons above to see tooltips in action. These provide helpful context without cluttering the interface.
           </p>
         </div>
@@ -135,7 +135,7 @@ const components = [
       <div className="space-y-6 w-full max-w-md">
         <div className="flex items-center gap-6">
           <div className="animate-spin rounded-full h-6 w-6 border-2 border-fuchsia-400 border-t-transparent"></div>
-          <span className="text-sm text-slate-300">Loading candidates...</span>
+          <span className="text-sm text-foreground/80">Loading candidates...</span>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex space-x-1">
@@ -143,18 +143,18 @@ const components = [
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
           </div>
-          <span className="text-sm text-slate-300">Processing application...</span>
+          <span className="text-sm text-foreground/80">Processing application...</span>
         </div>
         <div className="flex items-center gap-6">
-          <div className="w-6 h-6 border-2 border-slate-600 border-l-fuchsia-400 rounded-full animate-spin"></div>
-          <span className="text-sm text-slate-300">Saving changes...</span>
+          <div className="w-6 h-6 border-2 border-border border-l-fuchsia-400 rounded-full animate-spin"></div>
+          <span className="text-sm text-foreground/80">Saving changes...</span>
         </div>
         <div className="flex items-center gap-6">
           <div className="relative">
-            <div className="w-6 h-6 border-2 border-slate-600 rounded-full"></div>
+            <div className="w-6 h-6 border-2 border-border rounded-full"></div>
             <div className="absolute inset-0 border-2 border-fuchsia-400 border-r-transparent rounded-full animate-spin"></div>
           </div>
-          <span className="text-sm text-slate-300">Uploading resume...</span>
+          <span className="text-sm text-foreground/80">Uploading resume...</span>
         </div>
       </div>
     )
@@ -177,17 +177,17 @@ const components = [
           { label: "LinkedIn", value: "linkedin.com/in/sarah-johnson" }
         ].map((item, index) => (
           <div key={index} className="space-y-2">
-            <Label className="text-slate-300 text-sm">{item.label}</Label>
+            <Label className="text-foreground/80 text-sm">{item.label}</Label>
             <div className="flex items-center gap-2">
               <Input
                 value={item.value}
                 readOnly
-                className="bg-slate-800/50 border-slate-600 text-slate-300 text-sm"
+                className="bg-card/50 border-border text-foreground/80 text-sm"
               />
               <Button
                 size="sm"
                 variant="outline"
-                className="hover:bg-slate-700"
+                className="hover:bg-accent"
                 onClick={() => {
                   navigator.clipboard.writeText(item.value)
                   // In a real app, you'd show a toast notification here
@@ -208,7 +208,7 @@ const components = [
     description: "Visual keyboard shortcut indicators",
     code: `<div className="flex items-center gap-2">
   <span>Save</span>
-  <kbd className="px-2 py-1 bg-slate-700 text-slate-300 rounded text-xs">Ctrl+S</kbd>
+  <kbd className="px-2 py-1 bg-muted text-foreground/80 rounded text-xs">Ctrl+S</kbd>
 </div>`,
     component: (
       <div className="space-y-4 w-full max-w-md">
@@ -219,9 +219,9 @@ const components = [
           { action: "Quick filter", shortcut: "Ctrl+F" },
           { action: "Export data", shortcut: "Ctrl+E" }
         ].map((item, index) => (
-          <div key={index} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-xl border border-slate-700/50 shadow-xl hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <span className="text-slate-300 text-sm">{item.action}</span>
-            <kbd className="px-2 py-1 bg-slate-700 text-slate-300 rounded text-xs font-mono border border-slate-600">
+          <div key={index} className="flex items-center justify-between p-3 bg-card/30 rounded-xl border border-border/50 shadow-xl hover:bg-card/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <span className="text-foreground/80 text-sm">{item.action}</span>
+            <kbd className="px-2 py-1 bg-muted text-foreground/80 rounded text-xs font-mono border border-border">
               {item.shortcut}
             </kbd>
           </div>
@@ -241,7 +241,7 @@ const components = [
     component: (
       <div className="space-y-4 w-full max-w-md">
         <div>
-          <Label className="text-slate-300 text-sm mb-3 block">Status colours</Label>
+          <Label className="text-foreground/80 text-sm mb-3 block">Status colours</Label>
           <div className="flex gap-3">
             {[
               { colour: "bg-green-500", label: "Available", active: true },
@@ -252,7 +252,7 @@ const components = [
               <div
                 key={index}
                 className={`w-8 h-8 ${item.colour} rounded-full border-2 cursor-pointer hover:scale-110 transition-transform ${
-                  item.active ? 'border-white' : 'border-slate-600'
+                  item.active ? 'border-white' : 'border-border'
                 }`}
                 style={{ transitionDuration: 'var(--animation-speed)' }}
                 title={item.label}
@@ -261,7 +261,7 @@ const components = [
           </div>
         </div>
         <div>
-          <Label className="text-slate-300 text-sm mb-3 block">Priority Levels</Label>
+          <Label className="text-foreground/80 text-sm mb-3 block">Priority Levels</Label>
           <div className="grid grid-cols-4 gap-2">
             {[
               { colour: "bg-red-500", label: "High", hex: "#EF4444" },
@@ -270,9 +270,9 @@ const components = [
               { colour: "bg-green-500", label: "Completed", hex: "#22C55E" }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className={`w-full h-8 ${item.colour} rounded border border-slate-600 hover:scale-105 transition-transform cursor-pointer`} style={{ transitionDuration: 'var(--animation-speed)' }}></div>
-                <span className="text-xs text-slate-400 mt-1 block">{item.label}</span>
-                <span className="text-xs text-slate-500 font-mono">{item.hex}</span>
+                <div className={`w-full h-8 ${item.colour} rounded border border-border hover:scale-105 transition-transform cursor-pointer`} style={{ transitionDuration: 'var(--animation-speed)' }}></div>
+                <span className="text-xs text-muted-foreground mt-1 block">{item.label}</span>
+                <span className="text-xs text-muted-foreground font-mono">{item.hex}</span>
               </div>
             ))}
           </div>
@@ -299,7 +299,7 @@ const components = [
         <div className="grid grid-cols-4 gap-3">
           {[
             { icon: User, label: "Profile", colour: "text-blue-400" },
-            { icon: Settings, label: "Settings", colour: "text-slate-400" },
+            { icon: Settings, label: "Settings", colour: "text-muted-foreground" },
             { icon: Search, label: "Search", colour: "text-green-400" },
             { icon: Filter, label: "Filter", colour: "text-purple-400" },
             { icon: Download, label: "Download", colour: "text-orange-400" },
@@ -307,26 +307,26 @@ const components = [
             { icon: RefreshCw, label: "Refresh", colour: "text-yellow-400" },
             { icon: Bell, label: "Notifications", colour: "text-red-400" }
           ].map((item, index) => (
-            <div key={index} className="text-center p-3 bg-slate-800/30 rounded-lg hover:bg-slate-800/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div key={index} className="text-center p-3 bg-card/30 rounded-lg hover:bg-card/50 transition-all duration-300 rounded-lg cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <item.icon className={`h-6 w-6 mx-auto mb-2 ${item.colour}`} />
-              <span className="text-xs text-slate-400">{item.label}</span>
+              <span className="text-xs text-muted-foreground">{item.label}</span>
             </div>
           ))}
         </div>
         <div className="flex gap-2 flex-wrap">
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Star className="h-4 w-4 mr-2" />
             Favourite
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Heart className="h-4 w-4 mr-2" />
             Like
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Eye className="h-4 w-4 mr-2" />
             View
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             <Link className="h-4 w-4 mr-2" />
             Share
           </Button>
@@ -344,37 +344,37 @@ const components = [
 </div>`,
     component: (
       <div className="space-y-4 w-full max-w-md">
-        <div className="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-3 p-3 bg-card/30 rounded-lg">
           <Shield className="h-5 w-5 text-green-400" />
           <div>
-            <span className="text-sm font-medium text-slate-200">Verified Account</span>
-            <p className="text-xs text-slate-400">Email and phone verified</p>
+            <span className="text-sm font-medium text-foreground">Verified Account</span>
+            <p className="text-xs text-muted-foreground">Email and phone verified</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-3 p-3 bg-card/30 rounded-lg">
           <Lock className="h-5 w-5 text-blue-400" />
           <div>
-            <span className="text-sm font-medium text-slate-200">Secure Connection</span>
-            <p className="text-xs text-slate-400">End-to-end encrypted</p>
+            <span className="text-sm font-medium text-foreground">Secure Connection</span>
+            <p className="text-xs text-muted-foreground">End-to-end encrypted</p>
           </div>
         </div>
-        <div className="flex items-center gap-3 p-3 bg-slate-800/30 rounded-lg">
+        <div className="flex items-center gap-3 p-3 bg-card/30 rounded-lg">
           <CheckCircle2 className="h-5 w-5 text-purple-400" />
           <div>
-            <span className="text-sm font-medium text-slate-200">Background Check</span>
-            <p className="text-xs text-slate-400">Completed successfully</p>
+            <span className="text-sm font-medium text-foreground">Background Check</span>
+            <p className="text-xs text-muted-foreground">Completed successfully</p>
           </div>
         </div>
         <div className="flex gap-2">
-          <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+          <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30">
             <Shield className="h-3 w-3 mr-1" />
             Secure
           </Badge>
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30">
             <Lock className="h-3 w-3 mr-1" />
             Encrypted
           </Badge>
-          <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+          <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/30">
             <CheckCircle2 className="h-3 w-3 mr-1" />
             Verified
           </Badge>
@@ -402,8 +402,8 @@ export function UtilityComponents({
       <section>
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2 text-slate-100">Utility Components</h2>
-            <p className="text-slate-400">Helper components and utility elements</p>
+            <h2 className="text-3xl font-bold mb-2 text-foreground">Utility Components</h2>
+            <p className="text-muted-foreground">Helper components and utility elements</p>
           </div>
           <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
@@ -431,7 +431,7 @@ export function UtilityComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-center py-12 text-muted-foreground">
             <Wrench className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>

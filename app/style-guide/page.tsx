@@ -62,27 +62,27 @@ export default function StyleGuide() {
   }
 
   return (
-    <div className="flex bg-slate-950 min-h-screen">
+    <div className="flex bg-background min-h-screen">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
         {/* Header Section */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800/50">
-          <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/5 via-purple-500/5 to-indigo-500/5" />
-          <div className="absolute top-0 left-1/3 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        <section className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background border-b border-border">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5" />
+          <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
           
           <div className="relative px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
               <div className="text-center mb-8">
-                <Badge className="bg-gradient-to-r from-fuchsia-500/20 to-purple-500/20 text-fuchsia-300 border-fuchsia-500/30 mb-4">
+                <Badge className="bg-primary/10 text-primary border-primary/30 mb-4">
                   Design System v2.0
                 </Badge>
-                <h1 className="text-4xl lg:text-5xl font-bold text-slate-100 mb-4">
+                <h1 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
                   Style Guide
-                  <span className="bg-gradient-to-r from-fuchsia-400 to-purple-400 bg-clip-text text-transparent"> & Component Library</span>
+                  <span className="text-gradient"> & Component Library</span>
                 </h1>
-                <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+                <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                   Comprehensive design tokens, components, and patterns for building world-class user experiences. 
                   Everything you need to create consistent, accessible, and beautiful interfaces.
                 </p>
@@ -91,12 +91,12 @@ export default function StyleGuide() {
               {/* Search Bar */}
               <div className="max-w-2xl mx-auto relative mb-8">
                 <div className="relative">
-                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-slate-500" />
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                   <Input
                     placeholder="Search colours, components, patterns... Try 'fuchsia button' or 'login form'"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-12 pr-12 py-4 text-lg bg-slate-800/50 border-slate-700 text-slate-200 placeholder-slate-500 rounded-xl"
+                    className="pl-12 pr-12 py-4 text-lg bg-card/50 border-border text-foreground placeholder-muted-foreground rounded-xl"
                   />
                   {searchQuery && (
                     <Button
@@ -114,20 +114,20 @@ export default function StyleGuide() {
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-slate-100">47</div>
-                  <div className="text-sm text-slate-500">Design Tokens</div>
+                  <div className="text-2xl font-bold text-foreground">47</div>
+                  <div className="text-sm text-muted-foreground">Design Tokens</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-slate-100">23</div>
-                  <div className="text-sm text-slate-500">Components</div>
+                  <div className="text-2xl font-bold text-foreground">23</div>
+                  <div className="text-sm text-muted-foreground">Components</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-slate-100">17</div>
-                  <div className="text-sm text-slate-500">Organisms</div>
+                  <div className="text-2xl font-bold text-foreground">17</div>
+                  <div className="text-sm text-muted-foreground">Organisms</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-slate-100">{favourites.size}</div>
-                  <div className="text-sm text-slate-500">Favorited</div>
+                  <div className="text-2xl font-bold text-foreground">{favourites.size}</div>
+                  <div className="text-sm text-muted-foreground">Favorited</div>
                 </div>
               </div>
             </div>
@@ -140,9 +140,9 @@ export default function StyleGuide() {
             <div className="w-full">
               {/* Section Navigation */}
               <div className="flex items-center gap-3 mb-8">
-                <h2 className="text-lg font-semibold text-slate-200">Viewing:</h2>
+                <h2 className="text-lg font-semibold text-foreground">Viewing:</h2>
                 <Select value={activeSection} onValueChange={setActiveSection}>
-                  <SelectTrigger className="w-auto min-w-[200px] h-10 bg-slate-800/40 border border-slate-700/30 hover:bg-slate-800/60 transition-colors text-slate-300">
+                  <SelectTrigger className="w-auto min-w-[200px] h-10 bg-card/40 border border-border/30 hover:bg-card/60 transition-colors text-foreground/80">
                     {(() => {
                       const tabs = [
                         { value: "atoms", label: "Atoms", icon: Palette, count: 47 },
@@ -155,54 +155,54 @@ export default function StyleGuide() {
                       const currentTab = tabs.find(tab => tab.value === activeSection);
                       return currentTab ? (
                         <div className="flex items-center gap-3">
-                          <currentTab.icon className="h-5 w-5 text-fuchsia-400" />
-                          <span className="font-medium text-slate-200">{currentTab.label}</span>
-                          <span className="text-xs text-slate-500">({currentTab.count})</span>
+                          <currentTab.icon className="h-5 w-5 text-primary" />
+                          <span className="font-medium text-foreground">{currentTab.label}</span>
+                          <span className="text-xs text-muted-foreground">({currentTab.count})</span>
                         </div>
                       ) : null;
                     })()}
                   </SelectTrigger>
-                  <SelectContent className="bg-slate-900/95 backdrop-blur-xl border border-slate-800/60 rounded-lg">
-                    <SelectItem value="atoms" className="focus:bg-slate-800/60 cursor-pointer">
+                  <SelectContent className="bg-card/95 backdrop-blur-xl border border-border/60 rounded-lg">
+                    <SelectItem value="atoms" className="focus:bg-card/60 cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <Palette className="h-4 w-4 text-slate-400" />
+                        <Palette className="h-4 w-4 text-muted-foreground" />
                         <span>Atoms</span>
-                        <span className="text-xs text-slate-500 ml-auto">(47)</span>
+                        <span className="text-xs text-muted-foreground ml-auto">(47)</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="molecules" className="focus:bg-slate-800/60 cursor-pointer">
+                    <SelectItem value="molecules" className="focus:bg-card/60 cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <Component className="h-4 w-4 text-slate-400" />
+                        <Component className="h-4 w-4 text-muted-foreground" />
                         <span>Molecules</span>
-                        <span className="text-xs text-slate-500 ml-auto">(23)</span>
+                        <span className="text-xs text-muted-foreground ml-auto">(23)</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="specialized" className="focus:bg-slate-800/60 cursor-pointer">
+                    <SelectItem value="specialized" className="focus:bg-card/60 cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <Layers className="h-4 w-4 text-slate-400" />
+                        <Layers className="h-4 w-4 text-muted-foreground" />
                         <span>Advanced</span>
-                        <span className="text-xs text-slate-500 ml-auto">(10)</span>
+                        <span className="text-xs text-muted-foreground ml-auto">(10)</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="organisms" className="focus:bg-slate-800/60 cursor-pointer">
+                    <SelectItem value="organisms" className="focus:bg-card/60 cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <Grid3X3 className="h-4 w-4 text-slate-400" />
+                        <Grid3X3 className="h-4 w-4 text-muted-foreground" />
                         <span>Organisms</span>
-                        <span className="text-xs text-slate-500 ml-auto">(17)</span>
+                        <span className="text-xs text-muted-foreground ml-auto">(17)</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="accessibility" className="focus:bg-slate-800/60 cursor-pointer">
+                    <SelectItem value="accessibility" className="focus:bg-card/60 cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <Eye className="h-4 w-4 text-slate-400" />
+                        <Eye className="h-4 w-4 text-muted-foreground" />
                         <span>A11y</span>
-                        <span className="text-xs text-slate-500 ml-auto">(AAA)</span>
+                        <span className="text-xs text-muted-foreground ml-auto">(AAA)</span>
                       </div>
                     </SelectItem>
-                    <SelectItem value="testing" className="focus:bg-slate-800/60 cursor-pointer">
+                    <SelectItem value="testing" className="focus:bg-card/60 cursor-pointer">
                       <div className="flex items-center gap-3">
-                        <Zap className="h-4 w-4 text-slate-400" />
+                        <Zap className="h-4 w-4 text-muted-foreground" />
                         <span>Testing</span>
-                        <span className="text-xs text-slate-500 ml-auto">(4)</span>
+                        <span className="text-xs text-muted-foreground ml-auto">(4)</span>
                       </div>
                     </SelectItem>
                   </SelectContent>

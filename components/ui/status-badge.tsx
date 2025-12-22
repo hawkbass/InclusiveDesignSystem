@@ -12,18 +12,18 @@ const statusBadgeVariants = cva(
         warning: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
         error: "bg-red-500/20 text-red-300 border-red-500/30",
         info: "bg-blue-500/20 text-blue-300 border-blue-500/30",
-        neutral: "bg-slate-500/20 text-slate-300 border-slate-500/30",
-        primary: "bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/30",
+        neutral: "bg-slate-500/20 text-foreground/80 border-slate-500/30",
+        primary: "bg-fuchsia-500/20 text-primary border-primary/30",
         // Recruitment-specific statuses
-        applied: "bg-slate-500/20 text-slate-300 border-slate-500/30",
+        applied: "bg-slate-500/20 text-foreground/80 border-slate-500/30",
         screening: "bg-blue-500/20 text-blue-300 border-blue-500/30",
         interview: "bg-emerald-500/20 text-emerald-300 border-emerald-500/30",
-        offer: "bg-fuchsia-500/20 text-fuchsia-300 border-fuchsia-500/30",
+        offer: "bg-fuchsia-500/20 text-primary border-primary/30",
         hired: "bg-green-500/20 text-green-300 border-green-500/30",
         rejected: "bg-red-500/20 text-red-300 border-red-500/30",
         // Job statuses
         active: "bg-green-500/20 text-green-300 border-green-500/30",
-        draft: "bg-slate-500/20 text-slate-300 border-slate-500/30",
+        draft: "bg-slate-500/20 text-foreground/80 border-slate-500/30",
         paused: "bg-yellow-500/20 text-yellow-300 border-yellow-500/30",
         closed: "bg-red-500/20 text-red-300 border-red-500/30"
       },

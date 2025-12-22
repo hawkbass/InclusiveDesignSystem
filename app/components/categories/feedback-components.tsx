@@ -42,16 +42,16 @@ const components = [
     component: (
       <div className="space-y-4 w-full">
         <Alert className="border-green-500/50 bg-green-500/10 hover:bg-green-500/15 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-          <CheckCircle2 className="h-4 w-4 text-green-400" />
-          <AlertTitle className="text-green-200">Success</AlertTitle>
-          <AlertDescription className="text-green-200">
+          <CheckCircle2 className="h-4 w-4 text-green-400 dark:text-green-400" />
+          <AlertTitle className="text-green-700 dark:text-green-200">Success</AlertTitle>
+          <AlertDescription className="text-green-700 dark:text-green-200">
             Your action was completed successfully.
           </AlertDescription>
         </Alert>
         <Alert className="border-yellow-500/50 bg-yellow-500/10 hover:bg-yellow-500/15 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-          <AlertTriangle className="h-4 w-4 text-yellow-400" />
-          <AlertTitle className="text-yellow-200">Warning</AlertTitle>
-          <AlertDescription className="text-yellow-200">
+          <AlertTriangle className="h-4 w-4 text-yellow-500 dark:text-yellow-400" />
+          <AlertTitle className="text-yellow-700 dark:text-yellow-200">Warning</AlertTitle>
+          <AlertDescription className="text-yellow-700 dark:text-yellow-200">
             Please review this information carefully.
           </AlertDescription>
         </Alert>
@@ -70,14 +70,14 @@ const components = [
       <div className="space-y-6 w-full max-w-md">
         <div>
           <div className="flex justify-between text-sm mb-2">
-            <span className="text-slate-300">Profile Completion</span>
-            <span className="text-slate-300">85%</span>
+            <span className="text-foreground/80">Profile Completion</span>
+            <span className="text-foreground/80">85%</span>
           </div>
           <Progress value={85} className="h-3" />
         </div>
         <div className="flex items-center gap-6">
           <div className="animate-spin rounded-full h-6 w-6 border-2 border-fuchsia-400 border-t-transparent"></div>
-          <span className="text-sm text-slate-300">Loading candidates...</span>
+          <span className="text-sm text-foreground/80">Loading candidates...</span>
         </div>
         <div className="flex items-center gap-6">
           <div className="flex space-x-1">
@@ -85,7 +85,7 @@ const components = [
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce" style={{ animationDelay: "0.1s" }}></div>
             <div className="w-2 h-2 bg-fuchsia-400 rounded-full animate-bounce" style={{ animationDelay: "0.2s" }}></div>
           </div>
-          <span className="text-sm text-slate-300">Processing...</span>
+          <span className="text-sm text-foreground/80">Processing...</span>
         </div>
       </div>
     )
@@ -94,12 +94,12 @@ const components = [
     id: "toast-notifications",
     title: "Toast Notifications",
     description: "Dismissible toast messages",
-    code: `<div className="fixed top-4 right-4 bg-slate-800 border border-slate-700/50 shadow-xl rounded-lg p-4 shadow-lg">
+    code: `<div className="fixed top-4 right-4 bg-card border border-border/50 shadow-xl rounded-lg p-4 shadow-lg">
   <div className="flex items-center gap-3">
     <CheckCircle2 className="h-5 w-5 text-green-400" />
     <div>
       <h4 className="font-medium">Application Submitted</h4>
-      <p className="text-sm text-slate-400">Your application has been received.</p>
+      <p className="text-sm text-muted-foreground">Your application has been received.</p>
     </div>
     <Button variant="ghost" size="sm">
       <X className="h-4 w-4" />
@@ -138,10 +138,10 @@ const components = [
             <div className="flex items-start gap-3">
               <toast.icon className={`h-5 w-5 ${toast.colour} flex-shrink-0 mt-0.5`} />
               <div className="flex-1">
-                <h4 className="font-medium text-slate-200 text-sm">{toast.title}</h4>
-                <p className="text-xs text-slate-400 mt-1">{toast.message}</p>
+                <h4 className="font-medium text-foreground text-sm">{toast.title}</h4>
+                <p className="text-xs text-muted-foreground mt-1">{toast.message}</p>
               </div>
-              <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:bg-slate-700">
+              <Button variant="ghost" size="sm" className="h-6 w-6 p-0 hover:bg-accent">
                 <X className="h-3 w-3" />
               </Button>
             </div>
@@ -155,29 +155,29 @@ const components = [
     title: "Skeleton Loading",
     description: "Skeleton placeholders while content loads",
     code: `<div className="space-y-3">
-  <div className="h-4 bg-slate-700 rounded animate-pulse"></div>
-  <div className="h-4 bg-slate-700 rounded animate-pulse w-3/4"></div>
-  <div className="h-4 bg-slate-700 rounded animate-pulse w-1/2"></div>
+  <div className="h-4 bg-muted rounded animate-pulse"></div>
+  <div className="h-4 bg-muted rounded animate-pulse w-3/4"></div>
+  <div className="h-4 bg-muted rounded animate-pulse w-1/2"></div>
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-3">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 bg-slate-700 rounded-full animate-pulse"></div>
+            <div className="w-12 h-12 bg-muted rounded-full animate-pulse"></div>
             <div className="space-y-2 flex-1">
-              <div className="h-4 bg-slate-700 rounded animate-pulse"></div>
-              <div className="h-3 bg-slate-700 rounded animate-pulse w-3/4"></div>
+              <div className="h-4 bg-muted rounded animate-pulse"></div>
+              <div className="h-3 bg-muted rounded animate-pulse w-3/4"></div>
             </div>
           </div>
         </div>
         <div className="space-y-2">
-          <div className="h-3 bg-slate-700 rounded animate-pulse"></div>
-          <div className="h-3 bg-slate-700 rounded animate-pulse w-5/6"></div>
-          <div className="h-3 bg-slate-700 rounded animate-pulse w-2/3"></div>
+          <div className="h-3 bg-muted rounded animate-pulse"></div>
+          <div className="h-3 bg-muted rounded animate-pulse w-5/6"></div>
+          <div className="h-3 bg-muted rounded animate-pulse w-2/3"></div>
         </div>
         <div className="flex gap-2">
-          <div className="h-8 w-16 bg-slate-700 rounded animate-pulse"></div>
-          <div className="h-8 w-12 bg-slate-700 rounded animate-pulse"></div>
+          <div className="h-8 w-16 bg-muted rounded animate-pulse"></div>
+          <div className="h-8 w-12 bg-muted rounded animate-pulse"></div>
         </div>
       </div>
     )
@@ -196,14 +196,14 @@ const components = [
           { status: "Online", colour: "bg-green-400", pulse: true },
           { status: "Away", colour: "bg-yellow-400", pulse: false },
           { status: "Busy", colour: "bg-red-400", pulse: true },
-          { status: "Offline", colour: "bg-slate-600", pulse: false }
+          { status: "Offline", colour: "bg-muted", pulse: false }
         ].map((item, index) => (
-          <div key={index} className="flex items-center justify-between p-3 bg-slate-800/30 rounded-lg">
+          <div key={index} className="flex items-center justify-between p-3 bg-card/30 rounded-lg">
             <div className="flex items-center gap-3">
               <div className={`w-3 h-3 ${item.colour} rounded-full ${item.pulse ? 'animate-pulse' : ''}`}></div>
-              <span className="text-sm text-slate-300">{item.status}</span>
+              <span className="text-sm text-foreground/80">{item.status}</span>
             </div>
-            <Badge className="bg-slate-700 text-slate-300 text-xs">
+            <Badge className="bg-muted text-foreground/80 text-xs">
               {index === 0 ? "24" : index === 1 ? "8" : index === 2 ? "3" : "0"} users
             </Badge>
           </div>
@@ -233,13 +233,13 @@ const components = [
       <div className="w-full max-w-md space-y-4">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <span className="text-slate-300 text-sm">Rate this candidate</span>
+            <span className="text-foreground/80 text-sm">Rate this candidate</span>
             <div className="flex gap-1">
               {[1,2,3,4,5].map(star => (
                 <Star 
                   key={star} 
                   className={`h-4 w-4 cursor-pointer transition-all duration-300 rounded-lg ${
-                    star <= 4 ? 'fill-yellow-400 text-yellow-400' : 'text-slate-600 hover:text-yellow-400'
+                    star <= 4 ? 'fill-yellow-400 text-yellow-400' : 'text-muted-foreground hover:text-yellow-400'
                   }`}
                   style={{ transitionDuration: 'var(--animation-speed)' }}
                 />
@@ -247,7 +247,7 @@ const components = [
             </div>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-slate-300 text-sm">Was this helpful?</span>
+            <span className="text-foreground/80 text-sm">Was this helpful?</span>
             <div className="flex gap-2">
               <Button size="sm" variant="outline" className="hover:bg-green-500/20 hover:border-green-500/50 hover:text-green-300">
                 <ThumbsUp className="h-3 w-3 mr-1" />
@@ -275,9 +275,9 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-4">
         <Alert className="border-red-500/50 bg-red-500/10">
-          <AlertCircle className="h-4 w-4 text-red-400" />
-          <AlertTitle className="text-red-200">Connection Error</AlertTitle>
-          <AlertDescription className="text-red-200">
+          <AlertCircle className="h-4 w-4 text-red-500 dark:text-red-400" />
+          <AlertTitle className="text-red-700 dark:text-red-200">Connection Error</AlertTitle>
+          <AlertDescription className="text-red-700 dark:text-red-200">
             Unable to load candidate data. Please check your connection.
           </AlertDescription>
         </Alert>
@@ -286,7 +286,7 @@ const components = [
             <RefreshCw className="h-3 w-3 mr-1" />
             Retry
           </Button>
-          <Button size="sm" variant="outline" className="hover:bg-slate-700">
+          <Button size="sm" variant="outline" className="hover:bg-accent">
             Contact Support
           </Button>
         </div>
@@ -299,11 +299,11 @@ const components = [
     description: "Interactive comment threads with timestamps",
     code: `<div className="space-y-4">
   <div className="flex gap-3">
-    <div className="w-8 h-8 bg-slate-600 rounded-full"></div>
+    <div className="w-8 h-8 bg-muted rounded-full"></div>
     <div>
       <div className="flex items-center gap-2">
         <span className="font-medium">John Doe</span>
-        <span className="text-xs text-slate-500">2 hours ago</span>
+        <span className="text-xs text-muted-foreground">2 hours ago</span>
       </div>
       <p className="text-sm">Great candidate, highly recommend!</p>
     </div>
@@ -331,21 +331,21 @@ const components = [
             avatar: "LP"
           }
         ].map((comment, index) => (
-          <div key={index} className="flex gap-3 p-3 bg-slate-800/30 rounded-lg">
-            <div className="w-8 h-8 bg-fuchsia-500/20 text-fuchsia-300 rounded-full flex items-center justify-center text-xs font-medium">
+          <div key={index} className="flex gap-3 p-3 bg-card/30 rounded-lg">
+            <div className="w-8 h-8 bg-fuchsia-500/20 text-primary rounded-full flex items-center justify-center text-xs font-medium">
               {comment.avatar}
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-medium text-slate-200 text-sm">{comment.name}</span>
-                <span className="text-xs text-slate-500">{comment.time}</span>
+                <span className="font-medium text-foreground text-sm">{comment.name}</span>
+                <span className="text-xs text-muted-foreground">{comment.time}</span>
               </div>
-              <p className="text-sm text-slate-300">{comment.comment}</p>
+              <p className="text-sm text-foreground/80">{comment.comment}</p>
               <div className="flex items-center gap-4 mt-2">
-                <button className="text-xs text-slate-500 hover:text-fuchsia-400 transition-colours">
+                <button className="text-xs text-muted-foreground hover:text-primary transition-colours">
                   Reply
                 </button>
-                <button className="text-xs text-slate-500 hover:text-fuchsia-400 transition-colours">
+                <button className="text-xs text-muted-foreground hover:text-primary transition-colours">
                   Like
                 </button>
               </div>
@@ -360,19 +360,19 @@ const components = [
     title: "Notification centre",
     description: "Centralized notification management",
     code: `<div className="space-y-2">
-  <div className="flex items-center gap-3 p-3 bg-slate-800/50 rounded-lg">
+  <div className="flex items-center gap-3 p-3 bg-card/50 rounded-lg">
     <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
     <div className="flex-1">
       <p className="text-sm">New application received</p>
-      <p className="text-xs text-slate-500">2 minutes ago</p>
+      <p className="text-xs text-muted-foreground">2 minutes ago</p>
     </div>
   </div>
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-3">
         <div className="flex items-center justify-between mb-3">
-          <h4 className="font-medium text-slate-200">Notifications</h4>
-          <Button size="sm" variant="ghost" className="text-xs text-slate-400 hover:text-slate-300">
+          <h4 className="font-medium text-foreground">Notifications</h4>
+          <Button size="sm" variant="ghost" className="text-xs text-muted-foreground hover:text-foreground/80">
             Mark all read
           </Button>
         </div>
@@ -401,15 +401,15 @@ const components = [
         ].map((notification, index) => (
           <div key={index} className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ${
             notification.unread 
-              ? 'bg-slate-800/50 border border-slate-700/50' 
-              : 'bg-slate-800/30'
+              ? 'bg-card/50 border border-border/50' 
+              : 'bg-card/30'
           }`} style={{ transitionDuration: 'var(--animation-speed)' }}>
             <div className={`w-2 h-2 ${notification.colour} rounded-full ${notification.unread ? 'animate-pulse' : ''}`}></div>
             <div className="flex-1">
-              <p className={`text-sm ${notification.unread ? 'text-slate-200' : 'text-slate-400'}`}>
+              <p className={`text-sm ${notification.unread ? 'text-foreground' : 'text-muted-foreground'}`}>
                 {notification.message}
               </p>
-              <p className="text-xs text-slate-500">{notification.time}</p>
+              <p className="text-xs text-muted-foreground">{notification.time}</p>
             </div>
             {notification.unread && (
               <div className="w-2 h-2 bg-fuchsia-400 rounded-full"></div>
@@ -439,8 +439,8 @@ export function FeedbackComponents({
       <section>
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2 text-slate-100">Feedback Components</h2>
-            <p className="text-slate-400">User feedback, notifications, and status indicators</p>
+            <h2 className="text-3xl font-bold mb-2 text-foreground">Feedback Components</h2>
+            <p className="text-muted-foreground">User feedback, notifications, and status indicators</p>
           </div>
           <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
@@ -468,7 +468,7 @@ export function FeedbackComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-center py-12 text-muted-foreground">
             <MessageSquare className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>

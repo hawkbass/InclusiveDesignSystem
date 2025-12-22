@@ -50,7 +50,7 @@ export function CalendarIntegration({
       case 'Portfolio Review':
         return 'bg-pink-500/20 text-pink-300 border-pink-500/30'
       default:
-        return 'bg-slate-500/20 text-slate-300 border-slate-500/30'
+        return 'bg-slate-500/20 text-foreground/80 border-slate-500/30'
     }
   }
 
@@ -73,14 +73,14 @@ export function CalendarIntegration({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-slate-100">Calendar</h2>
-          <p className="text-sm text-slate-400">Schedule and manage interviews</p>
+          <h2 className="text-xl font-semibold text-foreground">Calendar</h2>
+          <p className="text-sm text-muted-foreground">Schedule and manage interviews</p>
         </div>
         <div className="flex items-center gap-2">
           <Button
             variant="outline"
             size="sm"
-            className="border-slate-700/50 text-slate-300 hover:bg-slate-700/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50"
           >
             <Filter className="h-4 w-4 mr-2" />
             Filter
@@ -97,22 +97,22 @@ export function CalendarIntegration({
       </div>
 
       {/* Calendar Controls */}
-      <div className="bg-slate-800/50 rounded-lg border border-slate-700/50 p-4 backdrop-blur-sm">
+      <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <h3 className="text-lg font-medium text-slate-100">{currentMonth}</h3>
+              <h3 className="text-lg font-medium text-foreground">{currentMonth}</h3>
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 text-slate-400 hover:text-slate-300"
+                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               >
                 <ChevronRight className="h-4 w-4" />
               </Button>
@@ -120,15 +120,15 @@ export function CalendarIntegration({
           </div>
           
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 bg-slate-700/50 rounded-md p-1">
+            <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1">
               {["month", "week", "day"].map((view) => (
                 <button
                   key={view}
                   onClick={() => setCalendarView(view as "month" | "week" | "day")}
                   className={`px-3 py-1 rounded text-sm transition-all ${
                     calendarView === view 
-                      ? 'bg-fuchsia-500/20 text-fuchsia-300' 
-                      : 'text-slate-400 hover:text-slate-300'
+                      ? 'bg-fuchsia-500/20 text-primary' 
+                      : 'text-muted-foreground hover:text-foreground/80'
                   }`}
                 >
                   {view.charAt(0).toUpperCase() + view.slice(1)}
@@ -143,7 +143,7 @@ export function CalendarIntegration({
           {/* Day Headers */}
           {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
             <div key={day} className="p-2 text-center">
-              <div className="text-xs font-medium text-slate-400">{day}</div>
+              <div className="text-xs font-medium text-muted-foreground">{day}</div>
             </div>
           ))}
 
@@ -157,14 +157,14 @@ export function CalendarIntegration({
               <button
                 key={day}
                 onClick={() => setSelectedDate(day)}
-                className={`p-2 min-h-[80px] border border-slate-700/30 rounded-lg transition-all duration-200 text-left relative ${
+                className={`p-2 min-h-[80px] border border-border/30 rounded-lg transition-all duration-200 text-left relative ${
                   isSelected 
-                    ? 'bg-fuchsia-500/20 border-fuchsia-500/50' 
-                    : 'hover:bg-slate-700/30'
+                    ? 'bg-fuchsia-500/20 border-primary/50' 
+                    : 'hover:bg-accent/30'
                 }`}
               >
                 <div className={`text-sm font-medium mb-1 ${
-                  isToday ? 'text-fuchsia-300' : 'text-slate-200'
+                  isToday ? 'text-primary' : 'text-foreground'
                 }`}>
                   {day}
                   {isToday && <span className="ml-1 text-xs">•</span>}
@@ -190,7 +190,7 @@ export function CalendarIntegration({
                   ))}
                   
                   {dayEvents.length > 2 && (
-                    <div className="text-xs text-slate-400 text-center">
+                    <div className="text-xs text-muted-foreground text-center">
                       +{dayEvents.length - 2} more
                     </div>
                   )}

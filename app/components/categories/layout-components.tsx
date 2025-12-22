@@ -29,15 +29,15 @@ const components = [
     title: "Responsive Grid",
     description: "Flexible grid system for layouts",
     code: `<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-  <div className="bg-slate-900/50 border border-slate-700/50 shadow-xl rounded-lg p-4">Grid Item 1</div>
-  <div className="bg-slate-900/50 border border-slate-700/50 shadow-xl rounded-lg p-4">Grid Item 2</div>
+  <div className="bg-card/50 border border-border/50 shadow-xl rounded-lg p-4">Grid Item 1</div>
+  <div className="bg-card/50 border border-border/50 shadow-xl rounded-lg p-4">Grid Item 2</div>
 </div>`,
     component: (
       <div className="w-full">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {Array.from({ length: 4 }, (_, i) => (
-            <div key={i} className="bg-slate-800/50 border border-slate-600 rounded-lg p-4 text-center hover:bg-slate-800/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-              <div className="text-sm text-slate-300">Grid Item {i + 1}</div>
+            <div key={i} className="bg-card/50 border border-border rounded-lg p-4 text-center hover:bg-card/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+              <div className="text-sm text-foreground/80">Grid Item {i + 1}</div>
             </div>
           ))}
         </div>
@@ -59,13 +59,13 @@ const components = [
     component: (
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         {Array.from({ length: 2 }, (_, i) => (
-          <Card key={i} className="bg-slate-800/30 border-slate-700 hover:bg-slate-800/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+          <Card key={i} className="bg-card/30 border-border hover:bg-card/50 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
             <CardHeader>
               <CardTitle className="text-lg">Card Title {i + 1}</CardTitle>
               <CardDescription>Card description goes here</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-slate-400">
+              <p className="text-sm text-muted-foreground">
                 This is the card content area with some example text.
               </p>
               <Button size="sm" className="mt-4 bg-fuchsia-500 hover:bg-fuchsia-600 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
@@ -82,19 +82,19 @@ const components = [
     title: "Flexbox Layouts",
     description: "Flexible box layout patterns",
     code: `<div className="flex flex-col md:flex-row gap-6">
-  <div className="flex-1 bg-slate-800/50 p-4 rounded-lg">Main Content</div>
-  <div className="w-full md:w-64 lg:max-w-80 bg-slate-800/50 p-4 rounded-lg">Sidebar</div>
+  <div className="flex-1 bg-card/50 p-4 rounded-lg">Main Content</div>
+  <div className="w-full md:w-64 lg:max-w-80 bg-card/50 p-4 rounded-lg">Sidebar</div>
 </div>`,
     component: (
       <div className="w-full">
         <div className="flex flex-col md:flex-row gap-6">
-          <div className="flex-1 bg-slate-800/50 border border-slate-600 p-4 rounded-lg hover:bg-slate-800/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <h4 className="font-medium text-slate-200 mb-2">Main Content Area</h4>
-            <p className="text-sm text-slate-400">This is the primary content area that takes up the remaining space.</p>
+          <div className="flex-1 bg-card/50 border border-border p-4 rounded-lg hover:bg-card/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <h4 className="font-medium text-foreground mb-2">Main Content Area</h4>
+            <p className="text-sm text-muted-foreground">This is the primary content area that takes up the remaining space.</p>
           </div>
-          <div className="w-full md:w-48 bg-slate-800/50 border border-slate-600 p-4 rounded-lg hover:bg-slate-800/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <h4 className="font-medium text-slate-200 mb-2">Sidebar</h4>
-            <p className="text-sm text-slate-400">Fixed width sidebar content.</p>
+          <div className="w-full md:w-48 bg-card/50 border border-border p-4 rounded-lg hover:bg-card/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <h4 className="font-medium text-foreground mb-2">Sidebar</h4>
+            <p className="text-sm text-muted-foreground">Fixed width sidebar content.</p>
           </div>
         </div>
       </div>
@@ -105,7 +105,7 @@ const components = [
     title: "Masonry Layout",
     description: "Pinterest-style masonry grid",
     code: `<div className="columns-1 md:columns-2 lg:columns-3 gap-6">
-  <div className="break-inside-avoid mb-4 bg-slate-800/50 p-4 rounded-lg">
+  <div className="break-inside-avoid mb-4 bg-card/50 p-4 rounded-lg">
     <h4>Masonry Item</h4>
     <p>Variable height content...</p>
   </div>
@@ -121,9 +121,9 @@ const components = [
             { title: "Team Feedback", content: "Positive feedback from initial screening.", height: "h-24" },
             { title: "References", content: "Two references provided, both from previous employers with excellent recommendations.", height: "h-32" }
           ].map((item, index) => (
-            <div key={index} className={`break-inside-avoid mb-4 bg-slate-800/50 border border-slate-600 p-4 rounded-lg hover:bg-slate-800/70 transition-all duration-300 rounded-lg ${item.height}`} style={{ transitionDuration: 'var(--animation-speed)' }}>
-              <h4 className="font-medium text-slate-200 mb-2">{item.title}</h4>
-              <p className="text-sm text-slate-400">{item.content}</p>
+            <div key={index} className={`break-inside-avoid mb-4 bg-card/50 border border-border p-4 rounded-lg hover:bg-card/70 transition-all duration-300 rounded-lg ${item.height}`} style={{ transitionDuration: 'var(--animation-speed)' }}>
+              <h4 className="font-medium text-foreground mb-2">{item.title}</h4>
+              <p className="text-sm text-muted-foreground">{item.content}</p>
             </div>
           ))}
         </div>
@@ -135,7 +135,7 @@ const components = [
     title: "Sidebar Layout",
     description: "Classic sidebar with main content area",
     code: `<div className="flex min-h-screen">
-  <aside className="w-full max-w-64 lg:max-w-80 bg-slate-900 border-r border-slate-700">
+  <aside className="w-full max-w-64 lg:max-w-80 bg-card border-r border-border">
     <nav className="p-4">Sidebar Navigation</nav>
   </aside>
   <main className="flex-1 p-6">Main Content</main>
@@ -143,15 +143,15 @@ const components = [
     component: (
       <div className="w-full h-64">
         <div className="flex h-full">
-          <aside className="w-48 bg-slate-800/50 border-r border-slate-600 rounded-l-lg">
+          <aside className="w-48 bg-card/50 border-r border-border rounded-l-lg">
             <nav className="p-4">
-              <h4 className="font-medium text-slate-200 mb-3">Navigation</h4>
+              <h4 className="font-medium text-foreground mb-3">Navigation</h4>
               <div className="space-y-2">
                 {["Dashboard", "Candidates", "Jobs", "Reports"].map((item, index) => (
                   <a
                     key={index}
                     href="#"
-                    className="block px-3 py-2 text-slate-300 hover:text-fuchsia-300 hover:bg-slate-800/50 rounded transition-all duration-300 rounded-lg"
+                    className="block px-3 py-2 text-foreground/80 hover:text-primary hover:bg-card/50 rounded transition-all duration-300 rounded-lg"
                     style={{ transitionDuration: 'var(--animation-speed)' }}
                   >
                     {item}
@@ -160,9 +160,9 @@ const components = [
               </div>
             </nav>
           </aside>
-          <main className="flex-1 bg-slate-800/30 border border-l-0 border-slate-600 rounded-r-lg p-4">
-            <h4 className="font-medium text-slate-200 mb-2">Main Content Area</h4>
-            <p className="text-sm text-slate-400">This is where the primary application content would be displayed.</p>
+          <main className="flex-1 bg-card/30 border border-l-0 border-border rounded-r-lg p-4">
+            <h4 className="font-medium text-foreground mb-2">Main Content Area</h4>
+            <p className="text-sm text-muted-foreground">This is where the primary application content would be displayed.</p>
           </main>
         </div>
       </div>
@@ -173,25 +173,25 @@ const components = [
     title: "Split Screen Layout",
     description: "Resizable split pane layout",
     code: `<div className="flex h-96">
-  <div className="w-1/2 bg-slate-800/50 border border-slate-700/50 shadow-xl p-4">
+  <div className="w-1/2 bg-card/50 border border-border/50 shadow-xl p-4">
     Left Pane
   </div>
-  <div className="w-1 bg-slate-600 cursor-col-resize hover:bg-fuchsia-500 transition-all duration-300 rounded-lg"></div>
-  <div className="w-1/2 bg-slate-800/50 border border-slate-700/50 shadow-xl p-4">
+  <div className="w-1 bg-muted cursor-col-resize hover:bg-fuchsia-500 transition-all duration-300 rounded-lg"></div>
+  <div className="w-1/2 bg-card/50 border border-border/50 shadow-xl p-4">
     Right Pane
   </div>
 </div>`,
     component: (
       <div className="w-full h-64">
         <div className="flex h-full">
-          <div className="w-1/2 bg-slate-800/50 border border-slate-600 rounded-l-lg p-4 hover:bg-slate-800/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <h4 className="font-medium text-slate-200 mb-2">Left Pane</h4>
-            <p className="text-sm text-slate-400">Candidate list or search results would appear here.</p>
+          <div className="w-1/2 bg-card/50 border border-border rounded-l-lg p-4 hover:bg-card/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <h4 className="font-medium text-foreground mb-2">Left Pane</h4>
+            <p className="text-sm text-muted-foreground">Candidate list or search results would appear here.</p>
           </div>
-          <div className="w-1 bg-slate-600 cursor-col-resize hover:bg-fuchsia-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}></div>
-          <div className="w-1/2 bg-slate-800/50 border border-slate-600 rounded-r-lg p-4 hover:bg-slate-800/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <h4 className="font-medium text-slate-200 mb-2">Right Pane</h4>
-            <p className="text-sm text-slate-400">Detailed candidate information or preview would be shown here.</p>
+          <div className="w-1 bg-muted cursor-col-resize hover:bg-fuchsia-500 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}></div>
+          <div className="w-1/2 bg-card/50 border border-border rounded-r-lg p-4 hover:bg-card/70 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <h4 className="font-medium text-foreground mb-2">Right Pane</h4>
+            <p className="text-sm text-muted-foreground">Detailed candidate information or preview would be shown here.</p>
           </div>
         </div>
       </div>
@@ -214,32 +214,32 @@ const components = [
       <div className="w-full">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
           <div className="lg:col-span-3">
-            <Card className="bg-slate-800/30 border-slate-700 h-32">
+            <Card className="bg-card/30 border-border h-32">
               <CardContent className="p-4 h-full flex items-center justify-center">
                 <div className="text-center">
-                  <BarChart3 className="h-8 w-8 text-slate-400 mx-auto mb-2" />
-                  <h4 className="font-medium text-slate-200">Main Dashboard</h4>
-                  <p className="text-sm text-slate-400">Primary analytics and charts</p>
+                  <BarChart3 className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+                  <h4 className="font-medium text-foreground">Main Dashboard</h4>
+                  <p className="text-sm text-muted-foreground">Primary analytics and charts</p>
                 </div>
               </CardContent>
             </Card>
           </div>
           <div className="space-y-4">
-            <Card className="bg-slate-800/30 border-slate-700">
+            <Card className="bg-card/30 border-border">
               <CardContent className="p-4">
                 <div className="text-center">
                   <Users className="h-6 w-6 text-blue-400 mx-auto mb-2" />
-                  <h5 className="font-medium text-slate-200 text-sm">Widget 1</h5>
-                  <p className="text-xs text-slate-400">Quick stats</p>
+                  <h5 className="font-medium text-foreground text-sm">Widget 1</h5>
+                  <p className="text-xs text-muted-foreground">Quick stats</p>
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-slate-800/30 border-slate-700">
+            <Card className="bg-card/30 border-border">
               <CardContent className="p-4">
                 <div className="text-center">
                   <Calendar className="h-6 w-6 text-green-400 mx-auto mb-2" />
-                  <h5 className="font-medium text-slate-200 text-sm">Widget 2</h5>
-                  <p className="text-xs text-slate-400">Recent activity</p>
+                  <h5 className="font-medium text-foreground text-sm">Widget 2</h5>
+                  <p className="text-xs text-muted-foreground">Recent activity</p>
                 </div>
               </CardContent>
             </Card>
@@ -261,12 +261,12 @@ const components = [
 </section>`,
     component: (
       <div className="w-full">
-        <section className="py-12 text-center bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-blue-500/10 rounded-xl border border-slate-700/50 shadow-xl">
+        <section className="py-12 text-center bg-gradient-to-r from-primary/10 via-purple-500/10 to-blue-500/10 rounded-xl border border-border/50 shadow-xl">
           <div className="max-w-2xl mx-auto px-4">
             <h1 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-fuchsia-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
               Find Your Perfect Match
             </h1>
-            <p className="text-lg text-slate-300 mb-6">
+            <p className="text-lg text-foreground/80 mb-6">
               Connect talented candidates with exciting opportunities using our advanced recruitment platform.
             </p>
             <div className="flex gap-6 justify-center flex-wrap">
@@ -274,7 +274,7 @@ const components = [
                 Get Started
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
-              <Button size="lg" variant="outline" className="hover:bg-slate-700">
+              <Button size="lg" variant="outline" className="hover:bg-accent">
                 Learn More
               </Button>
             </div>
@@ -297,19 +297,19 @@ const components = [
       <div className="w-full">
         <div className="container mx-auto px-6 py-8">
           <div className="max-w-4xl mx-auto">
-            <div className="bg-slate-800/30 border border-slate-600 rounded-lg p-6">
-              <h1 className="text-2xl font-bold text-slate-200 mb-4">Page Title</h1>
-              <p className="text-slate-400 mb-4">
+            <div className="bg-card/30 border border-border rounded-lg p-6">
+              <h1 className="text-2xl font-bold text-foreground mb-4">Page Title</h1>
+              <p className="text-muted-foreground mb-4">
                 This is a responsive container layout that centers content and provides consistent spacing.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-slate-800/50 p-4 rounded-lg">
-                  <h3 className="font-medium text-slate-200 mb-2">Section 1</h3>
-                  <p className="text-sm text-slate-400">Content for the first section</p>
+                <div className="bg-card/50 p-4 rounded-lg">
+                  <h3 className="font-medium text-foreground mb-2">Section 1</h3>
+                  <p className="text-sm text-muted-foreground">Content for the first section</p>
                 </div>
-                <div className="bg-slate-800/50 p-4 rounded-lg">
-                  <h3 className="font-medium text-slate-200 mb-2">Section 2</h3>
-                  <p className="text-sm text-slate-400">Content for the second section</p>
+                <div className="bg-card/50 p-4 rounded-lg">
+                  <h3 className="font-medium text-foreground mb-2">Section 2</h3>
+                  <p className="text-sm text-muted-foreground">Content for the second section</p>
                 </div>
               </div>
             </div>
@@ -338,10 +338,10 @@ export function LayoutComponents({
       <section>
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h2 className="text-3xl font-bold mb-2 text-slate-100">Layout Components</h2>
-            <p className="text-slate-400">Layout patterns and structural components for page organisation</p>
+            <h2 className="text-3xl font-bold mb-2 text-foreground">Layout Components</h2>
+            <p className="text-muted-foreground">Layout patterns and structural components for page organisation</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>
@@ -367,7 +367,7 @@ export function LayoutComponents({
         </div>
 
         {filteredComponents.length === 0 && searchQuery && (
-          <div className="text-center py-12 text-slate-400">
+          <div className="text-center py-12 text-muted-foreground">
             <Layout className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p className="text-lg font-medium mb-2">No components found</p>
             <p className="text-sm">Try adjusting your search query</p>

@@ -29,7 +29,7 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-md">
         <div className="flex justify-between items-center mb-4">
-          <h4 className="text-lg font-medium text-slate-100">Add New Candidate</h4>
+          <h4 className="text-lg font-medium text-foreground">Add New Candidate</h4>
           <Button
             variant="ghost"
             size="sm"
@@ -41,23 +41,23 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
         </div>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
-            <label className="block text-xs text-slate-400 mb-1">Full Name</label>
-            <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter candidate name" value={name} onChange={e => setName(e.target.value)} />
+            <label className="block text-xs text-muted-foreground mb-1">Full Name</label>
+            <Input className="bg-card/50 border-border/50 text-foreground h-8 text-sm" placeholder="Enter candidate name" value={name} onChange={e => setName(e.target.value)} />
           </div>
           <div>
-            <label className="block text-xs text-slate-400 mb-1">Position</label>
-            <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter position" value={position} onChange={e => setPosition(e.target.value)} />
+            <label className="block text-xs text-muted-foreground mb-1">Position</label>
+            <Input className="bg-card/50 border-border/50 text-foreground h-8 text-sm" placeholder="Enter position" value={position} onChange={e => setPosition(e.target.value)} />
           </div>
           <div>
-            <label className="block text-xs text-slate-400 mb-1">Email</label>
-            <Input className="bg-slate-900/50 border-slate-700/50 text-slate-200 h-8 text-sm" placeholder="Enter email address" value={email} onChange={e => setEmail(e.target.value)} />
+            <label className="block text-xs text-muted-foreground mb-1">Email</label>
+            <Input className="bg-card/50 border-border/50 text-foreground h-8 text-sm" placeholder="Enter email address" value={email} onChange={e => setEmail(e.target.value)} />
           </div>
           <div className="flex gap-2 pt-2">
             <Button
               type="button"
               variant="outline"
               size="sm"
-              className="flex-1 text-slate-300 border-slate-700/50 bg-slate-800/50 hover:bg-slate-700/50 h-8 text-xs"
+              className="flex-1 text-foreground/80 border-border/50 bg-card/50 hover:bg-accent/50 h-8 text-xs"
               onClick={onClose}
             >
               Cancel

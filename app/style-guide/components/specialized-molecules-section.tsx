@@ -60,7 +60,7 @@ export function SpecializedMoleculesSection({
               Open
             </Button>
           </div>
-          <div className="text-xs text-slate-400">Adapts to content context</div>
+          <div className="text-xs text-muted-foreground">Adapts to content context</div>
         </div>
       ),
       code: `import { SmartContentActions } from "@/components/ui/smart-content-actions"
@@ -86,13 +86,13 @@ export function SpecializedMoleculesSection({
       component: (
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-fuchsia-400">Design System</span>
+            <span className="text-primary">Design System</span>
             <span className="text-slate-600">→</span>
-            <span className="text-slate-400">Style Guide</span>
+            <span className="text-muted-foreground">Style Guide</span>
             <span className="text-slate-600">→</span>
-            <span className="text-slate-300">Molecules</span>
+            <span className="text-foreground/80">Molecules</span>
           </div>
-          <div className="text-xs text-slate-400">Smart pathfinding enabled</div>
+          <div className="text-xs text-muted-foreground">Smart pathfinding enabled</div>
         </div>
       ),
       code: `import { ContextualNavigation } from "@/components/ui/contextual-navigation"
@@ -122,9 +122,9 @@ export function SpecializedMoleculesSection({
             <div className="w-6 h-6 bg-fuchsia-500 rounded-full flex items-center justify-center">
               <CheckCircle2 className="h-3 w-3 text-white" />
             </div>
-            <span className="text-xs text-slate-300">Step 3 of 5: Components</span>
+            <span className="text-xs text-foreground/80">Step 3 of 5: Components</span>
           </div>
-          <div className="text-xs text-slate-400">Designer track • 12 min remaining</div>
+          <div className="text-xs text-muted-foreground">Designer track • 12 min remaining</div>
         </div>
       ),
       code: `import { ProgressiveOnboarding } from "@/components/ui/progressive-onboarding"
@@ -151,14 +151,14 @@ export function SpecializedMoleculesSection({
       component: (
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <User className="h-4 w-4 text-fuchsia-400" />
-            <span className="text-xs text-slate-300 font-medium">James Doe</span>
+            <User className="h-4 w-4 text-primary" />
+            <span className="text-xs text-foreground/80 font-medium">James Doe</span>
           </div>
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="text-slate-400">Components: <span className="text-slate-300">23</span></div>
-            <div className="text-slate-400">favourites: <span className="text-slate-300">8</span></div>
+            <div className="text-muted-foreground">Components: <span className="text-foreground/80">23</span></div>
+            <div className="text-muted-foreground">favourites: <span className="text-foreground/80">8</span></div>
           </div>
-          <div className="text-xs text-slate-500">Last active: Design Tokens</div>
+          <div className="text-xs text-muted-foreground">Last active: Design Tokens</div>
         </div>
       ),
       code: `import { PersonalDashboard } from "@/components/ui/personal-dashboard"
@@ -183,18 +183,18 @@ export function SpecializedMoleculesSection({
       usageCount: "Dashboards",
       component: (
         <div className="space-y-2">
-          <div className="w-full h-16 bg-slate-800/50 rounded-lg relative overflow-hidden">
+          <div className="w-full h-16 bg-card/50 rounded-lg relative overflow-hidden">
             <div className="absolute inset-2 flex items-end justify-between">
               {[40, 65, 45, 80, 55, 75, 90].map((height, i) => (
                 <div 
                   key={i}
-                  className="bg-gradient-to-t from-fuchsia-600 to-purple-500 rounded-sm w-3"
+                  className="bg-gradient-to-t from-fuchsia-600 to-accent rounded-sm w-3"
                   style={{ height: `${height}%` }}
                 />
               ))}
             </div>
           </div>
-          <div className="text-xs text-slate-400">Interactive canvas chart</div>
+          <div className="text-xs text-muted-foreground">Interactive canvas chart</div>
         </div>
       ),
       code: `import { MetricChart } from "@/components/ui/metric-chart"
@@ -221,13 +221,13 @@ export function SpecializedMoleculesSection({
       complexity: "Medium",
       usageCount: "Analytics",
       component: (
-        <div className="w-48 p-3 bg-slate-800/30 rounded-lg border border-slate-700">
+        <div className="w-48 p-3 bg-card/30 rounded-lg border border-border">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-slate-400">Active Users</span>
-            <Heart className="h-3 w-3 text-slate-500" />
+            <span className="text-xs text-muted-foreground">Active Users</span>
+            <Heart className="h-3 w-3 text-muted-foreground" />
           </div>
           <div className="flex items-end gap-2">
-            <span className="text-lg font-bold text-slate-200">2,847</span>
+            <span className="text-lg font-bold text-foreground">2,847</span>
             <div className="flex items-center text-xs text-green-400">
               <TrendingUp className="h-3 w-3 mr-1" />
               +12%
@@ -260,7 +260,7 @@ export function SpecializedMoleculesSection({
       usageCount: "Data sections",
       component: (
         <div className="space-y-2">
-          <div className="w-full h-20 bg-slate-800/50 rounded-lg p-2">
+          <div className="w-full h-20 bg-card/50 rounded-lg p-2">
             <div className="relative h-full">
               <svg viewBox="0 0 100 40" className="w-full h-full">
                 <path 
@@ -282,7 +282,7 @@ export function SpecializedMoleculesSection({
               </svg>
             </div>
           </div>
-          <div className="text-xs text-slate-400">Recharts integration</div>
+          <div className="text-xs text-muted-foreground">Recharts integration</div>
         </div>
       ),
       code: `import { ChartContainer, ChartTooltip } from "@/components/ui/chart"
@@ -312,7 +312,7 @@ export function SpecializedMoleculesSection({
       complexity: "Medium",
       usageCount: "Hero sections",
       component: (
-        <div className="w-full h-20 bg-slate-900 rounded-lg relative overflow-hidden">
+        <div className="w-full h-20 bg-card rounded-lg relative overflow-hidden">
           <div className="absolute inset-0">
             {[...Array(20)].map((_, i) => (
               <div
@@ -327,7 +327,7 @@ export function SpecializedMoleculesSection({
             ))}
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-xs text-slate-400">Animated starfield</span>
+            <span className="text-xs text-muted-foreground">Animated starfield</span>
           </div>
         </div>
       ),
@@ -359,7 +359,7 @@ export function SpecializedMoleculesSection({
                background: 'linear-gradient(135deg, rgba(217, 70, 239, 0.1) 0%, rgba(147, 51, 234, 0.08) 50%, rgba(59, 130, 246, 0.06) 100%)'
              }}>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-xs text-slate-400">Token-aware gradients</span>
+            <span className="text-xs text-muted-foreground">Token-aware gradients</span>
           </div>
         </div>
       ),
@@ -384,11 +384,11 @@ export function SpecializedMoleculesSection({
       complexity: "Low",
       usageCount: "App-wide",
       component: (
-        <div className="flex items-center gap-2 p-2 bg-slate-800/30 rounded-lg">
-          <div className="w-4 h-4 bg-slate-900 rounded border border-slate-600" />
-          <span className="text-xs text-slate-300">Dark</span>
+        <div className="flex items-center gap-2 p-2 bg-card/30 rounded-lg">
+          <div className="w-4 h-4 bg-card rounded border border-border" />
+          <span className="text-xs text-foreground/80">Dark</span>
           <div className="w-4 h-4 bg-slate-100 rounded border border-slate-300" />
-          <span className="text-xs text-slate-400">Light</span>
+          <span className="text-xs text-muted-foreground">Light</span>
         </div>
       ),
       code: `import { ThemeProvider } from "@/components/theme-provider"
@@ -426,13 +426,13 @@ function App() {
   }, {} as Record<string, typeof specializedMolecules>)
 
   const categoryColors = {
-    Interactive: "border-fuchsia-600 text-fuchsia-400",
+    Interactive: "border-fuchsia-600 text-primary",
     Navigation: "border-blue-600 text-blue-400", 
     "User Experience": "border-green-600 text-green-400",
     "Data Visualization": "border-purple-600 text-purple-400",
     "Data Display": "border-cyan-600 text-cyan-400",
     "Visual Effects": "border-orange-600 text-orange-400",
-    System: "border-slate-600 text-slate-400"
+    System: "border-border text-muted-foreground"
   }
 
   const complexityColors = {
@@ -444,22 +444,22 @@ function App() {
   return (
     <div className="space-y-12">
       <div className="text-center">
-        <h3 className="text-3xl font-bold text-slate-100 mb-4">Specialized Molecules</h3>
-        <p className="text-lg text-slate-400 max-w-4xl mx-auto">
+        <h3 className="text-3xl font-bold text-foreground mb-4">Specialized Molecules</h3>
+        <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
           Advanced UI components with sophisticated logic, state management, and user experience patterns
         </p>
         <div className="flex justify-center gap-6 mt-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-fuchsia-400">{specializedMolecules.length}</div>
-            <div className="text-xs text-slate-500">Advanced Components</div>
+            <div className="text-2xl font-bold text-primary">{specializedMolecules.length}</div>
+            <div className="text-xs text-muted-foreground">Advanced Components</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-purple-400">{Object.keys(groupedMolecules).length}</div>
-            <div className="text-xs text-slate-500">Categories</div>
+            <div className="text-xs text-muted-foreground">Categories</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-400">{favourites.size}</div>
-            <div className="text-xs text-slate-500">Favorited</div>
+            <div className="text-xs text-muted-foreground">Favorited</div>
           </div>
         </div>
       </div>
@@ -467,7 +467,7 @@ function App() {
       {Object.entries(groupedMolecules).map(([category, categoryMolecules]) => (
         <div key={category} className="space-y-6">
           <div className="flex items-center gap-3">
-            <h4 className="text-2xl font-bold text-slate-100">{category}</h4>
+            <h4 className="text-2xl font-bold text-foreground">{category}</h4>
             <Badge variant="outline" className={categoryColors[category as keyof typeof categoryColors]}>
               {categoryMolecules.length} Components
             </Badge>
@@ -475,14 +475,14 @@ function App() {
 
           <div className={`grid ${viewMode === "grid" ? "grid-cols-1 lg:grid-cols-2" : "grid-cols-1"} gap-6`}>
             {categoryMolecules.map((molecule) => (
-              <Card key={molecule.id} id={molecule.id} className="group hover:shadow-xl transition-all duration-500 hover:scale-[1.02] border-slate-700/50 bg-slate-800/30">
+              <Card key={molecule.id} id={molecule.id} className="group hover:shadow-xl transition-all duration-500 hover:scale-[1.02] border-border/50 bg-card/30">
                 <CardHeader className="pb-4">
                   <div className="flex items-start justify-between">
                     <div>
-                      <CardTitle className="text-xl text-slate-100 group-hover:text-fuchsia-400 transition-colours">
+                      <CardTitle className="text-xl text-foreground group-hover:text-primary transition-colours">
                         {molecule.name}
                       </CardTitle>
-                      <CardDescription className="text-slate-400 mt-2">
+                      <CardDescription className="text-muted-foreground mt-2">
                         {molecule.description}
                       </CardDescription>
                     </div>
@@ -494,7 +494,7 @@ function App() {
                         variant="ghost"
                         size="sm"
                         onClick={() => onToggleFavorite(molecule.id)}
-                        className="text-slate-400 hover:text-pink-400"
+                        className="text-muted-foreground hover:text-pink-400"
                       >
                         <Heart className={`h-4 w-4 ${favourites.has(molecule.id) ? 'fill-current text-pink-400' : ''}`} />
                       </Button>
@@ -504,28 +504,28 @@ function App() {
 
                 <CardContent className="space-y-4">
                   {/* Live Preview */}
-                  <div className="bg-slate-900 rounded-lg p-4">
+                  <div className="bg-card rounded-lg p-4">
                     {molecule.component}
                   </div>
 
                   {/* Metadata */}
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
-                      <div className="text-slate-300 font-medium">Usage</div>
-                      <div className="text-slate-400">{molecule.usageCount}</div>
+                      <div className="text-foreground/80 font-medium">Usage</div>
+                      <div className="text-muted-foreground">{molecule.usageCount}</div>
                     </div>
                     <div>
-                      <div className="text-slate-300 font-medium">File</div>
-                      <code className="text-xs text-slate-400">{molecule.file}</code>
+                      <div className="text-foreground/80 font-medium">File</div>
+                      <code className="text-xs text-muted-foreground">{molecule.file}</code>
                     </div>
                   </div>
 
                   {/* Features */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-300">Key Features:</div>
+                    <div className="text-sm font-medium text-foreground/80">Key Features:</div>
                     <div className="flex flex-wrap gap-1">
                       {molecule.features.map((feature, index) => (
-                        <Badge key={index} variant="outline" className="text-xs border-slate-600 text-slate-400">
+                        <Badge key={index} variant="outline" className="text-xs border-border text-muted-foreground">
                           {feature}
                         </Badge>
                       ))}
@@ -534,10 +534,10 @@ function App() {
 
                   {/* API Methods */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-300">API Methods:</div>
+                    <div className="text-sm font-medium text-foreground/80">API Methods:</div>
                     <div className="flex flex-wrap gap-1">
                       {molecule.apiMethods.map((method, index) => (
-                        <code key={index} className="text-xs bg-slate-700 px-2 py-1 rounded text-slate-300 font-mono">
+                        <code key={index} className="text-xs bg-muted px-2 py-1 rounded text-foreground/80 font-mono">
                           {method}()
                         </code>
                       ))}
@@ -546,9 +546,9 @@ function App() {
 
                   {/* Code Example */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-300">Implementation:</div>
+                    <div className="text-sm font-medium text-foreground/80">Implementation:</div>
                     <div className="relative">
-                      <pre className="text-xs bg-slate-700 p-3 rounded text-slate-300 font-mono overflow-x-auto max-h-32">
+                      <pre className="text-xs bg-muted p-3 rounded text-foreground/80 font-mono overflow-x-auto max-h-32">
                         <code>{molecule.code}</code>
                       </pre>
                       <Button
@@ -558,7 +558,7 @@ function App() {
                         className={`absolute top-2 right-2 ${
                           copiedCode === molecule.id
                             ? 'border-green-500 text-green-400 bg-green-950' 
-                            : 'border-slate-600 hover:border-fuchsia-500 text-slate-400 hover:text-slate-200'
+                            : 'border-border hover:border-primary text-muted-foreground hover:text-foreground'
                         } transition-all`}
                       >
                         {copiedCode === molecule.id ? (
@@ -572,7 +572,7 @@ function App() {
 
                   {/* Related Pages */}
                   <div className="space-y-2">
-                    <div className="text-sm font-medium text-slate-300">Used in:</div>
+                    <div className="text-sm font-medium text-foreground/80">Used in:</div>
                     <div className="flex flex-wrap gap-1">
                       {molecule.relatedPages.map((page, index) => (
                         <Badge key={index} variant="outline" className="text-xs border-blue-600 text-blue-400">
@@ -589,7 +589,7 @@ function App() {
       ))}
 
       {filteredMolecules.length === 0 && searchQuery && (
-        <div className="text-center py-12 text-slate-400">
+        <div className="text-center py-12 text-muted-foreground">
           <Sparkles className="h-12 w-12 mx-auto mb-4 opacity-50" />
           <p className="text-lg font-medium mb-2">No specialized molecules found</p>
           <p className="text-sm">Try adjusting your search query</p>
