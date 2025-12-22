@@ -4,8 +4,9 @@ import typescript from '@rollup/plugin-typescript'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
 import postcss from 'rollup-plugin-postcss'
 import dts from 'rollup-plugin-dts'
+import { readFileSync } from 'fs'
 
-const packageJson = require('./package.json')
+const packageJson = JSON.parse(readFileSync('./package.json', 'utf-8'))
 
 export default [
   {
@@ -30,23 +31,46 @@ export default [
       commonjs(),
       typescript({
         tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationDir: './dist/types',
       }),
       postcss({
         extract: 'styles.css',
         minimize: true,
-        use: [
-          ['sass', {
-            includePaths: ['./src/styles', './node_modules']
-          }]
-        ]
       }),
     ],
     external: ['react', 'react-dom'],
   },
+  // Tokens entry point
   {
-    input: 'dist/esm/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    plugins: [dts()],
-    external: [/\.css$/],
+    input: 'src/tokens.ts',
+    output: [
+      {
+        file: 'dist/tokens.js',
+        format: 'cjs',
+        sourcemap: true,
+      },
+      {
+        file: 'dist/tokens.esm.js',
+        format: 'esm',
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      typescript({
+        tsconfig: './tsconfig.json',
+      }),
+    ],
+  },
+  // CSS tokens (just copy)
+  {
+    input: 'src/tokens.css',
+    output: [{ file: 'dist/tokens.css' }],
+    plugins: [
+      postcss({
+        extract: true,
+        minimize: true,
+      }),
+    ],
   },
 ]

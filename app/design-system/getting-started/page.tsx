@@ -265,7 +265,7 @@ export function Example() {
   const quickPreviewItems = [
     { 
       name: "Install Package", 
-      code: `npm install @inclusive/design-system \\
+      code: `npm install @inclusive-design/core \\
   tailwindcss @types/react`,
       icon: Download,
       category: "Installation",
@@ -278,7 +278,7 @@ export function Example() {
     { 
       name: "Import Styles", 
       code: `// In your _app.tsx or layout.tsx
-import "@inclusive/design-system/styles.css"
+import "@inclusive-design/core/styles.css"
 import "./globals.css"`,
       icon: Palette,
       category: "Setup",
@@ -286,7 +286,7 @@ import "./globals.css"`,
     },
     { 
       name: "First Component", 
-      code: `import { Button } from "@inclusive/design-system"
+      code: `import { Button } from "@inclusive-design/core"
 
 export function CandidateCard() {
   return (
@@ -594,7 +594,7 @@ export function CandidateCard() {
                           <Button
                             size="sm"
                             variant="ghost"
-                              onClick={() => handleCopyCode("npm install @inclusive/design-system", "install-npm")}
+                              onClick={() => handleCopyCode("npm install @inclusive-design/core", "install-npm")}
                               className="h-5 px-2 text-xs"
                             >
                               {copiedCode === "install-npm" ? (
@@ -605,7 +605,7 @@ export function CandidateCard() {
                           </Button>
                         </div>
                           <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono whitespace-pre-wrap">
-                            <code>npm install @inclusive/design-system</code>
+                            <code>npm install @inclusive-design/core</code>
                           </pre>
                         </div>
                         <div className="space-y-2">
@@ -614,7 +614,7 @@ export function CandidateCard() {
                           <Button
                             size="sm"
                             variant="ghost"
-                              onClick={() => handleCopyCode("yarn add @inclusive/design-system", "install-yarn")}
+                              onClick={() => handleCopyCode("yarn add @inclusive-design/core", "install-yarn")}
                               className="h-5 px-2 text-xs"
                             >
                               {copiedCode === "install-yarn" ? (
@@ -625,7 +625,7 @@ export function CandidateCard() {
                           </Button>
                           </div>
                           <pre className="bg-background/50 p-3 rounded text-xs text-foreground/80 font-mono whitespace-pre-wrap">
-                            <code>yarn add @inclusive/design-system</code>
+                            <code>yarn add @inclusive-design/core</code>
                           </pre>
                         </div>
                       </div>
@@ -758,9 +758,9 @@ export function CandidateCard() {
                       
                       <div className="grid gap-3">
                         {[
-                          { label: "NPM", command: "npm install @inclusive/design-system", id: "npm-cmd" },
-                          { label: "Yarn", command: "yarn add @inclusive/design-system", id: "yarn-cmd" },
-                          { label: "PNPM", command: "pnpm add @inclusive/design-system", id: "pnpm-cmd" }
+                          { label: "NPM", command: "npm install @inclusive-design/core", id: "npm-cmd" },
+                          { label: "Yarn", command: "yarn add @inclusive-design/core", id: "yarn-cmd" },
+                          { label: "PNPM", command: "pnpm add @inclusive-design/core", id: "pnpm-cmd" }
                         ].map((cmd) => (
                           <div key={cmd.id} className="flex items-center gap-3 p-3 bg-card/50 rounded-lg border border-border/30">
                             <Badge className="bg-muted/50 text-foreground/80 text-xs">
@@ -816,7 +816,7 @@ export function CandidateCard() {
                         <Button
                           size="sm"
                           variant="ghost"
-                            onClick={() => handleCopyCode(`import "@inclusive/design-system/styles.css"`, "import-styles")}
+                            onClick={() => handleCopyCode(`import "@inclusive-design/core/styles.css"`, "import-styles")}
                             className="h-6 px-2 text-xs"
                           >
                             {copiedCode === "import-styles" ? (
@@ -834,7 +834,7 @@ export function CandidateCard() {
                         </div>
                         <pre className="bg-card/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-border/30">
                           <code className="text-foreground/80">{`// In your main CSS or app file
-import "@inclusive/design-system/styles.css"`}</code>
+import "@inclusive-design/core/styles.css"`}</code>
                         </pre>
                       </div>
                     </div>
@@ -870,7 +870,7 @@ import "@inclusive/design-system/styles.css"`}</code>
                         <Button
                           size="sm"
                           variant="ghost"
-                            onClick={() => handleCopyCode(`import { Button } from "@inclusive/design-system"
+                            onClick={() => handleCopyCode(`import { Button } from "@inclusive-design/core"
 
 function RecruitmentComponent() {
   return (
@@ -895,7 +895,7 @@ function RecruitmentComponent() {
                         </Button>
                         </div>
                         <pre className="bg-card/50 p-4 rounded-lg text-sm whitespace-pre-wrap border border-border/30">
-                          <code className="text-foreground/80">{`import { Button } from "@inclusive/design-system"
+                          <code className="text-foreground/80">{`import { Button } from "@inclusive-design/core"
 
 function RecruitmentComponent() {
   return (

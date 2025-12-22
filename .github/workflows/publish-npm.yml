@@ -1,0 +1,73 @@
+name: Publish to npm
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/core/**'
+  release:
+    types: [created]
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      id-token: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+          cache-dependency-path: packages/core/package-lock.json
+
+      - name: Install dependencies
+        working-directory: packages/core
+        run: npm ci --legacy-peer-deps
+
+      - name: Build package
+        working-directory: packages/core
+        run: npm run build
+
+      - name: Verify build output
+        working-directory: packages/core
+        run: |
+          echo "Checking dist folder..."
+          ls -la dist/
+          echo "Checking for required files..."
+          test -f dist/index.js || (echo "Missing index.js" && exit 1)
+          test -f dist/index.esm.js || (echo "Missing index.esm.js" && exit 1)
+          test -f dist/styles.css || (echo "Missing styles.css" && exit 1)
+          test -f dist/tokens.css || (echo "Missing tokens.css" && exit 1)
+          echo "All required files present!"
+
+      - name: Publish to npm
+        working-directory: packages/core
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  notify:
+    needs: build-and-publish
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Report success
+        if: needs.build-and-publish.result == 'success'
+        run: echo "✅ @inclusive-design/core published successfully to npm!"
+      
+      - name: Report failure
+        if: needs.build-and-publish.result == 'failure'
+        run: |
+          echo "❌ Failed to publish @inclusive-design/core"
+          exit 1
+

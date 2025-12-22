@@ -41,6 +41,7 @@ import { JobDetailsModal } from "./modals/JobDetailsModal"
 import { EditJobModal } from "./modals/EditJobModal"
 import { ScheduleInterviewModal } from "./modals/ScheduleInterviewModal"
 import { EventDetailsModal } from "./modals/EventDetailsModal"
+import { AddCandidateModal } from "./modals/AddCandidateModal"
 
 export function MainDashboard() {
   // Initialize all state
@@ -355,6 +356,18 @@ export function MainDashboard() {
       <EditJobModal open={showEditJobModal} job={selectedJob} onClose={() => setShowEditJobModal(false)} />
       <ScheduleInterviewModal open={showScheduleInterviewModal} onClose={() => setShowScheduleInterviewModal(false)} />
       <EventDetailsModal open={showEventDetailsModal} event={selectedEvent} onClose={() => setShowEventDetailsModal(false)} />
+      <AddCandidateModal 
+        open={showAddCandidateModal} 
+        onClose={() => setShowAddCandidateModal(false)} 
+        onAddCandidate={(candidate) => {
+          console.log("Adding candidate:", candidate)
+          setShowAddCandidateModal(false)
+          setNotifications(prev => [
+            { id: Date.now(), type: "application", message: `${candidate.name} added to candidates`, time: "Just now", urgent: false },
+            ...prev
+          ])
+        }}
+      />
     </div>
   )
 } 

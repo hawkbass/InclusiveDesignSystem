@@ -11,7 +11,13 @@
       "import": "./dist/index.esm.js",
       "require": "./dist/index.js"
     },
-    "./styles.css": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css",
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens": {
+      "types": "./dist/tokens.d.ts",
+      "import": "./dist/tokens.esm.js",
+      "require": "./dist/tokens.js"
+    }
   },
   "files": [
     "dist",
@@ -26,16 +32,20 @@
     "ui-components",
     "tailwindcss"
   ],
-  "author": "Your Name",
+  "author": "hawkbass",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/inclusive-design-system.git",
+    "url": "git+https://github.com/hawkbass/InclusiveDesignSystem.git",
     "directory": "packages/core"
   },
-  "homepage": "https://your-design-system.com",
+  "homepage": "https://github.com/hawkbass/InclusiveDesignSystem#readme",
   "bugs": {
-    "url": "https://github.com/yourusername/inclusive-design-system/issues"
+    "url": "https://github.com/hawkbass/InclusiveDesignSystem/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "rollup -c",
