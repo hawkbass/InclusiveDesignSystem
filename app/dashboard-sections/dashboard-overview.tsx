@@ -158,7 +158,7 @@ export function DashboardOverview({
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <div className="text-xs font-medium flex items-center gap-1 text-green-400">
+                  <div className="text-xs font-medium flex items-center gap-1 text-green-600 dark:text-green-400">
                     <TrendingUp className="h-3 w-3" />
                     {stat.change}
                   </div>

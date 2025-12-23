@@ -237,7 +237,7 @@ const components = [
             <Card className="bg-card/30 border-border">
               <CardContent className="p-4">
                 <div className="text-center">
-                  <Calendar className="h-6 w-6 text-green-400 mx-auto mb-2" />
+                  <Calendar className="h-6 w-6 text-green-600 dark:text-green-400 mx-auto mb-2" />
                   <h5 className="font-medium text-foreground text-sm">Widget 2</h5>
                   <p className="text-xs text-muted-foreground">Recent activity</p>
                 </div>
@@ -341,7 +341,7 @@ export function LayoutComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Layout Components</h2>
             <p className="text-muted-foreground">Layout patterns and structural components for page organisation</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

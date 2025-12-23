@@ -49,7 +49,7 @@ export function ColoursAtoms({
       description: "Complementary brand colours - gradients, secondary actions",
       category: "Brand",
       colours: [
-        { name: "Purple 300", value: "#d8b4fe", class: "bg-purple-300", usage: "Light secondary accents", textClass: "text-purple-300" },
+        { name: "Purple 300", value: "#d8b4fe", class: "bg-purple-300", usage: "Light secondary accents", textClass: "text-purple-600 dark:text-purple-600 dark:text-purple-300" },
         { name: "Purple 400", value: "#c084fc", class: "bg-purple-400", usage: "Secondary interactive elements", textClass: "text-purple-400" },
         { name: "Purple 500", value: "#a855f7", class: "bg-purple-500", usage: "Secondary buttons, gradients", textClass: "text-purple-500" },
         { name: "Purple 600", value: "#9333ea", class: "bg-purple-600", usage: "Secondary actions, badges", textClass: "text-purple-600" },
@@ -145,11 +145,11 @@ export function ColoursAtoms({
         { name: "Success Light", value: "#6ee7b7", class: "bg-emerald-300", usage: "Success text on dark", textClass: "text-emerald-300" },
         { name: "Warning", value: "#f59e0b", class: "bg-amber-500", usage: "Warning states, cautions", textClass: "text-amber-500" },
         { name: "Warning Dark", value: "#451a03", class: "bg-amber-950", usage: "Warning badge backgrounds", textClass: "text-amber-950" },
-        { name: "Warning Light", value: "#fcd34d", class: "bg-amber-300", usage: "Warning text on dark", textClass: "text-amber-300" },
+        { name: "Warning Light", value: "#fcd34d", class: "bg-amber-300", usage: "Warning text on dark", textClass: "text-amber-600 dark:text-amber-300" },
         { name: "Error", value: "#ef4444", class: "bg-red-500", usage: "Error states, destructive actions", textClass: "text-red-500" },
         { name: "Info Blue", value: "#3b82f6", class: "bg-blue-500", usage: "Information states", textClass: "text-blue-500" },
         { name: "Info Dark", value: "#1e3a8a", class: "bg-blue-950", usage: "Info badge backgrounds", textClass: "text-blue-950" },
-        { name: "Info Light", value: "#93c5fd", class: "bg-blue-300", usage: "Info text on dark", textClass: "text-blue-300" }
+        { name: "Info Light", value: "#93c5fd", class: "bg-blue-300", usage: "Info text on dark", textClass: "text-blue-600 dark:text-blue-300" }
       ]
     },
     {
@@ -239,7 +239,7 @@ export function ColoursAtoms({
                           onClick={() => onCopyCode(colour.class, `${palette.id}-${colour.name}-class`)}
                           className={`${
                             copiedCode === `${palette.id}-${colour.name}-class`
-                              ? 'text-green-400' 
+                              ? 'text-green-600 dark:text-green-400' 
                               : 'text-muted-foreground hover:text-foreground'
                           } transition-all`}
                         >

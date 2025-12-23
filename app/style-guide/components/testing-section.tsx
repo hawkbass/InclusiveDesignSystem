@@ -339,7 +339,7 @@ export function TestingSection({
         <DialogContent className="max-w-xl bg-card border-border">
           <DialogHeader>
             <DialogTitle className="text-foreground flex items-center gap-2">
-              <Target className="h-5 w-5 text-green-400" />
+              <Target className="h-5 w-5 text-green-600 dark:text-green-400" />
               Accessibility Test Results
             </DialogTitle>
             <DialogDescription>
@@ -358,10 +358,10 @@ export function TestingSection({
                 </div>
                 <Badge className={`${
                   result.score === 'AAA' || result.score === 'Pass' || result.score === 'Excellent' || result.score === 'Optimized' || result.score === 'Responsive'
-                    ? 'bg-green-500/20 text-green-300' 
+                    ? 'bg-green-500/20 text-green-600 dark:text-green-300' 
                     : result.score === 'AA' || result.score === 'Good'
                     ? 'bg-yellow-500/20 text-yellow-300'
-                    : 'bg-red-500/20 text-red-300'
+                    : 'bg-red-500/20 text-red-600 dark:text-red-300'
                 }`}>
                   {result.score}
                 </Badge>

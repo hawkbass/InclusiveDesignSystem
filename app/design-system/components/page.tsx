@@ -306,14 +306,14 @@ export default function ComponentsPage() {
       <UnifiedSidebar animationSpeed={animationSpeed} />
       <main className="flex-1 overflow-auto">
         {/* Strategic Header - Value First */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-purple-950 border-b border-border">
+        <section className="relative bg-gradient-to-br from-background via-muted/30 to-background border-b border-border">
           <div className="px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
               <div className="grid lg:grid-cols-2 gap-12 items-center">
                 {/* Value Proposition */}
                 <div className="space-y-6">
                   <div className="flex flex-wrap gap-3 mb-4">
-                    <Badge className="bg-green-950 text-green-300 border-green-800">
+                    <Badge className="bg-green-950 text-green-600 dark:text-green-300 border-green-800">
                       <CheckCircle2 className="w-3 h-3 mr-1" />
                       {allComponents.filter(c => c.status === "Stable").length} Production Ready
                     </Badge>

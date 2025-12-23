@@ -27,7 +27,7 @@ export function DashboardHeader({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="p-4 border-b border-border/50 bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-t-xl">
+            <div className="p-4 border-b border-border/50 bg-gradient-to-r from-muted/50 to-muted/30 rounded-t-xl">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
@@ -194,7 +194,7 @@ export function DashboardHeader({
         <div className="flex items-center gap-2 bg-card/50 rounded-md px-2 py-1 text-xs text-muted-foreground border border-border/50">
           <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
           <span>inclusive.io/dashboard</span>
-          <span className="text-green-400">LIVE</span>
+          <span className="text-green-600 dark:text-green-400">LIVE</span>
         </div>
         <div className="flex items-center gap-2">
           {/* Notifications */}

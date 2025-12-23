@@ -270,7 +270,7 @@ export default function WorldClassComponentDocs() {
       
       <main className="flex-1 overflow-auto">
         {/* World-Class Hero Section */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-border">
+        <section className="relative bg-gradient-to-br from-background via-muted/30 to-background border-b border-border">
           <div className="px-6 lg:px-12 py-12">
             <div className="max-w-7xl mx-auto">
               {/* Quick Value Metrics */}
@@ -328,11 +328,11 @@ export default function WorldClassComponentDocs() {
                       <Monitor className="w-3 h-3 mr-1" />
                       Component
                     </Badge>
-                    <Badge className="bg-green-950 text-green-300 border-green-800">
+                    <Badge className="bg-green-950 text-green-600 dark:text-green-300 border-green-800">
                       <CheckCircle2 className="w-3 h-3 mr-1" />
                       Stable
                     </Badge>
-                    <Badge className="bg-blue-950 text-blue-300 border-blue-800">
+                    <Badge className="bg-blue-950 text-blue-600 dark:text-blue-300 border-blue-800">
                       <Shield className="w-3 h-3 mr-1" />
                       Accessible
                     </Badge>
@@ -574,7 +574,7 @@ export default function WorldClassComponentDocs() {
                         <div key={item.id} className="flex items-center gap-3 p-3 bg-card/30 rounded-lg">
                           <CheckCircle className="h-5 w-5 text-green-400" />
                           <span className="text-foreground">{item.label}</span>
-                          <Badge className="ml-auto bg-green-500/20 text-green-300 border-green-500/30">
+                          <Badge className="ml-auto bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30">
                             {item.status}
                           </Badge>
                         </div>

@@ -51,7 +51,7 @@ const components = [
         </div>
         <div className="flex items-center gap-3">
           <Avatar className="h-12 w-12 hover:scale-110 transition-transform" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <AvatarFallback className="bg-blue-500/20 text-blue-700 dark:text-blue-300 font-semibold">MK</AvatarFallback>
+            <AvatarFallback className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 font-semibold">MK</AvatarFallback>
           </Avatar>
           <div>
             <h5 className="font-medium text-foreground">Michael Kim</h5>
@@ -60,7 +60,7 @@ const components = [
         </div>
         <div className="flex items-center gap-3">
           <Avatar className="h-10 w-10 hover:scale-110 transition-transform" style={{ transitionDuration: 'var(--animation-speed)' }}>
-            <AvatarFallback className="bg-green-500/20 text-green-700 dark:text-green-300 text-sm font-semibold">AL</AvatarFallback>
+            <AvatarFallback className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 text-sm font-semibold">AL</AvatarFallback>
           </Avatar>
           <div>
             <h5 className="font-medium text-sm text-foreground">Alex Liu</h5>
@@ -119,9 +119,9 @@ const components = [
           <div className="flex -space-x-2">
             {[
               { initials: "SJ", name: "Sarah Johnson", colour: "bg-fuchsia-500/20 text-primary" },
-              { initials: "MK", name: "Michael Kim", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300" },
-              { initials: "AL", name: "Alex Liu", colour: "bg-green-500/20 text-green-700 dark:text-green-300" },
-              { initials: "JD", name: "Jane Doe", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-300" }
+              { initials: "MK", name: "Michael Kim", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300" },
+              { initials: "AL", name: "Alex Liu", colour: "bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300" },
+              { initials: "JD", name: "Jane Doe", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-600 dark:text-purple-600 dark:text-purple-300" }
             ].map((person, index) => (
               <Avatar key={index} className="border-2 border-border hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
                 <AvatarFallback className={person.colour} title={person.name}>
@@ -138,9 +138,9 @@ const components = [
           <h4 className="font-medium text-foreground mb-3">Interview Panel</h4>
           <div className="flex -space-x-2">
             {[
-              { initials: "RW", colour: "bg-orange-500/20 text-orange-700 dark:text-orange-300" },
-              { initials: "LB", colour: "bg-cyan-500/20 text-cyan-700 dark:text-cyan-300" },
-              { initials: "KM", colour: "bg-pink-500/20 text-pink-700 dark:text-pink-300" }
+              { initials: "RW", colour: "bg-orange-500/20 text-orange-700 dark:text-orange-600 dark:text-orange-300" },
+              { initials: "LB", colour: "bg-cyan-500/20 text-cyan-700 dark:text-cyan-600 dark:text-cyan-300" },
+              { initials: "KM", colour: "bg-pink-500/20 text-pink-700 dark:text-pink-600 dark:text-pink-300" }
             ].map((person, index) => (
               <Avatar key={index} className="border-2 border-border hover:scale-110 transition-transform cursor-pointer" style={{ transitionDuration: 'var(--animation-speed)' }}>
                 <AvatarFallback className={person.colour}>
@@ -212,9 +212,9 @@ const components = [
           <h3 className="font-bold text-foreground">Sarah Johnson</h3>
           <p className="text-sm text-muted-foreground">Senior Frontend Developer at TechCorp</p>
           <div className="flex gap-2 mt-2">
-            <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30 text-xs">React</Badge>
-            <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30 text-xs">Node.js</Badge>
-            <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300 hover:bg-purple-500/30 text-xs">TypeScript</Badge>
+            <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 hover:bg-blue-500/30 text-xs">React</Badge>
+            <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30 text-xs">Node.js</Badge>
+            <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-600 dark:text-purple-600 dark:text-purple-300 hover:bg-purple-500/30 text-xs">TypeScript</Badge>
           </div>
         </div>
       </div>
@@ -294,7 +294,7 @@ export function MediaComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Media Components</h2>
             <p className="text-muted-foreground">Images, avatars, and media display components</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

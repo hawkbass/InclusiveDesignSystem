@@ -92,7 +92,7 @@ export function AccessibilitySection({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
-                      <IconComponent className="h-5 w-5 text-green-400" />
+                      <IconComponent className="h-5 w-5 text-green-600 dark:text-green-400" />
                     </div>
                     <div>
                       <CardTitle className="text-lg text-foreground">{guideline.title}</CardTitle>
@@ -104,9 +104,9 @@ export function AccessibilitySection({
                   <div className="flex items-center gap-2">
                     <Badge 
                       className={`${
-                        guideline.status === 'compliant' ? 'bg-green-500/20 text-green-300' :
-                        guideline.status === 'implemented' ? 'bg-blue-500/20 text-blue-300' :
-                        'bg-yellow-500/20 text-yellow-300'
+                        guideline.status === 'compliant' ? 'bg-green-500/20 text-green-600 dark:text-green-300' :
+                        guideline.status === 'implemented' ? 'bg-blue-500/20 text-blue-600 dark:text-blue-300' :
+                        'bg-yellow-500/20 text-yellow-600 dark:text-yellow-300'
                       }`}
                     >
                       {guideline.status}
@@ -134,7 +134,7 @@ export function AccessibilitySection({
                         <div className="flex items-center gap-2 text-xs">
                           <span className="text-muted-foreground">Ratio: {example.ratio}</span>
                           <Badge className={`${
-                            example.level === 'AAA' ? 'bg-green-500/20 text-green-300' : 'bg-blue-500/20 text-blue-300'
+                            example.level === 'AAA' ? 'bg-green-500/20 text-green-600 dark:text-green-300' : 'bg-blue-500/20 text-blue-600 dark:text-blue-300'
                           }`}>
                             {example.level}
                           </Badge>
@@ -159,7 +159,7 @@ export function AccessibilitySection({
                       className="hover:border-green-500/50"
                     >
                       {copiedCode === guideline.id ? (
-                        <CheckCircle2 className="h-3 w-3 text-green-400" />
+                        <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                       ) : (
                         <Copy className="h-3 w-3" />
                       )}
@@ -176,7 +176,7 @@ export function AccessibilitySection({
       <Card className="bg-card/30 border-border/50">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            <CheckCircle2 className="h-5 w-5 text-green-400" />
+            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
             WCAG 2.1 AA Compliance Checklist
           </CardTitle>
           <CardDescription>
@@ -196,7 +196,7 @@ export function AccessibilitySection({
               "Motion preferences respected"
             ].map((item, index) => (
               <div key={index} className="flex items-center gap-2 text-sm">
-                <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
+                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                 <span className="text-foreground/80">{item}</span>
               </div>
             ))}

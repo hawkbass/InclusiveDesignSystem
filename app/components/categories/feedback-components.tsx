@@ -35,23 +35,23 @@ const components = [
     title: "Alert Messages",
     description: "Contextual alert components with animations",
     code: `<Alert className="border-green-500/50 bg-green-500/10">
-  <CheckCircle2 className="h-4 w-4 text-green-400" />
+  <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
   <AlertTitle>Success</AlertTitle>
   <AlertDescription>Your action was completed successfully.</AlertDescription>
 </Alert>`,
     component: (
       <div className="space-y-4 w-full">
         <Alert className="border-green-500/50 bg-green-500/10 hover:bg-green-500/15 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
-          <CheckCircle2 className="h-4 w-4 text-green-400 dark:text-green-400" />
-          <AlertTitle className="text-green-700 dark:text-green-200">Success</AlertTitle>
-          <AlertDescription className="text-green-700 dark:text-green-200">
+          <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 dark:text-green-600 dark:text-green-400" />
+          <AlertTitle className="text-green-700 dark:text-green-700 dark:text-green-200">Success</AlertTitle>
+          <AlertDescription className="text-green-700 dark:text-green-700 dark:text-green-200">
             Your action was completed successfully.
           </AlertDescription>
         </Alert>
         <Alert className="border-yellow-500/50 bg-yellow-500/10 hover:bg-yellow-500/15 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
           <AlertTriangle className="h-4 w-4 text-yellow-500 dark:text-yellow-400" />
-          <AlertTitle className="text-yellow-700 dark:text-yellow-200">Warning</AlertTitle>
-          <AlertDescription className="text-yellow-700 dark:text-yellow-200">
+          <AlertTitle className="text-yellow-700 dark:text-yellow-700 dark:text-yellow-200">Warning</AlertTitle>
+          <AlertDescription className="text-yellow-700 dark:text-yellow-700 dark:text-yellow-200">
             Please review this information carefully.
           </AlertDescription>
         </Alert>
@@ -96,7 +96,7 @@ const components = [
     description: "Dismissible toast messages",
     code: `<div className="fixed top-4 right-4 bg-card border border-border/50 shadow-xl rounded-lg p-4 shadow-lg">
   <div className="flex items-center gap-3">
-    <CheckCircle2 className="h-5 w-5 text-green-400" />
+    <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
     <div>
       <h4 className="font-medium">Application Submitted</h4>
       <p className="text-sm text-muted-foreground">Your application has been received.</p>
@@ -114,7 +114,7 @@ const components = [
             title: "Application Submitted", 
             message: "Your application has been received.",
             icon: CheckCircle2,
-            colour: "text-green-400",
+            colour: "text-green-600 dark:text-green-400",
             bg: "bg-green-500/10 border-green-500/30"
           },
           { 
@@ -249,11 +249,11 @@ const components = [
           <div className="flex items-center justify-between">
             <span className="text-foreground/80 text-sm">Was this helpful?</span>
             <div className="flex gap-2">
-              <Button size="sm" variant="outline" className="hover:bg-green-500/20 hover:border-green-500/50 hover:text-green-300">
+              <Button size="sm" variant="outline" className="hover:bg-green-500/20 hover:border-green-500/50 hover:text-green-600 dark:text-green-300">
                 <ThumbsUp className="h-3 w-3 mr-1" />
                 Yes
               </Button>
-              <Button size="sm" variant="outline" className="hover:bg-red-500/20 hover:border-red-500/50 hover:text-red-300">
+              <Button size="sm" variant="outline" className="hover:bg-red-500/20 hover:border-red-500/50 hover:text-red-600 dark:text-red-300">
                 <ThumbsDown className="h-3 w-3 mr-1" />
                 No
               </Button>
@@ -276,8 +276,8 @@ const components = [
       <div className="w-full max-w-md space-y-4">
         <Alert className="border-red-500/50 bg-red-500/10">
           <AlertCircle className="h-4 w-4 text-red-500 dark:text-red-400" />
-          <AlertTitle className="text-red-700 dark:text-red-200">Connection Error</AlertTitle>
-          <AlertDescription className="text-red-700 dark:text-red-200">
+          <AlertTitle className="text-red-700 dark:text-red-700 dark:text-red-200">Connection Error</AlertTitle>
+          <AlertDescription className="text-red-700 dark:text-red-700 dark:text-red-200">
             Unable to load candidate data. Please check your connection.
           </AlertDescription>
         </Alert>
@@ -442,7 +442,7 @@ export function FeedbackComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Feedback Components</h2>
             <p className="text-muted-foreground">User feedback, notifications, and status indicators</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

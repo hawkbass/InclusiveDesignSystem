@@ -97,9 +97,9 @@ export function JobsManagement({
       case "active":
         return "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
       case "paused":
-        return "bg-amber-500/20 text-amber-300 border-amber-500/30"
+        return "bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/30"
       case "closed":
-        return "bg-red-500/20 text-red-300 border-red-500/30"
+        return "bg-red-500/20 text-red-600 dark:text-red-300 border-red-500/30"
       case "draft":
         return "bg-slate-500/20 text-foreground/80 border-slate-500/30"
       default:
@@ -110,9 +110,9 @@ export function JobsManagement({
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "high":
-        return "bg-red-500/20 text-red-300 border-red-500/30"
+        return "bg-red-500/20 text-red-600 dark:text-red-300 border-red-500/30"
       case "medium":
-        return "bg-amber-500/20 text-amber-300 border-amber-500/30"
+        return "bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/30"
       case "low":
         return "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
       default:
@@ -334,7 +334,7 @@ export function JobsManagement({
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-amber-700/50 text-amber-300 hover:bg-amber-500/10"
+                      className="border-amber-700/50 text-amber-600 dark:text-amber-300 hover:bg-amber-500/10"
                       onClick={() => handleJobAction(job.id, "pause")}
                     >
                       <Pause className="h-4 w-4 mr-1" />
@@ -355,7 +355,7 @@ export function JobsManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-red-700/50 text-red-300 hover:bg-red-500/10"
+                    className="border-red-700/50 text-red-600 dark:text-red-300 hover:bg-red-500/10"
                     onClick={() => handleJobAction(job.id, "close")}
                   >
                     <X className="h-4 w-4 mr-1" />

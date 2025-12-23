@@ -162,7 +162,7 @@ function CustomColorPicker({ value, onChange, label, type }: {
       <div className="flex items-center justify-between mb-3">
         <Label className="text-foreground font-medium">{label}</Label>
         <Badge className={`text-xs ${
-          type === 'foreground' ? 'bg-blue-500/20 text-blue-300' : 'bg-purple-500/20 text-purple-300'
+          type === 'foreground' ? 'bg-blue-500/20 text-blue-600 dark:text-blue-300' : 'bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300'
         }`}>
           {type === 'foreground' ? 'Text' : 'Surface'}
         </Badge>
@@ -416,7 +416,7 @@ export default function AccessibilityUniversal() {
       title: "Accessibility Fundamentals",
       description: "Essential concepts and quick wins for inclusive design",
       icon: Shield,
-      colour: "text-green-400",
+      colour: "text-green-600 dark:text-green-400",
       bgColor: "bg-green-500/20",
       duration: "20 min",
       difficulty: "Beginner",
@@ -432,7 +432,7 @@ export default function AccessibilityUniversal() {
       title: "Technical Implementation", 
       description: "ARIA, semantic HTML, and testing integration",
       icon: Code2,
-      colour: "text-blue-400",
+      colour: "text-blue-600 dark:text-blue-400",
       bgColor: "bg-blue-500/20",
       duration: "35 min",
       difficulty: "Intermediate",
@@ -588,9 +588,9 @@ export default function AccessibilityUniversal() {
             <Alert 
               key={notification.id}
               className={`max-w-md animate-in slide-in-from-right-2 ${
-                notification.type === 'success' ? 'bg-green-500/20 border-green-500/30 text-green-300' :
-                notification.type === 'warning' ? 'bg-yellow-500/20 border-yellow-500/30 text-yellow-300' :
-                'bg-blue-500/20 border-blue-500/30 text-blue-300'
+                notification.type === 'success' ? 'bg-green-500/20 border-green-500/30 text-green-600 dark:text-green-300' :
+                notification.type === 'warning' ? 'bg-yellow-500/20 border-yellow-500/30 text-yellow-600 dark:text-yellow-300' :
+                'bg-blue-500/20 border-blue-500/30 text-blue-600 dark:text-blue-600 dark:text-blue-300'
               }`}
             >
               {notification.type === 'success' && <CheckCircle2 className="h-4 w-4" />}
@@ -606,7 +606,7 @@ export default function AccessibilityUniversal() {
       
       <main className="flex-1 overflow-auto">
         {/* Universal Comprehension Header */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-green-950 border-b border-border">
+        <section className="relative bg-gradient-to-br from-background via-muted/30 to-background border-b border-border">
           <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 via-blue-500/5 to-accent/5" />
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -620,7 +620,7 @@ export default function AccessibilityUniversal() {
                       <Shield className="w-3 h-3 mr-1" />
                       WCAG 2.1 AA Compliant
                     </Badge>
-                    <Badge className="bg-gradient-to-r from-blue-500/20 to-accent/20 text-blue-300 border-blue-500/30">
+                    <Badge className="bg-gradient-to-r from-blue-500/20 to-accent/20 text-blue-600 dark:text-blue-600 dark:text-blue-300 border-blue-500/30">
                       <Globe className="w-3 h-3 mr-1" />
                       Inclusive Design
                     </Badge>
@@ -637,11 +637,11 @@ export default function AccessibilityUniversal() {
                   {/* Key Benefits */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
                     <div className="text-center">
-                      <div className="text-lg font-bold text-green-400">100%</div>
+                      <div className="text-lg font-bold text-green-600 dark:text-green-400">100%</div>
                       <div className="text-xs text-muted-foreground">Component Coverage</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-lg font-bold text-blue-400">AAA</div>
+                      <div className="text-lg font-bold text-blue-600 dark:text-blue-400">AAA</div>
                       <div className="text-xs text-muted-foreground">Contrast Ratios</div>
                     </div>
                     <div className="text-center">
@@ -692,7 +692,7 @@ export default function AccessibilityUniversal() {
                       />
                     </div>
                     {!runningTest && completedTests.size > 0 && (
-                      <div className="text-xs text-green-400 mt-1">
+                      <div className="text-xs text-green-600 dark:text-green-400 mt-1">
                         {completedTests.size} test{completedTests.size !== 1 ? 's' : ''} completed
                       </div>
                     )}
@@ -731,7 +731,7 @@ export default function AccessibilityUniversal() {
                       variant="ghost"
                       size="sm"
                       onClick={() => setSearchQuery(search)}
-                      className="text-xs text-muted-foreground hover:text-green-400 h-6 px-2"
+                      className="text-xs text-muted-foreground hover:text-green-600 dark:text-green-400 h-6 px-2"
                     >
                       {search}
                     </Button>
@@ -746,8 +746,8 @@ export default function AccessibilityUniversal() {
                         {searchResults.map((result) => (
                           <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-accent/50 rounded-lg cursor-pointer group">
                             <div className="p-2 rounded bg-muted/50">
-                              {result.type === "guideline" && <BookOpen className="h-4 w-4 text-green-400" />}
-                              {result.type === "attribute" && <Code2 className="h-4 w-4 text-blue-400" />}
+                              {result.type === "guideline" && <BookOpen className="h-4 w-4 text-green-600 dark:text-green-400" />}
+                              {result.type === "attribute" && <Code2 className="h-4 w-4 text-blue-600 dark:text-blue-400" />}
                               {result.type === "tool" && <Settings className="h-4 w-4 text-purple-400" />}
                               {result.type === "concept" && <Lightbulb className="h-4 w-4 text-yellow-400" />}
                               {result.type === "pattern" && <Navigation className="h-4 w-4 text-primary" />}
@@ -803,18 +803,18 @@ export default function AccessibilityUniversal() {
                               'bg-gradient-to-br from-green-500/20 to-blue-500/20'
                             }`}>
                               <item.icon className={`h-6 w-6 transition-colours ${
-                                item.status === 'pass' ? 'text-green-400' :
+                                item.status === 'pass' ? 'text-green-600 dark:text-green-400' :
                                 item.status === 'fail' ? 'text-yellow-400' :
-                                item.status === 'running' ? 'text-blue-400' :
-                                'text-green-400'
+                                item.status === 'running' ? 'text-blue-600 dark:text-blue-400' :
+                                'text-green-600 dark:text-green-400'
                               }`} />
                             </div>
                           </div>
                           {item.status && (
                             <Badge className={`ml-2 text-xs ${
-                              item.status === 'pass' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
-                              item.status === 'fail' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
-                              item.status === 'running' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
+                              item.status === 'pass' ? 'bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30' :
+                              item.status === 'fail' ? 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-300 border-yellow-500/30' :
+                              item.status === 'running' ? 'bg-blue-500/20 text-blue-600 dark:text-blue-600 dark:text-blue-300 border-blue-500/30' :
                               'bg-slate-500/20 text-foreground/80 border-slate-500/30'
                             }`}>
                               {item.status === 'pass' ? '✓ Pass' : 
@@ -858,7 +858,7 @@ export default function AccessibilityUniversal() {
                             >
                               {copiedCode === `quick-${index}` ? (
                                   <>
-                                    <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                    <CheckCircle2 className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
                                     Copied
                                   </>
                               ) : (
@@ -915,7 +915,7 @@ export default function AccessibilityUniversal() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
-                      <Compass className="h-5 w-5 text-green-400" />
+                      <Compass className="h-5 w-5 text-green-600 dark:text-green-400" />
                     </div>
                     <div>
                       <CardTitle className="text-xl text-foreground">Accessibility Learning Paths</CardTitle>
@@ -928,7 +928,7 @@ export default function AccessibilityUniversal() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge className="bg-green-500/20 text-green-300">3 Paths</Badge>
+                    <Badge className="bg-green-500/20 text-green-600 dark:text-green-600 dark:text-green-300">3 Paths</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("learning-paths") ? 
                         <ChevronUp className="h-4 w-4" /> : 
@@ -958,7 +958,7 @@ export default function AccessibilityUniversal() {
                             </Button>
                           </div>
                           
-                          <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-green-300 transition-colours">
+                          <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-green-600 dark:group-hover:text-green-600 dark:text-green-300 transition-colours">
                             {path.title}
                           </h3>
                           <p className="text-muted-foreground text-sm mb-4 leading-relaxed">
@@ -1015,7 +1015,7 @@ export default function AccessibilityUniversal() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-blue-500/20">
-                      <BookOpen className="h-5 w-5 text-blue-400" />
+                      <BookOpen className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                     </div>
                     <div>
                       <CardTitle className="text-xl text-foreground">WCAG 2.1 Guidelines</CardTitle>
@@ -1028,7 +1028,7 @@ export default function AccessibilityUniversal() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge className="bg-blue-500/20 text-blue-300">POUR Principles</Badge>
+                    <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-600 dark:text-blue-300">POUR Principles</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("wcag-guidelines") ? 
                         <ChevronUp className="h-4 w-4" /> : 
@@ -1046,7 +1046,7 @@ export default function AccessibilityUniversal() {
                         title: "Perceivable",
                         description: "Information and UI must be presentable to users in ways they can perceive",
                         icon: Eye,
-                        colour: "text-blue-400",
+                        colour: "text-blue-600 dark:text-blue-400",
                         bgColor: "bg-blue-500/20",
                         example: "Provide text alternatives for images and ensure sufficient colour contrast",
                         technical: "img alt attributes, ARIA labels, min 4.5:1 contrast ratio"
@@ -1055,7 +1055,7 @@ export default function AccessibilityUniversal() {
                         title: "Operable", 
                         description: "UI components and navigation must be operable by all users",
                         icon: Target,
-                        colour: "text-green-400",
+                        colour: "text-green-600 dark:text-green-400",
                         bgColor: "bg-green-500/20",
                         example: "All functionality available via keyboard with visible focus indicators",
                         technical: "tabindex management, focus trapping, keyboard event handlers"
@@ -1086,7 +1086,7 @@ export default function AccessibilityUniversal() {
                               <principle.icon className={`h-6 w-6 ${principle.colour}`} />
                             </div>
                             <div className="flex-1">
-                              <h3 className="font-semibold text-foreground group-hover:text-green-300 transition-colours mb-2">
+                              <h3 className="font-semibold text-foreground group-hover:text-green-600 dark:group-hover:text-green-600 dark:text-green-300 transition-colours mb-2">
                                 {principle.title}
                               </h3>
                               <p className="text-muted-foreground text-sm mb-3">{principle.description}</p>
@@ -1131,12 +1131,12 @@ export default function AccessibilityUniversal() {
                     <div className="flex flex-col items-end gap-1">
                       <Badge className={`px-3 py-1 font-mono text-sm border ${
                         passes 
-                          ? 'bg-green-500/20 text-green-300 border-green-500/30' 
-                          : 'bg-red-500/20 text-red-300 border-red-500/30'
+                          ? 'bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30' 
+                          : 'bg-red-500/20 text-red-600 dark:text-red-600 dark:text-red-300 border-red-500/30'
                       }`}>
                         {contrast.toFixed(1)}:1
                     </Badge>
-                      <div className={`text-xs font-medium ${passes ? "text-green-400" : "text-red-400"}`}>
+                      <div className={`text-xs font-medium ${passes ? "text-green-600 dark:text-green-400" : "text-red-400"}`}>
                         {passes ? "WCAG AA ✓" : "WCAG AA ✗"}
                       </div>
                     </div>
@@ -1173,15 +1173,15 @@ export default function AccessibilityUniversal() {
                         </div>
 
                   {/* Results Dashboard */}
-                  <Card className="bg-gradient-to-br from-slate-900/50 to-slate-800/30 border-border/50 p-6">
+                  <Card className="bg-gradient-to-br from-muted/50 to-muted/30 border-border/50 p-6">
                     <div className="flex items-center justify-between mb-4">
                       <h4 className="text-lg font-semibold text-foreground">Compliance Results</h4>
                       <div className="flex items-center gap-2">
                         <Badge className={`px-3 py-1 ${
-                          contrast >= 7 ? 'bg-green-500/20 text-green-300 border-green-500/30' :
-                          contrast >= 4.5 ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
-                          contrast >= 3 ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
-                          'bg-red-500/20 text-red-300 border-red-500/30'
+                          contrast >= 7 ? 'bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30' :
+                          contrast >= 4.5 ? 'bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30' :
+                          contrast >= 3 ? 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-300 border-yellow-500/30' :
+                          'bg-red-500/20 text-red-600 dark:text-red-600 dark:text-red-300 border-red-500/30'
                         } border font-mono text-lg`}>
                           {contrast.toFixed(2)}:1
                         </Badge>
@@ -1195,12 +1195,12 @@ export default function AccessibilityUniversal() {
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-sm font-medium text-foreground">Normal Text</span>
                           {contrast >= 4.5 ? (
-                            <CheckCircle2 className="h-4 w-4 text-green-400" />
+                            <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                           ) : (
                             <X className="h-4 w-4 text-red-400" />
                           )}
                         </div>
-                        <div className={`text-xs ${contrast >= 4.5 ? 'text-green-400' : 'text-red-400'}`}>
+                        <div className={`text-xs ${contrast >= 4.5 ? 'text-green-600 dark:text-green-400' : 'text-red-400'}`}>
                           {contrast >= 4.5 ? 'WCAG AA Pass' : 'WCAG AA Fail'} (4.5:1 required)
                       </div>
                     </div>
@@ -1211,12 +1211,12 @@ export default function AccessibilityUniversal() {
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-sm font-medium text-foreground">Large Text</span>
                           {contrast >= 3 ? (
-                            <CheckCircle2 className="h-4 w-4 text-green-400" />
+                            <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                           ) : (
                             <X className="h-4 w-4 text-red-400" />
                           )}
                         </div>
-                        <div className={`text-xs ${contrast >= 3 ? 'text-green-400' : 'text-red-400'}`}>
+                        <div className={`text-xs ${contrast >= 3 ? 'text-green-600 dark:text-green-400' : 'text-red-400'}`}>
                           {contrast >= 3 ? 'WCAG AA Pass' : 'WCAG AA Fail'} (3:1 required)
                         </div>
                       </div>
@@ -1227,12 +1227,12 @@ export default function AccessibilityUniversal() {
                         <div className="flex items-center justify-between mb-2">
                           <span className="text-sm font-medium text-foreground">AAA Level</span>
                           {contrast >= 7 ? (
-                            <Award className="h-4 w-4 text-green-400" />
+                            <Award className="h-4 w-4 text-green-600 dark:text-green-400" />
                           ) : (
                             <Target className="h-4 w-4 text-muted-foreground" />
                           )}
                         </div>
-                        <div className={`text-xs ${contrast >= 7 ? 'text-green-400' : 'text-muted-foreground'}`}>
+                        <div className={`text-xs ${contrast >= 7 ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}`}>
                           {contrast >= 7 ? 'WCAG AAA Pass' : 'WCAG AAA Goal'} (7:1 target)
                         </div>
                       </div>
@@ -1254,7 +1254,7 @@ export default function AccessibilityUniversal() {
                           >
                             {copiedCode === "contrast-css" ? (
                               <>
-                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
                                 Copied
                               </>
                             ) : (
@@ -1353,7 +1353,7 @@ export default function AccessibilityUniversal() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge className="bg-orange-500/20 text-orange-300">
+                    <Badge className="bg-orange-500/20 text-orange-600 dark:text-orange-600 dark:text-orange-300">
                       {runningTest ? "Testing..." : "Ready"}
                     </Badge>
                     <Button variant="ghost" size="sm">
@@ -1372,7 +1372,7 @@ export default function AccessibilityUniversal() {
                     {/* Manual Testing */}
                     <div className="space-y-4">
                       <h4 className="font-medium text-foreground flex items-center gap-2">
-                        <Users className="h-4 w-4 text-blue-400" />
+                        <Users className="h-4 w-4 text-blue-600 dark:text-blue-400" />
                         Manual Testing
                       </h4>
                       <div className="space-y-2">
@@ -1416,9 +1416,9 @@ export default function AccessibilityUniversal() {
                             >
                               <div className="flex items-center gap-3 flex-1">
                                 {isRunning ? (
-                                  <RefreshCw className="h-4 w-4 text-blue-400 animate-spin" />
+                                  <RefreshCw className="h-4 w-4 text-blue-600 dark:text-blue-400 animate-spin" />
                                 ) : (
-                                  <test.icon className="h-4 w-4 text-muted-foreground group-hover:text-blue-400 transition-colours" />
+                                  <test.icon className="h-4 w-4 text-muted-foreground group-hover:text-blue-600 dark:text-blue-400 transition-colours" />
                                 )}
                                 <div className="text-left flex-1">
                                   <div className="flex items-center gap-2 mb-1">
@@ -1429,7 +1429,7 @@ export default function AccessibilityUniversal() {
                                   <div className="text-xs text-slate-600 mt-1">{test.difficulty}</div>
                                 </div>
                                 {isRunning && (
-                                  <div className="text-xs text-blue-400 font-medium">
+                                  <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">
                                     {testingProgress}%
                                   </div>
                                 )}
@@ -1443,7 +1443,7 @@ export default function AccessibilityUniversal() {
                     {/* Automated Tools */}
                     <div className="space-y-4">
                       <h4 className="font-medium text-foreground flex items-center gap-2">
-                        <Zap className="h-4 w-4 text-green-400" />
+                        <Zap className="h-4 w-4 text-green-600 dark:text-green-400" />
                         Automated Tools
                       </h4>
                       <div className="space-y-2">
@@ -1470,7 +1470,7 @@ export default function AccessibilityUniversal() {
                                 >
                                   {copiedCode === `tool-${index}` ? (
                                     <>
-                                      <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                      <CheckCircle2 className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
                                       Copied
                                     </>
                                   ) : (
@@ -1516,7 +1516,7 @@ jobs:
                               className="h-6 w-6 p-0"
                             >
                               {copiedCode === "github-actions" ? 
-                                <CheckCircle2 className="h-3 w-3 text-green-400" /> : 
+                                <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" /> : 
                                 <Copy className="h-3 w-3" />
                               }
                             </Button>
@@ -1541,7 +1541,7 @@ test('should not have accessibility violations', async () => {
                               className="h-6 w-6 p-0"
                             >
                               {copiedCode === "jest-axe" ? 
-                                <CheckCircle2 className="h-3 w-3 text-green-400" /> : 
+                                <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" /> : 
                                 <Copy className="h-3 w-3" />
                               }
                             </Button>
@@ -1584,7 +1584,7 @@ test('should not have accessibility violations', async () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge className="bg-cyan-500/20 text-cyan-300">Copy & Paste</Badge>
+                    <Badge className="bg-cyan-500/20 text-cyan-600 dark:text-cyan-600 dark:text-cyan-300">Copy & Paste</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("code-examples") ? 
                         <ChevronUp className="h-4 w-4" /> : 
@@ -1672,7 +1672,7 @@ test('should not have accessibility violations', async () => {
                             >
                               {copiedCode === `example-${index}` ? (
                                 <>
-                                  <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                  <CheckCircle2 className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
                                   Copied
                                 </>
                               ) : (

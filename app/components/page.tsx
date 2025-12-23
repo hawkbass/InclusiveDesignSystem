@@ -242,7 +242,7 @@ export default function ComponentsPage() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center">
-                        <span className="text-xs font-bold text-green-400">1</span>
+                        <span className="text-xs font-bold text-green-600 dark:text-green-400">1</span>
                       </div>
                       <span className="text-sm font-medium text-foreground">Choose Component</span>
                     </div>
@@ -253,7 +253,7 @@ export default function ComponentsPage() {
                   <div className="space-y-2">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center">
-                        <span className="text-xs font-bold text-blue-400">2</span>
+                        <span className="text-xs font-bold text-blue-600 dark:text-blue-400">2</span>
                       </div>
                       <span className="text-sm font-medium text-foreground">Copy Code</span>
                     </div>
@@ -483,7 +483,7 @@ export default function ComponentsPage() {
                       <h2 className="text-3xl font-bold mb-2 text-foreground">Favourite Components</h2>
                       <p className="text-muted-foreground">Your saved and favourite components</p>
                   </div>
-                    <Badge className="bg-red-500/20 text-red-300 border-red-500/30 px-3 py-1">
+                    <Badge className="bg-red-500/20 text-red-600 dark:text-red-300 border-red-500/30 px-3 py-1">
                       {favourites.size} Components
           </Badge>
                 </div>

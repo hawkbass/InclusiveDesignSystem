@@ -32,7 +32,7 @@ export default function RootLayout({
           <AccessibilityProvider>
             <ThemeBackground />
             <SkipLink href="#main-content">Skip to main content</SkipLink>
-            <main id="main-content" className="min-h-screen flex flex-col">
+            <main id="main-content" className="relative z-10 min-h-screen flex flex-col">
               {children}
             </main>
           </AccessibilityProvider>

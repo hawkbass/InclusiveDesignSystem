@@ -210,7 +210,7 @@ export function ThemeBackground() {
   if (resolvedTheme === "light") {
     return (
       <div
-        className="fixed inset-0 z-0 pointer-events-none"
+        className="fixed inset-0 -z-10 pointer-events-none"
         style={{
           // Subtle, professional gradient - no animation
           // Replaces the distracting colored orbs
@@ -229,7 +229,7 @@ export function ThemeBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 z-0 pointer-events-none"
+      className="fixed inset-0 -z-10 pointer-events-none"
       style={{
         width: "100vw",
         height: "100vh",

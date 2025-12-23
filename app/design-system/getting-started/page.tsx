@@ -168,7 +168,7 @@ export function Example() {
       title: "Product Manager Path",
       description: "Strategic overview for product managers and stakeholders",
       icon: BarChart3,
-      colour: "text-green-400", 
+      colour: "text-green-600 dark:text-green-400", 
       bgColor: "bg-green-500/20",
       duration: "10 min",
       difficulty: "Beginner",
@@ -311,7 +311,7 @@ export function CandidateCard() {
       
       <main className="flex-1 overflow-auto">
         {/* Universal Comprehension Header */}
-        <section className="relative bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 border-b border-border">
+        <section className="relative bg-gradient-to-br from-background via-muted/30 to-background border-b border-border">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-blue-500/5" />
           <div className="absolute top-0 left-1/4 w-96 h-96 bg-fuchsia-500/10 rounded-full blur-3xl" />
           <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
@@ -336,7 +336,7 @@ export function CandidateCard() {
                   {/* Quick Stats */}
                   <div className="grid grid-cols-3 gap-6 mt-8">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">5 min</div>
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400">5 min</div>
                       <div className="text-sm text-muted-foreground">Setup Time</div>
                     </div>
                     <div className="text-center">
@@ -408,7 +408,7 @@ export function CandidateCard() {
                         {searchResults.map((result) => (
                           <div key={result.id} className="flex items-center gap-3 p-2 hover:bg-accent/50 rounded-lg cursor-pointer group">
                             <div className="p-2 rounded bg-muted/50">
-                              {result.type === "command" && <Terminal className="h-4 w-4 text-green-400" />}
+                              {result.type === "command" && <Terminal className="h-4 w-4 text-green-600 dark:text-green-400" />}
                               {result.type === "config" && <Settings className="h-4 w-4 text-blue-400" />}
                               {result.type === "component" && <Component className="h-4 w-4 text-purple-400" />}
                               {result.type === "path" && <Navigation className="h-4 w-4 text-primary" />}
@@ -465,9 +465,9 @@ export function CandidateCard() {
                             </div>
                             {status !== 'unchecked' && (
                               <Badge className={`ml-2 text-xs ${
-                                status === 'installed' ? 'bg-green-500/20 text-green-300 border-green-500/30' :
-                                status === 'not-found' ? 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30' :
-                                status === 'checking' ? 'bg-blue-500/20 text-blue-300 border-blue-500/30' :
+                                status === 'installed' ? 'bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30' :
+                                status === 'not-found' ? 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-300 border-yellow-500/30' :
+                                status === 'checking' ? 'bg-blue-500/20 text-blue-600 dark:text-blue-600 dark:text-blue-300 border-blue-500/30' :
                                 'bg-slate-500/20 text-foreground/80 border-slate-500/30'
                               }`}>
                                 {status === 'installed' ? '✓ Ready' :
@@ -493,7 +493,7 @@ export function CandidateCard() {
                             >
                               {copiedCode === `quick-${index}` ? (
                                   <>
-                                    <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                    <CheckCircle2 className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
                                     Copied
                                   </>
                               ) : (
@@ -579,11 +579,11 @@ export function CandidateCard() {
                     <CardContent className="p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 rounded-xl bg-green-500/20">
-                          <Download className="h-6 w-6 text-green-400" />
+                          <Download className="h-6 w-6 text-green-600 dark:text-green-400" />
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-foreground">1. Install</h3>
-                          <Badge className="bg-green-500/20 text-green-300 text-xs">2 minutes</Badge>
+                          <Badge className="bg-green-500/20 text-green-600 dark:text-green-600 dark:text-green-300 text-xs">2 minutes</Badge>
                         </div>
                       </div>
                       <p className="text-muted-foreground text-sm mb-4">Add the design system to your project</p>
@@ -598,7 +598,7 @@ export function CandidateCard() {
                               className="h-5 px-2 text-xs"
                             >
                               {copiedCode === "install-npm" ? (
-                                <CheckCircle2 className="h-3 w-3 text-green-400" />
+                                <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-3 w-3" />
                               )}
@@ -618,7 +618,7 @@ export function CandidateCard() {
                               className="h-5 px-2 text-xs"
                             >
                               {copiedCode === "install-yarn" ? (
-                                <CheckCircle2 className="h-3 w-3 text-green-400" />
+                                <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-3 w-3" />
                               )}
@@ -641,7 +641,7 @@ export function CandidateCard() {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-foreground">2. Configure</h3>
-                          <Badge className="bg-blue-500/20 text-blue-300 text-xs">3 minutes</Badge>
+                          <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-600 dark:text-blue-300 text-xs">3 minutes</Badge>
                         </div>
                       </div>
                       <p className="text-muted-foreground text-sm mb-4">Import styles and setup provider</p>
@@ -659,7 +659,7 @@ export function CandidateCard() {
                           onClick={() => handleCopyCode(`import "@hawkbass/inclusive-design-core/styles.css"\n\n<ThemeProvider theme="dark">\n  <YourApp />\n</ThemeProvider>`, "config-setup")}
                           className="absolute top-1 right-1 h-6 w-6 p-0"
                         >
-                          {copiedCode === "config-setup" ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
+                          {copiedCode === "config-setup" ? <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" /> : <Copy className="h-3 w-3" />}
                         </Button>
                       </div>
                     </CardContent>
@@ -674,7 +674,7 @@ export function CandidateCard() {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-foreground">3. Build</h3>
-                          <Badge className="bg-purple-500/20 text-purple-300 text-xs">1 minute</Badge>
+                          <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 text-xs">1 minute</Badge>
                         </div>
                       </div>
                       <p className="text-muted-foreground text-sm mb-4">Create your first component</p>
@@ -692,7 +692,7 @@ export function CandidateCard() {
                           onClick={() => handleCopyCode(`import { Button } from "@hawkbass/inclusive-design-core"\n\n<Button className="bg-fuchsia-600">\n  Get Started\n</Button>`, "first-component")}
                           className="absolute top-1 right-1 h-6 w-6 p-0"
                         >
-                          {copiedCode === "first-component" ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
+                          {copiedCode === "first-component" ? <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" /> : <Copy className="h-3 w-3" />}
                         </Button>
                       </div>
                     </CardContent>
@@ -708,7 +708,7 @@ export function CandidateCard() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="p-2 rounded-lg bg-green-500/20">
-                      <Zap className="h-5 w-5 text-green-400" />
+                      <Zap className="h-5 w-5 text-green-600 dark:text-green-400" />
                     </div>
                     <div>
                       <CardTitle className="text-xl text-foreground">Quick Setup</CardTitle>
@@ -718,7 +718,7 @@ export function CandidateCard() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge className="bg-green-500/20 text-green-300">5 Min Setup</Badge>
+                    <Badge className="bg-green-500/20 text-green-600 dark:text-green-600 dark:text-green-300">5 Min Setup</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("quick-setup") ? 
                         <ChevronUp className="h-4 w-4" /> : 
@@ -736,7 +736,7 @@ export function CandidateCard() {
                       <div className="flex items-start justify-between mb-4">
                         <div className="flex items-center gap-3">
                           <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-500/30 flex items-center justify-center">
-                            <span className="text-sm font-bold text-green-400">1</span>
+                            <span className="text-sm font-bold text-green-600 dark:text-green-400">1</span>
                           </div>
                           <div>
                             <h3 className="text-lg font-semibold text-foreground">Install Package</h3>
@@ -747,7 +747,7 @@ export function CandidateCard() {
                           size="sm"
                           variant="ghost"
                           onClick={() => completeStep("install-step")}
-                          className="text-green-400 hover:bg-green-500/10"
+                          className="text-green-600 dark:text-green-400 hover:bg-green-500/10"
                         >
                           {completedSteps.has("install-step") ? 
                             <CheckCircle2 className="h-4 w-4" /> : 
@@ -776,7 +776,7 @@ export function CandidateCard() {
                               className="h-8 w-8 p-0"
                             >
                               {copiedCode === cmd.id ? 
-                                <CheckCircle2 className="h-3 w-3 text-green-400" /> : 
+                                <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" /> : 
                                 <Copy className="h-3 w-3" />
                               }
                             </Button>
@@ -821,7 +821,7 @@ export function CandidateCard() {
                           >
                             {copiedCode === "import-styles" ? (
                               <>
-                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
                                 Copied
                               </>
                             ) : (
@@ -883,7 +883,7 @@ function RecruitmentComponent() {
                           >
                             {copiedCode === "first-component" ? (
                               <>
-                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-400" />
+                                <CheckCircle2 className="h-3 w-3 mr-1 text-green-600 dark:text-green-400" />
                                 Copied
                               </>
                             ) : (
@@ -929,7 +929,7 @@ function RecruitmentComponent() {
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Badge className="bg-cyan-500/20 text-cyan-300">Always Updated</Badge>
+                    <Badge className="bg-cyan-500/20 text-cyan-600 dark:text-cyan-600 dark:text-cyan-300">Always Updated</Badge>
                     <Button variant="ghost" size="sm">
                       {expandedSections.has("resources") ? 
                         <ChevronUp className="h-4 w-4" /> : 
@@ -1118,7 +1118,7 @@ module.exports = {
                     {/* Downloads */}
                     <div className="space-y-4">
                       <h4 className="font-medium text-foreground flex items-center gap-2">
-                        <Download className="h-4 w-4 text-green-400" />
+                        <Download className="h-4 w-4 text-green-600 dark:text-green-400" />
                         Downloads
                       </h4>
                       <div className="space-y-2">
@@ -1143,7 +1143,7 @@ module.exports = {
                             onClick={download.action}
                             className="w-full justify-start h-auto p-3 hover:bg-card/50"
                           >
-                            <Download className="h-4 w-4 mr-3 text-green-400" />
+                            <Download className="h-4 w-4 mr-3 text-green-600 dark:text-green-400" />
                             <div className="text-left flex-1">
                               <div className="text-sm font-medium text-foreground">{download.name}</div>
                               <div className="text-xs text-muted-foreground">{download.description}</div>
@@ -1171,7 +1171,7 @@ module.exports = {
                         <CardDescription>Track your journey through the design system</CardDescription>
                       </div>
                     </div>
-                    <Badge className="bg-purple-500/20 text-purple-300">
+                    <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300">
                       {Math.round((completedSteps.size / 10) * 100)}% Complete
                     </Badge>
                   </div>

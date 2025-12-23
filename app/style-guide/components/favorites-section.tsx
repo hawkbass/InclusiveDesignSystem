@@ -155,7 +155,7 @@ export function FavoritesSection({
         </div>
 
         <div className="flex items-center gap-2">
-          <Badge className="bg-pink-500/20 text-pink-300 border-pink-500/30">
+          <Badge className="bg-pink-500/20 text-pink-600 dark:text-pink-300 border-pink-500/30">
             {filteredFavorites.length} of {favourites.size} shown
           </Badge>
           
@@ -175,7 +175,7 @@ export function FavoritesSection({
             <Download className="h-4 w-4 mr-2" />
             Export
             {copiedCode === 'export-favourites' && (
-              <CheckCircle2 className="h-4 w-4 ml-2 text-green-400" />
+              <CheckCircle2 className="h-4 w-4 ml-2 text-green-600 dark:text-green-400" />
             )}
           </Button>
         </div>
@@ -215,7 +215,7 @@ export function FavoritesSection({
                     variant="ghost"
                     size="sm"
                     onClick={() => onToggleFavorite(item.id)}
-                    className="text-pink-400 hover:text-pink-300 hover:bg-pink-500/10"
+                    className="text-pink-400 hover:text-pink-600 dark:text-pink-300 hover:bg-pink-500/10"
                   >
                     <Heart className="h-4 w-4 fill-current" />
                   </Button>
@@ -249,7 +249,7 @@ export function FavoritesSection({
                     className="hover:border-green-500/50"
                   >
                     {copiedCode === item.id ? (
-                      <CheckCircle2 className="h-3 w-3 text-green-400" />
+                      <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                     ) : (
                       <Copy className="h-3 w-3" />
                     )}

@@ -46,9 +46,9 @@ export function CalendarIntegration({
       case 'Second Round':
         return 'bg-amber-500/20 text-amber-300 border-amber-500/30'
       case 'Final Round':
-        return 'bg-purple-500/20 text-purple-300 border-purple-500/30'
+        return 'bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30'
       case 'Portfolio Review':
-        return 'bg-pink-500/20 text-pink-300 border-pink-500/30'
+        return 'bg-pink-500/20 text-pink-600 dark:text-pink-300 border-pink-500/30'
       default:
         return 'bg-slate-500/20 text-foreground/80 border-slate-500/30'
     }

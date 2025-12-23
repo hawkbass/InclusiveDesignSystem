@@ -141,10 +141,10 @@ export default function BestPractices() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-colours cursor-pointer">
               <CardContent className="p-4 text-center">
-                <Shield className="h-6 w-6 text-green-400 mx-auto mb-2" />
+                <Shield className="h-6 w-6 text-green-600 dark:text-green-400 mx-auto mb-2" />
                 <div className="text-2xl font-bold text-foreground">AAA</div>
                 <div className="text-xs text-muted-foreground">Accessibility</div>
-                <div className="text-xs text-green-400 mt-1">WCAG 2.1</div>
+                <div className="text-xs text-green-600 dark:text-green-400 mt-1">WCAG 2.1</div>
               </CardContent>
             </Card>
             <Card className="bg-card/50 border-border/50 backdrop-blur-sm hover:bg-card/70 transition-colours cursor-pointer">
@@ -178,15 +178,15 @@ export default function BestPractices() {
             <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-purple-500/5 to-blue-500/5 rounded-3xl -z-10" />
             <div className="text-center max-w-4xl mx-auto py-12">
               <div className="flex items-center justify-center gap-3 mb-6">
-                <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+                <Badge className="bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30">
                   <Award className="w-3 h-3 mr-1" />
                   Industry Standard
                 </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30">
                   <Shield className="w-3 h-3 mr-1" />
                   Quality Assured
                 </Badge>
-                <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30">
                   <Target className="w-3 h-3 mr-1" />
                   Best Practices
                 </Badge>
@@ -286,7 +286,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       title: "Accessibility First",
       description: "Design and build for all users from the start",
       icon: Globe,
-      colour: "text-green-400",
+      colour: "text-green-600 dark:text-green-400",
       bgColor: "bg-green-500/20",
       principles: ["WCAG 2.1 AA compliance", "Semantic HTML structure", "Keyboard navigation", "Screen reader support"]
     },
@@ -344,7 +344,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                   <div className="space-y-2">
                     {category.principles.map((principle, idx) => (
                       <div key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <CheckCircle2 className="h-3 w-3 text-green-400 flex-shrink-0" />
+                        <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400 flex-shrink-0" />
                         {principle}
                       </div>
                     ))}
@@ -361,7 +361,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
         <Card className="bg-card/30 border-border/50">
           <CardHeader>
             <CardTitle className="text-xl text-foreground flex items-center gap-2">
-              <CheckCircle2 className="h-5 w-5 text-green-400" />
+              <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
               Best Practices
             </CardTitle>
             <CardDescription>Recommended approaches for quality development</CardDescription>
@@ -379,7 +379,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 "Ensure keyboard accessibility throughout"
               ].map((practice, idx) => (
                 <div key={idx} className="flex items-start gap-3 p-3 bg-card/30 rounded-lg hover:bg-card/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                  <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                  <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                   <span className="text-foreground/80 text-sm">{practice}</span>
                 </div>
               ))}
@@ -427,7 +427,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { metric: "Performance Score", target: "90+", description: "Lighthouse score", icon: Zap, colour: "text-yellow-400" },
-              { metric: "Accessibility Score", target: "100", description: "WCAG compliance", icon: Globe, colour: "text-green-400" },
+              { metric: "Accessibility Score", target: "100", description: "WCAG compliance", icon: Globe, colour: "text-green-600 dark:text-green-400" },
               { metric: "Test Coverage", target: "80%+", description: "Code coverage", icon: Shield, colour: "text-blue-400" },
               { metric: "Bundle Size", target: "<200KB", description: "Initial load", icon: Target, colour: "text-purple-400" }
             ].map((metric, index) => (
@@ -462,7 +462,7 @@ function DevelopmentTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
               onClick={() => onCopyCode('code-quality-example', 'code-quality')}
               className="h-8 w-8 p-0"
             >
-              {copiedCode === 'code-quality' ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
+              {copiedCode === 'code-quality' ? <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" /> : <Copy className="h-3 w-3" />}
             </Button>
           </div>
         </CardHeader>
@@ -531,7 +531,7 @@ export function CandidateCard({
         <CardContent>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="space-y-4">
-              <h4 className="font-medium text-green-400">Unit Tests</h4>
+              <h4 className="font-medium text-green-600 dark:text-green-400">Unit Tests</h4>
               <div className="space-y-3">
                 {[
                   "Test individual functions",
@@ -540,7 +540,7 @@ export function CandidateCard({
                   "Aim for 80%+ coverage"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start gap-2 text-sm text-foreground/80">
-                    <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                     {item}
                   </div>
                 ))}
@@ -594,11 +594,11 @@ export function CandidateCard({
               <h4 className="font-medium text-primary">Commit Messages</h4>
               <div className="space-y-3">
                 <div className="p-3 bg-card/30 rounded-lg">
-                  <div className="text-sm text-green-400 mb-1">✓ Good</div>
+                  <div className="text-sm text-green-600 dark:text-green-400 mb-1">✓ Good</div>
                   <code className="text-xs text-foreground/80">feat: add candidate search filters</code>
                 </div>
                 <div className="p-3 bg-card/30 rounded-lg">
-                  <div className="text-sm text-green-400 mb-1">✓ Good</div>
+                  <div className="text-sm text-green-600 dark:text-green-400 mb-1">✓ Good</div>
                   <code className="text-xs text-foreground/80">fix: resolve pagination bug in candidate list</code>
                 </div>
                 <div className="p-3 bg-card/30 rounded-lg">
@@ -673,7 +673,7 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-10 h-10 bg-muted/50 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                      <area.icon className="h-5 w-5 text-green-400" />
+                      <area.icon className="h-5 w-5 text-green-600 dark:text-green-400" />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-semibold text-foreground group-hover:text-primary transition-colours mb-2" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
@@ -686,7 +686,7 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
                   <div className="space-y-2">
                     {area.examples.map((example, idx) => (
                       <div key={idx} className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <CheckCircle2 className="h-3 w-3 text-green-400 flex-shrink-0" />
+                        <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400 flex-shrink-0" />
                         {example}
                       </div>
                     ))}
@@ -717,7 +717,7 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
                   "Page has proper headings"
                 ].map((req, idx) => (
                   <div key={idx} className="flex items-start gap-3 p-3 bg-card/30 rounded-lg">
-                    <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
                     <span className="text-foreground/80 text-sm">{req}</span>
                   </div>
                 ))}
@@ -763,7 +763,7 @@ function AccessibilityTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }
               </div>
             </div>
             <div className="space-y-4">
-              <h4 className="font-medium text-green-400">Manual Testing</h4>
+              <h4 className="font-medium text-green-600 dark:text-green-400">Manual Testing</h4>
               <div className="space-y-2">
                 {["Keyboard navigation", "Screen reader testing", "colour contrast", "Zoom testing"].map((test, idx) => (
                   <div key={idx} className="p-2 bg-card/30 rounded text-sm text-foreground/80">
@@ -806,7 +806,7 @@ function PerformanceTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
                 name: "Largest Contentful Paint", 
                 target: "< 2.5s", 
                 description: "Loading performance",
-                colour: "text-green-400"
+                colour: "text-green-600 dark:text-green-400"
               },
               { 
                 metric: "FID", 
@@ -848,7 +848,7 @@ function PerformanceTab({ onCopyCode, copiedCode, safeAnimationSpeed }: any) {
               onClick={() => onCopyCode('performance-example', 'performance')}
               className="h-8 w-8 p-0"
             >
-              {copiedCode === 'performance' ? <CheckCircle2 className="h-3 w-3 text-green-400" /> : <Copy className="h-3 w-3" />}
+              {copiedCode === 'performance' ? <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" /> : <Copy className="h-3 w-3" />}
             </Button>
           </div>
             </CardHeader>

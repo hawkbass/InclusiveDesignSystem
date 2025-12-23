@@ -160,7 +160,7 @@ export default function Principles() {
                     <div className="text-sm text-muted-foreground">User Studies</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-2xl font-bold text-green-400">96%</div>
+                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">96%</div>
                     <div className="text-sm text-muted-foreground">Design Consistency</div>
                   </div>
                   <div className="text-center">
@@ -203,7 +203,7 @@ export default function Principles() {
                 >
                   <div className="text-center">
                     {copiedCode === 'principles-summary' ? (
-                      <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-300" />
+                      <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-600 dark:text-green-300" />
                     ) : (
                       <Copy className="h-5 w-5 mx-auto mb-1" />
                     )}
@@ -243,7 +243,7 @@ Post-Implementation:
                 >
                   <div className="text-center">
                     {copiedCode === 'review-checklist' ? (
-                      <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-300" />
+                      <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-600 dark:text-green-300" />
                     ) : (
                       <Target className="h-5 w-5 mx-auto mb-1" />
                     )}
@@ -303,7 +303,7 @@ Post-Implementation:
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-xl font-bold text-foreground">Human-centred Design</h3>
-                        <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+                        <Badge className="bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30">
                           98% Satisfaction
                 </Badge>
                       </div>
@@ -315,15 +315,15 @@ Post-Implementation:
                   
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>WCAG 2.1 AA compliance by default</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Test with real users before implementation</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Focus on diverse user groups</span>
                     </div>
                   </div>
@@ -349,7 +349,7 @@ Post-Implementation:
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-xl font-bold text-foreground">Evidence-Based Decisions</h3>
-                <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30">
                           150+ Studies
                 </Badge>
                       </div>
@@ -361,15 +361,15 @@ Post-Implementation:
                   
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>A/B testing for major changes</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Document decision rationale</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Continuous performance monitoring</span>
                     </div>
                   </div>
@@ -378,7 +378,7 @@ Post-Implementation:
                     size="sm" 
                     variant="outline"
                     onClick={() => window.open('/design-system/dashboard', '_blank')}
-                    className="border-purple-600 hover:bg-purple-700 text-purple-300"
+                    className="border-purple-600 hover:bg-purple-700 text-purple-600 dark:text-purple-600 dark:text-purple-300"
                   >
                     <BarChart3 className="h-4 w-4 mr-1" />
                     View Analytics
@@ -391,12 +391,12 @@ Post-Implementation:
                 <CardContent className="p-8">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="p-3 bg-green-500/20 rounded-xl group-hover:bg-green-500/30 transition-colours">
-                      <Target className="h-6 w-6 text-green-400" />
+                      <Target className="h-6 w-6 text-green-600 dark:text-green-400" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-xl font-bold text-foreground">Consistency & Scalability</h3>
-                <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+                <Badge className="bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30">
                           96% Consistency
                 </Badge>
               </div>
@@ -408,15 +408,15 @@ Post-Implementation:
                   
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Shared component library</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Unified design tokens</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Cross-platform patterns</span>
                     </div>
                   </div>
@@ -442,7 +442,7 @@ Post-Implementation:
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
                         <h3 className="text-xl font-bold text-foreground">Efficiency & Performance</h3>
-                        <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                        <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30">
                           94% Completion
                         </Badge>
                       </div>
@@ -454,15 +454,15 @@ Post-Implementation:
                   
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Minimal cognitive load</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Smart defaults & automation</span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                       <span>Performance optimised</span>
                     </div>
                   </div>
@@ -471,7 +471,7 @@ Post-Implementation:
                     size="sm" 
                     variant="outline"
                     onClick={() => window.open('/design-system/best-practices', '_blank')}
-                    className="border-orange-600 hover:bg-orange-700 text-orange-300"
+                    className="border-orange-600 hover:bg-orange-700 text-orange-600 dark:text-orange-300"
                   >
                     <Award className="h-4 w-4 mr-1" />
                     Best Practices
@@ -505,15 +505,15 @@ Post-Implementation:
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Start with user research and personas</span>
                       </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Use design tokens for consistency</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Test prototypes with real users</span>
                     </div>
                   </div>
@@ -540,15 +540,15 @@ Post-Implementation:
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Use semantic HTML structure</span>
                         </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Implement keyboard navigation</span>
                       </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Test with screen readers</span>
                     </div>
                   </div>
@@ -567,7 +567,7 @@ Post-Implementation:
               <Card className="bg-gradient-to-br from-green-500/10 via-green-500/5 to-transparent border-green-500/20 hover:border-green-400/40 transition-all duration-300">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-lg text-foreground">
-                    <Target className="h-5 w-5 text-green-400" />
+                    <Target className="h-5 w-5 text-green-600 dark:text-green-400" />
                     For Product Managers
                   </CardTitle>
                   <CardDescription>Guide teams with principle-based decisions</CardDescription>
@@ -575,15 +575,15 @@ Post-Implementation:
                 <CardContent className="space-y-4">
                   <div className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Use the review checklist for features</span>
                         </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Measure user satisfaction metrics</span>
                       </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Document design decisions</span>
                     </div>
                   </div>
@@ -641,7 +641,7 @@ Post-Implementation:
               >
                 <div className="text-center">
                   {copiedCode === 'review-checklist' ? (
-                    <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-300" />
+                    <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-600 dark:text-green-300" />
                   ) : (
                     <Download className="h-5 w-5 mx-auto mb-1" />
                   )}
@@ -684,7 +684,7 @@ Post-Implementation:
               >
                 <div className="text-center">
                   {copiedCode === 'principles-doc' ? (
-                    <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-400" />
+                    <CheckCircle2 className="h-5 w-5 mx-auto mb-1 text-green-600 dark:text-green-400" />
                   ) : (
                     <BookOpen className="h-5 w-5 mx-auto mb-1" />
                   )}
@@ -749,7 +749,7 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                 description:
                   "Unified visual language and interaction patterns create predictable experiences that users can learn once and apply everywhere.",
                 icon: Target,
-                colour: "text-green-400",
+                colour: "text-green-600 dark:text-green-400",
                 bgColor: "bg-green-500/20",
                 details: [
                   "Standardized component behaviour",
@@ -826,7 +826,7 @@ function CoreTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
                     <h4 className="text-sm font-medium text-foreground/80 mb-3">Key Features:</h4>
                     {principle.details.map((detail, idx) => (
                       <div key={idx} className="flex items-center gap-3 p-2 bg-card/30 rounded-lg hover:bg-card/50 transition-colours" style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}>
-                        <CheckCircle2 className="h-4 w-4 text-green-400 flex-shrink-0" />
+                        <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                         <span className="text-foreground/80 text-sm">{detail}</span>
                       </div>
                     ))}
@@ -962,7 +962,7 @@ function ApplicationTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopy
               <div key={index} className="space-y-4">
                 <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
                   <div className="w-6 h-6 bg-green-500/20 rounded flex items-center justify-center">
-                    <CheckCircle2 className="h-4 w-4 text-green-400" />
+                    <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                   </div>
                   {guideline.category}
                 </h3>
@@ -1100,7 +1100,7 @@ export const Button = ({
               className="transition-opacity"
               style={{ transitionDuration: `${1 / safeAnimationSpeed}s` }}
             >
-              {copiedCode === 'button-example' ? <CheckCircle2 className="h-3 w-3 text-green-400 mr-2" /> : <Copy className="h-3 w-3 mr-2" />}
+              {copiedCode === 'button-example' ? <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400 mr-2" /> : <Copy className="h-3 w-3 mr-2" />}
               Copy Example
             </Button>
           </div>
@@ -1127,7 +1127,7 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
     {
       category: "Tools & Assets",
       icon: Briefcase,
-      colour: "text-green-400", 
+      colour: "text-green-600 dark:text-green-400", 
       bgColor: "bg-green-500/20",
       items: [
         { title: "Figma Design Kit", description: "Complete component library for designers", link: "#", type: "Figma" },
@@ -1254,7 +1254,7 @@ function ResourcesTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
             </div>
             <div className="text-center space-y-3">
               <div className="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mx-auto">
-                <BookOpen className="h-6 w-6 text-green-400" />
+                <BookOpen className="h-6 w-6 text-green-600 dark:text-green-400" />
               </div>
               <h3 className="font-medium text-foreground">Documentation</h3>
               <p className="text-sm text-muted-foreground">Comprehensive guides and API references.</p>
@@ -1299,7 +1299,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
       title: "Inclusive by Default",
       description: "Accessibility and inclusion are built into every component from the ground up.",
       icon: Globe,
-      colour: "text-green-400",
+      colour: "text-green-600 dark:text-green-400",
       stats: "WCAG 2.1 AA Compliant"
     },
     {
@@ -1360,7 +1360,7 @@ function OverviewTab({ safeAnimationSpeed }: { safeAnimationSpeed: number }) {
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: "Accessibility Score", value: "98%", change: "+12% this year", colour: "text-green-400" },
+              { label: "Accessibility Score", value: "98%", change: "+12% this year", colour: "text-green-600 dark:text-green-400" },
               { label: "User Satisfaction", value: "4.8/5", change: "+0.4 improvement", colour: "text-blue-400" },
               { label: "Task Completion", value: "94%", change: "+8% efficiency", colour: "text-purple-400" },
               { label: "Design Consistency", value: "96%", change: "Across all products", colour: "text-orange-400" }

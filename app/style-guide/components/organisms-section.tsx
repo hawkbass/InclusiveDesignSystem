@@ -255,7 +255,7 @@ export function OrganismsSection({
                         <Badge className={`text-xs ${
                           organism.complexity === 'High' ? 'bg-red-500/20 text-red-300' :
                           organism.complexity === 'Medium' ? 'bg-yellow-500/20 text-yellow-300' :
-                          'bg-green-500/20 text-green-300'
+                          'bg-green-500/20 text-green-600 dark:text-green-300'
                         }`}>
                           {organism.complexity}
                         </Badge>
@@ -316,7 +316,7 @@ export function OrganismsSection({
                         className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
                       >
                         {copiedCode === `location-${organism.id}` ? (
-                          <CheckCircle2 className="h-3 w-3 text-green-400" />
+                          <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                         ) : (
                           <Copy className="h-3 w-3" />
                         )}
@@ -344,7 +344,7 @@ export function OrganismsSection({
                         const importText = `import { ${organism.name.replace(/\s+/g, '')} } from "${organism.location.replace('.tsx', '')}"`
                         onCopyCode(importText, `import-${organism.id}`)
                       }}
-                      className="flex-1 text-muted-foreground border-border hover:border-purple-500 hover:text-purple-300"
+                      className="flex-1 text-muted-foreground border-border hover:border-purple-500 hover:text-purple-600 dark:text-purple-600 dark:text-purple-300"
                     >
                       Copy Import
                     </Button>

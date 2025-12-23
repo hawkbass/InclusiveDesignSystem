@@ -71,7 +71,7 @@ const components = [
   <div className="flex items-center gap-2 bg-card/50 rounded-md px-2 py-1 text-xs text-muted-foreground border border-border/50">
     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
     <span>inclusive.io/dashboard</span>
-    <span className="text-green-400">LIVE</span>
+    <span className="text-green-600 dark:text-green-400">LIVE</span>
   </div>
   <div className="flex items-center gap-2">
     <Button variant="ghost" size="sm" className="relative">
@@ -94,7 +94,7 @@ const components = [
           <div className="flex items-center gap-2 bg-card/50 rounded-md px-2 py-1 text-xs text-muted-foreground border border-border/50">
             <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
             <span>inclusive.io/dashboard</span>
-            <span className="text-green-400">LIVE</span>
+            <span className="text-green-600 dark:text-green-400">LIVE</span>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="ghost" size="sm" className="relative text-muted-foreground hover:text-foreground/80">
@@ -482,7 +482,7 @@ const components = [
           </td>
           <td className="px-4 py-3 text-sm text-foreground/80">Senior Developer</td>
           <td className="px-4 py-3">
-            <Badge className="bg-green-500/20 text-green-300">Active</Badge>
+            <Badge className="bg-green-500/20 text-green-600 dark:text-green-300">Active</Badge>
           </td>
           <td className="px-4 py-3">
             <div className="flex items-center gap-2">
@@ -536,7 +536,7 @@ const components = [
                 </td>
                 <td className="px-4 py-3 text-sm text-foreground/80">Senior Developer</td>
                 <td className="px-4 py-3">
-                  <Badge className="bg-green-500/20 text-green-300 border-green-500/30">Active</Badge>
+                  <Badge className="bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30">Active</Badge>
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
@@ -557,7 +557,7 @@ const components = [
                   <div className="flex items-center gap-3">
                     <Avatar className="h-8 w-8">
                       <AvatarImage src="/placeholder.svg" />
-                      <AvatarFallback className="bg-blue-500/20 text-blue-300">MJ</AvatarFallback>
+                      <AvatarFallback className="bg-blue-500/20 text-blue-600 dark:text-blue-300">MJ</AvatarFallback>
                     </Avatar>
                     <div>
                       <div className="text-sm font-medium text-foreground">Mike Johnson</div>
@@ -567,7 +567,7 @@ const components = [
                 </td>
                 <td className="px-4 py-3 text-sm text-foreground/80">Product Manager</td>
                 <td className="px-4 py-3">
-                  <Badge className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">Interview</Badge>
+                  <Badge className="bg-yellow-500/20 text-yellow-600 dark:text-yellow-300 border-yellow-500/30">Interview</Badge>
                 </td>
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-2">
@@ -600,13 +600,13 @@ const components = [
         <CardTitle className="text-foreground">Senior Frontend Developer</CardTitle>
         <CardDescription className="text-muted-foreground">Remote • Full-time</CardDescription>
       </div>
-      <Badge className="bg-blue-500/20 text-blue-300">Active</Badge>
+      <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300">Active</Badge>
     </div>
   </CardHeader>
   <CardContent>
     <div className="flex items-center gap-6 text-sm mb-4">
       <div className="flex items-center gap-2">
-        <PoundSterling className="h-4 w-4 text-green-400" />
+        <PoundSterling className="h-4 w-4 text-green-600 dark:text-green-400" />
                     <span className="text-foreground/80">£95k - £120k</span>
       </div>
       <div className="flex items-center gap-2">
@@ -628,13 +628,13 @@ const components = [
               <CardTitle className="text-lg text-foreground">Senior Frontend Developer</CardTitle>
               <CardDescription className="text-muted-foreground mt-1">Remote • Full-time</CardDescription>
             </div>
-            <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">Active</Badge>
+            <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30">Active</Badge>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <PoundSterling className="h-4 w-4 text-green-400" />
+              <PoundSterling className="h-4 w-4 text-green-600 dark:text-green-400" />
               <span className="text-foreground/80">£95k - £120k</span>
             </div>
             <div className="flex items-center gap-2">
@@ -755,7 +755,7 @@ export function DashboardComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Dashboard Components</h2>
             <p className="text-muted-foreground">Complete dashboard interface components and layouts</p>
           </div>
-          <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-3 py-1">
+          <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

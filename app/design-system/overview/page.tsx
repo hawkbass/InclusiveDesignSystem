@@ -71,7 +71,7 @@ export default function Overview() {
       change: "+12%",
       description: "Teams using design system components",
       icon: TrendingUp,
-      colour: "text-green-400"
+      colour: "text-green-600 dark:text-green-400"
     },
     consistency: {
       title: "Design Consistency",
@@ -79,7 +79,7 @@ export default function Overview() {
       change: "+8%",
       description: "UI patterns following system guidelines",
       icon: Target,
-      colour: "text-blue-400"
+      colour: "text-blue-600 dark:text-blue-400"
     },
     performance: {
       title: "Performance Score",
@@ -180,11 +180,11 @@ export default function Overview() {
             <div className="max-w-6xl mx-auto">
               {/* System Status Badges */}
               <div className="flex flex-wrap gap-3 mb-8">
-                <Badge className="bg-green-500/20 text-green-300 border-green-500/30 px-3 py-1">
+                <Badge className="bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30 px-3 py-1">
                   <CheckCircle2 className="w-3 h-3 mr-1" />
                   System Healthy
                 </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
+                <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30 px-3 py-1">
                   <Activity className="w-3 h-3 mr-1" />
                   3 Recent Updates
                 </Badge>
@@ -212,15 +212,15 @@ export default function Overview() {
 
                   {/* Value Proposition Badges */}
                   <div className="flex flex-wrap gap-3 mt-6">
-                    <Badge className="bg-green-500/20 text-green-300 border-green-500/30 px-4 py-2">
+                    <Badge className="bg-green-500/20 text-green-600 dark:text-green-300 border-green-500/30 px-4 py-2">
                       <CheckCircle2 className="w-4 h-4 mr-2" />
                       31% Faster Development
                     </Badge>
-                    <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-4 py-2">
+                    <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30 px-4 py-2">
                       <Shield className="w-4 h-4 mr-2" />
                       WCAG 2.1 AA Compliant
                     </Badge>
-                    <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30 px-4 py-2">
+                    <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30 px-4 py-2">
                       <Users className="w-4 h-4 mr-2" />
                       Used by 94% of Teams
                     </Badge>
@@ -229,11 +229,11 @@ export default function Overview() {
                   {/* Key System Stats */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-card/50 rounded-lg p-4 border border-border/50">
-                      <div className="text-2xl font-bold text-green-400">94%</div>
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400">94%</div>
                       <div className="text-sm text-muted-foreground">Team Adoption</div>
                     </div>
                     <div className="bg-card/50 rounded-lg p-4 border border-border/50">
-                      <div className="text-2xl font-bold text-blue-400">49+</div>
+                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">49+</div>
                       <div className="text-sm text-muted-foreground">Components</div>
                     </div>
                   </div>
@@ -258,7 +258,7 @@ export default function Overview() {
                   <Card className="bg-card/50 border-border/50">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
-                        <Activity className="h-5 w-5 text-green-400" />
+                        <Activity className="h-5 w-5 text-green-600 dark:text-green-400" />
                         System Health
                       </CardTitle>
                       <CardDescription>
@@ -269,11 +269,11 @@ export default function Overview() {
                       {/* Health Indicators */}
                       <div className="grid grid-cols-2 gap-4">
                         <div className="text-center">
-                          <div className="text-3xl font-bold text-green-400 mb-1">99.8%</div>
+                          <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-1">99.8%</div>
                           <div className="text-xs text-muted-foreground">Uptime</div>
                         </div>
                         <div className="text-center">
-                          <div className="text-3xl font-bold text-blue-400 mb-1">2.1s</div>
+                          <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-1">2.1s</div>
                           <div className="text-xs text-muted-foreground">Avg Load Time</div>
                         </div>
                       </div>
@@ -282,7 +282,7 @@ export default function Overview() {
                       <div className="space-y-3">
                         <div className="flex justify-between items-center">
                           <span className="text-sm text-foreground/80">Component Coverage</span>
-                          <span className="text-sm text-green-400">96%</span>
+                          <span className="text-sm text-green-600 dark:text-green-400">96%</span>
                         </div>
                         <Progress value={96} className="h-2" />
                         
@@ -389,15 +389,15 @@ export default function Overview() {
                       <div className="space-y-2">
                         <div className="flex justify-between">
                           <span className="text-sm text-muted-foreground">This Week</span>
-                          <span className="text-sm text-green-400">+5.2%</span>
+                          <span className="text-sm text-green-600 dark:text-green-400">+5.2%</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-sm text-muted-foreground">This Month</span>
-                          <span className="text-sm text-green-400">+12.8%</span>
+                          <span className="text-sm text-green-600 dark:text-green-400">+12.8%</span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-sm text-muted-foreground">Quarter</span>
-                          <span className="text-sm text-green-400">+28.3%</span>
+                          <span className="text-sm text-green-600 dark:text-green-400">+28.3%</span>
                         </div>
                       </div>
                     </div>
@@ -428,11 +428,11 @@ export default function Overview() {
                           <span>Focus on mobile component adoption</span>
                         </div>
                         <div className="flex items-start gap-2">
-                          <Target className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                          <Target className="h-4 w-4 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                           <span>Increase accessibility training</span>
                         </div>
                         <div className="flex items-start gap-2">
-                          <TrendingUp className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                          <TrendingUp className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                           <span>Expand token usage guidelines</span>
                         </div>
                       </div>
@@ -527,8 +527,8 @@ export default function Overview() {
                             <Badge 
                               variant="outline" 
                               className={`text-xs ${
-                                update.category === 'enhancement' ? 'border-green-500/30 text-green-400' :
-                                update.category === 'update' ? 'border-blue-500/30 text-blue-400' :
+                                update.category === 'enhancement' ? 'border-green-500/30 text-green-600 dark:text-green-400' :
+                                update.category === 'update' ? 'border-blue-500/30 text-blue-600 dark:text-blue-400' :
                                 'border-purple-500/30 text-purple-400'
                               }`}
                             >
@@ -587,9 +587,9 @@ export default function Overview() {
                 <Card className="bg-gradient-to-br from-green-500/10 to-emerald-500/5 border-green-500/20 hover:border-green-400/40 transition-all">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 mx-auto mb-4 bg-green-500/20 rounded-xl flex items-center justify-center">
-                      <Clock className="h-8 w-8 text-green-400" />
+                      <Clock className="h-8 w-8 text-green-600 dark:text-green-400" />
                     </div>
-                    <div className="text-3xl font-bold text-green-400 mb-2">31%</div>
+                    <div className="text-3xl font-bold text-green-600 dark:text-green-400 mb-2">31%</div>
                     <div className="text-sm font-medium text-foreground mb-2">Faster Development</div>
                     <div className="text-xs text-muted-foreground">Pre-built components reduce implementation time</div>
                   </CardContent>
@@ -599,9 +599,9 @@ export default function Overview() {
                 <Card className="bg-gradient-to-br from-blue-500/10 to-cyan-500/5 border-blue-500/20 hover:border-blue-400/40 transition-all">
                   <CardContent className="p-6 text-center">
                     <div className="w-16 h-16 mx-auto mb-4 bg-blue-500/20 rounded-xl flex items-center justify-center">
-                      <Shield className="h-8 w-8 text-blue-400" />
+                      <Shield className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <div className="text-3xl font-bold text-blue-400 mb-2">AAA</div>
+                    <div className="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-2">AAA</div>
                     <div className="text-sm font-medium text-foreground mb-2">Accessibility Score</div>
                     <div className="text-xs text-muted-foreground">WCAG 2.1 compliance built into every component</div>
                   </CardContent>
@@ -637,25 +637,25 @@ export default function Overview() {
                 <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5 text-green-400" />
+                      <TrendingUp className="h-5 w-5 text-green-600 dark:text-green-400" />
                       Development Efficiency
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Pre-built, tested components reduce development time by 31%</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">TypeScript support with comprehensive prop definitions</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Copy-paste code examples for immediate implementation</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Automated testing reduces QA overhead</span>
                     </div>
                   </CardContent>
@@ -664,25 +664,25 @@ export default function Overview() {
                 <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Shield className="h-5 w-5 text-blue-400" />
+                      <Shield className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                       Quality & Accessibility
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">WCAG 2.1 AA compliance built into every component</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Screen reader compatibility and keyboard navigation</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">High contrast ratios and focus management</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Semantic HTML structure by default</span>
                     </div>
                   </CardContent>
@@ -697,19 +697,19 @@ export default function Overview() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Design tokens enable consistent theming across products</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Version-controlled updates with migration guides</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Framework-agnostic patterns work with React, Vue, Angular</span>
                     </div>
                     <div className="flex items-start gap-2 text-sm">
-                      <CheckCircle2 className="h-4 w-4 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <span className="text-foreground/80">Performance optimised with tree-shaking and lazy loading</span>
                     </div>
                   </CardContent>
@@ -737,7 +737,7 @@ export default function Overview() {
                 <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Code2 className="h-5 w-5 text-blue-400" />
+                      <Code2 className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                       For Developers
                     </CardTitle>
                     <CardDescription>
@@ -817,7 +817,7 @@ export default function Overview() {
                 <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
-                      <Users className="h-5 w-5 text-green-400" />
+                      <Users className="h-5 w-5 text-green-600 dark:text-green-400" />
                       For Teams
                     </CardTitle>
                     <CardDescription>

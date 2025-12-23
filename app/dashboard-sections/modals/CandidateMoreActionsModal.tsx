@@ -13,7 +13,7 @@ interface CandidateMoreActionsModalProps {
 const actions = [
   { icon: <Users className="h-4 w-4" />, label: "Send Message", colour: "text-blue-400" },
   { icon: <Target className="h-4 w-4" />, label: "Add to favourites", colour: "text-yellow-400" },
-  { icon: <Download className="h-4 w-4" />, label: "Download Resume", colour: "text-green-400" },
+  { icon: <Download className="h-4 w-4" />, label: "Download Resume", colour: "text-green-600 dark:text-green-400" },
   { icon: <Activity className="h-4 w-4" />, label: "Add Notes", colour: "text-purple-400" },
   { icon: <ArrowRight className="h-4 w-4" />, label: "Move to Different Stage", colour: "text-orange-400" },
   { icon: <Mail className="h-4 w-4" />, label: "Share Profile", colour: "text-cyan-400" }

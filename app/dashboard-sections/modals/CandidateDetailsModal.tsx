@@ -17,7 +17,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl p-0 overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-border/50 bg-gradient-to-r from-slate-800/50 to-slate-800/30 rounded-t-xl">
+        <div className="p-6 border-b border-border/50 bg-gradient-to-r from-muted/50 to-muted/30 rounded-t-xl">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white text-lg font-bold">

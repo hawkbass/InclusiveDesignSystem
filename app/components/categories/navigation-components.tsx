@@ -272,7 +272,7 @@ const components = [
                   {item.completed ? <Check className="h-4 w-4" /> : item.step}
                 </div>
                 <span className={`text-xs mt-1 ${
-                  item.active ? 'text-primary' : item.completed ? 'text-green-300' : 'text-muted-foreground'
+                  item.active ? 'text-primary' : item.completed ? 'text-green-600 dark:text-green-300' : 'text-muted-foreground'
                 }`}>
                   {item.label}
                 </span>
@@ -507,7 +507,7 @@ export function NavigationComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Navigation Components</h2>
             <p className="text-muted-foreground">Navigation patterns and menu systems for seamless user journeys</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

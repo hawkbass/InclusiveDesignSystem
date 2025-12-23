@@ -179,7 +179,7 @@ export default function Patterns() {
                       UI patterns are <strong className="text-primary">reusable solutions</strong> to common interface design problems. They provide tested approaches that users already understand.
                     </p>
                     <p>
-                      Each pattern includes <strong className="text-purple-300">usage guidance, accessibility considerations, and implementation examples</strong> to help you build better interfaces faster.
+                      Each pattern includes <strong className="text-purple-600 dark:text-purple-600 dark:text-purple-300">usage guidance, accessibility considerations, and implementation examples</strong> to help you build better interfaces faster.
                     </p>
                   </div>
                 </div>
@@ -192,21 +192,21 @@ export default function Patterns() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Faster Development</strong>
                         <p className="text-sm text-muted-foreground">Reuse proven solutions instead of starting from scratch</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Better UX</strong>
                         <p className="text-sm text-muted-foreground">Leverage familiar patterns users already understand</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Accessibility Built-in</strong>
                         <p className="text-sm text-muted-foreground">Patterns include WCAG compliance by default</p>
@@ -358,7 +358,7 @@ export default function Patterns() {
                     <Card className="bg-card/30 border-border/50">
                       <CardHeader>
                         <CardTitle className="text-foreground flex items-center gap-3">
-                          <Navigation className="h-5 w-5 text-blue-400" />
+                          <Navigation className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                           Primary Navigation
                         </CardTitle>
                         <CardDescription>Main site navigation typically placed in header</CardDescription>
@@ -383,7 +383,7 @@ export default function Patterns() {
                               className="text-muted-foreground hover:text-foreground"
                             >
                               {copiedCode === 'primary-nav' ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-4 w-4" />
                               )}
@@ -403,7 +403,7 @@ export default function Patterns() {
                     <Card className="bg-card/30 border-border/50">
                       <CardHeader>
                         <CardTitle className="text-foreground flex items-center gap-3">
-                          <ArrowRight className="h-5 w-5 text-green-400" />
+                          <ArrowRight className="h-5 w-5 text-green-600 dark:text-green-400" />
                           Breadcrumb Navigation
                         </CardTitle>
                         <CardDescription>Hierarchical navigation showing user location</CardDescription>
@@ -428,7 +428,7 @@ export default function Patterns() {
                               className="text-muted-foreground hover:text-foreground"
                             >
                               {copiedCode === 'breadcrumb' ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-4 w-4" />
                               )}
@@ -463,7 +463,7 @@ export default function Patterns() {
                   <Card className="bg-card/30 border-border/50">
                     <CardHeader>
                       <CardTitle className="text-foreground flex items-center gap-3">
-                        <Grid3X3 className="h-5 w-5 text-green-400" />
+                        <Grid3X3 className="h-5 w-5 text-green-600 dark:text-green-400" />
                         Card Layout
                       </CardTitle>
                       <CardDescription>Flexible content containers with consistent styling</CardDescription>
@@ -559,7 +559,7 @@ export default function Patterns() {
                     <Card className="bg-card/30 border-border/50">
                       <CardHeader>
                         <CardTitle className="text-foreground flex items-center gap-3">
-                          <CheckCircle2 className="h-5 w-5 text-green-400" />
+                          <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
                           Success States
                         </CardTitle>
                         <CardDescription>Positive feedback for completed actions</CardDescription>
@@ -567,10 +567,10 @@ export default function Patterns() {
                       <CardContent className="space-y-4">
                         <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
                           <div className="flex items-center gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400" />
-                            <span className="text-green-300 font-medium">Success!</span>
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
+                            <span className="text-green-600 dark:text-green-300 font-medium">Success!</span>
                           </div>
-                          <p className="text-sm text-green-400 mt-2">Your changes have been saved successfully.</p>
+                          <p className="text-sm text-green-600 dark:text-green-400 mt-2">Your changes have been saved successfully.</p>
                         </div>
                       </CardContent>
                     </Card>
@@ -587,7 +587,7 @@ export default function Patterns() {
                         <div className="p-4 bg-orange-500/10 border border-orange-500/30 rounded-lg">
                           <div className="flex items-center gap-3">
                             <AlertTriangle className="h-5 w-5 text-orange-400" />
-                            <span className="text-orange-300 font-medium">Warning</span>
+                            <span className="text-orange-600 dark:text-orange-300 font-medium">Warning</span>
                           </div>
                           <p className="text-sm text-orange-400 mt-2">This action cannot be undone. Please confirm.</p>
                         </div>
@@ -614,7 +614,7 @@ export default function Patterns() {
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <Link href="/components" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                       <div className="flex items-center gap-3 mb-2">
-                        <Component className="h-5 w-5 text-blue-400" />
+                        <Component className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                         <span className="font-medium text-foreground">Components</span>
                       </div>
                       <p className="text-sm text-muted-foreground">See patterns implemented as reusable components</p>
@@ -622,7 +622,7 @@ export default function Patterns() {
                     
                     <Link href="/design-system/best-practices" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                       <div className="flex items-center gap-3 mb-2">
-                        <Award className="h-5 w-5 text-green-400" />
+                        <Award className="h-5 w-5 text-green-600 dark:text-green-400" />
                         <span className="font-medium text-foreground">Best Practices</span>
                       </div>
                       <p className="text-sm text-muted-foreground">Implementation guidelines and tips</p>

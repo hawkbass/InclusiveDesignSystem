@@ -407,8 +407,8 @@ const components = [
           </SelectContent>
         </Select>
         <div className="flex gap-1 flex-wrap mt-2">
-          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30">JavaScript</Badge>
-          <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30">React</Badge>
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 hover:bg-blue-500/30">JavaScript</Badge>
+          <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30">React</Badge>
         </div>
       </div>
     )
@@ -443,7 +443,7 @@ const components = [
             defaultValue="password123"
             className="bg-card/50 border-green-500 focus:border-green-500"
           />
-          <p className="text-green-400 text-sm flex items-center gap-1">
+          <p className="text-green-600 dark:text-green-400 text-sm flex items-center gap-1">
             <CheckCircle2 className="h-3 w-3" />
             Password meets requirements
           </p>
@@ -657,7 +657,7 @@ export function FormComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Form Components</h2>
             <p className="text-muted-foreground">Interactive form elements and input controls</p>
           </div>
-          <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 px-3 py-1">
+          <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

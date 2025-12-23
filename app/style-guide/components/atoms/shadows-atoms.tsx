@@ -255,7 +255,7 @@ export function ShadowsAtoms({
                         onClick={() => onCopyCode(effect.class, effect.id)}
                         className={`${
                           copiedCode === effect.id
-                            ? 'border-green-500 text-green-400 bg-green-950' 
+                            ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-950' 
                             : 'border-border hover:border-primary text-muted-foreground hover:text-foreground'
                         } transition-all`}
                       >

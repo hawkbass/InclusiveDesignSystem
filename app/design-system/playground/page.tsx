@@ -238,7 +238,7 @@ export default function PlaygroundPage() {
     return preset?.width || "100%"
   }
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-50">
+    <div className="flex min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <UnifiedSidebar />
       
       <main className="flex-1 lg:ml-72">
@@ -248,7 +248,7 @@ export default function PlaygroundPage() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-4">
               <div>
-                <h1 className="text-3xl font-bold tracking-tight bg-gradient-to-r from-slate-900 via-slate-700 to-slate-900 bg-clip-text text-transparent">
+                <h1 className="text-3xl font-bold tracking-tight text-foreground">
                   Component Playground
                 </h1>
                 <p className="text-muted-foreground mt-2">
@@ -303,8 +303,8 @@ export default function PlaygroundPage() {
                           onClick={() => setViewport(preset.name)}
                           className={`p-2 transition-colors ${
                             viewport === preset.name
-                              ? "bg-slate-900 text-white"
-                              : "bg-white hover:bg-slate-100 text-slate-600"
+                              ? "bg-primary text-primary-foreground"
+                              : "bg-card hover:bg-muted text-muted-foreground"
                           }`}
                           title={preset.label}
                         >
@@ -321,22 +321,22 @@ export default function PlaygroundPage() {
           <div className="grid lg:grid-cols-2 gap-6">
             {/* Preview Panel */}
             <Card className="lg:col-span-2">
-              <CardHeader className="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-t-lg">
+              <CardHeader className="bg-gradient-to-r from-primary/20 to-accent/20 border-b border-border/50 rounded-t-lg">
                 <div className="flex items-center justify-between">
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-foreground">
                     <Eye className="h-5 w-5" />
                     Live Preview
                   </CardTitle>
-                  <Badge variant="outline" className="bg-white/10 text-white border-white/20">
+                  <Badge variant="outline" className="bg-card/50 text-foreground border-border/50">
                     {viewport.charAt(0).toUpperCase() + viewport.slice(1)}
                   </Badge>
                 </div>
               </CardHeader>
               <CardContent className="p-0">
                 {/* Viewport Container */}
-                <div className="flex justify-center p-8 bg-slate-50 min-h-[300px]">
+                <div className="flex justify-center p-8 bg-muted/30 min-h-[300px]">
                   <div
-                    className="bg-white border rounded-lg shadow-sm flex items-center justify-center p-8 transition-all duration-300"
+                    className="bg-card border border-border rounded-lg shadow-sm flex items-center justify-center p-8 transition-all duration-300"
                     style={{
                       width: typeof getViewportWidth() === "number" 
                         ? `${getViewportWidth()}px` 
@@ -390,7 +390,7 @@ export default function PlaygroundPage() {
                 </div>
                 
                 {/* Viewport Dimensions */}
-                <div className="px-4 py-2 bg-slate-100 border-t text-center text-sm text-muted-foreground">
+                <div className="px-4 py-2 bg-muted/50 border-t border-border/50 text-center text-sm text-muted-foreground">
                   {typeof getViewportWidth() === "number" 
                     ? `${getViewportWidth()}px wide`
                     : "Full width"
@@ -519,7 +519,7 @@ export default function PlaygroundPage() {
               <CardContent>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {/* Contrast Ratio */}
-                  <div className="p-4 bg-slate-50 rounded-lg">
+                  <div className="p-4 bg-muted/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <Palette className="h-4 w-4 text-slate-600" />
                       <span className="text-sm font-medium">Contrast</span>
@@ -536,7 +536,7 @@ export default function PlaygroundPage() {
                   </div>
 
                   {/* Keyboard Navigation */}
-                  <div className="p-4 bg-slate-50 rounded-lg">
+                  <div className="p-4 bg-muted/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <Keyboard className="h-4 w-4 text-slate-600" />
                       <span className="text-sm font-medium">Keyboard</span>
@@ -551,7 +551,7 @@ export default function PlaygroundPage() {
                   </div>
 
                   {/* Focus Visible */}
-                  <div className="p-4 bg-slate-50 rounded-lg">
+                  <div className="p-4 bg-muted/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <Eye className="h-4 w-4 text-slate-600" />
                       <span className="text-sm font-medium">Focus</span>
@@ -566,7 +566,7 @@ export default function PlaygroundPage() {
                   </div>
 
                   {/* Screen Reader */}
-                  <div className="p-4 bg-slate-50 rounded-lg">
+                  <div className="p-4 bg-muted/30 rounded-lg">
                     <div className="flex items-center gap-2 mb-2">
                       <Layers className="h-4 w-4 text-slate-600" />
                       <span className="text-sm font-medium">Screen Reader</span>
@@ -582,7 +582,7 @@ export default function PlaygroundPage() {
                 </div>
 
                 {/* Screen Reader Preview */}
-                <div className="mt-6 p-4 bg-slate-900 rounded-lg text-white">
+                <div className="mt-6 p-4 bg-card border border-border rounded-lg text-foreground">
                   <div className="flex items-center gap-2 mb-2">
                     <span className="text-xs text-slate-400">Screen reader announcement:</span>
                   </div>
@@ -595,22 +595,22 @@ export default function PlaygroundPage() {
           </div>
           
           {/* Related Resources */}
-          <Card className="mt-8 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+          <Card className="mt-8 bg-gradient-to-br from-primary/10 to-accent/10 border border-border/50">
             <CardContent className="py-8">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div>
-                  <h3 className="text-xl font-semibold mb-2">Need more control?</h3>
-                  <p className="text-slate-300">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground">Need more control?</h3>
+                  <p className="text-muted-foreground">
                     Explore the full component documentation for advanced usage
                   </p>
                 </div>
                 <div className="flex gap-3">
-                  <Button variant="outline" className="bg-transparent border-white/20 text-white hover:bg-white/10" asChild>
+                  <Button variant="outline" className="border-border hover:bg-card" asChild>
                     <Link href="/design-system/components">
                       All Components
                     </Link>
                   </Button>
-                  <Button className="bg-white text-slate-900 hover:bg-white/90" asChild>
+                  <Button className="bg-primary text-primary-foreground hover:bg-primary/90" asChild>
                     <Link href="/design-system/tokens">
                       Design Tokens
                     </Link>

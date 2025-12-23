@@ -249,9 +249,14 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
   useEffect(() => {
     setMounted(true)
     // Load favourites from localStorage
-    const saved = localStorage.getItem("inclusive-sidebar-favourites")
-    if (saved) {
-      setFavourites(new Set(JSON.parse(saved)))
+    const savedFavourites = localStorage.getItem("inclusive-sidebar-favourites")
+    if (savedFavourites) {
+      setFavourites(new Set(JSON.parse(savedFavourites)))
+    }
+    // Load expanded sections from localStorage
+    const savedSections = localStorage.getItem("inclusive-sidebar-expanded")
+    if (savedSections) {
+      setExpandedSections(JSON.parse(savedSections))
     }
   }, [])
 
@@ -260,6 +265,13 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
       localStorage.setItem("inclusive-sidebar-favourites", JSON.stringify(Array.from(favourites)))
     }
   }, [favourites, mounted])
+
+  // Persist expanded sections to localStorage
+  useEffect(() => {
+    if (mounted) {
+      localStorage.setItem("inclusive-sidebar-expanded", JSON.stringify(expandedSections))
+    }
+  }, [expandedSections, mounted])
 
   const safeAnimationSpeed = animationSpeed?.[0] ?? 1
 

@@ -161,7 +161,7 @@ export default function Responsive() {
                       Responsive design ensures your interface <strong className="text-primary">adapts fluidly</strong> to any screen size, from mobile phones to ultrawide displays.
                     </p>
                     <p>
-                      Our systematic approach uses <strong className="text-purple-300">breakpoints, flexible layouts, and adaptive components</strong> to create seamless experiences across all devices.
+                      Our systematic approach uses <strong className="text-purple-600 dark:text-purple-600 dark:text-purple-300">breakpoints, flexible layouts, and adaptive components</strong> to create seamless experiences across all devices.
                     </p>
                   </div>
                 </div>
@@ -174,21 +174,21 @@ export default function Responsive() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Mobile-First</strong>
                         <p className="text-sm text-muted-foreground">Start with mobile, enhance for larger screens</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Flexible Layouts</strong>
                         <p className="text-sm text-muted-foreground">Use CSS Grid and Flexbox for adaptable structures</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Progressive Enhancement</strong>
                         <p className="text-sm text-muted-foreground">Add complexity as screen space increases</p>
@@ -259,7 +259,7 @@ export default function Responsive() {
                     <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab("breakpoints")}>
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl w-fit">
-                          <Monitor className="h-8 w-8 text-blue-400" />
+                          <Monitor className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                         </div>
                         <CardTitle className="text-foreground">Breakpoints</CardTitle>
                         <CardDescription>Responsive breakpoint system for all devices</CardDescription>
@@ -275,7 +275,7 @@ export default function Responsive() {
                     <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab("layouts")}>
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl w-fit">
-                          <Grid3X3 className="h-8 w-8 text-green-400" />
+                          <Grid3X3 className="h-8 w-8 text-green-600 dark:text-green-400" />
                         </div>
                         <CardTitle className="text-foreground">Layouts</CardTitle>
                         <CardDescription>Flexible grid systems and layout patterns</CardDescription>
@@ -411,7 +411,7 @@ export default function Responsive() {
                             token: "sm:", 
                             description: "Phones and small devices",
                             icon: Smartphone,
-                            color: "text-blue-400"
+                            color: "text-blue-600 dark:text-blue-400"
                           },
                           { 
                             name: "Tablet", 
@@ -419,7 +419,7 @@ export default function Responsive() {
                             token: "md:", 
                             description: "Tablets and small laptops",
                             icon: Tablet,
-                            color: "text-green-400"
+                            color: "text-green-600 dark:text-green-400"
                           },
                           { 
                             name: "Desktop", 
@@ -484,7 +484,7 @@ export default function Responsive() {
                               className="text-muted-foreground hover:text-foreground"
                             >
                               {copiedCode === 'tailwind-breakpoints' ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-4 w-4" />
                               )}
@@ -550,21 +550,21 @@ export default function Responsive() {
                       <CardContent className="space-y-4">
                         <div className="space-y-3">
                           <div className="flex items-start gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                             <div>
                               <strong className="text-foreground">Design for mobile first</strong>
                               <p className="text-sm text-muted-foreground">Ensure core functionality works on small screens</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                             <div>
                               <strong className="text-foreground">Progressive enhancement</strong>
                               <p className="text-sm text-muted-foreground">Add features as screen space increases</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                             <div>
                               <strong className="text-foreground">Touch-friendly interactions</strong>
                               <p className="text-sm text-muted-foreground">Ensure adequate touch targets (44px minimum)</p>
@@ -582,21 +582,21 @@ export default function Responsive() {
                       <CardContent className="space-y-4">
                         <div className="space-y-3">
                           <div className="flex items-start gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                             <div>
                               <strong className="text-foreground">Optimise images</strong>
                               <p className="text-sm text-muted-foreground">Use responsive images and modern formats</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                             <div>
                               <strong className="text-foreground">Minimise HTTP requests</strong>
                               <p className="text-sm text-muted-foreground">Combine and compress assets</p>
                             </div>
                           </div>
                           <div className="flex items-start gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                             <div>
                               <strong className="text-foreground">Test on real devices</strong>
                               <p className="text-sm text-muted-foreground">Validate performance across different devices</p>
@@ -620,7 +620,7 @@ export default function Responsive() {
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <Link href="/design-system/tokens" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                           <div className="flex items-center gap-3 mb-2">
-                            <Grid3X3 className="h-5 w-5 text-blue-400" />
+                            <Grid3X3 className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                             <span className="font-medium text-foreground">Design Tokens</span>
                           </div>
                           <p className="text-sm text-muted-foreground">Spacing and breakpoint tokens</p>
@@ -628,7 +628,7 @@ export default function Responsive() {
                         
                         <Link href="/components" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                           <div className="flex items-center gap-3 mb-2">
-                            <Layers className="h-5 w-5 text-green-400" />
+                            <Layers className="h-5 w-5 text-green-600 dark:text-green-400" />
                             <span className="font-medium text-foreground">Components</span>
                           </div>
                           <p className="text-sm text-muted-foreground">Responsive component examples</p>

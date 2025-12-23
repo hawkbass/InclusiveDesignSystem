@@ -105,7 +105,7 @@ const components = [
           <CardDescription>Senior Software Engineer</CardDescription>
         </div>
       </div>
-      <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">Available</Badge>
+      <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300">Available</Badge>
     </div>
   </CardHeader>
 </Card>`,
@@ -123,7 +123,7 @@ const components = [
                 <CardDescription className="text-muted-foreground">Senior Software Engineer</CardDescription>
               </div>
             </div>
-            <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 animate-pulse">Available</Badge>
+            <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 animate-pulse">Available</Badge>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -192,13 +192,13 @@ const components = [
               <CardTitle className="text-lg text-foreground">Senior Frontend Developer</CardTitle>
                                 <CardDescription className="text-muted-foreground mt-1">Remote / London • Full-time</CardDescription>
             </div>
-            <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30">Active</Badge>
+            <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30">Active</Badge>
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
-              <PoundSterling className="h-4 w-4 text-green-400" />
+              <PoundSterling className="h-4 w-4 text-green-600 dark:text-green-400" />
               <span className="text-foreground/80">£95k - £120k</span>
             </div>
             <div className="flex items-center gap-2">
@@ -246,7 +246,7 @@ const components = [
               <span className="text-foreground/80">March 15, 2024 at 2:00 PM</span>
             </div>
             <div className="flex items-center gap-2">
-              <Video className="h-4 w-4 text-green-400" />
+              <Video className="h-4 w-4 text-green-600 dark:text-green-400" />
               <span className="text-foreground/80">Google Meet</span>
             </div>
           </div>
@@ -315,7 +315,7 @@ const components = [
             </div>
             <span className={`text-sm ${
               item.status === 'completed' ? 'text-green-700 dark:text-green-300' :
-              item.status === 'current' ? 'text-blue-700 dark:text-blue-300' : 'text-muted-foreground'
+              item.status === 'current' ? 'text-blue-700 dark:text-blue-600 dark:text-blue-300' : 'text-muted-foreground'
             }`}>{item.step}</span>
           </div>
         ))}
@@ -327,19 +327,19 @@ const components = [
     title: "Skill Tags Component",
     description: "Interactive skill badges with proficiency levels",
     code: `<div className="flex flex-wrap gap-2">
-  <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300">React</Badge>
-  <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">Node.js</Badge>
-  <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300">TypeScript</Badge>
+  <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300">React</Badge>
+  <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300">Node.js</Badge>
+  <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-600 dark:text-purple-600 dark:text-purple-300">TypeScript</Badge>
 </div>`,
     component: (
       <div className="w-full max-w-md">
         <div className="flex flex-wrap gap-2">
           {[
-            { skill: "React", level: "Expert", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30" },
-            { skill: "Node.js", level: "Advanced", colour: "bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30" },
-            { skill: "TypeScript", level: "Expert", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-300 hover:bg-purple-500/30" },
-            { skill: "Python", level: "Intermediate", colour: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/30" },
-            { skill: "AWS", level: "Advanced", colour: "bg-orange-500/20 text-orange-700 dark:text-orange-300 hover:bg-orange-500/30" }
+            { skill: "React", level: "Expert", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 hover:bg-blue-500/30" },
+            { skill: "Node.js", level: "Advanced", colour: "bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30" },
+            { skill: "TypeScript", level: "Expert", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-600 dark:text-purple-600 dark:text-purple-300 hover:bg-purple-500/30" },
+            { skill: "Python", level: "Intermediate", colour: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-600 dark:text-yellow-300 hover:bg-yellow-500/30" },
+            { skill: "AWS", level: "Advanced", colour: "bg-orange-500/20 text-orange-700 dark:text-orange-600 dark:text-orange-300 hover:bg-orange-500/30" }
           ].map((item, index) => (
             <Badge key={index} className={`${item.colour} hover:scale-105 transition-transform cursor-pointer`} style={{ transitionDuration: 'var(--animation-speed)' }}>
               {item.skill}
@@ -388,14 +388,14 @@ const components = [
         <CardContent className="p-4">
           <div className="flex items-center gap-3">
             <Avatar className="ring-2 ring-slate-600">
-              <AvatarFallback className="bg-blue-500/20 text-blue-700 dark:text-blue-300">JD</AvatarFallback>
+              <AvatarFallback className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300">JD</AvatarFallback>
             </Avatar>
             <div>
               <h4 className="font-medium text-foreground">John Doe</h4>
               <p className="text-sm text-muted-foreground">Hiring Manager</p>
               <div className="flex items-center gap-1 mt-1">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span className="text-xs text-green-700 dark:text-green-300">Online</span>
+                <span className="text-xs text-green-700 dark:text-green-600 dark:text-green-300">Online</span>
               </div>
             </div>
           </div>
@@ -549,16 +549,16 @@ const components = [
     title: "Experience Level Indicator",
     description: "Visual experience level classification",
     code: `<div className="flex items-center gap-2">
-  <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">Senior</Badge>
+  <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300">Senior</Badge>
   <span className="text-sm">5+ years experience</span>
 </div>`,
     component: (
       <div className="w-full max-w-md space-y-3">
         {[
-          { level: "Entry", years: "0-2 years", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30", icon: <User className="h-4 w-4" /> },
-          { level: "Mid", years: "3-5 years", colour: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/30", icon: <Users className="h-4 w-4" /> },
-          { level: "Senior", years: "5+ years", colour: "bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30", icon: <Shield className="h-4 w-4" /> },
-          { level: "Lead", years: "8+ years", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-300 hover:bg-purple-500/30", icon: <Star className="h-4 w-4" /> }
+          { level: "Entry", years: "0-2 years", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 hover:bg-blue-500/30", icon: <User className="h-4 w-4" /> },
+          { level: "Mid", years: "3-5 years", colour: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-600 dark:text-yellow-300 hover:bg-yellow-500/30", icon: <Users className="h-4 w-4" /> },
+          { level: "Senior", years: "5+ years", colour: "bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30", icon: <Shield className="h-4 w-4" /> },
+          { level: "Lead", years: "8+ years", colour: "bg-purple-500/20 text-purple-700 dark:text-purple-600 dark:text-purple-600 dark:text-purple-300 hover:bg-purple-500/30", icon: <Star className="h-4 w-4" /> }
         ].map((item, index) => (
           <div key={index} className="flex items-center justify-between p-2 bg-card/30 rounded-lg">
             <div className="flex items-center gap-3">
@@ -584,10 +584,10 @@ const components = [
     component: (
       <div className="w-full max-w-md space-y-3">
         {[
-          { status: "Available immediately", colour: "bg-green-400", textColor: "text-green-700 dark:text-green-300" },
-          { status: "Available in 2 weeks", colour: "bg-yellow-400", textColor: "text-yellow-700 dark:text-yellow-300" },
-          { status: "Available in 1 month", colour: "bg-orange-400", textColor: "text-orange-700 dark:text-orange-300" },
-          { status: "Not actively looking", colour: "bg-red-400", textColor: "text-red-700 dark:text-red-300" }
+          { status: "Available immediately", colour: "bg-green-400", textColor: "text-green-700 dark:text-green-600 dark:text-green-300" },
+          { status: "Available in 2 weeks", colour: "bg-yellow-400", textColor: "text-yellow-700 dark:text-yellow-600 dark:text-yellow-300" },
+          { status: "Available in 1 month", colour: "bg-orange-400", textColor: "text-orange-700 dark:text-orange-600 dark:text-orange-300" },
+          { status: "Not actively looking", colour: "bg-red-400", textColor: "text-red-700 dark:text-red-600 dark:text-red-300" }
         ].map((item, index) => (
           <div key={index} className="flex items-center gap-3 p-2 bg-card/30 rounded-lg">
             <div className={`w-3 h-3 ${item.colour} rounded-full animate-pulse`}></div>
@@ -687,7 +687,7 @@ const components = [
         <div className="grid grid-cols-2 gap-3">
           {[
             { name: "Sarah Johnson", exp: "5 years", rating: 4.8, initials: "SJ", colour: "bg-fuchsia-500/20 text-primary" },
-            { name: "Michael Kim", exp: "3 years", rating: 4.5, initials: "MK", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-300" }
+            { name: "Michael Kim", exp: "3 years", rating: 4.5, initials: "MK", colour: "bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300" }
           ].map((candidate, index) => (
             <Card key={index} className="bg-card/60 border-border/50 hover:border-primary/50 transition-all" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <CardContent className="p-4 text-center">
@@ -735,11 +735,11 @@ const components = [
               checked={item.met} 
               className={item.met ? "data-[state=checked]:bg-green-500" : ""}
             />
-            <span className={`text-sm flex-1 ${item.met ? 'text-green-700 dark:text-green-300' : 'text-muted-foreground'}`}>
+            <span className={`text-sm flex-1 ${item.met ? 'text-green-700 dark:text-green-600 dark:text-green-300' : 'text-muted-foreground'}`}>
               {item.requirement}
             </span>
             {item.met ? (
-              <CheckCircle2 className="h-4 w-4 text-green-400" />
+              <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
             ) : (
               <X className="h-4 w-4 text-red-400" />
             )}
@@ -826,7 +826,7 @@ const components = [
             <SelectItem value="offer" className="hover:bg-accent/50 hover:text-primary focus:bg-muted/50 focus:text-primary py-3">
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-green-400 rounded-full flex-shrink-0"></div>
-                <PoundSterling className="h-4 w-4 text-green-400 flex-shrink-0" />
+                <PoundSterling className="h-4 w-4 text-green-600 dark:text-green-400 flex-shrink-0" />
                 <div className="flex-1">
                   <div className="font-medium text-foreground">Offer Extended</div>
                   <div className="text-xs text-muted-foreground">Job offer sent to candidate</div>
@@ -863,7 +863,7 @@ const components = [
         <h4 className="font-medium">Referred by John Doe</h4>
         <p className="text-sm text-muted-foreground">Engineering Team</p>
       </div>
-      <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30">$500 Bonus</Badge>
+      <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30">$500 Bonus</Badge>
     </div>
   </CardContent>
 </Card>`,
@@ -873,14 +873,14 @@ const components = [
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Avatar className="ring-2 ring-slate-600">
-                <AvatarFallback className="bg-green-500/20 text-green-700 dark:text-green-300">JD</AvatarFallback>
+                <AvatarFallback className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300">JD</AvatarFallback>
               </Avatar>
               <div>
                 <h4 className="font-medium text-foreground">Referred by John Doe</h4>
                 <p className="text-sm text-muted-foreground">Engineering Team</p>
               </div>
             </div>
-            <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30">£400 Bonus</Badge>
+            <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30">£400 Bonus</Badge>
           </div>
           <div className="mt-3 pt-3 border-t border-border">
             <div className="text-xs text-muted-foreground">Referral Status: Qualified</div>
@@ -1017,7 +1017,7 @@ export function RecruitmentComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Recruitment Components</h2>
             <p className="text-muted-foreground">Specialised components for talent acquisition and candidate management</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

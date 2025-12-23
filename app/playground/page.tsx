@@ -939,7 +939,7 @@ function ComponentPlayground() {
         <Card className="bg-card/50 border-border/50">
           <CardHeader>
             <CardTitle className="text-foreground flex items-center gap-3">
-              <Eye className="h-5 w-5 text-green-400" />
+              <Eye className="h-5 w-5 text-green-600 dark:text-green-400" />
               Live Preview
             </CardTitle>
             <CardDescription>See your component changes in real-time</CardDescription>
@@ -958,7 +958,7 @@ function ComponentPlayground() {
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="text-foreground flex items-center gap-3">
-                <Code2 className="h-5 w-5 text-blue-400" />
+                <Code2 className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 Generated Code
               </CardTitle>
               <CardDescription>Copy the code for your selected framework</CardDescription>
@@ -998,7 +998,7 @@ function ComponentPlayground() {
         <Card className="bg-card/50 border-border/50">
           <CardHeader>
             <CardTitle className="text-foreground flex items-center gap-3">
-              <Shield className="h-5 w-5 text-green-400" />
+              <Shield className="h-5 w-5 text-green-600 dark:text-green-400" />
               Accessibility
             </CardTitle>
             <CardDescription>Built-in accessibility features</CardDescription>
@@ -1116,7 +1116,7 @@ export default function PlaygroundPage() {
                 <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="text-foreground flex items-center gap-3">
-                      <PlayCircle className="h-5 w-5 text-green-400" />
+                      <PlayCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
                       How It Works
                     </CardTitle>
                   </CardHeader>
@@ -1142,7 +1142,7 @@ export default function PlaygroundPage() {
                 <Card className="bg-card/30 border-border/50">
                   <CardHeader>
                     <CardTitle className="text-foreground flex items-center gap-3">
-                      <Code2 className="h-5 w-5 text-blue-400" />
+                      <Code2 className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                       Code Generation
                     </CardTitle>
                   </CardHeader>
@@ -1163,7 +1163,7 @@ export default function PlaygroundPage() {
                       </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">TypeScript:</span>
-                        <span className="text-green-400">Supported</span>
+                        <span className="text-green-600 dark:text-green-400">Supported</span>
                       </div>
                     </div>
                   </CardContent>

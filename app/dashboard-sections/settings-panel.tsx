@@ -347,7 +347,7 @@ export function SettingsPanel({
           <Button
             variant="outline"
             size="sm"
-            className="border-red-700/50 text-red-300 hover:bg-red-500/10"
+            className="border-red-700/50 text-red-600 dark:text-red-300 hover:bg-red-500/10"
             onClick={() => setShowDeleteAccountModal(true)}
           >
             <Trash2 className="h-4 w-4 mr-2" />

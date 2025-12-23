@@ -45,17 +45,17 @@ const components = [
     title: "Status Badges",
     description: "Colorful badges for status and labels",
     code: `<div className="flex gap-2">
-  <Badge className="bg-green-500/20 text-green-300">Active</Badge>
-  <Badge className="bg-yellow-500/20 text-yellow-300">Pending</Badge>
-  <Badge className="bg-red-500/20 text-red-300">Inactive</Badge>
+  <Badge className="bg-green-500/20 text-green-600 dark:text-green-300">Active</Badge>
+  <Badge className="bg-yellow-500/20 text-yellow-600 dark:text-yellow-300">Pending</Badge>
+  <Badge className="bg-red-500/20 text-red-600 dark:text-red-300">Inactive</Badge>
 </div>`,
     component: (
       <div className="flex flex-wrap gap-2">
-        <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Active</Badge>
-        <Badge className="bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 border-yellow-500/30 hover:bg-yellow-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Under Review</Badge>
-        <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Interview</Badge>
-        <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/30 hover:bg-purple-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Hired</Badge>
-        <Badge className="bg-red-500/20 text-red-700 dark:text-red-300 border-red-500/30 hover:bg-red-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Rejected</Badge>
+        <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Active</Badge>
+        <Badge className="bg-yellow-500/20 text-yellow-700 dark:text-yellow-600 dark:text-yellow-300 border-yellow-500/30 hover:bg-yellow-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Under Review</Badge>
+        <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Interview</Badge>
+        <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30 hover:bg-purple-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Hired</Badge>
+        <Badge className="bg-red-500/20 text-red-700 dark:text-red-600 dark:text-red-300 border-red-500/30 hover:bg-red-500/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>Rejected</Badge>
       </div>
     )
   },
@@ -300,7 +300,7 @@ const components = [
           {[
             { icon: User, label: "Profile", colour: "text-blue-400" },
             { icon: Settings, label: "Settings", colour: "text-muted-foreground" },
-            { icon: Search, label: "Search", colour: "text-green-400" },
+            { icon: Search, label: "Search", colour: "text-green-600 dark:text-green-400" },
             { icon: Filter, label: "Filter", colour: "text-purple-400" },
             { icon: Download, label: "Download", colour: "text-orange-400" },
             { icon: Upload, label: "Upload", colour: "text-cyan-400" },
@@ -339,13 +339,13 @@ const components = [
     title: "Security Badges",
     description: "Security and verification indicators",
     code: `<div className="flex items-center gap-2">
-  <Shield className="h-4 w-4 text-green-400" />
+  <Shield className="h-4 w-4 text-green-600 dark:text-green-400" />
   <span className="text-sm">Verified</span>
 </div>`,
     component: (
       <div className="space-y-4 w-full max-w-md">
         <div className="flex items-center gap-3 p-3 bg-card/30 rounded-lg">
-          <Shield className="h-5 w-5 text-green-400" />
+          <Shield className="h-5 w-5 text-green-600 dark:text-green-400" />
           <div>
             <span className="text-sm font-medium text-foreground">Verified Account</span>
             <p className="text-xs text-muted-foreground">Email and phone verified</p>
@@ -366,15 +366,15 @@ const components = [
           </div>
         </div>
         <div className="flex gap-2">
-          <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30">
+          <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 border-green-500/30">
             <Shield className="h-3 w-3 mr-1" />
             Secure
           </Badge>
-          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30">
             <Lock className="h-3 w-3 mr-1" />
             Encrypted
           </Badge>
-          <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-500/30">
+          <Badge className="bg-purple-500/20 text-purple-700 dark:text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30">
             <CheckCircle2 className="h-3 w-3 mr-1" />
             Verified
           </Badge>
@@ -405,7 +405,7 @@ export function UtilityComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Utility Components</h2>
             <p className="text-muted-foreground">Helper components and utility elements</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>

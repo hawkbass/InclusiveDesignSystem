@@ -347,7 +347,7 @@ export default function Theming() {
                       Theming allows you to <strong className="text-primary">customise the entire visual appearance</strong> of the design system while maintaining consistency and accessibility.
                     </p>
                     <p>
-                      Unlike design tokens (which define the values), theming provides <strong className="text-purple-300">complete visual control and user personalisation</strong> options.
+                      Unlike design tokens (which define the values), theming provides <strong className="text-purple-600 dark:text-purple-600 dark:text-purple-300">complete visual control and user personalisation</strong> options.
                     </p>
                   </div>
                 </div>
@@ -360,7 +360,7 @@ export default function Theming() {
                   </CardHeader>
                   <CardContent className="space-y-3">
                     <div className="flex items-start gap-3">
-                      <Target className="h-5 w-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                      <Target className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Design Tokens</strong>
                         <p className="text-sm text-muted-foreground">Define the foundational values (colours, spacing, typography)</p>
@@ -374,7 +374,7 @@ export default function Theming() {
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Settings className="h-5 w-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <Settings className="h-5 w-5 text-green-600 dark:text-green-400 mt-0.5 flex-shrink-0" />
                       <div>
                         <strong className="text-foreground">Customisation</strong>
                         <p className="text-sm text-muted-foreground">Lets users personalise the appearance to their preferences</p>
@@ -445,7 +445,7 @@ export default function Theming() {
                     <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab("themes")}>
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-xl w-fit">
-                          <Palette className="h-8 w-8 text-blue-400" />
+                          <Palette className="h-8 w-8 text-blue-600 dark:text-blue-400" />
                         </div>
                         <CardTitle className="text-foreground">Built-in Themes</CardTitle>
                         <CardDescription>Pre-designed theme options</CardDescription>
@@ -477,7 +477,7 @@ export default function Theming() {
                     <Card className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab("implementation")}>
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl w-fit">
-                          <Zap className="h-8 w-8 text-green-400" />
+                          <Zap className="h-8 w-8 text-green-600 dark:text-green-400" />
                         </div>
                         <CardTitle className="text-foreground">Implementation</CardTitle>
                         <CardDescription>How to integrate themes in your project</CardDescription>
@@ -652,7 +652,7 @@ export default function Theming() {
 
                         <Button className="w-full" onClick={() => handleCopyCode(`--colour-primary: ${customPrimary};\n--colour-secondary: ${customSecondary};`, 'custom-colours')}>
                           {copiedCode === 'custom-colours' ? (
-                            <CheckCircle2 className="h-4 w-4 mr-2 text-green-400" />
+                            <CheckCircle2 className="h-4 w-4 mr-2 text-green-600 dark:text-green-400" />
                           ) : (
                             <Copy className="h-4 w-4 mr-2" />
                           )}
@@ -728,7 +728,7 @@ export default function Theming() {
                               className="text-muted-foreground hover:text-foreground"
                             >
                               {copiedCode === 'css-theme' ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-4 w-4" />
                               )}
@@ -769,7 +769,7 @@ export default function Theming() {
                               className="text-muted-foreground hover:text-foreground"
                             >
                               {copiedCode === 'js-theme' ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-4 w-4" />
                               )}
@@ -803,7 +803,7 @@ setTheme(savedTheme);`}
                       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                         <Link href="/design-system/tokens" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                           <div className="flex items-center gap-3 mb-2">
-                            <Target className="h-5 w-5 text-blue-400" />
+                            <Target className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                             <span className="font-medium text-foreground">Design Tokens</span>
                           </div>
                           <p className="text-sm text-muted-foreground">Foundational values used in themes</p>
@@ -811,7 +811,7 @@ setTheme(savedTheme);`}
                         
                         <Link href="/components" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:bg-card/70 transition-colors">
                           <div className="flex items-center gap-3 mb-2">
-                            <Layers className="h-5 w-5 text-green-400" />
+                            <Layers className="h-5 w-5 text-green-600 dark:text-green-400" />
                             <span className="font-medium text-foreground">Components</span>
                           </div>
                           <p className="text-sm text-muted-foreground">See themes applied to components</p>

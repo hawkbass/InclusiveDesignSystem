@@ -131,7 +131,7 @@ export function AtomsSection({
                           onClick={() => onCopyCode(typo.class, `typo-${typo.name}`)}
                         >
                           {copiedCode === `typo-${typo.name}` ? (
-                            <CheckCircle2 className="h-4 w-4 text-green-400" />
+                            <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                           ) : (
                             <Copy className="h-4 w-4" />
                           )}
@@ -187,7 +187,7 @@ export function AtomsSection({
                         onClick={() => onCopyCode(spacing.class, `spacing-${spacing.name}`)}
                       >
                         {copiedCode === `spacing-${spacing.name}` ? (
-                          <CheckCircle2 className="h-4 w-4 text-green-400" />
+                          <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                         ) : (
                           <Copy className="h-4 w-4" />
                         )}
@@ -239,7 +239,7 @@ export function AtomsSection({
                         onClick={() => onCopyCode(shadow.class, `shadow-${shadow.name}`)}
                       >
                         {copiedCode === `shadow-${shadow.name}` ? (
-                          <CheckCircle2 className="h-4 w-4 text-green-400" />
+                          <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                         ) : (
                           <Copy className="h-4 w-4" />
                         )}
@@ -290,7 +290,7 @@ export function AtomsSection({
                         onClick={() => onCopyCode(effect.class, `effect-${effect.name}`)}
                       >
                         {copiedCode === `effect-${effect.name}` ? (
-                          <CheckCircle2 className="h-4 w-4 text-green-400" />
+                          <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                         ) : (
                           <Copy className="h-4 w-4" />
                         )}

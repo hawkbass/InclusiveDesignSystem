@@ -228,7 +228,7 @@ export function SpecializedMoleculesSection({
           </div>
           <div className="flex items-end gap-2">
             <span className="text-lg font-bold text-foreground">2,847</span>
-            <div className="flex items-center text-xs text-green-400">
+            <div className="flex items-center text-xs text-green-600 dark:text-green-400">
               <TrendingUp className="h-3 w-3 mr-1" />
               +12%
             </div>
@@ -428,7 +428,7 @@ function App() {
   const categoryColors = {
     Interactive: "border-fuchsia-600 text-primary",
     Navigation: "border-blue-600 text-blue-400", 
-    "User Experience": "border-green-600 text-green-400",
+    "User Experience": "border-green-600 text-green-600 dark:text-green-400",
     "Data Visualization": "border-purple-600 text-purple-400",
     "Data Display": "border-cyan-600 text-cyan-400",
     "Visual Effects": "border-orange-600 text-orange-400",
@@ -436,9 +436,9 @@ function App() {
   }
 
   const complexityColors = {
-    Low: "bg-green-500/20 text-green-300",
-    Medium: "bg-yellow-500/20 text-yellow-300",
-    High: "bg-red-500/20 text-red-300"
+    Low: "bg-green-500/20 text-green-600 dark:text-green-300",
+    Medium: "bg-yellow-500/20 text-yellow-600 dark:text-yellow-300",
+    High: "bg-red-500/20 text-red-600 dark:text-red-300"
   }
 
   return (
@@ -557,7 +557,7 @@ function App() {
                         onClick={() => onCopyCode(molecule.code, molecule.id)}
                         className={`absolute top-2 right-2 ${
                           copiedCode === molecule.id
-                            ? 'border-green-500 text-green-400 bg-green-950' 
+                            ? 'border-green-500 text-green-600 dark:text-green-400 bg-green-950' 
                             : 'border-border hover:border-primary text-muted-foreground hover:text-foreground'
                         } transition-all`}
                       >

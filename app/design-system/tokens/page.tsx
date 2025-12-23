@@ -1,4 +1,4 @@
-﻿"use client"
+"use client"
 
 import { useState, useEffect, useMemo } from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
@@ -384,8 +384,8 @@ function getContrastRatio(foreground: string, background: string): number {
 
 // Check WCAG compliance
 function getWCAGLevel(ratio: number): { level: string; color: string } {
-  if (ratio >= 7) return { level: "AAA", color: "text-green-400" }
-  if (ratio >= 4.5) return { level: "AA", color: "text-blue-400" }
+  if (ratio >= 7) return { level: "AAA", color: "text-green-600 dark:text-green-400" }
+  if (ratio >= 4.5) return { level: "AA", color: "text-blue-600 dark:text-blue-400" }
   if (ratio >= 3) return { level: "AA Large", color: "text-amber-400" }
   return { level: "Fail", color: "text-red-400" }
 }
@@ -448,7 +448,7 @@ export default function Tokens() {
     <div className="flex bg-background min-h-screen">
       <UnifiedSidebar />
       
-      <main className="flex-1 overflow-auto">
+      <main className="relative z-10 flex-1 overflow-auto">
         <div className="flex flex-col min-h-screen">
           {/* Hero Header */}
           <header className="relative overflow-hidden bg-gradient-to-br from-background via-muted/30 to-background border-b border-border/50">
@@ -467,14 +467,14 @@ export default function Tokens() {
 
                 <div className="text-center mb-8">
                   <div className="flex items-center justify-center gap-3 mb-4">
-                    <Badge className="bg-green-500/20 text-green-300 border-green-500/30">
+                    <Badge className="bg-green-500/20 text-green-600 dark:text-green-600 dark:text-green-300 border-green-500/30">
                       <CheckCircle2 className="w-3 h-3 mr-1" />
                       Stable
                     </Badge>
-                    <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">
+                    <Badge className="bg-blue-500/20 text-blue-600 dark:text-blue-600 dark:text-blue-300 border-blue-500/30">
                       v2.1.0
                     </Badge>
-                    <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">
+                    <Badge className="bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30">
                       200+ tokens
                     </Badge>
                   </div>
@@ -495,11 +495,11 @@ export default function Tokens() {
                       <div className="text-sm text-muted-foreground">Colour Tokens</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-400">24</div>
+                      <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">24</div>
                       <div className="text-sm text-muted-foreground">Spacing Tokens</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-green-400">16</div>
+                      <div className="text-2xl font-bold text-green-600 dark:text-green-400">16</div>
                       <div className="text-sm text-muted-foreground">Typography Tokens</div>
                     </div>
                     <div className="text-center">
@@ -619,7 +619,7 @@ export default function Tokens() {
                             <CardHeader className="pb-3">
                               <div className="flex items-center gap-3">
                                 <div className="p-2 bg-blue-500/20 rounded-lg">
-                                  <Box className="h-5 w-5 text-blue-400" />
+                                  <Box className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                                 </div>
                                 <div>
                                   <CardTitle className="text-lg text-foreground">Tier 1: Reference</CardTitle>
@@ -691,7 +691,7 @@ export default function Tokens() {
                             <CardHeader className="pb-3">
                               <div className="flex items-center gap-3">
                                 <div className="p-2 bg-green-500/20 rounded-lg">
-                                  <Layers className="h-5 w-5 text-green-400" />
+                                  <Layers className="h-5 w-5 text-green-600 dark:text-green-400" />
                                 </div>
                                 <div>
                                   <CardTitle className="text-lg text-foreground">Tier 3: Component</CardTitle>
@@ -725,17 +725,17 @@ export default function Tokens() {
                         <h4 className="font-semibold text-foreground mb-4">Token Relationship Example</h4>
                         <div className="flex flex-wrap items-center gap-4">
                           <div className="p-3 bg-blue-500/10 rounded-lg border border-blue-500/30">
-                            <code className="text-sm text-blue-300">fuchsia-500</code>
+                            <code className="text-sm text-blue-600 dark:text-blue-600 dark:text-blue-300">fuchsia-500</code>
                             <div className="text-xs text-muted-foreground mt-1">Reference Token</div>
                           </div>
                           <ArrowRight className="h-4 w-4 text-muted-foreground" />
                           <div className="p-3 bg-purple-500/10 rounded-lg border border-purple-500/30">
-                            <code className="text-sm text-purple-300">color-action-primary</code>
+                            <code className="text-sm text-purple-600 dark:text-purple-600 dark:text-purple-300">color-action-primary</code>
                             <div className="text-xs text-muted-foreground mt-1">Semantic Token</div>
                           </div>
                           <ArrowRight className="h-4 w-4 text-muted-foreground" />
                           <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
-                            <code className="text-sm text-green-300">button-bg-primary</code>
+                            <code className="text-sm text-green-600 dark:text-green-600 dark:text-green-300">button-bg-primary</code>
                             <div className="text-xs text-muted-foreground mt-1">Component Token</div>
                           </div>
                         </div>
@@ -770,7 +770,7 @@ export default function Tokens() {
                             </div>
                             <p className="text-sm text-muted-foreground mb-3">{law.description}</p>
                             <div className="p-3 bg-green-500/10 rounded border border-green-500/30">
-                              <p className="text-sm text-green-300">{law.tokenSupport}</p>
+                              <p className="text-sm text-green-600 dark:text-green-600 dark:text-green-300">{law.tokenSupport}</p>
                             </div>
                             <div className="flex flex-wrap gap-2 mt-3">
                               {law.relatedTokens.map((token) => (
@@ -797,7 +797,7 @@ export default function Tokens() {
                       <div className="grid md:grid-cols-3 gap-6">
                         <div className="space-y-3">
                           <div className="flex items-center gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
                             <h4 className="font-semibold text-foreground">Single Source of Truth</h4>
                           </div>
                           <p className="text-sm text-muted-foreground">
@@ -806,7 +806,7 @@ export default function Tokens() {
                         </div>
                         <div className="space-y-3">
                           <div className="flex items-center gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
                             <h4 className="font-semibold text-foreground">Theme Flexibility</h4>
                           </div>
                           <p className="text-sm text-muted-foreground">
@@ -815,7 +815,7 @@ export default function Tokens() {
                         </div>
                         <div className="space-y-3">
                           <div className="flex items-center gap-3">
-                            <CheckCircle2 className="h-5 w-5 text-green-400" />
+                            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" />
                             <h4 className="font-semibold text-foreground">Component Isolation</h4>
                           </div>
                           <p className="text-sm text-muted-foreground">
@@ -862,7 +862,7 @@ export default function Tokens() {
                       <div className="flex items-center justify-between">
                         <div>
                           <CardTitle className="text-xl text-foreground flex items-center gap-3">
-                            <Palette className="h-5 w-5 text-blue-400" />
+                            <Palette className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                             Reference Tokens (Tier 1)
                           </CardTitle>
                           <CardDescription>Raw colour values - the foundation of our palette</CardDescription>
@@ -893,7 +893,7 @@ export default function Tokens() {
                                   <div className="flex items-center justify-between">
                                     <code className="text-xs text-foreground/80">{name}</code>
                                     {copiedCode === name ? (
-                                      <CheckCircle2 className="h-3 w-3 text-green-400" />
+                                      <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                                     ) : (
                                       <Copy className="h-3 w-3 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                                     )}
@@ -935,7 +935,7 @@ export default function Tokens() {
                               <div className="flex-1">
                                 <code className="text-sm text-foreground/80">{name}</code>
                                 {copiedCode === `semantic-${name}` && (
-                                  <CheckCircle2 className="inline-block h-3 w-3 text-green-400 ml-2" />
+                                  <CheckCircle2 className="inline-block h-3 w-3 text-green-600 dark:text-green-400 ml-2" />
                                 )}
                               </div>
                             </div>
@@ -954,7 +954,7 @@ export default function Tokens() {
                   <Card className="bg-card/30 border-border/50">
                     <CardHeader>
                       <CardTitle className="text-xl text-foreground flex items-center gap-3">
-                        <Contrast className="h-5 w-5 text-green-400" />
+                        <Contrast className="h-5 w-5 text-green-600 dark:text-green-400" />
                         Accessibility Contrast Checker
                       </CardTitle>
                       <CardDescription>WCAG 2.1 contrast ratio compliance for all colour combinations</CardDescription>
@@ -993,7 +993,7 @@ export default function Tokens() {
                                 </div>
                               </div>
                               {combo.ratio >= 4.5 ? (
-                                <div className="flex items-center gap-2 text-green-400 text-xs">
+                                <div className="flex items-center gap-2 text-green-600 dark:text-green-400 text-xs">
                                   <Check className="h-3 w-3" />
                                   Passes for normal text
                                 </div>
@@ -1020,7 +1020,7 @@ export default function Tokens() {
                   <Card className="bg-card/30 border-border/50">
                     <CardHeader>
                       <CardTitle className="text-2xl text-foreground flex items-center gap-3">
-                        <Grid3X3 className="h-6 w-6 text-green-400" />
+                        <Grid3X3 className="h-6 w-6 text-green-600 dark:text-green-400" />
                         Spacing Scale (8px Grid System)
                       </CardTitle>
                       <CardDescription>
@@ -1047,7 +1047,7 @@ export default function Tokens() {
                             </div>
                             <div className="opacity-0 group-hover:opacity-100 transition-opacity">
                               {copiedCode === `spacing-${name}` ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-4 w-4 text-muted-foreground" />
                               )}
@@ -1083,7 +1083,7 @@ export default function Tokens() {
                   <Card className="bg-card/30 border-border/50">
                     <CardHeader>
                       <CardTitle className="text-2xl text-foreground flex items-center gap-3">
-                        <Type className="h-6 w-6 text-blue-400" />
+                        <Type className="h-6 w-6 text-blue-600 dark:text-blue-400" />
                         Typography Scale
                       </CardTitle>
                       <CardDescription>
@@ -1113,7 +1113,7 @@ export default function Tokens() {
                               <div className="flex items-center gap-3">
                                 <code className="text-sm text-muted-foreground">{value}</code>
                                 {copiedCode === `font-${name}` ? (
-                                  <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                  <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                                 ) : (
                                   <Copy className="h-4 w-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                                 )}
@@ -1178,7 +1178,7 @@ export default function Tokens() {
                   <Card className="bg-card/30 border-border/50">
                     <CardHeader>
                       <CardTitle className="text-2xl text-foreground flex items-center gap-3">
-                        <Box className="h-6 w-6 text-green-400" />
+                        <Box className="h-6 w-6 text-green-600 dark:text-green-400" />
                         Component Tokens (Tier 3)
                       </CardTitle>
                       <CardDescription>
@@ -1208,7 +1208,7 @@ export default function Tokens() {
                                   <div className="flex items-center justify-between mb-2">
                                     <code className="text-sm font-medium text-foreground">{name}</code>
                                     {copiedCode === name ? (
-                                      <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                      <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                                     ) : (
                                       <Copy className="h-4 w-4 text-muted-foreground" />
                                     )}
@@ -1225,7 +1225,7 @@ export default function Tokens() {
                                   {(data as any).reference && (
                                     <div className="flex items-center gap-2 mt-2">
                                       <ArrowRight className="h-3 w-3 text-muted-foreground" />
-                                      <code className="text-xs text-blue-400">{(data as any).reference}</code>
+                                      <code className="text-xs text-blue-600 dark:text-blue-400">{(data as any).reference}</code>
                                     </div>
                                   )}
                                 </div>
@@ -1419,7 +1419,7 @@ export default function Tokens() {
                               onClick={() => handleCopyCode(generateExportCode(exportFormat), 'export-code')}
                             >
                               {copiedCode === 'export-code' ? (
-                                <CheckCircle2 className="h-4 w-4 text-green-400" />
+                                <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
                               ) : (
                                 <Copy className="h-4 w-4" />
                               )}
@@ -1482,14 +1482,14 @@ export default function Tokens() {
               <div className="grid md:grid-cols-3 gap-4">
                 <Link href="/design-system/principles" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:border-primary/50 transition-all">
                   <div className="flex items-center gap-3 mb-2">
-                    <Target className="h-5 w-5 text-blue-400" />
+                    <Target className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                     <span className="font-medium text-foreground">Design Principles</span>
                   </div>
                   <p className="text-sm text-muted-foreground">Learn the philosophy behind our token decisions</p>
                 </Link>
                 <Link href="/components" className="block p-4 bg-card/50 rounded-lg border border-border/50 hover:border-primary/50 transition-all">
                   <div className="flex items-center gap-3 mb-2">
-                    <Layers className="h-5 w-5 text-green-400" />
+                    <Layers className="h-5 w-5 text-green-600 dark:text-green-400" />
                     <span className="font-medium text-foreground">Components</span>
                   </div>
                   <p className="text-sm text-muted-foreground">See tokens in action within components</p>

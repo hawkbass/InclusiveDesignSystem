@@ -56,8 +56,8 @@ export function MoleculesSection({
       name: "Badge", 
       category: "Display",
       description: "Status indicators and labels with semantic colouring",
-      component: <Badge className="bg-green-500/20 text-green-300 text-xs">Active</Badge>,
-      code: `<Badge className="bg-green-500/20 text-green-300">Active</Badge>`,
+      component: <Badge className="bg-green-500/20 text-green-600 dark:text-green-300 text-xs">Active</Badge>,
+      code: `<Badge className="bg-green-500/20 text-green-600 dark:text-green-300">Active</Badge>`,
       variants: ["Default", "Success", "Warning", "Error", "Outline"],
       usage: "Status indicators, categories, labels"
     },
@@ -266,7 +266,7 @@ export function MoleculesSection({
           <div className="text-sm text-muted-foreground">Total Components</div>
         </div>
         <div className="bg-card/50 rounded-lg p-6 text-center border border-border/30">
-          <div className="text-3xl font-bold text-green-400">{advancedMolecules.filter(mol => mol.status === 'Production Ready').length}</div>
+          <div className="text-3xl font-bold text-green-600 dark:text-green-400">{advancedMolecules.filter(mol => mol.status === 'Production Ready').length}</div>
           <div className="text-sm text-muted-foreground">Production Ready</div>
         </div>
       </div>
@@ -342,7 +342,7 @@ export function MoleculesSection({
                       className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
                     >
                       {copiedCode === `basic-${index}` ? (
-                        <CheckCircle2 className="h-3 w-3 text-green-400" />
+                        <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                       ) : (
                         <Copy className="h-3 w-3" />
                       )}
@@ -381,8 +381,8 @@ export function MoleculesSection({
                     <div className="flex items-center gap-2 mb-2">
                       <CardTitle className="text-lg text-foreground">{molecule.name}</CardTitle>
                       <Badge className={`text-xs ${
-                        molecule.status === 'Production Ready' ? 'bg-green-500/20 text-green-300' :
-                        molecule.status === 'Beta' ? 'bg-yellow-500/20 text-yellow-300' :
+                        molecule.status === 'Production Ready' ? 'bg-green-500/20 text-green-600 dark:text-green-300' :
+                        molecule.status === 'Beta' ? 'bg-yellow-500/20 text-yellow-600 dark:text-yellow-300' :
                         'bg-slate-500/20 text-foreground/80'
                       }`}>
                         {molecule.status}
@@ -395,7 +395,7 @@ export function MoleculesSection({
                       <Badge className={`text-xs ${
                         molecule.complexity === 'Complex' ? 'bg-red-500/20 text-red-300' :
                         molecule.complexity === 'Advanced' ? 'bg-yellow-500/20 text-yellow-300' :
-                        'bg-green-500/20 text-green-300'
+                        'bg-green-500/20 text-green-600 dark:text-green-300'
                       }`}>
                         {molecule.complexity}
                       </Badge>
@@ -430,7 +430,7 @@ export function MoleculesSection({
                       className="absolute top-2 right-2 text-muted-foreground hover:text-foreground"
                     >
                       {copiedCode === `advanced-${index}` ? (
-                        <CheckCircle2 className="h-3 w-3 text-green-400" />
+                        <CheckCircle2 className="h-3 w-3 text-green-600 dark:text-green-400" />
                       ) : (
                         <Copy className="h-3 w-3" />
                       )}
@@ -472,7 +472,7 @@ export function MoleculesSection({
                   <Button 
                     size="sm" 
                     variant="outline" 
-                    className="flex-1 text-muted-foreground border-border hover:border-purple-500 hover:text-purple-300"
+                    className="flex-1 text-muted-foreground border-border hover:border-purple-500 hover:text-purple-600 dark:text-purple-600 dark:text-purple-300"
                     onClick={() => onCopyCode(molecule.codePreview, `source-${index}`)}
                   >
                     <Code className="h-3 w-3 mr-2" />

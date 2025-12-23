@@ -103,7 +103,7 @@ export function ComponentCard({
             
             {/* Status Indicators */}
             <div className="flex items-center gap-2 ml-4">
-              <Badge variant="outline" className="text-xs border-green-600/30 dark:border-green-400/30 text-green-700 dark:text-green-400">
+              <Badge variant="outline" className="text-xs border-green-600/30 dark:border-green-400/30 text-green-700 dark:text-green-600 dark:text-green-400">
                 <CheckCircle2 className="h-3 w-3 mr-1" />
                 Ready
               </Badge>
@@ -133,7 +133,7 @@ export function ComponentCard({
             >
               {copiedCode === id ? (
                 <>
-                  <Check className="h-4 w-4 mr-2 text-green-400" />
+                  <Check className="h-4 w-4 mr-2 text-green-600 dark:text-green-400" />
                   Copied!
                 </>
               ) : (
@@ -190,7 +190,7 @@ export function ComponentCard({
                       </div>
                       <div className="flex justify-between">
                         <span className="text-muted-foreground">Status:</span>
-                        <Badge variant="outline" className="text-xs border-green-600/30 dark:border-green-400/30 text-green-700 dark:text-green-400">
+                        <Badge variant="outline" className="text-xs border-green-600/30 dark:border-green-400/30 text-green-700 dark:text-green-600 dark:text-green-400">
                           <CheckCircle2 className="h-3 w-3 mr-1" />
                           Ready
                         </Badge>
@@ -362,7 +362,7 @@ export function ComponentCard({
               size="sm"
               variant="ghost"
               onClick={() => onToggleFavourite(id)}
-              className={`h-8 w-8 p-0 transition-all ${isFavourite ? 'text-red-400 hover:text-red-300' : 'text-muted-foreground hover:text-red-400'}`}
+              className={`h-8 w-8 p-0 transition-all ${isFavourite ? 'text-red-400 hover:text-red-600 dark:text-red-300' : 'text-muted-foreground hover:text-red-400'}`}
               style={{ transitionDuration: 'var(--animation-speed)' }}
               aria-label={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
             >

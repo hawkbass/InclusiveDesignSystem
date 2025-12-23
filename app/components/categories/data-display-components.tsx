@@ -61,9 +61,9 @@ const components = [
             </thead>
             <tbody>
               {[
-                { name: "Sarah Johnson", position: "Frontend Dev", status: "Active", statusColor: "bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30" },
-                { name: "Michael Kim", position: "Designer", status: "Review", statusColor: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-300 hover:bg-yellow-500/30" },
-                { name: "Alex Liu", position: "Full Stack", status: "Interview", statusColor: "bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30" }
+                { name: "Sarah Johnson", position: "Frontend Dev", status: "Active", statusColor: "bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30" },
+                { name: "Michael Kim", position: "Designer", status: "Review", statusColor: "bg-yellow-500/20 text-yellow-700 dark:text-yellow-600 dark:text-yellow-300 hover:bg-yellow-500/30" },
+                { name: "Alex Liu", position: "Full Stack", status: "Interview", statusColor: "bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 hover:bg-blue-500/30" }
               ].map((candidate, index) => (
                 <tr key={index} className="border-b border-border hover:bg-card/30 transition-all duration-300 rounded-lg" style={{ transitionDuration: 'var(--animation-speed)' }}>
                   <td className="py-3 px-4 text-foreground/80">{candidate.name}</td>
@@ -89,7 +89,7 @@ const components = [
       <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
         <Users className="h-6 w-6 text-blue-400" />
       </div>
-      <Badge className="bg-green-500/20 text-green-700 dark:text-green-300">+12%</Badge>
+      <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300">+12%</Badge>
     </div>
     <div className="text-2xl font-bold mt-4">1,234</div>
     <div className="text-sm text-muted-foreground">Total Candidates</div>
@@ -100,7 +100,7 @@ const components = [
         {[
           { title: "Total Candidates", value: "1,234", change: "+12%", icon: Users, colour: "text-blue-400", bgColor: "bg-blue-500/20" },
           { title: "Active Jobs", value: "89", change: "+8%", icon: Briefcase, colour: "text-purple-400", bgColor: "bg-purple-500/20" },
-          { title: "Interviews", value: "24", change: "+18%", icon: Calendar, colour: "text-green-400", bgColor: "bg-green-500/20" },
+          { title: "Interviews", value: "24", change: "+18%", icon: Calendar, colour: "text-green-600 dark:text-green-400", bgColor: "bg-green-500/20" },
           { title: "Avg. Time", value: "18 days", change: "-5 days", icon: Clock, colour: "text-orange-400", bgColor: "bg-orange-500/20" }
         ].map((metric, index) => (
           <Card key={index} className="bg-card/30 border-border hover:bg-card/50 transition-all group" style={{ transitionDuration: 'var(--animation-speed)' }}>
@@ -109,7 +109,7 @@ const components = [
                 <div className={`w-10 h-10 ${metric.bgColor} rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform`} style={{ transitionDuration: 'var(--animation-speed)' }}>
                   <metric.icon className={`h-5 w-5 ${metric.colour}`} />
                 </div>
-                <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 text-xs">
+                <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 border-green-500/30 hover:bg-green-500/30 text-xs">
                   {metric.change}
                 </Badge>
               </div>
@@ -136,7 +136,7 @@ const components = [
         <div className="grid grid-cols-3 gap-6">
           {[
             { value: "156", label: "Total Candidates", colour: "text-blue-400" },
-            { value: "89", label: "Active Applications", colour: "text-green-400" },
+            { value: "89", label: "Active Applications", colour: "text-green-600 dark:text-green-400" },
             { value: "34", label: "In Review", colour: "text-yellow-400" },
             { value: "23", label: "Interviewed", colour: "text-purple-400" },
             { value: "10", label: "Hired", colour: "text-emerald-400" },
@@ -204,7 +204,7 @@ const components = [
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 hover:bg-blue-500/30 text-xs">{item.status}</Badge>
+              <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 hover:bg-blue-500/30 text-xs">{item.status}</Badge>
               <Button size="sm" variant="outline" className="hover:bg-accent">{item.action}</Button>
             </div>
           </div>
@@ -272,7 +272,7 @@ const components = [
             <CardContent>
               <div className="flex items-end justify-between">
                 <div className="text-3xl font-bold text-foreground">{card.value}</div>
-                <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 hover:bg-green-500/30">{card.trend}</Badge>
+                <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 hover:bg-green-500/30">{card.trend}</Badge>
               </div>
             </CardContent>
           </Card>
@@ -312,15 +312,15 @@ const components = [
         <div className="flex flex-wrap gap-2 mt-3">
           <Badge className="bg-fuchsia-500/20 text-primary border-primary/30">
             Frontend
-            <button className="ml-1 hover:text-fuchsia-200">×</button>
+            <button className="ml-1 hover:text-fuchsia-700 dark:text-fuchsia-200">×</button>
           </Badge>
-          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30">
             Senior
-            <button className="ml-1 hover:text-blue-600 dark:hover:text-blue-200">×</button>
+            <button className="ml-1 hover:text-blue-600 dark:hover:text-blue-700 dark:text-blue-200">×</button>
           </Badge>
-          <Badge className="bg-green-500/20 text-green-700 dark:text-green-300 border-green-500/30 hover:bg-green-500/30">
+          <Badge className="bg-green-500/20 text-green-700 dark:text-green-600 dark:text-green-300 border-green-500/30 hover:bg-green-500/30">
             Remote
-            <button className="ml-1 hover:text-green-600 dark:hover:text-green-200">×</button>
+            <button className="ml-1 hover:text-green-600 dark:hover:text-green-700 dark:text-green-200">×</button>
           </Badge>
         </div>
       </div>
@@ -390,7 +390,7 @@ export function DataDisplayComponents({
             <h2 className="text-3xl font-bold mb-2 text-foreground">Data Display Components</h2>
             <p className="text-muted-foreground">Tables, charts, and data visualisation components</p>
           </div>
-          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
+          <Badge className="bg-blue-500/20 text-blue-700 dark:text-blue-600 dark:text-blue-300 border-blue-500/30 hover:bg-blue-500/30 px-3 py-1">
             {filteredComponents.length} Components
           </Badge>
         </div>
