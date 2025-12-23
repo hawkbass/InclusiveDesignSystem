@@ -37,7 +37,8 @@ export const initialCandidates: Candidate[] = [
     lastActivity: "2h ago",
     email: "oliver.smith@email.co.uk",
     phone: "+44 20 7946 0958",
-    portfolio: "oliversmith.design"
+    portfolio: "oliversmith.design",
+    cvUrl: "/cvs/1-oliver-smith-cv.pdf"
   },
   { 
     id: "2",
@@ -51,7 +52,8 @@ export const initialCandidates: Candidate[] = [
     location: "Manchester",
     lastActivity: "5h ago",
     email: "amelia.jones@email.co.uk",
-    phone: "+44 161 850 1234"
+    phone: "+44 161 850 1234",
+    cvUrl: "/cvs/2-amelia-jones-cv.pdf"
   },
   { 
     id: "3",
@@ -65,7 +67,8 @@ export const initialCandidates: Candidate[] = [
     location: "Birmingham",
     lastActivity: "1d ago",
     email: "harry.patel@email.co.uk",
-    phone: "+44 121 285 5678"
+    phone: "+44 121 285 5678",
+    cvUrl: "/cvs/3-harry-patel-cv.pdf"
   },
   { 
     id: "4",
@@ -79,7 +82,8 @@ export const initialCandidates: Candidate[] = [
     location: "Edinburgh",
     lastActivity: "3h ago",
     email: "sophie.williams@email.co.uk",
-    phone: "+44 131 496 7890"
+    phone: "+44 131 496 7890",
+    cvUrl: "/cvs/4-sophie-williams-cv.pdf"
   },
   { 
     id: "5",
@@ -93,7 +97,8 @@ export const initialCandidates: Candidate[] = [
     location: "Bristol",
     lastActivity: "4h ago",
     email: "james.thompson@email.co.uk",
-    phone: "+44 117 925 4567"
+    phone: "+44 117 925 4567",
+    cvUrl: "/cvs/5-james-thompson-cv.pdf"
   }
 ]
 

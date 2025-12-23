@@ -31,6 +31,7 @@ export function CreateJobModal({ open, onClose }: CreateJobModalProps) {
               size="sm"
               className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label="Close create job modal"
             >
               <X className="h-4 w-4" />
             </Button>
@@ -140,6 +141,7 @@ export function CreateJobModal({ open, onClose }: CreateJobModalProps) {
                 size="sm"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
                 onClick={onClose}
+                aria-label="Create new job posting"
               >
                 Create Job
               </Button>
@@ -149,6 +151,7 @@ export function CreateJobModal({ open, onClose }: CreateJobModalProps) {
               size="sm"
               className="text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label="Cancel creating job"
             >
               Cancel
             </Button>

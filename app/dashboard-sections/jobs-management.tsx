@@ -95,7 +95,7 @@ export function JobsManagement({
   const getStatusColor = (status: string) => {
     switch (status) {
       case "active":
-        return "bg-emerald-500/20 text-emerald-300 border-emerald-500/30"
+        return "bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 border-emerald-500/30"
       case "paused":
         return "bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/30"
       case "closed":
@@ -315,6 +315,7 @@ export function JobsManagement({
                     size="sm"
                     className="border-border/50 text-foreground/80 hover:bg-accent/50"
                     onClick={() => handleJobAction(job.id, "view-applicants")}
+                    aria-label={`View Applicants for ${job.title}`}
                   >
                     <Users className="h-4 w-4 mr-1" />
                     View Applicants
@@ -324,6 +325,7 @@ export function JobsManagement({
                     size="sm"
                     className="border-border/50 text-foreground/80 hover:bg-accent/50"
                     onClick={() => handleJobAction(job.id, "edit")}
+                    aria-label={`Edit ${job.title} job posting`}
                   >
                     <Edit className="h-4 w-4 mr-1" />
                     Edit
@@ -336,6 +338,7 @@ export function JobsManagement({
                       size="sm"
                       className="border-amber-700/50 text-amber-600 dark:text-amber-300 hover:bg-amber-500/10"
                       onClick={() => handleJobAction(job.id, "pause")}
+                      aria-label={`Pause ${job.title} job posting`}
                     >
                       <Pause className="h-4 w-4 mr-1" />
                       Pause
@@ -347,6 +350,7 @@ export function JobsManagement({
                       size="sm"
                       className="border-emerald-700/50 text-emerald-300 hover:bg-emerald-500/10"
                       onClick={() => handleJobAction(job.id, "activate")}
+                      aria-label={`Activate ${job.title} job posting`}
                     >
                       <CheckCircle className="h-4 w-4 mr-1" />
                       Activate
@@ -357,6 +361,7 @@ export function JobsManagement({
                     size="sm"
                     className="border-red-700/50 text-red-600 dark:text-red-300 hover:bg-red-500/10"
                     onClick={() => handleJobAction(job.id, "close")}
+                    aria-label={`Close ${job.title} job posting`}
                   >
                     <X className="h-4 w-4 mr-1" />
                     Close

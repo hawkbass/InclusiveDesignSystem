@@ -31,6 +31,64 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
+// Helper function for date formatting
+const getCurrentDate = () => {
+  return new Date().toISOString().split('T')[0]  // Returns YYYY-MM-DD format
+}
+
+/*
+ * CHANGELOG UPDATE WORKFLOW
+ * 
+ * When making major changes to the project, update this changelog:
+ * 
+ * 1. Add new entry to releases array at the TOP (index 0)
+ * 2. Use getCurrentDate() for date field (never hardcode dates)
+ * 3. Increment version number appropriately:
+ *    - Major: Breaking changes (1.0.0 -> 2.0.0)
+ *    - Minor: New features, backwards compatible (1.0.0 -> 1.1.0)
+ *    - Patch: Bug fixes (1.0.0 -> 1.0.1)
+ * 4. Fill in all required fields:
+ *    - version: Semantic version string
+ *    - date: Use getCurrentDate()
+ *    - type: "major" | "minor" | "patch"
+ *    - title: Brief release title
+ *    - description: One-sentence summary
+ *    - breaking: true if major version
+ *    - highlights: Array of 3-5 key features
+ *    - changes: Object with added/changed/fixed/deprecated arrays
+ * 5. Each change item needs: { title: string, description?: string }
+ * 
+ * Example:
+ * {
+ *   version: "2.2.0",
+ *   date: getCurrentDate(),
+ *   type: "minor",
+ *   title: "Accessibility Improvements",
+ *   description: "Comprehensive aria-label additions and EventDetailsModal enhancements.",
+ *   breaking: false,
+ *   highlights: [
+ *     "Project-wide aria-label implementation",
+ *     "Enhanced EventDetailsModal with CV links",
+ *     "Patterns page restructure"
+ *   ],
+ *   changes: {
+ *     added: [
+ *       { title: "Aria-labels on all buttons", description: "Screen reader support across entire project" },
+ *       { title: "CV viewing in EventDetailsModal", description: "Link to candidate CVs" }
+ *     ],
+ *     changed: [
+ *       { title: "Patterns page structure", description: "Separate pages for Forms and Navigation" }
+ *     ],
+ *     fixed: [
+ *       { title: "Patterns page layout", description: "Fixed broken section headers" },
+ *       { title: "Changelog dates", description: "Removed hardcoded dates, use current date" }
+ *     ],
+ *     deprecated: []
+ *   },
+ *   migration: null
+ * }
+ */
+
 // Release data - In production, this would come from an API or CMS
 const releases = [
   {

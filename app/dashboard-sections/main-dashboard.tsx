@@ -42,6 +42,7 @@ import { EditJobModal } from "./modals/EditJobModal"
 import { ScheduleInterviewModal } from "./modals/ScheduleInterviewModal"
 import { EventDetailsModal } from "./modals/EventDetailsModal"
 import { AddCandidateModal } from "./modals/AddCandidateModal"
+import { ViewApplicantsModal } from "./modals/ViewApplicantsModal"
 
 export function MainDashboard() {
   // Initialize all state
@@ -74,6 +75,7 @@ export function MainDashboard() {
   const [showCreateJobModal, setShowCreateJobModal] = useState(false)
   const [showJobDetailsModal, setShowJobDetailsModal] = useState(false)
   const [showEditJobModal, setShowEditJobModal] = useState(false)
+  const [showViewApplicantsModal, setShowViewApplicantsModal] = useState(false)
   const [selectedJob, setSelectedJob] = useState<Job | null>(null)
   const [jobFilter, setJobFilter] = useState("all")
   const [jobSearchTerm, setJobSearchTerm] = useState("")
@@ -84,8 +86,9 @@ export function MainDashboard() {
   const [showEventDetailsModal, setShowEventDetailsModal] = useState(false)
   const [selectedEvent, setSelectedEvent] = useState<CalendarEvent | null>(null)
   const [calendarView, setCalendarView] = useState<"month" | "week" | "day">("month")
-  const [selectedDate, setSelectedDate] = useState(15)
+  const [selectedDate, setSelectedDate] = useState(new Date().getDate())
   const [calendarFilter, setCalendarFilter] = useState("all")
+  const [calendarEvents, setCalendarEvents] = useState<Record<number, CalendarEvent[]>>(initialCalendarEvents)
 
   // Settings state
   const [activeSettingsTab, setActiveSettingsTab] = useState<SettingsTabType>("profile")
@@ -137,7 +140,8 @@ export function MainDashboard() {
 
     switch (action) {
       case "view-applicants":
-        // Handle view applicants
+        setSelectedJob(job)
+        setShowViewApplicantsModal(true)
         break
       case "edit":
         setSelectedJob(job)
@@ -263,6 +267,8 @@ export function MainDashboard() {
             setSelectedDate={setSelectedDate}
             calendarFilter={calendarFilter}
             setCalendarFilter={setCalendarFilter}
+            calendarEvents={calendarEvents}
+            setCalendarEvents={setCalendarEvents}
           />
         )
       case "settings":
@@ -344,6 +350,20 @@ export function MainDashboard() {
         candidate={selectedCandidate} 
         onClose={() => setShowScheduleModal(false)} 
         setNotifications={setNotifications}
+        onScheduleInterview={(event) => {
+          setCalendarEvents(prev => {
+            const eventDate = new Date(event.date)
+            const day = eventDate.getDate()
+            return {
+              ...prev,
+              [day]: [...(prev[day] || []), event]
+            }
+          })
+          setNotifications(prev => [
+            { id: Date.now(), type: "interview", message: `📅 Interview scheduled with ${event.candidate}`, time: "Just now", urgent: false },
+            ...prev.slice(0, 4)
+          ])
+        }}
       />
       <CandidateMoreActionsModal 
         open={showMoreActionsModal} 
@@ -354,8 +374,46 @@ export function MainDashboard() {
       <CreateJobModal open={showCreateJobModal} onClose={() => setShowCreateJobModal(false)} />
       <JobDetailsModal open={showJobDetailsModal} job={selectedJob} onClose={() => setShowJobDetailsModal(false)} />
       <EditJobModal open={showEditJobModal} job={selectedJob} onClose={() => setShowEditJobModal(false)} />
-      <ScheduleInterviewModal open={showScheduleInterviewModal} onClose={() => setShowScheduleInterviewModal(false)} />
-      <EventDetailsModal open={showEventDetailsModal} event={selectedEvent} onClose={() => setShowEventDetailsModal(false)} />
+      <ScheduleInterviewModal 
+        open={showScheduleInterviewModal} 
+        onClose={() => setShowScheduleInterviewModal(false)}
+        onScheduleInterview={(event) => {
+          setCalendarEvents(prev => {
+            const eventDate = new Date(event.date)
+            const day = eventDate.getDate()
+            return {
+              ...prev,
+              [day]: [...(prev[day] || []), event]
+            }
+          })
+          setNotifications(prev => [
+            { id: Date.now(), type: "interview", message: `📅 Interview scheduled with ${event.candidate}`, time: "Just now", urgent: false },
+            ...prev.slice(0, 4)
+          ])
+        }}
+      />
+      <EventDetailsModal 
+        open={showEventDetailsModal} 
+        event={selectedEvent} 
+        onClose={() => setShowEventDetailsModal(false)}
+        onCancelInterview={(eventId) => {
+          setCalendarEvents(prev => {
+            const updated = { ...prev }
+            Object.keys(updated).forEach(day => {
+              updated[day] = updated[day].map(e => 
+                e.id === eventId ? { ...e, status: "cancelled" as const } : e
+              )
+            })
+            return updated
+          })
+          if (selectedEvent) {
+            setNotifications(prev => [
+              { id: Date.now(), type: "system", message: `Interview with ${selectedEvent.candidate} cancelled`, time: "Just now", urgent: false },
+              ...prev.slice(0, 4)
+            ])
+          }
+        }}
+      />
       <AddCandidateModal 
         open={showAddCandidateModal} 
         onClose={() => setShowAddCandidateModal(false)} 
@@ -367,6 +425,12 @@ export function MainDashboard() {
             ...prev
           ])
         }}
+      />
+      <ViewApplicantsModal 
+        open={showViewApplicantsModal} 
+        job={selectedJob} 
+        onClose={() => setShowViewApplicantsModal(false)} 
+        handleCandidateAction={handleCandidateAction}
       />
     </div>
   )

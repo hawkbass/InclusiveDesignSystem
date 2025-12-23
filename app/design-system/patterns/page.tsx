@@ -284,8 +284,8 @@ export default function Patterns() {
                     {patternCategories.map((category) => (
                       <Card key={category.id} className="bg-card/50 border-border/50 hover:bg-card/70 transition-colors cursor-pointer" onClick={() => setActiveTab(category.id)}>
                         <CardHeader className="text-center">
-                          <div className={`mx-auto mb-4 p-3 bg-gradient-to-br ${category.color}/20 rounded-xl w-fit`}>
-                            <category.icon className={`h-8 w-8 text-${category.color.split('-')[1]}-400`} />
+                          <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-xl w-fit group-hover:scale-110 transition-transform duration-300">
+                            <category.icon className="h-8 w-8 text-primary" />
                           </div>
                           <CardTitle className="text-foreground">{category.name}</CardTitle>
                           <CardDescription>{category.description}</CardDescription>

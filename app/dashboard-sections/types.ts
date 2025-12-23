@@ -21,6 +21,7 @@ export interface Candidate {
   phone?: string
   portfolio?: string
   resume?: string
+  cvUrl?: string
 }
 
 export interface Job {

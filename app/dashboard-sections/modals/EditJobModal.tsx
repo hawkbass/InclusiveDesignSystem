@@ -32,6 +32,7 @@ export function EditJobModal({ open, job, onClose }: EditJobModalProps) {
               size="sm"
               className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label={`Close edit job modal for ${job.title}`}
             >
               <X className="h-4 w-4" />
             </Button>
@@ -139,6 +140,7 @@ export function EditJobModal({ open, job, onClose }: EditJobModalProps) {
             size="sm"
             className="bg-emerald-500 hover:bg-emerald-600 text-white"
             onClick={onClose}
+            aria-label={`Save changes to ${job.title}`}
           >
             Save Changes
           </Button>
@@ -147,6 +149,7 @@ export function EditJobModal({ open, job, onClose }: EditJobModalProps) {
             size="sm"
             className="text-muted-foreground hover:text-foreground/80"
             onClick={onClose}
+            aria-label={`Cancel editing ${job.title}`}
           >
             Cancel
           </Button>

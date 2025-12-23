@@ -31,6 +31,7 @@ export function JobDetailsModal({ open, job, onClose }: JobDetailsModalProps) {
               size="sm"
               className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label={`Close ${job.title} details modal`}
             >
               <X className="h-4 w-4" />
             </Button>
@@ -50,6 +51,7 @@ export function JobDetailsModal({ open, job, onClose }: JobDetailsModalProps) {
             size="sm"
             className="text-muted-foreground hover:text-foreground/80"
             onClick={onClose}
+            aria-label="Close modal"
           >
             Close
           </Button>

@@ -311,6 +311,7 @@ export function DashboardOverview({
                         size="sm"
                         className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
                         onClick={() => handleCandidateAction(candidate.id, "view")}
+                        aria-label={`View ${candidate.name} details`}
                       >
                         <Eye className="h-3.5 w-3.5" />
                       </Button>
@@ -319,6 +320,7 @@ export function DashboardOverview({
                         size="sm"
                         className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
                         onClick={() => handleCandidateAction(candidate.id, "email")}
+                        aria-label={`Send email to ${candidate.name}`}
                       >
                         <Mail className="h-3.5 w-3.5" />
                       </Button>
@@ -327,6 +329,7 @@ export function DashboardOverview({
                         size="sm"
                         className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
                         onClick={() => handleCandidateAction(candidate.id, "schedule")}
+                        aria-label={`Schedule interview with ${candidate.name}`}
                       >
                         <Calendar className="h-3.5 w-3.5" />
                       </Button>
@@ -335,6 +338,7 @@ export function DashboardOverview({
                         size="sm"
                         className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
                         onClick={() => handleCandidateAction(candidate.id, "more")}
+                        aria-label={`More actions for ${candidate.name}`}
                       >
                         <MoreVertical className="h-3.5 w-3.5" />
                       </Button>

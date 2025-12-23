@@ -33,6 +33,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
               size="sm"
               className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label={`Close email modal for ${candidate.name}`}
             >
               <X className="h-4 w-4" />
             </Button>
@@ -77,6 +78,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
                     ...prev.slice(0, 4)
                   ])
                 }}
+                aria-label={`Send email to ${candidate.name}`}
               >
                 <Mail className="h-3 w-3 mr-1" />
                 Send Email
@@ -85,6 +87,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
                 variant="outline"
                 size="sm"
                 className="border-border/50 text-foreground/80 hover:bg-accent/50"
+                aria-label="Save email draft"
               >
                 Save Draft
               </Button>
@@ -94,6 +97,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
               size="sm"
               className="text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label="Cancel sending email"
             >
               Cancel
             </Button>

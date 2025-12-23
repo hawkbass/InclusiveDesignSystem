@@ -38,6 +38,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
                 size="sm"
                 className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                 onClick={onClose}
+                aria-label={`Close ${candidate.name} details modal`}
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -102,6 +103,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
                   onClose()
                   handleCandidateAction(candidate.id, "email")
                 }}
+                aria-label={`Send email to ${candidate.name}`}
               >
                 <Mail className="h-3 w-3 mr-1" />
                 Send Email
@@ -114,6 +116,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
                   onClose()
                   handleCandidateAction(candidate.id, "schedule")
                 }}
+                aria-label={`Schedule interview with ${candidate.name}`}
               >
                 <Calendar className="h-3 w-3 mr-1" />
                 Schedule Interview
@@ -124,6 +127,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
               size="sm"
               className="text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label="Close modal"
             >
               Close
             </Button>

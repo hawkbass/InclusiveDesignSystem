@@ -1,9 +1,8 @@
 "use client"
 
-import React from "react"
+import React, { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { CalendarEvent, Filter, Plus, ChevronLeft, ChevronRight } from "lucide-react"
-import { initialCalendarEvents } from "./data"
 import { CalendarEvent as CalendarEventType } from "./types"
 
 interface CalendarIntegrationProps {
@@ -19,6 +18,8 @@ interface CalendarIntegrationProps {
   setSelectedDate: (date: number) => void
   calendarFilter: string
   setCalendarFilter: (filter: string) => void
+  calendarEvents: Record<number, CalendarEventType[]>
+  setCalendarEvents: (events: Record<number, CalendarEventType[]>) => void
 }
 
 export function CalendarIntegration({
@@ -33,20 +34,65 @@ export function CalendarIntegration({
   selectedDate,
   setSelectedDate,
   calendarFilter,
-  setCalendarFilter
+  setCalendarFilter,
+  calendarEvents,
+  setCalendarEvents
 }: CalendarIntegrationProps) {
-  const calendarEvents = initialCalendarEvents
+  const [currentMonth, setCurrentMonth] = useState(new Date().getMonth())
+  const [currentYear, setCurrentYear] = useState(new Date().getFullYear())
+  
+  const today = new Date()
+  const todayDate = today.getDate()
+  
+  const monthNames = ["January", "February", "March", "April", "May", "June", 
+    "July", "August", "September", "October", "November", "December"]
+  
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate()
+  const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay()
+  
+  const calendarDays = useMemo(() => {
+    const days: (number | null)[] = []
+    // Add empty cells for days before the first day of the month
+    for (let i = 0; i < firstDayOfMonth; i++) {
+      days.push(null)
+    }
+    // Add all days of the month
+    for (let i = 1; i <= daysInMonth; i++) {
+      days.push(i)
+    }
+    return days
+  }, [firstDayOfMonth, daysInMonth])
+  
+  const handlePreviousMonth = () => {
+    if (currentMonth === 0) {
+      setCurrentMonth(11)
+      setCurrentYear(currentYear - 1)
+    } else {
+      setCurrentMonth(currentMonth - 1)
+    }
+  }
+  
+  const handleNextMonth = () => {
+    if (currentMonth === 11) {
+      setCurrentMonth(0)
+      setCurrentYear(currentYear + 1)
+    } else {
+      setCurrentMonth(currentMonth + 1)
+    }
+  }
+  
+  const isCurrentMonth = currentMonth === today.getMonth() && currentYear === today.getFullYear()
 
   const getEventTypeColor = (type: string) => {
     switch (type) {
       case 'Technical':
-        return 'bg-blue-500/20 text-blue-300 border-blue-500/30'
+        return 'bg-blue-500/20 text-blue-600 dark:text-blue-300 border-blue-500/30'
       case 'First Round':
-        return 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30'
+        return 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 border-emerald-500/30'
       case 'Second Round':
-        return 'bg-amber-500/20 text-amber-300 border-amber-500/30'
+        return 'bg-amber-500/20 text-amber-600 dark:text-amber-300 border-amber-500/30'
       case 'Final Round':
-        return 'bg-purple-500/20 text-purple-600 dark:text-purple-600 dark:text-purple-300 border-purple-500/30'
+        return 'bg-purple-500/20 text-purple-600 dark:text-purple-300 border-purple-500/30'
       case 'Portfolio Review':
         return 'bg-pink-500/20 text-pink-600 dark:text-pink-300 border-pink-500/30'
       default:
@@ -65,9 +111,6 @@ export function CalendarIntegration({
     }
   }
 
-  const calendarDays = Array.from({ length: 31 }, (_, i) => i + 1)
-  const currentMonth = "December 2024"
-
   return (
     <div className="space-y-4">
       {/* Header */}
@@ -81,6 +124,7 @@ export function CalendarIntegration({
             variant="outline"
             size="sm"
             className="border-border/50 text-foreground/80 hover:bg-accent/50"
+            aria-label="Filter calendar events"
           >
             <Filter className="h-4 w-4 mr-2" />
             Filter
@@ -89,6 +133,7 @@ export function CalendarIntegration({
             size="sm"
             className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
             onClick={() => setShowScheduleInterviewModal(true)}
+            aria-label="Schedule new interview"
           >
             <Plus className="h-4 w-4 mr-2" />
             Schedule Interview
@@ -105,14 +150,18 @@ export function CalendarIntegration({
                 variant="ghost"
                 size="sm"
                 className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
+                onClick={handlePreviousMonth}
+                aria-label="Previous month"
               >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
-              <h3 className="text-lg font-medium text-foreground">{currentMonth}</h3>
+              <h3 className="text-lg font-medium text-foreground">{monthNames[currentMonth]} {currentYear}</h3>
               <Button
                 variant="ghost"
                 size="sm"
                 className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
+                onClick={handleNextMonth}
+                aria-label="Next month"
               >
                 <ChevronRight className="h-4 w-4" />
               </Button>
@@ -130,6 +179,7 @@ export function CalendarIntegration({
                       ? 'bg-fuchsia-500/20 text-primary' 
                       : 'text-muted-foreground hover:text-foreground/80'
                   }`}
+                  aria-label={`Switch to ${view} view`}
                 >
                   {view.charAt(0).toUpperCase() + view.slice(1)}
                 </button>
@@ -148,10 +198,21 @@ export function CalendarIntegration({
           ))}
 
           {/* Calendar Days */}
-          {calendarDays.map((day) => {
-            const dayEvents = calendarEvents[day] || []
-            const isSelected = selectedDate === day
-            const isToday = day === 15 // December 15th is "today"
+          {calendarDays.map((day, index) => {
+            if (day === null) {
+              return <div key={`empty-${index}`} className="p-2 min-h-[80px]" />
+            }
+            
+            // Get events for this day, but only show if they're in the current month/year
+            const dayEvents = (calendarEvents[day] || []).filter(event => {
+              if (!event.date) return true // Legacy events without date field
+              const eventDate = new Date(event.date)
+              return eventDate.getMonth() === currentMonth && 
+                     eventDate.getFullYear() === currentYear
+            })
+            
+            const isSelected = selectedDate === day && isCurrentMonth
+            const isToday = isCurrentMonth && day === todayDate
             
             return (
               <button
@@ -161,7 +222,8 @@ export function CalendarIntegration({
                   isSelected 
                     ? 'bg-fuchsia-500/20 border-primary/50' 
                     : 'hover:bg-accent/30'
-                }`}
+                } ${!isCurrentMonth ? 'opacity-40' : ''}`}
+                aria-label={`${day} ${monthNames[currentMonth]} ${currentYear}${dayEvents.length > 0 ? `, ${dayEvents.length} ${dayEvents.length === 1 ? 'event' : 'events'}` : ''}`}
               >
                 <div className={`text-sm font-medium mb-1 ${
                   isToday ? 'text-primary' : 'text-foreground'
@@ -182,6 +244,16 @@ export function CalendarIntegration({
                         e.stopPropagation()
                         setSelectedEvent(event)
                         setShowEventDetailsModal(true)
+                      }}
+                      role="button"
+                      tabIndex={0}
+                      aria-label={`View ${event.candidate} interview at ${event.time}`}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault()
+                          setSelectedEvent(event)
+                          setShowEventDetailsModal(true)
+                        }
                       }}
                     >
                       <div className="font-medium truncate">{event.candidate}</div>

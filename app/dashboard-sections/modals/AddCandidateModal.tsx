@@ -35,6 +35,7 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
             size="sm"
             className="h-6 w-6 p-0"
             onClick={onClose}
+            aria-label="Close add candidate modal"
           >
             <X className="h-4 w-4" />
           </Button>
@@ -59,6 +60,7 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
               size="sm"
               className="flex-1 text-foreground/80 border-border/50 bg-card/50 hover:bg-accent/50 h-8 text-xs"
               onClick={onClose}
+              aria-label="Cancel adding candidate"
             >
               Cancel
             </Button>
@@ -67,6 +69,7 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
               size="sm"
               className="flex-1 bg-fuchsia-500 hover:bg-fuchsia-600 h-8 text-xs"
               disabled={!name || !position || !email}
+              aria-label="Add candidate"
             >
               Add Candidate
             </Button>

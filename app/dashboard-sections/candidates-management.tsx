@@ -214,6 +214,7 @@ export function CandidatesManagement({
             size="sm"
             className="border-border/50 text-foreground/80 hover:bg-accent/50"
             onClick={handleExportCandidates}
+            aria-label="Export candidates list"
           >
             <Download className="h-4 w-4 mr-2" />
             Export
@@ -222,6 +223,7 @@ export function CandidatesManagement({
             size="sm"
             className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
             onClick={() => setShowAddCandidateModal(true)}
+            aria-label="Add new candidate"
           >
             <Plus className="h-4 w-4 mr-2" />
             Add Candidate
@@ -245,6 +247,7 @@ export function CandidatesManagement({
                   ? 'border-primary/50 bg-fuchsia-500/10'
                   : 'border-border/50 bg-muted/30 hover:border-border/50'
               }`}
+              aria-label={`Filter by ${stage.label} stage`}
             >
               <div className={`text-base sm:text-lg font-bold mb-1 ${
                 candidateStageFilter === stage.key ? 'text-primary' : 'text-foreground'
@@ -282,6 +285,7 @@ export function CandidatesManagement({
               size="sm"
               className="border-border/50 text-foreground/80 hover:bg-accent/50 w-full sm:w-auto"
               onClick={() => setShowFilterDropdown(!showFilterDropdown)}
+              aria-label="Open advanced filters"
             >
               <Filter className="h-4 w-4 mr-2" />
               Filters
@@ -332,6 +336,7 @@ export function CandidatesManagement({
                       size="sm"
                       className="text-muted-foreground hover:text-foreground/80"
                       onClick={() => setShowFilterDropdown(false)}
+                      aria-label="Clear all filters"
                     >
                       Clear All
                     </Button>
@@ -339,6 +344,7 @@ export function CandidatesManagement({
                       size="sm"
                       className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
                       onClick={() => setShowFilterDropdown(false)}
+                      aria-label="Apply filters"
                     >
                       Apply Filters
                     </Button>
@@ -359,6 +365,7 @@ export function CandidatesManagement({
               <button
                 onClick={handleSelectAll}
                 className="text-muted-foreground hover:text-foreground/80 transition-colours"
+                aria-label={selectedCandidateIds.size === paginatedCandidates.length ? "Deselect all candidates" : "Select all candidates"}
               >
                 {selectedCandidateIds.size === paginatedCandidates.length ? (
                   <CheckSquare className="h-4 w-4 text-primary" />
@@ -378,6 +385,7 @@ export function CandidatesManagement({
                   size="sm"
                   className="h-8 text-xs text-primary hover:bg-fuchsia-500/10"
                   onClick={() => handleFilterAction("email")}
+                  aria-label={`Email ${selectedCandidateIds.size} selected candidates`}
                 >
                   <Mail className="h-3 w-3 mr-1" />
                   Email
@@ -387,6 +395,7 @@ export function CandidatesManagement({
                   size="sm"
                   className="h-8 text-xs text-primary hover:bg-fuchsia-500/10"
                   onClick={() => handleFilterAction("schedule")}
+                  aria-label={`Schedule interviews for ${selectedCandidateIds.size} selected candidates`}
                 >
                   <Calendar className="h-3 w-3 mr-1" />
                   Schedule
@@ -396,6 +405,7 @@ export function CandidatesManagement({
                   size="sm"
                   className="h-8 text-xs text-red-400 hover:bg-red-500/10"
                   onClick={() => handleFilterAction("reject")}
+                  aria-label={`Reject ${selectedCandidateIds.size} selected candidates`}
                 >
                   <X className="h-3 w-3 mr-1" />
                   Reject
@@ -419,6 +429,7 @@ export function CandidatesManagement({
                   <button
                     onClick={() => handleSelectCandidate(candidate.id)}
                     className="text-muted-foreground hover:text-foreground/80 transition-colours"
+                    aria-label={selectedCandidateIds.has(candidate.id) ? `Deselect ${candidate.name}` : `Select ${candidate.name}`}
                   >
                     {selectedCandidateIds.has(candidate.id) ? (
                       <CheckSquare className="h-4 w-4 text-primary" />
@@ -484,6 +495,7 @@ export function CandidatesManagement({
                       size="sm"
                       className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                       onClick={() => handleCandidateAction(candidate.id, "view")}
+                      aria-label={`View ${candidate.name} details`}
                     >
                       <Eye className="h-4 w-4" />
                     </Button>
@@ -492,6 +504,7 @@ export function CandidatesManagement({
                       size="sm"
                       className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                       onClick={() => handleCandidateAction(candidate.id, "email")}
+                      aria-label={`Send email to ${candidate.name}`}
                     >
                       <Mail className="h-4 w-4" />
                     </Button>
@@ -500,6 +513,7 @@ export function CandidatesManagement({
                       size="sm"
                       className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                       onClick={() => handleCandidateAction(candidate.id, "schedule")}
+                      aria-label={`Schedule interview with ${candidate.name}`}
                     >
                       <Calendar className="h-4 w-4" />
                     </Button>
@@ -508,6 +522,7 @@ export function CandidatesManagement({
                       size="sm"
                       className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
                       onClick={() => handleCandidateAction(candidate.id, "more")}
+                      aria-label={`More actions for ${candidate.name}`}
                     >
                       <MoreVertical className="h-4 w-4" />
                     </Button>

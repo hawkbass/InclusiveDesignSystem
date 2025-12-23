@@ -39,12 +39,9 @@ export function ThemeBackground() {
     ).matches
   }, [])
 
-  // Main effect - dark mode canvas animation
+  // Main effect - canvas animation for both light and dark modes
   useEffect(() => {
     if (!mounted) return
-    
-    // Light mode uses CSS-only background, no canvas needed
-    if (resolvedTheme === "light") return
 
     const canvas = canvasRef.current
     if (!canvas) return
@@ -95,12 +92,18 @@ export function ThemeBackground() {
             : layer === 1 
               ? Math.random() * 1.2 + 0.4 // Mid: 0.4-1.6px
               : Math.random() * 1.5 + 0.5, // Near: 0.5-2.0px
-          // Opacity varies by layer - far stars dimmer
-          opacity: layer === 0
-            ? Math.random() * 0.3 + 0.1   // Far: 10-40%
-            : layer === 1
-              ? Math.random() * 0.4 + 0.2 // Mid: 20-60%
-              : Math.random() * 0.5 + 0.3, // Near: 30-80%
+          // Opacity varies by layer and theme - lighter stars in light mode
+          opacity: resolvedTheme === "light"
+            ? layer === 0
+              ? Math.random() * 0.15 + 0.05   // Light mode far: 5-20%
+              : layer === 1
+                ? Math.random() * 0.2 + 0.1   // Light mode mid: 10-30%
+                : Math.random() * 0.25 + 0.15 // Light mode near: 15-40%
+            : layer === 0
+              ? Math.random() * 0.3 + 0.1   // Dark mode far: 10-40%
+              : layer === 1
+                ? Math.random() * 0.4 + 0.2 // Dark mode mid: 20-60%
+                : Math.random() * 0.5 + 0.3, // Dark mode near: 30-80%
           // Speed 50% slower than original, varies by layer
           speed: (Math.random() * 0.15 + 0.05) * (layer + 1) * 0.5,
           // Slower twinkle for subtlety
@@ -110,10 +113,15 @@ export function ThemeBackground() {
       }
     }
 
-    // Draw function for dark mode stars
+    // Draw function for stars (theme-aware)
     const draw = (time: number) => {
       if (!ctx || !canvas) return
       ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+      // Star color based on theme - darker in light mode for subtlety
+      const starColor = resolvedTheme === "light" 
+        ? "rgba(0, 0, 0, "  // Dark specks in light mode
+        : "rgba(255, 255, 255, " // White stars in dark mode
 
       particles.forEach((p) => {
         // Twinkle effect using sine wave
@@ -123,7 +131,7 @@ export function ThemeBackground() {
         // Draw star
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity})`
+        ctx.fillStyle = `${starColor}${currentOpacity})`
         ctx.fill()
 
         // Add subtle glow for larger stars (near layer only)
@@ -131,7 +139,7 @@ export function ThemeBackground() {
         if (p.size > 1.2 && p.layer === 2) {
           ctx.beginPath()
           ctx.arc(p.x, p.y, p.size * 2, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(255, 255, 255, ${currentOpacity * 0.15})`
+          ctx.fillStyle = `${starColor}${currentOpacity * 0.15})`
           ctx.fill()
         }
       })
@@ -202,30 +210,17 @@ export function ThemeBackground() {
     }
   }, [mounted, resolvedTheme])
 
+  // Reinitialize particles when theme changes
+  useEffect(() => {
+    if (!mounted || !canvasRef.current) return
+    // Trigger resize to reinitialize particles with new theme settings
+    window.dispatchEvent(new Event('resize'))
+  }, [resolvedTheme, mounted])
+
   // Early return if not mounted (SSR)
   if (!mounted) return null
 
-  // Light mode: CSS-only subtle gradient background
-  // NO canvas animation - this is the fix for the distracting orbs
-  if (resolvedTheme === "light") {
-    return (
-      <div
-        className="fixed inset-0 -z-10 pointer-events-none"
-        style={{
-          // Subtle, professional gradient - no animation
-          // Replaces the distracting colored orbs
-          background: `
-            radial-gradient(ellipse at 20% 20%, hsl(271 81% 97% / 0.5) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 80%, hsl(199 89% 97% / 0.4) 0%, transparent 50%),
-            linear-gradient(to bottom, hsl(0 0% 99%) 0%, hsl(220 14% 98%) 100%)
-          `,
-        }}
-        aria-hidden="true"
-      />
-    )
-  }
-
-  // Dark mode: Canvas with animated stars
+  // Both modes: Canvas with animated stars (dark specks in light mode, white stars in dark mode)
   return (
     <canvas
       ref={canvasRef}

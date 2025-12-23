@@ -445,7 +445,7 @@ export default function Tokens() {
     return null
   }
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex min-h-screen">
       <UnifiedSidebar />
       
       <main className="relative z-10 flex-1 overflow-auto">
@@ -1168,6 +1168,40 @@ export default function Tokens() {
                             </p>
                             <code className="text-xs text-primary/80 mt-3 block">font-family: font-mono</code>
                           </div>
+                        </div>
+                      </div>
+
+                      {/* Typography Scale Names */}
+                      <div className="mt-8">
+                        <h4 className="text-xl font-semibold text-foreground mb-3">Typography Scale Names</h4>
+                        <p className="text-muted-foreground mb-6">
+                          Our typography system uses semantic names that correspond to specific use cases and hierarchy levels.
+                        </p>
+                        
+                        <div className="space-y-4">
+                          {[
+                            { name: "Display", class: "text-6xl font-bold", example: "Display Text", usage: "Hero headings, marketing headlines" },
+                            { name: "Heading 1", class: "text-4xl font-bold", example: "Heading 1", usage: "Page titles, major sections" },
+                            { name: "Heading 2", class: "text-3xl font-semibold", example: "Heading 2", usage: "Section titles, card headers" },
+                            { name: "Heading 3", class: "text-2xl font-semibold", example: "Heading 3", usage: "Subsection titles" },
+                            { name: "Heading 4", class: "text-xl font-medium", example: "Heading 4", usage: "Minor headings, list titles" },
+                            { name: "Body Large", class: "text-lg", example: "Body Large Text", usage: "Lead paragraphs, emphasized content" },
+                            { name: "Body", class: "text-base", example: "Body Text", usage: "Default body text, paragraphs" },
+                            { name: "Body Small", class: "text-sm", example: "Body Small Text", usage: "Secondary text, captions" },
+                            { name: "Caption", class: "text-xs font-medium", example: "Caption Text", usage: "Image captions, metadata" },
+                            { name: "Label", class: "text-xs font-semibold uppercase tracking-wide", example: "Label Text", usage: "Form labels, UI labels" }
+                          ].map((typo) => (
+                            <div key={typo.name} className="p-4 bg-card/50 rounded-lg border border-border/50">
+                              <div className="flex items-start justify-between mb-2">
+                                <div>
+                                  <h5 className="font-semibold text-foreground">{typo.name}</h5>
+                                  <p className="text-sm text-muted-foreground">{typo.usage}</p>
+                                </div>
+                                <code className="text-xs bg-muted px-2 py-1 rounded">{typo.class}</code>
+                              </div>
+                              <div className={`${typo.class} text-foreground mb-2`}>{typo.example}</div>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </CardContent>

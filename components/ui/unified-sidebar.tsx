@@ -72,13 +72,6 @@ const mainNavigation = [
     description: "Design system overview",
   },
   { 
-    href: "/components", 
-    label: "Components", 
-    icon: ComponentIcon, 
-    description: "Browse component library",
-    badge: "102+"
-  },
-  { 
     href: "/playground", 
     label: "Playground", 
     icon: Play, 
@@ -166,6 +159,25 @@ const foundationsItems = [
   },
 ]
 
+// Components section - Component library and style guide
+const componentsItems = [
+  { 
+    href: "/components", 
+    label: "Component Library", 
+    icon: ComponentIcon,
+    description: "Browse 102+ components",
+    badge: "102+",
+    status: "stable" as const,
+  },
+  { 
+    href: "/style-guide", 
+    label: "Style Guide", 
+    icon: Palette,
+    description: "Visual references and tokens",
+    status: "stable" as const,
+  },
+]
+
 // Patterns - Common solutions
 const patternsItems = [
   { 
@@ -176,14 +188,14 @@ const patternsItems = [
     status: "stable" as const,
   },
   { 
-    href: "/design-system/patterns#forms", 
+    href: "/design-system/patterns/forms", 
     label: "Forms", 
     icon: FileText,
     description: "Form layouts and validation",
     status: "stable" as const,
   },
   { 
-    href: "/design-system/patterns#navigation", 
+    href: "/design-system/patterns/navigation", 
     label: "Navigation", 
     icon: LayoutDashboard,
     description: "Navigation patterns",
@@ -204,12 +216,6 @@ const resourcesItems = [
     label: "Best Practices", 
     icon: Award,
     description: "Implementation tips",
-  },
-  { 
-    href: "/style-guide", 
-    label: "Style Guide", 
-    icon: LayoutDashboard,
-    description: "Visual references",
   },
 ]
 
@@ -242,7 +248,7 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
   const pathname = usePathname()
   const { theme, resolvedTheme } = useTheme()
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [expandedSections, setExpandedSections] = useState<string[]>(["get-started", "foundations"])
+  const [expandedSections, setExpandedSections] = useState<string[]>(["components", "get-started", "foundations"])
   const [favourites, setFavourites] = useState<Set<string>>(new Set())
   const [mounted, setMounted] = useState(false)
 
@@ -494,6 +500,14 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
 
       {/* Scrollable Content */}
       <div className="flex-1 overflow-y-auto px-3 py-4 space-y-4">
+        {/* Components */}
+        <CollapsibleSection
+          id="components"
+          title="Components"
+          items={componentsItems}
+          defaultExpanded
+        />
+
         {/* Product - ATS Demo */}
         <CollapsibleSection
           id="product"
@@ -552,6 +566,7 @@ export function UnifiedSidebar({ animationSpeed = [1], className }: UnifiedSideb
             <div className="space-y-0.5">
               {Array.from(favourites).slice(0, 5).map((href) => {
                 const allItems = [
+                  ...componentsItems,
                   ...foundationsItems,
                   ...patternsItems,
                   ...resourcesItems,

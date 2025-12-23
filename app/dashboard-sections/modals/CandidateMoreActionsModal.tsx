@@ -41,6 +41,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
               size="sm"
               className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
               onClick={onClose}
+              aria-label={`Close more actions modal for ${candidate.name}`}
             >
               <X className="h-4 w-4" />
             </Button>
@@ -60,6 +61,7 @@ export function CandidateMoreActionsModal({ open, candidate, onClose, setNotific
                     ...prev.slice(0, 4)
                   ])
                 }}
+                aria-label={`${action.label} for ${candidate.name}`}
               >
                 <div className={`${action.colour}`}>{action.icon}</div>
                 <span className="text-foreground/80">{action.label}</span>
