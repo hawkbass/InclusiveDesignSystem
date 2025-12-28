@@ -278,11 +278,9 @@ export default function RoadmapPage() {
             </CardContent>
           </Card>
         </div>
-      </main>
-    </div>
 
-    {/* Feature Voting System */}
-    <section className="px-6 lg:px-12 py-8">
+        {/* Feature Voting System */}
+        <section className="px-6 lg:px-12 py-8">
       <div className="max-w-7xl mx-auto">
         <Card className="bg-card/30 border-border/50 mb-8">
           <CardHeader>
@@ -392,7 +390,9 @@ export default function RoadmapPage() {
           </CardContent>
         </Card>
       </div>
-    </section>
+        </section>
+      </main>
+    </div>
   )
 }
 
