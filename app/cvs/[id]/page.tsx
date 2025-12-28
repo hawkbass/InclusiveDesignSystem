@@ -1,12 +1,30 @@
-"use client"
-
-import { use } from "react"
-import { initialCandidates } from "@/app/dashboard-sections/data"
+import { initialCandidates } from "@/app/dashboard-sections/data-server"
 import type { Candidate } from "@/app/dashboard-sections/types"
 import { FileText, Mail, Phone, MapPin, Briefcase, GraduationCap, Award, Code, Globe } from "lucide-react"
+import { PrintButton, PrintStyles } from "./print-button"
 
 interface CVPageProps {
   params: Promise<{ id: string }>
+}
+
+// Generate static params for all candidate CVs
+// This function runs at build time to pre-generate all CV pages
+export function generateStaticParams() {
+  return initialCandidates.map((candidate) => {
+    // Extract the ID from cvUrl if it exists, otherwise generate it
+    // cvUrl format: "/cvs/1-oliver-smith-cv.pdf"
+    if (candidate.cvUrl) {
+      // Extract just the filename part (e.g., "1-oliver-smith-cv.pdf")
+      const filename = candidate.cvUrl.split('/').pop() || ''
+      // Keep the .pdf extension to match the actual URL format
+      return { id: filename }
+    }
+    // Fallback: generate URL-friendly ID from candidate data with .pdf extension
+    const nameSlug = candidate.name.toLowerCase().replace(/\s+/g, '-')
+    return {
+      id: `${candidate.id}-${nameSlug}-cv.pdf`
+    }
+  })
 }
 
 // Generate realistic work history based on candidate
@@ -103,10 +121,10 @@ function generateCertifications(candidate: Candidate) {
   return certs
 }
 
-export default function CVPage({ params }: CVPageProps) {
-  const resolvedParams = use(params)
+export default async function CVPage({ params }: CVPageProps) {
+  const resolvedParams = await params
   
-  // Extract candidate ID from URL (e.g., "1-oliver-smith-cv" -> "1")
+  // Extract candidate ID from URL (e.g., "1-oliver-smith-cv.pdf" -> "1")
   const id = resolvedParams.id
   const candidateId = id.split("-")[0]
   const candidate = initialCandidates.find(c => c.id === candidateId)
@@ -250,26 +268,11 @@ export default function CVPage({ params }: CVPageProps) {
         
         {/* Print button - hidden in print */}
         <div className="mt-6 print:hidden">
-          <button
-            onClick={() => window.print()}
-            className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
-          >
-            Print CV
-          </button>
+          <PrintButton />
         </div>
       </div>
       
-      <style jsx global>{`
-        @media print {
-          body {
-            background: white;
-          }
-          .print\\:hidden {
-            display: none;
-          }
-        }
-      `}</style>
+      <PrintStyles />
     </div>
   )
 }
-
