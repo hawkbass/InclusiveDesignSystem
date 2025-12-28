@@ -44,6 +44,8 @@ import {
   BarChart3
 } from "lucide-react"
 import Link from "next/link"
+import { adoptionMetrics, performanceBenchmarks, systemHealth, getMetricsByCategory } from "@/app/data/metrics-data"
+import { getTopComponents } from "@/app/data/metrics-data"
 
 export default function Overview() {
   const [mounted, setMounted] = useState(false)
@@ -333,7 +335,7 @@ export default function Overview() {
                 </p>
               </div>
 
-              {/* Metrics Grid */}
+              {/* Metrics Grid - Enhanced with real data */}
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 {Object.entries(systemMetrics).map(([key, metric]) => {
                   const IconComponent = metric.icon
@@ -440,6 +442,108 @@ export default function Overview() {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+          </section>
+
+          {/* Component Usage Analytics */}
+          <section className="mb-16">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">
+                  <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Component Usage Analytics
+                  </span>
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Most used components across all projects
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {getTopComponents(6).map((component) => (
+                  <Card key={component.componentId} className="bg-card/50 border-border/50 hover:border-primary/30 transition-colors">
+                    <CardContent className="p-4">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-semibold text-foreground">{component.componentName}</span>
+                        {component.trending && (
+                          <Badge className="bg-primary/10 text-primary border-primary/30 text-xs">
+                            Trending
+                          </Badge>
+                        )}
+                      </div>
+                      <div className="space-y-1 text-xs">
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Usage:</span>
+                          <span className="text-foreground font-medium">{component.usageCount.toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Projects:</span>
+                          <span className="text-foreground font-medium">{component.projectsUsing}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-muted-foreground">Adoption:</span>
+                          <span className="text-foreground font-medium">{Math.round(component.adoptionRate * 100)}%</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Performance Benchmarks */}
+          <section className="mb-16">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold mb-4">
+                  <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                    Performance Benchmarks
+                  </span>
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  System performance metrics and targets
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {performanceBenchmarks.map((benchmark) => (
+                  <Card key={benchmark.id} className="bg-card/50 border-border/50">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-sm font-medium text-foreground">{benchmark.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                          <span className="text-2xl font-bold text-foreground">
+                            {benchmark.value}{benchmark.unit}
+                          </span>
+                          <Badge 
+                            variant="outline" 
+                            className={`text-xs ${
+                              benchmark.status === "pass" 
+                                ? "border-green-500/30 text-green-600 dark:text-green-400"
+                                : benchmark.status === "warning"
+                                ? "border-amber-500/30 text-amber-600 dark:text-amber-400"
+                                : "border-red-500/30 text-red-600 dark:text-red-400"
+                            }`}
+                          >
+                            {benchmark.status}
+                          </Badge>
+                        </div>
+                        <div className="text-xs text-muted-foreground">
+                          Target: {benchmark.target}{benchmark.unit}
+                        </div>
+                        <Progress 
+                          value={(benchmark.value / benchmark.target) * 100} 
+                          className="h-1"
+                        />
+                        <p className="text-xs text-muted-foreground">{benchmark.description}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </section>
 

@@ -27,7 +27,7 @@ export function AddCandidateModal({ open, onClose, onAddCandidate }: AddCandidat
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-md w-[95vw] sm:w-full max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-center mb-4">
           <h4 className="text-lg font-medium text-foreground">Add New Candidate</h4>
           <Button

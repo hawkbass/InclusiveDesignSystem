@@ -18,7 +18,8 @@ import {
   Search,
   X,
   Copy,
-  CheckCircle2
+  CheckCircle2,
+  Download
 } from "lucide-react"
 
 // Import modular sections
@@ -281,6 +282,120 @@ export default function StyleGuide() {
                 )}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Interactive Atom Explorer */}
+        <section className="px-6 lg:px-12 py-8">
+          <div className="max-w-7xl mx-auto">
+            <Card className="bg-card/30 border-border/50 mb-8">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                  <Palette className="h-6 w-6 text-primary" />
+                  Interactive Atom Explorer
+                </CardTitle>
+                <CardDescription>
+                  Explore design atoms with live previews and contrast checking
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                      <Label>Color Picker</Label>
+                      <Input
+                        type="color"
+                        defaultValue="#d946ef"
+                        className="h-12 w-full"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Contrast Checker</Label>
+                      <div className="p-4 bg-card border border-border rounded-lg">
+                        <div className="text-sm text-muted-foreground mb-2">Contrast Ratio</div>
+                        <div className="text-2xl font-bold text-foreground">4.8:1</div>
+                        <Badge className="mt-2 bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30">
+                          WCAG AA Pass
+                        </Badge>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Copy CSS Variable</Label>
+                      <Button variant="outline" className="w-full">
+                        <Copy className="h-4 w-4 mr-2" />
+                        Copy --primary
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
+                    <div className="text-sm font-medium text-foreground mb-2">Live Preview</div>
+                    <div className="space-y-2">
+                      <div className="h-12 bg-primary rounded flex items-center justify-center text-primary-foreground">
+                        Primary Color
+                      </div>
+                      <div className="h-12 bg-accent rounded flex items-center justify-center text-accent-foreground">
+                        Accent Color
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Molecule Builder */}
+            <Card className="bg-card/30 border-border/50">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                  <Layers className="h-6 w-6 text-primary" />
+                  Molecule Builder
+                </CardTitle>
+                <CardDescription>
+                  Combine atoms to build molecules with live preview
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h4 className="font-medium text-foreground">Available Atoms</h4>
+                      <div className="space-y-2">
+                        {["Button", "Input", "Label", "Badge", "Icon"].map((atom) => (
+                          <div
+                            key={atom}
+                            className="p-3 bg-card/50 border border-border/50 rounded-lg cursor-move hover:border-primary/50 transition-colors"
+                          >
+                            <div className="flex items-center justify-between">
+                              <span className="text-sm font-medium text-foreground">{atom}</span>
+                              <Eye className="h-4 w-4 text-muted-foreground" />
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="space-y-4">
+                      <h4 className="font-medium text-foreground">Molecule Preview</h4>
+                      <div className="p-6 bg-card/50 border border-border/50 rounded-lg min-h-[200px] flex items-center justify-center">
+                        <div className="text-sm text-muted-foreground text-center">
+                          Drag atoms here to build molecules
+                          <br />
+                          <span className="text-xs">Example: Button + Icon = Icon Button</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button className="bg-primary text-primary-foreground">
+                      <Copy className="h-4 w-4 mr-2" />
+                      Copy Molecule Code
+                    </Button>
+                    <Button variant="outline">
+                      <Download className="h-4 w-4 mr-2" />
+                      Export Component
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
       </main>

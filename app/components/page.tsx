@@ -30,6 +30,8 @@ import {
   Filter,
 } from "lucide-react"
 import { ComponentCard } from "./categories/component-card"
+import { getTopComponents, getTrendingComponents } from "@/app/data/metrics-data"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 // Lazy load component categories for better performance
 const RecruitmentComponents = lazy(() => import("./categories/recruitment-components").then(m => ({ default: m.RecruitmentComponents })))
@@ -74,6 +76,9 @@ export default function ComponentsPage() {
   const [copiedCode, setCopiedCode] = useState("")
   const [favourites, setFavorites] = useState<Set<string>>(new Set())
   const [viewMode] = useState<"grid" | "list">("grid")
+  const [filterStatus, setFilterStatus] = useState<string>("all")
+  const [filterComplexity, setFilterComplexity] = useState<string>("all")
+  const [showAnalytics, setShowAnalytics] = useState(false)
   useEffect(() => {
     setMounted(true)
   }, [])
@@ -231,6 +236,83 @@ export default function ComponentsPage() {
                   accessibility features, and implementation examples to help you build consistent experiences.
                 </p>
               </div>
+
+              {/* Component Analytics Panel */}
+              {showAnalytics && (
+                <div className="mb-8 p-6 bg-card/30 rounded-lg border border-border/50">
+                  <div className="flex items-center justify-between mb-4">
+                    <h3 className="text-lg font-semibold text-foreground flex items-center gap-2">
+                      <BarChart3 className="h-5 w-5 text-primary" />
+                      Component Analytics
+                    </h3>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setShowAnalytics(false)}
+                      aria-label="Close analytics"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <Card className="bg-card/50 border-border/50">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-sm font-medium text-foreground">Top Components</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-2">
+                          {getTopComponents(3).map((comp) => (
+                            <div key={comp.componentId} className="flex items-center justify-between text-sm">
+                              <span className="text-foreground/80">{comp.componentName}</span>
+                              <Badge variant="outline" className="text-xs">
+                                {comp.usageCount.toLocaleString()}
+                              </Badge>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-card/50 border-border/50">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-sm font-medium text-foreground">Trending Now</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-2">
+                          {getTrendingComponents().slice(0, 3).map((comp) => (
+                            <div key={comp.componentId} className="flex items-center justify-between text-sm">
+                              <span className="text-foreground/80">{comp.componentName}</span>
+                              <Badge className="bg-primary/10 text-primary border-primary/30 text-xs">
+                                Trending
+                              </Badge>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                    <Card className="bg-card/50 border-border/50">
+                      <CardHeader className="pb-3">
+                        <CardTitle className="text-sm font-medium text-foreground">Quick Stats</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-2 text-sm">
+                          <div className="flex items-center justify-between">
+                            <span className="text-muted-foreground">Total Components</span>
+                            <span className="text-foreground font-semibold">102+</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-muted-foreground">Categories</span>
+                            <span className="text-foreground font-semibold">9</span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-muted-foreground">Favourited</span>
+                            <span className="text-foreground font-semibold">{favourites.size}</span>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              )}
 
               {/* Quick Implementation Guide */}
               <div className="mb-8 p-6 bg-card/30 rounded-lg border border-border/50">

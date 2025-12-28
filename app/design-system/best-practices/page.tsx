@@ -923,6 +923,148 @@ const JobsPage = lazy(() =>
         </div>
         </CardContent>
       </Card>
+
+      {/* Interactive Best Practices Guide */}
+      <Card className="bg-card/30 border-border/50">
+        <CardHeader>
+          <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+            <Lightbulb className="h-6 w-6 text-primary" />
+            Interactive Best Practices Guide
+          </CardTitle>
+          <CardDescription>
+            Step-by-step guide with interactive checklists
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-6">
+            {[
+              {
+                category: "Component Design",
+                practices: [
+                  { practice: "Use semantic HTML elements", checked: false },
+                  { practice: "Implement proper ARIA labels", checked: false },
+                  { practice: "Ensure keyboard navigation", checked: false },
+                  { practice: "Test with screen readers", checked: false }
+                ]
+              },
+              {
+                category: "Performance",
+                practices: [
+                  { practice: "Lazy load heavy components", checked: false },
+                  { practice: "Optimize images and assets", checked: false },
+                  { practice: "Use code splitting", checked: false },
+                  { practice: "Minimize bundle size", checked: false }
+                ]
+              },
+              {
+                category: "Accessibility",
+                practices: [
+                  { practice: "Maintain 4.5:1 contrast ratio", checked: false },
+                  { practice: "Provide focus indicators", checked: false },
+                  { practice: "Support reduced motion", checked: false },
+                  { practice: "Test with assistive technologies", checked: false }
+                ]
+              }
+            ].map((section, index) => (
+              <Card key={index} className="bg-card/50 border-border/50">
+                <CardHeader>
+                  <CardTitle className="text-base text-foreground">{section.category}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {section.practices.map((practice, pIndex) => (
+                      <div key={pIndex} className="flex items-center gap-2 p-2 rounded hover:bg-muted/30">
+                        <input
+                          type="checkbox"
+                          className="rounded border-border"
+                          defaultChecked={practice.checked}
+                        />
+                        <span className="text-sm text-foreground/80">{practice.practice}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Common Mistakes Checker */}
+      <Card className="bg-card/30 border-border/50">
+        <CardHeader>
+          <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+            <AlertTriangle className="h-6 w-6 text-amber-400" />
+            Common Mistakes Checker
+          </CardTitle>
+          <CardDescription>
+            Identify and fix common implementation mistakes
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            {[
+              {
+                mistake: "Using div instead of semantic HTML",
+                impact: "High",
+                fix: "Use appropriate semantic elements (button, nav, main, etc.)",
+                example: "❌ <div onClick={...}> ❌ → ✅ <button> ✅"
+              },
+              {
+                mistake: "Missing aria-labels on icons",
+                impact: "High",
+                fix: "Add descriptive aria-label to all icon-only buttons",
+                example: "❌ <Icon /> ❌ → ✅ <Icon aria-label='Close dialog' /> ✅"
+              },
+              {
+                mistake: "Hardcoded colors instead of tokens",
+                impact: "Medium",
+                fix: "Use design tokens for all colors",
+                example: "❌ bg-blue-500 ❌ → ✅ bg-primary ✅"
+              },
+              {
+                mistake: "Not handling loading states",
+                impact: "Medium",
+                fix: "Always provide loading indicators for async operations",
+                example: "Add loading spinner or skeleton states"
+              },
+              {
+                mistake: "Ignoring mobile breakpoints",
+                impact: "High",
+                fix: "Test and optimize for mobile-first design",
+                example: "Use responsive utilities and test on real devices"
+              }
+            ].map((item, index) => (
+              <Card key={index} className="bg-card/50 border-border/50">
+                <CardContent className="p-4">
+                  <div className="flex items-start justify-between mb-2">
+                    <h4 className="font-semibold text-foreground">{item.mistake}</h4>
+                    <Badge 
+                      variant="outline"
+                      className={`text-xs ${
+                        item.impact === "High" 
+                          ? "border-red-500/30 text-red-600 dark:text-red-400"
+                          : "border-amber-500/30 text-amber-600 dark:text-amber-400"
+                      }`}
+                    >
+                      {item.impact} Impact
+                    </Badge>
+                  </div>
+                  <div className="space-y-2">
+                    <div>
+                      <span className="text-sm font-medium text-foreground">Fix: </span>
+                      <span className="text-sm text-muted-foreground">{item.fix}</span>
+                    </div>
+                    <div className="p-2 bg-muted/30 rounded text-xs font-mono text-foreground/80">
+                      {item.example}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 } 

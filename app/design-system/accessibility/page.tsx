@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Progress } from "@/components/ui/progress"
 import { Separator } from "@/components/ui/separator"
 import { Label } from "@/components/ui/label"
@@ -578,7 +579,7 @@ export default function AccessibilityUniversal() {
   const popularSearches = ["aria-label", "contrast ratio", "screen reader", "keyboard navigation", "wcag guidelines"]
 
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex min-h-screen">
       <UnifiedSidebar />
       
       {/* Notifications */}
@@ -1738,6 +1739,126 @@ test('should not have accessibility violations', async () => {
               </Card>
             )}
 
+          </div>
+        </section>
+
+        {/* Interactive Accessibility Checker */}
+        <section className="px-6 lg:px-12 py-8">
+          <div className="max-w-7xl mx-auto">
+            <Card className="bg-card/30 border-border/50 mb-8">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                  <TestTube className="h-6 w-6 text-primary" />
+                  Interactive Accessibility Checker
+                </CardTitle>
+                <CardDescription>
+                  Test your components and designs for accessibility compliance
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-6">
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label>Test Type</Label>
+                      <Select defaultValue="contrast">
+                        <SelectTrigger className="bg-card/50 border-border">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="contrast">Color Contrast</SelectItem>
+                          <SelectItem value="keyboard">Keyboard Navigation</SelectItem>
+                          <SelectItem value="screenreader">Screen Reader</SelectItem>
+                          <SelectItem value="full">Full WCAG Check</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>WCAG Level</Label>
+                      <Select defaultValue="aa">
+                        <SelectTrigger className="bg-card/50 border-border">
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="a">Level A</SelectItem>
+                          <SelectItem value="aa">Level AA</SelectItem>
+                          <SelectItem value="aaa">Level AAA</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+                  <Button 
+                    className="w-full bg-primary text-primary-foreground"
+                    onClick={() => runAccessibilityTest("full-check")}
+                  >
+                    <TestTube className="h-4 w-4 mr-2" />
+                    Run Accessibility Check
+                  </Button>
+                  {runningTest && (
+                    <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <RefreshCw className="h-4 w-4 animate-spin text-blue-400" />
+                        <span className="text-sm font-medium text-foreground">Running accessibility tests...</span>
+                      </div>
+                      <Progress value={testingProgress} className="h-2" />
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* WCAG Compliance Tester */}
+            <Card className="bg-card/30 border-border/50">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                  <Shield className="h-6 w-6 text-green-600 dark:text-green-400" />
+                  WCAG Compliance Tester
+                </CardTitle>
+                <CardDescription>
+                  Comprehensive WCAG 2.1 compliance testing
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    { criterion: "1.1.1 Non-text Content", level: "A", status: "pass", description: "All images have alt text" },
+                    { criterion: "1.4.3 Contrast (Minimum)", level: "AA", status: "pass", description: "Text meets 4.5:1 contrast ratio" },
+                    { criterion: "2.1.1 Keyboard", level: "A", status: "pass", description: "All functionality available via keyboard" },
+                    { criterion: "2.4.3 Focus Order", level: "A", status: "pass", description: "Focus order preserves meaning" },
+                    { criterion: "3.2.1 On Focus", level: "A", status: "pass", description: "No context changes on focus" },
+                    { criterion: "4.1.2 Name, Role, Value", level: "A", status: "pass", description: "All UI components have accessible names" }
+                  ].map((test, index) => (
+                    <div key={index} className="flex items-center justify-between p-4 bg-card/50 rounded-lg border border-border/50">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h4 className="font-medium text-foreground">{test.criterion}</h4>
+                          <Badge variant="outline" className="text-xs">{test.level}</Badge>
+                          <Badge 
+                            className={`text-xs ${
+                              test.status === "pass" 
+                                ? "bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30"
+                                : "bg-red-500/20 text-red-600 dark:text-red-400 border-red-500/30"
+                            }`}
+                          >
+                            {test.status === "pass" ? (
+                              <>
+                                <CheckCircle2 className="h-3 w-3 mr-1" />
+                                Pass
+                              </>
+                            ) : (
+                              <>
+                                <AlertTriangle className="h-3 w-3 mr-1" />
+                                Fail
+                              </>
+                            )}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-muted-foreground">{test.description}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </section>
 

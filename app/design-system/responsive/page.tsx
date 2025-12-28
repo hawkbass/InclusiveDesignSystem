@@ -48,7 +48,7 @@ export default function Responsive() {
   }
 
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex min-h-screen">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
@@ -646,6 +646,121 @@ export default function Responsive() {
                   </Card>
                 </TabsContent>
               </Tabs>
+            </div>
+          </section>
+
+          {/* Interactive Breakpoint Tester */}
+          <section className="px-6 lg:px-12 py-8">
+            <div className="max-w-7xl mx-auto">
+              <Card className="bg-card/30 border-border/50 mb-8">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                    <Monitor className="h-6 w-6 text-primary" />
+                    Interactive Breakpoint Tester
+                  </CardTitle>
+                  <CardDescription>
+                    Test your designs at different breakpoints in real-time
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    <div className="grid md:grid-cols-4 gap-4">
+                      {[
+                        { name: "Mobile", width: 375, icon: Smartphone },
+                        { name: "Tablet", width: 768, icon: Tablet },
+                        { name: "Desktop", width: 1024, icon: Monitor },
+                        { name: "Large", width: 1440, icon: Monitor }
+                      ].map((device) => (
+                        <Button
+                          key={device.name}
+                          variant={currentBreakpoint === device.name.toLowerCase() ? "default" : "outline"}
+                          className="h-auto py-4 flex flex-col items-center gap-2"
+                          onClick={() => setCurrentBreakpoint(device.name.toLowerCase())}
+                        >
+                          <device.icon className="h-6 w-6" />
+                          <div>
+                            <div className="font-medium">{device.name}</div>
+                            <div className="text-xs opacity-70">{device.width}px</div>
+                          </div>
+                        </Button>
+                      ))}
+                    </div>
+                    <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm font-medium text-foreground">Current Viewport</span>
+                        <Badge variant="outline">{typeof window !== 'undefined' ? window.innerWidth : 1024}px</Badge>
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        Resize your browser window to see breakpoint changes
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Device Emulator */}
+              <Card className="bg-card/30 border-border/50">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                    <Smartphone className="h-6 w-6 text-primary" />
+                    Device Emulator
+                  </CardTitle>
+                  <CardDescription>
+                    Preview your designs on different device sizes
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-center p-8 bg-muted/30 rounded-lg border border-border/50">
+                      <div
+                        className="bg-card border-2 border-border rounded-lg overflow-hidden"
+                        style={{
+                          width: currentBreakpoint === "mobile" ? "375px" : 
+                                 currentBreakpoint === "tablet" ? "768px" : 
+                                 currentBreakpoint === "large" ? "1440px" : "1024px",
+                          height: currentBreakpoint === "mobile" ? "667px" : "600px",
+                          transition: "all 0.3s ease"
+                        }}
+                      >
+                        <div className="p-4 bg-card/50 border-b border-border/50 flex items-center justify-center">
+                          <div className="text-xs text-muted-foreground">
+                            {currentBreakpoint.charAt(0).toUpperCase() + currentBreakpoint.slice(1)} View ({currentBreakpoint === "mobile" ? "375px" : currentBreakpoint === "tablet" ? "768px" : currentBreakpoint === "large" ? "1440px" : "1024px"})
+                          </div>
+                        </div>
+                        <div className="p-6 h-full overflow-auto">
+                          <div className="space-y-4">
+                            <div className="h-20 bg-primary/10 rounded-lg flex items-center justify-center">
+                              <span className="text-sm text-foreground">Header</span>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              <div className="h-32 bg-card/50 rounded-lg border border-border/50 flex items-center justify-center">
+                                <span className="text-xs text-muted-foreground">Card 1</span>
+                              </div>
+                              <div className="h-32 bg-card/50 rounded-lg border border-border/50 flex items-center justify-center">
+                                <span className="text-xs text-muted-foreground">Card 2</span>
+                              </div>
+                            </div>
+                            <div className="h-16 bg-muted/30 rounded-lg flex items-center justify-center">
+                              <span className="text-sm text-foreground">Footer</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between text-sm">
+                      <div className="flex items-center gap-2">
+                        <Eye className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-muted-foreground">Viewport Size Indicator</span>
+                      </div>
+                      <Badge variant="outline">
+                        {currentBreakpoint === "mobile" ? "375 × 667" : 
+                         currentBreakpoint === "tablet" ? "768 × 1024" : 
+                         currentBreakpoint === "large" ? "1440 × 900" : "1024 × 768"}
+                      </Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </section>
         </div>

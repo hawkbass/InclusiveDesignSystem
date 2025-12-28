@@ -114,17 +114,23 @@ export function CalendarIntegration({
   return (
     <div className="space-y-4">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
           <h2 className="text-xl font-semibold text-foreground">Calendar</h2>
           <p className="text-sm text-muted-foreground">Schedule and manage interviews</p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 flex-wrap">
           <Button
             variant="outline"
             size="sm"
             className="border-border/50 text-foreground/80 hover:bg-accent/50"
             aria-label="Filter calendar events"
+            onClick={() => {
+              // Toggle filter dropdown or open filter modal
+              // For demo, we'll just show available filter options
+              const filterOptions = ["All Events", "Interviews", "Meetings", "Follow-ups"]
+              alert(`Filter options: ${filterOptions.join(", ")}\n\nCurrent filter: ${calendarFilter}\n\nIn production, this would open a filter dropdown.`)
+            }}
           >
             <Filter className="h-4 w-4 mr-2" />
             Filter
@@ -143,7 +149,7 @@ export function CalendarIntegration({
 
       {/* Calendar Controls */}
       <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Button
@@ -168,7 +174,7 @@ export function CalendarIntegration({
             </div>
           </div>
           
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1">
               {["month", "week", "day"].map((view) => (
                 <button
@@ -188,17 +194,18 @@ export function CalendarIntegration({
           </div>
         </div>
 
-        {/* Calendar Grid */}
-        <div className="grid grid-cols-7 gap-1">
-          {/* Day Headers */}
-          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
-            <div key={day} className="p-2 text-center">
-              <div className="text-xs font-medium text-muted-foreground">{day}</div>
-            </div>
-          ))}
+        {/* Calendar Views */}
+        {calendarView === "month" && (
+          <div className="grid grid-cols-7 gap-1 overflow-x-auto">
+            {/* Day Headers */}
+            {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+              <div key={day} className="p-2 text-center">
+                <div className="text-xs font-medium text-muted-foreground">{day}</div>
+              </div>
+            ))}
 
-          {/* Calendar Days */}
-          {calendarDays.map((day, index) => {
+            {/* Calendar Days */}
+            {calendarDays.map((day, index) => {
             if (day === null) {
               return <div key={`empty-${index}`} className="p-2 min-h-[80px]" />
             }
@@ -237,22 +244,30 @@ export function CalendarIntegration({
                   {dayEvents.slice(0, 2).map((event) => (
                     <div
                       key={event.id}
-                      className={`px-2 py-1 rounded text-xs border cursor-pointer ${
+                      className={`px-2 py-1 rounded text-xs border cursor-pointer transition-all duration-300 ${
                         getEventTypeColor(event.type)
+                      } ${
+                        event.status === "cancelled" 
+                          ? "opacity-0 scale-95 -translate-y-2 pointer-events-none" 
+                          : "opacity-100 scale-100 translate-y-0"
                       }`}
                       onClick={(e) => {
                         e.stopPropagation()
-                        setSelectedEvent(event)
-                        setShowEventDetailsModal(true)
+                        if (event.status !== "cancelled") {
+                          setSelectedEvent(event)
+                          setShowEventDetailsModal(true)
+                        }
                       }}
                       role="button"
-                      tabIndex={0}
+                      tabIndex={event.status === "cancelled" ? -1 : 0}
                       aria-label={`View ${event.candidate} interview at ${event.time}`}
                       onKeyDown={(e) => {
                         if (e.key === 'Enter' || e.key === ' ') {
                           e.preventDefault()
-                          setSelectedEvent(event)
-                          setShowEventDetailsModal(true)
+                          if (event.status !== "cancelled") {
+                            setSelectedEvent(event)
+                            setShowEventDetailsModal(true)
+                          }
                         }
                       }}
                     >
@@ -270,7 +285,190 @@ export function CalendarIntegration({
               </button>
             )
           })}
-        </div>
+          </div>
+        )}
+
+        {/* Week View */}
+        {calendarView === "week" && (() => {
+          const currentDate = new Date(currentYear, currentMonth, selectedDate || todayDate)
+          const startOfWeek = new Date(currentDate)
+          startOfWeek.setDate(currentDate.getDate() - currentDate.getDay())
+          
+          const weekDays = Array.from({ length: 7 }, (_, i) => {
+            const date = new Date(startOfWeek)
+            date.setDate(startOfWeek.getDate() + i)
+            return date
+          })
+
+          const timeSlots = Array.from({ length: 24 }, (_, i) => i)
+
+          return (
+            <div className="space-y-2">
+              <div className="grid grid-cols-8 gap-1">
+                <div className="p-2"></div>
+                {weekDays.map((date, idx) => {
+                  const dayNum = date.getDate()
+                  const isToday = date.toDateString() === today.toDateString()
+                  return (
+                    <div key={idx} className="p-2 text-center border-b border-border/30">
+                      <div className="text-xs text-muted-foreground">
+                        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"][date.getDay()]}
+                      </div>
+                      <div className={`text-lg font-semibold mt-1 ${isToday ? 'text-primary' : 'text-foreground'}`}>
+                        {dayNum}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+              
+              <div className="max-h-[600px] overflow-y-auto">
+                <div className="grid grid-cols-8 gap-1">
+                  <div className="space-y-0">
+                    {timeSlots.map((hour) => (
+                      <div key={hour} className="h-16 border-b border-border/20 flex items-start justify-end pr-2">
+                        <span className="text-xs text-muted-foreground">{hour.toString().padStart(2, '0')}:00</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {weekDays.map((date, dayIdx) => {
+                    const dayNum = date.getDate()
+                    const dayEvents = (calendarEvents[dayNum] || []).filter(event => {
+                      if (!event.date) return true
+                      const eventDate = new Date(event.date)
+                      return eventDate.getDate() === dayNum && 
+                             eventDate.getMonth() === currentMonth && 
+                             eventDate.getFullYear() === currentYear
+                    })
+
+                    return (
+                      <div key={dayIdx} className="space-y-0 relative">
+                        {timeSlots.map((hour) => {
+                          const hourEvents = dayEvents.filter(event => {
+                            const eventHour = parseInt(event.time.split(':')[0])
+                            return eventHour === hour
+                          })
+
+                          return (
+                            <div
+                              key={hour}
+                              className="h-16 border-b border-border/20 p-1 hover:bg-accent/20 transition-colors"
+                              onClick={() => {
+                                setSelectedDate(dayNum)
+                                setShowScheduleInterviewModal(true)
+                              }}
+                            >
+                              {hourEvents.map((event) => (
+                                <div
+                                  key={event.id}
+                                  className={`px-2 py-1 rounded text-xs border cursor-pointer mb-1 ${getEventTypeColor(event.type)} ${
+                                    event.status === "cancelled" 
+                                      ? "opacity-0 scale-95 pointer-events-none" 
+                                      : "opacity-100"
+                                  }`}
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    if (event.status !== "cancelled") {
+                                      setSelectedEvent(event)
+                                      setShowEventDetailsModal(true)
+                                    }
+                                  }}
+                                >
+                                  <div className="font-medium truncate">{event.candidate}</div>
+                                  <div className="text-xs opacity-80">{event.time}</div>
+                                </div>
+                              ))}
+                            </div>
+                          )
+                        })}
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+            </div>
+          )
+        })()}
+
+        {/* Day View */}
+        {calendarView === "day" && (() => {
+          const currentDate = new Date(currentYear, currentMonth, selectedDate || todayDate)
+          const isToday = currentDate.toDateString() === today.toDateString()
+          const dayEvents = (calendarEvents[selectedDate || todayDate] || []).filter(event => {
+            if (!event.date) return true
+            const eventDate = new Date(event.date)
+            return eventDate.getDate() === (selectedDate || todayDate) && 
+                   eventDate.getMonth() === currentMonth && 
+                   eventDate.getFullYear() === currentYear
+          })
+
+          const timeSlots = Array.from({ length: 24 }, (_, i) => i)
+
+          return (
+            <div className="space-y-2">
+              <div className="p-4 border-b border-border/30 text-center">
+                <div className="text-xs text-muted-foreground mb-1">
+                  {["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][currentDate.getDay()]}
+                </div>
+                <div className={`text-2xl font-bold ${isToday ? 'text-primary' : 'text-foreground'}`}>
+                  {monthNames[currentMonth]} {selectedDate || todayDate}, {currentYear}
+                </div>
+              </div>
+
+              <div className="max-h-[600px] overflow-y-auto">
+                <div className="grid grid-cols-12 gap-1">
+                  <div className="col-span-2 space-y-0">
+                    {timeSlots.map((hour) => (
+                      <div key={hour} className="h-20 border-b border-border/20 flex items-start justify-end pr-2">
+                        <span className="text-sm font-medium text-foreground">{hour.toString().padStart(2, '0')}:00</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="col-span-10 space-y-0 relative">
+                    {timeSlots.map((hour) => {
+                      const hourEvents = dayEvents.filter(event => {
+                        const eventHour = parseInt(event.time.split(':')[0])
+                        return eventHour === hour
+                      })
+
+                      return (
+                        <div
+                          key={hour}
+                          className="h-20 border-b border-border/20 p-2 hover:bg-accent/20 transition-colors relative"
+                          onClick={() => setShowScheduleInterviewModal(true)}
+                        >
+                          {hourEvents.map((event, idx) => (
+                            <div
+                              key={event.id}
+                              className={`px-3 py-2 rounded-md text-sm border cursor-pointer mb-2 ${getEventTypeColor(event.type)} ${
+                                event.status === "cancelled" 
+                                  ? "opacity-0 scale-95 pointer-events-none" 
+                                  : "opacity-100"
+                              }`}
+                              onClick={(e) => {
+                                e.stopPropagation()
+                                if (event.status !== "cancelled") {
+                                  setSelectedEvent(event)
+                                  setShowEventDetailsModal(true)
+                                }
+                              }}
+                            >
+                              <div className="font-semibold">{event.candidate}</div>
+                              <div className="text-xs opacity-80 mt-1">{event.time} • {event.duration}</div>
+                              <div className="text-xs opacity-70 mt-1">{event.type}</div>
+                            </div>
+                          ))}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )
+        })()}
       </div>
     </div>
   )

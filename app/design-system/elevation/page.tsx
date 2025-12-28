@@ -46,7 +46,7 @@ export default function Elevation() {
   }
 
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex min-h-screen">
       <UnifiedSidebar animationSpeed={animationSpeed} />
       <main className="flex-1 overflow-auto">
         {/* Enhanced Header */}
@@ -1094,6 +1094,145 @@ function UsageTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCode: 
                 Glass effects should maintain a minimum opacity of 0.7 for text readability. 
                 Always test with reduced motion preferences enabled - provide non-animated alternatives.
               </p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Shadow/Blur Effect Builder */}
+      <Card className="bg-card/30 border-border/50">
+        <CardHeader>
+          <CardTitle className="text-xl text-foreground flex items-center gap-2">
+            <Layers className="h-5 w-5 text-primary" />
+            Shadow & Blur Effect Builder
+          </CardTitle>
+          <CardDescription>
+            Create custom shadow and blur effects with real-time preview
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label>Shadow X Offset</Label>
+                <Slider
+                  defaultValue={[0]}
+                  max={20}
+                  min={-20}
+                  step={1}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Shadow Y Offset</Label>
+                <Slider
+                  defaultValue={[4]}
+                  max={20}
+                  min={-20}
+                  step={1}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Blur Radius</Label>
+                <Slider
+                  defaultValue={[12]}
+                  max={50}
+                  min={0}
+                  step={1}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Spread Radius</Label>
+                <Slider
+                  defaultValue={[0]}
+                  max={20}
+                  min={-20}
+                  step={1}
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <Button className="bg-primary text-primary-foreground">
+                  <Copy className="h-4 w-4 mr-2" />
+                  Copy CSS
+                </Button>
+                <Button variant="outline">
+                  <Download className="h-4 w-4 mr-2" />
+                  Export
+                </Button>
+              </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <div
+                className="w-32 h-32 bg-card border border-border rounded-lg"
+                style={{
+                  boxShadow: '0px 4px 12px rgba(0,0,0,0.1)'
+                }}
+              />
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Glassmorphism Generator */}
+      <Card className="bg-card/30 border-border/50">
+        <CardHeader>
+          <CardTitle className="text-xl text-foreground flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-purple-400" />
+            Glassmorphism Generator
+          </CardTitle>
+          <CardDescription>
+            Create beautiful glassmorphism effects with backdrop blur
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <div className="space-y-2">
+                <Label>Backdrop Blur</Label>
+                <Slider
+                  defaultValue={[10]}
+                  max={20}
+                  min={0}
+                  step={1}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Background Opacity</Label>
+                <Slider
+                  defaultValue={[30]}
+                  max={100}
+                  min={0}
+                  step={5}
+                />
+              </div>
+              <div className="space-y-2">
+                <Label>Border Opacity</Label>
+                <Slider
+                  defaultValue={[50]}
+                  max={100}
+                  min={0}
+                  step={5}
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <Button className="bg-primary text-primary-foreground">
+                  <Copy className="h-4 w-4 mr-2" />
+                  Copy CSS
+                </Button>
+                <Button variant="outline">
+                  <Download className="h-4 w-4 mr-2" />
+                  Export
+                </Button>
+              </div>
+            </div>
+            <div className="flex items-center justify-center">
+              <div
+                className="w-32 h-32 rounded-lg border border-white/20"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)'
+                }}
+              />
             </div>
           </div>
         </CardContent>

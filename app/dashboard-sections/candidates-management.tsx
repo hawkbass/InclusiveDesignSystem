@@ -34,7 +34,7 @@ import {
   Clock,
   MoreVertical
 } from "lucide-react"
-import { initialCandidates } from "./data"
+import { expandedCandidates } from "./data"
 
 interface CandidatesManagementProps {
   candidateStageFilter: string
@@ -75,89 +75,12 @@ export function CandidatesManagement({
   handleAddCandidate,
   handleFilterAction
 }: CandidatesManagementProps) {
-  const candidates = [
-    { 
-      id: "1",
-      name: "Oliver Smith", 
-      position: "UX Designer", 
-      status: "interview", 
-      match: "92%",
-      avatar: "OS",
-      skills: ["Figma", "React", "UX Research"],
-      experience: "5 years",
-      location: "London",
-      lastActivity: "2h ago",
-      email: "oliver.smith@email.co.uk",
-      phone: "+44 20 7946 0958",
-      portfolio: "oliversmith.design",
-      appliedDate: "2024-01-15",
-      source: "LinkedIn"
-    },
-    { 
-      id: "2",
-      name: "Amelia Jones", 
-      position: "Frontend Developer", 
-      status: "screening", 
-      match: "87%",
-      avatar: "AJ",
-      skills: ["React", "TypeScript", "Node.js"],
-      experience: "3 years",
-      location: "Manchester",
-      lastActivity: "5h ago",
-      email: "amelia.jones@email.co.uk",
-      phone: "+44 161 850 1234",
-      appliedDate: "2024-01-14",
-      source: "Indeed"
-    },
-    { 
-      id: "3",
-      name: "Harry Patel", 
-      position: "Product Manager", 
-      status: "applied", 
-      match: "78%",
-      avatar: "HP",
-      skills: ["Strategy", "Analytics", "Agile"],
-      experience: "7 years",
-      location: "Birmingham",
-      lastActivity: "1d ago",
-      email: "harry.patel@email.co.uk",
-      phone: "+44 121 285 5678",
-      appliedDate: "2024-01-13",
-      source: "Company Website"
-    },
-    { 
-      id: "4",
-      name: "Sophie Williams", 
-      position: "Data Analyst", 
-      status: "offer", 
-      match: "85%",
-      avatar: "SW",
-      skills: ["Python", "SQL", "Tableau"],
-      experience: "4 years",
-      location: "Edinburgh",
-      lastActivity: "3h ago",
-      email: "sophie.williams@email.co.uk",
-      phone: "+44 131 496 7890",
-      appliedDate: "2024-01-12",
-      source: "Referral"
-    },
-    { 
-      id: "5",
-      name: "James Thompson", 
-      position: "Backend Developer", 
-      status: "screening", 
-      match: "81%",
-      avatar: "JT",
-      skills: ["Python", "Django", "PostgreSQL"],
-      experience: "6 years",
-      location: "Bristol",
-      lastActivity: "4h ago",
-      email: "james.thompson@email.co.uk",
-      phone: "+44 117 925 4567",
-      appliedDate: "2024-01-11",
-      source: "LinkedIn"
-    }
-  ]
+  // Use expanded candidates data
+  const candidates = expandedCandidates.map(c => ({
+    ...c,
+    appliedDate: "2024-01-15", // Default applied date
+    source: c.source || "LinkedIn" // Default source
+  }))
 
   const pipelineStages = [
     { key: "all", label: "All Candidates", count: candidates.length, colour: "slate" },
@@ -415,8 +338,8 @@ export function CandidatesManagement({
           </div>
         </div>
 
-        {/* Table Content */}
-        <div className="divide-y divide-slate-700/30">
+        {/* Table Content - Mobile scrollable */}
+        <div className="divide-y divide-slate-700/30 overflow-x-auto">
           {paginatedCandidates.map((candidate) => (
             <div 
               key={candidate.id}

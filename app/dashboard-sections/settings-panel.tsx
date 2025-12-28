@@ -102,6 +102,11 @@ export function SettingsPanel({
           variant="outline"
           size="sm"
           className="border-border/50 text-foreground/80 hover:bg-accent/50"
+          onClick={() => {
+            // In a real app, this would enable edit mode or open an edit modal
+            // For demo, we'll just show that the form is already editable
+            alert("Profile is in edit mode. Make your changes and click 'Save Changes'.")
+          }}
         >
           <Edit className="h-4 w-4 mr-2" />
           Edit Profile
@@ -186,6 +191,11 @@ export function SettingsPanel({
         <Button
           size="sm"
           className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
+          onClick={() => {
+            // In a real app, this would save to the backend
+            // For demo, we'll show a success message
+            alert("Profile changes saved successfully!")
+          }}
         >
           <Save className="h-4 w-4 mr-2" />
           Save Changes
@@ -194,6 +204,11 @@ export function SettingsPanel({
           variant="outline"
           size="sm"
           className="border-border/50 text-foreground/80 hover:bg-accent/50"
+          onClick={() => {
+            // Reset to original profile data
+            setProfileData(initialProfileData)
+            alert("Changes cancelled. Profile reset to original values.")
+          }}
         >
           Cancel
         </Button>
@@ -395,6 +410,10 @@ export function SettingsPanel({
                 variant="ghost"
                 size="sm"
                 className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
+                onClick={() => {
+                  // In a real app, this would open member settings/permissions modal
+                  alert(`Manage settings for ${member.name}\n\nIn production, this would open a permissions/settings modal.`)
+                }}
               >
                 <Settings className="h-4 w-4" />
               </Button>

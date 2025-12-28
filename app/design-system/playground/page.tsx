@@ -35,6 +35,8 @@ import {
   Layers,
   Copy,
   RotateCcw,
+  ComponentIcon,
+  ExternalLink,
 } from "lucide-react"
 import Link from "next/link"
 // Type definitions for prop controls
@@ -616,6 +618,100 @@ export default function PlaygroundPage() {
                     </Link>
                   </Button>
                 </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Multi-Component Composition */}
+          <Card className="bg-card/30 border-border/50">
+            <CardHeader>
+              <CardTitle className="text-xl text-foreground flex items-center gap-2">
+                <Layers className="h-5 w-5 text-primary" />
+                Multi-Component Composition
+              </CardTitle>
+              <CardDescription>
+                Combine multiple components to build complex interfaces
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <div className="p-4 bg-card/50 rounded-lg border border-border/50">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Button size="sm" variant="outline">
+                      <ComponentIcon className="h-4 w-4 mr-2" />
+                      Add Component
+                    </Button>
+                    <Button size="sm" variant="outline">
+                      <Layers className="h-4 w-4 mr-2" />
+                      Component Tree
+                    </Button>
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    Drag and drop components to build your interface. Components will appear here.
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Export & Share */}
+          <Card className="bg-card/30 border-border/50">
+            <CardHeader>
+              <CardTitle className="text-xl text-foreground flex items-center gap-2">
+                <ExternalLink className="h-5 w-5 text-primary" />
+                Export & Share
+              </CardTitle>
+              <CardDescription>
+                Export your playground to CodeSandbox, StackBlitz, or share as code
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-3 gap-4">
+                <Button
+                  variant="outline"
+                  className="h-auto py-4 flex flex-col items-center gap-2"
+                  onClick={() => {
+                    const code = `// Export to CodeSandbox\nimport { Button } from "@hawkbass/inclusive-design-core"\n\nexport default function App() {\n  return <Button>Hello World</Button>\n}`
+                    navigator.clipboard.writeText(code)
+                    alert("Code copied! Paste into CodeSandbox to continue.")
+                  }}
+                >
+                  <ExternalLink className="h-5 w-5" />
+                  <div>
+                    <div className="font-medium">CodeSandbox</div>
+                    <div className="text-xs opacity-70">Export to sandbox</div>
+                  </div>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="h-auto py-4 flex flex-col items-center gap-2"
+                  onClick={() => {
+                    const code = `// Export to StackBlitz\nimport { Button } from "@hawkbass/inclusive-design-core"\n\nexport default function App() {\n  return <Button>Hello World</Button>\n}`
+                    navigator.clipboard.writeText(code)
+                    alert("Code copied! Paste into StackBlitz to continue.")
+                  }}
+                >
+                  <ExternalLink className="h-5 w-5" />
+                  <div>
+                    <div className="font-medium">StackBlitz</div>
+                    <div className="text-xs opacity-70">Export to project</div>
+                  </div>
+                </Button>
+                <Button
+                  variant="outline"
+                  className="h-auto py-4 flex flex-col items-center gap-2"
+                  onClick={() => {
+                    const code = `import { Button } from "@hawkbass/inclusive-design-core"\n\nexport default function App() {\n  return <Button>Hello World</Button>\n}`
+                    navigator.clipboard.writeText(code)
+                    alert("Code copied to clipboard!")
+                  }}
+                >
+                  <Copy className="h-5 w-5" />
+                  <div>
+                    <div className="font-medium">Copy Code</div>
+                    <div className="text-xs opacity-70">Copy to clipboard</div>
+                  </div>
+                </Button>
               </div>
             </CardContent>
           </Card>

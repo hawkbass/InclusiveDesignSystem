@@ -1,12 +1,14 @@
 "use client"
 
 import React, { useState, useEffect, useCallback } from "react"
+import { useTheme } from "next-themes"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent } from "@/components/ui/tabs"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
@@ -35,16 +37,19 @@ import {
 import Link from "next/link"
 
 export default function Theming() {
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
   const [copiedCode, setCopiedCode] = useState("")
   const [activeTab, setActiveTab] = useState("overview")
-  const [activeTheme, setActiveTheme] = useState("dark")
   const [customPrimary, setCustomPrimary] = useState("#d946ef")
   const [customSecondary, setCustomSecondary] = useState("#8b5cf6")
   const [primaryPickerOpen, setPrimaryPickerOpen] = useState(false)
   const [secondaryPickerOpen, setSecondaryPickerOpen] = useState(false)
   const [primaryHsv, setPrimaryHsv] = useState({ h: 292, s: 84, v: 93 })
   const [secondaryHsv, setSecondaryHsv] = useState({ h: 258, s: 64, v: 97 })
+  
+  // Sync activeTheme with actual theme from provider
+  const activeTheme = theme || resolvedTheme || "dark"
 
   // Color conversion functions (must be before conditional return)
   const hexToHsv = useCallback((hex: string) => {
@@ -271,7 +276,7 @@ export default function Theming() {
   ]
 
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex min-h-screen">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
@@ -300,16 +305,21 @@ export default function Theming() {
                 {/* Theme Selector */}
                 <div className="flex justify-center items-center gap-4 mb-8">
                   <span className="text-muted-foreground">Current theme:</span>
-                  <Select value={activeTheme} onValueChange={setActiveTheme}>
+                  <Select 
+                    value={activeTheme} 
+                    onValueChange={(value) => {
+                      setTheme(value)
+                    }}
+                  >
                     <SelectTrigger className="w-auto min-w-[150px] bg-card/50 border-border">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent className="bg-card border-border">
-                      {themes.map((theme) => (
-                        <SelectItem key={theme.id} value={theme.id}>
+                      {themes.map((themeOption) => (
+                        <SelectItem key={themeOption.id} value={themeOption.id}>
                           <div className="flex items-center gap-2">
-                            <theme.icon className="h-4 w-4" />
-                            {theme.name}
+                            <themeOption.icon className="h-4 w-4" />
+                            {themeOption.name}
                           </div>
                         </SelectItem>
                       ))}
@@ -593,7 +603,7 @@ export default function Theming() {
                           <Button
                             variant="outline"
                             size="sm"
-                            onClick={() => setActiveTheme(theme.id)}
+                            onClick={() => setTheme(theme.id)}
                             className={`w-full ${activeTheme === theme.id ? 'border-primary text-primary' : ''}`}
                           >
                             {activeTheme === theme.id ? 'Current Theme' : 'Apply Theme'}
@@ -852,6 +862,124 @@ setTheme(savedTheme);`}
           title="Choose Secondary Colour"
         />
       )}
+
+      {/* Theme Comparison Tool */}
+      <section className="px-6 lg:px-12 py-8">
+        <div className="max-w-7xl mx-auto">
+          <Card className="bg-card/30 border-border/50 mb-8">
+            <CardHeader>
+              <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                <Eye className="h-6 w-6 text-primary" />
+                Theme Comparison Tool
+              </CardTitle>
+              <CardDescription>
+                Compare different theme configurations side-by-side
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h4 className="font-medium text-foreground">Theme A</h4>
+                  <div className="p-6 bg-card border border-border rounded-lg space-y-3">
+                    <div className="h-12 bg-primary rounded flex items-center justify-center text-primary-foreground">
+                      Primary
+                    </div>
+                    <div className="h-12 bg-accent rounded flex items-center justify-center text-accent-foreground">
+                      Accent
+                    </div>
+                    <div className="h-12 bg-muted rounded flex items-center justify-center text-muted-foreground">
+                      Muted
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="font-medium text-foreground">Theme B</h4>
+                  <div className="p-6 bg-card border border-border rounded-lg space-y-3">
+                    <div className="h-12 bg-blue-600 rounded flex items-center justify-center text-white">
+                      Primary
+                    </div>
+                    <div className="h-12 bg-purple-600 rounded flex items-center justify-center text-white">
+                      Accent
+                    </div>
+                    <div className="h-12 bg-slate-200 dark:bg-slate-800 rounded flex items-center justify-center text-slate-900 dark:text-slate-100">
+                      Muted
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Custom Color Palette Generator */}
+          <Card className="bg-card/30 border-border/50">
+            <CardHeader>
+              <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                <Palette className="h-6 w-6 text-primary" />
+                Custom Color Palette Generator
+              </CardTitle>
+              <CardDescription>
+                Generate a complete color palette from a single base color
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>Base Color</Label>
+                    <Input
+                      type="color"
+                      value={customPrimary}
+                      onChange={(e) => setCustomPrimary(e.target.value)}
+                      className="h-12 w-full"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Palette Type</Label>
+                    <Select defaultValue="monochromatic">
+                      <SelectTrigger className="bg-card/50 border-border">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="monochromatic">Monochromatic</SelectItem>
+                        <SelectItem value="analogous">Analogous</SelectItem>
+                        <SelectItem value="complementary">Complementary</SelectItem>
+                        <SelectItem value="triadic">Triadic</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <div className="p-4 bg-muted/30 rounded-lg border border-border/50">
+                  <h4 className="font-medium text-foreground mb-3">Generated Palette</h4>
+                  <div className="grid grid-cols-5 gap-2">
+                    {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map((shade) => (
+                      <div key={shade} className="text-center">
+                        <div
+                          className="h-16 w-full rounded border border-border/50 mb-1"
+                          style={{
+                            backgroundColor: customPrimary,
+                            opacity: shade / 1000
+                          }}
+                        />
+                        <div className="text-xs text-muted-foreground">{shade}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Button className="bg-primary text-primary-foreground">
+                    <Download className="h-4 w-4 mr-2" />
+                    Export Palette
+                  </Button>
+                  <Button variant="outline">
+                    <Copy className="h-4 w-4 mr-2" />
+                    Copy CSS Variables
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
     </div>
   )
 }

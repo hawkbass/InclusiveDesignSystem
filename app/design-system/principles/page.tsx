@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { Input } from "@/components/ui/input"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
@@ -16,6 +17,7 @@ export default function Principles() {
   const [animationSpeed, setAnimationSpeed] = useState([1])
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [copiedCode, setCopiedCode] = useState("")
+  const [searchQuery, setSearchQuery] = useState("")
 
 
   // Safely get animation speed value
@@ -718,6 +720,264 @@ Post-Implementation:
                   <div className="text-xs opacity-80">Implementation guide</div>
                 </div>
               </Button>
+            </div>
+          </section>
+
+          {/* Interactive Principle Explorer */}
+          <section className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-3 text-foreground">
+                Interactive Principle Explorer
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Explore principles with real-world examples and before/after comparisons
+              </p>
+            </div>
+
+            <Card className="bg-card/30 border-border/50">
+              <CardHeader>
+                <div className="flex items-center justify-between mb-4">
+                  <CardTitle className="text-xl text-foreground">Principle Comparison Tool</CardTitle>
+                  <div className="flex items-center gap-2">
+                    <Input
+                      placeholder="Search principles..."
+                      className="w-64 bg-card/50 border-border"
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                    />
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {[
+                    {
+                      principle: "Human-centred Design",
+                      before: {
+                        title: "Before: Generic Form",
+                        description: "No accessibility considerations, poor contrast, no keyboard navigation",
+                        issues: ["Low contrast text", "No aria-labels", "Mouse-only interaction"]
+                      },
+                      after: {
+                        title: "After: Accessible Form",
+                        description: "WCAG AA compliant, keyboard navigable, screen reader friendly",
+                        improvements: ["High contrast", "Full aria-labels", "Keyboard accessible"]
+                      },
+                      components: ["Form", "Input", "Button", "Label"],
+                      example: "Candidate application form with full accessibility"
+                    },
+                    {
+                      principle: "Evidence-Based Decisions",
+                      before: {
+                        title: "Before: Assumption-Based",
+                        description: "Design decisions made without user testing or data",
+                        issues: ["No user research", "No A/B testing", "No metrics"]
+                      },
+                      after: {
+                        title: "After: Data-Driven",
+                        description: "All decisions backed by user studies and performance metrics",
+                        improvements: ["150+ user studies", "A/B testing", "Real-time analytics"]
+                      },
+                      components: ["Analytics", "Dashboard", "Metrics"],
+                      example: "Dashboard redesign based on user behavior data"
+                    },
+                    {
+                      principle: "Consistency & Scalability",
+                      before: {
+                        title: "Before: Inconsistent Patterns",
+                        description: "Different components use different styles and patterns",
+                        issues: ["Mixed color schemes", "Inconsistent spacing", "No design tokens"]
+                      },
+                      after: {
+                        title: "After: Unified System",
+                        description: "All components use shared design tokens and patterns",
+                        improvements: ["Design tokens", "Consistent spacing", "96% consistency"]
+                      },
+                      components: ["Design Tokens", "Theme Provider", "Component Library"],
+                      example: "Unified button styles across all products"
+                    },
+                    {
+                      principle: "Efficiency & Performance",
+                      before: {
+                        title: "Before: Slow & Complex",
+                        description: "High cognitive load, slow interactions, complex workflows",
+                        issues: ["3+ second load times", "Complex navigation", "No automation"]
+                      },
+                      after: {
+                        title: "After: Fast & Simple",
+                        description: "Optimized performance, smart defaults, automated workflows",
+                        improvements: ["<1.2s load time", "One-click actions", "94% completion rate"]
+                      },
+                      components: ["Button", "Modal", "Workflow"],
+                      example: "One-click interview scheduling"
+                    }
+                  ]
+                    .filter(p => !searchQuery || p.principle.toLowerCase().includes(searchQuery.toLowerCase()))
+                    .map((item, index) => (
+                      <Card key={index} className="bg-card/50 border-border/50">
+                        <CardHeader>
+                          <CardTitle className="text-lg text-foreground">{item.principle}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          <div className="grid grid-cols-2 gap-4">
+                            <div className="p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+                              <h4 className="font-semibold text-red-600 dark:text-red-400 mb-2">{item.before.title}</h4>
+                              <p className="text-sm text-muted-foreground mb-3">{item.before.description}</p>
+                              <ul className="space-y-1">
+                                {item.before.issues.map((issue, i) => (
+                                  <li key={i} className="text-xs text-muted-foreground flex items-center gap-1">
+                                    <X className="h-3 w-3 text-red-400" />
+                                    {issue}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                              <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">{item.after.title}</h4>
+                              <p className="text-sm text-muted-foreground mb-3">{item.after.description}</p>
+                              <ul className="space-y-1">
+                                {item.after.improvements.map((improvement, i) => (
+                                  <li key={i} className="text-xs text-muted-foreground flex items-center gap-1">
+                                    <CheckCircle2 className="h-3 w-3 text-green-400" />
+                                    {improvement}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="pt-2 border-t border-border/50">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className="text-xs text-muted-foreground">Example:</span>
+                              <span className="text-xs text-foreground">{item.example}</span>
+                            </div>
+                            <div className="flex flex-wrap gap-1">
+                              {item.components.map((comp, i) => (
+                                <Badge key={i} variant="outline" className="text-xs">
+                                  {comp}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Principle Violation Checker */}
+          <section className="mb-12">
+            <Card className="bg-card/30 border-border/50">
+              <CardHeader>
+                <CardTitle className="text-xl text-foreground flex items-center gap-2">
+                  <Shield className="h-5 w-5 text-primary" />
+                  Principle Violation Checker
+                </CardTitle>
+                <CardDescription>
+                  Check your designs against our core principles
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    {
+                      principle: "Human-centred Design",
+                      checks: [
+                        { question: "Does this design prioritize user needs?", checked: false },
+                        { question: "Is it accessible to users with disabilities?", checked: false },
+                        { question: "Has it been tested with real users?", checked: false }
+                      ]
+                    },
+                    {
+                      principle: "Evidence-Based Decisions",
+                      checks: [
+                        { question: "Is this decision backed by research or data?", checked: false },
+                        { question: "Have alternatives been considered?", checked: false },
+                        { question: "Are metrics in place to measure success?", checked: false }
+                      ]
+                    },
+                    {
+                      principle: "Consistency & Scalability",
+                      checks: [
+                        { question: "Does this follow existing design patterns?", checked: false },
+                        { question: "Will this scale across different contexts?", checked: false },
+                        { question: "Are design tokens used consistently?", checked: false }
+                      ]
+                    },
+                    {
+                      principle: "Efficiency & Performance",
+                      checks: [
+                        { question: "Does this reduce cognitive load?", checked: false },
+                        { question: "Is performance optimized?", checked: false },
+                        { question: "Are smart defaults provided?", checked: false }
+                      ]
+                    }
+                  ].map((principle, index) => (
+                    <Card key={index} className="bg-card/50 border-border/50">
+                      <CardHeader>
+                        <CardTitle className="text-base text-foreground">{principle.principle}</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-2">
+                          {principle.checks.map((check, checkIndex) => (
+                            <div key={checkIndex} className="flex items-center gap-2 p-2 rounded hover:bg-muted/30">
+                              <input
+                                type="checkbox"
+                                className="rounded border-border"
+                                defaultChecked={check.checked}
+                              />
+                              <span className="text-sm text-foreground/80">{check.question}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </section>
+
+          {/* Related Components */}
+          <section className="mb-12">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-3 text-foreground">
+                Related Components
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Components that embody these principles
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { name: "Button", principle: "Efficiency", link: "/components" },
+                { name: "Form", principle: "Human-centred", link: "/components" },
+                { name: "Modal", principle: "Consistency", link: "/components" },
+                { name: "Table", principle: "Evidence-Based", link: "/components" },
+                { name: "Card", principle: "Consistency", link: "/components" },
+                { name: "Input", principle: "Human-centred", link: "/components" },
+                { name: "Badge", principle: "Efficiency", link: "/components" },
+                { name: "Alert", principle: "Human-centred", link: "/components" }
+              ].map((component, index) => (
+                <Card key={index} className="bg-card/50 border-border/50 hover:border-primary/30 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-foreground">{component.name}</h4>
+                      <Badge variant="outline" className="text-xs">{component.principle}</Badge>
+                    </div>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="w-full mt-2"
+                      onClick={() => window.open(component.link, '_blank')}
+                    >
+                      View Component
+                      <ArrowRight className="h-3 w-3 ml-1" />
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </section>
         </div>

@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Slider } from "@/components/ui/slider"
@@ -1508,6 +1509,122 @@ export default function Tokens() {
               </Tabs>
             </div>
           </div>
+
+          {/* Token Relationship Graph */}
+          <section className="px-6 lg:px-12 py-8 bg-card/30 border-t border-border/50">
+            <div className="max-w-7xl mx-auto">
+              <div className="text-center mb-8">
+                <h2 className="text-3xl font-bold mb-3 text-foreground">
+                  Token Relationship Graph
+                </h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Visualize how tokens relate to each other and their dependencies
+                </p>
+              </div>
+
+              <Card className="bg-card/50 border-border/50 mb-8">
+                <CardHeader>
+                  <CardTitle className="text-xl text-foreground">Token Hierarchy</CardTitle>
+                  <CardDescription>
+                    Reference tokens → Semantic tokens → Component tokens
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    <div className="grid md:grid-cols-3 gap-4">
+                      <div className="p-4 bg-blue-500/10 border border-blue-500/30 rounded-lg">
+                        <h4 className="font-semibold text-blue-600 dark:text-blue-400 mb-2">Reference Tokens</h4>
+                        <p className="text-sm text-muted-foreground mb-3">Raw color values, spacing units</p>
+                        <div className="space-y-1">
+                          <Badge variant="outline" className="text-xs">fuchsia-500</Badge>
+                          <Badge variant="outline" className="text-xs">spacing-4</Badge>
+                          <Badge variant="outline" className="text-xs">font-size-16</Badge>
+                        </div>
+                      </div>
+                      <div className="p-4 bg-purple-500/10 border border-purple-500/30 rounded-lg">
+                        <h4 className="font-semibold text-purple-600 dark:text-purple-400 mb-2">Semantic Tokens</h4>
+                        <p className="text-sm text-muted-foreground mb-3">Meaningful names, context-aware</p>
+                        <div className="space-y-1">
+                          <Badge variant="outline" className="text-xs">primary</Badge>
+                          <Badge variant="outline" className="text-xs">spacing-md</Badge>
+                          <Badge variant="outline" className="text-xs">text-base</Badge>
+                        </div>
+                      </div>
+                      <div className="p-4 bg-green-500/10 border border-green-500/30 rounded-lg">
+                        <h4 className="font-semibold text-green-600 dark:text-green-400 mb-2">Component Tokens</h4>
+                        <p className="text-sm text-muted-foreground mb-3">Component-specific values</p>
+                        <div className="space-y-1">
+                          <Badge variant="outline" className="text-xs">button-bg</Badge>
+                          <Badge variant="outline" className="text-xs">card-padding</Badge>
+                          <Badge variant="outline" className="text-xs">input-height</Badge>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+                      <ArrowDown className="h-4 w-4" />
+                      <span>Tokens flow from reference → semantic → component</span>
+                      <ArrowDown className="h-4 w-4" />
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Custom Token Builder */}
+              <Card className="bg-card/50 border-border/50">
+                <CardHeader>
+                  <CardTitle className="text-xl text-foreground flex items-center gap-2">
+                    <Sparkles className="h-5 w-5 text-primary" />
+                    Custom Token Builder
+                  </CardTitle>
+                  <CardDescription>
+                    Create and export custom design tokens
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label>Token Name</Label>
+                        <Input placeholder="e.g., brand-primary" className="bg-card/50 border-border" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Token Type</Label>
+                        <Select>
+                          <SelectTrigger className="bg-card/50 border-border">
+                            <SelectValue placeholder="Select type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="color">Color</SelectItem>
+                            <SelectItem value="spacing">Spacing</SelectItem>
+                            <SelectItem value="typography">Typography</SelectItem>
+                            <SelectItem value="shadow">Shadow</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Token Value</Label>
+                      <Input placeholder="e.g., #d946ef or 1rem" className="bg-card/50 border-border" />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Button className="bg-primary text-primary-foreground">
+                        <Sparkles className="h-4 w-4 mr-2" />
+                        Generate Token
+                      </Button>
+                      <Button variant="outline">
+                        <Download className="h-4 w-4 mr-2" />
+                        Export as CSS
+                      </Button>
+                      <Button variant="outline">
+                        <FileJson className="h-4 w-4 mr-2" />
+                        Export as JSON
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </section>
 
           {/* Related Resources */}
           <section className="px-6 lg:px-12 py-8 bg-card/30 border-t border-border/50">

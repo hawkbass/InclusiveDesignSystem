@@ -3,6 +3,7 @@
 import React from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import {
@@ -20,6 +21,7 @@ import {
   Globe,
   Smartphone,
   BarChart3,
+  Heart,
 } from "lucide-react"
 
 const quarters = [
@@ -278,6 +280,119 @@ export default function RoadmapPage() {
         </div>
       </main>
     </div>
+
+    {/* Feature Voting System */}
+    <section className="px-6 lg:px-12 py-8">
+      <div className="max-w-7xl mx-auto">
+        <Card className="bg-card/30 border-border/50 mb-8">
+          <CardHeader>
+            <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+              <Users className="h-6 w-6 text-primary" />
+              Feature Voting System
+            </CardTitle>
+            <CardDescription>
+              Vote on features you'd like to see in future releases
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {[
+                { feature: "Advanced Animation Library", votes: 124, status: "planned" },
+                { feature: "Dark Mode Toggle Component", votes: 98, status: "in-progress" },
+                { feature: "Accessibility Audit Tool", votes: 87, status: "planned" },
+                { feature: "Component Versioning System", votes: 65, status: "planned" },
+                { feature: "Design Token Generator CLI", votes: 54, status: "planned" }
+              ].map((item, index) => (
+                <Card key={index} className="bg-card/50 border-border/50">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex-1">
+                        <h4 className="font-medium text-foreground mb-1">{item.feature}</h4>
+                        <div className="flex items-center gap-2">
+                          <Badge 
+                            variant="outline"
+                            className={`text-xs ${
+                              item.status === "in-progress"
+                                ? "border-blue-500/30 text-blue-600 dark:text-blue-400"
+                                : "border-muted-foreground/30 text-muted-foreground"
+                            }`}
+                          >
+                            {item.status}
+                          </Badge>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="text-center">
+                          <div className="text-lg font-bold text-foreground">{item.votes}</div>
+                          <div className="text-xs text-muted-foreground">votes</div>
+                        </div>
+                        <Button size="sm" variant="outline">
+                          <Heart className="h-4 w-4 mr-1" />
+                          Vote
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Release Calendar */}
+        <Card className="bg-card/30 border-border/50">
+          <CardHeader>
+            <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+              <Calendar className="h-6 w-6 text-primary" />
+              Release Calendar
+            </CardTitle>
+            <CardDescription>
+              Upcoming releases and feature timelines
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {[
+                { version: "v2.2.0", date: "Q1 2025", features: ["Advanced Theming", "Component Variants API"], status: "current" },
+                { version: "v2.3.0", date: "Q2 2025", features: ["AI Accessibility Checker", "Mobile Components"], status: "upcoming" },
+                { version: "v2.4.0", date: "Q3 2025", features: ["Analytics Dashboard", "i18n Support"], status: "planned" }
+              ].map((release, index) => (
+                <Card key={index} className="bg-card/50 border-border/50">
+                  <CardContent className="p-4">
+                    <div className="flex items-start justify-between mb-3">
+                      <div>
+                        <h4 className="font-semibold text-foreground">{release.version}</h4>
+                        <p className="text-sm text-muted-foreground">{release.date}</p>
+                      </div>
+                      <Badge 
+                        variant="outline"
+                        className={`${
+                          release.status === "current"
+                            ? "border-green-500/30 text-green-600 dark:text-green-400"
+                            : release.status === "upcoming"
+                            ? "border-blue-500/30 text-blue-600 dark:text-blue-400"
+                            : "border-muted-foreground/30 text-muted-foreground"
+                        }`}
+                      >
+                        {release.status}
+                      </Badge>
+                    </div>
+                    <div className="space-y-1">
+                      {release.features.map((feature, fIndex) => (
+                        <div key={fIndex} className="flex items-center gap-2 text-sm text-muted-foreground">
+                          <CheckCircle2 className="h-3 w-3 text-green-400" />
+                          {feature}
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </section>
   )
 }
 

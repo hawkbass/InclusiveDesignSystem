@@ -104,7 +104,7 @@ const components = [
     id: "masonry-layout",
     title: "Masonry Layout",
     description: "Pinterest-style masonry grid",
-    code: `<div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+    code: `<div className="columns-1 md:columns-2 gap-6">
   <div className="break-inside-avoid mb-4 bg-card/50 p-4 rounded-lg">
     <h4>Masonry Item</h4>
     <p>Variable height content...</p>
@@ -112,7 +112,7 @@ const components = [
 </div>`,
     component: (
       <div className="w-full">
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+        <div className="columns-1 md:columns-2 gap-6">
           {[
             { title: "Candidate Profile", content: "Sarah Johnson has 5 years of experience in React development.", height: "h-24" },
             { title: "Job Posting", content: "We're looking for a Senior Frontend Developer to join our team. Must have experience with React, TypeScript, and modern development practices.", height: "h-32" },
@@ -121,9 +121,9 @@ const components = [
             { title: "Team Feedback", content: "Positive feedback from initial screening.", height: "h-24" },
             { title: "References", content: "Two references provided, both from previous employers with excellent recommendations.", height: "h-32" }
           ].map((item, index) => (
-            <div key={index} className={`break-inside-avoid mb-4 bg-card/50 border border-border p-4 rounded-lg hover:bg-card/70 transition-all duration-300 rounded-lg ${item.height}`} style={{ transitionDuration: 'var(--animation-speed)' }}>
+            <div key={index} className="break-inside-avoid mb-4 bg-card/50 border border-border p-4 rounded-lg hover:bg-card/70 transition-all duration-300" style={{ transitionDuration: 'var(--animation-speed)' }}>
               <h4 className="font-medium text-foreground mb-2">{item.title}</h4>
-              <p className="text-sm text-muted-foreground">{item.content}</p>
+              <p className="text-sm text-muted-foreground whitespace-normal break-words">{item.content}</p>
             </div>
           ))}
         </div>
@@ -380,8 +380,3 @@ export function LayoutComponents({
 
 // Export the components array for use in getAllComponents
 export { components }
-
-
-
-
-

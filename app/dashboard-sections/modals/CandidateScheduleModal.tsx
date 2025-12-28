@@ -13,9 +13,10 @@ interface CandidateScheduleModalProps {
   onClose: () => void
   setNotifications: (fn: (prev: Notification[]) => Notification[]) => void
   onScheduleInterview: (event: CalendarEvent & { date: string }) => void
+  onRedirectToCalendar?: () => void
 }
 
-export function CandidateScheduleModal({ open, candidate, onClose, setNotifications, onScheduleInterview }: CandidateScheduleModalProps) {
+export function CandidateScheduleModal({ open, candidate, onClose, setNotifications, onScheduleInterview, onRedirectToCalendar }: CandidateScheduleModalProps) {
   const [selectedInterviewer, setSelectedInterviewer] = useState<string>("")
   const [interviewType, setInterviewType] = useState<string>("Phone Screening")
   const [duration, setDuration] = useState<string>("30 minutes")
@@ -72,12 +73,19 @@ export function CandidateScheduleModal({ open, candidate, onClose, setNotificati
     setDate("")
     setTime("")
     setNotes("")
+    
+    // Redirect to calendar tab
+    if (onRedirectToCalendar) {
+      setTimeout(() => {
+        onRedirectToCalendar()
+      }, 100)
+    }
   }
 
   if (!candidate) return null
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl p-0 overflow-hidden">
+      <DialogContent className="max-w-2xl w-[95vw] sm:w-full p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="p-6 border-b border-border/50 bg-gradient-to-r from-emerald-800/20 to-emerald-800/10 rounded-t-xl">
           <div className="flex items-center justify-between">

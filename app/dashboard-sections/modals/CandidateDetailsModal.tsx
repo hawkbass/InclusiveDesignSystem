@@ -1,7 +1,7 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { X, Mail, Phone, Calendar } from "lucide-react"
+import { X, Mail, Phone, Calendar, FileText } from "lucide-react"
 import type { Candidate } from "../types"
 
 interface CandidateDetailsModalProps {
@@ -9,13 +9,14 @@ interface CandidateDetailsModalProps {
   candidate: Candidate | null
   onClose: () => void
   handleCandidateAction: (candidateId: string, action: string) => void
+  onViewCV?: (candidateId: string) => void
 }
 
-export function CandidateDetailsModal({ open, candidate, onClose, handleCandidateAction }: CandidateDetailsModalProps) {
+export function CandidateDetailsModal({ open, candidate, onClose, handleCandidateAction, onViewCV }: CandidateDetailsModalProps) {
   if (!candidate) return null
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl p-0 overflow-hidden">
+      <DialogContent className="max-w-2xl w-[95vw] sm:w-full p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="p-6 border-b border-border/50 bg-gradient-to-r from-muted/50 to-muted/30 rounded-t-xl">
           <div className="flex items-center justify-between">
@@ -96,6 +97,20 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
         <div className="p-6 border-t border-border/50 bg-card/30 rounded-b-xl">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2">
+              {candidate.cvUrl && onViewCV && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-border/50 text-foreground/80 hover:bg-accent/50"
+                  onClick={() => {
+                    onViewCV(candidate.id)
+                  }}
+                  aria-label={`View ${candidate.name} CV`}
+                >
+                  <FileText className="h-3 w-3 mr-1" />
+                  View CV
+                </Button>
+              )}
               <Button
                 size="sm"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"

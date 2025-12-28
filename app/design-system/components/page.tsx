@@ -302,7 +302,7 @@ export default function ComponentsPage() {
   }
 
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex min-h-screen">
       <UnifiedSidebar animationSpeed={animationSpeed} />
       <main className="flex-1 overflow-auto">
         {/* Strategic Header - Value First */}

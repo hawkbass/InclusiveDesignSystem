@@ -21,7 +21,7 @@ import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
  */
 export default function DashboardPage() {
   return (
-    <div className="flex min-h-screen bg-background relative z-10">
+    <div className="flex min-h-screen relative z-10">
       <UnifiedSidebar />
       <main className="flex-1 overflow-auto">
         {/* Full-width dashboard container */}

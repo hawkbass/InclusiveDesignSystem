@@ -56,7 +56,8 @@ import {
   Layers,
   Type,
   Ruler,
-  Component
+  Component,
+  MessageSquare
 } from "lucide-react"
 
 export default function GettingStartedUniversal() {
@@ -306,7 +307,7 @@ export function CandidateCard() {
   const popularSearches = ["npm install", "button component", "theme config", "designer path", "accessibility"]
 
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex min-h-screen">
       <UnifiedSidebar />
       
       <main className="flex-1 overflow-auto">
@@ -1197,6 +1198,195 @@ module.exports = {
                 </CardContent>
               </Card>
             )}
+
+            {/* Troubleshooting Guide */}
+            <Card className="border-border/50 bg-card/30">
+              <CardHeader className="cursor-pointer" onClick={() => toggleSection("troubleshooting")}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-amber-500/20">
+                      <Lightbulb className="h-5 w-5 text-amber-400" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl text-foreground">Troubleshooting Guide</CardTitle>
+                      <CardDescription>
+                        Common issues and solutions with search functionality
+                      </CardDescription>
+                    </div>
+                  </div>
+                  <Button variant="ghost" size="sm">
+                    {expandedSections.has("troubleshooting") ? 
+                      <ChevronUp className="h-4 w-4" /> : 
+                      <ChevronDown className="h-4 w-4" />
+                    }
+                  </Button>
+                </div>
+              </CardHeader>
+              {expandedSections.has("troubleshooting") && (
+                <CardContent>
+                  <div className="space-y-6">
+                    {/* Search Troubleshooting */}
+                    <div className="relative mb-6">
+                      <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        placeholder="Search troubleshooting topics... (e.g., 'installation error', 'theme not working')"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="pl-10 bg-card/50 border-border"
+                      />
+                    </div>
+
+                    {/* Common Issues */}
+                    <div className="space-y-4">
+                      {[
+                        {
+                          issue: "Package installation fails",
+                          solution: "Ensure you're using Node.js 18+ and npm 9+. Clear cache with `npm cache clean --force` and try again.",
+                          category: "Installation",
+                          tags: ["npm", "installation", "error"]
+                        },
+                        {
+                          issue: "Theme not applying correctly",
+                          solution: "Verify ThemeProvider wraps your app root. Check that CSS imports are in the correct order: design system styles before your custom styles.",
+                          category: "Configuration",
+                          tags: ["theme", "provider", "styling"]
+                        },
+                        {
+                          issue: "Components not rendering",
+                          solution: "Check that all required peer dependencies are installed. Verify import paths match your package manager (npm/yarn/pnpm).",
+                          category: "Components",
+                          tags: ["components", "rendering", "imports"]
+                        },
+                        {
+                          issue: "TypeScript errors",
+                          solution: "Ensure @types/react and @types/react-dom are installed. Update your tsconfig.json to include the design system types.",
+                          category: "Development",
+                          tags: ["typescript", "types", "errors"]
+                        },
+                        {
+                          issue: "Tailwind conflicts",
+                          solution: "Check your tailwind.config.js for conflicting utilities. The design system uses specific class prefixes to avoid conflicts.",
+                          category: "Configuration",
+                          tags: ["tailwind", "conflicts", "config"]
+                        }
+                      ]
+                        .filter(item => 
+                          !searchQuery || 
+                          item.issue.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          item.solution.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          item.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase()))
+                        )
+                        .map((item, index) => (
+                          <Card key={index} className="bg-card/50 border-border/50">
+                            <CardContent className="p-4">
+                              <div className="flex items-start justify-between mb-2">
+                                <h4 className="font-semibold text-foreground">{item.issue}</h4>
+                                <Badge variant="outline" className="text-xs">{item.category}</Badge>
+                              </div>
+                              <p className="text-sm text-muted-foreground">{item.solution}</p>
+                              <div className="flex flex-wrap gap-1 mt-2">
+                                {item.tags.map((tag, tagIndex) => (
+                                  <Badge key={tagIndex} variant="outline" className="text-xs bg-muted/30">
+                                    {tag}
+                                  </Badge>
+                                ))}
+                              </div>
+                            </CardContent>
+                          </Card>
+                        ))}
+                    </div>
+                  </div>
+                </CardContent>
+              )}
+            </Card>
+
+            {/* Community Resources */}
+            <Card className="border-border/50 bg-card/30">
+              <CardHeader className="cursor-pointer" onClick={() => toggleSection("community")}>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-lg bg-blue-500/20">
+                      <Users className="h-5 w-5 text-blue-400" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl text-foreground">Community Resources</CardTitle>
+                      <CardDescription>
+                        Get help, share ideas, and connect with other developers
+                      </CardDescription>
+                    </div>
+                  </div>
+                  <Button variant="ghost" size="sm">
+                    {expandedSections.has("community") ? 
+                      <ChevronUp className="h-4 w-4" /> : 
+                      <ChevronDown className="h-4 w-4" />
+                    }
+                  </Button>
+                </div>
+              </CardHeader>
+              {expandedSections.has("community") && (
+                <CardContent>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div className="space-y-4">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
+                        <MessageSquare className="h-4 w-4 text-blue-400" />
+                        Support Channels
+                      </h4>
+                      <div className="space-y-2">
+                        {[
+                          { name: "GitHub Discussions", description: "Ask questions and share solutions", href: "#", icon: Code2 },
+                          { name: "Discord Community", description: "Real-time chat with developers", href: "#", icon: MessageSquare },
+                          { name: "Stack Overflow", description: "Tag: inclusive-design-system", href: "#", icon: Globe }
+                        ].map((resource, index) => (
+                          <Button
+                            key={index}
+                            variant="outline"
+                            size="sm"
+                            className="w-full justify-start h-auto p-3 hover:bg-card/50"
+                            onClick={() => window.open(resource.href, '_blank')}
+                          >
+                            <resource.icon className="h-4 w-4 mr-3 text-blue-400" />
+                            <div className="text-left flex-1">
+                              <div className="text-sm font-medium text-foreground">{resource.name}</div>
+                              <div className="text-xs text-muted-foreground">{resource.description}</div>
+                            </div>
+                            <ExternalLink className="h-3 w-3 text-muted-foreground" />
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h4 className="font-medium text-foreground flex items-center gap-2">
+                        <Play className="h-4 w-4 text-purple-400" />
+                        Video Tutorials
+                      </h4>
+                      <div className="space-y-2">
+                        {[
+                          { name: "Quick Start (5 min)", description: "Get up and running fast", duration: "5:23", href: "#" },
+                          { name: "Theme Customization", description: "Deep dive into theming", duration: "12:45", href: "#" },
+                          { name: "Component Composition", description: "Building complex UIs", duration: "18:12", href: "#" }
+                        ].map((video, index) => (
+                          <Button
+                            key={index}
+                            variant="outline"
+                            size="sm"
+                            className="w-full justify-start h-auto p-3 hover:bg-card/50"
+                            onClick={() => window.open(video.href, '_blank')}
+                          >
+                            <Play className="h-4 w-4 mr-3 text-purple-400" />
+                            <div className="text-left flex-1">
+                              <div className="text-sm font-medium text-foreground">{video.name}</div>
+                              <div className="text-xs text-muted-foreground">{video.description} • {video.duration}</div>
+                            </div>
+                            <ExternalLink className="h-3 w-3 text-muted-foreground" />
+                          </Button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              )}
+            </Card>
 
           </div>
         </section>

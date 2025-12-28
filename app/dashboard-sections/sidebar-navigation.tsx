@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import { 
   LayoutDashboard, 
   Users, 
@@ -10,9 +11,16 @@ import {
   User,
   Shield,
   Bell,
-  Users as TeamIcon
+  Users as TeamIcon,
+  Mail,
+  FileText,
+  BarChart3,
+  Zap,
+  Menu,
+  X
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import type { TabType, SettingsTabType } from "./types"
 
 interface SidebarNavigationProps {
@@ -28,11 +36,16 @@ export function SidebarNavigation({
   activeSettingsTab, 
   setActiveSettingsTab 
 }: SidebarNavigationProps) {
+  const [mobileOpen, setMobileOpen] = useState(false)
   const mainTabs = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "candidates", label: "Candidates", icon: Users },
     { id: "jobs", label: "Jobs", icon: Briefcase },
     { id: "calendar", label: "Calendar", icon: Calendar },
+    { id: "communications", label: "Communications", icon: Mail },
+    { id: "documents", label: "Documents", icon: FileText },
+    { id: "analytics", label: "Analytics", icon: BarChart3 },
+    { id: "automation", label: "Automation", icon: Zap },
     { id: "settings", label: "Settings", icon: Settings }
   ]
 
@@ -43,8 +56,8 @@ export function SidebarNavigation({
     { id: "team", label: "Team", icon: TeamIcon }
   ]
 
-  return (
-    <div className="w-64 bg-card/50 border-r border-border/50 backdrop-blur-sm">
+  const SidebarContent = () => (
+    <div className="w-full lg:w-64 bg-card/50 border-r border-border/50 backdrop-blur-sm h-full">
       {/* User Profile Section */}
       <div className="p-4 border-b border-border/50">
         <div className="flex items-center gap-3 mb-3">
@@ -91,7 +104,10 @@ export function SidebarNavigation({
                     ? 'bg-fuchsia-500/20 text-primary border border-primary/30' 
                     : 'text-muted-foreground hover:text-foreground/80 hover:bg-accent/50'
                 }`}
-                onClick={() => setActiveTab(tab.id as TabType)}
+                onClick={() => {
+                  setActiveTab(tab.id as TabType)
+                  setMobileOpen(false)
+                }}
               >
                 <Icon className="h-4 w-4 mr-3" />
                 {tab.label}
@@ -124,7 +140,10 @@ export function SidebarNavigation({
                       ? 'bg-fuchsia-500/20 text-primary border border-primary/30' 
                       : 'text-muted-foreground hover:text-foreground/80 hover:bg-accent/50'
                   }`}
-                  onClick={() => setActiveSettingsTab(tab.id as SettingsTabType)}
+                  onClick={() => {
+                    setActiveSettingsTab(tab.id as SettingsTabType)
+                    setMobileOpen(false)
+                  }}
                 >
                   <Icon className="h-3 w-3 mr-2" />
                   {tab.label}
@@ -161,6 +180,46 @@ export function SidebarNavigation({
         </div>
       </div>
     </div>
+  )
+
+  return (
+    <>
+      {/* Mobile Menu Button */}
+      <div className="lg:hidden fixed top-4 left-4 z-50">
+        <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-10 w-10 bg-card/95 backdrop-blur-sm border-border"
+              aria-label="Open navigation menu"
+            >
+              <Menu className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="w-72 p-0 overflow-y-auto">
+            <div className="p-4 border-b border-border/50 flex items-center justify-between">
+              <h2 className="text-lg font-semibold text-foreground">Navigation</h2>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+              >
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+            <SidebarContent />
+          </SheetContent>
+        </Sheet>
+      </div>
+
+      {/* Desktop Sidebar */}
+      <div className="hidden lg:block">
+        <SidebarContent />
+      </div>
+    </>
   )
 } 
 

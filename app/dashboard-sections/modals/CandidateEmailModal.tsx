@@ -15,7 +15,7 @@ export function CandidateEmailModal({ open, candidate, onClose, setNotifications
   if (!candidate) return null
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl p-0 overflow-hidden">
+      <DialogContent className="max-w-2xl w-[95vw] sm:w-full p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="p-6 border-b border-border/50 bg-gradient-to-r from-blue-800/20 to-blue-800/10 rounded-t-xl">
           <div className="flex items-center justify-between">

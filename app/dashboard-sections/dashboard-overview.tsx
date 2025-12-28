@@ -9,7 +9,12 @@ import {
   Eye,
   MoreVertical,
   CheckSquare,
-  Square
+  Square,
+  Clock,
+  UserPlus,
+  Briefcase,
+  Activity,
+  Zap
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { StatusBadge } from "@/components/ui/status-badge"
@@ -31,6 +36,11 @@ interface DashboardOverviewProps {
   timePeriod: "7D" | "30D" | "90D" | "12M"
   setChartType: (type: "line" | "area" | "bar") => void
   setTimePeriod: (period: "7D" | "30D" | "90D" | "12M") => void
+  setActiveTab?: (tab: string) => void
+  setShowCreateJobModal?: (show: boolean) => void
+  setShowAddCandidateModal?: (show: boolean) => void
+  setShowEmailModal?: (show: boolean) => void
+  setShowScheduleModal?: (show: boolean) => void
 }
 
 export function DashboardOverview({
@@ -45,7 +55,12 @@ export function DashboardOverview({
   chartType,
   timePeriod,
   setChartType,
-  setTimePeriod
+  setTimePeriod,
+  setActiveTab,
+  setShowCreateJobModal,
+  setShowAddCandidateModal,
+  setShowEmailModal,
+  setShowScheduleModal
 }: DashboardOverviewProps) {
   const statCards = getStatCards()
   const candidates = [
@@ -111,20 +126,51 @@ export function DashboardOverview({
   }
 
   const handleBulkAction = (action: string) => {
-    if (selectedCandidates.size === 0) return
-    
     switch (action) {
       case "email":
-        // Handle bulk email
+        // If candidates are selected, email them; otherwise open email modal or use first candidate
+        if (selectedCandidates.size > 0) {
+          handleCandidateAction(Array.from(selectedCandidates)[0], "email")
+        } else if (candidates.length > 0) {
+          handleCandidateAction(candidates[0].id, "email")
+        } else if (setShowEmailModal) {
+          setShowEmailModal(true)
+        }
         break
       case "schedule":
-        // Handle bulk schedule
+        // If candidates are selected, schedule them; otherwise open schedule modal or use first candidate
+        if (selectedCandidates.size > 0) {
+          handleCandidateAction(Array.from(selectedCandidates)[0], "schedule")
+        } else if (candidates.length > 0) {
+          handleCandidateAction(candidates[0].id, "schedule")
+        } else if (setShowScheduleModal) {
+          setShowScheduleModal(true)
+        }
         break
       case "reject":
-        // Handle bulk reject
+        // Reject selected candidates (in a real app, this would update the database)
+        if (selectedCandidates.size > 0) {
+          setSelectedCandidates(new Set())
+        }
         break
     }
   }
+
+  // Real-time activity feed data (simulated)
+  const activityFeed = [
+    { id: 1, type: "application", message: "New application from Emily Brown for UI Designer", time: "5 min ago", icon: UserPlus },
+    { id: 2, type: "interview", message: "Interview completed with Michael Chen", time: "15 min ago", icon: Calendar },
+    { id: 3, type: "status", message: "Sophie Williams moved to offer stage", time: "1 hour ago", icon: TrendingUp },
+    { id: 4, type: "application", message: "3 new applications received", time: "2 hours ago", icon: UserPlus },
+    { id: 5, type: "interview", message: "Interview scheduled with Lisa Anderson", time: "3 hours ago", icon: Calendar }
+  ]
+
+  // Upcoming tasks
+  const upcomingTasks = [
+    { id: 1, type: "interview", title: "Interview with Oliver Smith", time: "10:00", urgent: true },
+    { id: 2, type: "followup", title: "Follow up with Amelia Jones", time: "14:00", urgent: false },
+    { id: 3, type: "feedback", title: "Pending feedback for Harry Patel", time: "Today", urgent: false }
+  ]
 
   return (
     <div className="space-y-3">
@@ -174,6 +220,146 @@ export function DashboardOverview({
             </div>
           </AnimatedElement>
         ))}
+      </div>
+
+      {/* Quick Actions & Activity Feed Row */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+        {/* Quick Actions Panel */}
+        <AnimatedElement animation="slide-up" delay={400}>
+          <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
+            <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+              <Zap className="h-4 w-4 text-primary" />
+              Quick Actions
+            </h3>
+            <div className="space-y-2">
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-start text-xs"
+                onClick={() => {
+                  // Try to use first candidate if available, otherwise open modal
+                  if (candidates.length > 0) {
+                    handleCandidateAction(candidates[0].id, "schedule")
+                  } else if (setShowScheduleModal) {
+                    setShowScheduleModal(true)
+                  }
+                }}
+              >
+                <Calendar className="h-3.5 w-3.5 mr-2" />
+                Schedule Interview
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-start text-xs"
+                onClick={() => handleBulkAction("email")}
+              >
+                <Mail className="h-3.5 w-3.5 mr-2" />
+                Send Bulk Email
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-start text-xs"
+                onClick={() => {
+                  if (setShowCreateJobModal) {
+                    setShowCreateJobModal(true)
+                  } else if (setActiveTab) {
+                    setActiveTab("jobs")
+                  }
+                }}
+              >
+                <Briefcase className="h-3.5 w-3.5 mr-2" />
+                Create Job Posting
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-full justify-start text-xs"
+                onClick={() => {
+                  if (setShowAddCandidateModal) {
+                    setShowAddCandidateModal(true)
+                  } else if (setActiveTab) {
+                    setActiveTab("candidates")
+                  }
+                }}
+              >
+                <UserPlus className="h-3.5 w-3.5 mr-2" />
+                Add Candidate
+              </Button>
+            </div>
+          </div>
+        </AnimatedElement>
+
+        {/* Real-time Activity Feed */}
+        <AnimatedElement animation="slide-up" delay={500}>
+          <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-sm font-medium text-foreground flex items-center gap-2">
+                <Activity className="h-4 w-4 text-primary" />
+                Activity Feed
+              </h3>
+              <span className="text-xs text-muted-foreground">Live</span>
+            </div>
+            <div className="space-y-2 max-h-[200px] overflow-y-auto">
+              {[
+                { id: 1, type: "application", message: "New application from Emily Brown for UI Designer", time: "5 min ago", icon: UserPlus },
+                { id: 2, type: "interview", message: "Interview completed with Michael Chen", time: "15 min ago", icon: Calendar },
+                { id: 3, type: "status", message: "Sophie Williams moved to offer stage", time: "1 hour ago", icon: TrendingUp },
+                { id: 4, type: "application", message: "3 new applications received", time: "2 hours ago", icon: UserPlus },
+                { id: 5, type: "interview", message: "Interview scheduled with Lisa Anderson", time: "3 hours ago", icon: Calendar }
+              ].map((activity) => {
+                const Icon = activity.icon
+                return (
+                  <div
+                    key={activity.id}
+                    className="flex items-start gap-2 p-2 rounded-md hover:bg-muted/50 transition-colors"
+                  >
+                    <div className="flex-shrink-0 mt-0.5">
+                      <Icon className="h-3.5 w-3.5 text-primary" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-foreground/80">{activity.message}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{activity.time}</p>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </AnimatedElement>
+
+        {/* Upcoming Tasks */}
+        <AnimatedElement animation="slide-up" delay={600}>
+          <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
+            <h3 className="text-sm font-medium text-foreground mb-3 flex items-center gap-2">
+              <Clock className="h-4 w-4 text-primary" />
+              Upcoming Tasks
+            </h3>
+            <div className="space-y-2">
+              {[
+                { id: 1, type: "interview", title: "Interview with Oliver Smith", time: "10:00", urgent: true },
+                { id: 2, type: "followup", title: "Follow up with Amelia Jones", time: "14:00", urgent: false },
+                { id: 3, type: "feedback", title: "Pending feedback for Harry Patel", time: "Today", urgent: false }
+              ].map((task) => (
+                <div
+                  key={task.id}
+                  className={`flex items-center justify-between p-2 rounded-md ${
+                    task.urgent ? "bg-red-500/10 border border-red-500/30" : "bg-muted/30"
+                  }`}
+                >
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs text-foreground/80 font-medium">{task.title}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{task.time}</p>
+                  </div>
+                  {task.urgent && (
+                    <span className="text-xs text-red-400 font-medium">Urgent</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </AnimatedElement>
       </div>
 
       {/* Candidates Table */}

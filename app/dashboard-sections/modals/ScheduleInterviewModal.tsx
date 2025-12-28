@@ -11,9 +11,10 @@ interface ScheduleInterviewModalProps {
   open: boolean
   onClose: () => void
   onScheduleInterview: (event: CalendarEvent & { date: string }) => void
+  onRedirectToCalendar?: () => void
 }
 
-export function ScheduleInterviewModal({ open, onClose, onScheduleInterview }: ScheduleInterviewModalProps) {
+export function ScheduleInterviewModal({ open, onClose, onScheduleInterview, onRedirectToCalendar }: ScheduleInterviewModalProps) {
   const [selectedInterviewer, setSelectedInterviewer] = useState<string>("")
   const [interviewType, setInterviewType] = useState<string>("Phone Screening")
   const [duration, setDuration] = useState<string>("30 minutes")
@@ -68,10 +69,17 @@ export function ScheduleInterviewModal({ open, onClose, onScheduleInterview }: S
     setTime("")
     setNotes("")
     setCandidateName("")
+    
+    // Redirect to calendar tab
+    if (onRedirectToCalendar) {
+      setTimeout(() => {
+        onRedirectToCalendar()
+      }, 100)
+    }
   }
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl p-0 overflow-hidden">
+      <DialogContent className="max-w-2xl w-[95vw] sm:w-full p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="p-6 border-b border-border/50 bg-gradient-to-r from-fuchsia-800/20 to-fuchsia-800/10 rounded-t-xl">
           <div className="flex items-center justify-between">

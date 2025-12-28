@@ -13,7 +13,7 @@ export function CreateJobModal({ open, onClose }: CreateJobModalProps) {
   // You can add state for form fields here if you want to make it functional
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto p-0">
+      <DialogContent className="max-w-4xl w-[95vw] sm:w-full max-h-[90vh] overflow-y-auto p-0">
         {/* Header */}
         <div className="p-6 border-b border-border/50 bg-gradient-to-r from-fuchsia-800/20 to-fuchsia-800/10 rounded-t-xl">
           <div className="flex items-center justify-between">
@@ -140,7 +140,12 @@ export function CreateJobModal({ open, onClose }: CreateJobModalProps) {
               <Button
                 size="sm"
                 className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
-                onClick={onClose}
+                onClick={() => {
+                  // In a real app, this would validate and submit the form
+                  // For demo purposes, we'll show success feedback
+                  alert("Job posting created successfully! (Demo mode)")
+                  onClose()
+                }}
                 aria-label="Create new job posting"
               >
                 Create Job

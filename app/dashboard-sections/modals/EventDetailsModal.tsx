@@ -1,6 +1,8 @@
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
+import { ConfirmationDialog } from "@/components/ui/confirmation-dialog"
 import { X, FileText } from "lucide-react"
+import { useState } from "react"
 import type { CalendarEvent } from "../types"
 import { initialCandidates } from "../data"
 
@@ -9,9 +11,12 @@ interface EventDetailsModalProps {
   event: CalendarEvent | null
   onClose: () => void
   onCancelInterview?: (eventId: string) => void
+  onViewCV?: (candidateId: string) => void
 }
 
-export function EventDetailsModal({ open, event, onClose, onCancelInterview }: EventDetailsModalProps) {
+export function EventDetailsModal({ open, event, onClose, onCancelInterview, onViewCV }: EventDetailsModalProps) {
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false)
+  
   if (!event) return null
 
   // Find matching candidate
@@ -40,18 +45,20 @@ export function EventDetailsModal({ open, event, onClose, onCancelInterview }: E
     return reasons.length > 0 ? reasons : ["Review candidate profile for fit assessment"]
   }
 
-  const handleCancelInterview = () => {
-    if (confirm(`Are you sure you want to cancel the interview with ${event.candidate}?`)) {
-      if (onCancelInterview) {
-        onCancelInterview(event.id)
-      }
-      onClose()
+  const handleCancelClick = () => {
+    setShowConfirmDialog(true)
+  }
+
+  const handleConfirmCancel = () => {
+    if (onCancelInterview) {
+      onCancelInterview(event.id)
     }
+    onClose()
   }
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl p-0 overflow-hidden">
+      <DialogContent className="max-w-2xl w-[95vw] sm:w-full p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
         {/* Header */}
         <div className="p-6 border-b border-border/50 bg-gradient-to-r from-blue-800/20 to-blue-800/10 rounded-t-xl">
           <div className="flex items-center justify-between">
@@ -112,7 +119,11 @@ export function EventDetailsModal({ open, event, onClose, onCancelInterview }: E
                 variant="outline"
                 size="sm"
                 className="border-border/50 text-foreground/80 hover:bg-accent/50"
-                onClick={() => window.open(candidate.cvUrl, '_blank')}
+                onClick={() => {
+                  if (onViewCV && candidate) {
+                    onViewCV(candidate.id)
+                  }
+                }}
                 aria-label={`View ${event.candidate} CV`}
               >
                 <FileText className="h-4 w-4 mr-2" />
@@ -124,7 +135,7 @@ export function EventDetailsModal({ open, event, onClose, onCancelInterview }: E
                 variant="destructive"
                 size="sm"
                 className="bg-red-500/20 text-red-600 dark:text-red-300 border-red-500/30 hover:bg-red-500/30"
-                onClick={handleCancelInterview}
+                onClick={handleCancelClick}
                 aria-label={`Cancel interview with ${event.candidate}`}
               >
                 <X className="h-4 w-4 mr-2" />
@@ -134,6 +145,17 @@ export function EventDetailsModal({ open, event, onClose, onCancelInterview }: E
           </div>
         </div>
       </DialogContent>
+      
+      <ConfirmationDialog
+        open={showConfirmDialog}
+        onOpenChange={setShowConfirmDialog}
+        title="Cancel Interview"
+        description={`Are you sure you want to cancel the interview with ${event.candidate}? This action cannot be undone.`}
+        confirmText="Cancel Interview"
+        cancelText="Keep Interview"
+        onConfirm={handleConfirmCancel}
+        variant="destructive"
+      />
     </Dialog>
   )
 }

@@ -6,6 +6,8 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Label } from "@/components/ui/label"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
   GitBranch,
@@ -482,6 +484,124 @@ export default function ChangelogPage() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Version Comparison Tool */}
+        <section className="px-6 lg:px-12 py-8">
+          <div className="max-w-7xl mx-auto">
+            <Card className="bg-card/30 border-border/50 mb-8">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                  <GitBranch className="h-6 w-6 text-primary" />
+                  Version Comparison Tool
+                </CardTitle>
+                <CardDescription>
+                  Compare changes between different versions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="grid md:grid-cols-2 gap-4 mb-6">
+                  <div className="space-y-2">
+                    <Label>From Version</Label>
+                    <Select defaultValue="2.0.0">
+                      <SelectTrigger className="bg-card/50 border-border">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="2.1.0">v2.1.0</SelectItem>
+                        <SelectItem value="2.0.0">v2.0.0</SelectItem>
+                        <SelectItem value="1.5.0">v1.5.0</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div className="space-y-2">
+                    <Label>To Version</Label>
+                    <Select defaultValue="2.1.0">
+                      <SelectTrigger className="bg-card/50 border-border">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="2.1.0">v2.1.0</SelectItem>
+                        <SelectItem value="2.0.0">v2.0.0</SelectItem>
+                        <SelectItem value="1.5.0">v1.5.0</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <Button className="w-full bg-primary text-primary-foreground">
+                  <GitBranch className="h-4 w-4 mr-2" />
+                  Compare Versions
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Migration Guides */}
+            <Card className="bg-card/30 border-border/50">
+              <CardHeader>
+                <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                  <ArrowRight className="h-6 w-6 text-primary" />
+                  Migration Guides
+                </CardTitle>
+                <CardDescription>
+                  Step-by-step guides for upgrading between versions
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    {
+                      from: "v2.0.0",
+                      to: "v2.1.0",
+                      breaking: false,
+                      steps: [
+                        "Update package to latest version",
+                        "Review new theme system changes",
+                        "Update any custom theme configurations"
+                      ]
+                    },
+                    {
+                      from: "v1.5.0",
+                      to: "v2.0.0",
+                      breaking: true,
+                      steps: [
+                        "Review breaking changes documentation",
+                        "Update component imports",
+                        "Migrate to new token system",
+                        "Test all components thoroughly"
+                      ]
+                    }
+                  ].map((guide, index) => (
+                    <Card key={index} className="bg-card/50 border-border/50">
+                      <CardHeader>
+                        <div className="flex items-center justify-between">
+                          <CardTitle className="text-base text-foreground">
+                            {guide.from} → {guide.to}
+                          </CardTitle>
+                          {guide.breaking && (
+                            <Badge className="bg-red-500/20 text-red-600 dark:text-red-400 border-red-500/30">
+                              Breaking Changes
+                            </Badge>
+                          )}
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-2">
+                          {guide.steps.map((step, sIndex) => (
+                            <div key={sIndex} className="flex items-start gap-2 text-sm">
+                              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <span className="text-xs font-bold text-primary">{sIndex + 1}</span>
+                              </div>
+                              <span className="text-foreground/80">{step}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
       </main>
     </div>
   )

@@ -22,6 +22,24 @@ export interface Candidate {
   portfolio?: string
   resume?: string
   cvUrl?: string
+  applications?: string[]
+  communications?: string[]
+  documents?: string[]
+  tags?: string[]
+  rating?: number
+  notes?: string[]
+  source?: string
+  referredBy?: string
+  availability?: "immediate" | "2_weeks" | "1_month" | "3_months" | "custom"
+  salaryExpectation?: string
+  noticePeriod?: string
+  linkedInUrl?: string
+  githubUrl?: string
+  portfolioUrl?: string
+  createdAt?: string
+  updatedAt?: string
+  lastContactedAt?: string
+  nextFollowUp?: string
 }
 
 export interface Job {
@@ -39,6 +57,32 @@ export interface Job {
   requirements: string[]
   benefits: string[]
   priority: "high" | "medium" | "low"
+  applications?: string[]
+  views?: number
+  uniqueViews?: number
+  conversionRate?: number
+  averageTimeToApply?: number
+  hiringManager?: string
+  recruiter?: string
+  budget?: {
+    min: number
+    max: number
+    currency: string
+  }
+  requirementsDetail?: {
+    required: string[]
+    preferred: string[]
+  }
+  benefitsDetail?: {
+    standard: string[]
+    premium: string[]
+  }
+  tags?: string[]
+  internalNotes?: string[]
+  publishedAt?: string
+  expiresAt?: string
+  autoClose?: boolean
+  closeDate?: string
 }
 
 export interface CalendarEvent {
@@ -53,6 +97,31 @@ export interface CalendarEvent {
   interviewer?: string
   meetingLink?: string
   notes?: string
+  date?: string
+  applicationId?: string
+  interviewType?: "phone" | "video" | "onsite" | "panel" | "technical" | "final"
+  interviewers?: string[]
+  location?: string
+  dialInNumber?: string
+  feedback?: InterviewFeedback[]
+  reminders?: Reminder[]
+  statusHistory?: EventStatus[]
+  createdAt?: string
+  updatedAt?: string
+  isCancelling?: boolean
+}
+
+export interface Reminder {
+  type: "email" | "sms" | "push"
+  time: string
+  sent: boolean
+}
+
+export interface EventStatus {
+  status: "scheduled" | "confirmed" | "rescheduled" | "cancelled" | "completed" | "no_show"
+  changedAt: string
+  changedBy: string
+  reason?: string
 }
 
 export interface ProfileData {
@@ -117,7 +186,7 @@ export interface ChartData {
   }[]
 }
 
-export type TabType = "dashboard" | "candidates" | "jobs" | "calendar" | "settings"
+export type TabType = "dashboard" | "candidates" | "jobs" | "calendar" | "communications" | "documents" | "analytics" | "automation" | "settings"
 export type SettingsTabType = "profile" | "notifications" | "security" | "team"
 export type ChartType = "line" | "area" | "bar"
 export type TimePeriod = "7D" | "30D" | "90D" | "12M"
@@ -210,6 +279,125 @@ export interface DashboardActions {
   setSecuritySettings: (settings: SecuritySettings) => void
   setTeamMembers: (members: TeamMember[]) => void
   setJobsData: (jobs: Job[]) => void
+}
+
+// Application tracking
+export interface Application {
+  id: string
+  candidateId: string
+  jobId: string
+  appliedDate: string
+  status: "pending" | "reviewing" | "shortlisted" | "interview" | "offer" | "rejected" | "withdrawn"
+  source: "linkedin" | "indeed" | "website" | "referral" | "agency" | "other"
+  coverLetter?: string
+  notes: string[]
+  rating?: number
+  tags: string[]
+  stageHistory: ApplicationStage[]
+  assignedTo?: string
+  createdAt: string
+  updatedAt: string
+}
+
+export interface ApplicationStage {
+  stage: string
+  enteredAt: string
+  exitedAt?: string
+  duration?: number
+}
+
+// Communication tracking
+export interface Communication {
+  id: string
+  type: "email" | "sms" | "call" | "note" | "meeting"
+  candidateId?: string
+  jobId?: string
+  userId: string
+  subject?: string
+  content: string
+  direction: "inbound" | "outbound"
+  status: "sent" | "delivered" | "read" | "failed"
+  timestamp: string
+  attachments?: string[]
+  templateId?: string
+}
+
+// Email templates
+export interface EmailTemplate {
+  id: string
+  name: string
+  category: "interview" | "rejection" | "offer" | "follow-up" | "custom"
+  subject: string
+  body: string
+  variables: string[]
+  isDefault: boolean
+  createdAt: string
+  updatedAt: string
+}
+
+// Documents
+export interface Document {
+  id: string
+  type: "cv" | "portfolio" | "cover-letter" | "certificate" | "other"
+  candidateId?: string
+  jobId?: string
+  fileName: string
+  fileSize: number
+  mimeType: string
+  url: string
+  uploadedAt: string
+  uploadedBy: string
+}
+
+// Interview feedback
+export interface InterviewFeedback {
+  id: string
+  interviewId: string
+  interviewerId: string
+  candidateId: string
+  jobId: string
+  technicalScore: number
+  culturalFitScore: number
+  communicationScore: number
+  overallScore: number
+  strengths: string[]
+  weaknesses: string[]
+  recommendation: "strong_yes" | "yes" | "maybe" | "no" | "strong_no"
+  notes: string
+  submittedAt: string
+}
+
+// Analytics
+export interface AnalyticsMetric {
+  id: string
+  name: string
+  value: number
+  change: number
+  trend: "up" | "down" | "stable"
+  period: "day" | "week" | "month" | "quarter" | "year"
+  timestamp: string
+}
+
+// Workflow automation
+export interface WorkflowRule {
+  id: string
+  name: string
+  trigger: "application_received" | "status_changed" | "interview_scheduled" | "custom"
+  conditions: WorkflowCondition[]
+  actions: WorkflowAction[]
+  isActive: boolean
+  createdAt: string
+}
+
+export interface WorkflowCondition {
+  field: string
+  operator: "equals" | "contains" | "greater_than" | "less_than" | "in"
+  value: any
+}
+
+export interface WorkflowAction {
+  type: "send_email" | "change_status" | "assign_to" | "add_tag" | "create_task"
+  params: Record<string, any>
 } 
 
 

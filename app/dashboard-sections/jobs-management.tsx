@@ -133,6 +133,36 @@ export function JobsManagement({
             variant="outline"
             size="sm"
             className="border-border/50 text-foreground/80 hover:bg-accent/50"
+            onClick={() => {
+              // Export jobs to CSV
+              const headers = ["Title", "Department", "Location", "Type", "Level", "Salary", "Status", "Applicants", "Posted"]
+              const rows = jobsData.map(job => [
+                job.title,
+                job.department,
+                job.location,
+                job.type,
+                job.level,
+                job.salary,
+                job.status,
+                job.applicants.toString(),
+                job.posted
+              ])
+              
+              const csvContent = [
+                headers.join(","),
+                ...rows.map(row => row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(","))
+              ].join("\n")
+              
+              const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
+              const link = document.createElement("a")
+              const url = URL.createObjectURL(blob)
+              link.setAttribute("href", url)
+              link.setAttribute("download", `jobs-export-${new Date().toISOString().split('T')[0]}.csv`)
+              link.style.visibility = "hidden"
+              document.body.appendChild(link)
+              link.click()
+              document.body.removeChild(link)
+            }}
           >
             <Download className="h-4 w-4 mr-2" />
             Export
@@ -196,6 +226,11 @@ export function JobsManagement({
             variant="outline"
             size="sm"
             className="border-border/50 text-foreground/80 hover:bg-accent/50"
+            onClick={() => {
+              // In a real app, this would open a filter dropdown/modal
+              // For demo purposes, we'll show a message
+              alert("Advanced filters would open here. (Demo mode)")
+            }}
           >
             <Filter className="h-4 w-4 mr-2" />
             Filters

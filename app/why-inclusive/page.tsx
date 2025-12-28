@@ -5,6 +5,8 @@ import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import Link from "next/link"
 import {
   Zap,
@@ -32,7 +34,8 @@ import {
   PieChart,
   Layers,
   Star,
-  Heart
+  Heart,
+  Download
 } from "lucide-react"
 
 /**
@@ -467,6 +470,105 @@ export default function WhyInclusivePage() {
                 </div>
               </CardContent>
             </Card>
+          </section>
+
+          {/* Interactive Comparison Tool */}
+          <section className="px-6 lg:px-12 py-8">
+            <div className="max-w-7xl mx-auto">
+              <Card className="bg-card/30 border-border/50 mb-8">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                    <BarChart3 className="h-6 w-6 text-primary" />
+                    Interactive Comparison Tool
+                  </CardTitle>
+                  <CardDescription>
+                    Compare Inclusive ATS with competitors side-by-side
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-5 gap-4 text-sm font-medium text-foreground border-b border-border/50 pb-2">
+                      <div>Feature</div>
+                      <div className="text-center">Inclusive</div>
+                      <div className="text-center">Greenhouse</div>
+                      <div className="text-center">Lever</div>
+                      <div className="text-center">Workable</div>
+                    </div>
+                    {competitorComparison.slice(0, 5).map((item, index) => (
+                      <div key={index} className="grid grid-cols-5 gap-4 items-center py-3 border-b border-border/30">
+                        <div className="flex items-center gap-2">
+                          <item.icon className="h-4 w-4 text-primary" />
+                          <span className="text-sm text-foreground">{item.feature}</span>
+                        </div>
+                        <div className="text-center">
+                          <Badge className="bg-green-500/20 text-green-600 dark:text-green-400 border-green-500/30">
+                            {item.inclusive}
+                          </Badge>
+                        </div>
+                        <div className="text-center text-sm text-muted-foreground">{item.greenhouse}</div>
+                        <div className="text-center text-sm text-muted-foreground">{item.lever}</div>
+                        <div className="text-center text-sm text-muted-foreground">{item.workable}</div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* ROI Calculator */}
+              <Card className="bg-card/30 border-border/50">
+                <CardHeader>
+                  <CardTitle className="text-2xl text-foreground flex items-center gap-2">
+                    <TrendingUp className="h-6 w-6 text-primary" />
+                    ROI Calculator
+                  </CardTitle>
+                  <CardDescription>
+                    Calculate your return on investment with Inclusive ATS
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-6">
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label>Number of Recruiters</Label>
+                        <Input type="number" defaultValue="5" className="bg-card/50 border-border" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Average Hires per Month</Label>
+                        <Input type="number" defaultValue="20" className="bg-card/50 border-border" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Current Time per Hire (hours)</Label>
+                        <Input type="number" defaultValue="8" className="bg-card/50 border-border" />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>Hourly Rate ($)</Label>
+                        <Input type="number" defaultValue="50" className="bg-card/50 border-border" />
+                      </div>
+                    </div>
+                    <div className="p-6 bg-primary/10 border border-primary/30 rounded-lg">
+                      <div className="grid md:grid-cols-3 gap-4 text-center">
+                        <div>
+                          <div className="text-2xl font-bold text-primary mb-1">$12,000</div>
+                          <div className="text-sm text-muted-foreground">Monthly Savings</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl font-bold text-primary mb-1">40%</div>
+                          <div className="text-sm text-muted-foreground">Time Reduction</div>
+                        </div>
+                        <div>
+                          <div className="text-2xl font-bold text-primary mb-1">6 months</div>
+                          <div className="text-sm text-muted-foreground">Payback Period</div>
+                        </div>
+                      </div>
+                    </div>
+                    <Button className="w-full bg-primary text-primary-foreground">
+                      <Download className="h-4 w-4 mr-2" />
+                      Download ROI Report
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </section>
 
         </div>
