@@ -259,6 +259,9 @@ function CategoryCard({ category }: { category: any }) {
 }
 
 export default function ComponentsPage() {
+  useEffect(() => {
+    document.title = "Components - Inclusive Design System"
+  }, [])
   const [mounted, setMounted] = useState(false)
   const [animationSpeed, setAnimationSpeed] = useState([1])
   const [activeView, setActiveView] = useState("overview")

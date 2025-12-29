@@ -42,10 +42,16 @@ import {
   Settings
 } from "lucide-react"
 import Link from "next/link"
+// Import data structures
+import { componentDefinitions, exportFormats, responsiveBreakpoints } from "./data"
 
 // Elite Component Playground - UX-First Interactive Development Environment
 function ComponentPlayground() {
   const [selectedComponent, setSelectedComponent] = useState("Button")
+  
+  useEffect(() => {
+    document.title = "Playground - Inclusive Design System"
+  }, [])
   const [demoVariant, setDemoVariant] = useState("default")
   const [demoSize, setDemoSize] = useState("default")
   const [demoState, setDemoState] = useState("default")
@@ -59,6 +65,8 @@ function ComponentPlayground() {
   const [showPerformance, setShowPerformance] = useState(false)
   const [responsiveView, setResponsiveView] = useState("desktop")
 
+  // Component definitions with code templates
+  // Note: We keep full definitions here because code templates need component state variables
   const components = {
     Button: {
       variants: ["default", "secondary", "outline", "ghost", "destructive", "link"],
@@ -484,7 +492,8 @@ function ComponentPlayground() {
 }`
       }
     },
-    Badge: {
+    Input: {
+      ...componentDefinitions.Input,
       variants: ["default", "secondary", "outline", "destructive", "success", "warning"],
       sizes: ["xs", "sm", "default", "lg"],
       states: ["default", "hover", "active", "disabled"],
@@ -1057,6 +1066,10 @@ function ComponentPlayground() {
 
 export default function PlaygroundPage() {
   const [mounted, setMounted] = useState(false)
+  
+  useEffect(() => {
+    document.title = "Playground - Inclusive Design System"
+  }, [])
 
   useEffect(() => {
     setMounted(true)

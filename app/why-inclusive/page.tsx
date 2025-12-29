@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect } from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -202,6 +202,10 @@ const industryStats = [
 ]
 
 export default function WhyInclusivePage() {
+  React.useEffect(() => {
+    document.title = "Why Inclusive? - Inclusive Design System"
+  }, [])
+  
   return (
     <div className="flex min-h-screen bg-background relative z-10">
       <UnifiedSidebar />

@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label"
 import { CheckCircle2, Shield, Target, Zap, TrendingUp, Users, Briefcase, GraduationCap, Copy, Settings, X, Eye, Code2, Download, ExternalLink, Sparkles, Heart, Brain, Lightbulb, Globe, Award, BookOpen, Layers, Palette, BarChart3 } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
+// Import data structures
+import { designPhilosophy, corePrinciples, applicationAreas, implementationGuidelines, resources, quickLinks } from "./data"
 
 export default function Principles() {
   const [mounted, setMounted] = useState(false)
@@ -25,6 +27,7 @@ export default function Principles() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "Design Principles - Inclusive Design System"
   }, [])
 
   // Apply animation speed to document

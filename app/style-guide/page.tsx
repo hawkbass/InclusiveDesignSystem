@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -36,6 +36,10 @@ export default function StyleGuide() {
   const [favourites, setFavorites] = useState<Set<string>>(new Set())
   const [activeSection, setActiveSection] = useState("atoms")
   const [activeAtomType, setActiveAtomType] = useState("colours")
+
+  useEffect(() => {
+    document.title = "Style Guide - Inclusive Design System"
+  }, [])
 
   const handleCopyCode = (code: string, id: string) => {
     navigator.clipboard.writeText(code)

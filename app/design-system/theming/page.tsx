@@ -48,6 +48,11 @@ export default function Theming() {
   const [primaryHsv, setPrimaryHsv] = useState({ h: 292, s: 84, v: 93 })
   const [secondaryHsv, setSecondaryHsv] = useState({ h: 258, s: 64, v: 97 })
   
+  useEffect(() => {
+    setMounted(true)
+    document.title = "Theming - Inclusive Design System"
+  }, [])
+  
   // Sync activeTheme with actual theme from provider
   const activeTheme = theme || resolvedTheme || "dark"
 

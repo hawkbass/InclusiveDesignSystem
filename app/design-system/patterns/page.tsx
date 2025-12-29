@@ -52,6 +52,7 @@ export default function Patterns() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "UI Patterns - Inclusive Design System"
   }, [])
 
   if (!mounted) {

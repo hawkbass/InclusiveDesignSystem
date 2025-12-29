@@ -54,6 +54,7 @@ export default function Overview() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "Design System Overview - Inclusive Design System"
   }, [])
 
   useEffect(() => {

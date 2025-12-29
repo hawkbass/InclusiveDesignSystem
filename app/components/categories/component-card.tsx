@@ -48,10 +48,8 @@ export function ComponentCard({
   searchQuery = ""
 }: ComponentCardProps) {
   const [isViewOpen, setIsViewOpen] = useState(false)
-  const [isEditOpen, setIsEditOpen] = useState(false)
   const [editedCode, setEditedCode] = useState(code || "")
-  const [editedTitle, setEditedTitle] = useState(title)
-  const [editedDescription, setEditedDescription] = useState(description || "")
+  const [isEditing, setIsEditing] = useState(false)
 
   // Highlight search terms in title
   const highlightText = (text: string, query: string) => {
@@ -71,17 +69,18 @@ export function ComponentCard({
     ? "flex items-center gap-6 p-6" 
     : "flex flex-col p-6"
 
-  const handleSaveEdit = () => {
-    // In a real app, this would save to a backend
-    console.log("Saving component:", { id, title: editedTitle, description: editedDescription, code: editedCode })
-    setIsEditOpen(false)
-    // You could add a toast notification here
-  }
-
   const handleResetEdit = () => {
     setEditedCode(code || "")
-    setEditedTitle(title)
-    setEditedDescription(description || "")
+    setIsEditing(false)
+  }
+
+  // Reset edited code when modal opens/closes
+  const handleViewOpenChange = (open: boolean) => {
+    setIsViewOpen(open)
+    if (!open) {
+      setEditedCode(code || "")
+      setIsEditing(false)
+    }
   }
 
   return (
@@ -145,8 +144,8 @@ export function ComponentCard({
             </Button>
           )}
           
-          {/* View Button with Modal */}
-          <Dialog open={isViewOpen} onOpenChange={setIsViewOpen}>
+          {/* View Button with Modal - Now includes editing */}
+          <Dialog open={isViewOpen} onOpenChange={handleViewOpenChange}>
             <DialogTrigger asChild>
               <Button
                 size="sm"
@@ -159,7 +158,7 @@ export function ComponentCard({
                 View
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto bg-card border-border">
+            <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-card border-border">
               <DialogHeader>
                 <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
                   <Component className="h-5 w-5 text-primary" />
@@ -171,11 +170,56 @@ export function ComponentCard({
               </DialogHeader>
               
               <div className="space-y-6 mt-6">
-                {/* Component Preview */}
+                {/* Toggle Edit Mode */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    {!isEditing && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => setIsEditing(true)}
+                        className="hover:bg-accent"
+                      >
+                        <Edit className="h-4 w-4 mr-2" />
+                        Edit Code
+                      </Button>
+                    )}
+                    {isEditing && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={handleResetEdit}
+                        className="hover:bg-accent"
+                      >
+                        <RotateCcw className="h-4 w-4 mr-2" />
+                        Reset to Original
+                      </Button>
+                    )}
+                  </div>
+                  {code && (
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => onCopyCode && onCopyCode(isEditing ? editedCode : code, id)}
+                      className="hover:bg-fuchsia-500/20 hover:border-primary/50"
+                    >
+                      <Copy className="h-4 w-4 mr-2" />
+                      Copy Code
+                    </Button>
+                  )}
+                </div>
+
+                {/* Component Preview - Updates in real-time when editing */}
                 <div className="space-y-3">
                   <h3 className="text-lg font-semibold text-foreground">Live Preview</h3>
                   <div className="bg-card/50 rounded-lg p-6 border border-border/50 shadow-xl">
-                    {children}
+                    {isEditing && editedCode ? (
+                      <div className="text-sm text-muted-foreground italic">
+                        Preview updates when code is edited (changes are temporary and not saved)
+                      </div>
+                    ) : (
+                      children
+                    )}
                   </div>
                 </div>
 
@@ -213,137 +257,33 @@ export function ComponentCard({
                   </div>
                 </div>
 
-                {/* Code Display */}
+                {/* Code Display/Editor */}
                 {code && (
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-semibold text-foreground">Source Code</h3>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => onCopyCode && onCopyCode(code, id)}
-                        className="hover:bg-fuchsia-500/20 hover:border-primary/50"
-                      >
-                        <Copy className="h-4 w-4 mr-2" />
-                        Copy
-                      </Button>
+                      <h3 className="text-lg font-semibold text-foreground">
+                        {isEditing ? "Edit Code" : "Source Code"}
+                      </h3>
+                      {isEditing && (
+                        <span className="text-xs text-muted-foreground italic">
+                          Changes are temporary and will not be saved
+                        </span>
+                      )}
                     </div>
-                    <pre className="bg-card/80 rounded-lg p-4 border border-border/50 shadow-xl text-sm text-foreground/80 overflow-x-auto">
-                      <code>{code}</code>
-                    </pre>
+                    {isEditing ? (
+                      <Textarea
+                        value={editedCode}
+                        onChange={(e) => setEditedCode(e.target.value)}
+                        className="bg-card/80 border-border hover:border-primary/50 focus:border-primary font-mono text-sm min-h-[300px]"
+                        placeholder="Edit component code..."
+                      />
+                    ) : (
+                      <pre className="bg-card/80 rounded-lg p-4 border border-border/50 shadow-xl text-sm text-foreground/80 overflow-x-auto">
+                        <code>{code}</code>
+                      </pre>
+                    )}
                   </div>
                 )}
-              </div>
-            </DialogContent>
-          </Dialog>
-          
-          {/* Edit Button with Modal */}
-          <Dialog open={isEditOpen} onOpenChange={setIsEditOpen}>
-            <DialogTrigger asChild>
-              <Button
-                size="sm"
-                variant="ghost"
-                className="hover:bg-accent transition-all duration-300 rounded-lg"
-                style={{ transitionDuration: 'var(--animation-speed)' }}
-                aria-label="Edit component"
-              >
-                <Edit className="h-4 w-4 mr-2" />
-                Edit
-              </Button>
-            </DialogTrigger>
-            <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto bg-card border-border">
-              <DialogHeader>
-                <DialogTitle className="text-xl font-bold text-foreground flex items-center gap-2">
-                  <Edit className="h-5 w-5 text-primary" />
-                  Edit Component: {title}
-                </DialogTitle>
-                <DialogDescription className="text-muted-foreground">
-                  Modify the component details and code. Changes are saved locally.
-                </DialogDescription>
-              </DialogHeader>
-              
-              <div className="space-y-6 mt-6">
-                {/* Edit Form */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <div className="space-y-2">
-                      <Label className="text-foreground/80">Component Title</Label>
-                      <Input
-                        value={editedTitle}
-                        onChange={(e) => setEditedTitle(e.target.value)}
-                        className="bg-card/50 border-border hover:border-primary/50 focus:border-primary"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label className="text-foreground/80">Description</Label>
-                      <Textarea
-                        value={editedDescription}
-                        onChange={(e) => setEditedDescription(e.target.value)}
-                        className="bg-card/50 border-border hover:border-primary/50 focus:border-primary min-h-[100px]"
-                        placeholder="Enter component description..."
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-3">
-                    <h3 className="text-lg font-semibold text-foreground">Live Preview</h3>
-                    <div className="bg-card/50 rounded-lg p-4 border border-border/50 shadow-xl">
-                      {children}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Code Editor */}
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <Label className="text-foreground/80 text-lg font-semibold">Component Code</Label>
-                    <div className="flex items-center gap-2">
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={handleResetEdit}
-                        className="hover:bg-accent"
-                      >
-                        <RotateCcw className="h-4 w-4 mr-2" />
-                        Reset
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => navigator.clipboard.writeText(editedCode)}
-                        className="hover:bg-fuchsia-500/20 hover:border-primary/50"
-                      >
-                        <Copy className="h-4 w-4 mr-2" />
-                        Copy
-                      </Button>
-                    </div>
-                  </div>
-                  <Textarea
-                    value={editedCode}
-                    onChange={(e) => setEditedCode(e.target.value)}
-                    className="bg-card/80 border-border hover:border-primary/50 focus:border-primary font-mono text-sm min-h-[200px]"
-                    placeholder="Enter component code..."
-                  />
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex items-center justify-end gap-3 pt-4 border-t border-border">
-                  <Button
-                    variant="outline"
-                    onClick={() => setIsEditOpen(false)}
-                    className="hover:bg-accent"
-                  >
-                    Cancel
-                  </Button>
-                  <Button
-                    onClick={handleSaveEdit}
-                    className="bg-gradient-to-r from-primary to-purple-600 hover:shadow-lg hover:shadow-fuchsia-500/25"
-                  >
-                    <Save className="h-4 w-4 mr-2" />
-                    Save Changes
-                  </Button>
-                </div>
               </div>
             </DialogContent>
           </Dialog>

@@ -59,10 +59,16 @@ import {
   Component,
   MessageSquare
 } from "lucide-react"
+// Import data structures
+import { allSearchableItems, learningPaths, troubleshootingItems, communityResources, installationCommands } from "./data"
 
 export default function GettingStartedUniversal() {
   const [searchQuery, setSearchQuery] = useState("")
   const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set())
+  
+  useEffect(() => {
+    document.title = "Getting Started - Inclusive Design System"
+  }, [])
 
   const [copiedCode, setCopiedCode] = useState("")
   const [favourites, setFavorites] = useState<Set<string>>(new Set())

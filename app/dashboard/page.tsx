@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { MainDashboard } from "@/app/dashboard-sections/main-dashboard"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 
@@ -20,6 +21,10 @@ import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
  * sets Inclusive apart from competitors.
  */
 export default function DashboardPage() {
+  React.useEffect(() => {
+    document.title = "Dashboard Demo - Inclusive Design System"
+  }, [])
+  
   return (
     <div className="flex min-h-screen relative z-10">
       <UnifiedSidebar />

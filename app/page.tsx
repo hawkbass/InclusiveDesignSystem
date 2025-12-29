@@ -44,6 +44,10 @@ export default function Homepage() {
   const [mounted, setMounted] = useState(false)
   const [copiedCode, setCopiedCode] = useState("")
   
+  useEffect(() => {
+    document.title = "Inclusive Design System - Home"
+  }, [])
+  
   const stats = [
     { label: "Components", value: "102+", icon: ComponentIcon },
     { label: "Design Tokens", value: "150+", icon: Palette },

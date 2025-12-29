@@ -24,6 +24,7 @@ export default function BestPractices() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "Best Practices - Inclusive Design System"
   }, [])
 
   // Apply animation speed to document

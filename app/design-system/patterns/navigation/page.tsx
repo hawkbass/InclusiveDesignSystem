@@ -19,6 +19,7 @@ export default function NavigationPatterns() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "Navigation Patterns - Inclusive Design System"
   }, [])
 
   if (!mounted) {

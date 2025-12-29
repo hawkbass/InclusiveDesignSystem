@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -242,6 +242,10 @@ export default function ChangelogPage() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedType, setSelectedType] = useState<string>("all")
   const [expandedVersions, setExpandedVersions] = useState<Set<string>>(new Set([releases[0].version]))
+  
+  useEffect(() => {
+    document.title = "Changelog - Inclusive Design System"
+  }, [])
 
   const filteredReleases = releases.filter(release => {
     const matchesSearch = 

@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useEffect } from "react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -147,6 +147,9 @@ const priorityConfig = {
 }
 
 export default function RoadmapPage() {
+  useEffect(() => {
+    document.title = "Roadmap - Inclusive Design System"
+  }, [])
   return (
     <div className="flex bg-background min-h-screen">
       <UnifiedSidebar />

@@ -9,6 +9,8 @@ import { Slider } from "@/components/ui/slider"
 import { Label } from "@/components/ui/label"
 import { Copy, CheckCircle2, Settings, X, Eye, Code2, Layers, Download, ExternalLink, Sparkles, Grid3X3, Palette, Type, Layout, Mountain, Sun, Box, Zap } from "lucide-react"
 import { UnifiedSidebar } from "@/components/ui/unified-sidebar"
+// Import data structures
+import { elevationLevels, shadowPresets, blurPresets } from "./data"
 
 export default function Elevation() {
   const [mounted, setMounted] = useState(false)
@@ -22,6 +24,7 @@ export default function Elevation() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "Elevation - Inclusive Design System"
   }, [])
 
   // Apply animation speed to document
@@ -259,38 +262,26 @@ export default function Elevation() {
   )
 }
 
-// Elevation level definitions
-const elevationLevels = [
+// Extended elevation levels - using imported shadow/blur presets
+const extendedElevationLevels = [
   { level: 0, name: "Surface", shadow: "none", blur: "0", usage: "Base layer, backgrounds", examples: ["Page background", "Canvas"], zIndex: 0 },
-  { level: 1, name: "Raised", shadow: "0 1px 2px 0 rgb(0 0 0 / 0.05)", blur: "0", usage: "Cards, subtle elevation", examples: ["List items", "Table rows"], zIndex: 10 },
-  { level: 2, name: "Overlay", shadow: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)", blur: "4px", usage: "Floating elements", examples: ["Dropdowns", "Tooltips"], zIndex: 20 },
-  { level: 3, name: "Sticky", shadow: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)", blur: "8px", usage: "Sticky headers, navigation", examples: ["App bar", "Tab bar"], zIndex: 30 },
-  { level: 4, name: "Temporary", shadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)", blur: "12px", usage: "Temporary surfaces", examples: ["Snackbars", "Banners"], zIndex: 40 },
-  { level: 5, name: "Popover", shadow: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)", blur: "16px", usage: "Popovers, menus", examples: ["Context menus", "Popovers"], zIndex: 50 },
-  { level: 6, name: "Modal", shadow: "0 25px 50px -12px rgb(0 0 0 / 0.25)", blur: "24px", usage: "Modal dialogs", examples: ["Dialogs", "Sheets"], zIndex: 60 },
-  { level: 7, name: "Alert", shadow: "0 25px 50px -12px rgb(0 0 0 / 0.35), 0 0 0 1px rgb(0 0 0 / 0.05)", blur: "32px", usage: "Critical overlays", examples: ["Alert dialogs", "Urgent notifications"], zIndex: 70 },
+  { level: 1, name: "Raised", shadow: shadowPresets[0].value, blur: "0", usage: "Cards, subtle elevation", examples: ["List items", "Table rows"], zIndex: 10 },
+  { level: 2, name: "Overlay", shadow: shadowPresets[1].value, blur: blurPresets[1].value, usage: "Floating elements", examples: ["Dropdowns", "Tooltips"], zIndex: 20 },
+  { level: 3, name: "Sticky", shadow: shadowPresets[2].value, blur: blurPresets[2].value, usage: "Sticky headers, navigation", examples: ["App bar", "Tab bar"], zIndex: 30 },
+  { level: 4, name: "Temporary", shadow: shadowPresets[3].value, blur: blurPresets[3].value, usage: "Temporary surfaces", examples: ["Snackbars", "Banners"], zIndex: 40 },
+  { level: 5, name: "Popover", shadow: shadowPresets[4].value, blur: blurPresets[4].value, usage: "Popovers, menus", examples: ["Context menus", "Popovers"], zIndex: 50 },
+  { level: 6, name: "Modal", shadow: shadowPresets[5].value, blur: blurPresets[5].value, usage: "Modal dialogs", examples: ["Dialogs", "Sheets"], zIndex: 60 },
+  { level: 7, name: "Alert", shadow: "0 25px 50px -12px rgb(0 0 0 / 0.35), 0 0 0 1px rgb(0 0 0 / 0.05)", blur: blurPresets[5].value, usage: "Critical overlays", examples: ["Alert dialogs", "Urgent notifications"], zIndex: 70 },
 ]
 
-// Shadow token definitions
-const shadowTokens = [
-  { name: "shadow-xs", value: "0 1px 2px 0 rgb(0 0 0 / 0.05)", css: "shadow-xs", tailwind: "shadow-sm", usage: "Subtle depth for cards" },
-  { name: "shadow-sm", value: "0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)", css: "shadow-sm", tailwind: "shadow", usage: "Default card shadow" },
-  { name: "shadow-md", value: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)", css: "shadow-md", tailwind: "shadow-md", usage: "Raised components" },
-  { name: "shadow-lg", value: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)", css: "shadow-lg", tailwind: "shadow-lg", usage: "Dropdowns, popovers" },
-  { name: "shadow-xl", value: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)", css: "shadow-xl", tailwind: "shadow-xl", usage: "Modals, dialogs" },
-  { name: "shadow-2xl", value: "0 25px 50px -12px rgb(0 0 0 / 0.25)", css: "shadow-2xl", tailwind: "shadow-2xl", usage: "High emphasis overlays" },
-  { name: "shadow-inner", value: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)", css: "shadow-inner", tailwind: "shadow-inner", usage: "Pressed states, inputs" },
-  { name: "shadow-glow", value: "0 0 20px rgb(217 70 239 / 0.3)", css: "shadow-glow", tailwind: "shadow-fuchsia-500/30", usage: "Primary focus states" },
-]
-
-// Blur effect definitions
+// Blur effect definitions - now imported from data.ts
 const blurEffects = [
-  { name: "blur-none", value: "0", css: "backdrop-blur-none", usage: "No blur effect", preview: "transparent" },
-  { name: "blur-sm", value: "4px", css: "backdrop-blur-sm", usage: "Subtle glass effect", preview: "bg-card/80" },
-  { name: "blur-md", value: "8px", css: "backdrop-blur-md", usage: "Medium glass morphism", preview: "bg-card/70" },
-  { name: "blur-lg", value: "12px", css: "backdrop-blur-lg", usage: "Prominent glass effect", preview: "bg-card/60" },
-  { name: "blur-xl", value: "16px", css: "backdrop-blur-xl", usage: "Strong glass morphism", preview: "bg-card/50" },
-  { name: "blur-2xl", value: "24px", css: "backdrop-blur-2xl", usage: "Maximum blur for overlays", preview: "bg-card/40" },
+  { name: "blur-none", value: blurPresets[0].value, css: "backdrop-blur-none", usage: "No blur effect", preview: "transparent" },
+  { name: "blur-sm", value: blurPresets[1].value, css: "backdrop-blur-sm", usage: "Subtle glass effect", preview: "bg-card/80" },
+  { name: "blur-md", value: blurPresets[2].value, css: "backdrop-blur-md", usage: "Medium glass morphism", preview: "bg-card/70" },
+  { name: "blur-lg", value: blurPresets[3].value, css: "backdrop-blur-lg", usage: "Prominent glass effect", preview: "bg-card/60" },
+  { name: "blur-xl", value: blurPresets[4].value, css: "backdrop-blur-xl", usage: "Strong glass morphism", preview: "bg-card/50" },
+  { name: "blur-2xl", value: blurPresets[5].value, css: "backdrop-blur-2xl", usage: "Maximum blur for overlays", preview: "bg-card/40" },
   { name: "blur-3xl", value: "32px", css: "backdrop-blur-3xl", usage: "Extreme blur effect", preview: "bg-card/30" },
 ]
 
@@ -316,7 +307,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
           {/* Visual Hierarchy Diagram */}
           <div className="relative h-64 bg-gradient-to-b from-muted/30 to-muted/10 rounded-lg border border-border/50 overflow-hidden">
             <div className="absolute inset-0 flex items-end justify-center gap-4 p-6">
-              {elevationLevels.slice(0, 5).map((level, idx) => (
+              {extendedElevationLevels.slice(0, 5).map((level, idx) => (
                 <div
                   key={level.level}
                   className="flex flex-col items-center"
@@ -352,7 +343,7 @@ function OverviewTab({ onCopyCode, copiedCode, safeAnimationSpeed }: { onCopyCod
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {elevationLevels.map((level) => (
+            {extendedElevationLevels.map((level) => (
               <div 
                 key={level.level}
                 className="group p-4 bg-card/50 rounded-lg border border-border/50 hover:border-primary/50 transition-all cursor-pointer"

@@ -22,6 +22,7 @@ export default function FormsPatterns() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "Forms Patterns - Inclusive Design System"
   }, [])
 
   if (!mounted) {

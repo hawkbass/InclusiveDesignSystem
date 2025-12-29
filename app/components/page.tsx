@@ -77,6 +77,11 @@ export default function ComponentsPage() {
   const [favourites, setFavorites] = useState<Set<string>>(new Set())
   const [viewMode] = useState<"grid" | "list">("grid")
   const [filterStatus, setFilterStatus] = useState<string>("all")
+  
+  useEffect(() => {
+    setMounted(true)
+    document.title = "Component Library - Inclusive Design System"
+  }, [])
   const [filterComplexity, setFilterComplexity] = useState<string>("all")
   const [showAnalytics, setShowAnalytics] = useState(false)
   useEffect(() => {

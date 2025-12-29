@@ -25,6 +25,7 @@ export default function Responsive() {
 
   useEffect(() => {
     setMounted(true)
+    document.title = "Responsive Design - Inclusive Design System"
   }, [])
 
   useEffect(() => {
