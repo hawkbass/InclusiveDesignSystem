@@ -35,8 +35,9 @@ const DialogContent = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
     size?: "sm" | "md" | "lg" | "xl" | "full"
     showCloseButton?: boolean
+    mobileBottomSheet?: boolean
   }
->(({ className, children, size = "md", showCloseButton = true, ...props }, ref) => {
+>(({ className, children, size = "md", showCloseButton = true, mobileBottomSheet = false, ...props }, ref) => {
   const sizeClasses = {
     sm: "max-w-sm",
     md: "max-w-lg", 
@@ -45,13 +46,22 @@ const DialogContent = React.forwardRef<
     full: "max-w-[95vw] max-h-[95vh]"
   }
 
+  // Mobile bottom sheet styles
+  const mobileBottomSheetClasses = mobileBottomSheet
+    ? "md:left-[50%] md:top-[50%] md:translate-x-[-50%] md:translate-y-[-50%] md:rounded-xl md:max-h-[90vh] left-0 top-auto bottom-0 translate-x-0 translate-y-0 rounded-t-2xl max-h-[90vh] w-full"
+    : "left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] rounded-xl"
+
   return (
     <DialogPortal>
       <DialogOverlay />
       <DialogPrimitive.Content
         ref={ref}
         className={cn(
-          "fixed left-[50%] top-[50%] z-50 grid w-full translate-x-[-50%] translate-y-[-50%] gap-6 border border-border/50 bg-card/95 backdrop-blur-xl p-6 shadow-2xl duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] rounded-xl",
+          "fixed z-50 grid w-full gap-6 border border-border/50 bg-card/95 backdrop-blur-xl p-6 shadow-2xl duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+          mobileBottomSheet
+            ? "data-[state=closed]:slide-out-to-bottom data-[state=open]:slide-in-from-bottom md:data-[state=closed]:zoom-out-95 md:data-[state=open]:zoom-in-95 md:data-[state=closed]:slide-out-to-left-1/2 md:data-[state=closed]:slide-out-to-top-[48%] md:data-[state=open]:slide-in-from-left-1/2 md:data-[state=open]:slide-in-from-top-[48%]"
+            : "data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%]",
+          mobileBottomSheetClasses,
           sizeClasses[size],
           size === "full" && "overflow-auto",
           className

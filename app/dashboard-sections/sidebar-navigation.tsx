@@ -8,6 +8,8 @@ import {
   Calendar, 
   Settings, 
   ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   User,
   Shield,
   Bell,
@@ -21,6 +23,8 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { useIsTablet, useIsPortrait } from "@/hooks/use-breakpoint"
+import { cn } from "@/lib/utils"
 import type { TabType, SettingsTabType } from "./types"
 
 interface SidebarNavigationProps {
@@ -37,6 +41,14 @@ export function SidebarNavigation({
   setActiveSettingsTab 
 }: SidebarNavigationProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [tabletCollapsed, setTabletCollapsed] = useState(true)
+  const [tabletHovered, setTabletHovered] = useState(false)
+  const isTablet = useIsTablet()
+  const isPortrait = useIsPortrait()
+  
+  // On tablet landscape, always show full sidebar
+  const isTabletLandscape = isTablet && !isPortrait
+  const shouldShowFullSidebar = !isTablet || isTabletLandscape || (!tabletCollapsed && !isTabletLandscape) || tabletHovered
   const mainTabs = [
     { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
     { id: "candidates", label: "Candidates", icon: Users },
@@ -57,38 +69,53 @@ export function SidebarNavigation({
   ]
 
   const SidebarContent = () => (
-    <div className="w-full lg:w-64 bg-card/50 border-r border-border/50 backdrop-blur-sm h-full">
+    <div 
+      className={cn(
+        "bg-card/50 border-r border-border/50 backdrop-blur-sm h-full transition-all duration-300",
+        shouldShowFullSidebar ? "w-64" : "w-16"
+      )}
+      onMouseEnter={() => isTablet && isPortrait && setTabletHovered(true)}
+      onMouseLeave={() => isTablet && isPortrait && setTabletHovered(false)}
+    >
       {/* User Profile Section */}
-      <div className="p-4 border-b border-border/50">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white font-medium">
+      <div className={cn("border-b border-border/50 transition-all duration-300", shouldShowFullSidebar ? "p-4" : "p-2")}>
+        <div className={cn("flex items-center gap-3 mb-3", !shouldShowFullSidebar && "justify-center")}>
+          <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white font-medium flex-shrink-0">
             ER
           </div>
-          <div className="flex-1 min-w-0">
-            <div className="text-sm font-medium text-foreground">Emma Richardson</div>
-            <div className="text-xs text-muted-foreground">Senior Recruitment Manager</div>
-          </div>
-          <Button
-            variant="ghost"
-            size="sm"
-            className="h-6 w-6 p-0 text-muted-foreground hover:text-foreground/80"
-          >
-            <ChevronDown className="h-3 w-3" />
-          </Button>
+          {shouldShowFullSidebar && (
+            <>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-medium text-foreground">Emma Richardson</div>
+                <div className="text-xs text-muted-foreground">Senior Recruitment Manager</div>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                className="h-6 w-6 p-0 text-muted-foreground hover:text-foreground/80"
+              >
+                <ChevronDown className="h-3 w-3" />
+              </Button>
+            </>
+          )}
         </div>
         
-        <div className="flex items-center justify-between text-xs">
-          <div className="flex items-center gap-1 text-muted-foreground">
-            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-            <span>Online</span>
+        {shouldShowFullSidebar && (
+          <div className="flex items-center justify-between text-xs">
+            <div className="flex items-center gap-1 text-muted-foreground">
+              <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>Online</span>
+            </div>
+            <div className="text-muted-foreground">inclusive.io</div>
           </div>
-          <div className="text-muted-foreground">inclusive.io</div>
-        </div>
+        )}
       </div>
 
       {/* Main Navigation */}
       <div className="p-2">
-        <div className="text-xs font-medium text-muted-foreground mb-2 px-2">Navigation</div>
+        {shouldShowFullSidebar && (
+          <div className="text-xs font-medium text-muted-foreground mb-2 px-2">Navigation</div>
+        )}
         <div className="space-y-1">
           {mainTabs.map((tab) => {
             const Icon = tab.icon
@@ -99,22 +126,29 @@ export function SidebarNavigation({
               <Button
                 key={tab.id}
                 variant="ghost"
-                className={`w-full justify-start h-10 px-3 text-sm transition-all duration-200 ${
+                className={cn(
+                  "w-full h-10 transition-all duration-200 min-h-[44px]",
+                  shouldShowFullSidebar ? "justify-start px-3 text-sm" : "justify-center px-2",
                   isActive 
                     ? 'bg-fuchsia-500/20 text-primary border border-primary/30' 
                     : 'text-muted-foreground hover:text-foreground/80 hover:bg-accent/50'
-                }`}
+                )}
                 onClick={() => {
                   setActiveTab(tab.id as TabType)
                   setMobileOpen(false)
                 }}
+                title={!shouldShowFullSidebar ? tab.label : undefined}
               >
-                <Icon className="h-4 w-4 mr-3" />
-                {tab.label}
-                {isSettings && (
-                  <div className="ml-auto flex items-center gap-1">
-                    <div className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></div>
-                  </div>
+                <Icon className={cn("h-4 w-4", shouldShowFullSidebar && "mr-3")} />
+                {shouldShowFullSidebar && (
+                  <>
+                    {tab.label}
+                    {isSettings && (
+                      <div className="ml-auto flex items-center gap-1">
+                        <div className="w-1.5 h-1.5 bg-fuchsia-400 rounded-full"></div>
+                      </div>
+                    )}
+                  </>
                 )}
               </Button>
             )
@@ -123,7 +157,7 @@ export function SidebarNavigation({
       </div>
 
       {/* Settings Sub-navigation */}
-      {activeTab === "settings" && (
+      {activeTab === "settings" && shouldShowFullSidebar && (
         <div className="p-2 border-t border-border/50">
           <div className="text-xs font-medium text-muted-foreground mb-2 px-2">Settings</div>
           <div className="space-y-1">
@@ -135,7 +169,7 @@ export function SidebarNavigation({
                 <Button
                   key={tab.id}
                   variant="ghost"
-                  className={`w-full justify-start h-8 px-3 text-xs transition-all duration-200 ${
+                  className={`w-full justify-start h-8 px-3 text-xs transition-all duration-200 min-h-[44px] ${
                     isActive 
                       ? 'bg-fuchsia-500/20 text-primary border border-primary/30' 
                       : 'text-muted-foreground hover:text-foreground/80 hover:bg-accent/50'
@@ -155,30 +189,51 @@ export function SidebarNavigation({
       )}
 
       {/* Quick Stats */}
-      <div className="p-4 border-t border-border/50 mt-auto">
-        <div className="text-xs font-medium text-muted-foreground mb-3">Quick Stats</div>
-        <div className="space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Active Jobs</span>
-            <span className="text-foreground font-medium">24</span>
+      {shouldShowFullSidebar && (
+        <div className="p-4 border-t border-border/50 mt-auto">
+          <div className="text-xs font-medium text-muted-foreground mb-3">Quick Stats</div>
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">Active Jobs</span>
+              <span className="text-foreground font-medium">24</span>
+            </div>
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">Candidates</span>
+              <span className="text-foreground font-medium">156</span>
+            </div>
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">Interviews</span>
+              <span className="text-foreground font-medium">32</span>
+            </div>
           </div>
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Candidates</span>
-            <span className="text-foreground font-medium">156</span>
-          </div>
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Interviews</span>
-            <span className="text-foreground font-medium">32</span>
+          
+          <div className="mt-3 pt-3 border-t border-border/30">
+            <div className="flex items-center justify-between text-xs">
+              <span className="text-muted-foreground">Time Saved</span>
+              <span className="text-emerald-400 font-medium">48h</span>
+            </div>
           </div>
         </div>
-        
-        <div className="mt-3 pt-3 border-t border-border/30">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Time Saved</span>
-            <span className="text-emerald-400 font-medium">48h</span>
-          </div>
+      )}
+
+      {/* Tablet Collapse Toggle */}
+      {isTablet && isPortrait && (
+        <div className="p-2 border-t border-border/50">
+          <Button
+            variant="ghost"
+            size="sm"
+            className="w-full min-h-[44px] justify-center"
+            onClick={() => setTabletCollapsed(!tabletCollapsed)}
+            aria-label={tabletCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+          >
+            {tabletCollapsed ? (
+              <ChevronRight className="h-4 w-4" />
+            ) : (
+              <ChevronLeft className="h-4 w-4" />
+            )}
+          </Button>
         </div>
-      </div>
+      )}
     </div>
   )
 
@@ -191,7 +246,7 @@ export function SidebarNavigation({
             <Button
               variant="outline"
               size="icon"
-              className="h-10 w-10 bg-card/95 backdrop-blur-sm border-border"
+              className="h-11 w-11 bg-card/95 backdrop-blur-sm border-border min-h-[44px] min-w-[44px]"
               aria-label="Open navigation menu"
             >
               <Menu className="h-5 w-5" />
@@ -215,10 +270,17 @@ export function SidebarNavigation({
         </Sheet>
       </div>
 
-      {/* Desktop Sidebar */}
+      {/* Desktop/Tablet Sidebar */}
       <div className="hidden lg:block">
         <SidebarContent />
       </div>
+      
+      {/* Tablet Sidebar (md breakpoint) */}
+      {isTablet && (
+        <div className="lg:hidden">
+          <SidebarContent />
+        </div>
+      )}
     </>
   )
 } 

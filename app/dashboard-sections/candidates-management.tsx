@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { StatusBadge } from "@/components/ui/status-badge"
+import { useIsMobile, useIsTablet } from "@/hooks/use-breakpoint"
+import { MobileCandidateCard } from "@/components/dashboard/mobile-candidate-card"
 import { 
   Users, 
   Plus, 
@@ -123,8 +125,11 @@ export function CandidatesManagement({
     setSelectedCandidateIds(newSelected)
   }
 
+  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-20 lg:pb-0">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -135,21 +140,22 @@ export function CandidatesManagement({
           <Button
             variant="outline"
             size="sm"
-            className="border-border/50 text-foreground/80 hover:bg-accent/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50 min-h-[44px]"
             onClick={handleExportCandidates}
             aria-label="Export candidates list"
           >
             <Download className="h-4 w-4 mr-2" />
-            Export
+            <span className="hidden sm:inline">Export</span>
           </Button>
           <Button
             size="sm"
-            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
+            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white min-h-[44px]"
             onClick={() => setShowAddCandidateModal(true)}
             aria-label="Add new candidate"
           >
-            <Plus className="h-4 w-4 mr-2" />
-            Add Candidate
+            <Plus className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Add Candidate</span>
+            <span className="sm:hidden">Add</span>
           </Button>
         </div>
       </div>
@@ -165,7 +171,7 @@ export function CandidatesManagement({
             <button
               key={stage.key}
               onClick={() => setCandidateStageFilter(stage.key)}
-              className={`p-2 sm:p-3 rounded-lg border transition-all duration-200 text-center ${
+              className={`p-3 rounded-lg border transition-all duration-200 text-center min-h-[44px] ${
                 candidateStageFilter === stage.key
                   ? 'border-primary/50 bg-fuchsia-500/10'
                   : 'border-border/50 bg-muted/30 hover:border-border/50'
@@ -287,7 +293,7 @@ export function CandidatesManagement({
             <div className="flex items-center gap-3">
               <button
                 onClick={handleSelectAll}
-                className="text-muted-foreground hover:text-foreground/80 transition-colours"
+                className="text-muted-foreground hover:text-foreground/80 transition-colours min-h-[44px] min-w-[44px] flex items-center justify-center"
                 aria-label={selectedCandidateIds.size === paginatedCandidates.length ? "Deselect all candidates" : "Select all candidates"}
               >
                 {selectedCandidateIds.size === paginatedCandidates.length ? (
@@ -306,31 +312,31 @@ export function CandidatesManagement({
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-8 text-xs text-primary hover:bg-fuchsia-500/10"
+                  className="min-h-[44px] text-xs text-primary hover:bg-fuchsia-500/10"
                   onClick={() => handleFilterAction("email")}
                   aria-label={`Email ${selectedCandidateIds.size} selected candidates`}
                 >
-                  <Mail className="h-3 w-3 mr-1" />
+                  <Mail className="h-4 w-4 mr-1" />
                   Email
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-8 text-xs text-primary hover:bg-fuchsia-500/10"
+                  className="min-h-[44px] text-xs text-primary hover:bg-fuchsia-500/10"
                   onClick={() => handleFilterAction("schedule")}
                   aria-label={`Schedule interviews for ${selectedCandidateIds.size} selected candidates`}
                 >
-                  <Calendar className="h-3 w-3 mr-1" />
+                  <Calendar className="h-4 w-4 mr-1" />
                   Schedule
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-8 text-xs text-red-400 hover:bg-red-500/10"
+                  className="min-h-[44px] text-xs text-red-400 hover:bg-red-500/10"
                   onClick={() => handleFilterAction("reject")}
                   aria-label={`Reject ${selectedCandidateIds.size} selected candidates`}
                 >
-                  <X className="h-3 w-3 mr-1" />
+                  <X className="h-4 w-4 mr-1" />
                   Reject
                 </Button>
               </div>
@@ -338,122 +344,141 @@ export function CandidatesManagement({
           </div>
         </div>
 
-        {/* Table Content - Mobile scrollable */}
-        <div className="divide-y divide-slate-700/30 overflow-x-auto">
-          {paginatedCandidates.map((candidate) => (
-            <div 
-              key={candidate.id}
-              className="p-4 hover:bg-accent/30 transition-all duration-200"
-            >
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                {/* Checkbox and Avatar Row */}
-                <div className="flex items-center gap-4">
-                  {/* Checkbox */}
-                  <button
-                    onClick={() => handleSelectCandidate(candidate.id)}
-                    className="text-muted-foreground hover:text-foreground/80 transition-colours"
-                    aria-label={selectedCandidateIds.has(candidate.id) ? `Deselect ${candidate.name}` : `Select ${candidate.name}`}
-                  >
-                    {selectedCandidateIds.has(candidate.id) ? (
-                      <CheckSquare className="h-4 w-4 text-primary" />
-                    ) : (
-                      <Square className="h-4 w-4" />
-                    )}
-                  </button>
+        {/* Table Content - Mobile: Cards, Desktop: Table */}
+        <div className={isMobile || isTablet ? "p-4 space-y-3" : "divide-y divide-slate-700/30 overflow-x-auto"}>
+          {paginatedCandidates.map((candidate) => {
+            // Mobile/Tablet: Use card layout
+            if (isMobile || isTablet) {
+              return (
+                <MobileCandidateCard
+                  key={candidate.id}
+                  candidate={candidate}
+                  isSelected={selectedCandidateIds.has(candidate.id)}
+                  onSelect={handleSelectCandidate}
+                  onView={(id) => handleCandidateAction(id, "view")}
+                  onEmail={(id) => handleCandidateAction(id, "email")}
+                  onSchedule={(id) => handleCandidateAction(id, "schedule")}
+                  onMore={(id) => handleCandidateAction(id, "more")}
+                />
+              )
+            }
+            
+            // Desktop: Use table layout
+            return (
+              <div 
+                key={candidate.id}
+                className="p-4 hover:bg-accent/30 transition-all duration-200"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  {/* Checkbox and Avatar Row */}
+                  <div className="flex items-center gap-4">
+                    {/* Checkbox */}
+                    <button
+                      onClick={() => handleSelectCandidate(candidate.id)}
+                      className="text-muted-foreground hover:text-foreground/80 transition-colours min-h-[44px] min-w-[44px] flex items-center justify-center"
+                      aria-label={selectedCandidateIds.has(candidate.id) ? `Deselect ${candidate.name}` : `Select ${candidate.name}`}
+                    >
+                      {selectedCandidateIds.has(candidate.id) ? (
+                        <CheckSquare className="h-4 w-4 text-primary" />
+                      ) : (
+                        <Square className="h-4 w-4" />
+                      )}
+                    </button>
 
-                  {/* Avatar */}
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white font-medium">
-                    {candidate.avatar}
+                    {/* Avatar */}
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white font-medium">
+                      {candidate.avatar}
+                    </div>
                   </div>
-                </div>
 
-                {/* Candidate Info */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
-                    <div className="text-sm font-medium text-foreground">{candidate.name}</div>
-                    <StatusBadge status={candidate.status as "applied" | "screening" | "interview" | "offer" | "hired" | "rejected"} />
+                  {/* Candidate Info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-1">
+                      <div className="text-sm font-medium text-foreground">{candidate.name}</div>
+                      <StatusBadge status={candidate.status as "applied" | "screening" | "interview" | "offer" | "hired" | "rejected"} />
+                    </div>
+                    <div className="text-sm text-foreground/80 mb-1">{candidate.position}</div>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <MapPin className="h-3 w-3" />
+                        {candidate.location}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <User className="h-3 w-3" />
+                        {candidate.experience}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Clock className="h-3 w-3" />
+                        {candidate.lastActivity}
+                      </div>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 mt-2">
+                      {candidate.skills.slice(0, 3).map((skill) => (
+                        <span 
+                          key={skill}
+                          className="px-2 py-1 bg-muted/50 text-xs text-foreground/80 rounded-md"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                      {candidate.skills.length > 3 && (
+                        <span className="text-xs text-muted-foreground">+{candidate.skills.length - 3} more</span>
+                      )}
+                    </div>
                   </div>
-                  <div className="text-sm text-foreground/80 mb-1">{candidate.position}</div>
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-3 w-3" />
-                      {candidate.location}
+
+                  {/* Match Score and Actions */}
+                  <div className="flex sm:flex-col sm:items-end gap-4 sm:gap-2">
+                    {/* Match Score */}
+                    <div className="text-right">
+                      <div className="text-sm font-medium text-emerald-400">{candidate.match}</div>
+                      <div className="text-xs text-muted-foreground">match</div>
                     </div>
+
+                    {/* Actions */}
                     <div className="flex items-center gap-1">
-                      <User className="h-3 w-3" />
-                      {candidate.experience}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-3 w-3" />
-                      {candidate.lastActivity}
-                    </div>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-2 mt-2">
-                    {candidate.skills.slice(0, 3).map((skill) => (
-                      <span 
-                        key={skill}
-                        className="px-2 py-1 bg-muted/50 text-xs text-foreground/80 rounded-md"
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                        onClick={() => handleCandidateAction(candidate.id, "view")}
+                        aria-label={`View ${candidate.name} details`}
                       >
-                        {skill}
-                      </span>
-                    ))}
-                    {candidate.skills.length > 3 && (
-                      <span className="text-xs text-muted-foreground">+{candidate.skills.length - 3} more</span>
-                    )}
-                  </div>
-                </div>
-
-                {/* Match Score and Actions */}
-                <div className="flex sm:flex-col sm:items-end gap-4 sm:gap-2">
-                  {/* Match Score */}
-                  <div className="text-right">
-                    <div className="text-sm font-medium text-emerald-400">{candidate.match}</div>
-                    <div className="text-xs text-muted-foreground">match</div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex items-center gap-1">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
-                      onClick={() => handleCandidateAction(candidate.id, "view")}
-                      aria-label={`View ${candidate.name} details`}
-                    >
-                      <Eye className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
-                      onClick={() => handleCandidateAction(candidate.id, "email")}
-                      aria-label={`Send email to ${candidate.name}`}
-                    >
-                      <Mail className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
-                      onClick={() => handleCandidateAction(candidate.id, "schedule")}
-                      aria-label={`Schedule interview with ${candidate.name}`}
-                    >
-                      <Calendar className="h-4 w-4" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
-                      onClick={() => handleCandidateAction(candidate.id, "more")}
-                      aria-label={`More actions for ${candidate.name}`}
-                    >
-                      <MoreVertical className="h-4 w-4" />
-                    </Button>
+                        <Eye className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                        onClick={() => handleCandidateAction(candidate.id, "email")}
+                        aria-label={`Send email to ${candidate.name}`}
+                      >
+                        <Mail className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                        onClick={() => handleCandidateAction(candidate.id, "schedule")}
+                        aria-label={`Schedule interview with ${candidate.name}`}
+                      >
+                        <Calendar className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                        onClick={() => handleCandidateAction(candidate.id, "more")}
+                        aria-label={`More actions for ${candidate.name}`}
+                      >
+                        <MoreVertical className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Pagination */}
@@ -467,7 +492,7 @@ export function CandidatesManagement({
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-border/50 text-foreground/80 hover:bg-accent/50 w-full sm:w-auto"
+                  className="border-border/50 text-foreground/80 hover:bg-accent/50 w-full sm:w-auto min-h-[44px]"
                   disabled={currentPage === 1}
                   onClick={() => setCurrentPage(currentPage - 1)}
                 >
@@ -479,10 +504,11 @@ export function CandidatesManagement({
                       key={page}
                       variant={currentPage === page ? "default" : "outline"}
                       size="sm"
-                      className={currentPage === page 
-                        ? "bg-fuchsia-500 hover:bg-fuchsia-600 text-white" 
-                        : "border-border/50 text-foreground/80 hover:bg-accent/50"
-                      }
+                      className={`min-h-[44px] min-w-[44px] ${
+                        currentPage === page 
+                          ? "bg-fuchsia-500 hover:bg-fuchsia-600 text-white" 
+                          : "border-border/50 text-foreground/80 hover:bg-accent/50"
+                      }`}
                       onClick={() => setCurrentPage(page)}
                     >
                       {page}
@@ -492,7 +518,7 @@ export function CandidatesManagement({
                 <Button
                   variant="outline"
                   size="sm"
-                  className="border-border/50 text-foreground/80 hover:bg-accent/50 w-full sm:w-auto"
+                  className="border-border/50 text-foreground/80 hover:bg-accent/50 w-full sm:w-auto min-h-[44px]"
                   disabled={currentPage === totalPages}
                   onClick={() => setCurrentPage(currentPage + 1)}
                 >

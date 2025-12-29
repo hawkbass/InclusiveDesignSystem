@@ -3,6 +3,8 @@
 import React, { useState, useMemo } from "react"
 import { Button } from "@/components/ui/button"
 import { CalendarEvent, Filter, Plus, ChevronLeft, ChevronRight } from "lucide-react"
+import { useIsMobile, useIsTablet } from "@/hooks/use-breakpoint"
+import { cn } from "@/lib/utils"
 import { CalendarEvent as CalendarEventType } from "./types"
 
 interface CalendarIntegrationProps {
@@ -111,8 +113,11 @@ export function CalendarIntegration({
     }
   }
 
+  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-20 lg:pb-0">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
@@ -123,7 +128,7 @@ export function CalendarIntegration({
           <Button
             variant="outline"
             size="sm"
-            className="border-border/50 text-foreground/80 hover:bg-accent/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50 min-h-[44px]"
             aria-label="Filter calendar events"
             onClick={() => {
               // Toggle filter dropdown or open filter modal
@@ -132,17 +137,18 @@ export function CalendarIntegration({
               alert(`Filter options: ${filterOptions.join(", ")}\n\nCurrent filter: ${calendarFilter}\n\nIn production, this would open a filter dropdown.`)
             }}
           >
-            <Filter className="h-4 w-4 mr-2" />
-            Filter
+            <Filter className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Filter</span>
           </Button>
           <Button
             size="sm"
-            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
+            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white min-h-[44px]"
             onClick={() => setShowScheduleInterviewModal(true)}
             aria-label="Schedule new interview"
           >
-            <Plus className="h-4 w-4 mr-2" />
-            Schedule Interview
+            <Plus className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Schedule Interview</span>
+            <span className="sm:hidden">Schedule</span>
           </Button>
         </div>
       </div>
@@ -155,32 +161,32 @@ export function CalendarIntegration({
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
+                className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80 min-h-[44px] min-w-[44px]"
                 onClick={handlePreviousMonth}
                 aria-label="Previous month"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-5 w-5" />
               </Button>
-              <h3 className="text-lg font-medium text-foreground">{monthNames[currentMonth]} {currentYear}</h3>
+              <h3 className="text-base sm:text-lg font-medium text-foreground text-center flex-1">{monthNames[currentMonth]} {currentYear}</h3>
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
+                className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80 min-h-[44px] min-w-[44px]"
                 onClick={handleNextMonth}
                 aria-label="Next month"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-5 w-5" />
               </Button>
             </div>
           </div>
           
           <div className="flex items-center gap-2 flex-wrap">
-            <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1">
+            <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1 overflow-x-auto">
               {["month", "week", "day"].map((view) => (
                 <button
                   key={view}
                   onClick={() => setCalendarView(view as "month" | "week" | "day")}
-                  className={`px-3 py-1 rounded text-sm transition-all ${
+                  className={`px-3 py-2 rounded text-sm transition-all min-h-[44px] min-w-[70px] ${
                     calendarView === view 
                       ? 'bg-fuchsia-500/20 text-primary' 
                       : 'text-muted-foreground hover:text-foreground/80'
@@ -225,11 +231,14 @@ export function CalendarIntegration({
               <button
                 key={day}
                 onClick={() => setSelectedDate(day)}
-                className={`p-2 min-h-[80px] border border-border/30 rounded-lg transition-all duration-200 text-left relative ${
+                className={cn(
+                  "p-2 border border-border/30 rounded-lg transition-all duration-200 text-left relative min-h-[44px]",
+                  isMobile ? "min-h-[60px]" : "min-h-[80px]",
                   isSelected 
                     ? 'bg-fuchsia-500/20 border-primary/50' 
-                    : 'hover:bg-accent/30'
-                } ${!isCurrentMonth ? 'opacity-40' : ''}`}
+                    : 'hover:bg-accent/30 active:bg-accent/50',
+                  !isCurrentMonth && 'opacity-40'
+                )}
                 aria-label={`${day} ${monthNames[currentMonth]} ${currentYear}${dayEvents.length > 0 ? `, ${dayEvents.length} ${dayEvents.length === 1 ? 'event' : 'events'}` : ''}`}
               >
                 <div className={`text-sm font-medium mb-1 ${

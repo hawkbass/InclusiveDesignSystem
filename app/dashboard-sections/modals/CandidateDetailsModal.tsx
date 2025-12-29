@@ -2,6 +2,7 @@ import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { X, Mail, Phone, Calendar, FileText } from "lucide-react"
+import { useIsMobile } from "@/hooks/use-breakpoint"
 import type { Candidate } from "../types"
 
 interface CandidateDetailsModalProps {
@@ -13,10 +14,14 @@ interface CandidateDetailsModalProps {
 }
 
 export function CandidateDetailsModal({ open, candidate, onClose, handleCandidateAction, onViewCV }: CandidateDetailsModalProps) {
+  const isMobile = useIsMobile()
   if (!candidate) return null
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-2xl w-[95vw] sm:w-full p-0 overflow-hidden max-h-[90vh] overflow-y-auto">
+      <DialogContent 
+        className="max-w-2xl w-[95vw] sm:w-full p-0 overflow-hidden max-h-[90vh] overflow-y-auto"
+        mobileBottomSheet={isMobile}
+      >
         {/* Header */}
         <div className="p-6 border-b border-border/50 bg-gradient-to-r from-muted/50 to-muted/30 rounded-t-xl">
           <div className="flex items-center justify-between">
@@ -37,7 +42,7 @@ export function CandidateDetailsModal({ open, candidate, onClose, handleCandidat
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
+                className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80 min-h-[44px] min-w-[44px]"
                 onClick={onClose}
                 aria-label={`Close ${candidate.name} details modal`}
               >

@@ -50,6 +50,7 @@ import { AddCandidateModal } from "./modals/AddCandidateModal"
 import { ViewApplicantsModal } from "./modals/ViewApplicantsModal"
 import { CVModal } from "./modals/CVModal"
 import { DocumentModal } from "./modals/DocumentModal"
+import { MobileBottomNav } from "@/components/dashboard/mobile-bottom-nav"
 
 export function MainDashboard() {
   // Initialize all state
@@ -472,6 +473,12 @@ export function MainDashboard() {
           </AnimatedElement>
         </div>
       </div>
+
+      {/* Mobile Bottom Navigation */}
+      <MobileBottomNav
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
 
       <CandidateDetailsModal 
         open={showCandidateModal} 

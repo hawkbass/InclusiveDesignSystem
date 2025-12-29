@@ -25,6 +25,8 @@ import { Input } from "@/components/ui/input"
 import { AnimatedElement } from "../animations"
 import type { Job } from "./types"
 import { JobStatus } from "@/components/ui/status-badge"
+import { useIsMobile, useIsTablet } from "@/hooks/use-breakpoint"
+import { MobileJobCard } from "@/components/dashboard/mobile-job-card"
 
 interface JobsManagementProps {
   jobFilter: string
@@ -120,8 +122,11 @@ export function JobsManagement({
     }
   }
 
+  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 pb-20 lg:pb-0">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -132,7 +137,7 @@ export function JobsManagement({
           <Button
             variant="outline"
             size="sm"
-            className="border-border/50 text-foreground/80 hover:bg-accent/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50 min-h-[44px]"
             onClick={() => {
               // Export jobs to CSV
               const headers = ["Title", "Department", "Location", "Type", "Level", "Salary", "Status", "Applicants", "Posted"]
@@ -164,16 +169,17 @@ export function JobsManagement({
               document.body.removeChild(link)
             }}
           >
-            <Download className="h-4 w-4 mr-2" />
-            Export
+            <Download className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Export</span>
           </Button>
           <Button
             size="sm"
-            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white"
+            className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white min-h-[44px]"
             onClick={() => setShowCreateJobModal(true)}
           >
-            <Plus className="h-4 w-4 mr-2" />
-            Create Job
+            <Plus className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Create Job</span>
+            <span className="sm:hidden">Create</span>
           </Button>
         </div>
       </div>
@@ -184,16 +190,17 @@ export function JobsManagement({
           <h3 className="text-lg font-medium text-foreground">Job Status Overview</h3>
           <div className="text-sm text-muted-foreground">{filteredJobs.length} jobs</div>
         </div>
-        <div className="grid grid-cols-5 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           {jobStatuses.map((status) => (
             <button
               key={status.key}
               onClick={() => setJobFilter(status.key)}
-              className={`p-3 rounded-lg border transition-all duration-200 text-center ${
+              className={`p-3 rounded-lg border transition-all duration-200 text-center min-h-[44px] ${
                 jobFilter === status.key
                   ? 'border-primary/50 bg-fuchsia-500/10'
                   : 'border-border/50 bg-muted/30 hover:border-border/50'
               }`}
+              aria-label={`Filter by ${status.label} jobs`}
             >
               <div className={`text-lg font-bold mb-1 ${
                 jobFilter === status.key ? 'text-primary' : 'text-foreground'
@@ -225,66 +232,99 @@ export function JobsManagement({
           <Button
             variant="outline"
             size="sm"
-            className="border-border/50 text-foreground/80 hover:bg-accent/50"
+            className="border-border/50 text-foreground/80 hover:bg-accent/50 min-h-[44px]"
             onClick={() => {
               // In a real app, this would open a filter dropdown/modal
               // For demo purposes, we'll show a message
               alert("Advanced filters would open here. (Demo mode)")
             }}
           >
-            <Filter className="h-4 w-4 mr-2" />
-            Filters
+            <Filter className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Filters</span>
           </Button>
         </div>
       </div>
 
-      {/* Jobs Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        {filteredJobs.map((job) => (
-          <AnimatedElement key={job.id} animation="slide-up">
-            <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm hover:border-primary/50 transition-all duration-200">
-              {/* Job Header */}
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="text-lg font-medium text-foreground truncate">{job.title}</h3>
-                    <JobStatus status={job.status as any} />
+      {/* Jobs Grid - Mobile: Cards, Tablet: 2-col, Desktop: 2-col */}
+      <div className={isMobile ? "space-y-3" : "grid grid-cols-1 md:grid-cols-2 gap-4"}>
+        {filteredJobs.map((job) => {
+          // Mobile: Use card layout
+          if (isMobile) {
+            return (
+              <MobileJobCard
+                key={job.id}
+                job={job}
+                onView={(id) => {
+                  const job = jobsData.find(j => j.id === id)
+                  if (job) {
+                    setSelectedJob(job)
+                    setShowJobDetailsModal(true)
+                  }
+                }}
+                onEdit={(id) => {
+                  const job = jobsData.find(j => j.id === id)
+                  if (job) {
+                    setSelectedJob(job)
+                    setShowEditJobModal(true)
+                  }
+                }}
+                onPause={(id) => handleJobAction(id, "pause")}
+                onActivate={(id) => handleJobAction(id, "activate")}
+                onClose={(id) => handleJobAction(id, "close")}
+                onMore={(id) => handleJobAction(id, "more")}
+              />
+            )
+          }
+          
+          // Tablet/Desktop: Use grid layout
+          return (
+            <AnimatedElement key={job.id} animation="slide-up">
+              <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm hover:border-primary/50 transition-all duration-200">
+                {/* Job Header */}
+                <div className="flex items-start justify-between mb-3">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="text-lg font-medium text-foreground truncate">{job.title}</h3>
+                      <JobStatus status={job.status as any} />
+                    </div>
+                    <div className="text-sm text-muted-foreground">{job.department}</div>
                   </div>
-                  <div className="text-sm text-muted-foreground">{job.department}</div>
+                  <div className="flex items-center gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                      onClick={() => {
+                        setSelectedJob(job)
+                        setShowJobDetailsModal(true)
+                      }}
+                      aria-label={`View ${job.title} details`}
+                    >
+                      <Eye className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                      onClick={() => {
+                        setSelectedJob(job)
+                        setShowEditJobModal(true)
+                      }}
+                      aria-label={`Edit ${job.title}`}
+                    >
+                      <Edit className="h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                      onClick={() => handleJobAction(job.id, "more")}
+                      aria-label={`More actions for ${job.title}`}
+                    >
+                      <MoreVertical className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
-                    onClick={() => {
-                      setSelectedJob(job)
-                      setShowJobDetailsModal(true)
-                    }}
-                  >
-                    <Eye className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
-                    onClick={() => {
-                      setSelectedJob(job)
-                      setShowEditJobModal(true)
-                    }}
-                  >
-                    <Edit className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground/80"
-                    onClick={() => handleJobAction(job.id, "more")}
-                  >
-                    <MoreVertical className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
 
               {/* Job Details */}
               <div className="space-y-3">
@@ -348,7 +388,7 @@ export function JobsManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-border/50 text-foreground/80 hover:bg-accent/50"
+                    className="border-border/50 text-foreground/80 hover:bg-accent/50 min-h-[44px]"
                     onClick={() => handleJobAction(job.id, "view-applicants")}
                     aria-label={`View Applicants for ${job.title}`}
                   >
@@ -358,7 +398,7 @@ export function JobsManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-border/50 text-foreground/80 hover:bg-accent/50"
+                    className="border-border/50 text-foreground/80 hover:bg-accent/50 min-h-[44px]"
                     onClick={() => handleJobAction(job.id, "edit")}
                     aria-label={`Edit ${job.title} job posting`}
                   >
@@ -371,7 +411,7 @@ export function JobsManagement({
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-amber-700/50 text-amber-600 dark:text-amber-300 hover:bg-amber-500/10"
+                      className="border-amber-700/50 text-amber-600 dark:text-amber-300 hover:bg-amber-500/10 min-h-[44px]"
                       onClick={() => handleJobAction(job.id, "pause")}
                       aria-label={`Pause ${job.title} job posting`}
                     >
@@ -383,7 +423,7 @@ export function JobsManagement({
                     <Button
                       variant="outline"
                       size="sm"
-                      className="border-emerald-700/50 text-emerald-300 hover:bg-emerald-500/10"
+                      className="border-emerald-700/50 text-emerald-300 hover:bg-emerald-500/10 min-h-[44px]"
                       onClick={() => handleJobAction(job.id, "activate")}
                       aria-label={`Activate ${job.title} job posting`}
                     >
@@ -394,7 +434,7 @@ export function JobsManagement({
                   <Button
                     variant="outline"
                     size="sm"
-                    className="border-red-700/50 text-red-600 dark:text-red-300 hover:bg-red-500/10"
+                    className="border-red-700/50 text-red-600 dark:text-red-300 hover:bg-red-500/10 min-h-[44px]"
                     onClick={() => handleJobAction(job.id, "close")}
                     aria-label={`Close ${job.title} job posting`}
                   >
@@ -405,7 +445,8 @@ export function JobsManagement({
               </div>
             </div>
           </AnimatedElement>
-        ))}
+            )
+          })}
       </div>
 
       {/* Empty State */}

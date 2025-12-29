@@ -22,6 +22,8 @@ import { MetricChart } from "@/components/ui/metric-chart"
 import { AnimatedElement } from "../animations"
 import { getStatCards, chartData } from "./data"
 import type { Candidate, StatCard } from "./types"
+import { useIsMobile, useIsTablet } from "@/hooks/use-breakpoint"
+import { MobileCandidateCard } from "@/components/dashboard/mobile-candidate-card"
 
 interface DashboardOverviewProps {
   selectedCandidates: Set<string>
@@ -63,6 +65,8 @@ export function DashboardOverview({
   setShowScheduleModal
 }: DashboardOverviewProps) {
   const statCards = getStatCards()
+  const isMobile = useIsMobile()
+  const isTablet = useIsTablet()
   const candidates = [
     { 
       id: "1",
@@ -173,9 +177,9 @@ export function DashboardOverview({
   ]
 
   return (
-    <div className="space-y-3">
-      {/* Stats Row */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+    <div className="space-y-3 pb-20 lg:pb-0">
+      {/* Stats Row - Mobile-first: 1 col mobile, 2 col tablet, 4 col desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {statCards.map((stat, i) => (
           <AnimatedElement key={i} animation="slide-up" delay={i * 100}>
             <div className="bg-card/50 rounded-lg border border-border/50 p-3 hover:border-primary/50 transition-all duration-300 group backdrop-blur-sm min-h-[120px]">
@@ -222,8 +226,8 @@ export function DashboardOverview({
         ))}
       </div>
 
-      {/* Quick Actions & Activity Feed Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+      {/* Quick Actions & Activity Feed Row - Mobile-first: 1 col mobile, 2 col tablet, 3 col desktop */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {/* Quick Actions Panel */}
         <AnimatedElement animation="slide-up" delay={400}>
           <div className="bg-card/50 rounded-lg border border-border/50 p-4 backdrop-blur-sm">
@@ -235,7 +239,7 @@ export function DashboardOverview({
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-xs"
+                className="w-full justify-start text-xs min-h-[44px]"
                 onClick={() => {
                   // Try to use first candidate if available, otherwise open modal
                   if (candidates.length > 0) {
@@ -245,22 +249,22 @@ export function DashboardOverview({
                   }
                 }}
               >
-                <Calendar className="h-3.5 w-3.5 mr-2" />
+                <Calendar className="h-4 w-4 mr-2" />
                 Schedule Interview
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-xs"
+                className="w-full justify-start text-xs min-h-[44px]"
                 onClick={() => handleBulkAction("email")}
               >
-                <Mail className="h-3.5 w-3.5 mr-2" />
+                <Mail className="h-4 w-4 mr-2" />
                 Send Bulk Email
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-xs"
+                className="w-full justify-start text-xs min-h-[44px]"
                 onClick={() => {
                   if (setShowCreateJobModal) {
                     setShowCreateJobModal(true)
@@ -269,13 +273,13 @@ export function DashboardOverview({
                   }
                 }}
               >
-                <Briefcase className="h-3.5 w-3.5 mr-2" />
+                <Briefcase className="h-4 w-4 mr-2" />
                 Create Job Posting
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full justify-start text-xs"
+                className="w-full justify-start text-xs min-h-[44px]"
                 onClick={() => {
                   if (setShowAddCandidateModal) {
                     setShowAddCandidateModal(true)
@@ -284,7 +288,7 @@ export function DashboardOverview({
                   }
                 }}
               >
-                <UserPlus className="h-3.5 w-3.5 mr-2" />
+                <UserPlus className="h-4 w-4 mr-2" />
                 Add Candidate
               </Button>
             </div>
@@ -379,11 +383,12 @@ export function DashboardOverview({
                     <button
                       key={filter.key}
                       onClick={() => setTableFilter(filter.key)}
-                      className={`px-2 py-1 rounded text-xs transition-all ${
+                      className={`px-3 py-2 rounded text-xs transition-all min-h-[44px] ${
                         tableFilter === filter.key 
                           ? 'bg-fuchsia-500/20 text-primary' 
                           : 'text-muted-foreground hover:text-foreground/80'
                       }`}
+                      aria-label={`Filter by ${filter.label}`}
                     >
                       {filter.label} ({filter.count})
                     </button>
@@ -436,103 +441,129 @@ export function DashboardOverview({
           </div>
           
           <div className="p-4">
-            {/* Enhanced Table */}
-            <div className="space-y-3">
-              {candidates.map((candidate) => (
-                <div 
-                  key={candidate.id}
-                  className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border border-border/30 hover:bg-accent/50 transition-all duration-200 group"
-                >
-                  <div className="flex items-center gap-3 flex-1">
-                    {/* Checkbox */}
-                    <div className="flex-shrink-0">
-                      <button
-                        onClick={() => {
-                          const newSelected = new Set(selectedCandidates)
-                          if (newSelected.has(candidate.id)) {
-                            newSelected.delete(candidate.id)
-                          } else {
-                            newSelected.add(candidate.id)
-                          }
-                          setSelectedCandidates(newSelected)
-                        }}
-                        className="text-muted-foreground hover:text-foreground/80 transition-colours"
-                      >
-                        {selectedCandidates.has(candidate.id) ? (
-                          <CheckSquare className="h-4 w-4 text-primary" />
-                        ) : (
-                          <Square className="h-4 w-4" />
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Avatar */}
-                    <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white text-sm font-medium">
-                      {candidate.avatar}
-                    </div>
-
-                    {/* Candidate Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <div className="text-sm font-medium text-foreground">{candidate.name}</div>
-                        <StatusBadge status={candidate.status as "applied" | "screening" | "interview" | "offer" | "hired" | "rejected"} />
+            {/* Mobile/Tablet: Card Layout, Desktop: Table Layout */}
+            {(isMobile || isTablet) ? (
+              <div className="space-y-3">
+                {candidates.map((candidate) => (
+                  <MobileCandidateCard
+                    key={candidate.id}
+                    candidate={candidate}
+                    isSelected={selectedCandidates.has(candidate.id)}
+                    onSelect={(id) => {
+                      const newSelected = new Set(selectedCandidates)
+                      if (newSelected.has(id)) {
+                        newSelected.delete(id)
+                      } else {
+                        newSelected.add(id)
+                      }
+                      setSelectedCandidates(newSelected)
+                    }}
+                    onView={(id) => handleCandidateAction(id, "view")}
+                    onEmail={(id) => handleCandidateAction(id, "email")}
+                    onSchedule={(id) => handleCandidateAction(id, "schedule")}
+                    onMore={(id) => handleCandidateAction(id, "more")}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {candidates.map((candidate) => (
+                  <div 
+                    key={candidate.id}
+                    className="flex items-center justify-between p-3 bg-muted/30 rounded-lg border border-border/30 hover:bg-accent/50 transition-all duration-200 group"
+                  >
+                    <div className="flex items-center gap-3 flex-1">
+                      {/* Checkbox */}
+                      <div className="flex-shrink-0">
+                        <button
+                          onClick={() => {
+                            const newSelected = new Set(selectedCandidates)
+                            if (newSelected.has(candidate.id)) {
+                              newSelected.delete(candidate.id)
+                            } else {
+                              newSelected.add(candidate.id)
+                            }
+                            setSelectedCandidates(newSelected)
+                          }}
+                          className="text-muted-foreground hover:text-foreground/80 transition-colours min-h-[44px] min-w-[44px] flex items-center justify-center"
+                          aria-label={`Select ${candidate.name}`}
+                        >
+                          {selectedCandidates.has(candidate.id) ? (
+                            <CheckSquare className="h-4 w-4 text-primary" />
+                          ) : (
+                            <Square className="h-4 w-4" />
+                          )}
+                        </button>
                       </div>
-                      <div className="text-xs text-muted-foreground">{candidate.position}</div>
-                      <div className="flex items-center gap-2 mt-1">
-                        <span className="text-xs text-muted-foreground">{candidate.location}</span>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className="text-xs text-muted-foreground">{candidate.experience}</span>
-                        <span className="text-xs text-muted-foreground">•</span>
-                        <span className="text-xs text-emerald-400 font-medium">{candidate.match} match</span>
+
+                      {/* Avatar */}
+                      <div className="w-10 h-10 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-white text-sm font-medium">
+                        {candidate.avatar}
+                      </div>
+
+                      {/* Candidate Info */}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <div className="text-sm font-medium text-foreground">{candidate.name}</div>
+                          <StatusBadge status={candidate.status as "applied" | "screening" | "interview" | "offer" | "hired" | "rejected"} />
+                        </div>
+                        <div className="text-xs text-muted-foreground">{candidate.position}</div>
+                        <div className="flex items-center gap-2 mt-1">
+                          <span className="text-xs text-muted-foreground">{candidate.location}</span>
+                          <span className="text-xs text-muted-foreground">•</span>
+                          <span className="text-xs text-muted-foreground">{candidate.experience}</span>
+                          <span className="text-xs text-muted-foreground">•</span>
+                          <span className="text-xs text-emerald-400 font-medium">{candidate.match} match</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-2">
+                      <div className="text-xs text-muted-foreground hidden lg:block">{candidate.lastActivity}</div>
+                      <div className="flex items-center gap-1">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                          onClick={() => handleCandidateAction(candidate.id, "view")}
+                          aria-label={`View ${candidate.name} details`}
+                        >
+                          <Eye className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                          onClick={() => handleCandidateAction(candidate.id, "email")}
+                          aria-label={`Send email to ${candidate.name}`}
+                        >
+                          <Mail className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                          onClick={() => handleCandidateAction(candidate.id, "schedule")}
+                          aria-label={`Schedule interview with ${candidate.name}`}
+                        >
+                          <Calendar className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-11 w-11 p-0 text-muted-foreground hover:text-foreground/80"
+                          onClick={() => handleCandidateAction(candidate.id, "more")}
+                          aria-label={`More actions for ${candidate.name}`}
+                        >
+                          <MoreVertical className="h-4 w-4" />
+                        </Button>
                       </div>
                     </div>
                   </div>
-
-                  {/* Actions */}
-                  <div className="flex items-center gap-2">
-                    <div className="text-xs text-muted-foreground">{candidate.lastActivity}</div>
-                    <div className="flex items-center gap-1">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
-                        onClick={() => handleCandidateAction(candidate.id, "view")}
-                        aria-label={`View ${candidate.name} details`}
-                      >
-                        <Eye className="h-3.5 w-3.5" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
-                        onClick={() => handleCandidateAction(candidate.id, "email")}
-                        aria-label={`Send email to ${candidate.name}`}
-                      >
-                        <Mail className="h-3.5 w-3.5" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
-                        onClick={() => handleCandidateAction(candidate.id, "schedule")}
-                        aria-label={`Schedule interview with ${candidate.name}`}
-                      >
-                        <Calendar className="h-3.5 w-3.5" />
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="h-7 w-7 p-0 text-muted-foreground hover:text-foreground/80"
-                        onClick={() => handleCandidateAction(candidate.id, "more")}
-                        aria-label={`More actions for ${candidate.name}`}
-                      >
-                        <MoreVertical className="h-3.5 w-3.5" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </AnimatedElement>
@@ -546,8 +577,8 @@ export function DashboardOverview({
               <p className="text-sm text-muted-foreground">Applications, interviews, and hires over time</p>
             </div>
             <div className="flex items-center gap-2">
-              {/* Chart Type Toggle */}
-              <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1">
+              {/* Chart Type Toggle - Touch-friendly on mobile */}
+              <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1 overflow-x-auto">
                 {[
                   { key: "area", label: "Area" },
                   { key: "line", label: "Line" },
@@ -556,28 +587,30 @@ export function DashboardOverview({
                   <button
                     key={type.key}
                     onClick={() => setChartType(type.key as any)}
-                    className={`px-2 py-1 rounded text-xs transition-all ${
+                    className={`px-3 py-2 rounded text-xs transition-all min-h-[44px] min-w-[60px] ${
                       chartType === type.key 
                         ? 'bg-fuchsia-500/20 text-primary' 
                         : 'text-muted-foreground hover:text-foreground/80'
                     }`}
+                    aria-label={`Switch to ${type.label} chart`}
                   >
                     {type.label}
                   </button>
                 ))}
               </div>
               
-              {/* Time Period Toggle */}
-              <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1">
+              {/* Time Period Toggle - Touch-friendly on mobile */}
+              <div className="flex items-center gap-1 bg-muted/50 rounded-md p-1 overflow-x-auto">
                 {["7D", "30D", "90D", "12M"].map((period) => (
                   <button
                     key={period}
                     onClick={() => setTimePeriod(period as any)}
-                    className={`px-2 py-1 rounded text-xs transition-all ${
+                    className={`px-3 py-2 rounded text-xs transition-all min-h-[44px] min-w-[50px] ${
                       timePeriod === period 
                         ? 'bg-fuchsia-500/20 text-primary' 
                         : 'text-muted-foreground hover:text-foreground/80'
                     }`}
+                    aria-label={`View ${period} period`}
                   >
                     {period}
                   </button>
